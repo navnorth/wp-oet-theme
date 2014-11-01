@@ -1,0 +1,125 @@
+.oet-site
+{
+	margin-top: 0!important;
+	margin-bottom: 0!important;
+	max-width: 100% !important;
+}
+footer[role="oet_contentinfo"] {
+    border-top: 1px solid #EDEDED;
+    clear: both;
+    font-size: 0.857143rem;
+    line-height: 2;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.71429rem;
+    max-width: 100%;
+    padding: 1.71429rem 0;
+}
+.oet_sub_header {
+    float: left;
+    width: 70%;
+	margin-bottom: 25px;
+}
+.oet_sub_header_sec {
+    float: left;
+    width: 30%;
+}
+.oet_sub_header_sec .oet-searchform {
+    float: left;
+    width: 100%;
+	padding-bottom: 25px;
+}
+.oet-searchform #searchform > div
+{
+	float: right;
+}
+.oet_sub_header_sec .oet-socialicons {
+    float: left;
+    width: 100%;
+}
+.oet_sub_header_sec .oet-socialicons > a{
+    float: right;
+	padding-left: 5px;
+}
+
+<!--shortcode css-->
+.oer_disruptive {
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+}
+.oer_disruptive h5 {
+    border-bottom: 1px solid #CCCCCC;
+    font-weight: 100;
+    padding: 10px 0;
+    width: 100%;
+}
+.oer_sbdisruptive {
+    float: left;
+    margin: 10px 0;
+    width: 98%;
+	background: url(../images/top_strap_img.png) 0 -35px;
+	padding: 30px 0 30px 30px;
+	color: #fff;
+}
+.shrtcd_cnt
+{
+	width: 70%;
+	float: left;
+}
+.shrtcd_cnt > h1
+{
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+.shrtcd_cnt > p {
+    line-height: 21px;
+    margin-top: 15px;
+}
+.shtct_btn {
+    float: left;
+    padding: 25px 0;
+    width: 25%;
+}
+.shtct_btn a {
+    float: right;
+    padding: 15px 20px;
+    text-decoration: none;
+    width: auto;
+	color: #fff;
+	border-radius: 2px;
+}
+.oet_accrdnwpr
+{
+	width: 100%;
+	float: left;
+	margin: 0px 0 20px;
+	padding: 0;
+	color: #444;
+}
+.oet_accrdnwpr .oet_acrdnttl
+{
+	margin: 0;
+	padding: 8px 15px;
+	font-size: 18px;
+	color: #333;
+	line-height: 28px;
+	font-weight: bold; 
+	border-bottom: none;
+	background: #f7eddf;
+	border: 1px solid #d8b684;
+}
+.oet_accrdnwpr .oet_accordion
+{
+	width: 100%;
+	float: left;
+	margin: 0;
+	padding: 0;	
+}
+.ui-accordion .ui-accordion-header
+{
+	color: #000;
+	outline: none;
+}
+<!--shortcode css-->

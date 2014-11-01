@@ -1,0 +1,38 @@
+#oet-table
+{
+    float: left;
+    width: 100%;
+}
+.oet_sngltinyrow
+{
+	width: 100%;
+	float: left;
+	height: 90px;
+	padding: 10px 0;
+}
+.oet_sngltinyclm
+{
+	/*text-align: center;
+	cursor: pointer;
+	border: medium none;*/
+	cursor: pointer;
+    float: left;
+    height: 80px;
+    padding: 10px;
+    text-align: center;
+    width: 80px;
+	border-radius: 5px; 
+}
+.oet_sngltinyclm:hover
+{
+	border: 2px solid #ccc;
+	height: 76px;
+	width: 76px;
+}
+.oet_sngltinyclm.oet_snglslctd
+{
+    background: none repeat scroll 0 0 #dedede;
+    border: 2px solid #ccc;
+	height: 76px;
+	width: 76px;
+}
