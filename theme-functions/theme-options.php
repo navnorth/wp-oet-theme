@@ -4,7 +4,6 @@ function twentytwelve_child_theme_menu()
 	add_theme_page('Theme Options', 'Theme Options', 'edit_theme_options', 'theme-options', 'theme_options_settings');
 }
 add_action('admin_menu', 'twentytwelve_child_theme_menu');
-
 function theme_options_settings()
 {
 	$temlate_sidebar = array(
@@ -43,19 +42,20 @@ function theme_options_settings()
 			}
 			
 			$sidebars_widgets = wp_get_sidebars_widgets();
+			$return = '';
 			$widget_ids = $sidebars_widgets[$index];
 			
 			$strphs = array("-","_");
-			echo '<div class="wrap">
+			$return .=  '<div class="wrap">
 					<h2>'.get_the_title( $page_id ).'</h2>
 					<h4>Assign Temlate : '. ucwords(str_replace($strphs," ",$index)) .' </h4>';
 					
-			echo '<form method="post">
-				  <table class="oer-custom-table">
-				  <tr>
-						<td><input type="checkbox" name="widget_id[]" value="" /></td>
-						<td><strong>Widget Title</strong></td>
-				  </tr>';		
+			$return .= '<form method="post">
+				  <div class="oer_widget_wrapper">
+				  <div class="sub_wrapper">
+						<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="" /></div>
+						<div class="sub_wrapper_txt"><strong>Widget Title</strong></div>
+				  </div>';		
 			
 			if( !empty($widget_ids) )
 			{
@@ -73,16 +73,24 @@ function theme_options_settings()
 						}	
 					}
 					$option_name = $wp_registered_widgets[$id]['callback'][0]->option_name;
-					echo '<tr>
-							<td><input type="checkbox" name="widget_id[]" value="'.$id.'" '.$chekd.'/></td>
-							<td>'.ucwords(str_replace($strphs," ",$option_name)).'</td>
-						 </tr>'; 
+					$return .= '<div  class="sub_wrapper">
+							<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="'.$id.'" '.$chekd.'/></div>
+							<div class="sub_wrapper_txt">'.ucwords(str_replace($strphs," ",$option_name)).'</div>
+						 </div>'; 
 				}
 			}
-			echo '</table>
-				  <input type="submit" name="save_widget" value="Save Setting" />
+			else
+			{
+				$return .= '<div  class="sub_wrapper">
+							<div class="sub_wrapper_fld">.</div>
+							<div class="sub_wrapper_txt">No Widget Assign To This Page</div>
+						 </div>';
+			}
+			$return .= '</div>
+				  <input type="submit" name="save_widget" value="Save Setting" id="cstm_wdgt_btn" />
 				  </form>
 				  </div>';
+			echo $return;
 		}
 		else
 		{
@@ -107,9 +115,9 @@ function theme_options_settings()
 		$return .= '<table class="wp-list-table widefat fixed pages">
 			  <thead>
 				<tr>
-					<th id="title" class="manage-column column-title sortable desc" style="" scope="col">Page Title</th>
+					<th id="title" class="manage-column column-title custm" style="" scope="col">Page Title</th>
 					<th id="author" class="manage-column column-author" style="" scope="col">Author</th>
-					<th id="date" class="manage-column column-date sortable asc" style="" scope="col">Date</th>
+					<th id="date" class="manage-column column-date" style="" scope="col">Date</th>
 				</tr>
 			  </thead>
 			  <tbody>';

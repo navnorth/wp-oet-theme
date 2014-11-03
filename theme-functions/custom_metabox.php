@@ -4,7 +4,6 @@ function add_image_metabox()
 {
 	add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
 }
-
 function publication_metabox_func()
 {
 	global $post;
@@ -52,7 +51,6 @@ function publication_metabox_func()
     </div>    
 	<?php	
 }
-
 add_action('save_post', 'save_featured_metabox'); 
 function save_featured_metabox()
 { 

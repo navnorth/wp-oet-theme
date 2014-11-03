@@ -6,40 +6,72 @@ if($action == "show_popup")
 	$return = '';
 	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table" style="margin-top: 10px;">
 					<div class="oet_sngltinyrow">
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-1</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-2</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-3</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-4</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-5</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-6</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-7</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="accordian">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/accordian.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Accordion
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="banner">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/banner.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Banner
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_area">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Featured Area
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_content">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_content.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Featured Content
+							</div>
+						</div>
 					</div>
 					<div class="oet_sngltinyrow">
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-8</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-9</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-10</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-11</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-12</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-13</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-14</div>
-					</div>
-					<div class="oet_sngltinyrow">
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-15</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-16</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-17</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-18</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-19</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-20</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-21</div>
-					</div>
-					<div class="oet_sngltinyrow">
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-22</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-23</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-24</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-25</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-26</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-27</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);">Shortcode no-28</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_video">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_video.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Featured Video
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="pull_quotes">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/pull_quotes.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Pull Quotes
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="left_column">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/left_column.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Left Column
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="right_column">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/right_column.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Right Column
+							</div>
+						</div>
 					</div>
 		</div>
 		<div class="submit">
@@ -55,7 +87,8 @@ if($action == "show_popup")
 				jQuery(ref).addClass("oet_snglslctd");
 			}
 			function placeoetshortcode(){
-				var shortcode = jQuery(".oet_sngltinyclm.oet_snglslctd").text();
+				var shortcode_type = jQuery(".oet_sngltinyclm.oet_snglslctd").attr("data-shortcode");
+				var shortcode = get_myshortcode(shortcode_type);
 				if(typeof tinyMCE != "undefined" && ( ed = tinyMCE.activeEditor ) && !ed.isHidden()){
 					tinyMCE.activeEditor.execCommand("mceInsertContent", 0, shortcode);	
 					tinymce.EditorManager.execCommand("mceRemoveControl",true, "content");
@@ -70,6 +103,40 @@ if($action == "show_popup")
 					jQuery("#content").val( textBefore + shortcode + textAfter );
 				}
 				tb_remove();
+			}
+			function get_myshortcode(shortcode_type)
+			{
+				switch (shortcode_type)
+				{
+				   case "accordian": 
+					   var shortcode = "[oet_accordion_group][oet_accordion title=\'\' accordion_series=\'one\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\'] your content goes here [/oet_accordion][/oet_accordion_group]";
+					   break;
+				   case "banner": 
+					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
+					   break;
+				   case "featured_area": 
+					   var shortcode = "[featured_area heading=\'\' image=\'\' title=\'\' description=\'\']";
+					   break;
+				   case "featured_content": 
+					   var shortcode = "[featured_item heading=\'\' image=\'\' title=\'\' date=\'\' description=\'\' sharing=\'\']";
+					   break;
+				   case "featured_video": 
+					   var shortcode = "[feature_video src=\'\' description=\'\']";
+					   break;
+				   case "left_column": 
+					   var shortcode = "[home_left_column] your content goes here [/home_left_column]";
+					   break;
+				   case "pull_quotes": 
+					   var shortcode = "[pull_quote image=\'\' speaker=\'\' additional_info=\'\']your content goes here[/pull_quote]";
+					   break;
+				   case "right_column": 
+					   var shortcode = "[home_right_column] your content goes here [/home_right_column]";
+					   break;
+				   default:
+				   	   var shortcode = "";
+				   	   break
+				}
+				return shortcode;
 			}
 			</script>';
 	echo $return;

@@ -56,17 +56,24 @@
                     </div>
                 </div>
                 
+                <?php
+					define("twitter_url", get_option("twitter_url"));
+					define("facebook_url", get_option("facebook_url"));
+					define("yotube_url", get_option("yotube_url"));
+					define("google_url", get_option("google_url"));
+					define("linkedin_url", get_option("linkedin_url"));
+				?>
                 <div class="col-md-11 col-sm-12 col-xs-5 col-xs-offset-2 col-md-offset-1 soclize">
-                	<a href="https://twitter.com/officeofedtech" target="_blank">
+                	<a href="<?php echo twitter_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span>
                     </a>
-                    <a href="https://www.facebook.com/officeofedtech" target="_blank">
+                    <a href="<?php echo facebook_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span>
                     </a>
-                    <a href="https://www.youtube.com/user/OfficeOfEdTech" target="_blank">
+                    <a href="<?php echo yotube_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-youtube-play fa-stack-2x"></i></span>
                     </a>
-                    <a href="https://plus.google.com/112638174472724154129/" target="_blank">
+                    <a href="<?php echo google_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span>
                     </a>
                     <a href="" target="_blank">
@@ -80,9 +87,13 @@
         <!------------- Top Strap & Navigation --------------->
         <div class="row top_strp"></div>
         <div class="row navi_bg">
-        	<!--<button class="menu-toggle"><?php //_e( 'Menu', 'twentytwelve' ); ?></button>
-			<a class="assistive-text" href="#content" title="<?php //esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>">
-				<?php //_e( 'Skip to content', 'twentytwelve' ); ?>
-			</a>-->
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+        	<div class="main-menu">
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+            </div>
+            
+            <span class="navi_icn fa-stack"><i class="fa fa-bars fa-stack-2x"></i></span>
+            <div class="responsiv-menu">
+            	<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'responsiv-menu_ul' ) ); ?>
+            </div>
+            
         </div>

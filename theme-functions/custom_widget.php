@@ -63,7 +63,7 @@ class FeaturedContentWidgetDetails extends WP_Widget
 		//echo $instance['htmltext'];
 		
 		$return = '';
-		$return .= '<div class="col-md-12">';
+		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
 			if($instance['image'] == 'img1')
 			{

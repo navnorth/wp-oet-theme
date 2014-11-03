@@ -3,8 +3,8 @@
  * Disruptive Content
  * Shortcode Example : [disruptive_content title='' main_text='' button_text='' button_color='' button_url='']
  */
-add_shortcode("disruptive_content", "disruptive_content" );
-function disruptive_content($attr)
+add_shortcode("disruptive_content", "disruptive_content_fun" );
+function disruptive_content_fun($attr, $content = null)
 {
 	extract($attr);
 	
@@ -13,12 +13,12 @@ function disruptive_content($attr)
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
             $return .= '<h3>'. $title .'</h3>';
             $return .= '<p>';
-				$main_text = apply_filters('the_content', $main_text);
+				//$main_text = apply_filters('the_content', $main_text);
             	$return .= $main_text;
             $return .= '</p>';
         $return .= '</div>';
         $return .= '<div class="col-md-4 col-sm-4 col-xs-4 text-right">';
-        	$action = "window.open('$button_url', '_blank')";
+			$action = "window.open('$button_url', '_blank')";
         	$return .= '<button type="button" onclick="'. $action .'" class="btn_dwnld" style="background-color:'. $button_color.'">'. $button_text .'</button>';
         $return .= '</div>';
     $return .= '</div>';
@@ -63,7 +63,7 @@ function oet_accordion_func($atts, $content = null)
 			
 		$return .= '<div id="collapse'. $accordion_series .'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
 		  $return .= '<div class="panel-body">';
-			$content = apply_filters('the_content', $content);	
+			//$content = apply_filters('the_content', $content);	
 			$return .= $content;
 		  $return .= '</div>';
 		$return .= '</div>';
@@ -73,40 +73,6 @@ function oet_accordion_func($atts, $content = null)
 		return $return;
   }
 }
-	
-/*add_shortcode('oet_accordion_group', 'oet_accordion_group_func');
-function oet_accordion_group_func($atts, $content = null)
-{
-	extract($atts);
-	$return = '';
-	$return .= '<div class="oet_accrdnwpr">';
-		$return .= '<div class="oet_acrdnttl">';
-			$return .= $heading;
-		$return .= '</div>';
-		$return .= '<div class="oet_accordion">';
-			$content = str_replace( "<p>","", $content );
-			$content = str_replace( "</p>","", $content );
-			$return .= do_shortcode($content);
-		$return .= '</div>';
-	$return .= '</div>';
-	return $return;
-}
-
-add_shortcode('oet_accordion', 'oet_accordion_func');
-function oet_accordion_func($atts, $content = null)
-{
-	extract($atts);
-	$return = '';
-	$return .= '<h3>';
-		$return .= $title;
-	$return .= '</h3>';
-	$return .= '<div>';
-		$content = apply_filters('the_content', $content);	
-		$return .= $content;
-	$return .= '</div>';
-	return $return;
-}*/
-
 
 /**
  * Pull Quote
@@ -123,22 +89,22 @@ function pull_quotethemefn($atts, $content = null)
 	
 	if(isset($image) && !empty($image))
 	{
-		$return .= '<div class="col-md-1">';
+		$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
 			$return .= '<img src="'.$image.'" />';
 		$return .= '</div>';
 	}
 	else
 	{
-		$return .= '<div class="col-md-1">';
+		$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
 			$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png"/></div>';
 		$return .= '</div>';
 	}
 	
-	$return .= '<div class="col-md-11">';
+	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
 	if(isset($content) && !empty($content))
 	{
 		$return .= '<h4 class="blog_mtr"><span></span>';
-			$content = apply_filters('the_content', $content);
+			//$content = apply_filters('the_content', $content);
 			$return .= $content;
 		$return .= '</h4>';
 	}
@@ -163,26 +129,26 @@ function pull_quotethemefn($atts, $content = null)
  * Shortcode Example : [featured_item heading='' image='' title='' date='' description='' sharing='']
  */
 add_shortcode("featured_item","featured_item_func");
-function featured_item_func($attr)
+function featured_item_func($attr, $content = null)
 {
 	extract($attr);
 	$return = '';
-	$return .= '<div class="col-md-12 rght_sid_mtr">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
     $return .= '<p>'. $heading .'</p>';
     $return .= '<img src="'. $image .'"/>';
     $return .= '<p class="hdng_mtr">'. $title .'</p>';
     $return .= '<p class="date"><b>'. $date .'</b></p>';
 	
-	$description = apply_filters('the_content', $description);
+	//$description = apply_filters('the_content', $description);
     $return .= '<p class="rght_mtr">'. $description .'</p>';    
     
 	if(strtolower($sharing) == 'show')
 	{
-		$return .= '<div class="col-md-7 rght_sid_socl_icn">';
-			$return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
-			$return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
-			$return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
-			$return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-linkedin fa-stack-2x"></i></span></a>';
+		$return .= '<div class="col-md-7 col-sm-7 col-xs-7 rght_sid_socl_icn">';
+			$return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
+			$return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
+			$return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
+			$return .= '<a href="'. linkedin_url.'"><span class="socl_icns fa-stack"><i class="fa fa-linkedin fa-stack-2x"></i></span></a>';
 		$return .= '</div>';
 	}
     $return .= '</div>';
@@ -195,14 +161,14 @@ function featured_item_func($attr)
  * Shortcode Example : [feature_video src="" description=""]
  */
 add_shortcode("feature_video","feature_video_func");
-function feature_video_func($attr)
+function feature_video_func($attr, $content = null)
 {
 	extract($attr);
 	
 	$return = '';
 	
-	$return .= '<div class="col-md-12 padding_left">';
-	$return .= '<div class="col-md-9 pblctn_vdo_bg">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left">';
+	$return .= '<div class="col-md-9 col-sm-9 col-xs-9 pblctn_vdo_bg">';
 			if(isset($src) && !empty($src))
 			{		
              	$return .= '<iframe width="600" height="300" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
@@ -210,7 +176,7 @@ function feature_video_func($attr)
 			
 			if(isset($description) && !empty($description))
 			{
-				$description = apply_filters('the_content', $description);
+				//$description = apply_filters('the_content', $description);
 				$return .= '<p>'. $description .'</p>';
 			}
     $return .= '</div>';
@@ -224,12 +190,12 @@ function feature_video_func($attr)
  * Shortcode Example : [home_feature_video src="" description=""]
  */
 add_shortcode("home_feature_video","home_feature_video_func");
-function home_feature_video_func($attr)
+function home_feature_video_func($attr, $content = null)
 {
 	extract($attr);
 	
 	$return = '';
-	$return .= '<div class="col-md-12 vdo_bg">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';
 			if(isset($src) && !empty($src))
 			{		
              	$return .= '<iframe width="540" height="300" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
@@ -237,7 +203,7 @@ function home_feature_video_func($attr)
 			
 			if(isset($description) && !empty($description))
 			{
-				$description = apply_filters('the_content', $description);
+				//$description = apply_filters('the_content', $description);
 				$return .= '<p>'. $description .'</p>';
 			}
     $return .= '</div>';
@@ -254,7 +220,7 @@ function home_right_column_func($atts, $content = null)
 {
 	//extract($atts);
 	$return = '';
-	$return .= '<div class="col-md-6 rght_sid_mtr">';
+	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 rght_sid_mtr">';
 			$return .= do_shortcode($content);
 	$return .= '</div>';
 	return $return;
@@ -270,7 +236,7 @@ function home_left_column_func($atts, $content = null)
 	//extract($atts);
 	
 	$return = '';
-	$return .= '<div class="col-md-6 lft_sid_mtr">';
+	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= do_shortcode($content);
 	$return .= '<div class="sprtn_brdr"></div>';
 	$return .= '</div>';
@@ -281,12 +247,12 @@ function home_left_column_func($atts, $content = null)
  * Featured Video
  * Shortcode Example : [featured_area heading="" image="" title="" description=""]
  */
-add_shortcode('featured_area', 'featured_area_func');
-function featured_area_func($attr)
+add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
+function oet_featured_area_descrptn($attr, $content = null)
 {
 	extract($attr);
 	$return = '';
-	$return .= '<div class="col-md-12 lft_sid_mtr">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
 			
 			if(isset($heading) && !empty($heading))
@@ -303,7 +269,7 @@ function featured_area_func($attr)
 			}
 			if(isset($description) && !empty($description))
 			{
-				$description = apply_filters('the_content', $description);
+				//$description = apply_filters('the_content', $content);
 				$return .= '<p>'. $description .'</p>';
 			}
 		    
@@ -313,16 +279,16 @@ function featured_area_func($attr)
 }
 
 add_shortcode("share_the_toolkit","share_the_toolkit_func");
-function share_the_toolkit_func()
+function share_the_toolkit_func($atts, $content = null)
 {
 	$return = '';
 	$return .= '<div class="pblctn_right_sid_mtr">';
 	$return .= '<p class="pblctn_scl_icn_hedng"> Share the Toolkit </p>';
         $return .= '<p class="pblctn_scl_icns">';
             $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-print fa-stack-2x"></i></span></a>';
-            $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
-            $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
-            $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
+            $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
+            $return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
+            $return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
             $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
        $return .= ' </p>';	
 	$return .= '</div>';
@@ -330,7 +296,7 @@ function share_the_toolkit_func()
 }
 
 add_shortcode("recomnded_resources","recomnded_resources_func");
-function recomnded_resources_func($attr)
+function recomnded_resources_func($attr, $content = null)
 {
 	extract($attr);
 	$return = '';

@@ -1,0 +1,80 @@
+.meta_main_wrp {
+    height: auto;
+    margin: 10px 0;
+    width: 100%;
+}
+.meta_main_wrp > label {
+    font-size: 15px;
+    font-weight: bold;
+}
+.meta_fld_wrp {
+    margin: 10px 0;
+    width: 100%;
+}
+.widefat th.custm{
+    padding: 10px;
+}
+.oer_widget_wrapper {
+    background-color: #fff;
+    float: left;
+    width: 70%;
+}
+.sub_wrapper {
+    border-bottom: 1px solid #ccc;
+    float: left;
+    margin: 0;
+    padding: 15px 0;
+    width: 100%;
+}
+.sub_wrapper_txt {
+    float: left;
+    font-size: 15px;
+    width: 70%;
+}
+.sub_wrapper_fld {
+    float: left;
+    width: 20%;
+	padding-left: 40px;
+}
+#cstm_wdgt_btn {
+    margin-left: 30px;
+	background: none repeat scroll 0 0 #00529f;
+    border: 2px solid #fff;
+    color: #fff;
+    font-weight: bolder;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.oer_sclmda_wrpr {
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+}
+.oer_sclmda_sub_wrapper {
+    float: left;
+    margin: 10px 0;
+    width: 100%;
+}
+.oer_sclmda_txt {
+    float: left;
+    padding: 8px 0 0 25px;
+    width: 10%;
+}
+.oer_sclmda_fld {
+    float: left;
+    width: 70%;
+}
+.oer_sclmda_fld > input[type="text"] {
+    float: left;
+    padding: 5px 10px;
+    width: 50%;
+}
+
+.oer_sclmda_fld input[type="submit"] {
+    background: none repeat scroll 0 0 #00529f;
+    border: 2px solid #fff;
+    color: #fff;
+    font-weight: bolder;
+    padding: 10px;
+    text-transform: uppercase;
+}

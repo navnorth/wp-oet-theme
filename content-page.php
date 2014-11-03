@@ -9,8 +9,8 @@
 ?>
 <?php 
 	$content = get_the_content();
-	$content = str_replace( "<br>","", $content );
 	$content = apply_filters('the_content', $content);
+	$content = str_replace( "<br>","", $content );
 	echo do_shortcode($content);
 ?>
 		

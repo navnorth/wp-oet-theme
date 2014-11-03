@@ -26,10 +26,10 @@
 	?>
     
 	<!--- Left Side Container---->
-    <div class="col-md-9 padding_left">
+    <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
     	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
         
-        <div class="col-md-3 padding_left">
+        <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
         	<span class="meta_date"><?php echo $publication_date; ?></span>
              <?php 
 				if(isset($image) && !empty($image))
@@ -52,9 +52,9 @@
 					echo '<p class="pblctn_scl_icn_hedng"> Share this Report </p>
 							<p class="pblctn_scl_icns">
 								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-print fa-stack-2x"></i></span></a>
-								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>
-								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>
-								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>
+								<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>
+								<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>
+								<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>
 								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>
 							</p>';
 				}
@@ -69,7 +69,7 @@
 	</div>
     
     <!--- Right Side Container---->
-    <div class="col-md-3 pblctn_right_sid_mtr">
+    <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
         <!--- Right Side 1st Sidebar---->
         <?php echo oer_dynamic_sidebar('publication-template', $page_id);?>
     </div>
