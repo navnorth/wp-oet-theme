@@ -121,4 +121,9 @@ function the_content_filter($content) {
 	return $rep;
 }
 add_filter("the_content", "the_content_filter");
+
+function wpse_wpautop_nobr( $content )
+{
+	return wpautop( $content, false );
+}
 ?>

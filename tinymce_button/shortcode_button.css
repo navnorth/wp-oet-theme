@@ -24,6 +24,28 @@
 	border-radius: 5px; 
 	margin-left: 10px;
 }
+.oet_sngltinyclm .oert_snglimgtiny
+{
+	width: 100%;
+	float: left;
+	margin:0 ;
+	padding: 0;
+	text-align: center;
+}
+.oet_sngltinyclm .oert_snglimgtiny img
+{
+	width: auto;
+	float: none;
+	margin: 0 auto;
+}
+.oet_sngltinyclm .oert_snglttltiny
+{
+	width: 100%;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
 .oet_sngltinyclm:hover
 {
 	border: 2px solid #ccc;

@@ -9,6 +9,8 @@
 ?>
 <?php 
 	$content = get_the_content();
+	remove_filter( 'the_content', 'wpautop' );
+	add_filter( 'the_content', 'wpse_wpautop_nobr' );
 	$content = apply_filters('the_content', $content);
 	$content = str_replace( "<br>","", $content );
 	echo do_shortcode($content);

@@ -17,6 +17,7 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri();?>/images/favicon.ico" type="image/x-icon">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
@@ -62,6 +63,7 @@
 					define("yotube_url", get_option("yotube_url"));
 					define("google_url", get_option("google_url"));
 					define("linkedin_url", get_option("linkedin_url"));
+					define("mailto", get_option("mailto"));	
 				?>
                 <div class="col-md-11 col-sm-12 col-xs-5 col-xs-offset-2 col-md-offset-1 soclize">
                 	<a href="<?php echo twitter_url;?>" target="_blank">
@@ -76,7 +78,7 @@
                     <a href="<?php echo google_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span>
                     </a>
-                    <a href="" target="_blank">
+                    <a href="mailto:<?php echo mailto;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span>
                     </a>
                 </div>

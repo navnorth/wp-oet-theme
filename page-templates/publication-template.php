@@ -36,26 +36,25 @@
 				{
             		echo '<img src="'. $image[0] .'"/>';
 				}
-				
+				echo '<div class="link_dwnlds">';
 				if(isset($button_one_text) && !empty($button_one_text) && isset($button_one_link) && !empty($button_one_link) && isset($button_one_color) && !empty($button_one_color))
 				{
-					?><button onClick="window.location.href='<?php echo $button_one_link; ?>'" class="btn_dwnld" style="background-color:#<?php echo $button_one_color; ?>"><?php echo $button_one_text; ?></button><?php
+					?><div><a href="<?php echo $button_one_link; ?>" class="btn_dwnld" style="background-color:#<?php echo $button_one_color; ?>"><?php echo $button_one_text; ?></a></div><?php
 				}
 				
 				if(isset($button_two_text) && !empty($button_two_text) && isset($button_two_link) && !empty($button_two_link) && isset($button_two_color) && !empty($button_two_color))
 				{
-					?><button onClick="window.open('<?php echo $button_two_link; ?>','_blank')" class="btn_dwnld" style="background-color:#<?php echo $button_two_color; ?>"><?php echo $button_two_text; ?></button><?php
+					?><div><a href="<?php echo $button_two_link; ?>" class="btn_dwnld" style="background-color:#<?php echo $button_two_color; ?>"><?php echo $button_two_text; ?></a></div><?php
 				}
-				
+				echo '</div>';
 				if(isset($social_status) && !empty($social_status) && $social_status == 'true')
 				{
 					echo '<p class="pblctn_scl_icn_hedng"> Share this Report </p>
 							<p class="pblctn_scl_icns">
-								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-print fa-stack-2x"></i></span></a>
 								<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>
 								<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>
 								<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>
-								<a href=""><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>
+								<a href="mailto:'. mailto.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>
 							</p>';
 				}
             ?>

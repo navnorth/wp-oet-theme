@@ -18,8 +18,7 @@ function disruptive_content_fun($attr, $content = null)
             $return .= '</p>';
         $return .= '</div>';
         $return .= '<div class="col-md-4 col-sm-4 col-xs-4 text-right">';
-			$action = "window.open('$button_url', '_blank')";
-        	$return .= '<button type="button" onclick="'. $action .'" class="btn_dwnld" style="background-color:'. $button_color.'">'. $button_text .'</button>';
+			$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'">'. $button_text .'</a></div></div>';
         $return .= '</div>';
     $return .= '</div>';
 	
@@ -81,38 +80,27 @@ function oet_accordion_func($atts, $content = null)
 add_shortcode('pull_quote', 'pull_quotethemefn');
 function pull_quotethemefn($atts, $content = null)
 {
-	$image = $atts['image'];
 	$speaker = $atts['speaker'];
 	$additional_info = $atts['additional_info'];
+	
 	$return = '';
-	
-	
-	if(isset($image) && !empty($image))
-	{
-		$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
-			$return .= '<img src="'.$image.'" />';
-		$return .= '</div>';
-	}
-	else
-	{
-		$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
-			$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png"/></div>';
-		$return .= '</div>';
-	}
+	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
+		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png"/>';
+	$return .= '</div>';
 	
 	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
 	if(isset($content) && !empty($content))
 	{
-		$return .= '<h4 class="blog_mtr"><span></span>';
+		$return .= '<blockquote class="blog_mtr"><span></span>';
 			//$content = apply_filters('the_content', $content);
 			$return .= $content;
-		$return .= '</h4>';
+		$return .= '</blockquote>';
 	}
 	if(isset($speaker) && !empty($speaker))
 	{
-		$return .= '<h4 class="blog_athr"><b>';
+		$return .= '<blockquote class="blog_athr">';
 			$return .= $speaker;
-		$return .= '</b></h4>';
+		$return .= '</blockquote>';
 	}
 	if(isset($additional_info) && !empty($additional_info))
 	{
@@ -126,7 +114,7 @@ function pull_quotethemefn($atts, $content = null)
 
 /**
  * Featured Item
- * Shortcode Example : [featured_item heading='' image='' title='' date='' description='' sharing='']
+ * Shortcode Example : [featured_item heading='' url="" image='' title='' date='' description='' button='' sharing='']
  */
 add_shortcode("featured_item","featured_item_func");
 function featured_item_func($attr, $content = null)
@@ -134,14 +122,31 @@ function featured_item_func($attr, $content = null)
 	extract($attr);
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
-    $return .= '<p>'. $heading .'</p>';
-    $return .= '<img src="'. $image .'"/>';
-    $return .= '<p class="hdng_mtr">'. $title .'</p>';
-    $return .= '<p class="date"><b>'. $date .'</b></p>';
-	
-	//$description = apply_filters('the_content', $description);
-    $return .= '<p class="rght_mtr">'. $description .'</p>';    
-    
+	if(isset($heading) && !empty($heading))
+	{
+    	$return .= '<h4>'. $heading .'</h4>';
+	}
+	if(isset($image) && !empty($image))
+	{
+    	$return .= '<a href="'. $url.'"><img src="'. $image .'"/></a>';
+	}
+	if(isset($title) && !empty($title))
+	{
+    	$return .= '<p class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></p>';
+	}
+	if(isset($date) && !empty($date))
+	{
+    	$return .= '<p class="date"><b>'. $date .'</b></p>';
+	}
+	if(isset($description) && !empty($description))
+	{
+		//$description = apply_filters('the_content', $description);
+    	$return .= '<p class="rght_mtr"><a href="'. $url.'">'. $description .'</a></p>';    
+	}
+	if(isset($url) && !empty($url) && strtolower($button) == 'show')
+	{
+		$return .= '<div class="home_dwnld_btn"><a class="btn_dwnld" style="background-color:#e57200" href="'.$url.'">Download</a></div>';
+	}
 	if(strtolower($sharing) == 'show')
 	{
 		$return .= '<div class="col-md-7 col-sm-7 col-xs-7 rght_sid_socl_icn">';
@@ -158,7 +163,7 @@ function featured_item_func($attr, $content = null)
 
 /**
  * Featured Video
- * Shortcode Example : [feature_video src="" description=""]
+ * Shortcode Example : [feature_video heading="" src="" description=""]
  */
 add_shortcode("feature_video","feature_video_func");
 function feature_video_func($attr, $content = null)
@@ -168,7 +173,7 @@ function feature_video_func($attr, $content = null)
 	$return = '';
 	
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left">';
-	$return .= '<div class="col-md-9 col-sm-9 col-xs-9 pblctn_vdo_bg">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 pblctn_vdo_bg">';
 			if(isset($src) && !empty($src))
 			{		
              	$return .= '<iframe width="600" height="300" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
@@ -186,8 +191,8 @@ function feature_video_func($attr, $content = null)
 }
 
 /**
- * Featured Video
- * Shortcode Example : [home_feature_video src="" description=""]
+ * Home Featured Video
+ * Shortcode Example : [home_feature_video heading="" src="" description=""]
  */
 add_shortcode("home_feature_video","home_feature_video_func");
 function home_feature_video_func($attr, $content = null)
@@ -195,7 +200,14 @@ function home_feature_video_func($attr, $content = null)
 	extract($attr);
 	
 	$return = '';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
+	if(isset($heading) && !empty($heading))
+	{
+		$return .= '<h4>'. $heading .'</h4>';
+	}
+	
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';
+	
 			if(isset($src) && !empty($src))
 			{		
              	$return .= '<iframe width="540" height="300" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
@@ -207,12 +219,12 @@ function home_feature_video_func($attr, $content = null)
 				$return .= '<p>'. $description .'</p>';
 			}
     $return .= '</div>';
-	
+	$return .= '</div>';
 	return $return;	
 }
 
 /**
- * Featured Video
+ * Home Right Column
  * Shortcode Example : [home_right_column] your content goes here [/home_right_column]
  */
 add_shortcode('home_right_column', 'home_right_column_func');
@@ -227,7 +239,7 @@ function home_right_column_func($atts, $content = null)
 }
 
 /**
- * Home Featured Video
+ * Home Left Column
  * Shortcode Example : [home_left_column] your content goes here [/home_left_column]
  */
 add_shortcode('home_left_column', 'home_left_column_func');
@@ -244,7 +256,7 @@ function home_left_column_func($atts, $content = null)
 }
 
 /**
- * Featured Video
+ * Featured Area
  * Shortcode Example : [featured_area heading="" image="" title="" description=""]
  */
 add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
@@ -257,7 +269,7 @@ function oet_featured_area_descrptn($attr, $content = null)
 			
 			if(isset($heading) && !empty($heading))
 			{
-				$return .= '<p>'. $heading .'</p>';
+				$return .= '<h4>'. $heading .'</h4>';
 			}
 			if(isset($image) && !empty($image))
 			{
@@ -278,6 +290,10 @@ function oet_featured_area_descrptn($attr, $content = null)
 	return $return;
 }
 
+/**
+ * Share Icon
+ * Shortcode Example : [share_the_toolkit]
+ */
 add_shortcode("share_the_toolkit","share_the_toolkit_func");
 function share_the_toolkit_func($atts, $content = null)
 {
@@ -285,49 +301,165 @@ function share_the_toolkit_func($atts, $content = null)
 	$return .= '<div class="pblctn_right_sid_mtr">';
 	$return .= '<p class="pblctn_scl_icn_hedng"> Share the Toolkit </p>';
         $return .= '<p class="pblctn_scl_icns">';
-            $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-print fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
-            $return .= '<a href=""><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
+            $return .= '<a href="mailto:'. mailto.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
        $return .= ' </p>';	
 	$return .= '</div>';
 	return $return;   
 }
-
-add_shortcode("recomnded_resources","recomnded_resources_func");
-function recomnded_resources_func($attr, $content = null)
+/**
+ * Share Icon
+ * Shortcode Example : [recommended_resources media_type1='' src1='' text1='' link1='' media_type2='' src2='' text2='' link2='' media_type3='' src3='' text3=''  link3='']
+ */
+add_shortcode("recommended_resources","recommended_resources_func");
+function recommended_resources_func($attr, $content = null)
 {
 	extract($attr);
 	$return = '';
+	if(isset($heading) && !empty($heading))
+	{
+		$return .= '<p class="pblctn_scl_icn_hedng">'. $heading.'</p>';
+	}
 	
-	$return .= '<p class="pblctn_scl_icn_hedng"> Recommended Resources </p>';
+	if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1) && isset($text2) && !empty($text2) && isset($src2) && !empty($src2) && isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
+	{
         $return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right tlkt_stp_vdo_cntnr">';
-		if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
+		if(isset($media_type1) && !empty($media_type1) && strtolower($media_type1) == 'video')
 		{
-            $return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-                $return .= '<a href=""><iframe width="274" height="160" src="'. $src1 .'" frameborder="0" allowfullscreen></iframe></a>';
-                $return .= '<p>'. $text1 .'</p>';
-            $return .= '</div>';
+			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
+			{
+				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
+					$return .= '<iframe width="274" height="160" src="'. $src1 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<p>'. $text1 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		else
+		{
+			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
+			{
+				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
+					$return .= '<a href="'.$link1.'"><img width="274" height="160" src="'. $src1 .'" ></a>';
+					$return .= '<p>'. $text1 .'</p>';
+				$return .= '</div>';
+			}
 		}
 		
-		if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
+		if(isset($media_type2) && !empty($media_type2) && strtolower($media_type2) == 'video')
 		{
-            $return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-                $return .= '<a href=""><iframe width="274" height="160" src="'. $src2 .'" frameborder="0" allowfullscreen></iframe></a>';
-                $return .= '<p>'. $text2 .'</p>';
-            $return .= '</div>';
+			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
+			{
+				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
+					$return .= '<iframe width="274" height="160" src="'. $src2 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<p>'. $text2 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		else
+		{
+			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
+			{
+				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
+					$return .= '<a href="'.$link2.'"><img width="274" height="160" src="'. $src2 .'"></a>';
+					$return .= '<p>'. $text2 .'</p>';
+				$return .= '</div>';
+			}
 		}
 		
-		if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
+		if(isset($media_type3) && !empty($media_type3) && strtolower($media_type3) == 'video')
 		{
-            $return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-                $return .= '<a href=""><iframe width="274" height="160" src="'. $src3 .'" frameborder="0" allowfullscreen></iframe></a>';
-                $return .= '<p>'. $text3 .'</p>';
-            $return .= '</div>';
+			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
+			{
+				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
+					$return .= '<iframe width="274" height="160" src="'. $src3 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<p>'. $text3 .'</p>';
+				$return .= '</div>';
+			}
 		}
-		
+		else
+		{
+			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
+			{
+				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
+					$return .= '<a href="'.$link3.'"><img width="274" height="160" src="'. $src3 .'"></a>';
+					$return .= '<p>'. $text3 .'</p>';
+				$return .= '</div>';
+			}
+	
+		}
 		$return .= '</div>';
+	}
+	else
+	{
+		$return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right tlkt_stp_vdo_cntnr">';
+        
+		if(isset($media_type1) && !empty($media_type1) && strtolower($media_type1) == 'video')
+		{
+			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
+			{
+				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
+					$return .= '<iframe width="274" height="160" src="'. $src1 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<p>'. $text1 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		else
+		{
+			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
+			{
+				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
+					$return .= '<a href="'.$link1.'"><img width="274" height="160" src="'. $src1 .'" ></a>';
+					$return .= '<p>'. $text1 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		
+		if(isset($media_type2) && !empty($media_type2) && strtolower($media_type2) == 'video')
+		{
+			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
+			{
+				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
+					$return .= '<iframe width="274" height="160" src="'. $src2 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<p>'. $text2 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		else
+		{
+			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
+			{
+				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
+					$return .= '<a href="'.$link2.'"><img width="274" height="160" src="'. $src2 .'"></a>';
+					$return .= '<p>'. $text2 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		
+		if(isset($media_type3) && !empty($media_type3) && strtolower($media_type3) == 'video')
+		{
+			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
+			{
+				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
+					$return .= '<iframe width="274" height="160" src="'. $src3 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<p>'. $text3 .'</p>';
+				$return .= '</div>';
+			}
+		}
+		else
+		{
+			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
+			{
+				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
+					$return .= '<a href="'.$link3.'"><img width="274" height="160" src="'. $src3 .'"></a>';
+					$return .= '<p>'. $text3 .'</p>';
+				$return .= '</div>';
+			}
+	
+		}    
+        $return .= '</div>';
+	}
 	
 	return $return;   
 }

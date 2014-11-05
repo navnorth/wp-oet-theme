@@ -8,4 +8,7 @@ jQuery( document ).ready(function() {
 		jQuery(".responsiv-menu_ul").css("display", "block");
    		jQuery(".responsiv-menu").slideToggle("slow");
  	});
+	jQuery(".fa-print").click(function(){
+		window.print();
+	});	
 });

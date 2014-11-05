@@ -75,7 +75,7 @@ class FeaturedContentWidgetDetails extends WP_Widget
 			}
              	
         $return .= '</div>';
-            $return .= '<P class="rght_sid_wdgt_hedng"><b>'. $instance['title'] .'</b></P>';
+            $return .= '<P class="rght_sid_wdgt_hedng">'. $instance['title'] .'</P>';
             $return .= $instance['htmltext'];
         $return .= '</div>';
 		
