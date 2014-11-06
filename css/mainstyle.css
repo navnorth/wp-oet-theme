@@ -269,6 +269,13 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .hdr .col-md-11 { text-align: right}
 
 
+.eemail_button { padding-left: 6px; float: left; margin-left: -1px;}
+.eemail_textbox_button { background: #00529f; padding: 14px 0; text-align: center; background: #e57200; border: 1px solid #CF6B08; color: #fff; border-radius: 3px; font-family: 'Raleway-Regular';}
+.eemail_textbox_button:hover, .eemail_textbox_button:focus { opacity: .9}
+.eemail_textbox_class { width: 100% !important; padding: 11px 10px 12px;}
+
+.eemail_textbox { float: left; width: 30%}
+
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
 }
