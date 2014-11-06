@@ -14,15 +14,14 @@ function socialmedia_settings()
 		update_option("yotube_url", $yotube_url);
 		update_option("google_url", $google_url);
 		update_option("linkedin_url", $linkedin_url);
-		update_option("mailto", $mailto);
+		update_option("linktonwltr", $linktonwltr);
 	}
 	
 	$twitter_url = get_option("twitter_url");
 	$facebook_url = get_option("facebook_url");
 	$yotube_url = get_option("yotube_url");
 	$google_url = get_option("google_url");	
-	$linkedin_url = get_option("linkedin_url");	
-	$mailto = get_option("mailto");	
+	$linktonwltr = get_option("linktonwltr");	
 	
 	
 	$return = '';
@@ -48,12 +47,8 @@ function socialmedia_settings()
 							<div class="oer_sclmda_fld"><input type="text" name="google_url" value="'. $google_url.'" /></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>LinkedIn</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="linkedin_url" value="'. $linkedin_url.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Email To</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="mailto" value="'. $mailto.'" /></div>
+							<div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
+							<div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"></div>

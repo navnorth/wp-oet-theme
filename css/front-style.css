@@ -41,85 +41,8 @@ footer[role="oet_contentinfo"] {
     float: right;
 	padding-left: 5px;
 }
-
-<!--shortcode css-->
-.oer_disruptive {
-    float: left;
-    margin: 10px 0;
-    width: 100%;
-}
-.oer_disruptive h5 {
-    border-bottom: 1px solid #CCCCCC;
-    font-weight: 100;
-    padding: 10px 0;
-    width: 100%;
-}
-.oer_sbdisruptive {
-    float: left;
-    margin: 10px 0;
-    width: 98%;
-	background: url(../images/top_strap_img.png) 0 -35px;
-	padding: 30px 0 30px 30px;
-	color: #fff;
-}
-.shrtcd_cnt
+.site-content
 {
-	width: 70%;
-	float: left;
+	min-height: 400px;
+	margin-top: 10px;
 }
-.shrtcd_cnt > h1
-{
-	font-size: 24px;
-	font-weight: 500;
-	margin-bottom: 5px;
-}
-.shrtcd_cnt > p {
-    line-height: 21px;
-    margin-top: 15px;
-}
-.shtct_btn {
-    float: left;
-    padding: 25px 0;
-    width: 25%;
-}
-.shtct_btn a {
-    float: right;
-    padding: 15px 20px;
-    text-decoration: none;
-    width: auto;
-	color: #fff;
-	border-radius: 2px;
-}
-.oet_accrdnwpr
-{
-	width: 100%;
-	float: left;
-	margin: 0px 0 20px;
-	padding: 0;
-	color: #444;
-}
-.oet_accrdnwpr .oet_acrdnttl
-{
-	margin: 0;
-	padding: 8px 15px;
-	font-size: 18px;
-	color: #333;
-	line-height: 28px;
-	font-weight: bold; 
-	border-bottom: none;
-	background: #f7eddf;
-	border: 1px solid #d8b684;
-}
-.oet_accrdnwpr .oet_accordion
-{
-	width: 100%;
-	float: left;
-	margin: 0;
-	padding: 0;	
-}
-.ui-accordion .ui-accordion-header
-{
-	color: #000;
-	outline: none;
-}
-<!--shortcode css-->

@@ -17,7 +17,7 @@
 .oer_widget_wrapper {
     background-color: #fff;
     float: left;
-    width: 70%;
+    width: 100%;
 }
 .sub_wrapper {
     border-bottom: 1px solid #ccc;
@@ -37,13 +37,14 @@
 	padding-left: 40px;
 }
 #cstm_wdgt_btn {
-    margin-left: 30px;
-	background: none repeat scroll 0 0 #00529f;
+    background: none repeat scroll 0 0 #00529f;
     border: 2px solid #fff;
     color: #fff;
     font-weight: bolder;
     padding: 10px;
     text-transform: uppercase;
+	float: left;
+	margin: 10px 0;
 }
 .oer_sclmda_wrpr {
     float: left;

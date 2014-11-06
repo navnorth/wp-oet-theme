@@ -27,7 +27,7 @@ function disruptive_content_fun($attr, $content = null)
 
 /**
  * Accordion Group & Accordion
- * Shortcode Example : [oet_accordion_group][oet_accordion title="" accordion_series="one"] your content goes here [/oet_accordion][/oet_accordion_group]
+ * Shortcode Example : [oet_accordion_group][oet_accordion title="" accordion_series="one" expanded=""] your content goes here [/oet_accordion][/oet_accordion_group]
  */
 add_shortcode('oet_accordion_group', 'oet_accordion_group_func');
 function oet_accordion_group_func($atts, $content = null)
@@ -54,13 +54,25 @@ function oet_accordion_func($atts, $content = null)
 			
 		$return .= '<div class="panel-heading" role="tab" id="heading'. $accordion_series .'">';
 		  $return .= '<h4 class="panel-title">';
-			$return .= '<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse'. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $accordion_series .'">';
+			
+			  if(isset($expanded) && !empty($expanded) && strtolower($expanded) == "true")
+			  {
+				  $class = "";
+				  $uptcls = "in";
+			  }
+			  else
+			  {
+				  $class = "collapsed";
+				  $uptcls = '';
+			  }
+			  
+			  $return .= '<a class="'.$class.'" data-toggle="collapse" data-parent="#accordion" href="#collapse'. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $accordion_series .'">';
 			  $return .= $title;
 			$return .= '</a>';
 		 $return .= ' </h4>';
 		$return .= '</div>';
 			
-		$return .= '<div id="collapse'. $accordion_series .'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
+		$return .= '<div id="collapse'. $accordion_series .'" class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
 		  $return .= '<div class="panel-body">';
 			//$content = apply_filters('the_content', $content);	
 			$return .= $content;
@@ -75,7 +87,7 @@ function oet_accordion_func($atts, $content = null)
 
 /**
  * Pull Quote
- * Shortcode Example : [pull_quote image="" speaker="" additional_info=""]your content goes here[/pull_quote]
+ * Shortcode Example : [pull_quote speaker="" additional_info=""]your content goes here[/pull_quote]
  */
 add_shortcode('pull_quote', 'pull_quotethemefn');
 function pull_quotethemefn($atts, $content = null)
@@ -114,7 +126,7 @@ function pull_quotethemefn($atts, $content = null)
 
 /**
  * Featured Item
- * Shortcode Example : [featured_item heading='' url="" image='' title='' date='' description='' button='' sharing='']
+ * Shortcode Example : [featured_item heading='' url="" image='' title='' date='' description='' button='' button_text='' sharing='']
  */
 add_shortcode("featured_item","featured_item_func");
 function featured_item_func($attr, $content = null)
@@ -128,11 +140,25 @@ function featured_item_func($attr, $content = null)
 	}
 	if(isset($image) && !empty($image))
 	{
-    	$return .= '<a href="'. $url.'"><img src="'. $image .'"/></a>';
+		if(isset($url) && !empty($url))
+		{
+			$return .= '<a href="'. $url.'"><img src="'. $image .'"/></a>';
+		}
+		else
+		{
+    		$return .= '<img src="'. $image .'"/>';
+		}
 	}
 	if(isset($title) && !empty($title))
 	{
-    	$return .= '<p class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></p>';
+    	if(isset($url) && !empty($url))
+		{
+			$return .= '<p class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></p>';
+		}
+		else
+		{
+    		$return .= '<p class="hdng_mtr">'. $title .'</p>';
+		}
 	}
 	if(isset($date) && !empty($date))
 	{
@@ -141,11 +167,20 @@ function featured_item_func($attr, $content = null)
 	if(isset($description) && !empty($description))
 	{
 		//$description = apply_filters('the_content', $description);
-    	$return .= '<p class="rght_mtr"><a href="'. $url.'">'. $description .'</a></p>';    
+    	$return .= '<p class="rght_mtr">'. $description .'</p>';    
 	}
 	if(isset($url) && !empty($url) && strtolower($button) == 'show')
 	{
-		$return .= '<div class="home_dwnld_btn"><a class="btn_dwnld" style="background-color:#e57200" href="'.$url.'">Download</a></div>';
+		$return .= '<div class="home_dwnld_btn"><a class="btn_dwnld" style="background-color:#e57200" href="'.$url.'">';
+		
+		if(isset($button_text) && !empty($button_text))
+		{
+			$return .= $button_text.'</a></div>';
+		}
+		else
+		{
+			$return .= 'Download</a></div>';
+		}
 	}
 	if(strtolower($sharing) == 'show')
 	{
@@ -304,13 +339,13 @@ function share_the_toolkit_func($atts, $content = null)
             $return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
-            $return .= '<a href="mailto:'. mailto.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
+            $return .= '<a href="'. linktonwltr.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
        $return .= ' </p>';	
 	$return .= '</div>';
 	return $return;   
 }
 /**
- * Share Icon
+ * Recommended Resource
  * Shortcode Example : [recommended_resources media_type1='' src1='' text1='' link1='' media_type2='' src2='' text2='' link2='' media_type3='' src3='' text3=''  link3='']
  */
 add_shortcode("recommended_resources","recommended_resources_func");
@@ -341,7 +376,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link1.'"><img width="274" height="160" src="'. $src1 .'" ></a>';
+					$return .= '<a href="'.$link1.'" target="_blank"><img width="274" height="160" src="'. $src1 .'" ></a>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -362,7 +397,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link2.'"><img width="274" height="160" src="'. $src2 .'"></a>';
+					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'"></a>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -383,7 +418,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link3.'"><img width="274" height="160" src="'. $src3 .'"></a>';
+					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'"></a>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -410,7 +445,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link1.'"><img width="274" height="160" src="'. $src1 .'" ></a>';
+					$return .= '<a href="'.$link1.'" target="_blank"><img width="274" height="160" src="'. $src1 .'" ></a>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -431,7 +466,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link2.'"><img width="274" height="160" src="'. $src2 .'"></a>';
+					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'"></a>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -452,7 +487,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link3.'"><img width="274" height="160" src="'. $src3 .'"></a>';
+					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'"></a>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -463,4 +498,27 @@ function recommended_resources_func($attr, $content = null)
 	
 	return $return;   
 }
+
+/**
+ * Featured Content Box
+ * Shortcode Example : [featured_content_box title='' description='' top_icon='' align='']
+ */
+ add_shortcode("featured_content_box", "featured_content_box_func");
+ 
+ function featured_content_box_func($attr, $content = null)
+ {
+	 extract($attr);
+	 $return = '';
+		$return .= '<div class="pblctn_right_sid_mtr">';
+		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
+        $return .= '<div class="pblctn_box">';
+			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
+		$return .= '</div>';
+            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
+            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
+        $return .= '</div>';
+		$return .= '</div>';
+		
+		return $return;
+ }
 ?>

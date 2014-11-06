@@ -1,7 +1,7 @@
 <?php
 function twentytwelve_child_theme_menu()
 {
-	add_theme_page('Theme Options', 'Theme Options', 'edit_theme_options', 'theme-options', 'theme_options_settings');
+	add_theme_page('Assign Widgets to Pages', 'Assign Widgets to Pages', 'edit_theme_options', 'theme-options', 'theme_options_settings');
 }
 add_action('admin_menu', 'twentytwelve_child_theme_menu');
 function theme_options_settings()
@@ -51,6 +51,8 @@ function theme_options_settings()
 					<h4>Assign Temlate : '. ucwords(str_replace($strphs," ",$index)) .' </h4>';
 					
 			$return .= '<form method="post">
+				  
+				  <input type="submit" name="save_widget" value="Save Setting" id="cstm_wdgt_btn" />
 				  <div class="oer_widget_wrapper">
 				  <div class="sub_wrapper">
 						<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="" /></div>
@@ -72,10 +74,16 @@ function theme_options_settings()
 							$chekd = '';
 						}	
 					}
+					
+					$name = $wp_registered_widgets[$id]['callback'][0]->name;
 					$option_name = $wp_registered_widgets[$id]['callback'][0]->option_name;
+					$key = $wp_registered_widgets[$id]['params'][0]['number'];
+					$widget_data = get_option($option_name);
+					$output = (object) $widget_data[$key];
+					
 					$return .= '<div  class="sub_wrapper">
 							<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="'.$id.'" '.$chekd.'/></div>
-							<div class="sub_wrapper_txt">'.ucwords(str_replace($strphs," ",$option_name)).'</div>
+							<div class="sub_wrapper_txt">'. $output->title.' <b>{ '.ucwords(str_replace($strphs," ",$name)).' }</b></div>
 						 </div>'; 
 				}
 			}
@@ -116,6 +124,7 @@ function theme_options_settings()
 			  <thead>
 				<tr>
 					<th id="title" class="manage-column column-title custm" style="" scope="col">Page Title</th>
+					<th id="view" class="manage-column column-view" style="" scope="col">View Page</th>
 					<th id="author" class="manage-column column-author" style="" scope="col">Author</th>
 					<th id="date" class="manage-column column-date" style="" scope="col">Date</th>
 				</tr>
@@ -127,7 +136,12 @@ function theme_options_settings()
 				 $user = get_user_by( 'id', $page->post_author);
 				 
 				 $return .= '<tr>';
-				 $return .= '<td><a href="'.site_url().'/wp-admin/themes.php?page=theme-options&action=widget_assign&page_id='.$page->ID.'"><strong>'.$page->post_title.'</strong></a></td>';
+				 $return .= '<td>
+				 				<a target="_blank" href="'.site_url().'/wp-admin/themes.php?page=theme-options&action=widget_assign&page_id='.$page->ID.'">
+									<strong>'.$page->post_title.'</strong>
+								</a>
+							</td>';
+				 $return .= '<td><a href="'.get_permalink($page->ID).'" target="_blank">View Page</a></td>';
 				 $return .= '<td>'.$user->user_login.'</td>';
 				 $return .= '<td>'.$page->post_modified.'</td>';
 				 $return .= '</tr>';

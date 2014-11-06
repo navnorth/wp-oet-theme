@@ -63,8 +63,9 @@
 					define("yotube_url", get_option("yotube_url"));
 					define("google_url", get_option("google_url"));
 					define("linkedin_url", get_option("linkedin_url"));
-					define("mailto", get_option("mailto"));	
+					define("linktonwltr", get_option("linktonwltr"));	
 				?>
+               
                 <div class="col-md-11 col-sm-12 col-xs-5 col-xs-offset-2 col-md-offset-1 soclize">
                 	<a href="<?php echo twitter_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span>
@@ -78,7 +79,7 @@
                     <a href="<?php echo google_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span>
                     </a>
-                    <a href="mailto:<?php echo mailto;?>" target="_blank">
+                    <a href="<?php echo linktonwltr;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span>
                     </a>
                 </div>

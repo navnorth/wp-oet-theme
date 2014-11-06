@@ -19,7 +19,7 @@ if($action == "show_popup")
 								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/banner.png">
 							</div>
 							<div class="oert_snglttltiny">
-								Banner
+								Disruptive Content
 							</div>
 						</div>
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_area">
@@ -39,6 +39,7 @@ if($action == "show_popup")
 							</div>
 						</div>
 					</div>
+					
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_video">
 							<div class="oert_snglimgtiny">
@@ -70,6 +71,33 @@ if($action == "show_popup")
 							</div>
 							<div class="oert_snglttltiny">
 								Right Column
+							</div>
+						</div>
+					</div>
+					
+					<div class="oet_sngltinyrow">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="home_feature_video">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_video.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Home Featured Video
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="recommended_resources">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_video.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Recommended Resource
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_content_box">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_video.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Featured Content Box
 							</div>
 						</div>
 					</div>
@@ -109,7 +137,7 @@ if($action == "show_popup")
 				switch (shortcode_type)
 				{
 				   case "accordian": 
-					   var shortcode = "[oet_accordion_group][oet_accordion title=\'\' accordion_series=\'one\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\'] your content goes here [/oet_accordion][/oet_accordion_group]";
+					   var shortcode = "[oet_accordion_group][oet_accordion title=\'\' accordion_series=\'one\' expanded=\'\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\' expanded=\'\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\' expanded=\'\'] your content goes here [/oet_accordion][/oet_accordion_group]";
 					   break;
 				   case "banner": 
 					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
@@ -118,20 +146,29 @@ if($action == "show_popup")
 					   var shortcode = "[featured_area heading=\'\' image=\'\' title=\'\' description=\'\']";
 					   break;
 				   case "featured_content": 
-					   var shortcode = "[featured_item heading=\'\' image=\'\' title=\'\' date=\'\' description=\'\' sharing=\'\']";
+					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' description=\'\' button=\'\' button_text=\'\' sharing=\'\']";
 					   break;
 				   case "featured_video": 
-					   var shortcode = "[feature_video src=\'\' description=\'\']";
+					   var shortcode = "[feature_video heading=\'\' src=\'\' description=\'\']";
 					   break;
+				   case "home_feature_video": 
+					   var shortcode = "[home_feature_video heading=\'\' src=\'\' description=\'\']";
+					   break;   
 				   case "left_column": 
 					   var shortcode = "[home_left_column] your content goes here [/home_left_column]";
 					   break;
 				   case "pull_quotes": 
-					   var shortcode = "[pull_quote image=\'\' speaker=\'\' additional_info=\'\']your content goes here[/pull_quote]";
+					   var shortcode = "[pull_quote speaker=\'\' additional_info=\'\']your content goes here[/pull_quote]";
 					   break;
 				   case "right_column": 
 					   var shortcode = "[home_right_column] your content goes here [/home_right_column]";
 					   break;
+				   case "recommended_resources": 
+					   var shortcode = "[recommended_resources media_type1=\'\' src1=\'\' text1=\'\' link1=\'\' media_type2=\'\' src2=\'\' text2=\'\' link2=\'\' media_type3=\'\' src3=\'\' text3=\'\'  link3=\'\']";
+					   break;
+				   case "featured_content_box": 
+					   var shortcode = "[featured_content_box title=\'\' description=\'\' top_icon=\'\' align=\'\']";
+					   break;	      
 				   default:
 				   	   var shortcode = "";
 				   	   break
