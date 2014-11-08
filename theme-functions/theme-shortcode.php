@@ -53,7 +53,7 @@ function oet_accordion_func($atts, $content = null)
 		$return .= '<div class="panel panel-default">';
 			
 		$return .= '<div class="panel-heading" role="tab" id="heading'. $accordion_series .'">';
-		  $return .= '<h4 class="panel-title">';
+		  $return .= '<h5 class="panel-title">';
 			
 			  if(isset($expanded) && !empty($expanded) && strtolower($expanded) == "true")
 			  {
@@ -69,7 +69,7 @@ function oet_accordion_func($atts, $content = null)
 			  $return .= '<a class="'.$class.'" data-toggle="collapse" data-parent="#accordion" href="#collapse'. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $accordion_series .'">';
 			  $return .= $title;
 			$return .= '</a>';
-		 $return .= ' </h4>';
+		 $return .= ' </h5>';
 		$return .= '</div>';
 			
 		$return .= '<div id="collapse'. $accordion_series .'" class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
@@ -126,7 +126,7 @@ function pull_quotethemefn($atts, $content = null)
 
 /**
  * Featured Item
- * Shortcode Example : [featured_item heading='' url="" image='' title='' date='' description='' button='' button_text='' sharing='']
+ * Shortcode Example : [featured_item heading='' url="" image='' title='' date='' button='' button_text='' sharing='']your content goes here[/featured_item]
  */
 add_shortcode("featured_item","featured_item_func");
 function featured_item_func($attr, $content = null)
@@ -142,11 +142,11 @@ function featured_item_func($attr, $content = null)
 	{
 		if(isset($url) && !empty($url))
 		{
-			$return .= '<a href="'. $url.'"><img src="'. $image .'"/></a>';
+			$return .= '<a href="'. $url.'"><img class="featured_item_image" src="'. $image .'"/></a>';
 		}
 		else
 		{
-    		$return .= '<img src="'. $image .'"/>';
+    		$return .= '<img class="featured_item_image" src="'. $image .'"/>';
 		}
 	}
 	if(isset($title) && !empty($title))
@@ -164,10 +164,10 @@ function featured_item_func($attr, $content = null)
 	{
     	$return .= '<p class="date"><b>'. $date .'</b></p>';
 	}
-	if(isset($description) && !empty($description))
+	if(isset($content) && !empty($content))
 	{
 		//$description = apply_filters('the_content', $description);
-    	$return .= '<p class="rght_mtr">'. $description .'</p>';    
+    	$return .= '<p class="rght_mtr">'. $content .'</p>';    
 	}
 	if(isset($url) && !empty($url) && strtolower($button) == 'show')
 	{
@@ -185,10 +185,7 @@ function featured_item_func($attr, $content = null)
 	if(strtolower($sharing) == 'show')
 	{
 		$return .= '<div class="col-md-7 col-sm-7 col-xs-7 rght_sid_socl_icn">';
-			$return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
-			$return .= '<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>';
-			$return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
-			$return .= '<a href="'. linkedin_url.'"><span class="socl_icns fa-stack"><i class="fa fa-linkedin fa-stack-2x"></i></span></a>';
+			$return .= do_shortcode("[ssba]");
 		$return .= '</div>';
 	}
     $return .= '</div>';
@@ -198,39 +195,10 @@ function featured_item_func($attr, $content = null)
 
 /**
  * Featured Video
- * Shortcode Example : [feature_video heading="" src="" description=""]
+ * Shortcode Example : [featured_video heading="" src="" description="" height=""]
  */
-add_shortcode("feature_video","feature_video_func");
+add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null)
-{
-	extract($attr);
-	
-	$return = '';
-	
-	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left">';
-	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 pblctn_vdo_bg">';
-			if(isset($src) && !empty($src))
-			{		
-             	$return .= '<iframe width="600" height="300" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
-			}
-			
-			if(isset($description) && !empty($description))
-			{
-				//$description = apply_filters('the_content', $description);
-				$return .= '<p>'. $description .'</p>';
-			}
-    $return .= '</div>';
-	$return .= '</div>';
-	
-	return $return;	
-}
-
-/**
- * Home Featured Video
- * Shortcode Example : [home_feature_video heading="" src="" description=""]
- */
-add_shortcode("home_feature_video","home_feature_video_func");
-function home_feature_video_func($attr, $content = null)
 {
 	extract($attr);
 	
@@ -245,7 +213,7 @@ function home_feature_video_func($attr, $content = null)
 	
 			if(isset($src) && !empty($src))
 			{		
-             	$return .= '<iframe width="540" height="300" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
+             	$return .= '<iframe width="540" height="'. $height.'" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
 			}
 			
 			if(isset($description) && !empty($description))
@@ -292,7 +260,7 @@ function home_left_column_func($atts, $content = null)
 
 /**
  * Featured Area
- * Shortcode Example : [featured_area heading="" image="" title="" description=""]
+ * Shortcode Example : [oet_featured_area heading="" image="" title=""]your content goes here[/oet_featured_area]
  */
 add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
 function oet_featured_area_descrptn($attr, $content = null)
@@ -308,16 +276,16 @@ function oet_featured_area_descrptn($attr, $content = null)
 			}
 			if(isset($image) && !empty($image))
 			{
-				$return .= '<img src="'. $image .'"/>';
+				$return .= '<img class="featured_area_image" src="'. $image .'"/>';
 			}
 			if(isset($title) && !empty($title))
 			{
 				$return .= '<p class="hdng_mtr">'. $title .'</p>';
 			}
-			if(isset($description) && !empty($description))
+			if(isset($content) && !empty($content))
 			{
 				//$description = apply_filters('the_content', $content);
-				$return .= '<p>'. $description .'</p>';
+				$return .= '<p>'. $content .'</p>';
 			}
 		    
 			$return .= '</div>';
@@ -501,7 +469,7 @@ function recommended_resources_func($attr, $content = null)
 
 /**
  * Featured Content Box
- * Shortcode Example : [featured_content_box title='' description='' top_icon='' align='']
+ * Shortcode Example : [featured_content_box title='' top_icon='' align='']your content goes here[/featured_content_box]
  */
  add_shortcode("featured_content_box", "featured_content_box_func");
  

@@ -48,14 +48,11 @@
 				}
 				echo '</div>';
 				if(isset($social_status) && !empty($social_status) && $social_status == 'true')
-				{
-					echo '<p class="pblctn_scl_icn_hedng"> Share this Report </p>
-							<p class="pblctn_scl_icns">
-								<a href="'. facebook_url.'"><span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span></a>
-								<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>
-								<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>
-								<a href="'. linktonwltr.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>
-							</p>';
+				{	
+					echo '<p class="pblctn_scl_icn_hedng"> Share this Report </p>';
+					echo '<div class="pblctn_scl_icns">';
+								echo do_shortcode("[ssba]");
+					echo '</div>';
 				}
             ?>
     	</div>

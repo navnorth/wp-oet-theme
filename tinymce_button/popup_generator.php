@@ -76,14 +76,6 @@ if($action == "show_popup")
 					</div>
 					
 					<div class="oet_sngltinyrow">
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="home_feature_video">
-							<div class="oert_snglimgtiny">
-								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_video.png">
-							</div>
-							<div class="oert_snglttltiny">
-								Home Featured Video
-							</div>
-						</div>
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="recommended_resources">
 							<div class="oert_snglimgtiny">
 								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_video.png">
@@ -143,17 +135,14 @@ if($action == "show_popup")
 					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
 					   break;
 				   case "featured_area": 
-					   var shortcode = "[featured_area heading=\'\' image=\'\' title=\'\' description=\'\']";
+					   var shortcode = "[oet_featured_area heading=\'\' image=\'\' title=\'\']your content goes here[/oet_featured_area]";
 					   break;
 				   case "featured_content": 
-					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' description=\'\' button=\'\' button_text=\'\' sharing=\'\']";
+					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video": 
-					   var shortcode = "[feature_video heading=\'\' src=\'\' description=\'\']";
+					   var shortcode = "[featured_video heading=\'\' src=\'\' description=\'\' height=\'\']";
 					   break;
-				   case "home_feature_video": 
-					   var shortcode = "[home_feature_video heading=\'\' src=\'\' description=\'\']";
-					   break;   
 				   case "left_column": 
 					   var shortcode = "[home_left_column] your content goes here [/home_left_column]";
 					   break;
@@ -167,7 +156,7 @@ if($action == "show_popup")
 					   var shortcode = "[recommended_resources media_type1=\'\' src1=\'\' text1=\'\' link1=\'\' media_type2=\'\' src2=\'\' text2=\'\' link2=\'\' media_type3=\'\' src3=\'\' text3=\'\'  link3=\'\']";
 					   break;
 				   case "featured_content_box": 
-					   var shortcode = "[featured_content_box title=\'\' description=\'\' top_icon=\'\' align=\'\']";
+					   var shortcode = "[featured_content_box title=\'\' top_icon=\'\' align=\'\']your content goes here[/featured_content_box]";
 					   break;	      
 				   default:
 				   	   var shortcode = "";

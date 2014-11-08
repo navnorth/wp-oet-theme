@@ -9,7 +9,7 @@ function theme_options_settings()
 	$temlate_sidebar = array(
 						"publication-template" 	=> "page-templates/publication-template.php",
 						"toolkit-template" 		=> "page-templates/toolkit-template.php",
-						"home-page-template" 	=> "page-templates/home-page-template.php",
+						"default-template" 		=> "default",
 						"toolkit-subpage-template" => "page-templates/toolkit-subpage-template.php");
 						
 	if(isset($_REQUEST) && !empty($_REQUEST))
@@ -25,6 +25,10 @@ function theme_options_settings()
 				{
 					$data = serialize($_POST["widget_id"]);
 					update_post_meta($page_id, "_oer_assign_widget", $data);
+				}
+				else
+				{
+					update_post_meta($page_id, "_oer_assign_widget");
 				}
 			}
 			

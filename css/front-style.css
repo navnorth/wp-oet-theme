@@ -1,48 +1,77 @@
-.oet-site
-{
-	margin-top: 0!important;
-	margin-bottom: 0!important;
-	max-width: 100% !important;
-}
-footer[role="oet_contentinfo"] {
-    border-top: 1px solid #EDEDED;
-    clear: both;
-    font-size: 0.857143rem;
-    line-height: 2;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1.71429rem;
-    max-width: 100%;
-    padding: 1.71429rem 0;
-}
-.oet_sub_header {
-    float: left;
-    width: 70%;
-	margin-bottom: 25px;
-}
-.oet_sub_header_sec {
-    float: left;
-    width: 30%;
-}
-.oet_sub_header_sec .oet-searchform {
-    float: left;
-    width: 100%;
-	padding-bottom: 25px;
-}
-.oet-searchform #searchform > div
-{
-	float: right;
-}
-.oet_sub_header_sec .oet-socialicons {
-    float: left;
-    width: 100%;
-}
-.oet_sub_header_sec .oet-socialicons > a{
-    float: right;
-	padding-left: 5px;
-}
 .site-content
 {
 	min-height: 400px;
 	margin-top: 10px;
+}
+aside.widget {
+    float: left;
+    width: 100%;
+}
+aside.widget {
+    float: left;
+    width: 100%;
+}
+.widget h3 {
+    border-bottom: 1px solid #ccc;
+    font-family: "Raleway-light";
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 0 0 10px;
+}
+.pblctn_scl_icns .ssba > div
+{
+	text-align:center !important;
+	margin-top: 10px;
+}
+.pblctn_scl_icns .ssba > div > a
+{
+	margin: 0px !important;
+	padding: 6px !important;
+}
+.pblctn_scl_icns .ssba > div > a > img {
+    border: 0 none;
+    box-shadow: none !important;
+    display: inline !important;
+    vertical-align: middle;
+    width: 30px !important;
+	padding: 0px !important;
+}
+
+.rght_sid_socl_icn .ssba > div
+{
+	margin-top: 10px;
+    text-align: left !important;
+}
+.rght_sid_socl_icn .ssba > div > a
+{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.rght_sid_socl_icn .ssba > div > a > img {
+    border: 0 none;
+    box-shadow: none !important;
+    display: inline !important;
+    padding: 0 !important;
+    width: 20px !important;
+}
+.wp-caption.alignnone {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    float: left;
+    margin: 10px 0;
+    width: 100% !important;
+}
+.wp-caption > a {
+    float: left;
+    width: 100%;
+}
+.wp-caption img {
+    float: left;
+    width: 100%;
+}
+.wp-caption-text {
+    float: left;
+    padding: 0 35px;
+    width: 100%;
 }
