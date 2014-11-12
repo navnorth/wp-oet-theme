@@ -45,8 +45,17 @@ class FeaturedContentWidgetDetails extends WP_Widget
         <p>
             <label for="<?php echo $this->get_field_id("image");?>">Image:</label> 
             <select name="<?php echo $this->get_field_name("image"); ?>" id="<?php  echo $this->get_field_id("image");?>" class="widefat">
-                    <option value="img1" <?php if(isset($value)){if($value == 'img1'){echo 'selected';}}?>>Star Icon</option>
-                    <option value="img2" <?php if(isset($value)){if($value == 'img2'){echo 'selected';}}?>>Compress Icon</option>
+                    <option value="img1" <?php if(isset($image)){if($image == 'img1'){echo 'selected';}}?>>Star Icon</option>
+                    <option value="img2" <?php if(isset($image)){if($image == 'img2'){echo 'selected';}}?>>Compress Icon</option>
+                    
+                    <option value="img3" <?php if(isset($image)){if($image == 'img3'){echo 'selected';}}?>>Cogs Icon</option>
+                    <option value="img4" <?php if(isset($image)){if($image == 'img4'){echo 'selected';}}?>>Cog Icon</option>
+                    <option value="img5" <?php if(isset($image)){if($image == 'img5'){echo 'selected';}}?>>Globe Icon</option>
+                    <option value="img6" <?php if(isset($image)){if($image == 'img6'){echo 'selected';}}?>>Poweroff Icon</option>
+                    <option value="img7" <?php if(isset($image)){if($image == 'img7'){echo 'selected';}}?>>File-o Icon</option>
+                    <option value="img8" <?php if(isset($image)){if($image == 'img8'){echo 'selected';}}?>>Wifi Icon</option>
+                    <option value="img9" <?php if(isset($image)){if($image == 'img9'){echo 'selected';}}?>>Check Icon</option>
+                    <option value="img10" <?php if(isset($image)){if($image == 'img10'){echo 'selected';}}?>>Comment-o Icon</option>
             </select>
         </p>
         <p>
@@ -72,6 +81,42 @@ class FeaturedContentWidgetDetails extends WP_Widget
 			elseif($instance['image'] == 'img2')
 			{
 				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-compress "></i></span>';	
+			}
+			elseif($instance['image'] == 'img3')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-cogs "></i></span>';	
+			}
+			elseif($instance['image'] == 'img4')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-cog "></i></span>';	
+			}
+			elseif($instance['image'] == 'img5')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-globe "></i></span>';	
+			}
+			elseif($instance['image'] == 'img6')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-power-off "></i></span>';	
+			}
+			elseif($instance['image'] == 'img7')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-file-o "></i></span>';	
+			}
+			elseif($instance['image'] == 'img8')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-wifi "></i></span>';	
+			}
+			elseif($instance['image'] == 'img9')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-check "></i></span>';	
+			}
+			elseif($instance['image'] == 'img10')
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-comment-o "></i></span>';	
+			}
+			else
+			{
+				$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';	
 			}
              	
         $return .= '</div>';

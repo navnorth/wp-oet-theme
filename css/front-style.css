@@ -55,6 +55,12 @@ aside.widget {
     padding: 0 !important;
     width: 20px !important;
 }
+
+.pblctn_right_sid_mtr .ssba > div > a > img {
+    margin: 0 !important;
+    padding: 0 7px !important;
+    width: 42px !important
+}
 .wp-caption.alignnone {
     background-color: #f2f2f2;
     border: 1px solid #ccc;

@@ -9,7 +9,7 @@ function disruptive_content_fun($attr, $content = null)
 	extract($attr);
 	
 	$return = '';
-    $return .= '<div class="row bg_img_of_icns">';
+    $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
             $return .= '<h3>'. $title .'</h3>';
             $return .= '<p>';
@@ -116,9 +116,9 @@ function pull_quotethemefn($atts, $content = null)
 	}
 	if(isset($additional_info) && !empty($additional_info))
 	{
-		$return .= ' <h4 class="blog_date">';
+		$return .= ' <p class="blog_date">';
 			$return .= $additional_info;
-		$return .= '</h4>';
+		$return .= '</p>';
 	}
 	$return .= '</div>';
 	return $return;
@@ -212,7 +212,12 @@ function feature_video_func($attr, $content = null)
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';
 	
 			if(isset($src) && !empty($src))
-			{		
+			{	
+				if(empty($height))
+				{
+					$height = 300;	
+				}
+					
              	$return .= '<iframe width="540" height="'. $height.'" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
 			}
 			
@@ -480,7 +485,16 @@ function recommended_resources_func($attr, $content = null)
 		$return .= '<div class="pblctn_right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
+		
+		if(isset($top_icon) && !empty($top_icon))
+		{
+			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-'.$top_icon.' "></i></span>';
+		}
+		else
+		{
 			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
+		}
+		
 		$return .= '</div>';
             $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
             $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
