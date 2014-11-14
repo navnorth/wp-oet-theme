@@ -20,8 +20,7 @@ global $post;
 
 	<div class="row site-content">
 		
-        	<!--- Left Side Container---->
-            <div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
+        	<div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
             	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
             	
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -31,6 +30,6 @@ global $post;
 				<?php endwhile;?>
 
             </div>
-	</div><!-- .site-content -->
+	</div>
 
 <?php get_footer(); ?>

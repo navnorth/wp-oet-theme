@@ -32,11 +32,10 @@
 <div class="container-fluid">
 	<div class="container">
     
-		<!------------- Logo Search & Social Icns --------------->
         <div class="row hdr">
         	<div class="col-md-7 col-sm-8 col-xs-12">
             	<a href="<?php echo site_url();?> ">
-                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png"/>
+                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Home"/>
                 </a>
             </div>
             
@@ -49,7 +48,7 @@
                         	<input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s" />
                       		<a href="javascript:" onClick="jQuery(this).closest('form').submit()">
                                 <span class="form-control-feedback ">
-                              		<img src="<?php echo get_stylesheet_directory_uri();?>/images/search_icn.png">
+                              		<img src="<?php echo get_stylesheet_directory_uri();?>/images/search_icn.png" alt="Search"/>
                                 </span>
                             </a>
                         </form>
@@ -87,7 +86,6 @@
             </div>
         </div>
         
-        <!------------- Top Strap & Navigation --------------->
         <div class="row top_strp"></div>
         <div class="row navi_bg">
         	<div class="main-menu">

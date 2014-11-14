@@ -15,7 +15,7 @@
                <?php wp_nav_menu( array('menu' => "Footer Menu") );?>
             </div>  
             <div class="col-md-2 col-sm- col-xs-2 text-right ftr_logo">
-                <a href="http://www.ed.gov" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png"/></a>
+                <a href="http://www.ed.gov" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png" alt="Logo"/></a>
             </div>  
         </div>
     

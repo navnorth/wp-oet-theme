@@ -26,13 +26,12 @@ global $post;
          </div>   
        
         <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-            <!--- Right Side 1st Sidebar---->
             <?php 
 				$page_id = get_the_ID();
 				echo oer_dynamic_sidebar('default-template', $page_id);
 			?>
         </div>
 	
-    </div><!-- site-content -->    
+    </div>
 
 <?php get_footer(); ?>

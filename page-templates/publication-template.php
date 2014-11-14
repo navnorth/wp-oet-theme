@@ -25,8 +25,7 @@
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 	?>
     
-	<!--- Left Side Container---->
-    <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
+	<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
     	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
         
         <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
@@ -64,9 +63,8 @@
 		?>  
 	</div>
     
-    <!--- Right Side Container---->
+    
     <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-        <!--- Right Side 1st Sidebar---->
         <?php echo oer_dynamic_sidebar('publication-template', $page_id);?>
     </div>
 </div>

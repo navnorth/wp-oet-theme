@@ -97,7 +97,7 @@ function pull_quotethemefn($atts, $content = null)
 	
 	$return = '';
 	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
-		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png"/>';
+		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
 	$return .= '</div>';
 	
 	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
@@ -142,11 +142,11 @@ function featured_item_func($attr, $content = null)
 	{
 		if(isset($url) && !empty($url))
 		{
-			$return .= '<a href="'. $url.'"><img class="featured_item_image" src="'. $image .'"/></a>';
+			$return .= '<a href="'. $url.'"><img class="featured_item_image" src="'. $image .'" alt="Featured Image" /></a>';
 		}
 		else
 		{
-    		$return .= '<img class="featured_item_image" src="'. $image .'"/>';
+    		$return .= '<img class="featured_item_image" src="'. $image .'" alt="Featured Image"/>';
 		}
 	}
 	if(isset($title) && !empty($title))
@@ -218,7 +218,7 @@ function feature_video_func($attr, $content = null)
 					$height = 300;	
 				}
 					
-             	$return .= '<iframe width="540" height="'. $height.'" src="'. $src .'" frameborder="0" allowfullscreen></iframe>';
+             	$return .= '<iframe width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
 			}
 			
 			if(isset($description) && !empty($description))
@@ -281,7 +281,7 @@ function oet_featured_area_descrptn($attr, $content = null)
 			}
 			if(isset($image) && !empty($image))
 			{
-				$return .= '<img class="featured_area_image" src="'. $image .'"/>';
+				$return .= '<img class="featured_area_image" src="'. $image .'"  alt="Featured Image" />';
 			}
 			if(isset($title) && !empty($title))
 			{
@@ -339,7 +339,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src1 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src1 .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -349,7 +349,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link1.'" target="_blank"><img width="274" height="160" src="'. $src1 .'" ></a>';
+					$return .= '<a href="'.$link1.'" target="_blank"><img width="274" height="160" src="'. $src1 .'" alt="Resource" /></a>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -360,7 +360,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src2 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src2 .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -370,7 +370,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'"></a>';
+					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -381,7 +381,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src3 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src3 .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -391,7 +391,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'"></a>';
+					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -408,7 +408,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src1 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src1 .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -418,7 +418,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link1.'" target="_blank"><img width="274" height="160" src="'. $src1 .'" ></a>';
+					$return .= '<a href="'.$link1.'" target="_blank"><img width="274" height="160" src="'. $src1 .'"  alt="Resource"/></a>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -429,7 +429,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src2 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src2 .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -439,7 +439,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'"></a>';
+					$return .= '<a href="'.$link2.'" target="_blank"><img width="274" height="160" src="'. $src2 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -450,7 +450,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src3 .'" frameborder="0" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src3 .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -460,7 +460,7 @@ function recommended_resources_func($attr, $content = null)
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'"></a>';
+					$return .= '<a href="'.$link3.'" target="_blank"><img width="274" height="160" src="'. $src3 .'" alt="Resource"/></a>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
