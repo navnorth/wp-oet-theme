@@ -193,7 +193,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 .tlkt_lft_sid h1 { color: #e57200 !important; font-size: 60px; margin: 0 0 5px }
 .tlkt_lft_sid h3 { color: #fff !important;  }
-.tlkt_rght_sid h3 { border-bottom: 1px solid #677f96; letter-spacing: .5px}
+.tlkt_rght_sid h3 { color: #fff !important; border-bottom: 1px solid #677f96; letter-spacing: .5px}
 .stp_cntnr li { list-style: none; margin-bottom: 5px}
 .stp_cntnr li span { margin-right: 7px}
 .stp_cntnr ul { padding-left: 0; font-size: 15px}
