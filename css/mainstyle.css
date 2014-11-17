@@ -91,7 +91,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .border_blue p { margin-left: 20px; font-size: 16px; font-weight: bold; line-height: 35px; margin-top: 20px; font-family: 'Raleway-light'; letter-spacing: .5px }
 .hdng_mtr, .hdng_mtr a { font-size: 18px; color: #e57200; font-family: 'Raleway-Bold' !important}
 .hdng_mtr a:hover { cursor: pointer; color: #F58516}
-.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}
+.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
 .pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
 .pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
 .rght_mtr { font-size: 12px}
