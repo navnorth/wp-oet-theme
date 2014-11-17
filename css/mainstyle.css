@@ -94,7 +94,6 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
 .pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
 .pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
-.rght_mtr { font-size: 12px}
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
