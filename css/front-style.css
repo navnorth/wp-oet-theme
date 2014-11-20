@@ -62,22 +62,15 @@ aside.widget {
     width: 42px !important
 }
 .wp-caption.alignnone {
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    float: left;
     margin: 10px 0;
-    width: 100% !important;
 }
-.wp-caption > a {
-    float: left;
-    width: 100%;
-}
-.wp-caption img {
-    float: left;
-    width: 100%;
-}
-.wp-caption-text {
-    float: left;
-    padding: 0 35px;
-    width: 100%;
-}
+
+
+
+
+.alignleft { float: left; margin-right: 20px; margin-bottom: 20px}
+.alignright{ float: right; margin-left: 20px; margin-bottom: 20px}
+hr { width: 100%}
+
+.wp-caption.alignnone, .wp-caption.alignright, .wp-caption.alignleft { background: #f2f2f2; border: 1px solid #ccc;}
+.wp-caption.alignnone p, .wp-caption.alignright p, .wp-caption.alignleft p { margin: 10px}

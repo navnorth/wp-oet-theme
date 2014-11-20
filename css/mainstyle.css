@@ -91,9 +91,11 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px }
 .hdng_mtr, .hdng_mtr a { font-size: 18px; color: #e57200; font-family: 'Raleway-Bold' !important}
 .hdng_mtr a:hover { cursor: pointer; color: #F58516}
+/*.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}*/
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
 .pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
 .pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
+/*.rght_mtr { font-size: 12px}*/
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
@@ -193,7 +195,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 .tlkt_lft_sid h1 { color: #e57200 !important; font-size: 60px; margin: 0 0 5px }
 .tlkt_lft_sid h3 { color: #fff !important;  }
-.tlkt_rght_sid h3 { color: #fff !important; border-bottom: 1px solid #677f96; letter-spacing: .5px}
+.tlkt_rght_sid h3 { border-bottom: 1px solid #677f96; letter-spacing: .5px}
 .stp_cntnr li { list-style: none; margin-bottom: 5px}
 .stp_cntnr li span { margin-right: 7px}
 .stp_cntnr ul { padding-left: 0; font-size: 15px}
@@ -299,7 +301,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .eemail_textbox input:focus, .eemail_textbox input:hover { outline: none; border: 1px solid #999 }
 .eemail_button input, .eemail_button input:hover, .eemail_button input:focus { outline: none;}
 
-.wp-caption img { height: auto}
+.wp-caption img { height: auto; width: 100%}
 
 /*---------------- Default Page -----------------*/
 
@@ -432,10 +434,6 @@ h4 { font-family: 'Raleway-Light' !important}
 	.ftr_lnks li { width: 100%; text-align: center; padding: 10px 0; border-bottom: 1px solid #eee}
 	.hdr { margin-bottom: 5px}
 	.ftr_logo { margin: 10px 0}
-
-
-
-
 }
 @media (max-width: 400px){
 
@@ -444,7 +442,6 @@ h4 { font-family: 'Raleway-Light' !important}
 	.rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
 	.slideshow_container { display: none !important}
 }
-
 @media (max-width: 300px){
 
 }
