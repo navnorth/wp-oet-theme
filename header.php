@@ -14,15 +14,15 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
+<!-- force IE to disable compatibility mode on IE9+, due to ed.gov intranet... this must be first in HEAD -->
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri();?>/images/favicon.ico" type="image/x-icon">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
-<!-- force IE to disable compatibility mode on IE10+, due to ed.gov intranet -->
-<meta http-equiv="X-UA-Compatible" content="IE=10" />
 
 <?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
 <!--[if lt IE 9]>
