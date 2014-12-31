@@ -6,7 +6,7 @@
  * in the theme as custom template tags. Others are attached to action and
  * filter hooks in WordPress to change core functionality.
  */
- 
+
 /**
  * Register sidebars.
  */
@@ -32,17 +32,17 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Theme Widget
  */
  require_once(get_stylesheet_directory() . '/theme-functions/custom_widget.php');
- 
+
 /**
  *
  * Theme Metabox
  */
- require_once(get_stylesheet_directory() . '/theme-functions/custom_metabox.php'); 
- 
+ require_once(get_stylesheet_directory() . '/theme-functions/custom_metabox.php');
+
 /**
  * Shortcode Button.
  */
- require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' ); 
+ require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
 
 function theme_back_enqueue_script()
 {
@@ -55,11 +55,11 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 function theme_front_enqueue_script()
 {
 	wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
-	
+
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
 	wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
-	
+
 	wp_enqueue_script('jquery');
     wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
@@ -72,18 +72,18 @@ function oer_dynamic_sidebar($index, $page_id)
 	if(isset($page_id) && !empty($page_id))
 	{
 		$oer_assign_widget = unserialize( get_post_meta($page_id,"_oer_assign_widget",true) );
-	
+
 		if (!empty($index))
 		{
 			$sidebar = $wp_registered_sidebars[$index];
 			foreach ( (array) $oer_assign_widget as $id )
 			{
 				if ( !isset($wp_registered_widgets[$id]) ) continue;
-		
+
 				$params = array_merge(
 					array( array_merge( $sidebar, array('widget_id' => $id, 'widget_name' => $wp_registered_widgets[$id]['name']) ) ),
 					(array) $wp_registered_widgets[$id]['params']);
-		
+
 				// Substitute HTML id and class attributes into before_widget
 				$classname_ = '';
 				foreach ( (array) $wp_registered_widgets[$id]['classname'] as $cn )
@@ -93,28 +93,28 @@ function oer_dynamic_sidebar($index, $page_id)
 					elseif ( is_object($cn) )
 						$classname_ .= '_' . get_class($cn);
 				}
-				
+
 				$classname_ = ltrim($classname_, '_');
 				$params[0]['before_widget'] = sprintf($params[0]['before_widget'], $id, $classname_);
-		
+
 				$params = apply_filters( 'dynamic_sidebar_params', $params );
-		
+
 				$callback = $wp_registered_widgets[$id]['callback'];
-		
+
 				do_action( 'dynamic_sidebar', $wp_registered_widgets[ $id ] );
-		
+
 				if ( is_callable($callback) )
 				{
 					call_user_func_array($callback, $params);
 					$did_one = true;
 				}
-			}		
+			}
 		}//index found
 	}//pagid found
 }
 
 function the_content_filter($content) {
-	
+
     $block = join("|",array("home_left_column", "home_right_column"));
     $rep = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/","[$2$3]",$content);
     $rep = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/","[/$2]",$rep);
@@ -126,4 +126,18 @@ function wpse_wpautop_nobr( $content )
 {
 	return wpautop( $content, false );
 }
-?>
+
+function my_remove_version_info() {
+     return '';
+}
+add_filter('the_generator', 'my_remove_version_info');
+
+// remove wp version param from any enqueued scripts
+function vc_remove_wp_ver_css_js( $src ) {
+    if ( strpos( $src, 'ver=' ) )
+        $src = remove_query_arg( 'ver', $src );
+    return $src;
+}
+add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
+add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
+
