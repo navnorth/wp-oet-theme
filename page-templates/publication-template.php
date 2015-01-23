@@ -33,7 +33,15 @@
              <?php
 				if(isset($image) && !empty($image))
 				{
+            		if(isset($button_one_link) && !empty($button_one_link))
+            		{
+            			echo '<a href="' . $button_one_link . '" onclick="__gaTracker(\'send\', \'event\', \'download\', \'' . $button_one_link . '\');" target="_blank">';
+            		}
             		echo '<img src="'. $image[0] .'"/>';
+            		if(isset($button_one_link) && !empty($button_one_link))
+            		{
+            			echo '</a>';
+            		}
 				}
 				echo '<div class="link_dwnlds">';
 				if(isset($button_one_text) && !empty($button_one_text) && isset($button_one_link) && !empty($button_one_link) && isset($button_one_color) && !empty($button_one_color))
