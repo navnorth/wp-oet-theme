@@ -7,7 +7,7 @@ add_shortcode("disruptive_content", "disruptive_content_fun" );
 function disruptive_content_fun($attr, $content = null)
 {
 	extract($attr);
-	
+
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
@@ -21,7 +21,7 @@ function disruptive_content_fun($attr, $content = null)
 			$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'">'. $button_text .'</a></div></div>';
         $return .= '</div>';
     $return .= '</div>';
-	
+
 	return $return;
 }
 
@@ -49,12 +49,12 @@ function oet_accordion_func($atts, $content = null)
   $return = '';
 
   if(isset($accordion_series) && !empty($accordion_series))
-  {		
+  {
 		$return .= '<div class="panel panel-default">';
-			
+
 		$return .= '<div class="panel-heading" role="tab" id="heading'. $accordion_series .'">';
 		  $return .= '<h5 class="panel-title">';
-			
+
 			  if(isset($expanded) && !empty($expanded) && strtolower($expanded) == "true")
 			  {
 				  $class = "";
@@ -65,22 +65,22 @@ function oet_accordion_func($atts, $content = null)
 				  $class = "collapsed";
 				  $uptcls = '';
 			  }
-			  
+
 			  $return .= '<a class="'.$class.'" data-toggle="collapse" data-parent="#accordion" href="#collapse'. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $accordion_series .'">';
 			  $return .= $title;
 			$return .= '</a>';
 		 $return .= ' </h5>';
 		$return .= '</div>';
-			
+
 		$return .= '<div id="collapse'. $accordion_series .'" class="panel-collapse collapse '.$uptcls.'" role="tabpanel" aria-labelledby="heading'. $accordion_series .'">';
 		  $return .= '<div class="panel-body">';
-			//$content = apply_filters('the_content', $content);	
+			//$content = apply_filters('the_content', $content);
 			$return .= $content;
 		  $return .= '</div>';
 		$return .= '</div>';
-		
+
 		$return .= '</div>';
-		
+
 		return $return;
   }
 }
@@ -94,12 +94,12 @@ function pull_quotethemefn($atts, $content = null)
 {
 	$speaker = $atts['speaker'];
 	$additional_info = $atts['additional_info'];
-	
+
 	$return = '';
 	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
 		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
 	$return .= '</div>';
-	
+
 	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
 	if(isset($content) && !empty($content))
 	{
@@ -167,12 +167,12 @@ function featured_item_func($attr, $content = null)
 	if(isset($content) && !empty($content))
 	{
 		//$description = apply_filters('the_content', $description);
-    	$return .= '<p class="rght_mtr">'. $content .'</p>';    
+    	$return .= '<p class="rght_mtr">'. $content .'</p>';
 	}
 	if(isset($url) && !empty($url) && strtolower($button) == 'show')
 	{
 		$return .= '<div class="home_dwnld_btn"><a class="btn_dwnld" style="background-color:#e57200" href="'.$url.'">';
-		
+
 		if(isset($button_text) && !empty($button_text))
 		{
 			$return .= $button_text.'</a></div>';
@@ -189,7 +189,7 @@ function featured_item_func($attr, $content = null)
 		$return .= '</div>';
 	}
     $return .= '</div>';
-	
+
 	return $return;
 }
 
@@ -201,26 +201,26 @@ add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null)
 {
 	extract($attr);
-	
+
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
 	if(isset($heading) && !empty($heading))
 	{
 		$return .= '<h4>'. $heading .'</h4>';
 	}
-	
+
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';
-	
+
 			if(isset($src) && !empty($src))
-			{	
+			{
 				if(empty($height))
 				{
-					$height = 300;	
+					$height = 300;
 				}
-					
+
              	$return .= '<iframe width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
 			}
-			
+
 			if(isset($description) && !empty($description))
 			{
 				//$description = apply_filters('the_content', $description);
@@ -228,7 +228,7 @@ function feature_video_func($attr, $content = null)
 			}
     $return .= '</div>';
 	$return .= '</div>';
-	return $return;	
+	return $return;
 }
 
 /**
@@ -253,12 +253,15 @@ function home_right_column_func($atts, $content = null)
 add_shortcode('home_left_column', 'home_left_column_func');
 function home_left_column_func($atts, $content = null)
 {
-	//extract($atts);
-	
+	extract($atts);
+
 	$return = '';
 	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= do_shortcode($content);
-	$return .= '<div class="sprtn_brdr"></div>';
+	if( (isset($divider) && ($divider == 'yes')) || !(isset($divider)) )
+	{
+		$return .= '<div class="sprtn_brdr"></div>';
+	}
 	$return .= '</div>';
 	return $return;
 }
@@ -274,7 +277,7 @@ function oet_featured_area_descrptn($attr, $content = null)
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
-			
+
 			if(isset($heading) && !empty($heading))
 			{
 				$return .= '<h4>'. $heading .'</h4>';
@@ -292,7 +295,7 @@ function oet_featured_area_descrptn($attr, $content = null)
 				//$description = apply_filters('the_content', $content);
 				$return .= '<p>'. $content .'</p>';
 			}
-		    
+
 			$return .= '</div>';
 	$return .= '</div>';
 	return $return;
@@ -313,9 +316,9 @@ function share_the_toolkit_func($atts, $content = null)
             $return .= '<a href="'. google_url.'"><span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. twitter_url.'"><span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span></a>';
             $return .= '<a href="'. linktonwltr.'"><span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span></a>';
-       $return .= ' </p>';	
+       $return .= ' </p>';
 	$return .= '</div>';
-	return $return;   
+	return $return;
 }
 /**
  * Recommended Resource
@@ -330,7 +333,7 @@ function recommended_resources_func($attr, $content = null)
 	{
 		$return .= '<p class="pblctn_scl_icn_hedng">'. $heading.'</p>';
 	}
-	
+
 	if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1) && isset($text2) && !empty($text2) && isset($src2) && !empty($src2) && isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 	{
         $return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right tlkt_stp_vdo_cntnr">';
@@ -354,7 +357,7 @@ function recommended_resources_func($attr, $content = null)
 				$return .= '</div>';
 			}
 		}
-		
+
 		if(isset($media_type2) && !empty($media_type2) && strtolower($media_type2) == 'video')
 		{
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
@@ -375,7 +378,7 @@ function recommended_resources_func($attr, $content = null)
 				$return .= '</div>';
 			}
 		}
-		
+
 		if(isset($media_type3) && !empty($media_type3) && strtolower($media_type3) == 'video')
 		{
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
@@ -395,14 +398,14 @@ function recommended_resources_func($attr, $content = null)
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
-	
+
 		}
 		$return .= '</div>';
 	}
 	else
 	{
 		$return .= '<div class="col-md-12 col-sm-12 col-xs-12 padding_left padding_right tlkt_stp_vdo_cntnr">';
-        
+
 		if(isset($media_type1) && !empty($media_type1) && strtolower($media_type1) == 'video')
 		{
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
@@ -423,7 +426,7 @@ function recommended_resources_func($attr, $content = null)
 				$return .= '</div>';
 			}
 		}
-		
+
 		if(isset($media_type2) && !empty($media_type2) && strtolower($media_type2) == 'video')
 		{
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
@@ -444,7 +447,7 @@ function recommended_resources_func($attr, $content = null)
 				$return .= '</div>';
 			}
 		}
-		
+
 		if(isset($media_type3) && !empty($media_type3) && strtolower($media_type3) == 'video')
 		{
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
@@ -464,12 +467,12 @@ function recommended_resources_func($attr, $content = null)
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
-	
-		}    
+
+		}
         $return .= '</div>';
 	}
-	
-	return $return;   
+
+	return $return;
 }
 
 /**
@@ -477,7 +480,7 @@ function recommended_resources_func($attr, $content = null)
  * Shortcode Example : [featured_content_box title='' top_icon='' align='']your content goes here[/featured_content_box]
  */
  add_shortcode("featured_content_box", "featured_content_box_func");
- 
+
  function featured_content_box_func($attr, $content = null)
  {
 	 extract($attr);
@@ -485,7 +488,7 @@ function recommended_resources_func($attr, $content = null)
 		$return .= '<div class="pblctn_right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
-		
+
 		if(isset($top_icon) && !empty($top_icon))
 		{
 			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-'.$top_icon.' "></i></span>';
@@ -494,13 +497,13 @@ function recommended_resources_func($attr, $content = null)
 		{
 			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
 		}
-		
+
 		$return .= '</div>';
             $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
             $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
         $return .= '</div>';
 		$return .= '</div>';
-		
+
 		return $return;
  }
 ?>
