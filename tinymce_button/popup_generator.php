@@ -39,7 +39,7 @@ if($action == "show_popup")
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_video">
 							<div class="oert_snglimgtiny">
@@ -74,7 +74,7 @@ if($action == "show_popup")
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="recommended_resources">
 							<div class="oert_snglimgtiny">
@@ -110,7 +110,7 @@ if($action == "show_popup")
 				var shortcode_type = jQuery(".oet_sngltinyclm.oet_snglslctd").attr("data-shortcode");
 				var shortcode = get_myshortcode(shortcode_type);
 				if(typeof tinyMCE != "undefined" && ( ed = tinyMCE.activeEditor ) && !ed.isHidden()){
-					tinyMCE.activeEditor.execCommand("mceInsertContent", 0, shortcode);	
+					tinyMCE.activeEditor.execCommand("mceInsertContent", 0, shortcode);
 					tinymce.EditorManager.execCommand("mceRemoveControl",true, "content");
 				}
 				else
@@ -128,36 +128,36 @@ if($action == "show_popup")
 			{
 				switch (shortcode_type)
 				{
-				   case "accordian": 
+				   case "accordian":
 					   var shortcode = "[oet_accordion_group][oet_accordion title=\'\' accordion_series=\'one\' expanded=\'\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\' expanded=\'\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\' expanded=\'\'] your content goes here [/oet_accordion][/oet_accordion_group]";
 					   break;
-				   case "banner": 
+				   case "banner":
 					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
 					   break;
-				   case "featured_area": 
+				   case "featured_area":
 					   var shortcode = "[oet_featured_area heading=\'\' image=\'\' title=\'\']your content goes here[/oet_featured_area]";
 					   break;
-				   case "featured_content": 
+				   case "featured_content":
 					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
-				   case "featured_video": 
+				   case "featured_video":
 					   var shortcode = "[featured_video heading=\'\' src=\'\' description=\'\' height=\'\']";
 					   break;
-				   case "left_column": 
-					   var shortcode = "[home_left_column] your content goes here [/home_left_column]";
+				   case "left_column":
+					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";
 					   break;
-				   case "pull_quotes": 
+				   case "pull_quotes":
 					   var shortcode = "[pull_quote speaker=\'\' additional_info=\'\']your content goes here[/pull_quote]";
 					   break;
-				   case "right_column": 
+				   case "right_column":
 					   var shortcode = "[home_right_column] your content goes here [/home_right_column]";
 					   break;
-				   case "recommended_resources": 
+				   case "recommended_resources":
 					   var shortcode = "[recommended_resources media_type1=\'\' src1=\'\' text1=\'\' link1=\'\' media_type2=\'\' src2=\'\' text2=\'\' link2=\'\' media_type3=\'\' src3=\'\' text3=\'\'  link3=\'\']";
 					   break;
-				   case "featured_content_box": 
+				   case "featured_content_box":
 					   var shortcode = "[featured_content_box title=\'\' top_icon=\'\' align=\'\']your content goes here[/featured_content_box]";
-					   break;	      
+					   break;
 				   default:
 				   	   var shortcode = "";
 				   	   break

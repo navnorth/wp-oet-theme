@@ -248,7 +248,7 @@ function home_right_column_func($atts, $content = null)
 
 /**
  * Home Left Column
- * Shortcode Example : [home_left_column] your content goes here [/home_left_column]
+ * Shortcode Example : [home_left_column divider="yes/no"] your content goes here [/home_left_column]
  */
 add_shortcode('home_left_column', 'home_left_column_func');
 function home_left_column_func($atts, $content = null)
