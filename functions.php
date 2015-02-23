@@ -141,3 +141,8 @@ function vc_remove_wp_ver_css_js( $src ) {
 add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
+// Fed Govt analytics script
+function federated_analytics_tracking_code(){
+    echo '<script language="javascript" id="_fed_an_ua_tag" src="http://www2.ed.gov/style/Universal-Federated-Analytics.1.0.js?ver=true&agency=ED"></script>';
+}
+add_action('wp_head', 'federated_analytics_tracking_code');
