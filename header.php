@@ -38,8 +38,8 @@
 
         <div class="row hdr">
         	<div class="col-md-7 col-sm-8 col-xs-12">
-            	<a href="<?php echo site_url();?> ">
-                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Home"/>
+            	<a href="<?php echo site_url();?>" Title="Home">
+                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Office of Educational Technology Logo"/>
                 </a>
             </div>
 
