@@ -38,8 +38,8 @@
 
         <div class="row hdr">
         	<div class="col-md-7 col-sm-8 col-xs-12">
-            	<a href="<?php echo site_url();?>" title="Home">
-                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Office of Innovation and Improvement"/>
+            	<a href="<?php echo site_url();?> ">
+                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="Home"/>
                 </a>
             </div>
 
@@ -73,15 +73,15 @@
                 	<a href="<?php echo twitter_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span>
                     </a>
-                    <a href="<?php echo facebook_url;?>" target="_blank">
+                    <!-- a href="<?php echo facebook_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span>
-                    </a>
-                    <a href="<?php echo yotube_url;?>" target="_blank">
+                    </a -->
+                    <!-- a href="<?php echo yotube_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-youtube-play fa-stack-2x"></i></span>
-                    </a>
-                    <a href="<?php echo google_url;?>" target="_blank">
+                    </a -->
+                    <!-- a href="<?php echo google_url;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span>
-                    </a>
+                    </a -->
                     <a href="<?php echo linktonwltr;?>" target="_blank">
                     	<span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span>
                     </a>
