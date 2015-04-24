@@ -1,0 +1,3 @@
+*.sublime-*
+teched/wp-content/cache
+*.DS_Store
