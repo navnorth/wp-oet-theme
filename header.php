@@ -32,7 +32,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-
+<!-- Container -->
 <div class="container-fluid">
 	<div class="container">
 
