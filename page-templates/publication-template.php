@@ -4,7 +4,7 @@
  */
 ?>
 <?php get_header();?>
- <div class="row">
+ <div id="content" class="row">
 
 	<?php
 		global $post;

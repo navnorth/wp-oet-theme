@@ -7,7 +7,7 @@
 	get_header();
 	$page_id = get_the_ID();
 ?>
- <div class="row">
+ <div id="content" class="row">
 	<div class="col-md-9 col-sm-12 padding_left">
     	<?php
 			while ( have_posts() ) : the_post();
