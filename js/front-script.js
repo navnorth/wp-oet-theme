@@ -23,21 +23,34 @@ jQuery( document ).ready(function() {
 	
 	/** Keyboard Navigation using Keydown event **/
 	jQuery('.menu-item > a').on('keydown',function(e){
-	    if (e.which==40) {
-		if (jQuery(this).parent().has('.sub-menu')) {
-		    jQuery(this).parent().find('.sub-menu').show();
-		    jQuery(this).parent().find('.sub-menu').children().next().focus();
+	    if (e.which==40) { /* Down Arrow Key */
+		/* Check if current menu item has a child menu */
+		if (jQuery(this).parent().has('.sub-menu').length > 0) {
+		    subMenu = jQuery(this).parent().find('.sub-menu');
+		    subMenu.show();
+		    subMenu.focus();
 		} else {
-		    jQuery(this).parent().next().focus();
+		    jQuery(this).parent().next().find('a').focus();
 		}
 	       return false;
 	    }
-	    if (e.which==38) {
+	    if (e.which==38) { /* Up Arrow Key */
+		/* Check if sub menu is visible, then hide*/
 		 if (jQuery(this).parent().has('.sub-menu').is(':visible')) {
 		    jQuery(this).parent().find('.sub-menu').hide();
 		    jQuery(this).parent().find('.sub-menu').removeAttr('style');
 		}
 		return false;
 	    }
+	});
+	jQuery('.menu-item > a').on('mouseenter' , function(){
+	     if (jQuery(this).parent().has('.sub-menu')) {
+		jQuery('.sub-menu').removeAttr('style');
+	     }
+	});
+	jQuery('.menu-item > a').on('focus' , function(){
+	     if (jQuery(this).parent().has('.sub-menu').length>0) {
+		jQuery('.sub-menu').removeAttr('style');
+	     }
 	});
 }); 
