@@ -32,6 +32,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+<!-- Skip Content Navigation -->
+<div id="skipcontent"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to Content', 'wp-oet-theme' ); ?>"><?php _e( 'Skip to Content', 'wp-oet-theme' ); ?></a></div>
+
 <!-- Container -->
 <div class="container-fluid">
 	<div class="container">
@@ -93,7 +96,7 @@
         <div class="row top_strp"></div>
         <div class="row navi_bg">
         	<div class="main-menu">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
             </div>
 
             <span class="navi_icn fa-stack"><i class="fa fa-bars fa-stack-2x"></i></span>
