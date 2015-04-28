@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<div class="row site-content">
+	<div id="content" class="row site-content">
 
 		<?php if ( have_posts() ) : ?>
 

@@ -16,7 +16,7 @@ get_header();
 global $post;
 ?>
 
-	<div class="row site-content">
+	<div id="content" class="row site-content">
     	
         <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
         	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
