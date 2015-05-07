@@ -253,7 +253,7 @@ function home_right_column_func($atts, $content = null)
 add_shortcode('home_left_column', 'home_left_column_func');
 function home_left_column_func($atts, $content = null)
 {
-	if (is_array($atts)) extract($atts);
+	extract($atts);
 
 	$return = '';
 	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 lft_sid_mtr">';
