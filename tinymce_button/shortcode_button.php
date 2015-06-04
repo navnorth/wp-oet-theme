@@ -1,6 +1,7 @@
 <?php
 add_action('admin_head', 'oet_add_tinyme_button');
-add_action('media_buttons_context', 'oet_media_buttons_context');
+//add_action('media_buttons_context', 'oet_media_buttons_context');
+add_action('media_buttons', 'oet_media_buttons_context');
 add_action('admin_print_footer_scripts', 'oet_add_quicktags');
 function oet_add_quicktags()
 {
@@ -12,7 +13,7 @@ function oet_add_quicktags()
 	</script>
 <?php
 }
-function oet_media_buttons_context()
+function oet_media_buttons_context($context)
 {
 	 global $post_ID, $temp_ID;
 	$iframe_ID = (int) (0 == $post_ID ? $temp_ID : $post_ID);
