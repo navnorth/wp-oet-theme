@@ -6,6 +6,7 @@ function twentytwelve_child_theme_menu()
 add_action('admin_menu', 'twentytwelve_child_theme_menu');
 function theme_options_settings()
 {
+	$return = "";
 	$temlate_sidebar = array(
 						"publication-template" 	=> "page-templates/publication-template.php",
 						"toolkit-template" 		=> "page-templates/toolkit-template.php",
@@ -14,7 +15,7 @@ function theme_options_settings()
 						
 	if(isset($_REQUEST) && !empty($_REQUEST))
 	{
-		if($_REQUEST["action"] == "widget_assign")
+		if(isset($_REQUEST["action"]) && $_REQUEST["action"] == "widget_assign")
 		{
 			global $wp_registered_sidebars, $wp_registered_widgets;
 			$page_id = $_REQUEST["page_id"];
