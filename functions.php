@@ -146,3 +146,19 @@ function federated_analytics_tracking_code(){
     echo '<script language="javascript" id="_fed_an_ua_tag" src="http://www2.ed.gov/style/Universal-Federated-Analytics.1.0.js?ver=true&agency=ED"></script>';
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
+
+// Fed Govt analytics script
+function google_analytics_with_userid(){
+    $ga_id = 'UA-55012662-2';
+    echo "<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
+    if(isset($_COOKIE['GAT_token']) && !empty($_COOKIE['GAT_token']))
+	{
+    	echo "ga('create', '" . $ga_id . "', { 'userId': '" . $_COOKIE['GAT_token'] . "' });";
+
+    } else {
+    	echo "ga('create', '" . $ga_id . "', 'auto');";
+    }
+	echo "ga('send', 'pageview'); </script>";
+}
+add_action('wp_head', 'google_analytics_with_userid');
+
