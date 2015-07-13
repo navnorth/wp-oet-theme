@@ -4,15 +4,7 @@
  */
 ?>
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) & !(IE 8)]><!-->
 <html <?php language_attributes(); ?>>
-<!--<![endif]-->
 <head>
 <!-- force IE to disable compatibility mode on IE9+, due to ed.gov intranet... this must be first in HEAD -->
 <meta http-equiv="X-UA-Compatible" content="IE=9" />
@@ -31,7 +23,17 @@
 <?php wp_head(); ?>
 </head>
 
+
+<!--[if IE 7]>
+<body <?php body_class("ie ie7"); ?>>
+<![endif]-->
+<!--[if IE 8]>
+<body <?php body_class("ie ie8"); ?>>
+<![endif]-->
+<!--[if !(IE 7) & !(IE 8)]><!-->
 <body <?php body_class(); ?>>
+<!--<![endif]-->
+
 <!-- Skip Content Navigation -->
 <div id="skipcontent"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to Content', 'wp-oet-theme' ); ?>"><?php _e( 'Skip to Content', 'wp-oet-theme' ); ?></a></div>
 
