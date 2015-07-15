@@ -18,7 +18,7 @@ get_header();
 global $post;
 ?>
 
-	<div id="content" class="row site-content">
+	<div id="content" class="row site-content" tabindex="-1">
 		
         	<div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
             	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
