@@ -8,6 +8,8 @@ function disruptive_content_fun($attr, $content = null)
 {
 	extract($attr);
 
+	$click_event = "onclick='ga('send', 'event', 'download', '".$button_url."');'";
+	
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
@@ -18,7 +20,7 @@ function disruptive_content_fun($attr, $content = null)
             $return .= '</p>';
         $return .= '</div>';
         $return .= '<div class="col-md-4 col-sm-4 col-xs-4 text-right">';
-			$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'">'. $button_text .'</a></div></div>';
+			$return .= '<div class="link_dwnlds"><div><a href="'. $button_url .'" class="btn_dwnld" style="background-color:'. $button_color.'" '.$click_event.' target="_blank">'. $button_text .'</a></div></div>';
         $return .= '</div>';
     $return .= '</div>';
 
