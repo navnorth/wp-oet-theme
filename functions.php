@@ -154,6 +154,7 @@ function google_analytics_with_userid(){
     if(isset($_COOKIE['GAT_token']) && !empty($_COOKIE['GAT_token']))
 	{
     	echo "ga('create', '" . $ga_id . "', { 'userId': '" . $_COOKIE['GAT_token'] . "' });";
+        echo "ga('set', 'dimension1', '" . $_COOKIE['GAT_token'] . "');";
 
     } else {
     	echo "ga('create', '" . $ga_id . "', 'auto');";
