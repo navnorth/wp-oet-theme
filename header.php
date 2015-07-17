@@ -11,6 +11,8 @@
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="height=device-height">
+<meta name="viewport" content="initial-scale=1"/>
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri();?>/images/favicon.ico" type="image/x-icon">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -22,7 +24,6 @@
 <![endif]-->
 <?php wp_head(); ?>
 </head>
-
 
 <!--[if IE 7]>
 <body <?php body_class("ie ie7"); ?>>
