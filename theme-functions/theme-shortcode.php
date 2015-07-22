@@ -8,7 +8,7 @@ function disruptive_content_fun($attr, $content = null)
 {
 	extract($attr);
 
-	$click_event = "onclick='ga('send', 'event', 'download', '".$button_url."');'";
+	$click_event = 'onclick="ga("send", "event", "download", "'.$button_url.'");"';
 	
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
