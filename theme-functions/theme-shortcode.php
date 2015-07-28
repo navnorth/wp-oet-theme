@@ -203,6 +203,46 @@ function feature_video_func($attr, $content = null)
 	extract($attr);
 
 	$return = '';
+	
+	$tracking_script = " 	// This code loads the IFrame Player API code asynchronously \n".
+				"var tag = document.createElement('script'); \n".
+				"tag.src = \"http://www.youtube.com/iframe_api\"; \n ".
+				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n";
+				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n";
+				
+	$tracking_script .= "	// This code is called by the YouTube API to create the player object \n".
+				"function onYouTubeIframeAPIReady(event) { \n".
+				"	player = new YT.Player('ytplayer', { \n".
+				"	events: { \n".
+				"		'onReady': onPlayerReady, \n".
+				"		'onStateChange': onPlayerStateChange \n".
+				"		} \n".
+				"	}); \n".
+				"}\n";
+	
+	$tracking_script .= "	var pauseFlag = false; \n".
+				"function onPlayerReady(event) { \n".
+				"	// do nothing, no tracking needed \n".
+				"} \n".
+				"function onPlayerStateChange(event) { \n".
+				"	// track when user clicks to Play \n".
+				"	if (event.data == YT.PlayerState.PLAYING) { \n".
+				"		_gaq.push(['_trackEvent', 'Videos', 'Play', '".$src."']);\n".
+				"		pauseFlag = true; \n".
+				"	}\n".
+				"	// track when user clicks to Pause \n".
+				"	if (event.data == YT.PlayerState.PAUSED && pauseFlag) { \n".
+				"		_gaq.push(['_trackEvent', 'Videos', 'Pause', '".$src."']); \n".
+				"		pauseFlag = false; \n ".
+				"	} \n".
+				"	// track when video ends \n".
+				"	if (event.data == YT.PlayerState.ENDED) { \n".
+				"	_gaq.push(['_trackEvent', 'Videos', 'Finished', '".$src."']); \n".
+				"	}\n".
+				"} \n";
+	
+	$return .= $tracking_script;
+	
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
 	if(isset($heading) && !empty($heading))
 	{
@@ -218,7 +258,7 @@ function feature_video_func($attr, $content = null)
 					$height = 300;
 				}
 
-             	$return .= '<iframe width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
+             	$return .= '<iframe id="ytplayer" width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
 			}
 
 			if(isset($description) && !empty($description))
