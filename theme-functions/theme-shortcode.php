@@ -207,6 +207,9 @@ function feature_video_func($attr, $content = null)
 	if (!$id)
 		$id = "ytplayer";
 	
+	if ($videoid)
+		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1";
+	
 	$tracking_script = "<script type='text/javascript'>\n";
 	
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
