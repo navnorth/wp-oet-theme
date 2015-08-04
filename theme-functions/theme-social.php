@@ -1,7 +1,7 @@
 <?php
 function twentytwelve_menu()
 {
-	add_theme_page('Social Media Options', 'Social Media Options', 'edit_theme_options', 'socialmedia-options', 'socialmedia_settings');
+	add_theme_page('Theme Settings', 'Theme Settings', 'edit_theme_options', 'socialmedia-options', 'socialmedia_settings');
 }
 add_action('admin_menu', 'twentytwelve_menu');
 function socialmedia_settings()
@@ -9,6 +9,7 @@ function socialmedia_settings()
 	if(isset($_POST["save_social"]))
 	{
 		extract($_POST);
+		update_option("google_analytics_id", $google_analytics_id);
 		update_option("twitter_url", $twitter_url);
 		update_option("facebook_url", $facebook_url);
 		update_option("yotube_url", $yotube_url);
@@ -17,6 +18,7 @@ function socialmedia_settings()
 		update_option("linktonwltr", $linktonwltr);
 	}
 	
+	$google_analytics_id = get_option("google_analytics_id");
 	$twitter_url = get_option("twitter_url");
 	$facebook_url = get_option("facebook_url");
 	$yotube_url = get_option("yotube_url");
@@ -26,10 +28,14 @@ function socialmedia_settings()
 	
 	$return = '';
 	$return .=  '<div class="wrap">
-					<h2>Social Media Setting</h2>';
+					<h2>Theme Settings</h2>';
 					
 	$return .= '<form method="post">';
 		$return .= '<div class="oer_sclmda_wrpr">
+					  <div class="oer_sclmda_sub_wrapper">
+							<div class="oer_sclmda_txt"><strong>Google Analytics ID</strong></div>
+							<div class="oer_sclmda_fld"><input type="text" name="google_analytics_id" value="'. $google_analytics_id.'" /></div>
+					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Twitter</strong></div>
 							<div class="oer_sclmda_fld"><input type="text" name="twitter_url" value="'. $twitter_url.'" /></div>
