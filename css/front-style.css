@@ -96,7 +96,8 @@ hr { width: 100%}
 	left:0px;
 	top:0px;
 	background:#00529f;
-	outline:0;	
+	outline:0;
 	-webkit-transition: top .1s ease-in, background .5s linear;
         transition: top .1s ease-in, background .5s linear;
 }
+.container div { outline: 0; }
