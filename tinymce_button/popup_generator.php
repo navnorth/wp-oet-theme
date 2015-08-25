@@ -141,7 +141,7 @@ if($action == "show_popup")
 					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video":
-					   var shortcode = "[featured_video heading=\'\' src=\'\' description=\'\' height=\'\']";
+					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
 					   break;
 				   case "left_column":
 					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";

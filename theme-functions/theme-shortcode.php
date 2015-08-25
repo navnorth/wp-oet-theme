@@ -7,7 +7,7 @@ add_shortcode("disruptive_content", "disruptive_content_fun" );
 function disruptive_content_fun($attr, $content = null)
 {
 	extract($attr);
-	
+
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
@@ -206,12 +206,12 @@ function feature_video_func($attr, $content = null)
 	$return = '';
 	if (!$id)
 		$id = "ytplayer";
-	
+
 	if ($videoid)
 		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1";
-	
+
 	$tracking_script = "<script type='text/javascript'>\n";
-	
+
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
 				"tag.src = \"http://www.youtube.com/iframe_api\"; \n ".
@@ -247,22 +247,22 @@ function feature_video_func($attr, $content = null)
 				"	// track when user clicks to Play \n".
 				"	if (event.data == YT.PlayerState.PLAYING) { \n".
 				"		console.log('playing'); \n".
-				"		ga('send','event','".$post->post_title." Video','Play', videoId);\n".
+				"		ga('send','event','Featured Video: ".$post->post_title."','Play', videoId);\n".
 				"		pauseFlag = true; \n".
 				"	}\n".
 				"	// track when user clicks to Pause \n".
 				"	if (event.data == YT.PlayerState.PAUSED && pauseFlag) { \n".
-				"		ga('send','event', '".$post->post_title." Video', 'Pause', videoId); \n".
+				"		ga('send','event','Featured Video: ".$post->post_title."', 'Pause', videoId); \n".
 				"		pauseFlag = false; \n ".
 				"	} \n".
 				"	// track when video ends \n".
 				"	if (event.data == YT.PlayerState.ENDED) { \n".
-				"		ga('send', 'event', '".$post->post_title." Video', 'Finished', videoId); \n".
+				"		ga('send', 'event','Featured Video: ".$post->post_title."', 'Finished', videoId); \n".
 				"	}\n".
 				"} \n";
-				
+
 	$tracking_script .= "</script>";
-	
+
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
 	if(isset($heading) && !empty($heading))
 	{
