@@ -11,15 +11,15 @@
 ?>
         <div class="row ftr">
             <div class="col-md-12 col-sm-12 col-xs-12 ftr_strp"></div>
-            <div class="col-md-10 col-sm 10 col-xs-10 ftr_lnks">   
+            <div class="col-md-10 col-sm 10 col-xs-10 ftr_lnks">
                <?php wp_nav_menu( array('menu' => "Footer Menu") );?>
-            </div>  
+            </div>
             <div class="col-md-2 col-sm- col-xs-2 text-right ftr_logo">
-                <a href="http://www.ed.gov" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png" alt="Logo"/></a>
-            </div>  
+                <a href="http://www.ed.gov" target="_blank"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png" alt="ED.gov Logo"/></a>
+            </div>
         </div>
-    
-    </div> 
+
+    </div>
 </div>
 <?php wp_footer(); ?>
 </body>
