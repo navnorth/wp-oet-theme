@@ -214,7 +214,7 @@ function feature_video_func($attr, $content = null)
 
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
-				"tag.src = \"http://www.youtube.com/iframe_api\"; \n ".
+				"tag.src = \"//www.youtube.com/iframe_api\"; \n ".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
 				"	// This code is called by the YouTube API to create the player object \n".
@@ -299,7 +299,8 @@ function feature_video_func($attr, $content = null)
 add_shortcode('home_right_column', 'home_right_column_func');
 function home_right_column_func($atts, $content = null)
 {
-	//extract($atts);
+	if (is_array($atts)) extract($atts);
+
 	$return = '';
 	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 rght_sid_mtr">';
 			$return .= do_shortcode($content);
@@ -314,7 +315,7 @@ function home_right_column_func($atts, $content = null)
 add_shortcode('home_left_column', 'home_left_column_func');
 function home_left_column_func($atts, $content = null)
 {
-	extract($atts);
+	if (is_array($atts)) extract($atts);
 
 	$return = '';
 	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 lft_sid_mtr">';
