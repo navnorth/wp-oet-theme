@@ -154,9 +154,10 @@ function google_analytics_with_userid(){
 	echo "<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');";
 	if(isset($_COOKIE['GAT_token']) && !empty($_COOKIE['GAT_token']))
 	    {
-	    echo "ga('create', '" . $ga_id . "', { 'userId': '" . $_COOKIE['GAT_token'] . "' });";
-	    echo "ga('set', 'dimension1', '" . $_COOKIE['GAT_token'] . "');";
-    
+	    $token = htmlspecialchars($_COOKIE['GAT_token']);
+	    echo "ga('create', '" . $ga_id . "', { 'userId': '" . $token . "' });";
+	    echo "ga('set', 'dimension1', '" . $token . "');";
+
 	} else {
 	    echo "ga('create', '" . $ga_id . "', 'auto');";
 	}
