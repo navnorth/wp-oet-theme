@@ -508,4 +508,66 @@ function recommended_resources_func($attr, $content = null)
 
 		return $return;
  }
+ 
+ /**
+ * Button
+ * Shortcode Example : [button button_color ='' text='' text_color='#ffffff']
+ */
+ add_shortcode("button", "button_func");
+ function button_func($attribute, $content = null) {
+	
+	extract($attribute);
+	
+	//Checks if content is provided otherwise display the text attribute as button text
+	if ($content) {
+		$buttonText = $content;
+	} else {
+		$buttonText = $text;
+	}
+	
+	//Button Color
+	if ($button_color){
+		$buttonColor = "background-color:".$button_color.";";	
+	}
+	
+	//Button Text color
+	if ($text_color){
+		$buttonTextColor = "color:".$text_color.";";
+	}
+	
+	//Button Font Face
+	if ($font_face) {
+		$buttonFontFace = "font-family:".$font_face.";";
+	}
+	
+	//Button Font Size
+	if ($font_size) {
+		$buttonFontSize = "font-size:".$font_size."px;";
+	}
+	
+	//Button Font Weight
+	if ($font_weight) {
+		$buttonFontWeight = "font-weight:".$font_weight.";";
+	}
+	
+	//Button Code
+	$buttonStart = "<button class='btn custom-button' style='".$buttonColor.$buttonTextColor.$buttonFontFace.$buttonFontSize.$buttonFontWeight."'>";
+	$buttonEnd = "</button>";
+	
+	$return = $buttonStart.$buttonText.$buttonEnd;
+	
+	if ($new_window=="yes") {
+		$newWindow = "target='_blank'";
+	}
+	
+	if ($url) {
+		$buttonUrl = $url;
+		$urlStart = "<a href='".$buttonUrl."' onmousedown='_sendEvent(\"Outbound\",\"tech.ed.gov\",\"".$buttonUrl."\",0);' ".$newWindow.">";
+		$urlEnd = "</a>";
+		$return = $urlStart.$return.$urlEnd;
+	}
+	
+	return $return;
+	//$return = '<a href="http://tech.ed.gov/open-education/go-open-districts/" onmousedown="_sendEvent('Outbound','tech.ed.gov','/open-education/go-open-districts/',0);"><button class="btn btn-primary btn-large netp-button">#GoOpen Districts</button></a>';
+ }
 ?>
