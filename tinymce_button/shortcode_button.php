@@ -1,7 +1,10 @@
 <?php
 add_action('admin_head', 'oet_add_tinyme_button');
-//add_action('media_buttons_context', 'oet_media_buttons_context');
+
 add_action('media_buttons', 'oet_media_buttons_context');
+//fallback if media_buttons fail
+add_action('media_buttons_context', 'oet_media_buttons_context');
+
 add_action('admin_print_footer_scripts', 'oet_add_quicktags');
 function oet_add_quicktags()
 {
@@ -15,7 +18,7 @@ function oet_add_quicktags()
 }
 function oet_media_buttons_context($context)
 {
-	 global $post_ID, $temp_ID;
+	global $post_ID, $temp_ID;
 	$iframe_ID = (int) (0 == $post_ID ? $temp_ID : $post_ID);
 	$out = '<a id="add_shortcode" style="display:none" href="'.get_stylesheet_directory_uri().'/tinymce_button/popup_generator.php?action=show_popup&width=700&height=500" class="hide-if-no-js thickbox" title="Add shortcode"><img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/icon_shortcodes.png" alt="Add Shortcode" /></a>';
 	return $context . $out;
