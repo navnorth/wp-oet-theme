@@ -570,4 +570,25 @@ function recommended_resources_func($attr, $content = null)
 	return $return;
 	//$return = '<a href="http://tech.ed.gov/open-education/go-open-districts/" onmousedown="_sendEvent('Outbound','tech.ed.gov','/open-education/go-open-districts/',0);"><button class="btn btn-primary btn-large netp-button">#GoOpen Districts</button></a>';
  }
+ 
+ /**
+ * Spacer
+ * Shortcode Example : [spacer height='20']
+ */
+ add_shortcode("spacer", "spacer_func");
+ function spacer_func($attribute) {
+	
+	extract($attribute);
+	
+	if ($height){
+		$height = "height:".((strpos($height,"px")>0)?$height:$height."px");
+	} else {
+		$height = "height:12px;";
+	}
+	
+	$return = '<div style="'. $height .'"></div>';
+	
+	return $return;
+	
+ }
 ?>
