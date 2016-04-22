@@ -108,3 +108,4 @@ hr { width: 100%}
 	font-size:14px;
 	padding:20px !important;
 }
+.col-xs-1 { padding-left:0 !important; padding-right:0 !important; }
