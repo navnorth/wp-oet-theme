@@ -20,7 +20,6 @@ jQuery( document ).ready(function() {
 	var a_margin = parseInt(heght) - parseInt(a_hght);
 	a_margin = a_margin/2;
 	jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
-<<<<<<< HEAD
 	
 	/** Keyboard Navigation using Keydown event **/
 	jQuery('.menu-item > a').on('keydown',function(e){
@@ -54,35 +53,18 @@ jQuery( document ).ready(function() {
 		jQuery('.sub-menu').removeAttr('style');
 	     }
 	});
+	if (jQuery(window).width()<=600) {
+	    jQuery('.form-group.gray_bg').before('<a href="javascript:void(0)" class="mobile-search-btn"><span class="fa-stack"><i class="fa fa-search" aria-hidden="true"></i></span></a>');
+	    jQuery('.mobile-search-btn').on('click', function(){
+		if (jQuery('.form-group.gray_bg').is(":visible")) {
+		    jQuery('.form-group.gray_bg').hide();
+		    jQuery('.top_strp').css({"margin-top":"0"});
+		    jQuery('.navi_icn').css({"margin-top":"-85px"})
+		} else {
+		    jQuery('.form-group.gray_bg').show();
+		    jQuery('.top_strp').css({"margin-top":"50px"});
+		    jQuery('.navi_icn').css({"margin-top":"-130px"})
+		}
+	    });
+	}
 }); 
-=======
-
-    jQuery("#front_feature_left").hover(function(){
-        jQuery("#front_feature_left").attr("src", "/wp-content/themes/teched-twentytwelve-child/images/mission-rollover-on.png");
-        jQuery("#front_callout_left").fadeIn("slow");
-    },
-    function() {
-        jQuery("#front_feature_left").attr("src", "/wp-content/themes/teched-twentytwelve-child/images/mission-rollover-off.png");
-        jQuery("#front_callout_left").fadeOut();
-    });
-
-    //jQuery("#front_feature_center").hover(function(){
-    //    jQuery("#front_feature_center").attr("src", "/wp-content/uploads/2014/05/Featured-Arrow-Task-Force-on.png");
-    //    jQuery("#front_callout_center").fadeIn("slow");
-    //},
-    //function() {
-    //    jQuery("#front_feature_center").attr("src", "/wp-content/uploads/2014/05/Featured-Arrow-Task-Force-off.png");
-    //    jQuery("#front_callout_center").fadeOut();
-    //});
-
-    jQuery("#front_feature_right").hover(function(){
-        jQuery("#front_feature_right").attr("src", "/wp-content/themes/teched-twentytwelve-child/images/grants-rollover-on.png");
-        jQuery("#front_callout_right").fadeIn("slow");
-    },
-    function() {
-        jQuery("#front_feature_right").attr("src", "/wp-content/themes/teched-twentytwelve-child/images/grants-rollover-off.png");
-        jQuery("#front_callout_right").fadeOut();
-    });
-
-});
->>>>>>> dca3460f007c57db43c26b203a391a39728a3bc8

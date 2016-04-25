@@ -525,6 +525,17 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title a { font-size: 30px !important; line-height: 40px;}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description,
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { line-height: 25px; margin-top: 0 }
+        .navi_bg:hover { background:none; }
+        .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
+        .hdr { position:relative;}
+        .navi_icn { width:16%; float:right;margin-top:-35px; }
+        .soclize { width:75% !important; position:absolute; }
+        .hdr { position:relative;}
+        .form-group.gray_bg {
+           width: 55%;
+           position: absolute;
+           left: 25%;
+        }
 
 }
 @media (max-width: 500px){
@@ -537,6 +548,32 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.ftr_lnks li { width: 100%; text-align: center; padding: 10px 0; border-bottom: 1px solid #eee}
 	.hdr { margin-bottom: 5px}
 	.ftr_logo { margin: 10px 0}
+        
+        .navi_icn { width:15%; float:right;margin-top:-85px; }
+        .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
+        .soclize { width:70% !important; position:absolute; }
+        .hdr { position:relative;}
+        .form-group.gray_bg {
+            position: absolute;
+            left: 0;
+            width:100%;
+            margin-top:45px;
+            display:none;
+        }
+        .form-group.gray_bg .form-control-feedback {
+            right: 2%;
+        }
+        .top_strp { margin-top:0px; }
+        .soclize .socl_icns { padding:16px; }
+        .fa-stack-2x { font-size:1.65em !important }
+        .mobile-search-btn {
+            padding: 9px 12px;
+            color: #ffffff;
+            background: #00529F;
+            position: absolute;
+            right: 17%;
+            top: -2px;
+        }
 }
 @media (max-width: 400px){
 
@@ -544,6 +581,16 @@ http://mrcoles.com/blog/callout-box-css-border-triangles-cross-browser/
 	.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-top: 0;  }
 	.rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
 	.slideshow_container { display: none !important}
+        
+        .soclize { width:70% !important; position:absolute; }
+	.form-group.gray_bg {
+            
+	}
+	.navi_icn { width:16%; float:right;margin-top:-85px; }
+	.fa-bars {
+	  font-size:1.5em !important;
+	  top:10px !important;
+	}
 }
 @media (max-width: 300px){
 
