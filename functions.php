@@ -63,6 +63,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_script('jquery');
     wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+	wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 
