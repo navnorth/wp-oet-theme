@@ -58,3 +58,17 @@
 	height: 136px;
 	width: 136px;
 }
+.oet_bs_row {
+    height:35px;
+    width:100%;
+    background:#808080;
+    border:2px solid #979797;
+    margin-top:20px;
+}
+.oet_bs_column {
+    height:75px;
+    width:35px;
+    background:#808080;
+    border:2px solid #979797;
+    margin:0 auto;
+}

@@ -92,6 +92,22 @@ if($action == "show_popup")
 								Featured Content Box
 							</div>
 						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="row">
+							<div class="oert_snglimgtiny">
+								<div class="oet_bs_row"></div>
+							</div>
+							<div class="oert_snglttltiny">
+								Bootstrap Row
+							</div>
+						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="column">
+							<div class="oert_snglimgtiny">
+								<div class="oet_bs_column"></div>
+							</div>
+							<div class="oert_snglttltiny">
+								Bootstrap Column
+							</div>
+						</div>
 					</div>
 		</div>
 		<div class="submit">
@@ -141,7 +157,7 @@ if($action == "show_popup")
 					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video":
-					   var shortcode = "[featured_video heading=\'\' src=\'\' description=\'\' height=\'\']";
+					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
 					   break;
 				   case "left_column":
 					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";
@@ -157,6 +173,12 @@ if($action == "show_popup")
 					   break;
 				   case "featured_content_box":
 					   var shortcode = "[featured_content_box title=\'\' top_icon=\'\' align=\'\']your content goes here[/featured_content_box]";
+					   break;
+				   case "row":
+					   var shortcode = "[row][/row]";
+					   break;
+				   case "column":
+					   var shortcode = "[column md=\'1\']your content goes here[/column]";
 					   break;
 				   default:
 				   	   var shortcode = "";
