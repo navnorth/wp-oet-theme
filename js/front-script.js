@@ -69,10 +69,11 @@ jQuery( document ).ready(function() {
 
     // Replace SVGs with PNG on unsupported browsers
 	if (!Modernizr.svg) {
-		$('img.svg-replace[src*="svg"]').attr('src', function() {
-			console.log('replacing an svg: '. $(this).attr('src'));
-			return $(this).attr('src').replace('.svg', '.png');
+		jQuery('img.svg-replace[src*="svg"]').attr('src', function() {
+			return jQuery(this).attr('src').replace('.svg', '.png');
 		});
+		//jQuery('*[class=".slideshow_container_style-light .slideshow_pagination ul li"]').css('background', 'url(../images/slider_pager.png) 0 0 no-repeat !important;');
+		console.log('Replaced SVG images with PNG');
 	}
 
 });

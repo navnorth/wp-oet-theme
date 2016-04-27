@@ -76,7 +76,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .hdr { margin-bottom: 5px}
 .hdr .col-md-12, .hdr .col-md-3, .hdr .col-md-11 { padding-right: 0 !important}
 .hdr .col-md-7 { padding-left: 0 !important}
-#header_logo {max-width:620px;}
+#header_logo {max-width:620px; max-height:142;}
 .top_strp_img { float: left; background: url(../images/top_strap_img.png) 0 0 no-repeat}
 .top_strp { overflow: hidden; background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 55px}
 .navi_bg { border-top: 2px solid #d2d3d4}
