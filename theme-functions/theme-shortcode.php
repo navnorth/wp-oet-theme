@@ -568,4 +568,192 @@ function recommended_resources_func($attr, $content = null)
 
 		return $return;
  }
+ 
+ /**
+ * Button
+ * Shortcode Example : [button button_color ='' text='' text_color='#ffffff']
+ */
+ add_shortcode("button", "button_func");
+ function button_func($attribute, $content = null) {
+	
+	extract($attribute);
+	
+	//Checks if content is provided otherwise display the text attribute as button text
+	if ($content) {
+		$buttonText = $content;
+	} else {
+		$buttonText = $text;
+	}
+	
+	//Button Color
+	if ($button_color){
+		$buttonColor = "background-color:".$button_color.";";	
+	}
+	
+	//Button Text color
+	if ($text_color){
+		$buttonTextColor = "color:".$text_color.";";
+	}
+	
+	//Button Font Face
+	if ($font_face) {
+		$buttonFontFace = "font-family:".$font_face.";";
+	}
+	
+	//Button Font Size
+	if ($font_size) {
+		$buttonFontSize = "font-size:".$font_size."px;";
+	}
+	
+	//Button Font Weight
+	if ($font_weight) {
+		$buttonFontWeight = "font-weight:".$font_weight.";";
+	}
+	
+	//Button Code
+	$buttonStart = "<button class='btn custom-button' style='".$buttonColor.$buttonTextColor.$buttonFontFace.$buttonFontSize.$buttonFontWeight."'>";
+	$buttonEnd = "</button>";
+	
+	$return = $buttonStart.$buttonText.$buttonEnd;
+	
+	if ($new_window=="yes") {
+		$newWindow = "target='_blank'";
+	}
+	
+	if ($url) {
+		$buttonUrl = $url;
+		$urlStart = "<a href='".$buttonUrl."' onmousedown='_sendEvent(\"Outbound\",\"tech.ed.gov\",\"".$buttonUrl."\",0);' ".$newWindow.">";
+		$urlEnd = "</a>";
+		$return = $urlStart.$return.$urlEnd;
+	}
+	
+	return $return;
+	//$return = '<a href="http://tech.ed.gov/open-education/go-open-districts/" onmousedown="_sendEvent('Outbound','tech.ed.gov','/open-education/go-open-districts/',0);"><button class="btn btn-primary btn-large netp-button">#GoOpen Districts</button></a>';
+ }
+ 
+ /**
+ * Spacer
+ * Shortcode Example : [spacer height='20']
+ */
+ add_shortcode("spacer", "spacer_func");
+ function spacer_func($attribute) {
+	
+	extract($attribute);
+	
+	if ($height){
+		$height = "height:".((strpos($height,"px")>0)?$height:$height."px");
+	} else {
+		$height = "height:12px;";
+	}
+	
+	$return = '<div style="'. $height .'"></div>';
+	
+	return $return;
+	
+ }
+ 
+ /**
+ * Bootstrap Row
+ * Shortcode Example : [row]
+ */
+ add_shortcode("row", "bootstrap_row_func");
+ function bootstrap_row_func( $atts, $content = null ) {
+
+    $atts = shortcode_atts( array(
+      "xclass" => false,
+      "data"   => false
+	), $atts );
+
+    $class  = 'row';      
+    $class .= ( $atts['xclass'] )   ? ' ' . $atts['xclass'] : '';
+      
+    $data_props = parse_data_attributes( $atts['data'] );
+      
+    return sprintf( 
+      '<div class="%s"%s>%s</div>',
+      esc_attr( $class ),
+      ( $data_props ) ? ' ' . $data_props : '',
+      do_shortcode( $content )
+    );
+  }
+  
+/**
+* Bootstrap Column
+* Shortcode Example : [column lg='12']
+*/
+add_shortcode("column", "bootstrap_column_func");
+function bootstrap_column_func( $atts, $content = null ) {
+
+$atts = shortcode_atts( array(
+      "lg"          => false,
+      "md"          => false,
+      "sm"          => false,
+      "xs"          => false,
+      "offset_lg"   => false,
+      "offset_md"   => false,
+      "offset_sm"   => false,
+      "offset_xs"   => false,
+      "pull_lg"     => false,
+      "pull_md"     => false,
+      "pull_sm"     => false,
+      "pull_xs"     => false,
+      "push_lg"     => false,
+      "push_md"     => false,
+      "push_sm"     => false,
+      "push_xs"     => false,
+      "xclass"      => false,
+      "data"        => false
+	), $atts );
+
+    $class  = '';
+    $class .= ( $atts['lg'] )			                                ? ' col-lg-' . $atts['lg'] : '';
+    $class .= ( $atts['md'] )                                           ? ' col-md-' . $atts['md'] : '';
+    $class .= ( $atts['sm'] )                                           ? ' col-sm-' . $atts['sm'] : '';
+    $class .= ( $atts['xs'] )                                           ? ' col-xs-' . $atts['xs'] : '';
+    $class .= ( $atts['offset_lg'] || $atts['offset_lg'] === "0" )      ? ' col-lg-offset-' . $atts['offset_lg'] : '';
+    $class .= ( $atts['offset_md'] || $atts['offset_md'] === "0" )      ? ' col-md-offset-' . $atts['offset_md'] : '';
+    $class .= ( $atts['offset_sm'] || $atts['offset_sm'] === "0" )      ? ' col-sm-offset-' . $atts['offset_sm'] : '';
+    $class .= ( $atts['offset_xs'] || $atts['offset_xs'] === "0" )      ? ' col-xs-offset-' . $atts['offset_xs'] : '';
+    $class .= ( $atts['pull_lg']   || $atts['pull_lg'] === "0" )        ? ' col-lg-pull-' . $atts['pull_lg'] : '';
+    $class .= ( $atts['pull_md']   || $atts['pull_md'] === "0" )        ? ' col-md-pull-' . $atts['pull_md'] : '';
+    $class .= ( $atts['pull_sm']   || $atts['pull_sm'] === "0" )        ? ' col-sm-pull-' . $atts['pull_sm'] : '';
+    $class .= ( $atts['pull_xs']   || $atts['pull_xs'] === "0" )        ? ' col-xs-pull-' . $atts['pull_xs'] : '';
+    $class .= ( $atts['push_lg']   || $atts['push_lg'] === "0" )        ? ' col-lg-push-' . $atts['push_lg'] : '';
+    $class .= ( $atts['push_md']   || $atts['push_md'] === "0" )        ? ' col-md-push-' . $atts['push_md'] : '';
+    $class .= ( $atts['push_sm']   || $atts['push_sm'] === "0" )        ? ' col-sm-push-' . $atts['push_sm'] : '';
+    $class .= ( $atts['push_xs']   || $atts['push_xs'] === "0" )        ? ' col-xs-push-' . $atts['push_xs'] : '';
+    $class .= ( $atts['xclass'] )                                       ? ' ' . $atts['xclass'] : '';
+      
+    $data_props = parse_data_attributes( $atts['data'] );
+      
+    return sprintf( 
+      '<div class="%s"%s>%s</div>',
+      esc_attr( $class ),
+      ( $data_props ) ? ' ' . $data_props : '',
+      do_shortcode( $content )
+    );
+}
+
+/*--------------------------------------------------------------------------------------
+*
+* Parse data-attributes for shortcodes
+*
+*-------------------------------------------------------------------------------------*/
+function parse_data_attributes( $data ) {
+
+	$data_props = '';
+	
+	if( $data ) {
+	  $data = explode( '|', $data );
+	
+	  foreach( $data as $d ) {
+	    $d = explode( ',', $d );
+	    $data_props .= sprintf( 'data-%s="%s" ', esc_html( $d[0] ), esc_attr( trim( $d[1] ) ) );
+	  }
+	}
+	else { 
+	  $data_props = false;
+	}
+	return $data_props;
+}
 ?>

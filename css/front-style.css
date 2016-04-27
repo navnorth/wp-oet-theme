@@ -102,3 +102,11 @@ hr { width: 100%;}
         transition: top .1s ease-in, background .5s linear;
 }
 .container div { outline: 0; }
+.custom-button {
+	background-color:orange;
+	color: white;
+	font-family: 'Raleway-Bold';
+	font-size:14px;
+	padding:20px !important;
+}
+.col-xs-1 { padding-left:0 !important; padding-right:0 !important; }

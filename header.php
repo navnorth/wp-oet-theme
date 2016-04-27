@@ -45,7 +45,7 @@
         <div class="row hdr">
         	<div class="col-md-7 col-sm-8 col-xs-12">
             	<a href="<?php echo site_url();?>" Title="Home">
-                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.svg" alt="Office of Educational Technology Logo" class="svg-replace" id="header_logo" width="620" height="142" />
+                	<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.svg" alt="Office of Educational Technology Logo" class="svg-replace" id="header_logo" width="620" />
                 </a>
             </div>
 
