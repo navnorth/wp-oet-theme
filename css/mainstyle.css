@@ -346,7 +346,7 @@ h4 { font-family: 'Raleway-Light' !important}
 
 	.pblctn_right_sid_mtr .col-sm-6 {  width: 46.5%; margin-left: 5%}
 	.pblctn_right_sid_mtr .col-sm-6:first-child { margin-left: 0}
-	body { padding-top: 25px;}
+	body { padding-top: 8px;}
 	.lft_sid_mtr { margin-bottom: 15px;}
 	.hdr .col-xs-offset-2 { margin-left: 0px !important; }
 	.panel-group { width: 100%}
@@ -362,7 +362,7 @@ h4 { font-family: 'Raleway-Light' !important}
 @media (max-width: 768px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 52% !important; float: none; margin: 0 0 15px}
 	.soclize { margin-top: 0}
-	.hdr .col-md-3 { margin-top: 20px; padding-left: 0}
+	.hdr .col-md-3 { margin-top: 8px; padding-left: 0}
 	.hdr .col-md-12 { padding-left: 0}
 	.navi_icn { display: block !important}
 	.navi_bg ul { display: none}
@@ -376,6 +376,7 @@ h4 { font-family: 'Raleway-Light' !important}
 
 	.slideshow_container, .slideshow_container, .slideshow_container .slideshow_content { width: 100% !important}
 	.container { width: 100% !important}
+	.top_strp { overflow: hidden; height: 18px}
 	.soclize .socl_icns {margin: 0;}
 
 	.hdr .col-md-7 img { width: 100%}
@@ -434,13 +435,26 @@ h4 { font-family: 'Raleway-Light' !important}
         .navi_bg:hover { background:none; }
         .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
         .hdr { position:relative;}
-        .navi_icn { width:16%; float:right;margin-top:-35px; }
+        .navi_icn { width:16%; float:right;margin-top:-2px; }
         .soclize { width:75% !important; position:absolute; }
         .form-group.gray_bg {
            width: 55%;
            position: absolute;
            left: 25%;
+
         }
+        .mobile-search-btn {
+	        padding: 9px 12px;
+	        line-height: 20px;
+	        font-size: 16px;
+	        color: #ffffff;
+	        background: #00529F;
+	        padding-right: 20px;
+	        right: 17%;
+	        width: 16%;
+	        top: -2px;
+	        position: absolute;
+    	}
 
 }
 @media (max-width: 525px){
@@ -454,31 +468,24 @@ h4 { font-family: 'Raleway-Light' !important}
 	.hdr { margin-bottom: 5px}
 	.ftr_logo { margin: 10px 0}
 
-        .navi_icn { width:15%; float:right;margin-top:-85px; }
-        .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
-        .soclize { width:70% !important; position:absolute; }
-        .hdr { position:relative;}
-        .form-group.gray_bg {
-            position: absolute;
-            left: 0;
-            width:100%;
-            margin-top:45px;
-            display:none;
-        }
-        .form-group.gray_bg .form-control-feedback {
-            right: 2%;
-        }
-        .top_strp { margin-top:0px; }
-        .soclize .socl_icns { padding:16px; }
-        .fa-stack-2x { font-size:1.65em !important }
-        .mobile-search-btn {
-            padding: 9px 12px;
-            color: #ffffff;
-            background: #00529F;
-            position: absolute;
-            right: 17%;
-            top: -2px;
-        }
+    .navi_icn { float:right; margin-top:-48px; }
+    .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
+    .soclize { width:70% !important; position:absolute; }
+    .hdr { position:relative;}
+    .form-group.gray_bg {
+        position: absolute;
+        left: 0;
+        width:100%;
+        margin-top:45px;
+        display:none;
+    }
+    .form-group.gray_bg .form-control-feedback {
+        right: 2%;
+    }
+    .top_strp { margin-top:0px; }
+    .soclize .socl_icns { padding:16px; }
+    .fa-stack-2x { font-size:1.65em !important }
+
 }
 @media (max-width: 400px){
 
@@ -491,10 +498,16 @@ h4 { font-family: 'Raleway-Light' !important}
 	.form-group.gray_bg {
 
 	}
-	.navi_icn { width:16%; float:right;margin-top:-85px; }
 	.fa-bars {
 	  font-size:1.5em !important;
 	  top:10px !important;
+	}
+	.navi_icn { width:12%; }
+	.mobile-search-btn {
+        font-size: 14px;
+        right: 14%;
+        padding-right: 20px;
+        width: 12%;
 	}
 }
 @media (max-width: 300px){
