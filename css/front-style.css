@@ -68,9 +68,9 @@ aside.widget {
 
 
 .wp-caption.alignnone, .wp-caption.aligncenter, .aligncenter, .alignnone {max-width:100% !important;}
-img.aligncenter, img.alignnone {max-height: 100% !important;}
-.alignleft { float: left; margin-right: 20px; margin-bottom: 20px;}
-.alignright{ float: right; margin-left: 20px; margin-bottom: 20px;}
+img.aligncenter, img.alignnone {max-height: 100% !important; width:auto; height:auto; }
+.alignleft { float: left; margin-right: 20px; margin-bottom: 20px; max-width:100%; }
+.alignright{ float: right; margin-left: 20px; margin-bottom: 20px; max-width:100%; }
 hr { width: 100%;}
 
 .wp-caption.alignnone, .wp-caption.alignright, .wp-caption.alignleft { background: #f2f2f2; border: 1px solid #ccc;}
