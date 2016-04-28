@@ -568,90 +568,90 @@ function recommended_resources_func($attr, $content = null)
 
 		return $return;
  }
- 
+
  /**
  * Button
- * Shortcode Example : [button button_color ='' text='' text_color='#ffffff']
+ * Shortcode Example : [btn button_color ='' text='' text_color='#ffffff']
  */
- add_shortcode("button", "button_func");
- function button_func($attribute, $content = null) {
-	
-	extract($attribute);
-	
+ add_shortcode("oet_button", "button_func");
+ function button_func($attr, $content = null) {
+
+	if (is_array($attr)) extract($attr);
+
 	//Checks if content is provided otherwise display the text attribute as button text
-	if ($content) {
+	$buttonText = (isset($text) && !empty($text)) ? $text : "Button";
+	if (!empty($content)) {
 		$buttonText = $content;
-	} else {
-		$buttonText = $text;
 	}
-	
+
+	$btnStyle = '';
+
 	//Button Color
-	if ($button_color){
-		$buttonColor = "background-color:".$button_color.";";	
+	if (isset($button_color) && !empty($button_color)) {
+		$btnStyle .= "background-color:".$button_color.";";
 	}
-	
+
 	//Button Text color
-	if ($text_color){
-		$buttonTextColor = "color:".$text_color.";";
+	if (isset($text_color) && !empty($text_color)) {
+		$btnStyle .= "color:".$text_color.";";
 	}
-	
+
 	//Button Font Face
-	if ($font_face) {
-		$buttonFontFace = "font-family:".$font_face.";";
+	if (isset($font_face) && !empty($font_face)) {
+		$btnStyle .= "font-family:".$font_face.";";
 	}
-	
+
 	//Button Font Size
-	if ($font_size) {
-		$buttonFontSize = "font-size:".$font_size."px;";
+	if (isset($font_size) && !empty($font_size)) {
+		$btnStyle .= "font-size:".$font_size."px;";
 	}
-	
+
 	//Button Font Weight
-	if ($font_weight) {
-		$buttonFontWeight = "font-weight:".$font_weight.";";
+	if (isset($font_weight) && !empty($font_weight)) {
+		$btnStyle .= "font-weight:".$font_weight.";";
 	}
-	
+
 	//Button Code
-	$buttonStart = "<button class='btn custom-button' style='".$buttonColor.$buttonTextColor.$buttonFontFace.$buttonFontSize.$buttonFontWeight."'>";
+	$buttonStart = "<button class='btn custom-button' style='".$btnStyle."'>";
 	$buttonEnd = "</button>";
-	
+
 	$return = $buttonStart.$buttonText.$buttonEnd;
-	
-	if ($new_window=="yes") {
-		$newWindow = "target='_blank'";
-	}
-	
-	if ($url) {
-		$buttonUrl = $url;
-		$urlStart = "<a href='".$buttonUrl."' onmousedown='_sendEvent(\"Outbound\",\"tech.ed.gov\",\"".$buttonUrl."\",0);' ".$newWindow.">";
+
+	if (isset($url) && !empty($url)) {
+		$urlStart = "<a href='".$url."'";
+		if (isset($new_window) && ($new_window=="yes")) {
+			$urlStart .= " onmousedown='ga(\"send\", \"event\",\"Outbound\",window.location.pathname,\"".$url."\",0);' target='_blank'";
+		}
+		$urlStart .= ">";
 		$urlEnd = "</a>";
 		$return = $urlStart.$return.$urlEnd;
 	}
-	
+
 	return $return;
 	//$return = '<a href="http://tech.ed.gov/open-education/go-open-districts/" onmousedown="_sendEvent('Outbound','tech.ed.gov','/open-education/go-open-districts/',0);"><button class="btn btn-primary btn-large netp-button">#GoOpen Districts</button></a>';
  }
- 
+
  /**
  * Spacer
  * Shortcode Example : [spacer height='20']
  */
  add_shortcode("spacer", "spacer_func");
  function spacer_func($attribute) {
-	
-	extract($attribute);
-	
-	if ($height){
-		$height = "height:".((strpos($height,"px")>0)?$height:$height."px");
+
+	if (is_array($attribute)) extract($attribute);
+
+	if (isset($height) && !empty($height)) {
+		$height = " height:".((strpos($height,"px")>0)?$height:$height."px");
 	} else {
-		$height = "height:12px;";
+		$height = " height:12px;";
 	}
-	
-	$return = '<div style="'. $height .'"></div>';
-	
+
+	$return = '<div class="clearfix" style="clear:both;'. $height .'"></div>';
+
 	return $return;
-	
+
  }
- 
+
  /**
  * Bootstrap Row
  * Shortcode Example : [row]
@@ -664,19 +664,19 @@ function recommended_resources_func($attr, $content = null)
       "data"   => false
 	), $atts );
 
-    $class  = 'row';      
+    $class  = 'row';
     $class .= ( $atts['xclass'] )   ? ' ' . $atts['xclass'] : '';
-      
+
     $data_props = parse_data_attributes( $atts['data'] );
-      
-    return sprintf( 
+
+    return sprintf(
       '<div class="%s"%s>%s</div>',
       esc_attr( $class ),
       ( $data_props ) ? ' ' . $data_props : '',
       do_shortcode( $content )
     );
   }
-  
+
 /**
 * Bootstrap Column
 * Shortcode Example : [column lg='12']
@@ -723,10 +723,10 @@ $atts = shortcode_atts( array(
     $class .= ( $atts['push_sm']   || $atts['push_sm'] === "0" )        ? ' col-sm-push-' . $atts['push_sm'] : '';
     $class .= ( $atts['push_xs']   || $atts['push_xs'] === "0" )        ? ' col-xs-push-' . $atts['push_xs'] : '';
     $class .= ( $atts['xclass'] )                                       ? ' ' . $atts['xclass'] : '';
-      
+
     $data_props = parse_data_attributes( $atts['data'] );
-      
-    return sprintf( 
+
+    return sprintf(
       '<div class="%s"%s>%s</div>',
       esc_attr( $class ),
       ( $data_props ) ? ' ' . $data_props : '',
@@ -742,16 +742,16 @@ $atts = shortcode_atts( array(
 function parse_data_attributes( $data ) {
 
 	$data_props = '';
-	
+
 	if( $data ) {
 	  $data = explode( '|', $data );
-	
+
 	  foreach( $data as $d ) {
 	    $d = explode( ',', $d );
 	    $data_props .= sprintf( 'data-%s="%s" ', esc_html( $d[0] ), esc_attr( trim( $d[1] ) ) );
 	  }
 	}
-	else { 
+	else {
 	  $data_props = false;
 	}
 	return $data_props;

@@ -103,8 +103,8 @@ hr { width: 100%;}
 }
 .container div { outline: 0; }
 .custom-button {
-	background-color:orange;
-	color: white;
+	background-color: #e57200;
+	color: #fff;
 	font-family: 'Raleway-Bold';
 	font-size:14px;
 	padding:20px !important;

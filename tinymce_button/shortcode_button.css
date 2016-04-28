@@ -7,7 +7,7 @@
 {
 	width: 100%;
 	float: left;
-	height: 160px;
+	height: 110px;
 	padding: 10px 0;
 }
 .oet_sngltinyclm
@@ -17,11 +17,11 @@
 	border: medium none;*/
 	cursor: pointer;
     float: left;
-    height: 140px;
+    height: 100px;
     padding: 10px;
     text-align: center;
     width: 140px;
-	border-radius: 5px; 
+	border-radius: 5px;
 	margin-left: 10px;
 }
 .oet_sngltinyclm .oert_snglimgtiny
@@ -49,13 +49,13 @@
 .oet_sngltinyclm:hover
 {
 	border: 2px solid #ccc;
-	height: 136px;
+	height: 96px;
 	width: 136px;
 }
 .oet_sngltinyclm.oet_snglslctd
 {
     border: 2px solid #ccc;
-	height: 136px;
+	height: 96px;
 	width: 136px;
 }
 .oet_bs_row {
@@ -66,7 +66,7 @@
     margin-top:20px;
 }
 .oet_bs_column {
-    height:75px;
+    height:58px;
     width:35px;
     background:#808080;
     border:2px solid #979797;

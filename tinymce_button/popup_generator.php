@@ -1,5 +1,8 @@
 <?php
-require_once('../../../../wp-load.php');
+/** Load WordPress Bootstrap */
+$parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
+require_once( $parse_uri[0] . 'wp-load.php' );
+
 extract($_REQUEST);
 if($action == "show_popup")
 {
@@ -22,12 +25,12 @@ if($action == "show_popup")
 								Disruptive Content
 							</div>
 						</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_area">
-							<div class="oert_snglimgtiny">
-								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="button">
+							<div class="oert_snglimgtiny" style="height:100px; vertical-align:middle;">
+								<button class="btn custom-button" style="margin-top:40px;">button</button>
 							</div>
 							<div class="oert_snglttltiny">
-								Featured Area
+								Button
 							</div>
 						</div>
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="featured_content">
@@ -109,6 +112,17 @@ if($action == "show_popup")
 							</div>
 						</div>
 					</div>
+					<div class="oet_sngltinyrow">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="spacer">
+							<div class="oert_snglimgtiny" style="height:60px; vertical-align:middle;">
+								<hr style="margin-top:35px;" />
+							</div>
+							<div class="oert_snglttltiny">
+								Spacer
+							</div>
+						</div>
+
+					</div>
 		</div>
 		<div class="submit">
 			<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
@@ -150,8 +164,8 @@ if($action == "show_popup")
 				   case "banner":
 					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
 					   break;
-				   case "featured_area":
-					   var shortcode = "[oet_featured_area heading=\'\' image=\'\' title=\'\']your content goes here[/oet_featured_area]";
+				   case "button":
+					   var shortcode = "[oet_button text=\'\' button_color=\'\' text_color=\'\' font_face=\'\' font_size=\'\' font_weight=\'\' url=\'\' new_window=\'yes/no\']";
 					   break;
 				   case "featured_content":
 					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
@@ -179,6 +193,9 @@ if($action == "show_popup")
 					   break;
 				   case "column":
 					   var shortcode = "[column md=\'1\']your content goes here[/column]";
+					   break;
+					case "spacer":
+					   var shortcode = "[spacer height=\'16\']";
 					   break;
 				   default:
 				   	   var shortcode = "";
