@@ -178,7 +178,7 @@ if($action == "show_popup")
 					   var shortcode = "[row][/row]";
 					   break;
 				   case "column":
-					   var shortcode = "[column md=\'1\']your content goes here[/column]";
+					   var shortcode = "[column md=\'1\'] your content goes here[/column]";
 					   break;
 				   default:
 				   	   var shortcode = "";
