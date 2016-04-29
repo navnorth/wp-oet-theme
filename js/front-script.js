@@ -54,7 +54,7 @@ jQuery( document ).ready(function() {
 	     }
 	});
 
-	if (jQuery(window).width()<=525) {
+	if (jQuery(window).width()<=600) {
 	    jQuery('.form-group.gray_bg').before('<a href="javascript:void(0)" class="mobile-search-btn"><span class="fa-stack"><i class="fa fa-search" aria-hidden="true"></i></span></a>');
 	    jQuery('.mobile-search-btn').on('click', function(){
 			if (jQuery('.form-group.gray_bg').is(":visible")) {
@@ -68,7 +68,7 @@ jQuery( document ).ready(function() {
 			}
 	    });
 	}
-
+	
     // Replace SVGs with PNG on unsupported browsers
 	if (!Modernizr.svg) {
 		jQuery('img.svg-replace[src*="svg"]').attr('src', function() {

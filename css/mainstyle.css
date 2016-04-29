@@ -455,6 +455,23 @@ h4 { font-family: 'Raleway-Light' !important}
 	        top: -2px;
 	        position: absolute;
     	}
+        .navi_icn { float:right; margin-top:-48px; }
+        .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
+        .soclize { width:35% !important; position:absolute; }
+        .hdr { position:relative;}
+        .form-group.gray_bg {
+            position: absolute;
+            left: 0;
+            width:100%;
+            margin-top:45px;
+            display:none;
+        }
+        .form-group.gray_bg .form-control-feedback {
+            right: 2%;
+        }
+        .top_strp { margin-top:0px; }
+        .soclize .socl_icns { padding:16px; }
+        .fa-stack-2x { font-size:1.65em !important }
 
 }
 @media (max-width: 525px){
@@ -470,7 +487,7 @@ h4 { font-family: 'Raleway-Light' !important}
 
     .navi_icn { float:right; margin-top:-48px; }
     .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
-    .soclize { width:70% !important; position:absolute; }
+    .soclize { width:45% !important; position:absolute; }
     .hdr { position:relative;}
     .form-group.gray_bg {
         position: absolute;
