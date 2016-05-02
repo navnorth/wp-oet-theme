@@ -53,7 +53,7 @@ jQuery( document ).ready(function() {
 		jQuery('.sub-menu').removeAttr('style');
 	     }
 	});
-
+	
 	if (jQuery(window).width()<=600) {
 	    jQuery('.form-group.gray_bg').before('<a href="javascript:void(0)" class="mobile-search-btn"><span class="fa-stack"><i class="fa fa-search" aria-hidden="true"></i></span></a>');
 	    jQuery('.mobile-search-btn').on('click', function(){
@@ -68,6 +68,9 @@ jQuery( document ).ready(function() {
 			}
 	    });
 	}
+	
+	//Wrap youtube video with video container
+	jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
 	
     // Replace SVGs with PNG on unsupported browsers
 	if (!Modernizr.svg) {
