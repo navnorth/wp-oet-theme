@@ -1,7 +1,7 @@
 #oet-table
 {
-    float: left;
     width: 100%;
+    overflow:hidden;
 }
 .oet_sngltinyrow
 {
@@ -34,7 +34,7 @@
 }
 .oet_sngltinyclm .oert_snglimgtiny img
 {
-	width: auto;
+	width: 90px;
 	float: none;
 	margin: 0 auto;
 }
@@ -59,11 +59,11 @@
 	width: 136px;
 }
 .oet_bs_row {
-    height:35px;
-    width:100%;
-    background:#808080;
-    border:2px solid #979797;
-    margin-top:20px;
+    height: 28px;
+    width: 100%;
+    background: #808080;
+    border: none;
+    margin-top: 20px;
 }
 .oet_bs_column {
     height:58px;
@@ -71,4 +71,16 @@
     background:#808080;
     border:2px solid #979797;
     margin:0 auto;
+}
+.oet_bs_col {
+    height: 40px;
+    width: 31.7%;
+    background: #808080;
+    border: 1px solid #979797;
+    margin: 0 auto;
+    display: inline-block;
+}
+#oet-shortcode-form .submit {
+    margin:10px 0;
+    text-align:center;
 }

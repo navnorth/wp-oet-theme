@@ -26,7 +26,7 @@ if($action == "show_popup")
 							</div>
 						</div>
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="button">
-							<div class="oert_snglimgtiny" style="height:100px; vertical-align:middle;">
+							<div class="oert_snglimgtiny" style="height:90px; vertical-align:middle;">
 								<button class="btn custom-button" style="margin-top:40px;">button</button>
 							</div>
 							<div class="oert_snglttltiny">
@@ -95,24 +95,15 @@ if($action == "show_popup")
 								Featured Content Box
 							</div>
 						</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="row">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="bsgrid">
 							<div class="oert_snglimgtiny">
 								<div class="oet_bs_row"></div>
+								<div class="oet_bs_row2"><div class="oet_bs_col"></div><div class="oet_bs_col"></div><div class="oet_bs_col"></div></div>
 							</div>
 							<div class="oert_snglttltiny">
-								Bootstrap Row
+								Bootstrap Grid
 							</div>
 						</div>
-						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="column">
-							<div class="oert_snglimgtiny">
-								<div class="oet_bs_column"></div>
-							</div>
-							<div class="oert_snglttltiny">
-								Bootstrap Column
-							</div>
-						</div>
-					</div>
-					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="spacer">
 							<div class="oert_snglimgtiny" style="height:60px; vertical-align:middle;">
 								<hr style="margin-top:35px;" />
@@ -121,7 +112,6 @@ if($action == "show_popup")
 								Spacer
 							</div>
 						</div>
-
 					</div>
 		</div>
 		<div class="submit">
@@ -188,13 +178,10 @@ if($action == "show_popup")
 				   case "featured_content_box":
 					   var shortcode = "[featured_content_box title=\'\' top_icon=\'\' align=\'\']your content goes here[/featured_content_box]";
 					   break;
-				   case "row":
-					   var shortcode = "[row][/row]";
+				   case "bsgrid":
+					   var shortcode = "[row][column md=\'4\'] your 1st column content here[/column][column md=\'4\'] your 2nd column content here[/column][column md=\'4\'] your 3rd column content here[/column][/row]";
 					   break;
-				   case "column":
-					   var shortcode = "[column md=\'1\'] your content goes here[/column]";
-					   break;
-					case "spacer":
+				   case "spacer":
 					   var shortcode = "[spacer height=\'16\']";
 					   break;
 				   default:
