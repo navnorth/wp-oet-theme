@@ -182,7 +182,7 @@ function featured_item_func($attr, $content = null)
 			$return .= 'Download</a></div>';
 		}
 	}
-	if(strtolower($sharing) == 'show')
+	if(isset($sharing) && strtolower($sharing) == 'show')
 	{
 		$return .= '<div class="col-md-7 col-sm-7 col-xs-7 rght_sid_socl_icn">';
 			$return .= do_shortcode("[ssba]");
@@ -204,10 +204,10 @@ function feature_video_func($attr, $content = null)
 	extract($attr);
 
 	$return = '';
-	if (!$id)
+	if(!isset($id) || empty($id))
 		$id = "ytplayer";
 
-	if ($videoid)
+	if(isset($videoid) && !empty($videoid))
 		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1";
 
 	$tracking_script = "<script type='text/javascript'>\n";
