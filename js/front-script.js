@@ -72,6 +72,22 @@ jQuery( document ).ready(function() {
 	//Wrap youtube video with video container
 	jQuery("iframe[src*='youtube.com']").wrap("<div class='video-container'></div>");
 	
+	jQuery(".slideshow_view").each(function(){
+	    jQuery(this).addClass('slideshow_currentView');
+	 })
+	jQuery('.slideshow_container_style-light .slideshow_description_box div.slideshow_description').dotdotdot({
+	    ellipsis:"...",
+	    callback: function(isTruncated, orgContent) {
+		console.log(isTruncated);
+		console.log(orgContent);
+	    }
+	});
+	jQuery( ".slideshow_currentView.slideshow_view" ).each(function( index ) {
+	    if(index != 0){
+		jQuery(this).removeClass('slideshow_currentView');
+	    }
+	});
+	
     // Replace SVGs with PNG on unsupported browsers
 	if (!Modernizr.svg) {
 		jQuery('img.svg-replace[src*="svg"]').attr('src', function() {
