@@ -371,7 +371,7 @@ h4 { font-family: 'Raleway-Light' !important}
 	.navi_icn { display: block !important}
 
 	.slideshow_container, .slideshow_container .slideshow_content { height: 320px !important}
-	.slideshow_container_style-light .slideshow_description_box div.slideshow_description { height: 150px; overflow: hidden; line-height: 30px; margin-top: 10px;}
+	.slideshow_container_style-light .slideshow_description_box div.slideshow_description { height: 150px; overflow:hidden; line-height: 30px; margin-top: 10px;}
 	.slideshow_container_style-light .slideshow_description_box div.slideshow_title { font-size: 30px !important; line-height: 35px;}
 
 	.slideshow_container, .slideshow_container, .slideshow_container .slideshow_content { width: 100% !important}
