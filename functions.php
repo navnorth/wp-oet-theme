@@ -59,12 +59,22 @@ function theme_front_enqueue_script()
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
 	wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+	
+	//Add specific Stylesheet for the contact slider template
+	if ( is_page_template('page-templates/contact-slider.php') ) {
+	    wp_enqueue_style( 'contact-slider-style',get_stylesheet_directory_uri() . '/css/slider.css' );
+	}
 
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
 	wp_enqueue_script( 'ellipsis-script', get_stylesheet_directory_uri() . '/js/jquery.dotdotdot.min.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
 	wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
+	
+	//Add specific javascript for the contact slider template
+	if ( is_page_template('page-templates/contact-slider.php') ) {
+	    wp_enqueue_script('contact-slider-script', get_stylesheet_directory_uri() . '/js/slider.js' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
 

@@ -1,0 +1,82 @@
+#contact-slider {
+    width:500px;
+    top:175px;
+    position:absolute;
+}
+#contact-slider-content {
+    width:260px;
+    height:100%;
+    min-height:350px;
+    position:absolute;
+    right:0;
+    border:1px solid #d8d8d8;
+    margin-left:40px;
+    padding:20px 40px;
+    border-radius:3px;
+    box-shadow:0 0 8px gray;
+    box-sizing:content-box;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    background:#ffffff;
+}
+#contact-slider-sidebar {
+    position:absolute;
+    top:100px;
+    left:113px;
+    box-shadow:0 0 8px gray
+}
+#contact-slider-sidebar1 {
+    position:absolute;
+    top:100px;
+    left:113px;
+    box-shadow:0 0 8px gray
+}
+#contact-slider-content input[type=text] {
+    margin-top:10px;
+    padding:6px;
+    width:100%;
+    font-size:15px;
+    border-radius:2px;
+    border:3px solid #98d0f1
+}
+#contact-slider-content h4 {
+    font-size:15px
+}
+#contact-slider-content select {
+    padding:6px;
+    width:100%;
+    font-size:15px;
+    border-radius:2px;
+    border:3px solid #98d0f1
+}
+#contact-slider-content textarea {
+    padding:6px;
+    font-size:15px;
+    border-radius:2px;
+    border:3px solid #98d0f1;
+    margin-top:10px;
+    height:80px;
+    width:100%
+}
+#contact-slider-content button {
+    background:#2bc1f2;
+    border:none;
+    color:#fff;
+    width:100%;
+    font-size:22px;
+    font-weight:bolder;
+    padding:8px 0;
+    border-radius:3px;
+    cursor:pointer;
+    margin-top:25px
+}
+.contact-slider-close {
+    background: url('images/close_form.png') center center no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+}
