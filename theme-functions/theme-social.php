@@ -75,7 +75,7 @@ function socialmedia_settings()
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
-							<div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:1).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
+							<div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"></div>

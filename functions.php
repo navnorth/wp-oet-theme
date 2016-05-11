@@ -54,6 +54,11 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
 function theme_front_enqueue_script()
 {
+    global $csenabled, $cspage;
+    
+    $csenabled = get_option("enablecontactslider");
+    $cspage = get_option("contactsliderpage");
+    
 	wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
 
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
@@ -61,7 +66,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
 	
 	//Add specific Stylesheet for the contact slider template
-	if ( is_page_template('page-templates/contact-slider.php') || is_front_page() ) {
+	if ( $csenabled ) {
 	    wp_enqueue_style( 'contact-slider-style',get_stylesheet_directory_uri() . '/css/slider.css' );
 	}
 
@@ -72,7 +77,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
 	
 	//Add specific javascript for the contact slider template
-	if ( is_page_template('page-templates/contact-slider.php') || is_front_page() ) {
+	if ( $csenabled ) {
 	    wp_enqueue_script('contact-slider-script', get_stylesheet_directory_uri() . '/js/slider.js' );
 	}
 }
@@ -179,7 +184,9 @@ function google_analytics_with_userid(){
 add_action('wp_head', 'google_analytics_with_userid');
 
 function load_contact_slider() {
-    if (is_front_page()) {
+    global $csenabled, $cspage;
+    if ( $csenabled ) {
+	wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
 ?>
     <!-- Sliding div starts here -->
     <div id="contact-slider" style="right:-342px;">
@@ -187,8 +194,7 @@ function load_contact_slider() {
 	<div id="contact-slider-content">
 	    <span class="contact-slider-close" onclick="close_panel();"></span>
 	    <?php
-	    $post_id = 80;
-	    $cpost = get_post($post_id);
+	    $cpost = get_post($cspage);
 	    echo do_shortcode($cpost->post_content);
 	    ?>
 	</div>
