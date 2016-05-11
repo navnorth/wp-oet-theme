@@ -61,7 +61,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
 	
 	//Add specific Stylesheet for the contact slider template
-	if ( is_page_template('page-templates/contact-slider.php') ) {
+	if ( is_page_template('page-templates/contact-slider.php') || is_front_page() ) {
 	    wp_enqueue_style( 'contact-slider-style',get_stylesheet_directory_uri() . '/css/slider.css' );
 	}
 
@@ -72,7 +72,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
 	
 	//Add specific javascript for the contact slider template
-	if ( is_page_template('page-templates/contact-slider.php') ) {
+	if ( is_page_template('page-templates/contact-slider.php') || is_front_page() ) {
 	    wp_enqueue_script('contact-slider-script', get_stylesheet_directory_uri() . '/js/slider.js' );
 	}
 }
@@ -178,3 +178,23 @@ function google_analytics_with_userid(){
 }
 add_action('wp_head', 'google_analytics_with_userid');
 
+function load_contact_slider() {
+    if (is_front_page()) {
+?>
+    <!-- Sliding div starts here -->
+    <div id="contact-slider" style="right:-342px;">
+	<div id="contact-slider-sidebar" onclick="open_panel()"><img src="<?php echo get_stylesheet_directory_uri();?>/images/contact.png"></div>
+	<div id="contact-slider-content">
+	    <span class="contact-slider-close" onclick="close_panel();"></span>
+	    <?php
+	    $post_id = 80;
+	    $cpost = get_post($post_id);
+	    echo do_shortcode($cpost->post_content);
+	    ?>
+	</div>
+    </div>
+    <!-- Sliding div ends here -->
+<?php
+    }
+}
+add_action( 'wp_footer' , 'load_contact_slider' );
