@@ -16,6 +16,8 @@ function socialmedia_settings()
 		update_option("google_url", $google_url);
 		update_option("linkedin_url", $linkedin_url);
 		update_option("linktonwltr", $linktonwltr);
+		update_option("enablecontactslider", $enablecontactslider);
+		update_option("contactsliderpage", $contactsliderpage);
 	}
 	
 	$google_analytics_id = get_option("google_analytics_id");
@@ -23,7 +25,22 @@ function socialmedia_settings()
 	$facebook_url = get_option("facebook_url");
 	$yotube_url = get_option("yotube_url");
 	$google_url = get_option("google_url");	
-	$linktonwltr = get_option("linktonwltr");	
+	$linktonwltr = get_option("linktonwltr");
+	$enablecontactslider = get_option("enablecontactslider");
+	$contactsliderpage = get_option("contactsliderpage");
+	
+	//get all pages with contact slider template
+	$contact_pages = get_pages(array(
+		'meta_key' => '_wp_page_template',
+		'meta_value' => 'page-templates/contact-slider.php'
+	));
+	foreach($contact_pages as $page){
+		$selected="";
+		if ($contactsliderpage==$page->ID) {
+			$selected = " selected";		
+		}
+		$options .= "<option value='".$page->ID."'".$selected.">".$page->post_title."</option>";
+	}
 	
 	
 	$return = '';
@@ -55,6 +72,10 @@ function socialmedia_settings()
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
 							<div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
+					  </div>
+					  <div class="oer_sclmda_sub_wrapper">
+							<div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
+							<div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:1).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"></div>
