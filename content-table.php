@@ -42,25 +42,49 @@ else {
                             <?php
                     }
                 } else {
+                    ?>
+                    <div class="toc-box">
+                    <?php
                     //Get Parent of Page
                     $parent_id = $post->post_parent;
                     if ($parent_id>0) {
                             $parent_page = get_page($parent_id);
-                            echo "<li><a href='".get_page_link($parent_id)."'>Main</a></li>";
+                            ?>
+                            <h3>Sections (<a href="<?php echo get_page_link($parent_id); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($parent_id); ?>',0);">Back to <?php echo $parent_page->post_title; ?></a>)</h3>
+                            <?php
 
                             //Display Sub page links
                             $subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
-
+                            
+                            $index=0;
                             foreach($subpages as $spage) {
-                                    if ($post->ID==$spage->ID){
-                                            echo "<li>" . $spage->post_title . "</li>";
-                                    } else {
-                                    ?>
-                                            <li><a href="<?php echo get_page_link($spage->ID); ?>"><?php echo $spage->post_title; ?></a></li>
-                                    <?php
-                                    }
+                                $index++;
+                                if (($index % 3)==1) { ?>
+                                    <div class="row">
+                                <?php }
+                                $featured_image = wp_get_attachment_url( get_post_thumbnail_id($spage->ID) );
+                                ?>
+                                
+                                <div class="col-md-4" style="margin-bottom: 15px; margin-top: 15px;">
+                                    <a href="<?php echo get_page_link($spage->ID); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($spage->ID); ?>',0);">
+                                        <button class="btn btn-large toc-small-button">
+                                            <?php if ($featured_image){ ?>
+                                            <img src="<?php echo $featured_image; ?>" height="30px" style="margin-right: 15px;">
+                                            <?php } ?>
+                                             <?php echo $spage->post_title; ?>
+                                        </button>
+                                    </a>
+                                </div>
+                                
+                                <?php if (($index % 3)==0) { ?>
+                                    </div>
+                                <?php } ?>
+                            <?php
                             }
                     }
+                    ?>
+                    </div>
+                    <?php
                 }
             ?>
         </div>

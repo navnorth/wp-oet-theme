@@ -136,3 +136,29 @@ hr { width: 100%;}
 	line-height:1.25em;
 	white-space:normal !important;
 }
+.toc-box {
+	border: 2px solid #e57200;
+	padding: 30px;
+}
+.toc-box:before {
+	content: '\f02d';
+	font-family: FontAwesome;
+	font-size: 20px;
+	padding: 5px 10px;
+	color: white;
+	background-color: #e57200;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	position: absolute;
+	border: 10px solid white;
+	top: -30px;
+}
+.toc-small-button {
+	background-color: #00529F;
+	padding: 12px !important;
+	width: 100%;
+	font-size: 14px !important;
+	color: white !important;
+	font-family: 'Raleway-Semibold';
+}
