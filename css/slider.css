@@ -24,13 +24,21 @@ body { overflow-x:hidden; }
     position:absolute;
     top:125px;
     left:113px;
-    box-shadow:0 0 8px gray
+    box-shadow:0 0 8px gray;
+    background: #00529F;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor:pointer;
 }
 #contact-slider-sidebar1 {
     position:absolute;
     top:125px;
     left:113px;
-    box-shadow:0 0 8px gray
+    box-shadow:0 0 8px gray;
+    background: #00529F;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor:pointer;
 }
 #contact-slider-content input[type=text],
 #contact-slider-content input[type=email]{
