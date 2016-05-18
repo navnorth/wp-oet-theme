@@ -23,6 +23,16 @@ global $post;
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part( 'content', 'page' ); ?>
 			<?php endwhile; ?>
+		<?php
+		//checks if parent page uses publication template then load TOC
+		$parent_id = $post->post_parent;
+		$template = get_post_meta($parent_id, '_wp_page_template', true);
+                if ($template == "page-templates/publication-template.php") {
+			echo "<div class='clearfix default-toc col-md-12'>";
+			get_template_part( 'inner-templates/content', 'table' );
+			echo "</div>";
+		}
+		?>
          </div>   
        
         <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">

@@ -29,7 +29,17 @@ global $post;
                 
 				<?php endwhile;?>
 
-            </div>
+		</div>
+		<?php
+		//checks if parent page uses publication template then load TOC
+		$parent_id = $post->post_parent;
+		$template = get_post_meta($parent_id, '_wp_page_template', true);
+                if ($template == "page-templates/publication-template.php") {
+			echo "<div class='col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right default-toc'>";
+			get_template_part( 'inner-templates/content', 'table' );
+			echo "</div>";
+		}
+		?>
 	</div>
 
 <?php get_footer(); ?>

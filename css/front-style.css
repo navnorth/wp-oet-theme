@@ -161,4 +161,6 @@ hr { width: 100%;}
 	font-size: 14px !important;
 	color: white !important;
 	font-family: 'Raleway-Semibold';
+	white-space:normal !important;
 }
+.default-toc { margin-top:25px; }
