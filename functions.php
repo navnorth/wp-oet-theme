@@ -189,7 +189,8 @@ function load_contact_slider() {
 	wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
 ?>
     <!-- Sliding div starts here -->
-    <div id="contact-slider" style="right:-342px;">
+    <!--<div id="contact-slider" style="right:-342px;">-->
+    <div id="contact-slider">
 	<div id="contact-slider-sidebar" onclick="open_panel()"><img src="<?php echo get_stylesheet_directory_uri();?>/images/contact.png"></div>
 	<div id="contact-slider-content">
 	    <span class="contact-slider-close" onclick="close_panel();"></span>
