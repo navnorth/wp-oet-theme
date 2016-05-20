@@ -56,7 +56,7 @@ body { overflow-x:hidden; }
     width:100%;
     font-size:15px;
     border-radius:2px;
-    border:3px solid #98d0f1
+    border:3px solid #ccc
 }
 #contact-slider-content h4 {
     font-size:15px
@@ -67,20 +67,20 @@ body { overflow-x:hidden; }
     width:100%;
     font-size:15px;
     border-radius:2px;
-    border:3px solid #98d0f1
+    border:3px solid #ccc
 }
 #contact-slider-content textarea {
     padding:6px;
     font-size:15px;
     border-radius:2px;
-    border:3px solid #98d0f1;
+    border:3px solid #ccc;
     margin-top:10px;
     height:80px;
     width:100%
 }
 #contact-slider-content button,
 #contact-slider-content input[type=submit]{
-    background:#2bc1f2;
+    background:#00529F;
     border:none;
     color:#fff;
     width:100%;
