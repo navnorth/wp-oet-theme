@@ -191,9 +191,9 @@ function load_contact_slider() {
     <!-- Sliding div starts here -->
     <!--<div id="contact-slider" style="right:-342px;">-->
     <div id="contact-slider">
-	<div id="contact-slider-sidebar" onclick="open_panel()"><img src="<?php echo get_stylesheet_directory_uri();?>/images/contact.png"></div>
+	<div id="contact-slider-sidebar" onclick="open_panel()" tabindex="0"><img src="<?php echo get_stylesheet_directory_uri();?>/images/contact.png"></div>
 	<div id="contact-slider-content">
-	    <span class="contact-slider-close" onclick="close_panel();"></span>
+	    <span class="contact-slider-close" onclick="close_panel();" tabindex="0"></span>
 	    <?php
 	    $cpost = get_post($cspage);
 	    echo do_shortcode($cpost->post_content);

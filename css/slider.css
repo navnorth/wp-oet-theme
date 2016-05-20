@@ -40,6 +40,14 @@ body { overflow-x:hidden; }
     border-bottom-left-radius: 5px;
     cursor:pointer;
 }
+#contact-slider-sidebar:focus,
+#contact-slider-sidebar1:focus {
+    outline:0;
+    opacity:.9;
+    border-top:1px solid #ffffff;
+    border-left:1px solid #ffffff;
+    border-bottom:1px solid #ffffff;
+}
 #contact-slider-content input[type=text],
 #contact-slider-content input[type=email]{
     margin-top:10px;

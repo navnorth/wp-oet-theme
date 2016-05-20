@@ -42,5 +42,20 @@ jQuery( document ).ready(function() {
             sRight = -342;
             slider.css('right',sRight + 'px');
         }
+        
+        jQuery('#contact-slider-sidebar').on('keypress',function(e){
+            var key = e.which;
+            if (key==13) {
+                open_panel();
+                return false;
+            }
+        });
+        jQuery('#contact-slider-sidebar1, .contact-slider-close').on('keypress',function(e){
+            var key = e.which;
+            if (key==13) {
+                close_panel();
+                return false;
+            }
+        });
     }
 });
