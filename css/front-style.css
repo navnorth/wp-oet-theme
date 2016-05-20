@@ -164,3 +164,102 @@ hr { width: 100%;}
 	white-space:normal !important;
 }
 .default-toc { margin-top:25px; }
+
+/** Pull Out box styles **/
+.pull-out-box {
+    position: relative;
+    margin: 30px;
+}
+.pull-out-box.big-text {
+    font-size: 1.4em;
+}
+.pull-out-box.book {
+    border: 2px solid #e57200;
+    padding: 30px;
+}
+.pull-out-box.book:before {
+    content: '\f02d';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 5px 10px;
+    color: white;
+    background-color: #e57200;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.light-bulb {
+    border: 2px solid darkgray;
+    padding: 30px;
+}
+.pull-out-box.light-bulb:before {
+    content: '\f0eb';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 15px;
+    color: white;
+    background-color: darkgray;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.exclamation {
+    border: 2px solid green;
+    padding: 30px;
+}
+.pull-out-box.exclamation:before {
+    content: '\f12a';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 17px;
+    color: white;
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.checkmark {
+    border: 2px solid #00529f;
+    padding: 30px;
+}
+.pull-out-box.checkmark:before {
+    content: '\f00c';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 11px;
+    color: white;
+    background-color: #00529f;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.sun {
+    border: 2px solid red;
+    padding: 30px;
+}
+.pull-out-box.sun:before {
+    content: '\f185';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 11px;
+    color: white;
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}

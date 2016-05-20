@@ -756,4 +756,63 @@ function parse_data_attributes( $data ) {
 	}
 	return $data_props;
 }
+
+/**
+ * Callout Box
+ * Shortcode Example : [oet_callout type='check' color='00529f' width='12' align='left']
+ */
+ add_shortcode("oet_callout", "oet_callout_func");
+ function oet_callout_func($attribute, $content = null) {
+
+	if (is_array($attribute)) extract($attribute);
+	$class_attrs = array("pull-out-box");
+	$style =  "";
+
+	//Set Type
+	$attr_type = "checkmark";
+	if ($type)
+		$attr_type = $type;
+	
+	$class_attrs[] = $attr_type;
+	
+	//Set Color
+	if ($color){
+		
+		$color_class = $color;
+		
+		if (strpos($color,"#")>=0){
+			$color_class = substr($color,1,strlen($color)-1);
+		}
+			
+		$class_attrs[] = "color-".$color_class;
+		
+		$style = '<style>';
+		//Set Line Color
+		$style .= '.color-'.$color_class.'{
+				border-color:'.$color.' !important;
+			  }';
+		//Set Icon Background Color
+		$style .= '.color-'.$color_class.':before {
+				background-color:'.$color.' !important;
+			}';
+		$style .= '</style>';
+	}
+	
+	//Set Width
+	if ($width)
+		$class_attrs[] = "col-md-".$width;
+	
+	//Set Alignment
+	if ($alignment)
+		$class_attrs[] = "pull-".$alignment;
+	
+	$attrs = implode(" ", $class_attrs);
+	
+	$return = '<div class="'.$attrs.'">'.$content.'</div>'.$style;
+
+	return $return;
+
+ }
+
+
 ?>
