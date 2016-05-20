@@ -33,13 +33,13 @@ jQuery( document ).ready(function() {
                 slideWidth = 500;
             }
             scWidth = slideWidth - 86;
-            sRight = -(scWidth + 40);
+            sRight = -(scWidth + 45);
             sLeft = (slideWidth + sRight) - sbWidth;
             slider.css({'width':slideWidth  + 'px','right':sRight + 'px'});
             slider_button.css('left',sLeft + 'px');
             slider_content.css('width',scWidth + 'px');
         } else {
-            sRight = -342;
+            sRight = -347;
             slider.css('right',sRight + 'px');
         }
         

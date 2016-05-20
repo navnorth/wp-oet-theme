@@ -5,7 +5,7 @@ Function to activate form button to open the slider.
 ------------------------------------------------------------
 */
 function open_panel() {
-    origPosition = parseInt(document.getElementById("contact-slider").style.right) + 5;
+    origPosition = parseInt(document.getElementById("contact-slider").style.right);
     slideIt();
     var a = document.getElementById("contact-slider-sidebar");
     a.setAttribute("id", "contact-slider-sidebar1");
