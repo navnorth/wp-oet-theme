@@ -1,3 +1,9 @@
+function hideMessage() {
+    var output = jQuery('.wpcf7-response-output');
+    output.removeClass('wpcf7-mail-sent-ok');
+    output.hide();
+}
+
 jQuery( document ).ready(function() {
     //Reposition Contact Slider button depending on Contact Slider content
     if (jQuery('#contact-slider').is(':visible')) {
@@ -57,5 +63,6 @@ jQuery( document ).ready(function() {
                 return false;
             }
         });
+        
     }
 });

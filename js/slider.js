@@ -60,9 +60,8 @@ Function to show the form back after hitting submit button
 */
 function show_cf_form() {
     var cf_form = document.getElementById("cf-form");
-    var cf_output = document.getElementsByClassName("wpcf7-response-output");
     if (cf_form.style.display=="none") {
         cf_form.style.display = 'block';
-        cf_output.style.display = "none";
     }
+    hideMessage();
 }
