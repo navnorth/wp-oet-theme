@@ -39,7 +39,7 @@ jQuery( document ).ready(function() {
             slider_button.css('left',sLeft + 'px');
             slider_content.css('width',scWidth + 'px');
         } else {
-            sRight = -333;
+            sRight = -342;
             slider.css('right',sRight + 'px');
         }
         

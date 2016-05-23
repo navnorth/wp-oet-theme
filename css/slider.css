@@ -3,7 +3,7 @@ body { overflow-x:hidden; }
     width:500px;
     top:100px;
     position:fixed;
-    right:-333px;
+    right:-342px;
 }
 #contact-slider-content {
     width:260px;
@@ -101,7 +101,7 @@ body { overflow-x:hidden; }
     right: 10px;
     top: 10px;
 }
-#cf-form.wpcf7-response-output { min-height:500px; }
+div.wpcf7-response-output.wpcf7-mail-sent-ok { min-height:500px; }
 @media (max-width: 1200px){
     #contact-slider {  }
 }
