@@ -6,7 +6,6 @@ Function to activate form button to open the slider.
 */
 function open_panel() {
     origPosition = parseInt(document.getElementById("contact-slider").style.right);
-    show_cf_form();
     slideIt();
     var a = document.getElementById("contact-slider-sidebar");
     a.setAttribute("id", "contact-slider-sidebar1");
@@ -37,6 +36,7 @@ function close_panel() {
     a = document.getElementById("contact-slider-sidebar1");
     a.setAttribute("id", "contact-slider-sidebar");
     a.setAttribute("onclick", "open_panel()");
+    show_cf_form();
 }
 
 /*
@@ -60,7 +60,9 @@ Function to show the form back after hitting submit button
 */
 function show_cf_form() {
     var cf_form = document.getElementById("cf-form");
+    var cf_output = document.getElementsByClassName("wpcf7-response-output");
     if (cf_form.style.display=="none") {
         cf_form.style.display = 'block';
+        cf_output.className = "wpcf7-response-output wpcf7-display-none";
     }
 }
