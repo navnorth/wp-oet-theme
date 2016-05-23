@@ -8,7 +8,7 @@ body { overflow-x:hidden; }
 #contact-slider-content {
     width:260px;
     height:auto;
-    min-height:178px;
+    min-height:500px;
     position:absolute;
     right:0;
     border:1px solid #d8d8d8;
@@ -101,7 +101,6 @@ body { overflow-x:hidden; }
     right: 10px;
     top: 10px;
 }
-div.wpcf7-response-output.wpcf7-mail-sent-ok { min-height:500px; }
 @media (max-width: 1200px){
     #contact-slider {  }
 }

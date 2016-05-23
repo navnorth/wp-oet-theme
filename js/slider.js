@@ -63,6 +63,6 @@ function show_cf_form() {
     var cf_output = document.getElementsByClassName("wpcf7-response-output");
     if (cf_form.style.display=="none") {
         cf_form.style.display = 'block';
-        cf_output.className = "wpcf7-response-output wpcf7-display-none";
+        cf_output.style.display = "none";
     }
 }
