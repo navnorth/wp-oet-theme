@@ -25,21 +25,21 @@ jQuery( document ).ready(function() {
             var slideWidth = 0;
             var sLeft =  0;
             var scWidth = 0;
-            var sbWidth = 46;
+            var sbWidth = 32;
             var sRight = 0;
             if (width<500) {
                 slideWidth = width*.95;
             } else {
                 slideWidth = 500;
             }
-            scWidth = slideWidth - 86;
+            scWidth = slideWidth - 72;
             sRight = -(scWidth + 45);
             sLeft = (slideWidth + sRight) - sbWidth;
             slider.css({'width':slideWidth  + 'px','right':sRight + 'px'});
             slider_button.css('left',sLeft + 'px');
             slider_content.css('width',scWidth + 'px');
         } else {
-            sRight = -347;
+            sRight = -333;
             slider.css('right',sRight + 'px');
         }
         
