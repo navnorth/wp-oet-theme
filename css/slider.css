@@ -3,7 +3,7 @@ body { overflow-x:hidden; }
     width:500px;
     top:100px;
     position:fixed;
-    right:-347px;
+    right:-333px;
 }
 #contact-slider-content {
     width:260px;
@@ -12,7 +12,7 @@ body { overflow-x:hidden; }
     position:absolute;
     right:0;
     border:1px solid #d8d8d8;
-    margin-left:46px;
+    margin-left:32px;
     padding:20px 40px;
     border-radius:3px;
     box-shadow:0 0 8px gray;
@@ -24,7 +24,7 @@ body { overflow-x:hidden; }
 #contact-slider-sidebar {
     position:absolute;
     top:125px;
-    left:120px;
+    left:127px;
     box-shadow:0 0 8px gray;
     background: #00529F;
     border-top-left-radius: 5px;
@@ -34,7 +34,7 @@ body { overflow-x:hidden; }
 #contact-slider-sidebar1 {
     position:absolute;
     top:125px;
-    left:120px;
+    left:127px;
     box-shadow:0 0 8px gray;
     background: #00529F;
     border-top-left-radius: 5px;
