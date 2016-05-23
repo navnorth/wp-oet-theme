@@ -25,7 +25,7 @@ jQuery( document ).ready(function() {
             var slideWidth = 0;
             var sLeft =  0;
             var scWidth = 0;
-            var sbWidth = 32;
+            var sbWidth = 28;
             var sRight = 0;
             if (width<500) {
                 slideWidth = width*.95;
