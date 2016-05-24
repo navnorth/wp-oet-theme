@@ -122,7 +122,13 @@ if($action == "show_popup")
 								Callout Box
 							</div>
 						</div>
-						<div class="oet_sngltinyclm">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="publication_intro">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/pubintro.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Publication Intro
+							</div>
 						</div>
 						<div class="oet_sngltinyclm">
 						</div>
@@ -200,6 +206,9 @@ if($action == "show_popup")
 					   break;
 				   case "callout_box":
 					   var shortcode = "[oet_callout type=\'\' width=\'\' color=\'\' alignment=\'\']Your content goes here[/oet_callout]";
+					   break;
+				   case "publication_intro":
+					   var shortcode = "[publication_intro title=\'\' text=\'\']";
 					   break;
 				   default:
 				   	   var shortcode = "";
