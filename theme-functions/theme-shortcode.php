@@ -816,6 +816,25 @@ function parse_data_attributes( $data ) {
 	return $return;
 
  }
+ 
+ /**
+ * Publication Intro
+ * Shortcode Example : [publication_intro title='This is the title' text='This is the text']
+ */
+ add_shortcode("publication_intro", "publication_intro_func");
+ function publication_intro_func($attribute) {
+
+	if (is_array($attribute)) extract($attribute);
+	$style = '<style>.page .intro:before{ background-image: url("'.get_stylesheet_directory_uri().'/images/top_strap_img.jpg"); }</style>';
+	$return = '<div class="intro">
+			<div class="intro-goal">
+				<div class="title">'.$title.'</div>
+				<p>'.$text.'</p>
+		        </div>
+		</div>'.$style;
+	
+	return $return;
+ }
 
 
 ?>

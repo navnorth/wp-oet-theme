@@ -263,3 +263,31 @@ hr { width: 100%;}
     border: 10px solid white;
     top: -30px;
 }
+
+/* Publication Intro Shortcode styles */
+.page .intro {
+    position: relative;
+    margin-bottom: 60px;
+    font-family: 'Raleway-Semibold', sans-serif !important;
+}
+.page .intro:before {
+    content: "";
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.page .intro .intro-goal {
+    position: relative;
+    color: white !important;
+    padding: 60px;
+    font-size: 18px;
+}
+.page .intro .intro-goal .title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
