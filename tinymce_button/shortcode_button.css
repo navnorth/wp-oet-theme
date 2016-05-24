@@ -7,7 +7,7 @@
 {
 	width: 100%;
 	float: left;
-	height: 110px;
+	height: 100px;
 	padding: 10px 0;
 }
 .oet_sngltinyclm
@@ -17,7 +17,7 @@
 	border: medium none;*/
 	cursor: pointer;
     float: left;
-    height: 100px;
+    height: 85px;
     padding: 10px;
     text-align: center;
     width: 140px;
@@ -34,7 +34,7 @@
 }
 .oet_sngltinyclm .oert_snglimgtiny img
 {
-	width: 90px;
+	width: 75px;
 	float: none;
 	margin: 0 auto;
 }

@@ -7,7 +7,7 @@ extract($_REQUEST);
 if($action == "show_popup")
 {
 	$return = '';
-	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table" style="margin-top: 10px;">
+	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table">
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="accordian">
 							<div class="oert_snglimgtiny">
@@ -113,9 +113,23 @@ if($action == "show_popup")
 							</div>
 						</div>
 					</div>
-		</div>
-		<div class="submit">
-			<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
+					<div class="oet_sngltinyrow">
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="callout_box">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/callout-box.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Callout Box
+							</div>
+						</div>
+						<div class="oet_sngltinyclm">
+						</div>
+						<div class="oet_sngltinyclm">
+						</div>
+						<div class="submit">
+							<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
+						</div>
+					</div>
 		</div>
 		</div>
 		<script type="text/javascript">
@@ -183,6 +197,9 @@ if($action == "show_popup")
 					   break;
 				   case "spacer":
 					   var shortcode = "[spacer height=\'16\']";
+					   break;
+				   case "callout_box":
+					   var shortcode = "[oet_callout type=\'\' width=\'\' color=\'\' alignment=\'\']Your content goes here[/oet_callout]";
 					   break;
 				   default:
 				   	   var shortcode = "";
