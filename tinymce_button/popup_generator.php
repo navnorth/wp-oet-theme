@@ -208,7 +208,7 @@ if($action == "show_popup")
 					   var shortcode = "[oet_callout type=\'\' width=\'\' color=\'\' alignment=\'\']Your content goes here[/oet_callout]";
 					   break;
 				   case "publication_intro":
-					   var shortcode = "[publication_intro title=\'\' text=\'\']";
+					   var shortcode = "[publication_intro title=\'\']Intro content goes here[/publication_intro]";
 					   break;
 				   default:
 				   	   var shortcode = "";

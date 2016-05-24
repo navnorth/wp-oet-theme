@@ -819,17 +819,17 @@ function parse_data_attributes( $data ) {
  
  /**
  * Publication Intro
- * Shortcode Example : [publication_intro title='This is the title' text='This is the text']
+ * Shortcode Example : [publication_intro title='This is the title']Text goes here[/publication_intro]
  */
  add_shortcode("publication_intro", "publication_intro_func");
- function publication_intro_func($attribute) {
+ function publication_intro_func($attribute, $content = null) {
 
 	if (is_array($attribute)) extract($attribute);
 	$style = '<style>.page .intro:before{ background-image: url("'.get_stylesheet_directory_uri().'/images/top_strap_img.jpg"); }</style>';
 	$return = '<div class="intro">
 			<div class="intro-goal">
 				<div class="title">'.$title.'</div>
-				<p>'.$text.'</p>
+				'.$content.'
 		        </div>
 		</div>'.$style;
 	
