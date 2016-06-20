@@ -273,6 +273,15 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 .overflow { overflow: hidden}
 .ssba img:hover { opacity: .8; transition: opacity .3s; -webkit-transition: opacity .3s; -moz-transition: opacity .3s}
+.stry_srch_frm  input[type="submit"] { font-family: "Raleway-Regular"; }
+.sldr_readmr_btn a { font-family: "Raleway-Regular"; }
+.sldr_top_hdng { font-family: "Raleway-Bold"; }
+.stry_srch_frm .showallstories { font-family: "Raleway-Regular"; }
+.topic_sidebar li a { font-family: 'Raleway-Regular'; }
+.blubrdr h4{ font-family: 'Raleway-Semibold'; }
+.story_back a { ]font-family: 'Raleway-Light'; }
+.stry_browse_header { font-family: 'Raleway-Bold' }
+.btn_dwnld { font-family: 'Raleway-Regular'; }
 
 /*---------------- Slider -----------------*/
 .slideshow_slide.slideshow_slide_image img { float: right !important; width: 48% !important;}
