@@ -70,11 +70,12 @@
 			endwhile;
 			get_template_part( 'inner-templates/content', 'table' );
 		?>
-	</div>
+	
 
 
-    <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-        <?php echo oer_dynamic_sidebar('publication-template', $page_id);?>
+       <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
+	   <?php echo oer_dynamic_sidebar('publication-template', $page_id);?>
+       </div>
     </div>
 </div>
 <?php get_footer();?>
