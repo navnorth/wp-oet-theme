@@ -6,7 +6,7 @@
 <?php get_header();?>
  <div id="content" class="row" tabindex="-1">
 
-	<?php
+       <?php
 		global $post;
 		$page_id = get_the_ID();
 
@@ -25,12 +25,12 @@
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 	?>
 
-	<div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
-    	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
+       <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
+	      <h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
 
-        <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
-        	<span class="meta_date"><?php echo $publication_date; ?></span>
-             <?php
+	      <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
+		     <span class="meta_date"><?php echo $publication_date; ?></span>
+		     <?php
 				if(isset($image) && !empty($image))
 				{
             		if(isset($button_one_link) && !empty($button_one_link))
@@ -61,8 +61,8 @@
 								echo do_shortcode("[ssba]");
 					echo '</div>';
 				}
-            ?>
-    	</div>
+		     ?>
+	      </div>
 
         <?php
 			while ( have_posts() ) : the_post();
@@ -72,10 +72,9 @@
 		?>
 	
 
-
+       </div>
        <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
 	   <?php echo oer_dynamic_sidebar('publication-template', $page_id);?>
        </div>
-    </div>
 </div>
 <?php get_footer();?>
