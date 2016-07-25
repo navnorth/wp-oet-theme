@@ -19,14 +19,15 @@ $sublinks = array();
             <?php
                 if ($subpages) {
                     $index = 0;
+                    $max = count($subpages);
                     foreach($subpages as $spage) {
                             $template = get_post_meta($spage->ID, '_wp_page_template', true);
                             if ($template == "page-templates/publication-subsection-template.php") {
                                 $index++;
                                 if (($index % 2)==1) {
-                                    ?>
-                                    <div class="row">
-                                    <?php
+                                ?>
+                                <div class="row">
+                                <?php
                                 }
                                 $featured_image = wp_get_attachment_url( get_post_thumbnail_id($spage->ID) );
                                 ?>
@@ -41,7 +42,9 @@ $sublinks = array();
                                     </a>
                                 </div>
                                 <?php if (($index % 2)==0) { ?>
-                                    </div>
+                                </div>
+                                <?php } elseif ($index==$max) { ?>
+                                </div>
                                 <?php } ?>
                             <?php } else {
                                 $sublinks[] = $spage;
