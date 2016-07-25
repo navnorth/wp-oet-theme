@@ -41,7 +41,10 @@ $sublinks = array();
                                         </button>
                                     </a>
                                 </div>
-                                <?php if (($index % 2)==0) { ?>
+                                <?php
+                                var_dump($index);
+                                var_dump($max);
+                                if (($index % 2)==0) { ?>
                                 </div>
                                 <?php } elseif ($index==$max) { ?>
                                 </div>
