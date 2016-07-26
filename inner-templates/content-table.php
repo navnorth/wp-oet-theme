@@ -25,6 +25,7 @@ $sublinks = array();
                             if ($template == "page-templates/publication-subsection-template.php") {
                                 $index++;
                                 if (($index % 2)==1) {
+                                    $rowopen = true;
                                 ?>
                                 <div class="row">
                                 <?php
@@ -42,17 +43,18 @@ $sublinks = array();
                                     </a>
                                 </div>
                                 <?php
-                                var_dump($index);
-                                var_dump($max);
-                                if (($index % 2)==0) { ?>
-                                </div>
-                                <?php } elseif ($index==$max) { ?>
+                                if (($index % 2)==0) {
+                                    $rowopen = false;
+                                ?>
                                 </div>
                                 <?php } ?>
                             <?php } else {
                                 $sublinks[] = $spage;
                             } ?>
                             <?php
+                        if ($rowopen) :
+                            echo '</div>';
+                        endif;
                     }
                     if (!empty($sublinks)) {
                         echo "<div class='clearfix'></div>";
