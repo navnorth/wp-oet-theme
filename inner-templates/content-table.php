@@ -52,10 +52,10 @@ $sublinks = array();
                                 $sublinks[] = $spage;
                             } ?>
                             <?php
-                        if ($rowopen) :
-                            echo '</div>';
-                        endif;
                     }
+                    if ($rowopen) :
+                        echo '</div>';
+                    endif;
                     if (!empty($sublinks)) {
                         echo "<div class='clearfix'></div>";
                         echo "<hr>";
