@@ -291,3 +291,18 @@ hr { width: 100%;}
     font-size: 36px;
     margin-bottom: 20px;
 }
+/** Table Styles **/
+#content table { border: 1px solid #ccc; }
+#content tr { border: 1px solid #ccc; }
+#content tr td, #content tr th {
+	padding: 6px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	vertical-align:top;
+}
+#content tr:first-child { background: #00529f; }
+#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; font-family:'Raleway-Bold'; }
+#content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
+#content tr td, #content tr th { padding:5px }
+#content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
+#content .table-responsive { display:flex; }
