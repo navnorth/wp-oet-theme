@@ -306,3 +306,19 @@ hr { width: 100%;}
 #content tr td, #content tr th { padding:5px }
 #content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
 #content .table-responsive { display:flex; }
+.question {
+       font-family: 'Raleway-Bold';
+       font-size: 18px;
+       color: #e75200;
+}
+ul.checkbox_list {
+        list-style-type: none; 
+        margin: 0px; 
+        padding: 0px;
+    }
+ul.checkbox_list input {
+   margin: 8px 12px;
+}
+.footnotes {
+    font-size: 0.8em;
+}
