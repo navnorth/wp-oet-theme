@@ -170,6 +170,10 @@ hr { width: 100%;}
     position: relative;
     margin: 30px;
 }
+.pull-out-box.col-xs-12.pull-right{
+	margin:30px 0;
+	float:none !important;
+}
 .pull-out-box.big-text {
     font-size: 1.4em;
 }
