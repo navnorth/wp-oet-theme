@@ -800,10 +800,10 @@ function parse_data_attributes( $data ) {
 	
 	//Set Width
 	$attr_width = 12;
-	if ($width)
-		$attr_width = $width;
-		
-	$class_attrs[] = "col-md-".$attr_width;
+	if ($width) {
+		$attr_width = "col-md-".$width;
+		$class_attrs[] = $attr_width;
+	}
 	
 	//Set Alignment
 	if ($alignment)
