@@ -322,3 +322,9 @@ ul.checkbox_list input {
 .footnotes {
     font-size: 0.8em;
 }
+.pdf a {
+    background: url(../images/pdf.png) no-repeat top left;
+    display: block;
+    line-height: 50px;
+    padding-left: 60px;
+}
