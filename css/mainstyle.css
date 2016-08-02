@@ -390,7 +390,10 @@ h4 { font-family: 'Raleway-Light' !important}
 
 	.hdr .col-md-7 img { width: 100%}
 	.tlkt_stp_cntnr_lft_sid { padding-right: 0 !important}
-
+        .pull-out-box.col-xs-12.pull-right{
+            margin:30px 0;
+            float:none !important;
+    }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
@@ -481,7 +484,6 @@ h4 { font-family: 'Raleway-Light' !important}
         .top_strp { margin-top:0px; }
         .soclize .socl_icns { padding:16px; }
         .fa-stack-2x { font-size:1.65em !important }
-
 }
 @media (max-width: 525px){
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg, .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child {width: 100% !important;}
