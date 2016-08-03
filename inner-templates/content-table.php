@@ -14,7 +14,7 @@ $sublinks = array();
 ?>
 <div class="right_sid_mtr program_toc_box" id="toc">
     <?php if ($withChild): ?>
-    <div class="col-md-12 col-sm-6 col-xs-6">
+    <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="cntnbx_cntnr">
             <?php
                 if ($subpages) {
