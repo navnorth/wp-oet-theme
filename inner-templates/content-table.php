@@ -83,7 +83,7 @@ $sublinks = array();
                     if ($parent_id>0) {
                             $parent_page = get_page($parent_id);
                             ?>
-                            <h3>Sections (<a href="<?php echo get_page_link($parent_id); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($parent_id); ?>',0);">Back to <?php echo $parent_page->post_title; ?></a>)</h3>
+                            <h3><?php echo $parent_page->post_title; ?> (<a href="<?php echo get_page_link($parent_id); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($parent_id); ?>',0);">Back to Main</a>)</h3>
                             <?php
 
                             //Display Sub page links
