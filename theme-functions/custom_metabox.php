@@ -19,6 +19,7 @@ function publication_metabox_func()
 {
 	global $post;
 	$publication_date = get_post_meta($post->ID, "publication_date", true);
+	$short_title = get_post_meta($post->ID, "short_title", true);
 
 	$button_one_text = get_post_meta($post->ID, "button_one_text", true);
 	$button_one_link = get_post_meta($post->ID, "button_one_link", true);
@@ -34,6 +35,12 @@ function publication_metabox_func()
     	<label>Publication Date</label>
 		<div class="meta_fld_wrp">
 			<input type="text" name="publication_date" value="<?php echo $publication_date; ?>">
+		</div>
+    </div>
+    <div class="meta_main_wrp">
+    	<label>Short Title</label>
+		<div class="meta_fld_wrp">
+			<input type="text" name="short_title" value="<?php echo $short_title; ?>">
 		</div>
     </div>
     <div class="meta_main_wrp">
@@ -106,6 +113,7 @@ function save_featured_metabox()
 {
 	global $post;
 	update_post_meta($post->ID, "publication_date", $_POST["publication_date"] );
+	update_post_meta($post->ID, "short_title", $_POST["short_title"] );
 
 	update_post_meta($post->ID, "button_one_text", $_POST["button_one_text"] );
 	update_post_meta($post->ID, "button_one_link", $_POST["button_one_link"] );

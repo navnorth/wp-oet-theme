@@ -22,6 +22,7 @@ $sublinks = array();
                     $max = count($subpages);
                     foreach($subpages as $spage) {
                             $template = get_post_meta($spage->ID, '_wp_page_template', true);
+                            $short_title = get_post_meta($spage->ID, "short_title", true);
                             if ($template == "page-templates/publication-subsection-template.php") {
                                 $index++;
                                 if (($index % 2)==1) {
@@ -38,7 +39,13 @@ $sublinks = array();
                                             <?php if ($featured_image): ?>
                                                 <img src="<?php echo $featured_image; ?>" height="60px" style="margin-right: 15px;">
                                             <?php endif; ?>
-                                             <?php echo $spage->post_title; ?>
+                                            <?php
+                                            if ($short_title):
+                                                echo $short_title;
+                                            else:
+                                                echo $spage->post_title;
+                                            endif;
+                                            ?>
                                         </button>
                                     </a>
                                 </div>
@@ -85,6 +92,7 @@ $sublinks = array();
                             $index=0;
                             foreach($subpages as $spage) {
                                 $template = get_post_meta($spage->ID, '_wp_page_template', true);
+                                $short_title = get_post_meta($spage->ID, "short_title", true);
                                 if ($template == "page-templates/publication-subsection-template.php") {
                                     $index++;
                                     if (($index % 3)==1) { ?>
@@ -99,7 +107,13 @@ $sublinks = array();
                                                 <?php if ($featured_image){ ?>
                                                 <img src="<?php echo $featured_image; ?>" height="30px" style="margin-right: 15px;">
                                                 <?php } ?>
-                                                 <?php echo $spage->post_title; ?>
+                                                <?php
+                                                if ($short_title):
+                                                    echo $short_title;
+                                                else:
+                                                    echo $spage->post_title;
+                                                endif;
+                                                ?>
                                             </button>
                                         </a>
                                     </div>
