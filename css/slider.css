@@ -15,7 +15,7 @@ body { overflow-x:hidden; }
     margin-left:32px;
     padding:20px 40px;
     border-radius:3px;
-    box-shadow:0 0 8px gray;
+    /*box-shadow:0 0 8px gray;*/
     box-sizing:content-box;
     -webkit-box-sizing:content-box;
     -moz-box-sizing:content-box;
@@ -105,19 +105,19 @@ body { overflow-x:hidden; }
     #contact-slider {  }
 }
 @media (max-width: 990px){
-    
+
 }
 @media (max-width: 768px){
-    
+
 }
 @media (max-width: 750px){
 
 }
 @media (max-width: 715px){
-    
+
 }
 @media (max-width: 600px){
-    
+
 }
 @media (max-width: 525px){
     #contact-slider-content {
@@ -139,8 +139,8 @@ body { overflow-x:hidden; }
     }
 }
 @media (max-width: 400px){
-    
+
 }
 @media (max-width: 300px){
-    
+
 }

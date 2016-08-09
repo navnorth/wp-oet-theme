@@ -10,6 +10,8 @@ function open_panel() {
     var a = document.getElementById("contact-slider-sidebar");
     a.setAttribute("id", "contact-slider-sidebar1");
     a.setAttribute("onclick", "close_panel()");
+    // set box-shadow
+    document.getElementById("contact-slider-content").style.boxShadow ='0 0 8px gray';
 }
 
 /*
@@ -37,6 +39,8 @@ function close_panel() {
     a.setAttribute("id", "contact-slider-sidebar");
     a.setAttribute("onclick", "open_panel()");
     show_cf_form();
+    // set box-shadow
+    document.getElementById("contact-slider-content").style.boxShadow ='0 0 0';
 }
 
 /*
