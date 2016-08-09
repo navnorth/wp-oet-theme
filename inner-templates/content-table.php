@@ -34,7 +34,7 @@ $sublinks = array();
                                 $featured_image = wp_get_attachment_url( get_post_thumbnail_id($spage->ID) );
                                 ?>
                                 <div class="col-md-6" style="margin-bottom: 30px;">
-                                    <a href="<?php echo get_page_link($spage->ID); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($spage->ID); ?>',0);">
+                                    <a href="<?php echo get_page_link($spage->ID); ?>">
                                         <button class="btn btn-large toc-button">
                                             <?php if ($featured_image): ?>
                                                 <img src="<?php echo $featured_image; ?>" height="60px" style="margin-right: 15px;">
@@ -69,7 +69,7 @@ $sublinks = array();
                         $subindex = 0;
                         foreach($sublinks as $sublink) {
                             $subindex++;
-                            echo '<a href="'.get_page_link($sublink->ID).'" onmousedown="_sendEvent(\'Outbound\',\'tech.ed.gov\',\''.get_page_link($sublink->ID).'\',0);">'.$sublink->post_title.'</a>';
+                            echo '<a href="'.get_page_link($sublink->ID).'">'.$sublink->post_title.'</a>';
                             if ($subindex<count($sublinks))
                                 echo ' / ';
                         }
@@ -83,12 +83,12 @@ $sublinks = array();
                     if ($parent_id>0) {
                             $parent_page = get_page($parent_id);
                             ?>
-                            <h3><?php echo $parent_page->post_title; ?> (<a href="<?php echo get_page_link($parent_id); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($parent_id); ?>',0);">Back to Main</a>)</h3>
+                            <h3><?php echo $parent_page->post_title; ?> (<a href="<?php echo get_page_link($parent_id); ?>">Back to Main</a>)</h3>
                             <?php
 
                             //Display Sub page links
                             $subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
-                            
+
                             $index=0;
                             foreach($subpages as $spage) {
                                 $template = get_post_meta($spage->ID, '_wp_page_template', true);
@@ -100,9 +100,9 @@ $sublinks = array();
                                     <?php }
                                     $featured_image = wp_get_attachment_url( get_post_thumbnail_id($spage->ID) );
                                     ?>
-                                    
+
                                     <div class="col-md-4" style="margin-bottom: 15px; margin-top: 15px;">
-                                        <a href="<?php echo get_page_link($spage->ID); ?>" onmousedown="_sendEvent('Outbound','tech.ed.gov','<?php echo get_page_link($spage->ID); ?>',0);">
+                                        <a href="<?php echo get_page_link($spage->ID); ?>">
                                             <button class="btn btn-large toc-small-button">
                                                 <?php if ($featured_image){ ?>
                                                 <img src="<?php echo $featured_image; ?>" height="30px" style="margin-right: 15px;">
@@ -117,7 +117,7 @@ $sublinks = array();
                                             </button>
                                         </a>
                                     </div>
-                                    
+
                                     <?php if (($index % 3)==0) { ?>
                                         </div>
                                     <?php } ?>
@@ -132,7 +132,7 @@ $sublinks = array();
                             $subindex = 0;
                             foreach($sublinks as $sublink) {
                                 $subindex++;
-                                echo '<a href="'.get_page_link($sublink->ID).'" onmousedown="_sendEvent(\'Outbound\',\'tech.ed.gov\',\''.get_page_link($sublink->ID).'\',0);">'.$sublink->post_title.'</a>';
+                                echo '<a href="'.get_page_link($sublink->ID).'">'.$sublink->post_title.'</a>';
                                 if ($subindex<count($sublinks))
                                     echo ' / ';
                             }

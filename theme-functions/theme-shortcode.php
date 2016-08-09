@@ -628,7 +628,6 @@ function recommended_resources_func($attr, $content = null)
 	}
 
 	return $return;
-	//$return = '<a href="http://tech.ed.gov/open-education/go-open-districts/" onmousedown="_sendEvent('Outbound','tech.ed.gov','/open-education/go-open-districts/',0);"><button class="btn btn-primary btn-large netp-button">#GoOpen Districts</button></a>';
  }
 
  /**
@@ -772,20 +771,20 @@ function parse_data_attributes( $data ) {
 	$attr_type = "checkmark";
 	if ($type)
 		$attr_type = $type;
-	
+
 	$class_attrs[] = $attr_type;
-	
+
 	//Set Color
 	if ($color){
-		
+
 		$color_class = $color;
-		
+
 		if (strpos($color,"#")>=0){
 			$color_class = substr($color,1,strlen($color)-1);
 		}
-			
+
 		$class_attrs[] = "color-".$color_class;
-		
+
 		$style = '<style>';
 		//Set Line Color
 		$style .= '.color-'.$color_class.'{
@@ -797,29 +796,29 @@ function parse_data_attributes( $data ) {
 			}';
 		$style .= '</style>';
 	}
-	
+
 	//Set Width
 	$attr_width = 12;
 	$class_attrs[] = "col-xs-".$attr_width;
-	
+
 	if ($width) {
 		$attr_width = "col-md-".$width;
 		$class_attrs[] = $attr_width;
 		$class_attrs[] = "col-sm-".$width;
 	}
-	
+
 	//Set Alignment
 	if ($alignment)
 		$class_attrs[] = "pull-".$alignment;
-	
+
 	$attrs = implode(" ", $class_attrs);
-	
+
 	$return = '<div class="'.$attrs.'">'.$content.'</div>'.$style;
 
 	return $return;
 
  }
- 
+
  /**
  * Publication Intro
  * Shortcode Example : [publication_intro title='This is the title']Text goes here[/publication_intro]
@@ -835,7 +834,7 @@ function parse_data_attributes( $data ) {
 				'.$content.'
 		        </div>
 		</div>'.$style;
-	
+
 	return $return;
  }
 
