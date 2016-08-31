@@ -8,7 +8,7 @@ body { overflow-x:hidden; }
 #contact-slider-content {
     width:260px;
     height:auto;
-    min-height:500px;
+    min-height:430px;
     position:absolute;
     right:0;
     border:1px solid #d8d8d8;
