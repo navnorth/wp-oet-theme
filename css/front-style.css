@@ -169,6 +169,7 @@ hr { width: 100%;}
 .pull-out-box {
     position: relative;
     margin: 30px;
+    width: auto; /* so margin matches others */
 }
 .pull-out-box.big-text {
     font-size: 1.4em;
@@ -291,6 +292,12 @@ hr { width: 100%;}
     font-size: 36px;
     margin-bottom: 20px;
 }
+
+/* highlight text orange */
+.definition {
+    color: #e57200;
+}
+
 /** Table Styles **/
 #content table { border: 1px solid #ccc; }
 #content tr { border: 1px solid #ccc; }
