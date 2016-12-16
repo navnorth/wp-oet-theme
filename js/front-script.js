@@ -74,6 +74,13 @@ jQuery( document ).ready(function() {
 	
 	jQuery('.slideshow_description').addClass("dot-ellipsis dot-resize-update dot-load-update");
 	
+	//Update top level menu styles dynamically
+	jQuery('.main-menu ul li a').each(function(){
+	    if(jQuery(this).attr('href')=='#') {
+		jQuery(this).css( { 'text-decoration':'none' , 'cursor':'default' });
+	    }
+	});
+	
     // Replace SVGs with PNG on unsupported browsers
 	if (!Modernizr.svg) {
 		jQuery('img.svg-replace[src*="svg"]').attr('src', function() {
