@@ -55,16 +55,16 @@ add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 function theme_front_enqueue_script()
 {
     global $csenabled, $cspage;
-    
+
     $csenabled = get_option("enablecontactslider");
     $cspage = get_option("contactsliderpage");
-    
+
 	wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
 
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
 	wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
 	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
-	
+
 	//Add specific Stylesheet for the contact slider template
 	if ( $csenabled ) {
 	    wp_enqueue_style( 'contact-slider-style',get_stylesheet_directory_uri() . '/css/slider.css' );
@@ -75,7 +75,7 @@ function theme_front_enqueue_script()
 	wp_enqueue_script( 'ellipsis-script', get_stylesheet_directory_uri() . '/js/jquery.dotdotdot.min.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
 	wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/modernizr-custom.js' );
-	
+
 	//Add specific javascript for the contact slider template
 	if ( $csenabled ) {
 	    wp_enqueue_script('contact-slider-script', get_stylesheet_directory_uri() . '/js/slider.js' );
@@ -160,7 +160,7 @@ add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
 // Fed Govt analytics script
 function federated_analytics_tracking_code(){
-    echo '<script language="javascript" id="_fed_an_ua_tag" src="http://www2.ed.gov/style/Universal-Federated-Analytics.1.0.js?ver=true&agency=ED"></script>';
+    echo '<script language="javascript" id="_fed_an_ua_tag" src="//www2.ed.gov/style/Universal-Federated-Analytics.1.0.js?ver=true&agency=ED"></script>';
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
 
