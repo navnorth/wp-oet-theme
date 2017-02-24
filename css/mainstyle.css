@@ -365,7 +365,19 @@ h4 { font-family: 'Raleway-Light' !important}
 	.pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-right: 15px !important}
 	.page-template-page-templatestoolkit-template-php .pblctn_right_sid_mtr .col-sm-6 {margin: 35px 1.7% 0}
 	aside { float: left; width: 100%}
-
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_title,
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_title a {
+            font-size: 30px !important;
+            line-height: 1.25em;
+        }
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
+        .slideshow_container_style-light .slideshow_description_box div.slideshow_description a {
+            margin-left: 0;
+            margin-top: 10px;
+            font-size: 14px;
+            line-height:1.25em;
+        }
+        .slideshow_container_style-light .slideshow_pagination { bottom: 25px !important; }
 }
 
 @media (max-width: 768px){
