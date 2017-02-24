@@ -540,6 +540,15 @@ h4 { font-family: 'Raleway-Light' !important}
     .top_strp { margin-top:0px; }
     .soclize .socl_icns { padding:16px; }
     .fa-stack-2x { font-size:1.65em !important }
+    .slideshow_container_style-light .slideshow_description_box div.slideshow_title,
+    .slideshow_container_style-light .slideshow_description_box div.slideshow_title a {
+        font-size:24px !important;
+        line-height:1.15em;
+    }
+    .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
+    .slideshow_container_style-light .slideshow_description_box div.slideshow_description a {
+        font-size:12px;
+    }
 
 }
 @media (max-width: 400px){
