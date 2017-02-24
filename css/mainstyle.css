@@ -424,6 +424,7 @@ h4 { font-family: 'Raleway-Light' !important}
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
 	.tlkt_rght_sid h3 { width: 70%}
+        .slideshow_container, .slideshow_container .slideshow_content { height: 240px !important}
 
 }
 @media (max-width: 715px){
@@ -437,6 +438,7 @@ h4 { font-family: 'Raleway-Light' !important}
 
 	.tlkt_rght_sid .link_dwnlds { width: 100%; }
 	.tlkt_rght_sid .btn_dwnld { margin: 0px 0 5px}
+        .slideshow_container, .slideshow_container .slideshow_content { height: 220px !important}
 }
 
 @media (max-width: 600px){
