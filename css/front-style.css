@@ -97,7 +97,7 @@ hr { width: 100%;}
 	position:absolute;
 	left:0px;
 	top:0px;
-	background:#00529f;
+	background:#294179;
 	outline:0;
 	-webkit-transition: top .1s ease-in, background .5s linear;
         transition: top .1s ease-in, background .5s linear;
@@ -127,7 +127,7 @@ hr { width: 100%;}
 	height:100%;
 }
 .toc-button {
-	background-color: #00529F;
+	background-color: #294179;
 	padding: 20px 10px !important;
 	width: 100%;
 	font-size: 24px !important;
@@ -155,7 +155,7 @@ hr { width: 100%;}
 	top: -30px;
 }
 .toc-small-button {
-	background-color: #00529F;
+	background-color: #294179;
 	padding: 12px !important;
 	width: 100%;
 	font-size: 14px !important;
@@ -229,7 +229,7 @@ hr { width: 100%;}
     top: -30px;
 }
 .pull-out-box.checkmark {
-    border: 2px solid #00529f;
+    border: 2px solid #294179;
     padding: 30px;
 }
 .pull-out-box.checkmark:before {
@@ -238,7 +238,7 @@ hr { width: 100%;}
     font-size: 20px;
     padding: 6px 11px;
     color: white;
-    background-color: #00529f;
+    background-color: #294179;
     width: 60px;
     height: 60px;
     border-radius: 30px;
@@ -307,7 +307,7 @@ hr { width: 100%;}
 	border-bottom: 1px solid #ccc;
 	vertical-align:top;
 }
-#content tr:first-child { background: #00529f; }
+#content tr:first-child { background: #294179; }
 #content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; font-family:'Raleway-Bold'; }
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
 #content tr td, #content tr th { padding:5px }

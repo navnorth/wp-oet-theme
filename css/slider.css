@@ -26,7 +26,7 @@ body { overflow-x:hidden; }
     top:125px;
     left:127px;
     box-shadow:0 0 8px gray;
-    background: #00529F;
+    background: #294179;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     cursor:pointer;
@@ -36,7 +36,7 @@ body { overflow-x:hidden; }
     top:125px;
     left:127px;
     box-shadow:0 0 8px gray;
-    background: #00529F;
+    background: #294179;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     cursor:pointer;
@@ -80,7 +80,7 @@ body { overflow-x:hidden; }
 }
 #contact-slider-content button,
 #contact-slider-content input[type=submit]{
-    background:#00529F;
+    background:#294179;
     border:none;
     color:#fff;
     width:100%;
