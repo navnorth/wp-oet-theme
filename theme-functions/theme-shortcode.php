@@ -61,7 +61,7 @@ $group_id = "accordion";
   {
 		$return .= '<div class="panel panel-default">';
 
-		$return .= '<div class="panel-heading" role="tab" id="heading'. $accordion_series .'">';
+		$return .= '<div class="panel-heading" role="tab" id="heading'. $group_id. $accordion_series .'">';
 		  $return .= '<h5 class="panel-title">';
 
 			  if(isset($expanded) && !empty($expanded) && strtolower($expanded) == "true")
