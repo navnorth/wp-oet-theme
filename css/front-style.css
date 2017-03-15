@@ -367,3 +367,8 @@ ul.checkbox_list input {
 	border: none;
 	background: transparent url(../images/search_icn.png) no-repeat center center;
 }
+.wp-caption {
+	background: #f2f2f2;
+	border: 1px solid #cccccc;
+}
+.wp-caption p.wp-caption-text { margin: 20px; }
