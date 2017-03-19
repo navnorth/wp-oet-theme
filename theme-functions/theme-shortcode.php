@@ -400,6 +400,7 @@ function recommended_resources_func($attr, $content = null)
 {
 	extract($attr);
 	$return = '';
+	$regex = "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/";
 	if(isset($heading) && !empty($heading))
 	{
 		$return .= '<p class="pblctn_scl_icn_hedng">'. $heading.'</p>';
@@ -412,8 +413,10 @@ function recommended_resources_func($attr, $content = null)
 		{
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
+				preg_match($regex, $src1, $matches);
+				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src1 .'" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -433,8 +436,10 @@ function recommended_resources_func($attr, $content = null)
 		{
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
+				preg_match($regex, $src2, $matches);
+				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src2 .'" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -454,8 +459,10 @@ function recommended_resources_func($attr, $content = null)
 		{
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
+				preg_match($regex, $src3, $matches);
+				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src3 .'" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -481,8 +488,10 @@ function recommended_resources_func($attr, $content = null)
 		{
 			if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1))
 			{
+				preg_match($regex, $src1, $matches);
+				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src1 .'" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -502,8 +511,10 @@ function recommended_resources_func($attr, $content = null)
 		{
 			if(isset($text2) && !empty($text2) && isset($src2) && !empty($src2))
 			{
+				preg_match($regex, $src2, $matches);
+				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src2 .'" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -523,8 +534,10 @@ function recommended_resources_func($attr, $content = null)
 		{
 			if(isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
 			{
+				preg_match($regex, $src3, $matches);
+				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src3 .'" allowfullscreen></iframe>';
+					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
