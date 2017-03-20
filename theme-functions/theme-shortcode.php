@@ -8,6 +8,9 @@ function disruptive_content_fun($attr, $content = null)
 {
 	extract($attr);
 
+	if (strpos($button_color,"#")===false)
+		$button_color = "#".$button_color;
+	
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
@@ -610,11 +613,15 @@ function recommended_resources_func($attr, $content = null)
 
 	//Button Color
 	if (isset($button_color) && !empty($button_color)) {
+		if (strpos($button_color,"#")===false)
+			$button_color = "#".$button_color;
 		$btnStyle .= "background-color:".$button_color.";";
 	}
 
 	//Button Text color
 	if (isset($text_color) && !empty($text_color)) {
+		if (strpos($text_color,"#")===false)
+			$text_color = "#".$text_color;
 		$btnStyle .= "color:".$text_color.";";
 	}
 
