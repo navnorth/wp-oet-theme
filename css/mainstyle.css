@@ -80,7 +80,6 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 #header_logo {max-width:620px; max-height:142;}
 .top_strp_img { float: left; background: url(../images/top_strap_img.png) 0 0 no-repeat}
 .top_strp { overflow: hidden; background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 55px}
-.navi_bg { border-top: 2px solid #d2d3d4}
 .navi_bg ul { padding: 0; margin-bottom: 0}
 .navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Raleway-SemiBold'}
 .navi_bg li a {color: #fff; font-size: 16px; padding: 8px 18px; float: left}
