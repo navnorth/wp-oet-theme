@@ -107,7 +107,6 @@
             </div>
         </div>
 
-        <div class="row top_strp"></div>
         <div class="row navi_bg">
         	<div class="main-menu">
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
