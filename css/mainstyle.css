@@ -94,7 +94,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .border_blue { border: 1px solid #94a0bc; margin-top: 12px; border-radius: 3px; margin-bottom: 20px}
 .border_blue h1 { font-family: 'Raleway-SemiBold'; color: #294179; font-size: 40px !important; letter-spacing: 1.5px}
 .pblctn_hed { font-family: 'Raleway-SemiBold'; color: #294179; margin-bottom: 20px;}
-.bnr_img img { width: 100.2%}
+.bnr_img img { width: 100.2% }
 .bnr_img { padding-right: 0 !important }
 .border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px }
 .hdng_mtr, .hdng_mtr a { font-size: 18px; color: #e57200; font-family: 'Raleway-Bold' !important}
@@ -137,7 +137,7 @@ iframe { border: 0;  max-width:100%; }
 .vdo_bg p { margin: 20px; }
 .pblctn_vdo_bg p { margin: 14px; }
 
-.ftr_strp { background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 25px; margin-top: 30px}
+.ftr_strp { height: 25px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
 .ftr_logo { padding-right: 0 !important}
 .fa-envelope, .fa-youtube-play, .fa-google-plus { font-size: 20px !important}

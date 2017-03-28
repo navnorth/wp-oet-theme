@@ -10,6 +10,7 @@
  */
 ?>
         <div class="row ftr">
+            <div class="col-md-12 col-sm-12 col-xs-12 ftr_strp"></div>
             <div class="col-md-10 col-sm 10 col-xs-10 ftr_lnks">
                <?php wp_nav_menu( array('menu' => "Footer Menu") );?>
             </div>
