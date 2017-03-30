@@ -573,6 +573,7 @@ h4 { font-family: 'Raleway-Light' !important}
         padding:6px 3px;
         width: 12%;
 	}
+    .navi_icn { margin-top:-35px; margin-bottom:10px; }
 }
 @media (max-width: 300px){
 
