@@ -3,6 +3,10 @@ jQuery( document ).ready(function() {
 	  //alert(this.value);
 	});
 
+	if (jQuery(window).width()<400) {
+	    jQuery('#content').css("margin-top","40px");
+	}
+	
 	jQuery(".fa-bars").click(function(){
 		jQuery(".menu-primary-menu-container").css("display", "block");
 		jQuery(".responsiv-menu_ul").css("display", "block");
