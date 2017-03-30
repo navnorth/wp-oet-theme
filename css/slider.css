@@ -4,6 +4,7 @@ body { overflow-x:hidden; }
     top:100px;
     position:fixed;
     right:-342px;
+    z-index:9999;
 }
 #contact-slider-content {
     width:260px;
