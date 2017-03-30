@@ -2,10 +2,6 @@ jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
 	});
-
-	if (jQuery(window).width()<400) {
-	    jQuery('#content').css("margin-top","40px");
-	}
 	
 	jQuery(".fa-bars").click(function(){
 		jQuery(".menu-primary-menu-container").css("display", "block");
@@ -65,10 +61,12 @@ jQuery( document ).ready(function() {
 			    jQuery('.form-group.gray_bg').hide();
 			    jQuery('.top_strp').css({"margin-top":"0"});
 			    jQuery('.navi_icn').css({"margin-top":"-48px"})
+			    jQuery('#content').css({"margin-top":"0"});
 			} else {
 			    jQuery('.form-group.gray_bg').show();
 			    jQuery('.top_strp').css({"margin-top":"50px"});
 			    jQuery('.navi_icn').css({"margin-top":"-93px"})
+			    jQuery('#content').css({"margin-top":"45px"});
 			}
 	    });
 	}

@@ -549,7 +549,7 @@ h4 { font-family: 'Raleway-Light' !important}
     .slideshow_container_style-light .slideshow_description_box div.slideshow_description a {
         font-size:12px;
     }
-    .slideshow_container { margin-bottom:20px; margin-top:20px; }
+    .slideshow_container { margin-bottom:20px !important; margin-top:10px !important; }
 }
 @media (max-width: 400px){
 
