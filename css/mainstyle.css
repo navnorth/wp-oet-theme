@@ -420,6 +420,7 @@ h4 { font-family: 'Raleway-Light' !important}
             line-height:1.5em !important;
         }
         .slideshow_container_style-light .slideshow_pagination { bottom: 25px !important; }
+        img { max-width:100%; }
 }
 @media (max-width: 750px){
 	.hdr .col-xs-offset-2  {margin-left: 16.66666667% !important;}
