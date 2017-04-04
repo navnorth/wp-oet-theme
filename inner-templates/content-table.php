@@ -6,6 +6,7 @@ if ($subpages)
     $withChild = true;
 else {
     $parent_id = $post->post_parent;
+    
     if ($parent_id>0)
             $withChild = true;
 
@@ -75,6 +76,11 @@ $sublinks = array();
                         }
                     }
                 } else {
+                    $parent_template = get_post_meta($parent_id, '_wp_page_template', true);
+                    if (
+                        $parent_template == "page-templates/publication-subsection-template.php" ||
+                        $parent_template == "page-templates/publication-template.php"
+                    ) {
                     ?>
                     <div class="toc-box">
                     <?php
@@ -141,6 +147,7 @@ $sublinks = array();
                     ?>
                     </div>
                     <?php
+                    }
                 }
             ?>
         </div>
