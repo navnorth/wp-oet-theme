@@ -554,7 +554,7 @@ h4 { font-family: 'Raleway-Light' !important}
 }
 @media (max-width: 400px){
 
-	.lft_sid_mtr img, .rght_sid_mtr img { float: none}
+	.lft_sid_mtr img, .rght_sid_mtr img { float: none; width:100%; max-width:100%; }
 	.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-top: 0;  }
 	.rght_sid_mtr .rght_sid_mtr .btn_dwnld { margin: 0 2% 5px 0}
 	/* .slideshow_container { display: none !important} */
