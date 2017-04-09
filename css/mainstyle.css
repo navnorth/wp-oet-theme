@@ -234,10 +234,10 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 .responsiv-menu { display: none; background: #294179; float: left; border-top: 1px solid #00407C}
 .responsiv-menu li, .responsiv-menu li a { width: 100% }
-.responsiv-menu li { border-bottom: 1px solid #054480; border-top: 1px solid #095AA6;}
+.responsiv-menu li { border-bottom: 1px solid #294179; border-top: 1px solid #f5f5f5;}
 .responsiv-menu li:first-child { border-top: none}
 
-.responsiv-menu .sub-menu { background: #014A8E; display: block; top: 0; border-top: none; position: relative; width: 100%; left: 0}
+.responsiv-menu .sub-menu { background: #294179; display: block; top: 0; border-top: none; position: relative; width: 100%; left: 0}
 .responsiv-menu .sub-menu li { border-bottom: none; border-top: none; position: relative !important}
 .responsiv-menu .sub-menu li a { padding: 8px 40px !important; }
 
