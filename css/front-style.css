@@ -270,6 +270,7 @@ hr { width: 100%;}
     position: relative;
     margin-bottom: 60px;
     font-family: 'Raleway-Semibold', sans-serif !important;
+    background:#294179;
 }
 .page .intro:before {
     content: "";

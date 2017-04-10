@@ -856,13 +856,13 @@ function parse_data_attributes( $data ) {
  function publication_intro_func($attribute, $content = null) {
 
 	if (is_array($attribute)) extract($attribute);
-	$style = '<style>.page .intro:before{ background-image: url("'.get_stylesheet_directory_uri().'/images/top_strap_img.jpg"); }</style>';
+	
 	$return = '<div class="intro">
 			<div class="intro-goal">
 				<div class="title">'.$title.'</div>
 				'.$content.'
 		        </div>
-		</div>'.$style;
+		</div>';
 
 	return $return;
  }

@@ -215,7 +215,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 .bg_img_of_icns h3 { color: #fff !important}
 .bg_img_of_icns .btn_dwnld, .bg_img_of_icns .link_dwnlds { margin-top: 0; margin-bottom: 0}
-.bg_img_of_icns { background: url(../images/top_strap_img.jpg) -1px -1px no-repeat; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
+.bg_img_of_icns { background:#294179; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
 .bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
 
 
