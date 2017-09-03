@@ -8,11 +8,12 @@ class FeaturedContentWidgetDetails extends WP_Widget
     }
     function update($newinstance,$oldinstance)
     {
-        $instance =  $oldinstance;
-        $instance['heading'] = $newinstance['heading'];
-	    $instance['title'] = $newinstance['title'];
-		$instance['image'] = $newinstance['image'];
-		$instance['htmltext'] = $newinstance['htmltext'];
+	  $instance =  $oldinstance;
+	  $instance['heading'] = $newinstance['heading'];
+	  $instance['label'] = $newinstance['label'];
+	  $instance['title'] = $newinstance['title'];
+	  $instance['image'] = $newinstance['image'];
+	  $instance['htmltext'] = $newinstance['htmltext'];
 	return $instance;
     }
     function form($instance)
@@ -20,6 +21,10 @@ class FeaturedContentWidgetDetails extends WP_Widget
 		if(isset($instance['heading']))
 		{
 			$heading = $instance['heading'];
+		}
+		if(isset($instance['label']))
+		{
+			$label = $instance['label'];
 		}
 		if(isset($instance['title']))
 		{
@@ -34,6 +39,11 @@ class FeaturedContentWidgetDetails extends WP_Widget
 			$htmltext = $instance['htmltext'];
 		}
         ?>
+	<p>
+            <label for="<?php echo $this->get_field_id("label");?>">Label:</label>
+            <input type="text"  <?php if(isset($label)){?> value="<?php echo esc_attr($label); ?>" <?php }else{ echo 'value=""';}?> name="<?php echo $this->get_field_name("label"); ?>" id="<?php echo $this->get_field_id("label");?>" class="widefat" />
+	    <span class="description">This is only visible on the admin area.</span>
+        </p>
         <p>
             <label for="<?php echo $this->get_field_id("heading");?>">Heading:</label>
             <input type="text"  <?php if(isset($heading)){?> value="<?php echo esc_attr($heading); ?>" <?php }else{ echo 'value=""';}?> name="<?php echo $this->get_field_name("heading"); ?>" id="<?php echo $this->get_field_id("heading");?>" class="widefat" />
