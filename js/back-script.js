@@ -24,7 +24,7 @@ jQuery( document ).ready(function() {
 	    var title = jQuery(this).find('.widget-title span.in-widget-title');
 	    var label = jQuery(this).find(".widget-inside input.widefat[id*='label']");
 	    setTimeout(function() {
-		var title_text = "";
+		var title_text = title.text();
 		if (label) {
 		    title_text = ": " + label.val();
 		}
