@@ -18,4 +18,18 @@ jQuery( document ).ready(function() {
 	    jQuery('#contactsliderpage').prop('disabled',true);
 	}
     });
+    
+    jQuery(".widget[id*='featuredcontentwidgetdetails'").each(function(i, obj){
+	if (jQuery(this).find('.widget-title span.in-widget-title').length) {
+	    var title = jQuery(this).find('.widget-title span.in-widget-title');
+	    var label = jQuery(this).find(".widget-inside input.widefat[id*='label']");
+	    setTimeout(function() {
+		var title_text = "";
+		if (label) {
+		    title_text = ": " + label.val();
+		}
+		title.html(title_text);
+	    }, 1);
+	}
+    });
 });
