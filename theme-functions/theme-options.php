@@ -53,7 +53,7 @@ function theme_options_settings()
 			$strphs = array("-","_");
 			$return .=  '<div class="wrap">
 					<h2>'.get_the_title( $page_id ).'</h2>
-					<h4>Assign Temlate : '. ucwords(str_replace($strphs," ",$index)) .' </h4>';
+					<h4>Assign Template : '. ucwords(str_replace($strphs," ",$index)) .' </h4>';
 					
 			$return .= '<form method="post">
 				  
@@ -61,7 +61,9 @@ function theme_options_settings()
 				  <div class="oer_widget_wrapper">
 				  <div class="sub_wrapper">
 						<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="" /></div>
-						<div class="sub_wrapper_txt"><strong>Widget Title</strong></div>
+						<div class="sub_wrapper_type"><strong>Type</strong></div>
+						<div class="sub_wrapper_lbl"><strong>Label</strong></div>
+						<div class="sub_wrapper_txt"><strong>Title</strong></div>
 				  </div>';		
 			
 			if( !empty($widget_ids) )
@@ -88,7 +90,9 @@ function theme_options_settings()
 					
 					$return .= '<div  class="sub_wrapper">
 							<div class="sub_wrapper_fld"><input type="checkbox" name="widget_id[]" value="'.$id.'" '.$chekd.'/></div>
-							<div class="sub_wrapper_txt">'. $output->title.' <b>{ '.ucwords(str_replace($strphs," ",$name)).' }</b></div>
+							<div class="sub_wrapper_type">'. ucwords(str_replace($strphs," ",$name)) .'&nbsp;</div>
+							<div class="sub_wrapper_lbl">'. $output->label .'&nbsp;</div>
+							<div class="sub_wrapper_txt">'. $output->title .'</div>
 						 </div>'; 
 				}
 			}
