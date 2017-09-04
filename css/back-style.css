@@ -28,7 +28,7 @@
 }
 .sub_wrapper_txt {
     float: left;
-    font-size: 15px;
+    font-size: 14px;
     width: 30%;
 }
 .sub_wrapper_fld {
@@ -39,12 +39,12 @@
 .sub_wrapper_lbl {
     float:left;
     width: 30%;
-    font-size: 15px;
+    font-size: 14px;
 }
 .sub_wrapper_type {
     float:left;
     width: 25%;
-    font-size: 15px;
+    font-size: 14px;
 }
 #cstm_wdgt_btn {
     background: none repeat scroll 0 0 #294179;
