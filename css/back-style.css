@@ -29,21 +29,21 @@
 .sub_wrapper_txt {
     float: left;
     font-size: 14px;
-    width: 30%;
+    width: 35%;
 }
 .sub_wrapper_fld {
     float: left;
-    width: 10%;
+    width: 5%;
     padding-left: 40px;
 }
 .sub_wrapper_lbl {
     float:left;
-    width: 30%;
+    width: 35%;
     font-size: 14px;
 }
 .sub_wrapper_type {
     float:left;
-    width: 25%;
+    width: 20%;
     font-size: 14px;
 }
 #cstm_wdgt_btn {
