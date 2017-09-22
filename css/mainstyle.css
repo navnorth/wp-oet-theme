@@ -326,6 +326,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 h1,h2,h3 { font-family: 'Raleway-Semibold' !important }
 h1,h3 { color: #294179 !important }
 h4 { font-family: 'Raleway-Light' !important}
+.search-results article { overflow:hidden; }
 
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
