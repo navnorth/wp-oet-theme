@@ -48,7 +48,7 @@ $results = array();
 			$current_content_type = "";
 			foreach($results as $result) {
 				if ($current_content_type!==$result['type']){
-					echo "<h2>".ucwords($result['type'])."</h2>";
+					echo "<h2 class='content-type-heading'>".ucwords($result['type'])."</h2>";
 					$current_content_type = $result['type'];
 				}
 				if ($result['type']=="stories") {
@@ -59,8 +59,8 @@ $results = array();
 					<article id="post-<?php echo $post_id; ?>" <?php post_class('', $post_id); ?>>
 						<?php
 						if (has_post_thumbnail($post_id)) {
-							$thumbnail = get_the_post_thumbnail($post_id, 'thumbnail', array( 'class' => 'alignleft' ));
-							echo $thumbnail;
+							$thumbnail = get_the_post_thumbnail($post_id, 'search-thumbnail', array( 'class' => 'alignleft' ));
+							echo '<div class="search-thumbnail">'.$thumbnail.'</div>';
 						}
 						?>
 						<header class="entry-header">

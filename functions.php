@@ -44,6 +44,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
 
+ //Add search thumbnail
+if ( function_exists( 'add_image_size' ) ) { 
+    add_image_size( 'search-thumbnail', 230, 9999 ); //230 pixels wide (and unlimited height)
+}
+ 
 function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
