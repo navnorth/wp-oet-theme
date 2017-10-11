@@ -7,7 +7,9 @@
  * @since Twenty Twelve 1.0
  */
 
-get_header(); ?>
+get_header();
+$results = array();
+?>
 
 	<div id="content" class="row site-content">
 
@@ -17,63 +19,75 @@ get_header(); ?>
 				<h2 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentytwelve' ), '<span>' . get_search_query() . '</span>' ); ?></h2>
 			</header>
 
-			<?php while ( have_posts() ) : the_post(); ?>
-
-                <?php if (get_post_type() == 'stories' && function_exists('get_story_template_part')) { ?>
-                    <?php get_story_template_part( 'content', 'search' ); ?>
-
-                <?php } else { ?>
-
-    			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-			<?php
+			<?php while ( have_posts() ) : the_post();
+				if (get_post_type() == 'stories' && function_exists('get_story_template_part')) { 
+					$results[] = array('typeId'=>4,'type'=>'stories','post'=>$post);
+				} else {
+					$id = get_the_ID();
+					$template = get_page_template_slug($id);
+					
+					switch ($template){
+						case "page-templates/resource-template.php":
+							$results[] = array('typeId'=>3,'type'=>'resources','post'=>$post);
+							break;
+						case "page-templates/publication-subsection-template.php":
+						case "page-templates/publication-template.php":
+							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post);
+							break;
+						case "page-templates/initiative-template.php":
+							$results[] = array('typeId'=>2,'type'=>'initiatives','post'=>$post);
+							break;
+						default:
+							$results[] = array('typeId'=>5,'type'=>'other results','post'=>$post);
+							break;
+					}
+				}
+			endwhile;
+			asort($results);
 			
-			$id = get_the_ID();
-
-			$template = get_page_template_slug($id);
-			
-			if (strpos($template,'publication')){
-				
-				if (has_post_thumbnail($id)) {
-					$thumbnail = get_the_post_thumbnail($id, 'thumbnail', array( 'class' => 'alignleft' ));
-					echo $thumbnail;
+			$current_content_type = "";
+			foreach($results as $result) {
+				if ($current_content_type!==$result['type']){
+					echo "<h2>".ucwords($result['type'])."</h2>";
+					$current_content_type = $result['type'];
+				}
+				if ($result['type']=="stories") {
+					include( locate_template( 'content-search.php', false, false ) ); 
+				} else {
+					$post_id = $result['post']->ID;
+					?>
+					<article id="post-<?php echo $post_id; ?>" <?php post_class('', $post_id); ?>>
+						<?php
+						if (has_post_thumbnail($post_id)) {
+							$thumbnail = get_the_post_thumbnail($post_id, 'thumbnail', array( 'class' => 'alignleft' ));
+							echo $thumbnail;
+						}
+						?>
+						<header class="entry-header">
+						<?php if ( is_single() ) : ?>
+						    <h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
+						<?php else : ?>
+						    <h3 class="entry-title">
+							<a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
+						    </h3>
+						<?php endif; // is_single() ?>
+						</header><!-- .entry-header -->
+		    
+						<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+						<div class="entry-summary">
+						    <?php echo get_the_excerpt($post_id); ?>
+						</div><!-- .entry-summary -->
+						<?php else : ?>
+						<div class="entry-content">
+						    <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
+						    <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+						</div><!-- .entry-content -->
+						<?php endif; ?>
+					</article><!-- #post -->
+					<?php
 				}
 			}
-			
 			?>
-			
-                        <?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
-                            <div class="featured-post">
-                                <?php _e( 'Featured post', 'twentytwelve' ); ?>
-                            </div>
-                        <?php endif; ?>
-
-			<header class="entry-header">
-			    <?php if ( is_single() ) : ?>
-				<h3 class="entry-title"><?php the_title(); ?></h3>
-			    <?php else : ?>
-				<h3 class="entry-title">
-				    <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-				</h3>
-			    <?php endif; // is_single() ?>
-			</header><!-- .entry-header -->
-
-			<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-			    <div class="entry-summary">
-				<?php the_excerpt(); ?>
-			    </div><!-- .entry-summary -->
-			<?php else : ?>
-			    <div class="entry-content">
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
-			    </div><!-- .entry-content -->
-			<?php endif; ?>
-                    </article><!-- #post -->
-
-                <?php } ?>
-
-			<?php endwhile; ?>
-
 
 		<?php else : ?>
 
