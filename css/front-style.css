@@ -376,3 +376,4 @@ ul.checkbox_list input {
 .program_toc_box > div { margin-top:30px; }
 .search-results .search_story_featured_image { max-width:230px; width:100%; height:auto; }
 .search-results .content-type-heading { margin-top:30px; margin-bottom:10px; }
+.search-results .entry-content { overflow:hidden; margin-bottom:15px; }
