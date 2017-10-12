@@ -55,34 +55,40 @@ $results = array();
 					include( locate_template( 'content-search.php', false, false ) ); 
 				} else {
 					$post_id = $result['post']->ID;
+					$full_width = true;
 					?>
 					<article id="post-<?php echo $post_id; ?>" <?php post_class('', $post_id); ?>>
+						<div class="entry-content">
 						<?php
 						if (has_post_thumbnail($post_id)) {
 							$thumbnail = get_the_post_thumbnail($post_id, 'search-thumbnail', array( 'class' => 'alignleft' ));
-							echo '<div class="search-thumbnail">'.$thumbnail.'</div>';
+							echo '<div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">'.$thumbnail.'</div>';
+							$full_width = false;
 						}
 						?>
-						<header class="entry-header">
-						<?php if ( is_single() ) : ?>
-						    <h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
-						<?php else : ?>
-						    <h3 class="entry-title">
-							<a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
-						    </h3>
-						<?php endif; // is_single() ?>
-						</header><!-- .entry-header -->
-		    
-						<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-						<div class="entry-summary">
-						    <?php echo get_the_excerpt($post_id); ?>
-						</div><!-- .entry-summary -->
-						<?php else : ?>
-						<div class="entry-content">
-						    <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
-						    <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
-						</div><!-- .entry-content -->
-						<?php endif; ?>
+						<div class="<?php if ($full_width==true): ?>col-md-12 col-sm-12<?php else: ?>col-md-9 col-sm-6<?php endif; ?> col-xs-12 search-result-content">
+							<header class="search-header">
+							<?php if ( is_single() ) : ?>
+							    <h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
+							<?php else : ?>
+							    <h3 class="entry-title">
+								<a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
+							    </h3>
+							<?php endif; // is_single() ?>
+							</header><!-- .entry-header -->
+			    
+							<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+							<div class="search-summary">
+							    <?php echo get_the_excerpt($post_id); ?>
+							</div><!-- .entry-summary -->
+							<?php else : ?>
+							<div class="search-content">
+							    <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
+							    <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+							</div><!-- .entry-content -->
+							<?php endif; ?>
+							</div>
+						</div>
 					</article><!-- #post -->
 					<?php
 				}
