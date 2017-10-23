@@ -69,7 +69,10 @@ $results = array();
 						<?php
 						if (has_post_thumbnail($post_id)) {
 							$thumbnail = get_the_post_thumbnail($post_id, 'search-thumbnail', array( 'class' => 'alignleft' ));
-							echo '<div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">'.$thumbnail.'</div>';
+							if ($result['type']=="publications")
+								echo '<div class="col-md-3 col-sm-6 col-xs-12 search-publication-thumbnail">'.$thumbnail.'</div>';
+							else
+								echo '<div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">'.$thumbnail.'</div>';
 							$full_width = false;
 						}
 						?>
