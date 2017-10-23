@@ -28,17 +28,19 @@ $results = array();
 					
 					switch ($template){
 						case "page-templates/resource-template.php":
-							$results[] = array('typeId'=>3,'type'=>'resources','post'=>$post);
+							$results[] = array('typeId'=>3,'type'=>'resources','post'=>$post, 'child'=>false);
 							break;
 						case "page-templates/publication-subsection-template.php":
+							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>true);
+							break;
 						case "page-templates/publication-template.php":
-							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post);
+							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>false);
 							break;
 						case "page-templates/initiative-template.php":
-							$results[] = array('typeId'=>2,'type'=>'initiatives','post'=>$post);
+							$results[] = array('typeId'=>2,'type'=>'initiatives','post'=>$post, 'child'=>false);
 							break;
 						default:
-							$results[] = array('typeId'=>5,'type'=>'other results','post'=>$post);
+							$results[] = array('typeId'=>5,'type'=>'other results','post'=>$post, 'child'=>false);
 							break;
 					}
 				}
@@ -56,6 +58,11 @@ $results = array();
 				} else {
 					$post_id = $result['post']->ID;
 					$full_width = true;
+					$parent_title = null;
+					
+					if ($result['child'])
+						$parent_title = get_the_title($result['post']->post_parent);
+					
 					?>
 					<article id="post-<?php echo $post_id; ?>" <?php post_class('', $post_id); ?>>
 						<div class="entry-content">
@@ -69,8 +76,16 @@ $results = array();
 						<div class="<?php if ($full_width==true): ?>col-md-12 col-sm-12<?php else: ?>col-md-9 col-sm-6<?php endif; ?> col-xs-12 search-result-content">
 							<header class="search-header">
 							<?php if ( is_single() ) : ?>
+								<?php if ($parent_title) : ?>
+								<h4 class="entry-parent-title"><?php echo $parent_title; ?></h4>
+								<?php endif; ?>
 							    <h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
 							<?php else : ?>
+								<?php if ($parent_title) : ?>
+								<h4 class="entry-parent-title">
+									<a href="<?php echo get_the_permalink($result['post']->post_parent); ?>" rel="bookmark"><?php echo $parent_title; ?></a>
+								</h4>
+								<?php endif; ?>
 							    <h3 class="entry-title">
 								<a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
 							    </h3>
