@@ -34,7 +34,7 @@ $results = array();
 							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>true);
 							break;
 						case "page-templates/publication-template.php":
-							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>false);
+							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>true);
 							break;
 						case "page-templates/initiative-template.php":
 							$results[] = array('typeId'=>2,'type'=>'initiatives','post'=>$post, 'child'=>false);
@@ -60,7 +60,7 @@ $results = array();
 					$full_width = true;
 					$parent_title = null;
 					
-					if ($result['child'])
+					if ($result['child'] && $result['post']->post_parent!==0)
 						$parent_title = get_the_title($result['post']->post_parent);
 					
 					?>
