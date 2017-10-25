@@ -100,7 +100,13 @@ $results = array();
 			    
 							<?php if ( is_search() ) : // Only display Excerpts for Search ?>
 							<div class="search-summary">
-							    <?php echo get_the_excerpt($current_post); ?>
+								<?php
+								if (strlen(get_the_excerpt($current_post))>0) {
+									echo get_the_excerpt($current_post);
+								} else {
+									echo get_excerpt_by_id($post_id);
+								}
+								?>
 							</div><!-- .entry-summary -->
 							<?php else : ?>
 							<div class="search-content">
