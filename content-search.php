@@ -52,13 +52,13 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_
             <?php
                 if (function_exists('display_story_excerpt')){
                     $excerpt = display_story_excerpt($post_id, 300);
-                    
-                    if (strlen($excerpt)<=0) {
-                        $excerpt = get_excerpt_by_id($post_id);
-                    }
-                    
-                    echo $excerpt;
                 }
+                
+                if (strlen($excerpt)<=0) {
+                    $excerpt = get_excerpt_by_id($post_id);
+                }
+                
+                echo $excerpt;
             ?>
         </div>
     </div>
