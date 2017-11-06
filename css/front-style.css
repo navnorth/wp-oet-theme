@@ -379,5 +379,5 @@ ul.checkbox_list input {
 .search-results .entry-content { overflow:hidden; margin-bottom:15px; }
 .search-results .search-header h4.entry-parent-title { margin-bottom:0; }
 .search-results .search-header h3.entry-title { margin-top:10px; }
-.search-results .search-header h4.entry-parent-title a { font-weight:bold; color: #4b4e53; }
+.search-results .search-header h4.entry-parent-title { font-weight:bold; color: #4b4e53; }
 .search-results .search-publication-thumbnail { height:150px; overflow:hidden; }

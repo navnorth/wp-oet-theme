@@ -90,7 +90,7 @@ $results = array();
 							<?php else : ?>
 								<?php if ($parent_title) : ?>
 								<h4 class="entry-parent-title">
-									<a href="<?php echo get_the_permalink($result['post']->post_parent); ?>" rel="bookmark"><?php echo $parent_title; ?></a>
+									<?php echo $parent_title; ?>
 								</h4>
 								<?php endif; ?>
 							    <h3 class="entry-title">
