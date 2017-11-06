@@ -230,3 +230,12 @@ function get_excerpt_by_id($post_id){
     
     return $the_excerpt;
 }
+
+
+function compareType($array1, $array2) {
+    if ( $array1[typeId] == $array2[typeId] )
+        return 0;
+    if ( $array1[typeId] < $array2[typeId] )
+         return -1;
+    return 1;
+}

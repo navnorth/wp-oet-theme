@@ -21,14 +21,14 @@ $results = array();
 
 			<?php while ( have_posts() ) : the_post();
 				if (get_post_type() == 'stories' && function_exists('get_story_template_part')) { 
-					$results[] = array('typeId'=>4,'type'=>'stories','post'=>$post);
+					$results[] = array('typeId'=>2,'type'=>'stories','post'=>$post);
 				} else {
 					$id = get_the_ID();
 					$template = get_page_template_slug($id);
 					
 					switch ($template){
 						case "page-templates/resource-template.php":
-							$results[] = array('typeId'=>3,'type'=>'resources','post'=>$post, 'child'=>false);
+							$results[] = array('typeId'=>4,'type'=>'resources','post'=>$post, 'child'=>false);
 							break;
 						case "page-templates/publication-subsection-template.php":
 							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>true);
@@ -37,7 +37,7 @@ $results = array();
 							$results[] = array('typeId'=>1,'type'=>'publications','post'=>$post, 'child'=>true);
 							break;
 						case "page-templates/initiative-template.php":
-							$results[] = array('typeId'=>2,'type'=>'initiatives','post'=>$post, 'child'=>false);
+							$results[] = array('typeId'=>3,'type'=>'initiatives','post'=>$post, 'child'=>false);
 							break;
 						default:
 							$results[] = array('typeId'=>5,'type'=>'other results','post'=>$post, 'child'=>false);
@@ -45,7 +45,8 @@ $results = array();
 					}
 				}
 			endwhile;
-			asort($results);
+			
+			usort($results, 'compareType');
 			
 			$current_content_type = "";
 			foreach($results as $result) {
