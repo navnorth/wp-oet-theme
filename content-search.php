@@ -6,7 +6,7 @@
  * @subpackage WP Stories Plugin
  * @since 0.2.8
  */
-//global $post;
+global $post_id;
 $img_url = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
 $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true);
 ?>
@@ -52,7 +52,7 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_
                 if (function_exists('display_story_excerpt')){
                     $excerpt = display_story_excerpt($post_id, 300);
                 }
-                
+                var_dump($excerpt);
                 if (strlen($excerpt)<=0) {
                     $excerpt = get_excerpt_by_id($post_id);
                 }
