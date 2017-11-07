@@ -54,13 +54,16 @@ $results = array();
 					echo "<h2 class='content-type-heading'>".ucwords($result['type'])."</h2>";
 					$current_content_type = $result['type'];
 				}
+				
+				$post_id = $result['post']->ID;
+				$current_post = get_post($post_id);
+				if ($current_post)
+					setup_postdata($current_post);
+				
 				if ($result['type']=="stories") {
 					include( locate_template( 'content-search.php', false, false ) ); 
 				} else {
-					$post_id = $result['post']->ID;
-					$current_post = get_post($post_id);
-					if ($current_post)
-						setup_postdata($current_post);
+					
 					$full_width = true;
 					$parent_title = null;
 					
