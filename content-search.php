@@ -7,11 +7,10 @@
  * @since 0.2.8
  */
 //global $post;
-$post_id = $result['post']->ID;
 $img_url = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
 $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true);
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php echo $post_id; ?>" <?php post_class(); ?>>
     <div class="entry-content">
         <?php if(isset($img_url) && !empty($img_url)) : ?>
         <div class="col-md-3 col-sm-6 col-xs-12 search_story_image">
