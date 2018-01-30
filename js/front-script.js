@@ -54,9 +54,11 @@ jQuery( document ).ready(function() {
 	     }
 	});
 	
-	jQuery('.main-menu ul li.menu-item-has-children a').on('focus', function(){
+	jQuery('.main-menu ul li a').on('focus', function(){
 	    if (jQuery(this).parent().has('.sub-menu').length>0) {
 		jQuery(this).parent().find('.sub-menu').toggle();
+	    } else {
+		jQuery(this).parent().prev().find('.sub-menu').toggle();
 	    }
 	});
 	
