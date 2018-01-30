@@ -100,6 +100,6 @@ jQuery( document ).ready(function() {
 		console.log('Replaced SVG images with PNG');
 	}
 
-
+    enable_tabbing(-1)
 });
 
