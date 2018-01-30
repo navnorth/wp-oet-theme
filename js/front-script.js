@@ -54,6 +54,12 @@ jQuery( document ).ready(function() {
 	     }
 	});
 	
+	jQuery('.main-menu ul li.menu-item-has-children a').on('focus', function(){
+	    if (jQuery(this).parent().has('.sub-menu').length>0) {
+		jQuery(this).parent().find('.sub-menu').toggle();
+	    }
+	});
+	
 	if (jQuery(window).width()<=600) {
 	    jQuery('.form-group.gray_bg').before('<a href="javascript:void(0)" class="mobile-search-btn"><span class="fa-stack"><i class="fa fa-search" aria-hidden="true"></i></span></a>');
 	    jQuery('.mobile-search-btn').on('click', function(){
@@ -79,7 +85,7 @@ jQuery( document ).ready(function() {
 	//Update top level menu styles dynamically
 	jQuery('.main-menu ul li a').each(function(){
 	    if(jQuery(this).attr('href')=='#') {
-		jQuery(this).css( { 'text-decoration':'none' , 'cursor':'default' });
+		jQuery(this).css( { 'cursor':'default' });
 	    }
 	});
 	

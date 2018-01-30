@@ -382,3 +382,5 @@ ul.checkbox_list input {
 .search-results .search-header h4.entry-parent-title { font-weight:bold; color: #4b4e53; }
 .search-results .search-publication-thumbnail { height:150px; overflow:hidden; }
 .search-results .search-publication-thumbnail img { position:absolute; bottom:0; margin-bottom:0; }
+.main-menu ul li.menu-item-has-children > a:focus { text-decoration:underline; }
+.main-menu li:focus .sub-menu { display:block; }
