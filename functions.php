@@ -248,7 +248,7 @@ function oet_cf7_footer() {
 	setTimeout(function(){
 	    jQuery('.wpcf7-response-output.wpcf7-validation-errors').attr('tabindex', '0');
 	    jQuery('.wpcf7-response-output.wpcf7-validation-errors').focus();
-	    jQuery(window).scrollTop(jQuery('.wpcf7-response-output.wpcf7-validation-errors').offset().top-120);
+	    //jQuery(window).scrollTop(jQuery('.wpcf7-response-output.wpcf7-validation-errors').offset().top-120);
 	}, 500);
 }, false );
 </script>
