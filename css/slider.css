@@ -90,7 +90,14 @@ body { overflow-x:hidden; }
     border:3px solid #ccc;
     margin-top:10px;
     height:80px;
-    width:100%
+    width:100%;
+    color:#333333;
+}
+#contact-slider-content textarea::-webkit-input-placeholder,
+#contact-slider-content textarea::-moz-placeholder,
+#contact-slider-content textarea:-ms-input-placeholder,
+#contact-slider-content textarea:-moz-placeholder{
+    color:#333333;
 }
 #contact-slider-content button,
 #contact-slider-content input[type=submit]{
