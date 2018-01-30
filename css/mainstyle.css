@@ -142,9 +142,12 @@ iframe { border: 0;  max-width:100%; }
 .ftr_logo { padding-right: 0 !important}
 .fa-envelope, .fa-youtube-play, .fa-google-plus { font-size: 20px !important}
 .soclize a { color: #fff; text-decoration: none}
-.soclize a:hover {text-decoration: none}
+.soclize a:hover,
+.soclize a:focus{text-decoration: none}
+.soclize a:focus .socl_icns,
 .soclize .socl_icns:hover { background: #f2f2f2; transition: background .3s}
-.soclize a:hover { color: #4a4f55; transition: color .3s}
+.soclize a:hover,
+.soclize a:focus{ color: #4a4f55; transition: color .3s}
 .soclize { margin-top: 28px}
 .rght_sid_socl_icn a, .pblctn_scl_icns a { color: #294179}
 .rght_sid_socl_icn a:hover, .pblctn_scl_icns a:hover { color: #3493f1}
