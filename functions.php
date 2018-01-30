@@ -239,3 +239,18 @@ function compareType($array1, $array2) {
          return -1;
     return 1;
 }
+
+// Add DOM event Listener to Contact Form
+function oet_cf7_footer() {
+?>
+<script type="text/javascript">
+    document.addEventListener( 'wpcf7submit', function( event ) {
+	setTimeout(function(){
+	    jQuery('.wpcf7-response-output.wpcf7-validation-errors').attr('tabindex', '0');
+	    jQuery('.wpcf7-response-output.wpcf7-validation-errors').focus();
+	}, 500);
+}, false );
+</script>
+<?php
+}
+add_action( 'wp_footer', 'oet_cf7_footer' );
