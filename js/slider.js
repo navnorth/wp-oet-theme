@@ -1,4 +1,6 @@
 var origPosition;
+var hidden_slider = document.getElementById("contact-slider-content");
+hidden_slider.disabled = true;
 /*
 ------------------------------------------------------------
 Function to activate form button to open the slider.
@@ -6,6 +8,7 @@ Function to activate form button to open the slider.
 */
 function open_panel() {
     origPosition = parseInt(document.getElementById("contact-slider").style.right);
+    document.getElementById("contact-slider-content").disabled = false;
     slideIt();
     var a = document.getElementById("contact-slider-sidebar");
     a.setAttribute("id", "contact-slider-sidebar1");
@@ -41,6 +44,7 @@ function close_panel() {
     show_cf_form();
     // set box-shadow
     document.getElementById("contact-slider-content").style.boxShadow ='0 0 0';
+    document.getElementById("contact-slider-content").disabled=true;
 }
 
 /*
