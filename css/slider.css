@@ -123,6 +123,7 @@ body { overflow-x:hidden; }
     top: 10px;
 }
 #contact-slider-content span.wpcf7-not-valid-tip { font-size:14px; font-weight:bold; }
+#cf-form #contact-form-body .wpcf7-form-control-wrap #cCaptcha { transform: scale(0.86); -webkit-transform: scale(0.86); transform-origin: 0 0; -webkit-transform-origin: 0 0; }
 @media (max-width: 1200px){
     #contact-slider {  }
 }

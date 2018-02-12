@@ -209,9 +209,6 @@ function load_contact_slider() {
 	</div>
     </div>
     <!-- Sliding div ends here -->
-    <style type="text/css">
-	#cf-form #contact-form-body .wpcf7-form-control-wrap #cCaptcha { transform: scale(0.86); -webkit-transform: scale(0.86); transform-origin: 0 0; -webkit-transform-origin: 0 0; }
-    </style>
 <?php
     load_recaptcha_callback_script();
     }
