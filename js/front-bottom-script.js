@@ -15,6 +15,7 @@ jQuery( document ).ready(function() {
         var sbHeight = slider_button.outerHeight(true);
         var sbtop = (scHeight/2-sbHeight/2);
         var stop = (dHeight/2 - scHeight/2);
+        var soffset = 35;
         if (sbtop<0) {
             sbtop=sbtop+50;
         }
@@ -22,7 +23,7 @@ jQuery( document ).ready(function() {
             stop=stop+50;
         }
         slider_button.css('top',sbtop + 'px' );
-        slider.css('top',stop + 'px');
+        slider.css('top',stop-soffset + 'px');
         
         //Update Mobile view
         if (jQuery(window).width()<600) {
