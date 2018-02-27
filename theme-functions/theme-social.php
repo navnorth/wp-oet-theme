@@ -18,6 +18,7 @@ function socialmedia_settings()
 		update_option("linktonwltr", $linktonwltr);
 		update_option("mediumclientid", $mediumclientid);
 		update_option("mediumclientsecret", $mediumclientsecret);
+		update_option("mediumaccesstoken", $mediumaccesstoken);
 		update_option("enablecontactslider", $enablecontactslider);
 		update_option("contactsliderpage", $contactsliderpage);
 	}
@@ -30,6 +31,7 @@ function socialmedia_settings()
 	$linktonwltr = get_option("linktonwltr");
 	$mediumclientid = get_option("mediumclientid");
 	$mediumclientsecret = get_option("mediumclientsecret");
+	$mediumaccesstoken = get_option("mediumaccesstoken");
 	$enablecontactslider = get_option("enablecontactslider");
 	$contactsliderpage = get_option("contactsliderpage");
 	
@@ -82,8 +84,8 @@ function socialmedia_settings()
 							<div class="oer_sclmda_fld"><input type="text" name="mediumclientid" value="'. $mediumclientid .'" /></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Medium Client Secret:</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="mediumclientsecret" value="'. $mediumclientsecret .'" /></div>
+							<div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
+							<div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>

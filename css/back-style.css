@@ -75,7 +75,8 @@
     float: left;
     width: 70%;
 }
-.oer_sclmda_fld > input[type="text"] {
+.oer_sclmda_fld > input[type="text"],
+.oer_sclmda_fld > input[type="password"]{
     float: left;
     padding: 5px 10px;
     width: 50%;
