@@ -21,6 +21,6 @@ $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
 var_dump($user);
-$publications = $medium->publications($user->data->id)->data;
+$publications = $medium->publications('5e4f6fedc86c')->data;
 var_dump($publications);
 ?>
