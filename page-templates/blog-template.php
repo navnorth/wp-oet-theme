@@ -30,6 +30,7 @@ global $post;
 				<?php endwhile;?>
 
 		</div>
+		<?php get_template_part( 'content', 'medium' ); ?>
 	</div>
 
 <?php get_footer(); ?>
