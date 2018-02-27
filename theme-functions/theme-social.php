@@ -84,6 +84,10 @@ function socialmedia_settings()
 							<div class="oer_sclmda_fld"><input type="text" name="mediumclientid" value="'. $mediumclientid .'" /></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
+							<div class="oer_sclmda_txt"><strong>Medium Client Secret:</strong></div>
+							<div class="oer_sclmda_fld"><input type="text" name="mediumclientsecret" value="'. $mediumclientsecret .'" /></div>
+					  </div>
+					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
 							<div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /></div>
 					  </div>

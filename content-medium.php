@@ -18,7 +18,6 @@ $credentials = [
 
 // Self Access Token Authentication
 $medium = new Medium($self_access_token);
-var_dump($medium);
 
 $user = $medium->getAuthenticatedUser();
 var_dump($user);
