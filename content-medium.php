@@ -20,7 +20,7 @@ $credentials = [
 $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
-
+var_dump($user);
 $publications = $medium->publications($user->data->id)->data;
 var_dump($publications);
 ?>
