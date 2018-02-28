@@ -384,3 +384,17 @@ ul.checkbox_list input {
 .search-results .search-publication-thumbnail img { position:absolute; bottom:0; margin-bottom:0; }
 .main-menu ul li.menu-item-has-children > a:focus { text-decoration:underline; }
 .main-menu li:focus .sub-menu { display:block; }
+.medium {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-color: #eee #ddd #bbb;
+	border-width: 1px;
+	border-style: solid;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+	padding: 30px;
+	min-height: 400px;
+	margin: 2%;
+	color:#ffffff;
+}

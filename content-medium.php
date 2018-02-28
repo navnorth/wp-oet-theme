@@ -34,9 +34,11 @@ echo "</div>";
             if (($cnt%3)==1)
                 echo "<div class='row'>";
             ?>
-            <div class="col-md-4 col-sm-6 col-xs-12 medium" style="background:#000000 url(<?php echo $publication->imageUrl; ?>) no-repeat top left;">
-                <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
-                <p><?php echo $publication->description; ?></p>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="medium" style="background:#000000 url(<?php echo $publication->imageUrl; ?>) no-repeat top left;">
+                    <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
+                    <p><?php echo $publication->description; ?></p>
+                </div>
             </div>
             <?php
             if (($cnt%3)==0)
