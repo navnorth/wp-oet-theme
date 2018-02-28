@@ -397,4 +397,6 @@ ul.checkbox_list input {
 	min-height: 400px;
 	margin: 2%;
 	color:#ffffff;
+	background-size:cover;
 }
+.medium h1 a { color:#ffffff !important; }
