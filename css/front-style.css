@@ -398,6 +398,15 @@ ul.checkbox_list input {
 	margin: 2%;
 	color:#ffffff;
 	background-size:cover;
+	position:relative;
 }
 .medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
+.medium-wrapper {
+	position:absolute;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	background-color: rgba(100, 94, 96, 0.5);
+}

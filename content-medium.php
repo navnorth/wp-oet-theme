@@ -36,8 +36,10 @@ echo "</div>";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="background:#000000 url(<?php echo $publication->imageUrl; ?>) no-repeat top left;">
-                    <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
-                    <p><?php echo $publication->description; ?></p>
+                    <div class="medium-wrapper">
+                        <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
+                        <p><?php echo $publication->description; ?></p>
+                    </div>
                 </div>
             </div>
             <?php
