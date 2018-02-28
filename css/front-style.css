@@ -393,7 +393,6 @@ ul.checkbox_list input {
 	border-width: 1px;
 	border-style: solid;
 	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
-	padding: 30px;
 	min-height: 400px;
 	margin: 2%;
 	color:#ffffff;
@@ -409,4 +408,6 @@ ul.checkbox_list input {
 	height:100%;
 	width:100%;
 	background-color: rgba(100, 94, 96, 0.5);
+	padding: 30px;
+	border-radius:5px;
 }
