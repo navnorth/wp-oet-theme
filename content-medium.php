@@ -22,9 +22,7 @@ $medium = new Medium($self_access_token);
 $user = $medium->getAuthenticatedUser();
 
 $publications = $medium->publications($user->data->id)->data;
-echo "<div class='hidden'>";
-var_dump($publications);
-echo "</div>";
+
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <?php
