@@ -399,4 +399,5 @@ ul.checkbox_list input {
 	color:#ffffff;
 	background-size:cover;
 }
-.medium h1 a { color:#ffffff !important; }
+.medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
+.medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
