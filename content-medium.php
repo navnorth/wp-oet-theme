@@ -20,7 +20,24 @@ $credentials = [
 $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
-var_dump($user);
-$publications = $medium->publications($user->data->id);
+
+$publications = $medium->publications($user->data->id)->data;
+echo "<div class='hidden'>";
 var_dump($publications);
+echo "</div>";
 ?>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <?php
+    if ($publications){
+        foreach($publications as $publication){
+            ?>
+            <div class="col-md-4 col-sm-6 col-xs-12 medium">
+                <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
+                <p><?php echo $publication->description; ?></p>
+                <p><img src="<?php echo $publication->imageUrl; ?>" /></p>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>
