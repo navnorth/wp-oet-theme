@@ -201,7 +201,7 @@ function load_contact_slider() {
     <div id="contact-slider">
 	<button id="contact-slider-sidebar" onclick="open_panel()"><img src="<?php echo get_stylesheet_directory_uri();?>/images/contact-slide-button.png" alt="Contact Us"></button>
 	<div id="contact-slider-content">
-	    <span class="contact-slider-close" onclick="close_panel();" tabindex="0" aria-label="Close"></span>
+	    <button class="contact-slider-close" onclick="close_panel();" tabindex="0" aria-label="Close"></button>
 	    <?php
 	    $cpost = get_post($cspage);
 	    echo do_shortcode($cpost->post_content);

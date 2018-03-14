@@ -124,6 +124,7 @@ body { overflow-x:hidden; }
 }
 #contact-slider-content span.wpcf7-not-valid-tip { font-size:14px; font-weight:bold; color:#eb0000; }
 #cf-form #contact-form-body .wpcf7-form-control-wrap #cCaptcha { transform: scale(0.86); -webkit-transform: scale(0.86); transform-origin: 0 0; -webkit-transform-origin: 0 0; }
+#contact-slider-content button.contact-slider-close { background: transparent url(images/close_form.png) center center no-repeat; width:20px; height:20px; }
 @media (max-width: 1200px){
     #contact-slider {  }
 }
