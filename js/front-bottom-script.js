@@ -67,11 +67,13 @@ jQuery( document ).ready(function() {
         enable_tabbing(-1);
     }
     document.addEventListener( 'wpcf7invalid', function( event ) {
+        console.log(event.detail);
         alert(event.detail.apiResponse['message']);
         jQuery('.wpcf7-response-output').addClass('wpcf7-force-hidden');
         return false;
     }, false );
     document.addEventListener( 'wpcf7spam', function( event ) {
+        console.log(event.detail);
         alert(event.detail.apiResponse['message'])
         jQuery('.wpcf7-response-output').addClass('wpcf7-force-hidden');
         return false;
