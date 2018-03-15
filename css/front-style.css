@@ -411,3 +411,4 @@ ul.checkbox_list input {
 	padding: 30px;
 	border-radius:5px;
 }
+.wpcf7-force-hidden { display:none !important; }

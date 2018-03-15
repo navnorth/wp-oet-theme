@@ -64,6 +64,16 @@ jQuery( document ).ready(function() {
                 return false;
             }
         });
-        
+        enable_tabbing(-1);
     }
+    document.addEventListener( 'wpcf7invalid', function( event ) {
+        alert(event.detail.apiResponse['message']);
+        jQuery('.wpcf7-response-output').addClass('wpcf7-force-hidden');
+        return false;
+    }, false );
+    document.addEventListener( 'wpcf7spam', function( event ) {
+        alert(event.detail.apiResponse['message'])
+        jQuery('.wpcf7-response-output').addClass('wpcf7-force-hidden');
+        return false;
+    }, false );
 });

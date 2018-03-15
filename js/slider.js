@@ -74,5 +74,13 @@ function show_cf_form() {
 
 function enable_tabbing(tabindex) {
     jQuery('#contact-slider-content').find('.contact-slider-close').attr('tabindex',tabindex);
-    jQuery('#contact-slider-content').find('#cf-form input').attr('tabindex',tabindex);
+    jQuery('#contact-slider-content').find('#cf-form input,#cf-form textarea').attr('tabindex',tabindex);
+    jQuery('#contact-slider-content').find('.wpcf7-recaptcha').attr('tabindex',tabindex);
+    jQuery('#contact-slider-content').find('.wpcf7-recaptcha').attr('data-tabindex',tabindex);
+    jQuery('#contact-slider-content').find('.wpcf7-recaptcha iframe').attr('tabindex',tabindex);
+    if (tabindex===0) {
+        jQuery('#contact-slider-content').find('.wpcf7-recaptcha').css({"visibility":"visible"});
+    } else {
+        jQuery('#contact-slider-content').find('.wpcf7-recaptcha').css({"visibility":"hidden"});
+    }
 }
