@@ -9,9 +9,12 @@ function open_panel() {
     slideIt();
     var a = document.getElementById("contact-slider-sidebar");
     a.setAttribute("id", "contact-slider-sidebar1");
+    a.setAttribute("aria-expanded", "true");
+    a.setAttribute("aria-label", "Contact Us Expanded");
     a.setAttribute("onclick", "close_panel()");
     // set box-shadow
-    document.getElementById("contact-slider-content").style.boxShadow ='0 0 8px gray';
+    content = document.getElementById("contact-slider-content");
+    content.style.boxShadow ='0 0 8px gray';
     enable_tabbing(0);
 }
 
@@ -38,10 +41,13 @@ function close_panel() {
     slideIn();
     a = document.getElementById("contact-slider-sidebar1");
     a.setAttribute("id", "contact-slider-sidebar");
+    a.setAttribute("aria-expanded", "false");
+    a.setAttribute("aria-label", "Contact Us Collapsed");
     a.setAttribute("onclick", "open_panel()");
     show_cf_form();
     // set box-shadow
-    document.getElementById("contact-slider-content").style.boxShadow ='0 0 0';
+    content = document.getElementById("contact-slider-content");
+    content.style.boxShadow ='0 0 0';
     enable_tabbing(-1);
 }
 
