@@ -76,4 +76,10 @@ jQuery( document ).ready(function() {
         jQuery('.wpcf7-response-output').addClass('wpcf7-force-hidden');
         return false;
     }, false );
+    jQuery(".collapse").on("shown.bs.collapse", function(e){
+    	jQuery(this).parent().find('a[data-target='+ jQuery(this).id +']').attr("aria-expanded","true");
+    });
+    jQuery(".collapse").on("hidden.bs.collapse", function(e){
+    	jQuery(this).parent().find('a[data-target='+ jQuery(this).id +']').attr("aria-expanded","false");
+    });
 });
