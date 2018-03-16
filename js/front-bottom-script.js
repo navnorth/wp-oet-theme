@@ -77,9 +77,9 @@ jQuery( document ).ready(function() {
         return false;
     }, false );
     jQuery(".collapse").on("shown.bs.collapse", function(e){
-    	jQuery(this).parent().find('a[data-target='+ jQuery(this).id +']').attr("aria-expanded","true");
+    	jQuery(this).parent().find('a[data-target="#'+ jQuery(this).id +'"]').attr("aria-expanded","true");
     });
     jQuery(".collapse").on("hidden.bs.collapse", function(e){
-    	jQuery(this).parent().find('a[data-target='+ jQuery(this).id +']').attr("aria-expanded","false");
+    	jQuery(this).parent().find('a[data-target="#'+ jQuery(this).id +'"]').attr("aria-expanded","false");
     });
 });
