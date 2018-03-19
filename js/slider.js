@@ -26,8 +26,14 @@ Function to slide the sidebar form (open form)
 function slideIt() {
     var slidingDiv = document.getElementById("contact-slider");
     var stopPosition = 0;
+    var add = 2;
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie>0) {
+        add = 8;
+    }
     if (parseInt(slidingDiv.style.right) < stopPosition) {
-        slidingDiv.style.right = parseInt(slidingDiv.style.right) + 2 + "px";
+        slidingDiv.style.right = parseInt(slidingDiv.style.right) + add + "px";
         setTimeout(slideIt, 1);
     }
 }
@@ -59,8 +65,14 @@ Function to slide the sidebar form (slide in form)
 function slideIn() {
     var slidingDiv = document.getElementById("contact-slider");
     var stopPosition = origPosition;
+    var add = 2;
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie>0) {
+        add = 8;
+    }
     if (parseInt(slidingDiv.style.right) > stopPosition) {
-        slidingDiv.style.right = parseInt(slidingDiv.style.right) - 2 + "px";
+        slidingDiv.style.right = parseInt(slidingDiv.style.right) - add + "px";
         setTimeout(slideIn, 1);
     }
 }

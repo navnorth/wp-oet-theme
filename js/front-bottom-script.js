@@ -82,4 +82,8 @@ jQuery( document ).ready(function() {
     jQuery(".collapse").on("hidden.bs.collapse", function(e){
     	jQuery(this).parent().find('a[data-target="#'+ jQuery(this).attr("id") +'"]').attr("aria-expanded","false");
     });
+    jQuery(".wpcf7-text,.wpcf7-textarea").on("focus", function(e){
+    	jQuery(this).parent().parent().find('label.hidden').addClass("show");
+        jQuery(this).css({"margin-bottom":"0"});
+    });
 });

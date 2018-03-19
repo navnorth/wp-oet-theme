@@ -54,13 +54,14 @@ body { overflow-x:hidden; }
 }
 #contact-slider-content input[type=text],
 #contact-slider-content input[type=email]{
-    margin-top:10px;
+    margin-top:0;
     padding:6px;
     width:100%;
     font-size:15px;
     border-radius:2px;
     border:3px solid #cccccc;
     color:#333333;
+    margin-bottom:10px;
 }
 #contact-slider-content input[type=text]::-webkit-input-placeholder,
 #contact-slider-content input[type=email]::-webkit-input-placeholder,
@@ -88,10 +89,11 @@ body { overflow-x:hidden; }
     font-size:15px;
     border-radius:2px;
     border:3px solid #ccc;
-    margin-top:10px;
+    margin-top:0;
     height:80px;
     width:100%;
     color:#333333;
+    margin-bottom:10px;
 }
 #contact-slider-content textarea::-webkit-input-placeholder,
 #contact-slider-content textarea::-moz-placeholder,
