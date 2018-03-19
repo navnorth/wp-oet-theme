@@ -48,9 +48,10 @@ body { overflow-x:hidden; }
 #contact-slider-sidebar1:focus {
     outline:0;
     opacity:.9;
-    border-top:1px solid #ffffff;
-    border-left:1px solid #ffffff;
-    border-bottom:1px solid #ffffff;
+    border-top:2px solid #ffffff;
+    border-left:2px solid #ffffff;
+    border-bottom:2px solid #ffffff;
+    box-shadow:0 0 12px #414244;
 }
 #contact-slider-content input[type=text],
 #contact-slider-content input[type=email]{
