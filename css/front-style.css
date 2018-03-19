@@ -422,8 +422,9 @@ ul.checkbox_list input {
 #contact-form-body .show {
 	display:block !important;
 	visibility:visible !important;
-	max-height: 1.5em;
+	max-height: 1em;
 	overflow:visible;
 	-webkit-transition: max-height 0.5s, overflow 0.5s 0.5s;
 	transition: max-height 0.5s, overflow 0.5s 0.5s;
+	font-size:0.85em;
 }
