@@ -320,8 +320,9 @@ add_action( 'wp_footer', 'oet_cf7_footer' );
  **/
 function convert_rss_to_json($rss_feed_url){
     $url = "https://api.rss2json.com/v1/api.json?rss_url=".urlencode($rss_feed_url);
-    $ch = curl_init($url);
+    $response = file_get_contents($url);
+    /*$ch = curl_init($url);
     $response = curl_exec($ch);
-    curl_close($ch);
+    curl_close($ch);*/
     return $response;
 }
