@@ -35,7 +35,9 @@ if ($publications){
         $rss_urls[] = "https://medium.com/feed/".$pub_name;
     }
 }
+echo "<div class='hidden'>";
 var_dump($rss_urls);
+echo "</div>";
 $feeds = array();
 foreach ($rss_urls as $rss_url){
     $feed = convert_rss_to_json($rss_url);
