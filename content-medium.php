@@ -22,6 +22,7 @@ $medium = new Medium($self_access_token);
 $user = $medium->getAuthenticatedUser();
 $publications = $medium->publications($user->data->id)->data;
 echo "<div class='hidden'>";
+var_dump($user->data->id);
 var_dump($publications);
 echo "</div>";
 $medium_base_url = "https://medium.com/";
