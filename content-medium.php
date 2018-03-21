@@ -32,6 +32,7 @@ $rss_urls = array(
         $cnt = 1;
         foreach($publications as $publication){
             $pub_name = sanitize_title($publication->name);
+            var_dump(strpos($publication->url,$medium_base_url));
             if (strpos($publication->url,$medium_base_url))
                 $pub_name = trim(substr($publication->url,strlen($medium_base_url)+1,strlen($publication->url)));
             $rss_urls[] = "https://medium.com/feed/".$pub_name;
