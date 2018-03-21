@@ -21,6 +21,7 @@ $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
 $publications = $medium->publications($user->data->id)->data;
+
 $medium_base_url = "https://medium.com/";
 $rss_urls = array(
             "https://medium.com/feed/@".$user->data->username
@@ -34,7 +35,7 @@ if ($publications){
         $rss_urls[] = "https://medium.com/feed/".$pub_name;
     }
 }
-
+var_dump($rss_urls);
 $feeds = array();
 foreach ($rss_urls as $rss_url){
     $feed = convert_rss_to_json($rss_url);
