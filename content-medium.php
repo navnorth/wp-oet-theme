@@ -21,7 +21,7 @@ $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
 $publications = $medium->publications($user->data->id)->data;
-
+$medium_base_url = "https://medium.com/";
 $rss_urls = array(
             "https://medium.com/feed/@".$user->data->username
             );
@@ -31,8 +31,10 @@ $rss_urls = array(
     if ($publications){
         $cnt = 1;
         foreach($publications as $publication){
-            var_dump($publication);
-            $rss_urls[] = "https://medium.com/feed/".sanitize_title($publication->name);
+            $pub_name = sanitize_title($publication->name);
+            if (strpos($publication->url,$medium_base_url))
+                $pub_name = trim(substr($publication->url,strlen($medium_base_url)+1,strlen($publication->url)));
+            $rss_urls[] = "https://medium.com/feed/".$pub_name;
             if (($cnt%3)==1)
                 echo "<div class='row'>";
             ?>
