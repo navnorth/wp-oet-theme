@@ -58,8 +58,6 @@ $rss_urls = array(
     $feeds = array();
     foreach ($rss_urls as $rss_url){
         $feed = convert_rss_to_json($rss_url);
-        var_dump($feed);
-        exit();
         $feed_json = json_decode($feed);
         var_dump($feed_json->status);
         var_dump($feed_json['status']);
