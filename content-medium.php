@@ -75,12 +75,13 @@ $rss_urls = array(
             foreach($feeds as $feed) {
                  if (($fcnt%3)==1)
                     echo "<div class='row'>";
+                    $description = strip_tags_content($feed['description'],"<h3>");
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="background:#000000 url(<?php echo $feed['thumbnail']; ?>) no-repeat top left;">
                     <div class="medium-wrapper">
                         <h1><a href="<?php echo $feed['link']; ?>"><?php echo $feed['title']; ?></a></h1>
-                        <p><?php echo substr($feed['description'],0,250); ?></p>
+                        <p><?php echo substr($description,0,250); ?></p>
                     </div>
                 </div>
             </div>
