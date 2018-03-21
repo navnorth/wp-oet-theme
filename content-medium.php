@@ -61,12 +61,12 @@ $rss_urls = array(
         if ($feed){
             if ($feed['status']=="ok"){
                 foreach($feed['items'] as $item){
-                   var_dump($item); 
+                   $feeds[] = $item;
                 }
             }
         }
-        exit();
     }
+    var_dump($feeds);
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class='row'>
