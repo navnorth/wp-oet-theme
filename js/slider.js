@@ -5,9 +5,16 @@ Function to activate form button to open the slider.
 ------------------------------------------------------------
 */
 function open_panel() {
+    var a = document.getElementById("contact-slider-sidebar");
+    if (is_IE()) {
+        var version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+        if (version<=9) {
+            location.href = jQuery(a).attr("data-redirect");
+            return false;
+        }
+    }
     origPosition = parseInt(document.getElementById("contact-slider").style.right);
     slideIt();
-    var a = document.getElementById("contact-slider-sidebar");
     a.setAttribute("id", "contact-slider-sidebar1");
     a.setAttribute("aria-expanded", "true");
     a.setAttribute("aria-label", "Contact Us Expanded");
@@ -27,9 +34,7 @@ function slideIt() {
     var slidingDiv = document.getElementById("contact-slider");
     var stopPosition = 0;
     var add = 2;
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
-    if (msie>0) {
+    if (is_IE()) {
         add = 8;
     }
     if (parseInt(slidingDiv.style.right) < stopPosition) {
@@ -66,9 +71,7 @@ function slideIn() {
     var slidingDiv = document.getElementById("contact-slider");
     var stopPosition = origPosition;
     var add = 2;
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
-    if (msie>0) {
+    if (is_IE()) {
         add = 8;
     }
     if (parseInt(slidingDiv.style.right) > stopPosition) {
@@ -101,4 +104,13 @@ function enable_tabbing(tabindex) {
     } else {
         jQuery('#contact-slider-content').find('.wpcf7-recaptcha').css({"visibility":"hidden"});
     }
+}
+
+function is_IE(){
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (msie>0)
+        return true;
+    else
+        return false;
 }
