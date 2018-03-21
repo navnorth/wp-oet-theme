@@ -32,9 +32,9 @@ $rss_urls = array(
         $cnt = 1;
         foreach($publications as $publication){
             $pub_name = sanitize_title($publication->name);
-            var_dump(strpos($publication->url,$medium_base_url));
-            if (strpos($publication->url,$medium_base_url))
+            if (strpos($publication->url,$medium_base_url)>=0)
                 $pub_name = trim(substr($publication->url,strlen($medium_base_url)+1,strlen($publication->url)));
+            var_dump($pub_name);
             $rss_urls[] = "https://medium.com/feed/".$pub_name;
             if (($cnt%3)==1)
                 echo "<div class='row'>";
