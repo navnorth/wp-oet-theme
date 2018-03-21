@@ -58,7 +58,8 @@ $rss_urls = array(
     $feeds = array();
     foreach ($rss_urls as $rss_url){
         $feed = convert_rss_to_json($rss_url);
-        var_dump($feed->items);
+        $feed_json = json_decode($feed);
+        var_dump($feed_json);
     }
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
