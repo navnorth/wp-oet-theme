@@ -396,9 +396,12 @@ ul.checkbox_list input {
 	min-height: 400px;
 	margin: 5% 1%;
 	color:#ffffff;
-	background-size:cover;
+	background-size:cover !important;
 	position:relative;
+	box-sizing:content-box;
+	height:auto;
 }
+.medium h1 { font-size:2em; }
 .medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium-wrapper {
