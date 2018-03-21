@@ -66,17 +66,30 @@ $rss_urls = array(
             }
         }
     }
-    var_dump($feeds);
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class='row'>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="medium" style="background:#000000 url(<?php echo $publication->imageUrl; ?>) no-repeat top left;">
-                <div class="medium-wrapper">
-                    <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
-                    <p><?php echo $publication->description; ?></p>
+        <?php
+        if ($feeds) {
+            $fcnt = 1;
+            foreach($feeds as $feed) {
+                 if (($fcnt%3)==1)
+                    echo "<div class='row'>";
+            ?>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="medium" style="background:#000000 url(<?php echo $feed['thumbnail']; ?>) no-repeat top left;">
+                    <div class="medium-wrapper">
+                        <h1><a href="<?php echo $feed['link']; ?>"><?php echo $feed['title']; ?></a></h1>
+                        <p><?php echo substr($feed['description'],0,250); ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
+            <?php
+            }
+             if (($fcnt%3)==0)
+                echo "</div>";
+            $fcnt++;
+        }
+        ?>
    </div>
 </div>
