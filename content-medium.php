@@ -25,47 +25,27 @@ $medium_base_url = "https://medium.com/";
 $rss_urls = array(
             "https://medium.com/feed/@".$user->data->username
             );
-?>
-<div class="col-md-12 col-sm-12 col-xs-12">
-    <?php
-    if ($publications){
-        $cnt = 1;
-        foreach($publications as $publication){
-            $pub_name = sanitize_title($publication->name);
-            if (strpos($publication->url,$medium_base_url)>=0)
-                $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
-            $rss_urls[] = "https://medium.com/feed/".$pub_name;
-            if (($cnt%3)==1)
-                echo "<div class='row'>";
-            ?>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="medium" style="background:#000000 url(<?php echo $publication->imageUrl; ?>) no-repeat top left;">
-                    <div class="medium-wrapper">
-                        <h1><a href="<?php echo $publication->url; ?>"><?php echo $publication->name; ?></a></h1>
-                        <p><?php echo $publication->description; ?></p>
-                    </div>
-                </div>
-            </div>
-            <?php
-            if (($cnt%3)==0)
-                echo "</div>";
-            $cnt++;
-        }
+
+if ($publications){
+    foreach($publications as $publication){
+        $pub_name = sanitize_title($publication->name);
+        if (strpos($publication->url,$medium_base_url)>=0)
+            $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
+        $rss_urls[] = "https://medium.com/feed/".$pub_name;
     }
-    ?>
-</div>
-<?php
-    $feeds = array();
-    foreach ($rss_urls as $rss_url){
-        $feed = convert_rss_to_json($rss_url);
-        if ($feed){
-            if ($feed['status']=="ok"){
-                foreach($feed['items'] as $item){
-                   $feeds[] = $item;
-                }
+}
+
+$feeds = array();
+foreach ($rss_urls as $rss_url){
+    $feed = convert_rss_to_json($rss_url);
+    if ($feed){
+        if ($feed['status']=="ok"){
+            foreach($feed['items'] as $item){
+               $feeds[] = $item;
             }
         }
     }
+}
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class='row'>
