@@ -52,9 +52,9 @@ foreach ($rss_urls as $rss_url){
         if ($feeds) {
             $fcnt = 1;
             foreach($feeds as $feed) {
-                 if (($fcnt%3)==1)
+                if (($fcnt%3)==1)
                     echo "<div class='row'>";
-                    $description = strip_tags_content($feed['description'],"<h3></h3>");
+                $description = strip_tags_content($feed['description'],"<h3></h3>");
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="background:#000000 url(<?php echo $feed['thumbnail']; ?>) no-repeat top left;">
@@ -65,10 +65,10 @@ foreach ($rss_urls as $rss_url){
                 </div>
             </div>
             <?php
-            }
-             if (($fcnt%3)==0)
+            if (($fcnt%3)==0)
                 echo "</div>";
             $fcnt++;
+            }
         }
         ?>
 </div>
