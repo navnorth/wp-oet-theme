@@ -19,12 +19,11 @@ $credentials = [
 // Self Access Token Authentication
 $medium = new Medium($self_access_token);
 
-$user = $medium->getAuthenticatedUser();
-var_dump($user);
+$user = $medium->getAuthenticatedUser();    
 $publications = $medium->publications($user->data->id)->data;
 
 $rss_urls = array(
-            "https://medium.com/feed/@OfficeOfEdTech"
+            "https://medium.com/feed/@".$user->username
             );
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -53,7 +52,7 @@ $rss_urls = array(
     ?>
 </div>
 <?php
-    var_dump($ss_urls);
+    var_dump($rss_urls);
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class='row'>
