@@ -19,11 +19,12 @@ $credentials = [
 // Self Access Token Authentication
 $medium = new Medium($self_access_token);
 
-$user = $medium->getAuthenticatedUser();    
+$user = $medium->getAuthenticatedUser();
+var_dump($user);
 $publications = $medium->publications($user->data->id)->data;
 
 $rss_urls = array(
-            "https://medium.com/feed/@".$user->username
+            "https://medium.com/feed/@".$user->data->username
             );
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -31,6 +32,7 @@ $rss_urls = array(
     if ($publications){
         $cnt = 1;
         foreach($publications as $publication){
+            var_dump($publication);
             $rss_urls[] = "https://medium.com/feed/".$publication->name;
             if (($cnt%3)==1)
                 echo "<div class='row'>";
