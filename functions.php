@@ -327,5 +327,5 @@ function convert_rss_to_json($rss_feed_url){
     curl_setopt($ch, CURLOPT_URL, $url);
     $response = curl_exec($ch);
     curl_close($ch);
-    return json_decode(stripslashes($response),true);
+    return json_decode($response,true);
 }
