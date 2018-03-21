@@ -314,3 +314,15 @@ function oet_cf7_footer() {
 <?php
 }
 add_action( 'wp_footer', 'oet_cf7_footer' );
+
+/**
+ * RSS Feed to JSON
+ **/
+function convert_rss_to_json($rss_feed_url){
+    $url = "https://api.rss2json.com/v1/api.json?rss_url=".urlencode($rss_feed_url);
+    $ch = curl_init($url);
+    $response = curl_exec($ch);
+    var_dump($response);
+    curl_close($ch);
+    return $response;
+}
