@@ -41,14 +41,15 @@ if ($publications){
 
 $feeds = array();
 foreach ($rss_urls as $rss_url){
+    var_dump($rss_url);
     $feed = convert_rss_to_json($rss_url["feed_url"]);
     if ($feed){
         if ($feed['status']=="ok"){
             foreach($feed['items'] as $item){
-            if (isset($rss_url["name"]))
-               $feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
-            else
-               $feeds[] = $item;
+                if (isset($rss_url["name"]))
+                   $feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
+                else
+                   $feeds[] = $item;
             }
         }
     }
@@ -73,7 +74,7 @@ foreach ($rss_urls as $rss_url){
                     <div class="medium-wrapper">
                         <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $feed[0]['title']; ?></a></h1>
                         <p><?php echo $description ?></p>
-                        <p>
+                        <p class="mfooter">
                             <a href="<?php echo $user->data->url; ?>" target="_blank"><img src="<?php echo $user->data->imageUrl; ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank">@<?php echo $user->data->username; ?></a>
                             <?php if (isset($feed["pub_name"])){ ?>
                              in <a href="<?php echo $feed["pub_url"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
