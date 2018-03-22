@@ -53,6 +53,8 @@ foreach ($rss_urls as $rss_url){
             $fcnt = 1;
             foreach($feeds as $feed) {
                 $description = strip_tags_content($feed['description'],"<h3>","</h3>");
+                $description = strip_tags_content($description,"<figure>","</figure>");
+                $description = trim(strip_tags($description));
                 echo "<div class='hidden'>";
                 var_dump($description);
                 echo "</div>";
