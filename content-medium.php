@@ -74,7 +74,7 @@ foreach ($rss_urls as $rss_url){
                             <p class="mfooter">
                                 <a href="<?php echo $user->data->url; ?>" target="_blank"><img src="<?php echo $user->data->imageUrl; ?>" width="30" height="30" /> @<?php echo $user->data->username; ?></a>
                                 <?php if (isset($feed["pub_name"])){ ?>
-                                 in <a href="<?php echo $feed["pub_url"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
+                                 in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
                                 <?php } ?>
                             </p>
                         </div>
