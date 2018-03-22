@@ -49,7 +49,7 @@ foreach ($rss_urls as $rss_url){
                 if (isset($rss_url["name"]))
                    $feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
                 else
-                   $feeds[] = $item;
+                   $feeds[] = array($item);
             }
         }
     }
