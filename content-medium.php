@@ -18,11 +18,11 @@ $credentials = [
 
 // Self Access Token Authentication
 $medium = new Medium($self_access_token);
-
+$rss_urls = array();
 $user = $medium->getAuthenticatedUser();
 $publications = $medium->publications($user->data->id)->data;
 $medium_base_url = "https://medium.com/";
-$rss_urls = array(
+$rss_urls[] = array(
             "feed_url" => "https://medium.com/feed/@".$user->data->username
             );
 
