@@ -401,8 +401,9 @@ ul.checkbox_list input {
 	box-sizing:content-box;
 	height:auto;
 }
-.medium h1 { font-size:32px; margin-top:0; }
+.medium h1 { font-size:30px; margin-top:0; -webkit-font-smoothing:antialiased; }
 .medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
+.medium h1 a:focus { outline-width:2px; }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium-background {
 	position:absolute;
