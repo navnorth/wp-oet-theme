@@ -401,7 +401,7 @@ ul.checkbox_list input {
 	box-sizing:content-box;
 	height:auto;
 }
-.medium h1 { font-size:2em; }
+.medium h1 { font-size:32px; margin-top:0; }
 .medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium-background {
@@ -414,9 +414,9 @@ ul.checkbox_list input {
 	padding: 30px;
 	border-radius:5px;
 }
-.medium-wrapper { position:relative; }
+.medium-wrapper { position:relative; height:100%; width:100%; }
 .medium a { color:#ffffff !important; }
-.medium p.mfooter { overflow:ellipsisi; height:30px; }
+.medium p.mfooter { height:30px; bottom:30px; }
 .wpcf7-force-hidden { display:none !important; }
 .medium-wrapper p.mfooter {
 	position: absolute;
@@ -424,6 +424,7 @@ ul.checkbox_list input {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	width:265px;
 }
 #contact-form-body .hidden {
 	display:block !important;
