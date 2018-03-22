@@ -46,7 +46,7 @@ foreach ($rss_urls as $rss_url){
         if ($feed['status']=="ok"){
             foreach($feed['items'] as $item){
             if (isset($rss_url["name"]))
-               $feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
+               $feeds[] = array($item, array("pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"])) ;
             else
                $feeds[] = $item;
             }
