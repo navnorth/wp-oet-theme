@@ -46,7 +46,7 @@ foreach ($rss_urls as $rss_url){
         if ($feed['status']=="ok"){
             foreach($feed['items'] as $item){
             if (isset($rss_url["name"]))
-               $feeds[] = array($item, array("pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"])) ;
+               $feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
             else
                $feeds[] = $item;
             }
@@ -59,6 +59,9 @@ foreach ($rss_urls as $rss_url){
         if ($feeds) {
             $fcnt = 1;
             foreach($feeds as $feed) {
+                echo "<div class='hidden'>";
+                var_dump($feed);
+                echo "</div>";
                 $description = strip_tags_content($feed['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
