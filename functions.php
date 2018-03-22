@@ -334,6 +334,6 @@ function convert_rss_to_json($rss_feed_url){
  * Strip Tags and Content
  **/
 function strip_tags_content($text, $start_tag, $end_tag) { 
-    $text = preg_replace("#//".$start_tag.".*?//".$end_tag."#s", "", $text);
+    $text = preg_replace('#'.$start_tag.'(.*?)'.$end_tag.'#', '', $text, 1);
     return $text; 
 } 
