@@ -1,9 +1,17 @@
 <?php
-add_action("admin_init", "add_image_metabox");
+//add_action("admin_init", "add_image_metabox");
+add_action("add_meta_boxes", "add_image_metabox");
 function add_image_metabox()
 {
-	add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
-    add_meta_box( "story_metabox", "Story Metabox", "story_metabox_func", "page" );
+	global $post;
+	$template = null;
+	if (!empty($post))
+		$template = get_post_meta($post->ID, '_wp_page_template', true);
+	
+	if ($template!=="page-templates/blog-template.php") {
+		add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
+		add_meta_box( "story_metabox", "Story Metabox", "story_metabox_func", "page" );
+	}
 	add_meta_box( "Assign Widgets to Pages", "Assign Widgets to Pages", "asgnwidget_metabox_func", "page", "side", "high" );
 }
 function asgnwidget_metabox_func()
