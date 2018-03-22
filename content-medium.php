@@ -20,7 +20,6 @@ $credentials = [
 $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
-var_dump($user);
 $publications = $medium->publications($user->data->id)->data;
 $medium_base_url = "https://medium.com/";
 $rss_urls = array(
@@ -33,17 +32,22 @@ if ($publications){
         $pub_name = sanitize_title($publication->name);
         if (strpos($publication->url,$medium_base_url)>=0)
             $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
-        $rss_urls[] = "https://medium.com/feed/".$pub_name;
+        $rss_urls[] = array(
+                            "feed_url" => "https://medium.com/feed/".$pub_name,
+                            "name" => $publication->name,
+                            "url" => $publication->url
+                           );
     }
 }
 
 $feeds = array();
 foreach ($rss_urls as $rss_url){
-    $feed = convert_rss_to_json($rss_url);
+    $feed = convert_rss_to_json($rss_url["feed_url"]);
     if ($feed){
         if ($feed['status']=="ok"){
             foreach($feed['items'] as $item){
                $feeds[] = $item;
+               $feeds[] = array("pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]);
             }
         }
     }
@@ -65,6 +69,12 @@ foreach ($rss_urls as $rss_url){
                     <div class="medium-wrapper">
                         <h1><a href="<?php echo $feed['link']; ?>"><?php echo $feed['title']; ?></a></h1>
                         <p><?php echo $description ?></p>
+                        <p>
+                            <a href="<?php echo $user->data->url; ?>" target="_blank"><img src="<?php echo $user->data->imageUrl; ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank">@<?php echo $user->data->username; ?></a>
+                            <?php if ($feed["pub_name"]!==""){ ?>
+                            in <a href="<?php echo $feed["pub_url"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
+                            <?php } ?>
+                        </p>
                     </div>
                 </div>
             </div>
