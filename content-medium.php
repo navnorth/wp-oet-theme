@@ -21,10 +21,6 @@ $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
 $publications = $medium->publications($user->data->id)->data;
-echo "<div class='hidden'>";
-var_dump($user->data->id);
-var_dump($publications);
-echo "</div>";
 $medium_base_url = "https://medium.com/";
 $rss_urls = array(
             "https://medium.com/feed/@".$user->data->username
@@ -38,9 +34,7 @@ if ($publications){
         $rss_urls[] = "https://medium.com/feed/".$pub_name;
     }
 }
-echo "<div class='hidden'>";
-var_dump($rss_urls);
-echo "</div>";
+
 $feeds = array();
 foreach ($rss_urls as $rss_url){
     $feed = convert_rss_to_json($rss_url);
@@ -58,12 +52,12 @@ foreach ($rss_urls as $rss_url){
         if ($feeds) {
             $fcnt = 1;
             foreach($feeds as $feed) {
+                $description = strip_tags_content($feed['description'],"<h3></h3>");
                 echo "<div class='hidden'>";
-                var_dump($feed);
+                var_dump($description);
                 echo "</div>";
                 //if (($fcnt%3)==1)
                     //echo "<div class='row'>";
-                $description = strip_tags_content($feed['description'],"<h3></h3>");
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="background:#000000 url(<?php echo $feed['thumbnail']; ?>) no-repeat top left;">
