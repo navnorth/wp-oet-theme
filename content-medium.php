@@ -23,12 +23,11 @@ $user = $medium->getAuthenticatedUser();
 $publications = $medium->publications($user->data->id)->data;
 $medium_base_url = "https://medium.com/";
 $rss_urls = array(
-            "https://medium.com/feed/@".$user->data->username
+            "feed_url" => "https://medium.com/feed/@".$user->data->username
             );
 
 if ($publications){
     foreach($publications as $publication){
-        var_dump($publication);
         $pub_name = sanitize_title($publication->name);
         if (strpos($publication->url,$medium_base_url)>=0)
             $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
