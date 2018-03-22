@@ -20,6 +20,7 @@ $credentials = [
 $medium = new Medium($self_access_token);
 
 $user = $medium->getAuthenticatedUser();
+var_dump($user);
 $publications = $medium->publications($user->data->id)->data;
 $medium_base_url = "https://medium.com/";
 $rss_urls = array(
@@ -28,6 +29,7 @@ $rss_urls = array(
 
 if ($publications){
     foreach($publications as $publication){
+        var_dump($publication);
         $pub_name = sanitize_title($publication->name);
         if (strpos($publication->url,$medium_base_url)>=0)
             $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
@@ -55,7 +57,7 @@ foreach ($rss_urls as $rss_url){
                 $description = strip_tags_content($feed['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
-                if (strlen($description)<=175)
+                if (strlen($description)>175)
                     $description = substr($description,0,175)."...";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
