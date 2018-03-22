@@ -55,23 +55,18 @@ foreach ($rss_urls as $rss_url){
                 $description = strip_tags_content($feed['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
-                echo "<div class='hidden'>";
-                var_dump($description);
-                echo "</div>";
-                //if (($fcnt%3)==1)
-                    //echo "<div class='row'>";
+                if (strlen($description)<=175)
+                    $description = substr($description,0,175)."...";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="background:#000000 url(<?php echo $feed['thumbnail']; ?>) no-repeat top left;">
                     <div class="medium-wrapper">
                         <h1><a href="<?php echo $feed['link']; ?>"><?php echo $feed['title']; ?></a></h1>
-                        <p><?php echo substr($description,0,250); ?></p>
+                        <p><?php echo $description ?></p>
                     </div>
                 </div>
             </div>
             <?php
-            //if (($fcnt%3)==0)
-                //echo "</div>";
             $fcnt++;
             }
         }
