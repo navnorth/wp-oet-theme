@@ -62,16 +62,16 @@ foreach ($rss_urls as $rss_url){
                 echo "<div class='hidden'>";
                 var_dump($feed);
                 echo "</div>";
-                $description = strip_tags_content($feed['description'],"<h3>","</h3>");
+                $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
                 if (strlen($description)>175)
                     $description = substr($description,0,175)."...";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="medium" style="background:#000000 url(<?php echo $feed['thumbnail']; ?>) no-repeat top left;">
+                <div class="medium" style="background:#000000 url(<?php echo $feed[0]['thumbnail']; ?>) no-repeat top left;">
                     <div class="medium-wrapper">
-                        <h1><a href="<?php echo $feed['link']; ?>"><?php echo $feed['title']; ?></a></h1>
+                        <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $feed[0]['title']; ?></a></h1>
                         <p><?php echo $description ?></p>
                         <p>
                             <a href="<?php echo $user->data->url; ?>" target="_blank"><img src="<?php echo $user->data->imageUrl; ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank">@<?php echo $user->data->username; ?></a>
