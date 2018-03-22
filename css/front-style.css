@@ -404,7 +404,7 @@ ul.checkbox_list input {
 .medium h1 { font-size:2em; }
 .medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
-.medium-wrapper {
+.medium-background {
 	position:absolute;
 	left:0;
 	top:0;
@@ -414,8 +414,17 @@ ul.checkbox_list input {
 	padding: 30px;
 	border-radius:5px;
 }
+.medium-wrapper { position:relative; }
 .medium a { color:#ffffff !important; }
+.medium p.mfooter { overflow:ellipsisi; height:30px; }
 .wpcf7-force-hidden { display:none !important; }
+.medium-wrapper p.mfooter {
+	position: absolute;
+	bottom: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 #contact-form-body .hidden {
 	display:block !important;
 	max-height: 0;
