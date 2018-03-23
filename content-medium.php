@@ -1,4 +1,8 @@
 <?php
+include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
+
+use JonathanTorres\MediumSdk\Medium;
+
 $client_id = get_option("mediumclientid");
 $client_secret = get_option("mediumclientsecret");
 $self_access_token = get_option("mediumaccesstoken");
@@ -18,7 +22,7 @@ if ($publications){
         $pub_name = sanitize_title($publication->name);
         if (strpos($publication->url,$medium_base_url)>=0)
             $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
-        $rss_urls[] = array(
+            $rss_urls[] = array(
                             "feed_url" => "https://medium.com/feed/".$pub_name,
                             "name" => $publication->name,
                             "url" => $publication->url
