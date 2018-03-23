@@ -18,15 +18,18 @@ $rss_urls[] = array(
             );
             
 if ($publications){
+    $i = 1;
     foreach($publications as $publication){
         $pub_name = sanitize_title($publication->name);
         if (strpos($publication->url,$medium_base_url)>=0)
             $pub_name = trim(substr($publication->url,strlen($medium_base_url),strlen($publication->url)));
-            $rss_urls[] = array(
-                            "feed_url" => "https://medium.com/feed/".$pub_name,
-                            "name" => $publication->name,
-                            "url" => $publication->url
-                           );
+            if (get_post_meta($post->ID, "mpublication".$i, true)=="1")
+                $rss_urls[] = array(
+                                "feed_url" => "https://medium.com/feed/".$pub_name,
+                                "name" => $publication->name,
+                                "url" => $publication->url
+                               );
+        $i++;
     }
 }
 
