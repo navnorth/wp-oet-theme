@@ -1,13 +1,18 @@
 <?php
+$client_id = get_option("mediumclientid");
+$client_secret = get_option("mediumclientsecret");
+$self_access_token = get_option("mediumaccesstoken");
 
-$publications = getMediumPublications();
-
+// Self Access Token Authentication
+$medium = new Medium($self_access_token);
+$user = $medium->getAuthenticatedUser();
 $rss_urls = array();
+$publications = $medium->publications($user->data->id)->data;
 $medium_base_url = "https://medium.com/";
 $rss_urls[] = array(
             "feed_url" => "https://medium.com/feed/@".$user->data->username
             );
-
+            
 if ($publications){
     foreach($publications as $publication){
         $pub_name = sanitize_title($publication->name);

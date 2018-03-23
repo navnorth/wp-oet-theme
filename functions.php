@@ -352,14 +352,6 @@ function getMediumPublications(){
     $client_secret = get_option("mediumclientsecret");
     $self_access_token = get_option("mediumaccesstoken");
 
-    $credentials = [
-	    'client-id' => $client_id,
-	    'client-secret' => $client_secret,
-	    'redirect-url' => 'http://oet-test.navigationnorth.com/wp-content/themes/wp-oet-theme/content-medium.php',
-	    'state' => 'oet_medium',
-	    'scopes' => 'basicProfile,publishPost,listPublications'
-    ];
-
     // Self Access Token Authentication
     $medium = new Medium($self_access_token);
     $user = $medium->getAuthenticatedUser();
