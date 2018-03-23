@@ -1,4 +1,8 @@
 <?php
+include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
+
+use JonathanTorres\MediumSdk\Medium;
+
 //add_action("admin_init", "add_image_metabox");
 add_action("add_meta_boxes", "add_image_metabox");
 function add_image_metabox()
@@ -11,6 +15,8 @@ function add_image_metabox()
 	if ($template!=="page-templates/blog-template.php") {
 		add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
 		add_meta_box( "story_metabox", "Story Metabox", "story_metabox_func", "page" );
+	} else {
+		add_meta_box( "blog_metabox", "Select Publications", "blog_metabox_func", "page");
 	}
 	add_meta_box( "Assign Widgets to Pages", "Assign Widgets to Pages", "asgnwidget_metabox_func", "page", "side", "high" );
 }
@@ -116,6 +122,40 @@ function story_metabox_func()
     <?php
 }
 
+function blog_metabox_func() {
+
+	$client_id = get_option("mediumclientid");
+	$client_secret = get_option("mediumclientsecret");
+	$self_access_token = get_option("mediumaccesstoken");
+
+	$credentials = [
+                'client-id' => $client_id,
+                'client-secret' => $client_secret,
+                'redirect-url' => 'http://oet-test.navigationnorth.com/wp-content/themes/wp-oet-theme/content-medium.php',
+                'state' => 'oet_medium',
+                'scopes' => 'basicProfile,publishPost,listPublications'
+        ];
+
+	// Self Access Token Authentication
+	$medium = new Medium($self_access_token);
+	$user = $medium->getAuthenticatedUser();
+	$publications = $medium->publications($user->data->id)->data;
+	$medium_base_url = "https://medium.com/";
+	
+
+	if ($publications){
+		$i=1;
+		foreach($publications as $publication){
+		    ?>
+		    <div class="meta_main_wrp">
+			    <input type="checkbox" name="publication<?php echo $i; ?>" /> <label for="publication<?php echo $i; ?>"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo wp_normalize_path( get_stylesheet_directory() . "/images/view-site-icon.png") ?>" alt="View Publication" /></a></label>
+		    </div>
+		    <?php
+		    $i++;
+		}
+	}
+}
+
 add_action('save_post', 'save_featured_metabox');
 function save_featured_metabox()
 {
@@ -133,9 +173,9 @@ function save_featured_metabox()
 
 	update_post_meta($post->ID, "social_status", $_POST["social_status"] );
 
-    update_post_meta($post->ID, "box_one_header", $_POST["box_one_header"] );
-    update_post_meta($post->ID, "box_one_text", $_POST["box_one_text"] );
-    update_post_meta($post->ID, "box_two_header", $_POST["box_two_header"] );
-    update_post_meta($post->ID, "box_two_text", $_POST["box_two_text"] );
+	update_post_meta($post->ID, "box_one_header", $_POST["box_one_header"] );
+	update_post_meta($post->ID, "box_one_text", $_POST["box_one_text"] );
+	update_post_meta($post->ID, "box_two_header", $_POST["box_two_header"] );
+	update_post_meta($post->ID, "box_two_text", $_POST["box_two_text"] );
 }
 ?>
