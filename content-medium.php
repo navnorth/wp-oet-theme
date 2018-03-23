@@ -66,7 +66,7 @@ foreach ($rss_urls as $rss_url){
                             <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $feed[0]['title']; ?></a></h1>
                             <p><?php echo $description ?></p>
                             <p class="mfooter">
-                                <a href="<?php echo $user->data->url; ?>" target="_blank" class="imglink"><img src="<?php echo $user->data->imageUrl; ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank" class="imglink">@<?php echo $user->data->username; ?></a>
+                                <a href="<?php echo $user->data->url; ?>" target="_blank" class="imglink"><img src="<?php echo $user->data->imageUrl; ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank">@<?php echo $user->data->username; ?></a>
                                 <?php if (isset($feed["pub_name"])){ ?>
                                  in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
                                 <?php } ?>
