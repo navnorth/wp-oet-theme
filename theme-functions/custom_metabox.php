@@ -129,7 +129,7 @@ function blog_metabox_func() {
 		    var_dump($pub_value);
 		    ?>
 		    <div class="meta_main_wrp">
-			    <input type="checkbox" name="mpublication<?php echo $i; ?>" value="1" <?php checked( $pub_value, 1 ); ?>  /> <label for="publication<?php echo $i; ?>" class="pub_label"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/view-site-icon.png"; ?>" alt="View Publication" width="16" /></a></label>
+			    <input type="checkbox" name="mpublication<?php echo $i; ?>" value="1" <?php checked( $pub_value, "1", true ); ?>  /> <label for="publication<?php echo $i; ?>" class="pub_label"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/view-site-icon.png"; ?>" alt="View Publication" width="16" /></a></label>
 		    </div>
 		    <?php
 		    $i++;
@@ -162,8 +162,6 @@ function save_featured_metabox()
 	if  (get_post_meta($post->ID, '_wp_page_template', true)=="page-templates/blog-template.php"){
 		$publications = getMediumPublications();
 		$count = count($publications);
-		var_dump($_POST);
-		exit();
 		for($i=1;$i<=$count;$i++){
 			update_post_meta($post->ID, "mpublication".$i, $_POST["mpublication".$i] );
 		}
