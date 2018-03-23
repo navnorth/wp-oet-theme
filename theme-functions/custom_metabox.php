@@ -1,8 +1,4 @@
 <?php
-include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
-
-use JonathanTorres\MediumSdk\Medium;
-
 //add_action("admin_init", "add_image_metabox");
 add_action("add_meta_boxes", "add_image_metabox");
 function add_image_metabox()
@@ -123,32 +119,16 @@ function story_metabox_func()
 }
 
 function blog_metabox_func() {
-
-	$client_id = get_option("mediumclientid");
-	$client_secret = get_option("mediumclientsecret");
-	$self_access_token = get_option("mediumaccesstoken");
-
-	$credentials = [
-                'client-id' => $client_id,
-                'client-secret' => $client_secret,
-                'redirect-url' => 'http://oet-test.navigationnorth.com/wp-content/themes/wp-oet-theme/content-medium.php',
-                'state' => 'oet_medium',
-                'scopes' => 'basicProfile,publishPost,listPublications'
-        ];
-
-	// Self Access Token Authentication
-	$medium = new Medium($self_access_token);
-	$user = $medium->getAuthenticatedUser();
-	$publications = $medium->publications($user->data->id)->data;
-	$medium_base_url = "https://medium.com/";
 	
+	$publications = getMediumPublications();
 
 	if ($publications){
 		$i=1;
 		foreach($publications as $publication){
+		    $pub_value = get_post_meta($post->ID, "publication".$i, true);
 		    ?>
 		    <div class="meta_main_wrp">
-			    <input type="checkbox" name="publication<?php echo $i; ?>" /> <label for="publication<?php echo $i; ?>" class="pub_label"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/view-site-icon.png"; ?>" alt="View Publication" /></a></label>
+			    <input type="checkbox" name="publication<?php echo $i; ?>" value="1" <?php checked( $pub_value, 1 ); ?>  /> <label for="publication<?php echo $i; ?>" class="pub_label"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/view-site-icon.png"; ?>" alt="View Publication" width="16" /></a></label>
 		    </div>
 		    <?php
 		    $i++;
@@ -177,5 +157,13 @@ function save_featured_metabox()
 	update_post_meta($post->ID, "box_one_text", $_POST["box_one_text"] );
 	update_post_meta($post->ID, "box_two_header", $_POST["box_two_header"] );
 	update_post_meta($post->ID, "box_two_text", $_POST["box_two_text"] );
+	
+	if  (get_post_meta($post->ID, '_wp_page_template', true)=="page-templates/blog-template.php"){
+		$publications = getMediumPublications();
+		$count = count($publications);
+		for($i=1;$i<=$count;$i++){
+			update_post_meta($post->ID, "publication".$i, $_POST["publication".$i] );
+		}
+	}
 }
 ?>
