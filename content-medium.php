@@ -66,7 +66,7 @@ foreach ($rss_urls as $rss_url){
                     $background = "background:#757575";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="medium" style="">
+                <div class="medium" style="<?php echo $background; ?>">
                     <div class="medium-background">
                         <div class="medium-wrapper">
                             <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $feed[0]['title']; ?></a></h1>
