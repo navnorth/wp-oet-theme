@@ -119,6 +119,7 @@ function story_metabox_func()
 }
 
 function blog_metabox_func() {
+	global $post;
 	
 	$publications = getMediumPublications();
 
@@ -126,7 +127,6 @@ function blog_metabox_func() {
 		$i=1;
 		foreach($publications as $publication){
 		    $pub_value = get_post_meta($post->ID, "mpublication".$i, true);
-		    var_dump($pub_value);
 		    ?>
 		    <div class="meta_main_wrp">
 			    <input type="checkbox" name="mpublication<?php echo $i; ?>" value="1" <?php checked( $pub_value, "1", true ); ?>  /> <label for="publication<?php echo $i; ?>" class="pub_label"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/view-site-icon.png"; ?>" alt="View Publication" width="16" /></a></label>
