@@ -7,6 +7,10 @@
     font-size: 15px;
     font-weight: bold;
 }
+.meta_main_wrp > label.pub_label {
+    font-size:14px;
+    font-weight:normal;
+}
 .meta_fld_wrp {
     margin: 10px 0;
     width: 100%;

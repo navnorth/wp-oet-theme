@@ -148,7 +148,7 @@ function blog_metabox_func() {
 		foreach($publications as $publication){
 		    ?>
 		    <div class="meta_main_wrp">
-			    <input type="checkbox" name="publication<?php echo $i; ?>" /> <label for="publication<?php echo $i; ?>"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo wp_normalize_path( get_stylesheet_directory_uri() . "/images/view-site-icon.png") ?>" alt="View Publication" /></a></label>
+			    <input type="checkbox" name="publication<?php echo $i; ?>" /> <label for="publication<?php echo $i; ?>" class="pub_label"><?php echo $publication->name; ?> <a href="<?php echo $publication->url; ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/view-site-icon.png"; ?>" alt="View Publication" /></a></label>
 		    </div>
 		    <?php
 		    $i++;
