@@ -165,7 +165,7 @@ function save_featured_metabox()
 		var_dump($_POST);
 		exit();
 		for($i=1;$i<=$count;$i++){
-			update_post_meta($post->ID, "mpublication".$i, $_POST["publication".$i] );
+			update_post_meta($post->ID, "mpublication".$i, $_POST["mpublication".$i] );
 		}
 	}
 }
