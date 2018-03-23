@@ -58,9 +58,15 @@ foreach ($rss_urls as $rss_url){
                 $description = trim(strip_tags($description));
                 if (strlen($description)>175)
                     $description = substr($description,0,175)."...";
+                
+                $background = "";
+                if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
+                    $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
+                elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
+                    $background = "background:#757575";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="medium" style="background:#000000 url(<?php echo $feed[0]['thumbnail']; ?>) no-repeat top left;">
+                <div class="medium" style="">
                     <div class="medium-background">
                         <div class="medium-wrapper">
                             <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $feed[0]['title']; ?></a></h1>
