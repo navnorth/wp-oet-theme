@@ -7,10 +7,19 @@ Function to activate form button to open the slider.
 function open_panel() {
     var a = document.getElementById("contact-slider-sidebar");
     if (is_IE()) {
-        var version = parseFloat(navigator.appVersion.split("MSIE")[1]);
-        if (version<=9) {
-            location.href = jQuery(a).attr("data-redirect");
-            return false;
+        var ua = window.navigator.userAgent;
+        var trident = ua.indexOf('Trident/'); // IE11
+        var edge = ua.indexOf('Edge/');       // Edge
+        var msie = ua.indexOf('MSIE ');       // IE10 and below
+        // if not Edge or IE11 then check for less than 10
+        if ( (edge < 0) && (trident < 0) )
+        {
+            version = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+
+            if (version < 10) {
+                location.href = jQuery(a).attr("data-redirect");
+                return false;
+            }
         }
     }
     origPosition = parseInt(document.getElementById("contact-slider").style.right);
