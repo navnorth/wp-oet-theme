@@ -16,8 +16,6 @@ function socialmedia_settings()
 		update_option("google_url", $google_url);
 		update_option("linkedin_url", $linkedin_url);
 		update_option("linktonwltr", $linktonwltr);
-		update_option("mediumclientid", $mediumclientid);
-		update_option("mediumclientsecret", $mediumclientsecret);
 		update_option("mediumaccesstoken", $mediumaccesstoken);
 		update_option("enablecontactslider", $enablecontactslider);
 		update_option("contactsliderpage", $contactsliderpage);
@@ -29,8 +27,6 @@ function socialmedia_settings()
 	$yotube_url = get_option("yotube_url");
 	$google_url = get_option("google_url");	
 	$linktonwltr = get_option("linktonwltr");
-	$mediumclientid = get_option("mediumclientid");
-	$mediumclientsecret = get_option("mediumclientsecret");
 	$mediumaccesstoken = get_option("mediumaccesstoken");
 	$enablecontactslider = get_option("enablecontactslider");
 	$contactsliderpage = get_option("contactsliderpage");
@@ -78,14 +74,6 @@ function socialmedia_settings()
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
 							<div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Medium Client ID:</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="mediumclientid" value="'. $mediumclientid .'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Medium Client Secret:</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="mediumclientsecret" value="'. $mediumclientsecret .'" /></div>
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
