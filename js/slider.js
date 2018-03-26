@@ -118,7 +118,8 @@ function enable_tabbing(tabindex) {
 function is_IE(){
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
-    if (msie>0)
+    var trident = ua.indexOf('Trident/'); // IE11
+    if (msie > 0 || trident > 0)
         return true;
     else
         return false;
