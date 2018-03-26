@@ -8,13 +8,11 @@ function open_panel() {
     var a = document.getElementById("contact-slider-sidebar");
     if (is_IE()) {
         var ua = window.navigator.userAgent;
-        var trident = ua.indexOf('Trident/'); // IE11
+        var trident = ua.indexOf('Trident/7'); // IE11 = Trident/7.0
         var edge = ua.indexOf('Edge/');       // Edge
-        var msie = ua.indexOf('MSIE ');       // IE10 and below
+        var msie = ua.indexOf('MSIE ');       // IE10 and below IE9 = Trident/5.0
         // if not Edge or IE11 then check for less than 10
-        console.log(ua);
-        console.log(trident);
-        console.log(edge);
+        
         if ( (edge < 0) && (trident < 0) )
         {
             version = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
