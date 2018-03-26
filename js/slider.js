@@ -15,7 +15,7 @@ function open_panel() {
         if ( (edge < 0) && (trident < 0) )
         {
             version = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-
+            alert(version);
             if (version < 10) {
                 location.href = jQuery(a).attr("data-redirect");
                 return false;
@@ -118,8 +118,7 @@ function enable_tabbing(tabindex) {
 function is_IE(){
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
-    var trident = ua.indexOf('Trident/'); // IE11
-    if (msie > 0 || trident > 0)
+    if (msie > 0)
         return true;
     else
         return false;
