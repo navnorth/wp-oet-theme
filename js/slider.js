@@ -16,7 +16,6 @@ function open_panel() {
         if ( (edge < 0) && (trident < 0) )
         {
             version = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-            console.log(version);
             if (version < 10) {
                 location.href = jQuery(a).attr("data-redirect");
                 return false;
