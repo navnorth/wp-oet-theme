@@ -7,7 +7,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <!-- force IE to disable compatibility mode on IE9+, due to ed.gov intranet... this must be first in HEAD -->
-<meta http-equiv="X-UA-Compatible" content="IE11; IE=9" />
+<meta http-equiv="X-UA-Compatible" content="IE=11;IE=9" />
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />

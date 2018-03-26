@@ -12,10 +12,13 @@ function open_panel() {
         var edge = ua.indexOf('Edge/');       // Edge
         var msie = ua.indexOf('MSIE ');       // IE10 and below
         // if not Edge or IE11 then check for less than 10
+        console.log(ua);
+        console.log(trident);
+        console.log(edge);
         if ( (edge < 0) && (trident < 0) )
         {
             version = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-            alert(version);
+            console.log(version);
             if (version < 10) {
                 location.href = jQuery(a).attr("data-redirect");
                 return false;
@@ -118,7 +121,8 @@ function enable_tabbing(tabindex) {
 function is_IE(){
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
-    if (msie > 0)
+    var trident = ua.indexOf('Trident/'); // IE11
+    if (msie > 0 || trident > 0)
         return true;
     else
         return false;
