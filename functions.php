@@ -169,7 +169,7 @@ add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
 // Fed Govt analytics script
 function federated_analytics_tracking_code(){
-    echo '<script language="javascript" id="_fed_an_ua_tag" src="//www2.ed.gov/style/Universal-Federated-Analytics.1.0.js?ver=true&agency=ED"></script>';
+    echo '<script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=ED"></script>';
 }
 add_action('wp_head', 'federated_analytics_tracking_code');
 
