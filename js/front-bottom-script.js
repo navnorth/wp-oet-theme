@@ -86,4 +86,15 @@ jQuery( document ).ready(function() {
     	jQuery(this).parent().parent().find('label.hidden').removeClass("hidden").addClass("show");
         jQuery(this).css({"margin-bottom":"0"});
     });
+    
+    // Add Blur event to Contact Slider
+    var slider = document.getElementById("contact-slider-content");
+    slider.addEventListener("blur", custom_slider_blur, true);
+    
+    function custom_slider_blur(e) {
+        var target = jQuery(e.target);
+        if (target.is('input.wpcf7-form-control.wpcf7-submit')) {
+            close_panel();
+        }
+    }
 });
