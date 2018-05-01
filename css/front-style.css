@@ -411,7 +411,7 @@ ul.checkbox_list input {
 	top:0;
 	height:100%;
 	width:100%;
-	background-color: rgba(22, 22, 22, 0.5);
+	background-color: rgba(22, 22, 22, 0.8);
 	padding: 30px;
 	border-radius:5px;
 }
