@@ -64,12 +64,16 @@ foreach ($rss_urls as $rss_url){
                     $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
                 elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
                     $background = "background:#757575";
+                    
+                $title = $feed[0]['title'];
+                if (strlen($title)>125)
+                    $title = substr($title,0,125)."...";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="<?php echo $background; ?>">
                     <div class="medium-background">
                         <div class="medium-wrapper">
-                            <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $feed[0]['title']; ?></a></h1>
+                            <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $title; ?></a></h1>
                             <p><?php echo $description ?></p>
                             <p class="mfooter">
                                 <a href="<?php echo $user->data->url; ?>" alt="<?php _e('Office of Ed Technology','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $user->data->imageUrl; ?>" alt="<?php _e('Office of Ed Technology','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank">@<?php echo $user->data->username; ?></a>
