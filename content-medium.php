@@ -68,7 +68,7 @@ foreach ($rss_urls as $rss_url){
                 $title = $feed[0]['title'];
                 if (strlen($title)>80)
                     $title = substr($title,0,80);
-                    $title = substr($title,0,strrpos($title," ")-1)."...";
+                    $title = substr($title,0,strrpos($title," "))."...";
             ?>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="medium" style="<?php echo $background; ?>">
