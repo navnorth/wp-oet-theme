@@ -56,8 +56,10 @@ foreach ($rss_urls as $rss_url){
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
-                if (strlen($description)>175)
-                    $description = substr($description,0,175)."...";
+                if (strlen($description)>175){
+                    $description = substr($description,0,175);
+                    $description = substr($description,0,strrpos($description," "))."...";
+                }
                 
                 $background = "";
                 if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
