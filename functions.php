@@ -261,6 +261,8 @@ function load_recaptcha_callback_script(){
 			}
 		}
 	}
+	jQuery('#cCaptcha div iframe').attr('title','Google reCaptcha');
+	jQuery('#cCaptcha div iframe').attr('name','google_reCaptcha');
     };
 
     document.addEventListener( 'wpcf7submit', function( event ) {
