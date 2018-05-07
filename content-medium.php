@@ -101,7 +101,7 @@ foreach ($rss_urls as $rss_url){
     echo "Test";
     var_dump($self_access_token);
     $oet_medium = new OET_Medium($self_access_token);
-    $oet_medium->display_posts();
+    echo $oet_medium->display_posts();
     echo "Test End";
     ?>
 </div>
