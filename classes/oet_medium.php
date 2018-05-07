@@ -20,7 +20,6 @@ class OET_Medium {
             $this->_access_token = get_option("mediumaccesstoken");
         }
         $this->authenticate();
-        var_dump($this);
     }
     
     // Authentication Medium Access Token
