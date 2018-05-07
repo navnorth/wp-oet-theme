@@ -51,6 +51,7 @@ foreach ($rss_urls as $rss_url){
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
         <?php
+        var_dump(count($feeds));
         if ($feeds) {
             $fcnt = 1;
             foreach($feeds as $feed) {
