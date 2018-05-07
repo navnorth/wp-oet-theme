@@ -155,9 +155,11 @@ class OET_Medium {
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
         
+        $feed_url = parse_url($url);
+        var_dump($feed_url);
         if ($this->_feeds) {
             foreach($this->_feeds as $feed) {
-                var_dump($feed);
+                $link = $feed[0]['link'];
             }
         }
     }
