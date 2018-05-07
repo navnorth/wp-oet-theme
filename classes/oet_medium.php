@@ -154,6 +154,7 @@ class OET_Medium {
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
+        $match = false;
         
         $find_url = parse_url($url);
         $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
@@ -163,6 +164,7 @@ class OET_Medium {
                 $link_url = $link['scheme']."://".$link['host'].$link['path'];
                 
                 if ($post_url==$link_url){
+                    $match = true;
                     $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
                     $description = strip_tags_content($description,"<figure>","</figure>");
                     $description = trim(strip_tags($description));
@@ -203,6 +205,19 @@ class OET_Medium {
                 break;
                 }
             }
+        }
+        if(!$match){
+            $background = "background:#757575";
+            ?>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="medium" style="<?php echo $background; ?>">
+                    <div class="medium-background">
+                        <div class="medium-wrapper">
+                            <p><?php echo "Medium post invalid"; ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     }
 }

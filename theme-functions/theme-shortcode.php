@@ -1,4 +1,5 @@
 <?php
+include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
 /**
  * Disruptive Content
  * Shortcode Example : [disruptive_content title='' main_text='' button_text='' button_color='' button_url='']
@@ -867,5 +868,21 @@ function parse_data_attributes( $data ) {
 	return $return;
  }
 
-
+ /**
+  * Single Post Medium Embed
+  * Shortcode Example : [oet_medium url=""]
+  **/ 
+add_shortcode("oet_medium", "oet_medium_func");
+function oet_medium_func($attribute, $content = null){
+	
+	if (is_array($attribute)) extract($attribute);
+	
+	if ($url) {
+		$self_access_token = get_option("mediumaccesstoken");
+		$oet_medium = new OET_Medium($self_access_token);
+		return $oet_medium->display_post($url);
+	}
+	
+	return false;
+}
 ?>
