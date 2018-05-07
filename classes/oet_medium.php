@@ -15,11 +15,10 @@ class OET_Medium {
     
     public function __construct($self_access_token = null){
         if ($self_access_token){
-            $this->_access_token = $self_acess_token;
+            $this->_access_token = $self_access_token;
         } else {
             $this->_access_token = get_option("mediumaccesstoken");
         }
-        $this->authenticate();
     }
     
     // Authentication Medium Access Token
