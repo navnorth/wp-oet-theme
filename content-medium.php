@@ -98,7 +98,7 @@ foreach ($rss_urls as $rss_url){
 <div class="col-md-12 col-sm-12 col-xs-12">
     <?php
     include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
-    
+    var_dump($self_access_token);
     $oet_medium = new OET_Medium($self_access_token);
     var_dump($oet_medium);
     ?>
