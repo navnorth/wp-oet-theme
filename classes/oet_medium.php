@@ -25,6 +25,7 @@ class OET_Medium {
     // Authentication Medium Access Token
     private function authenticate(){
         if ($this->_access_token) {
+            var_dump($this);
             // Self Access Token Authentication
             $this->_medium = new Medium($this->_access_token);
             $this->_user = $medium->getAuthenticatedUser();
