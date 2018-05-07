@@ -134,7 +134,7 @@ class OET_Medium {
                             <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $title; ?></a></h1>
                             <p><?php echo $description ?></p>
                             <p class="mfooter">
-                                <a href="<?php echo $user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank">@<?php echo $this->_user->data->username; ?></a>
+                                <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank">@<?php echo $this->_user->data->username; ?></a>
                                 <?php if (isset($feed["pub_name"])){ ?>
                                  in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
                                 <?php } ?>
@@ -155,11 +155,52 @@ class OET_Medium {
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
         
-        $feed_url = parse_url($url);
-        var_dump($feed_url);
+        $find_url = parse_url($url);
+        $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
         if ($this->_feeds) {
             foreach($this->_feeds as $feed) {
-                $link = $feed[0]['link'];
+                $link = parse_url($feed[0]['link']);
+                $link_url = $link['scheme']."://".$link['host'].$link['path'];
+                
+                if ($post_url==$link_url){
+                    $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
+                    $description = strip_tags_content($description,"<figure>","</figure>");
+                    $description = trim(strip_tags($description));
+                    if (strlen($description)>175){
+                        $description = substr($description,0,175);
+                        $description = substr($description,0,strrpos($description," "))."...";
+                    }
+                    
+                    $background = "";
+                    if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
+                        $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
+                    elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
+                        $background = "background:#757575";
+                        
+                    $title = $feed[0]['title'];
+                    if (strlen($title)>80){
+                        $title = substr($title,0,80);
+                        $title = substr($title,0,strrpos($title," "))."...";
+                    }
+                ?>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="medium" style="<?php echo $background; ?>">
+                        <div class="medium-background">
+                            <div class="medium-wrapper">
+                                <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $title; ?></a></h1>
+                                <p><?php echo $description ?></p>
+                                <p class="mfooter">
+                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank">@<?php echo $this->_user->data->username; ?></a>
+                                    <?php if (isset($feed["pub_name"])){ ?>
+                                     in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
+                                    <?php } ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
             }
         }
     }

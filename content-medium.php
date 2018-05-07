@@ -15,5 +15,5 @@ $self_access_token = get_option("mediumaccesstoken");
 </div>
 <?php
 $oet_medium->display_post("https://medium.com/building-evaluation-capacity/context-and-implementation-matter-da36588dbbe5");
-$oet_medium->display_post("https://medium.com/building-evaluation-capacity/context-and-implementation-matter-da36588dbbe5?source=collection_home---4------0----------------");
+$oet_medium->display_post("https://medium.com/building-evaluation-capacity/data-data-everywhere-and-not-a-drop-to-drink-the-importance-of-researcher-practitioner-d3052a30c672?source=collection_home---4------1----------------");
 ?>
