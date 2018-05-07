@@ -99,7 +99,6 @@ foreach ($rss_urls as $rss_url){
 <div class="col-md-12 col-sm-12 col-xs-12">
     <?php
     echo "Test";
-    var_dump($self_access_token);
     $oet_medium = new OET_Medium($self_access_token);
     echo $oet_medium->display_posts();
     echo "Test End";
