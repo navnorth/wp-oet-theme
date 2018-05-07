@@ -880,6 +880,11 @@ function oet_medium_func($attribute, $content = null){
 	if ($url) {
 		$self_access_token = get_option("mediumaccesstoken");
 		$oet_medium = new OET_Medium($self_access_token);
+		
+		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+			$oet_medium->display_invalid_text();	
+		}
+		
 		return $oet_medium->display_post($url);
 	}
 	
