@@ -200,6 +200,7 @@ class OET_Medium {
                     </div>
                 </div>
                 <?php
+                break;
                 }
             }
         }
