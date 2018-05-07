@@ -49,7 +49,7 @@ class OET_Medium {
         
         if ($this->_user){
             $this->_rss_urls[] = array(
-                "feed_url" => "https://medium.com/feed/@".$user->data->username
+                "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
             );
             
             if ($this->_publications){
@@ -103,7 +103,7 @@ class OET_Medium {
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
-        var_dump(count($this->_feeds));
+        
         if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
