@@ -102,8 +102,8 @@ class OET_Medium {
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
-        return $feeds;
-        /*if ($this->_feeds) {
+        
+        if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
@@ -145,7 +145,7 @@ class OET_Medium {
             <?php
             $fcnt++;
             }
-        }*/
+        }
     }
 }
 
