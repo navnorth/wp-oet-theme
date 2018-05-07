@@ -146,7 +146,19 @@ class OET_Medium {
             <?php
             $fcnt++;
             }
-            var_dump($fcnt);
+        }
+    }
+    
+    // Display Individual Post by Url
+    public function display_post($url){
+        $publications = $this->get_publications();
+        $rss_urls = $this->get_rss_urls();
+        $feeds = $this->get_feeds();
+        
+        if ($this->_feeds) {
+            foreach($this->_feeds as $feed) {
+                var_dump($feed);
+            }
         }
     }
 }
