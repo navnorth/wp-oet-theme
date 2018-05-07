@@ -13,3 +13,6 @@ $self_access_token = get_option("mediumaccesstoken");
     $oet_medium->display_posts();
     ?>
 </div>
+<?php
+$oet_medium->display_post("https://medium.com/building-evaluation-capacity/context-and-implementation-matter-da36588dbbe5");
+?>
