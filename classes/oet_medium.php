@@ -58,7 +58,7 @@ class OET_Medium {
                     $pub_name = sanitize_title($publication->name);
                     if (strpos($publication->url,$this->_base_url)>=0)
                         $pub_name = trim(substr($publication->url,strlen($this->_base_url),strlen($publication->url)));
-                        //if (get_post_meta($post->ID, "mpublication".$i, true)=="1")
+                        if (get_post_meta($post->ID, "mpublication".$i, true)=="1")
                         $this->_rss_urls[] = array(
                                         "feed_url" => "https://medium.com/feed/".$pub_name,
                                         "name" => $publication->name,
@@ -69,7 +69,7 @@ class OET_Medium {
             } else {
                 throw new Exception('Invalid User Publications');
             }
-            return $this->rss_urls;
+            return $this->_rss_urls;
         } else {
             throw new Exception('Medium User Not Authenticated');
         }
