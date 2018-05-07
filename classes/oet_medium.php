@@ -36,7 +36,7 @@ class OET_Medium {
     // Get Medium Publications based on authenticated user
     private function get_publications(){
         if ($this->_user){
-            $this->_publications = $medium->publications($user->data->id)->data;
+            $this->_publications = $medium->publications($this->_user->data->id)->data;
             return $this->_publications;
         } else {
             throw new Exception('Medium User Not Authenticated');
