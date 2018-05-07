@@ -101,9 +101,9 @@ class OET_Medium {
     public function display_posts(){
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
-        return $rss_urls;
-        /*$feeds = $this->get_feeds();
-        if ($this->_feeds) {
+        $feeds = $this->get_feeds();
+        return $feeds;
+        /*if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
