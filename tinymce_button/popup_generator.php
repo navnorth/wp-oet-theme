@@ -146,6 +146,8 @@ if($action == "show_popup")
 								Medium Post Embed
 							</div>
 						</div>
+					</div>
+					<div class="oet_sngltinyrow">
 						<div class="submit">
 							<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
 						</div>
