@@ -138,6 +138,14 @@ if($action == "show_popup")
 								Story Embed
 							</div>
 						</div>
+						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="oet_medium">
+							<div class="oert_snglimgtiny">
+								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
+							</div>
+							<div class="oert_snglttltiny">
+								Medium Post Embed
+							</div>
+						</div>
 						<div class="submit">
 							<input type="button" id="oet-tinymce-submit" onclick="placeoetshortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
 						</div>
@@ -216,8 +224,11 @@ if($action == "show_popup")
 				   case "publication_intro":
 					   var shortcode = "[publication_intro title=\'\']Intro content goes here[/publication_intro]";
 					   break;
-				    case "oet_story":
+				   case "oet_story":
 					   var shortcode = "[oet_story id=\'\' width=6 alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
+					   break;
+				   case "oet_medium":
+					   var shortcode = "[oet_medium url=\'\' align=\'\']";
 					   break;
 				   default:
 				   	   var shortcode = "";

@@ -150,7 +150,7 @@ class OET_Medium {
     }
     
     // Display Individual Post by Url
-    public function display_post($url){
+    public function display_post($url, $align="left"){
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
@@ -185,7 +185,7 @@ class OET_Medium {
                         $title = substr($title,0,strrpos($title," "))."...";
                     }
                 ?>
-                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12" style="float:<?php echo $align; ?>">
                     <div class="medium" style="<?php echo $background; ?>">
                         <div class="medium-background">
                             <div class="medium-wrapper">
