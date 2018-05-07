@@ -1,0 +1,148 @@
+<?php
+include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
+
+use JonathanTorres\MediumSdk\Medium;
+
+class OET_Medium {
+    
+    private $_access_token;
+    private $_user;
+    private $_medium;
+    private $_base_url = "https://medium.com/";
+    private $_publications;
+    private $_rss_urls = array();
+    private $_feeds = array();
+    
+    function __construct($self_access_token = null){
+        if ($self_access_token){
+            $this->_access_token = $self_acess_token;
+        } else {
+            $this->_access_token = get_option("mediumaccesstoken");
+        }
+    }
+    
+    // Authentication Medium Access Token
+    function authenticate(){
+        if ($this->_access_token) {
+            // Self Access Token Authentication
+            $this->_medium = new Medium($this->_access_token);
+            $this->_user = $medium->getAuthenticatedUser();
+        } else {
+            throw new Exception('Invalid Self Access Token');
+        }
+    }
+    
+    // Get Medium Publications based on authenticated user
+    function get_publications(){
+        if ($this->_user){
+            $this->_publications = $medium->publications($user->data->id)->data;
+            return $this->_publications;
+        } else {
+            throw new Exception('Medium User Not Authenticated');
+        }
+    }
+    
+    // Get RSS Urls
+    function get_rss_urls(){
+        global $post;
+        
+        if ($this->_user){
+            $this->_rss_urls[] = array(
+                "feed_url" => "https://medium.com/feed/@".$user->data->username
+            );
+            
+            if ($this->_publications){
+                $i = 1;
+                foreach($this->_publications as $publication){
+                    $pub_name = sanitize_title($publication->name);
+                    if (strpos($publication->url,$this->_base_url)>=0)
+                        $pub_name = trim(substr($publication->url,strlen($this->_base_url),strlen($publication->url)));
+                        if (get_post_meta($post->ID, "mpublication".$i, true)=="1")
+                            $this->_rss_urls[] = array(
+                                            "feed_url" => "https://medium.com/feed/".$pub_name,
+                                            "name" => $publication->name,
+                                            "url" => $publication->url
+                                           );
+                    $i++;
+                }
+            } else {
+                throw new Exception('Invalid User Publications');
+            }
+            return $this->rss_urls;
+        } else {
+            throw new Exception('Medium User Not Authenticated');
+        }
+    }
+    
+    // Get Feeds
+    function get_feeds($rss_urls = array()){
+        if (count($this->_rss_urls)>0) {
+            foreach ($this->_rss_urls as $rss_url){
+                $feed = convert_rss_to_json($rss_url["feed_url"]);
+                if ($feed){
+                    if ($feed['status']=="ok"){
+                        foreach($feed['items'] as $item){
+                            if (isset($rss_url["name"]))
+                               $this->_feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
+                            else
+                               $this->_feeds[] = array($item);
+                        }
+                    }
+                }
+            }
+            return $this->_feeds;
+        } else {
+            throw new Exception('No RSS Url Specified!');
+        }
+    }
+    
+    // Display All Medium Posts
+    function display_posts(){
+        if ($this->_feeds) {
+            $fcnt = 1;
+            foreach($this->_feeds as $feed) {
+                $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
+                $description = strip_tags_content($description,"<figure>","</figure>");
+                $description = trim(strip_tags($description));
+                if (strlen($description)>175){
+                    $description = substr($description,0,175);
+                    $description = substr($description,0,strrpos($description," "))."...";
+                }
+                
+                $background = "";
+                if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
+                    $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
+                elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
+                    $background = "background:#757575";
+                    
+                $title = $feed[0]['title'];
+                if (strlen($title)>80){
+                    $title = substr($title,0,80);
+                    $title = substr($title,0,strrpos($title," "))."...";
+                }
+            ?>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="medium" style="<?php echo $background; ?>">
+                    <div class="medium-background">
+                        <div class="medium-wrapper">
+                            <h1><a href="<?php echo $feed[0]['link']; ?>"><?php echo $title; ?></a></h1>
+                            <p><?php echo $description ?></p>
+                            <p class="mfooter">
+                                <a href="<?php echo $user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $user->data->url; ?>" target="_blank">@<?php echo $user->data->username; ?></a>
+                                <?php if (isset($feed["pub_name"])){ ?>
+                                 in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
+                                <?php } ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            $fcnt++;
+            }
+        }
+    }
+}
+
+
+?>
