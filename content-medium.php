@@ -17,7 +17,7 @@ $medium_base_url = "https://medium.com/";
 $rss_urls[] = array(
             "feed_url" => "https://medium.com/feed/@".$user->data->username
             );
-            
+       var_dump($post->ID);     
 if ($publications){
     $i = 1;
     foreach($publications as $publication){
