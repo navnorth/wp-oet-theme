@@ -101,6 +101,6 @@ foreach ($rss_urls as $rss_url){
     include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
     $oet_medium = new OET_Medium($self_access_token);
     var_dump($oet_medium);
-    $oet_medium->display_posts();
+    echo $oet_medium->display_posts();
     ?>
 </div>
