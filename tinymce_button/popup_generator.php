@@ -143,7 +143,7 @@ if($action == "show_popup")
 								<img src="'.get_stylesheet_directory_uri().'/tinymce_button/images/featured_area.png">
 							</div>
 							<div class="oert_snglttltiny">
-								Medium Post Embed
+								Medium Embed
 							</div>
 						</div>
 					</div>
