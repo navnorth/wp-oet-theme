@@ -207,18 +207,23 @@ class OET_Medium {
             }
         }
         if(!$match){
-            $background = "background:#757575";
-            ?>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="medium" style="<?php echo $background; ?>">
-                    <div class="medium-background">
-                        <div class="medium-wrapper">
-                            <p><?php echo "Medium post invalid"; ?></p>
-                        </div>
+            $this->display_invalid_text();
+        }
+    }
+    
+    function display_invalid_text(){
+        $background = "background:#757575";
+        ?>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="medium" style="<?php echo $background; ?>">
+                <div class="medium-background">
+                    <div class="medium-wrapper">
+                        <p><?php echo "Medium post invalid"; ?></p>
                     </div>
                 </div>
             </div>
-        }
+        </div>
+        <?php
     }
 }
 
