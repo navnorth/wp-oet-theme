@@ -19,10 +19,11 @@ class OET_Medium {
         } else {
             $this->_access_token = get_option("mediumaccesstoken");
         }
+        $this->authenticate();
     }
     
     // Authentication Medium Access Token
-    function authenticate(){
+    private function authenticate(){
         if ($this->_access_token) {
             // Self Access Token Authentication
             $this->_medium = new Medium($this->_access_token);
@@ -33,7 +34,7 @@ class OET_Medium {
     }
     
     // Get Medium Publications based on authenticated user
-    function get_publications(){
+    private function get_publications(){
         if ($this->_user){
             $this->_publications = $medium->publications($user->data->id)->data;
             return $this->_publications;
@@ -43,7 +44,7 @@ class OET_Medium {
     }
     
     // Get RSS Urls
-    function get_rss_urls(){
+    private function get_rss_urls(){
         global $post;
         
         if ($this->_user){
@@ -75,7 +76,7 @@ class OET_Medium {
     }
     
     // Get Feeds
-    function get_feeds($rss_urls = array()){
+    private function get_feeds($rss_urls = array()){
         if (count($this->_rss_urls)>0) {
             foreach ($this->_rss_urls as $rss_url){
                 $feed = convert_rss_to_json($rss_url["feed_url"]);
