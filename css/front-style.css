@@ -459,3 +459,7 @@ ul.checkbox_list input {
 	margin-top: -15px;
 	margin-bottom: 15px;
 }
+.page-template-default .archived-disclaimer {
+	margin-top: 0;
+	margin-bottom: 0;
+}
