@@ -367,7 +367,33 @@ function add_tag_to_pages(){
 }
 add_action( "init" , "add_tag_to_pages" );
 
-function tags_support_query($wp_query){
-    if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
+function oet_search_where($where){
+    global $wpdb;
+    if (is_search())
+	$where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
+    return $where;
 }
-add_action( "pre_get_posts" , "tags_support_query");
+add_filter( "posts_where" , "oet_search_where" );
+
+function oet_search_join($join){
+    global $wpdb;
+    if (is_search())
+	$join .= "LEFT JOIN {$wpdb->term_relationships} tr ON {$wpdb->posts}.ID = tr.object_id INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id";
+    return $join;
+}
+add_filter( "posts_join" , "oet_search_join" );
+
+function oet_search_groupby($groupby){
+    global $wpdb;
+  
+    // we need to group on post ID
+    $groupby_id = "{$wpdb->posts}.ID";
+    if(!is_search() || strpos($groupby, $groupby_id) !== false) return $groupby;
+  
+    // groupby was empty, use ours
+    if(!strlen(trim($groupby))) return $groupby_id;
+  
+    // wasn't empty, append ours
+    return $groupby.", ".$groupby_id;
+}
+add_filter('posts_groupby', 'oet_search_groupby');
