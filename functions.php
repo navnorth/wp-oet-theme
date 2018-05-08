@@ -361,3 +361,13 @@ function getMediumPublications(){
     
     return $publications;
 }
+
+function add_tag_to_pages(){
+    register_taxonomy_for_object_type('post_tag', 'page');
+}
+add_action( "init" , "add_tag_to_pages" );
+
+function tags_support_query($wp_query){
+    if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
+}
+add_action( "pre_get_posts" , "tags_support_query");
