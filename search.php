@@ -20,8 +20,11 @@ $results = array();
 			</header>
 
 			<?php while ( have_posts() ) : the_post();
-				if (get_post_type() == 'stories' && function_exists('get_story_template_part')) { 
-					$results[] = array('typeId'=>2,'type'=>'stories','post'=>$post);
+				if (get_post_type() == 'stories' && function_exists('get_story_template_part')) {
+					if (has_tag(array("archive","archived"),$post))
+						$results[] = array('typeId'=>6,'type'=>'archives','post'=>$post);
+					else
+						$results[] = array('typeId'=>2,'type'=>'stories','post'=>$post);
 				} else {
 					$id = get_the_ID();
 					$template = get_page_template_slug($id);
@@ -40,7 +43,10 @@ $results = array();
 							$results[] = array('typeId'=>3,'type'=>'initiatives','post'=>$post, 'child'=>false);
 							break;
 						default:
-							$results[] = array('typeId'=>5,'type'=>'other results','post'=>$post, 'child'=>false);
+							if (has_tag(array("archive","archived"),$post))
+								$results[] = array('typeId'=>6,'type'=>'archives','post'=>$post);
+							else
+								$results[] = array('typeId'=>5,'type'=>'other results','post'=>$post, 'child'=>false);
 							break;
 					}
 				}
@@ -51,7 +57,10 @@ $results = array();
 			$current_content_type = "";
 			foreach($results as $result) {
 				if ($current_content_type!==$result['type']){
-					echo "<h2 class='content-type-heading'>".ucwords($result['type'])."</h2>";
+					$heading_class="";
+					if ($result['type']=="archives")
+						$heading_class=" archive-heading";
+					echo "<h2 class='content-type-heading".$heading_class."'>".ucwords($result['type'])."</h2>";
 					$current_content_type = $result['type'];
 				}
 				
@@ -61,7 +70,9 @@ $results = array();
 					setup_postdata($current_post);
 				
 				if ($result['type']=="stories") {
-					include( locate_template( 'content-search.php', false, false ) ); 
+					include( locate_template( 'content-search.php', false, false ) );
+				} elseif($result['type']=="archives") {
+					include( locate_template( 'content-tag.php', false, false ) );
 				} else {
 					
 					$full_width = true;

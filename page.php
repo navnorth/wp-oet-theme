@@ -19,7 +19,12 @@ global $post;
 	<div id="content" class="row site-content" tabindex="-1">
     	
         <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
-        	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
+        	<h2 class="pblctn_head"><?php echo $post->post_title;?></h2>
+		<?php if (has_tag(array("archive","archived"),$post)): ?>
+		<div class="archived-disclaimer">
+			<?php _e('<strong>Archived Content:</strong> The following page has been archived but still has content that may be valuable to some people.', 'twentytwelve'); ?>
+		</div>
+		<?php endif; ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part( 'content', 'page' ); ?>
 			<?php endwhile; ?>

@@ -376,7 +376,9 @@ ul.checkbox_list input {
 .program_toc_box > div { margin-top:30px; }
 .search-results .search_story_featured_image { max-width:230px; width:100%; height:auto; }
 .search-results .content-type-heading { margin-top:30px; margin-bottom:10px; }
+.search-results .archive-heading { font-size:28px; }
 .search-results .entry-content { overflow:hidden; margin-bottom:15px; }
+.search-results .archived-post h3 { font-size:20px; }
 .search-results .search-header h4.entry-parent-title { margin-bottom:0; }
 .search-results .search-header h3.entry-title { margin-top:10px; }
 .search-results .search-header h4.entry-parent-title { font-weight:bold; color: #4b4e53; }
@@ -449,4 +451,11 @@ ul.checkbox_list input {
 	-webkit-transition: max-height 0.5s, overflow 0.5s 0.5s;
 	transition: max-height 0.5s, overflow 0.5s 0.5s;
 	font-size:0.85em;
+}
+.archived-disclaimer {
+	border: 1px solid #294179;
+	padding: 10px;
+	color: #e96a28;
+	margin-top: -15px;
+	margin-bottom: 15px;
 }
