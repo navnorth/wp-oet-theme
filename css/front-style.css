@@ -454,10 +454,15 @@ ul.checkbox_list input {
 }
 .archived-disclaimer {
 	border: 1px solid #294179;
+    background-color:#ccc;
 	padding: 10px;
-	color: #e96a28;
+	color: #4B4E53;
 	margin-top: -15px;
 	margin-bottom: 15px;
+}
+.archived-disclaimer .fa {
+    color:#e57200;
+    padding-right: 8px;
 }
 .page-template-default .archived-disclaimer {
 	margin-top: 0;
