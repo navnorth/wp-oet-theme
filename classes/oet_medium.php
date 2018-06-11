@@ -131,12 +131,12 @@ class OET_Medium {
                 <div class="medium" style="<?php echo $background; ?>">
                     <div class="medium-background">
                         <div class="medium-wrapper">
-                            <h1><a href="<?php echo $feed[0]['link']; ?>" target="_blank"><?php echo $title; ?></a></h1>
+                            <h1><a href="<?php echo $feed[0]['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed[0]['link']; ?>');"><?php echo $title; ?></a></h1>
                             <p><?php echo $description ?></p>
                             <p class="mfooter">
-                                <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank">@<?php echo $this->_user->data->username; ?></a>
+                                <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
                                 <?php if (isset($feed["pub_name"])){ ?>
-                                 in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
+                                 in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed["pub_url"]; ?>');"><?php echo $feed["pub_name"]; ?></a>
                                 <?php } ?>
                             </p>
                         </div>
@@ -189,12 +189,12 @@ class OET_Medium {
                     <div class="medium" style="<?php echo $background; ?>">
                         <div class="medium-background">
                             <div class="medium-wrapper">
-                                <h1><a href="<?php echo $feed[0]['link']; ?>" target="_blank"><?php echo $title; ?></a></h1>
+                                <h1><a href="<?php echo $feed[0]['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed[0]['link']; ?>');"><?php echo $title; ?></a></h1>
                                 <p><?php echo $description ?></p>
                                 <p class="mfooter">
-                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank">@<?php echo $this->_user->data->username; ?></a>
+                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
                                     <?php if (isset($feed["pub_name"])){ ?>
-                                     in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank"><?php echo $feed["pub_name"]; ?></a>
+                                     in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed["pub_url"]; ?>');"><?php echo $feed["pub_name"]; ?></a>
                                     <?php } ?>
                                 </p>
                             </div>
