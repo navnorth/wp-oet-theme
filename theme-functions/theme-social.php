@@ -14,7 +14,6 @@ function socialmedia_settings()
 		update_option("facebook_url", $facebook_url);
 		update_option("yotube_url", $yotube_url);
 		update_option("google_url", $google_url);
-		update_option("linkedin_url", $linkedin_url);
 		update_option("linktonwltr", $linktonwltr);
 		update_option("mediumaccesstoken", $mediumaccesstoken);
 		update_option("enablecontactslider", $enablecontactslider);
@@ -36,6 +35,9 @@ function socialmedia_settings()
 		'meta_key' => '_wp_page_template',
 		'meta_value' => 'page-templates/contact-slider.php'
 	));
+	
+	$options = "";
+	
 	foreach($contact_pages as $page){
 		$selected="";
 		if ($contactsliderpage==$page->ID) {
