@@ -9,15 +9,24 @@ function socialmedia_settings()
 	if(isset($_POST["save_social"]))
 	{
 		extract($_POST);
-		update_option("google_analytics_id", $google_analytics_id);
-		update_option("twitter_url", $twitter_url);
-		update_option("facebook_url", $facebook_url);
-		update_option("yotube_url", $yotube_url);
-		update_option("google_url", $google_url);
-		update_option("linktonwltr", $linktonwltr);
-		update_option("mediumaccesstoken", $mediumaccesstoken);
-		update_option("enablecontactslider", $enablecontactslider);
-		update_option("contactsliderpage", $contactsliderpage);
+		if (isset($google_analytics_id))
+			update_option("google_analytics_id", $google_analytics_id);
+		if (isset($twitter_url))
+			update_option("twitter_url", $twitter_url);
+		if (isset($facebook_url))
+			update_option("facebook_url", $facebook_url);
+		if (isset($yotube_url))
+			update_option("yotube_url", $yotube_url);
+		if (isset($google_url))
+			update_option("google_url", $google_url);
+		if (isset($linktonwltr))
+			update_option("linktonwltr", $linktonwltr);
+		if (isset($mediumaccesstoken))
+			update_option("mediumaccesstoken", $mediumaccesstoken);
+		if (isset($enablecontactslider))
+			update_option("enablecontactslider", $enablecontactslider);
+		if (isset($contactsliderpage))
+			update_option("contactsliderpage", $contactsliderpage);
 	}
 	
 	$google_analytics_id = get_option("google_analytics_id");
