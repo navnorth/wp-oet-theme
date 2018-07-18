@@ -78,8 +78,8 @@ class OET_Medium {
     
     // Get Feeds
     private function get_feeds($rss_urls = array()){
-        $all_url = "https://medium.com/@OfficeofEdTech/latest";
-        $feeds = get_medium_posts_json($all_url."?count=1000");
+        $all_url = "https://medium.com/@".$this->_user->data->username."/latest";
+        $feeds = get_medium_posts_json($all_url);
         var_dump($feeds);
         exit();
         if (count($this->_rss_urls)>0) {
