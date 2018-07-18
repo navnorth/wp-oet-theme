@@ -263,13 +263,12 @@ class OET_Medium {
         if(!$match){
             return $this->display_invalid_text();
         } else {
-            var_dump($this->display_single_embed($story));
-            return '';
+            return $this->display_single_embed($story);
         }
     }
     
     function display_single_embed($story){
-        return $embed = '
+        $embed = '
         <div class="col-md-4 col-sm-6 col-xs-12" style="float:'.$story['align'].'">
             <div class="medium" style="'.$story['background'].'">
                 <div class="medium-background">
@@ -287,6 +286,7 @@ class OET_Medium {
             </div>
         </div>
         ';
+        return $embed;
     }
     
     function display_invalid_text(){
