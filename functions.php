@@ -344,7 +344,8 @@ function get_medium_posts_json($json_url){
     $response = curl_exec($ch);
     $response = str_replace("])}while(1);</x>","",$response);
     curl_close($ch);
-    return json_decode($response,true);
+    return $response;
+    //return json_decode($response,true);
 }
 
 /**
