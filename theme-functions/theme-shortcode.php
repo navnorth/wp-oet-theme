@@ -891,6 +891,5 @@ function oet_medium_func($attribute, $content = null){
 			return $oet_medium->display_post($url);
 	}
 	
-	return false;
 }
 ?>
