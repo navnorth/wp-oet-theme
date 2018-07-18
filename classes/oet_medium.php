@@ -261,9 +261,9 @@ class OET_Medium {
         }
         
         if(!$match){
-            $this->display_invalid_text();
+            return $this->display_invalid_text();
         } else {
-            $this->display_single_embed($story);
+            return $this->display_single_embed($story);
         }
     }
     
