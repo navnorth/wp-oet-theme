@@ -874,7 +874,7 @@ function parse_data_attributes( $data ) {
   **/ 
 add_shortcode("oet_medium", "oet_medium_func");
 function oet_medium_func($attribute, $content = null){
-	
+	$return = "";
 	if (is_array($attribute)) extract($attribute);
 	
 	if ($url) {
@@ -886,10 +886,11 @@ function oet_medium_func($attribute, $content = null){
 		}
 		
 		if ($align && $align!=="")
-			return $oet_medium->display_post($url, $align);
+			$return =  $oet_medium->display_post($url, $align);
 		else
-			return $oet_medium->display_post($url);
+			$return =  $oet_medium->display_post($url);
 	}
 	
+	return $return;
 }
 ?>
