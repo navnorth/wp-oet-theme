@@ -177,6 +177,9 @@ class OET_Medium {
             $feeds = $this->get_medium_stories();
             if ($feeds){
                 foreach($feeds as $feed){
+                    $link_url = $find_url['scheme']."://".$find_url['host']."@".$this->_user->data->username."/".$feed['slug'];
+                    var_dump($post_url);
+                    var_dump($link_url);
                     var_dump($feed);
                     exit();
                 }
