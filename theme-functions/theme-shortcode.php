@@ -874,7 +874,8 @@ function parse_data_attributes( $data ) {
   **/ 
 add_shortcode("oet_medium", "oet_medium_func");
 function oet_medium_func($attribute, $content = null){
-	$return = false;
+	$return = "";
+	$oet_medium = null;
 	
 	if (is_array($attribute)) extract($attribute);
 	
