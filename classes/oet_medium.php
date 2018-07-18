@@ -180,6 +180,7 @@ class OET_Medium {
                     $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
                     if ($post_url==$link_url){
                         $match = true;
+                        var_dump($feed);
                         $title = $feed['title'];
                         if (strlen($title)>80){
                             $title = substr($title,0,80);
