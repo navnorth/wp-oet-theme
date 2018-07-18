@@ -103,7 +103,10 @@ class OET_Medium {
         $limit = 100;
         $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
         $feeds = get_medium_posts_json($all_url);
-        var_dump($feeds['payload']['references']['Post']);
+        foreach($feeds['payload']['references']['Post'] as $post){
+            var_dump($post);
+            exit();
+        }
         exit();
     }
     
