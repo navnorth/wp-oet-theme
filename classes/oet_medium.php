@@ -268,39 +268,39 @@ class OET_Medium {
     }
     
     function display_single_embed($story){
-    ?>
-        <div class="col-md-4 col-sm-6 col-xs-12" style="float:<?php echo $story['align']; ?>">
-            <div class="medium" style="<?php echo $story['background']; ?>">
+        return $embed = '
+        <div class="col-md-4 col-sm-6 col-xs-12" style="float:'.$story['align'].'">
+            <div class="medium" style="'.$story['background'].'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
-                        <h1><a href="<?php echo $story['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $story['link']; ?>');"><?php echo $story['title']; ?></a></h1>
-                        <p><?php echo $story['description'] ?></p>
+                        <h1><a href="'.$story['link'].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story['link'].'\');">'.$story['title'].'</a></h1>
+                        <p>'.$story['description'].'</p>
                         <p class="mfooter">
-                            <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
-                            <?php if (isset($story["pub_name"]) && $story["pub_name"]!==""){ ?>
-                             in <a href="<?php echo $story["pub_url"]; ?>" alt="<?php echo $story["pub_name"]; ?>" title="<?php echo $story["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $story["pub_url"]; ?>');"><?php echo $story["pub_name"]; ?></a>
-                            <?php } ?>
-                        </p>
+                            <a href="'.$this->_user->data->url.'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$this->_user->data->url.'\');"><img src="'.$this->_user->data->imageUrl.'" alt="Office of Educational Technology logo" width="30" height="30" /></a> <a href="'.$this->_user->data->url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$this->_user->data->url.'\');">@'.$this->_user->data->username.'</a>';
+        if (isset($story["pub_name"]) && $story["pub_name"]!==""){
+            $embed .= 'in <a href="'.$story["pub_url"].'" alt="'.$story["pub_name"].'" title="'.$story["pub_name"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$story["pub_name"].'</a>';
+        }
+        $embed .= '     </p>
                     </div>
                 </div>
             </div>
         </div>
-    <?php
+        ';
     }
     
     function display_invalid_text(){
         $background = "background:#757575";
-        ?>
+        return $embed = '
         <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="medium" style="<?php echo $background; ?>">
+            <div class="medium" style="'.$background.'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
-                        <p><?php echo "Medium post invalid"; ?></p>
+                        <p>Medium post invalid</p>
                     </div>
                 </div>
             </div>
         </div>
-        <?php
+        ';
     }
 }
 
