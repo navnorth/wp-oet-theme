@@ -78,11 +78,6 @@ class OET_Medium {
     
     // Get Feeds
     private function get_feeds($rss_urls = array()){
-        $limit = 100;
-        $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
-        $feeds = get_medium_posts_json($all_url);
-        var_dump($feeds['payload']['references']['Post']);
-        exit();
         if (count($this->_rss_urls)>0) {
             foreach ($this->_rss_urls as $rss_url){
                 $feed = convert_rss_to_json($rss_url["feed_url"]);
@@ -101,6 +96,15 @@ class OET_Medium {
         } else {
             throw new Exception('No RSS Url Specified!');
         }
+    }
+    
+    // Get Medium Stories via JSON
+    function get_medium_stories(){
+        $limit = 100;
+        $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
+        $feeds = get_medium_posts_json($all_url);
+        var_dump($feeds['payload']['references']['Post']);
+        exit();
     }
     
     // Display All Medium Posts
@@ -158,7 +162,8 @@ class OET_Medium {
     public function display_post($url, $align="left"){
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
-        $feeds = $this->get_feeds();
+        //$feeds = $this->get_feeds();
+        $feeds = $this->get_medium_stories();
         $match = false;
         
         $find_url = parse_url($url);
