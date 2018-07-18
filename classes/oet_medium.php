@@ -261,10 +261,11 @@ class OET_Medium {
         }
         
         if(!$match){
-            return $this->display_invalid_text();
+            $this->display_invalid_text();
         } else {
-            return $this->display_single_embed($story);
+            $this->display_single_embed($story);
         }
+        return false;
     }
     
     function display_single_embed($story){
