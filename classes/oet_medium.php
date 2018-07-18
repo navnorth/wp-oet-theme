@@ -180,14 +180,19 @@ class OET_Medium {
                     $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
                     if ($post_url==$link_url){
                         $match = true;
-                        var_dump($feed);
+                        
                         $title = $feed['title'];
                         if (strlen($title)>80){
                             $title = substr($title,0,80);
                             $title = substr($title,0,strrpos($title," "))."...";
                         }
                         
-                        $description = strip_tags_content($feed['content']['metaDescription'],"<h3>","</h3>");
+                        if (isset($feed['content']['metaDescription']))
+                            $description = $feed['content']['metaDescription'];
+                        else
+                            $description = $feed['content']['subtitle'];
+                            
+                        $description = strip_tags_content($description,"<h3>","</h3>");
                         $description = strip_tags_content($description,"<figure>","</figure>");
                         $description = trim(strip_tags($description));
 
