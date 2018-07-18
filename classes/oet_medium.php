@@ -213,6 +213,7 @@ class OET_Medium {
                         $story['background'] =  $background;
                         $story['align'] = $align;
                         $story['link'] = $link_url;
+                        $this->display_single_embed($story);
                         break;
                     }
                 }
@@ -254,6 +255,7 @@ class OET_Medium {
                         $story['link'] = $feed[0]['link'];
                         $story['pub_name'] = $feed["pub_name"];
                         $story['pub_url'] = $feed["pub_url"];
+                        $this->display_single_embed($story);
                     break;
                     }
                 }
@@ -262,10 +264,7 @@ class OET_Medium {
         
         if(!$match){
             $this->display_invalid_text();
-        } else {
-            $this->display_single_embed($story);
         }
-        return false;
     }
     
     function display_single_embed($story){
