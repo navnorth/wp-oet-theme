@@ -102,15 +102,13 @@ class OET_Medium {
     function get_medium_stories(){
         $limit = 100;
         $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
-        $feeds = get_medium_posts_json($all_url);
+        $data = get_medium_posts_json($all_url);
+        $feeds = array();
         $index = 0;
-        foreach($feeds['payload']['references']['Post'] as $post){
-            var_dump($post);
-            $index++;
-            if($index>3)
-                exit();
+        foreach($data['payload']['references']['Post'] as $post){
+            $feeds[]=$post;
         }
-        exit();
+        return $feeds;
     }
     
     // Display All Medium Posts
@@ -168,65 +166,85 @@ class OET_Medium {
     public function display_post($url, $align="left"){
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
-        //$feeds = $this->get_feeds();
-        $feeds = $this->get_medium_stories();
+        
         $match = false;
         
         $find_url = parse_url($url);
         $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
-        var_dump($post_url);
-        if ($this->_feeds) {
-            foreach($this->_feeds as $feed) {
-                var_dump($feed[0]['link']);
-                $link = parse_url($feed[0]['link']);
-                $link_url = $link['scheme']."://".$link['host'].$link['path'];
-                
-                if ($post_url==$link_url){
-                    $match = true;
-                    $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
-                    $description = strip_tags_content($description,"<figure>","</figure>");
-                    $description = trim(strip_tags($description));
-                    if (strlen($description)>175){
-                        $description = substr($description,0,175);
-                        $description = substr($description,0,strrpos($description," "))."...";
-                    }
+        $story = null;
+        
+        if (strpos($url,"@".$this->_user->data->username)){
+            $feeds = $this->get_medium_stories();
+            var_dump($feeds);
+        } else {
+            $feeds = $this->get_feeds();
+            if ($this->_feeds) {
+                foreach($this->_feeds as $feed) {
+                    $link = parse_url($feed[0]['link']);
+                    $link_url = $link['scheme']."://".$link['host'].$link['path'];
                     
-                    $background = "";
-                    if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
-                        $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
-                    elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
-                        $background = "background:#757575";
+                    if ($post_url==$link_url){
+                        $match = true;
+                        $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
+                        $description = strip_tags_content($description,"<figure>","</figure>");
+                        $description = trim(strip_tags($description));
+
+                        if (strlen($description)>175){
+                            $description = substr($description,0,175);
+                            $description = substr($description,0,strrpos($description," "))."...";
+                        }
                         
-                    $title = $feed[0]['title'];
-                    if (strlen($title)>80){
-                        $title = substr($title,0,80);
-                        $title = substr($title,0,strrpos($title," "))."...";
+                        $background = "";
+                        if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
+                            $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
+                        elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
+                            $background = "background:#757575";
+                            
+                        $title = $feed[0]['title'];
+                        if (strlen($title)>80){
+                            $title = substr($title,0,80);
+                            $title = substr($title,0,strrpos($title," "))."...";
+                        }
+                        
+                        $story['description'] = $description;
+                        $story['background'] =  $background;
+                        $story['title'] = $title;
+                        $story['align'] = $align;
+                        $story['link'] = $feed[0]['link'];
+                        $story['pub_name'] = $feed["pub_name"];
+                        $story['pub_url'] = $feed["pub_url"];
+                    break;
                     }
-                ?>
-                <div class="col-md-4 col-sm-6 col-xs-12" style="float:<?php echo $align; ?>">
-                    <div class="medium" style="<?php echo $background; ?>">
-                        <div class="medium-background">
-                            <div class="medium-wrapper">
-                                <h1><a href="<?php echo $feed[0]['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed[0]['link']; ?>');"><?php echo $title; ?></a></h1>
-                                <p><?php echo $description ?></p>
-                                <p class="mfooter">
-                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
-                                    <?php if (isset($feed["pub_name"])){ ?>
-                                     in <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed["pub_url"]; ?>');"><?php echo $feed["pub_name"]; ?></a>
-                                    <?php } ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                break;
                 }
             }
         }
+        
         if(!$match){
             $this->display_invalid_text();
+        } else {
+            $this->display_single_embed($story);
         }
+    }
+    
+    function display_single_embed($story){
+    ?>
+        <div class="col-md-4 col-sm-6 col-xs-12" style="float:<?php echo $story['align']; ?>">
+            <div class="medium" style="<?php echo $story['background']; ?>">
+                <div class="medium-background">
+                    <div class="medium-wrapper">
+                        <h1><a href="<?php echo $story['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $story['link']; ?>');"><?php echo $story['title']; ?></a></h1>
+                        <p><?php echo $story['description'] ?></p>
+                        <p class="mfooter">
+                            <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
+                            <?php if (isset($story["pub_name"]) && $story["pub_name"]!==""){ ?>
+                             in <a href="<?php echo $story["pub_url"]; ?>" alt="<?php echo $story["pub_name"]; ?>" title="<?php echo $story["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $story["pub_url"]; ?>');"><?php echo $story["pub_name"]; ?></a>
+                            <?php } ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
     }
     
     function display_invalid_text(){
