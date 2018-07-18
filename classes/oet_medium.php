@@ -78,7 +78,7 @@ class OET_Medium {
     
     // Get Feeds
     private function get_feeds($rss_urls = array()){
-        $all_url = "https://medium.com/@".$this->_user->data->username."/latest";
+        $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json";
         $feeds = get_medium_posts_json($all_url);
         var_dump($feeds);
         exit();
