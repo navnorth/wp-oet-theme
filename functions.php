@@ -342,9 +342,6 @@ function get_medium_posts_json($json_url){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     var_dump($json_url);
     curl_setopt($ch, CURLOPT_URL, $json_url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-					'Accept: application/json'
-					       ));
     $response = curl_exec($ch);
     curl_close($ch);
     return json_decode($response,true);
