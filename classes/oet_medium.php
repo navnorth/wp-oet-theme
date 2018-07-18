@@ -161,7 +161,7 @@ class OET_Medium {
         var_dump($post_url);
         if ($this->_feeds) {
             foreach($this->_feeds as $feed) {
-                var_dump($feed);
+                var_dump($feed[0]['link']);
                 $link = parse_url($feed[0]['link']);
                 $link_url = $link['scheme']."://".$link['host'].$link['path'];
                 
