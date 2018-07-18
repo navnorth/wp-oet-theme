@@ -175,7 +175,12 @@ class OET_Medium {
         
         if (strpos($url,"@".$this->_user->data->username)){
             $feeds = $this->get_medium_stories();
-            var_dump($feeds);
+            if ($feeds){
+                foreach($feeds as $feed){
+                    var_dump($feed);
+                    exit();
+                }
+            }
         } else {
             $feeds = $this->get_feeds();
             if ($this->_feeds) {
