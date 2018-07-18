@@ -81,7 +81,7 @@ class OET_Medium {
         $limit = 100;
         $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
         $feeds = get_medium_posts_json($all_url);
-        var_dump($feeds['payload']);
+        var_dump($feeds['payload']['references']);
         exit();
         if (count($this->_rss_urls)>0) {
             foreach ($this->_rss_urls as $rss_url){
