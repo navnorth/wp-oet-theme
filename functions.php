@@ -336,6 +336,19 @@ function convert_rss_to_json($rss_feed_url){
     return json_decode($response,true);
 }
 
+function get_medium_posts_json($json_url){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+					'Accept: application/json'
+					       ));
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return json_decode($response,true);
+}
+
 /**
  * Strip Tags and Content
  **/
