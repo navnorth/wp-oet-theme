@@ -343,6 +343,7 @@ function get_medium_posts_json($json_url){
     var_dump($json_url);
     curl_setopt($ch, CURLOPT_URL, $json_url);
     $response = curl_exec($ch);
+    var_dump($response);
     curl_close($ch);
     return json_decode($response,true);
 }
