@@ -84,6 +84,7 @@ class OET_Medium {
                 if ($feed){
                     if ($feed['status']=="ok"){
                         foreach($feed['items'] as $item){
+                            var_dump($item);
                             if (isset($rss_url["name"]))
                                $this->_feeds[] = array($item, "pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"]) ;
                             else
