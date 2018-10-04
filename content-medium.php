@@ -26,7 +26,10 @@ $publications = $oet_medium->get_publications();
     if ($_POST['display']=="all"){
         $oet_medium->display_all_stories();
     } else {
-        $oet_medium->display_posts();   
+        if (!empty($_POST['publication']))
+            $oet_medium->display_posts($_POST['publication']);   
+        else
+            $oet_medium->display_posts();   
     }
     ?>
 </div>

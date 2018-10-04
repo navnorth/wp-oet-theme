@@ -128,11 +128,14 @@ class OET_Medium {
     }
     
     // Display All Medium Posts
-    public function display_posts(){
+    public function display_posts($pubs = array()){
+        var_dump($pubs);
         $publications = $this->get_publications();
+        var_dump($publications);
+        exit();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
-        var_dump($this->_feeds);
+        
         if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
