@@ -326,7 +326,8 @@ add_action( 'wp_footer', 'oet_cf7_footer' );
  **/
 function convert_rss_to_json($rss_feed_url){
     $api_key = "hhaqrctfimba6odysjkotqix7tgjmdii5wl1ohld";
-    $url = "https://api.rss2json.com/v1/api.json?rss_url=".urlencode($rss_feed_url)."&api_key=".$api_key."&count=25";
+    $count = 50;
+    $url = "https://api.rss2json.com/v1/api.json?rss_url=".urlencode($rss_feed_url)."&api_key=".$api_key."&count=".$count;
     //$response = json_decode(file_get_contents($url),true);
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

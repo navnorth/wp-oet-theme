@@ -44,13 +44,15 @@ class OET_Medium {
     }
     
     // Get RSS Urls
-    private function get_rss_urls(){
+    private function get_rss_urls($publication_only=false){
         global $post;
         
         if ($this->_user){
-            $this->_rss_urls[] = array(
-                "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
-            );
+            if (!$publication_only) {
+                $this->_rss_urls[] = array(
+                    "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
+                );
+            }
             
             if ($this->_publications){
                 $i = 1;
@@ -78,7 +80,6 @@ class OET_Medium {
     
     // Get Feeds
     private function get_feeds($rss_urls = array()){
-        $unique_feeds = array();
         if (count($this->_rss_urls)>0) {
             foreach ($this->_rss_urls as $rss_url){
                 $feed = convert_rss_to_json($rss_url["feed_url"]);
@@ -134,7 +135,11 @@ class OET_Medium {
             if (!in_array($value->id,$pubs))
                 unset($this->_publications[$key]);
         }
-        $rss_urls = $this->get_rss_urls();
+        $pub_only = false;
+        if (!empty($pubs))
+            $pub_only = true;
+        
+        $rss_urls = $this->get_rss_urls($pub_only);
         $feeds = $this->get_feeds();
         
         if ($this->_feeds) {
