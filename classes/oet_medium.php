@@ -116,14 +116,12 @@ class OET_Medium {
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
-        var_dump($this->_feeds);
         $med_posts = array_unique($this->_feeds);
         var_dump($med_posts);
-        //if ($this->_feeds) {
+        if ($this->_feeds) {
         if ($med_posts) {
             $fcnt = 1;
-            //foreach($this->_feeds as $feed) {
-            foreach($med_posts as $feed) {
+            foreach($this->_feeds as $feed) {
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
