@@ -6,7 +6,7 @@ $oet_medium = new OET_Medium($self_access_token);
 $publications = $oet_medium->get_publications();
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12" id="story-options">
-    <h2><?php __("Select Publications", "oet"); ?></h2>
+    <h2><?php _e("Select Publications", "oet"); ?></h2>
     <form method="post">
         <input type="radio" name="publications" value="all"> All Medium Stories <br/>
         <input type="radio" name="publications" value="selective"> Select Publication(s) <br/>
