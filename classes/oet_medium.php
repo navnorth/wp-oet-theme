@@ -178,6 +178,63 @@ class OET_Medium {
         }
     }
     
+    // Display All Stories
+    public function display_all_stories(){
+        $feeds = $this->get_medium_stories();
+        if ($feeds){
+            foreach($feeds as $feed){
+                $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
+                $title = $feed['title'];
+                if (strlen($title)>80){
+                    $title = substr($title,0,80);
+                    $title = substr($title,0,strrpos($title," "))."...";
+                }
+                
+                if (isset($feed['content']['metaDescription']))
+                    $description = $feed['content']['metaDescription'];
+                else
+                    $description = $feed['content']['subtitle'];
+                    
+                $description = strip_tags_content($description,"<h3>","</h3>");
+                $description = strip_tags_content($description,"<figure>","</figure>");
+                $description = trim(strip_tags($description));
+
+                if (strlen($description)>175){
+                    $description = substr($description,0,175);
+                    $description = substr($description,0,strrpos($description," "))."...";
+                }
+                
+                $background = "";
+                if (isset($feed['virtuals']['previewImage']['imageId'])){
+                    $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
+                    $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
+                } else
+                    $background = "background:#757575";
+                
+                $story['title'] = $title;
+                $story['description'] = $description;
+                $story['background'] =  $background;
+                $story['align'] = $align;
+                $story['link'] = $link_url;
+                ?>
+                <div class="col-md-4 col-sm-6 col-xs-12 medium-list">
+                    <div class="medium" style="<?php echo $background; ?>">
+                        <div class="medium-background">
+                            <div class="medium-wrapper">
+                                <h1><a href="<?php echo $link_url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $link_url; ?>');"><?php echo $title; ?></a></h1>
+                                <p><?php echo $description ?></p>
+                                <p class="mfooter">
+                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php 
+            }
+        }
+    }
+    
     // Display Individual Post by Url
     public function display_post($url, $align="left"){
         $publications = $this->get_publications();
