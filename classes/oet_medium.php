@@ -57,7 +57,6 @@ class OET_Medium {
             if ($this->_publications){
                 $i = 1;
                 foreach($this->_publications as $publication){
-                    var_dump($publication);
                     $pub_name = sanitize_title($publication->name);
                     if (strpos($publication->url,$this->_base_url)>=0)
                         $pub_name = trim(substr($publication->url,strlen($this->_base_url),strlen($publication->url)));
@@ -142,7 +141,6 @@ class OET_Medium {
             $pub_only = true;
         
         $rss_urls = $this->get_rss_urls($pub_only);
-        var_dump($rss_urls);
         $feeds = $this->get_feeds();
         
         if ($this->_feeds) {

@@ -174,6 +174,7 @@ function save_featured_metabox()
 	update_post_meta($post->ID, "box_two_text", $_POST["box_two_text"] );
 	
 	if  (get_post_meta($post->ID, '_wp_page_template', true)=="page-templates/blog-template.php"){
+		update_post_meta($post->ID, "mpubdisplay", $_POST['mpubdisplay']);
 		$publications = getMediumPublications();
 		$count = count($publications);
 		for($i=1;$i<=$count;$i++){
