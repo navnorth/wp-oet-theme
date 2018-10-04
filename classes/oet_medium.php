@@ -132,6 +132,7 @@ class OET_Medium {
         var_dump($pubs);
         $publications = $this->get_publications();
         foreach($this->_publications as $_publication){
+            var_dump(in_array($_publication->id,$pubs));
             if (!in_array($_publication->id,$pubs))
                 unset($_publication);
         }
