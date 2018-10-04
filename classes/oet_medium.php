@@ -92,7 +92,8 @@ class OET_Medium {
                     }
                 }
             }
-            $this->_feeds = array_unique($this->_feeds);
+            print_r($this->_feeds);
+            //$this->_feeds = array_unique($this->_feeds);
             //$this->_feeds = $this->return_unique($this->_feeds,'title');
             return $this->_feeds;
         } else {
