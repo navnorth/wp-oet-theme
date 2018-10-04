@@ -123,8 +123,13 @@ function blog_metabox_func() {
 	
 	$mpubdisplay = get_post_meta($post->ID, "mpubdisplay", true);
 	?>
-	<input type="radio" name="mpubdisplay" value="all" <?php checked( $mpubdisplay, "all", true ); ?>> All Medium Stories <br/>
-        <input type="radio" name="mpubdisplay" value="selective" <?php checked( $mpubdisplay, "selective", true ); ?>> Select Publication(s) <br/>
+	<div class="meta_main_wrp">
+		<input type="radio" name="mpubdisplay" value="all" <?php checked( $mpubdisplay, "all", true ); ?>> All Medium Stories <br/>
+	</div>
+	<div class="meta_main_wrp">
+		<input type="radio" name="mpubdisplay" value="selective" <?php checked( $mpubdisplay, "selective", true ); ?>> Select Publication(s) <br/>
+	</div>
+	<div class="meta_main_wrapper">
 	<?php
 	
 	$publications = getMediumPublications();
@@ -141,6 +146,9 @@ function blog_metabox_func() {
 		    $i++;
 		}
 	}
+	?>
+	</div>
+	<?php
 }
 
 add_action('save_post', 'save_featured_metabox');
