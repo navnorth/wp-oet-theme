@@ -87,14 +87,6 @@ jQuery( document ).ready(function() {
         jQuery(this).css({"margin-bottom":"0"});
     });
     
-    jQuery("#storiesform input[type=radio][name=display]").on("change",function(){
-	if (jQuery(this).value=="selective"){
-	    jQuery("#storiesform input[type=checkbox]").prop("checked",true);
-	} else {
-	    jQuery("#storiesform input[type=checkbox]").prop("checked",false);
-	}
-    });
-    
     // Add Blur event to Contact Slider
     var slider = document.getElementById("contact-slider-content");
     slider.addEventListener("blur", custom_slider_blur, true);

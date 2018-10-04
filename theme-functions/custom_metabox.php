@@ -121,6 +121,12 @@ function story_metabox_func()
 function blog_metabox_func() {
 	global $post;
 	
+	$mpubdisplay = get_post_meta($post->ID, "mpubdisplay", true);
+	?>
+	<input type="radio" name="mpubdisplay" value="all" <?php checked( $mpubdisplay, "all", true ); ?>> All Medium Stories <br/>
+        <input type="radio" name="mpubdisplay" value="selective" <?php checked( $mpubdisplay, "selective", true ); ?>> Select Publication(s) <br/>
+	<?php
+	
 	$publications = getMediumPublications();
 
 	if ($publications){

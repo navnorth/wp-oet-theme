@@ -33,4 +33,12 @@ jQuery( document ).ready(function() {
 	    }, 1);
 	}
     });
+    
+    jQuery("input[type=radio][name=mpubdisplay]").on("change",function(){
+	if (jQuery(this).value=="selective"){
+	    jQuery(".meta_main_wrp input[type=checkbox]").prop("checked",true);
+	} else {
+	    jQuery(".meta_main_wrp input[type=checkbox]").prop("checked",false);
+	}
+    });
 });
