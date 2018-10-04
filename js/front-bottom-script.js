@@ -89,9 +89,12 @@ jQuery( document ).ready(function() {
     
     jQuery("#storiesform input[type=radio][name=display]").on("change",function(){
 	if (jQuery(this).value=="selective"){
-	    var status = this.checked;
 	    jQuery("#storiesform input[type=checkbox][name=publication]").each(function(){
-		this.checked = status;
+		this.checked = true;
+	    });
+	} else {
+	    jQuery("#storiesform input[type=checkbox][name=publication]").each(function(){
+		this.checked = false;
 	    });
 	}
 	jQuery("#storiesform").submit();
