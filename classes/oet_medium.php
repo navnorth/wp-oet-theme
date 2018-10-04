@@ -185,7 +185,7 @@ class OET_Medium {
         $feeds = $this->get_medium_stories();
         if ($feeds){
             foreach($feeds as $feed){
-                $link_url = $this->_base_url."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
+                $link_url = $this->_base_url."@".$this->_user->data->username."/".$feed['uniqueSlug'];
                 $title = $feed['title'];
                 if (strlen($title)>80){
                     $title = substr($title,0,80);
