@@ -269,7 +269,7 @@ class OET_Medium {
     
     function display_single_embed($story){
         $embed = '
-        <div class="col-md-4 col-sm-6 col-xs-12" style="float:'.$story['align'].'">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="float:'.$story['align'].'">
             <div class="medium" style="'.$story['background'].'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
