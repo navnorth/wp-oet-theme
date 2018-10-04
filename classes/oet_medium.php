@@ -94,6 +94,7 @@ class OET_Medium {
             }
             $this->_feeds = return_unique($this->_feeds, 'title');
             print_r($this->_feeds);
+            exit();
             //$this->_feeds = $this->return_unique($this->_feeds,'title');
             return $this->_feeds;
         } else {
