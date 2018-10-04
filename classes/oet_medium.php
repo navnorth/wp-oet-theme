@@ -12,6 +12,7 @@ class OET_Medium {
     private $_publications;
     private $_rss_urls = array();
     private $_feeds = array();
+    private $_display;
     
     public function __construct($self_access_token = null){
         if ($self_access_token){
@@ -44,11 +45,11 @@ class OET_Medium {
     }
     
     // Get RSS Urls
-    private function get_rss_urls($publication_only=false){
+    private function get_rss_urls(){
         global $post;
-        
+        $this->_display = get_post_meta($post->ID,"mpubdisplay",true);
         if ($this->_user){
-            if (!$publication_only) {
+            if ($this->_display=="all"){
                 $this->_rss_urls[] = array(
                     "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
                 );
@@ -129,18 +130,9 @@ class OET_Medium {
     }
     
     // Display All Medium Posts
-    public function display_posts($pubs = array()){
+    public function display_posts(){
         $publications = $this->get_publications();
-        foreach($this->_publications as $key=>$value){
-            if (!in_array($value->id,$pubs))
-                unset($this->_publications[$key]);
-        }
-        
-        $pub_only = false;
-        if (!empty($pubs))
-            $pub_only = true;
-        
-        $rss_urls = $this->get_rss_urls($pub_only);
+        $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
         
         if ($this->_feeds) {
