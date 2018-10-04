@@ -92,10 +92,21 @@ class OET_Medium {
                     }
                 }
             }
+            $this->_feeds = $this->return_unique($this->_feeds,'title');
             return $this->_feeds;
         } else {
             throw new Exception('No RSS Url Specified!');
         }
+    }
+    
+    function return_unique($feeds, $key){
+        $temp_array = [];
+        foreach ($feeds as &$v) {
+            if (!isset($temp_array[$v[$key]]))
+            $temp_array[$v[$key]] =& $v;
+        }
+        $feeds = array_values($temp_array);
+        return $feeds;
     }
     
     // Get Medium Stories via JSON
@@ -116,7 +127,7 @@ class OET_Medium {
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
-       
+        
         if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
