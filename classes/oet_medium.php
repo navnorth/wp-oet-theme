@@ -185,7 +185,7 @@ class OET_Medium {
         $feeds = $this->get_medium_stories();
         if ($feeds){
             foreach($feeds as $feed){
-                $url = parse_url($feed['link']);
+                $url = parse_url($this->_user->data->url);
                 $link_url = $url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
                 $title = $feed['title'];
                 if (strlen($title)>80){
