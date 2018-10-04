@@ -395,7 +395,7 @@ ul.checkbox_list input {
 	border-width: 1px;
 	border-style: solid;
 	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
-	min-height: 425px;
+	min-height: 325px;
 	margin: 5% 1%;
 	color:#ffffff;
 	background-size:cover !important;
@@ -429,6 +429,7 @@ ul.checkbox_list input {
 	text-overflow: ellipsis;
 	width:265px;
 }
+.medium-list .medium { min-height:425px; }
 .medium-wrapper p.mfooter a.imglink{
 	border-radius: 100%;
 	overflow: hidden;
