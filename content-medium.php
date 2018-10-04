@@ -16,7 +16,6 @@ var_dump($_POST);
             <input type="checkbox" name="publication" value="<?php echo $publication->id; ?>" > <?php echo $publication->name; ?> <br/>
             <?php endforeach; endif; ?>
         </div>
-        <input type="submit" name="submit" value="Submit" />
     </form>
 </div>
 <div class="col-md-12 col-sm-12 col-xs-12">

@@ -88,6 +88,7 @@ jQuery( document ).ready(function() {
     });
     
     jQuery("#storiesform input[type=radio][name=display]").on("change",function(){
+	console.log(jQuery(this).value);
 	jQuery("#storiesform").submit();
     });
     
