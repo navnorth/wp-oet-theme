@@ -268,9 +268,13 @@ class OET_Medium {
     }
     
     function display_single_embed($story){
+        if ($story['align']=='center')
+            $align = 'margin:0 auto';
+        else
+            $align = 'float:'.$story['align'];
         $embed = '
-        <div class="col-md-12 col-sm-12 col-xs-12 single-medium" style="float:'.$story['align'].'">
-            <div class="medium" style="'.$story['background'].'">
+        <div class="col-md-12 col-sm-12 col-xs-12 single-medium">
+            <div class="medium" style="'.$story['background'].'" style="'.$align.'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
                         <h1><a href="'.$story['link'].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story['link'].'\');">'.$story['title'].'</a></h1>
