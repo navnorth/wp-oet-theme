@@ -119,7 +119,6 @@ class OET_Medium {
         $med_posts = array_unique($this->_feeds);
         var_dump($med_posts);
         if ($this->_feeds) {
-        if ($med_posts) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
