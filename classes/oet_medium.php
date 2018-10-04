@@ -78,6 +78,7 @@ class OET_Medium {
     
     // Get Feeds
     private function get_feeds($rss_urls = array()){
+        $unique_feeds = array();
         if (count($this->_rss_urls)>0) {
             foreach ($this->_rss_urls as $rss_url){
                 $feed = convert_rss_to_json($rss_url["feed_url"]);
@@ -88,14 +89,13 @@ class OET_Medium {
                                $this->_feeds[] = array_merge($item, array("pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"])) ;
                             else
                                $this->_feeds[] = $item;
+                            
+                            $unique_feeds[] = $item;
                         }
                     }
                 }
             }
-            $this->_feeds = return_unique($this->_feeds, 'title');
-            print_r($this->_feeds);
-            exit();
-            //$this->_feeds = $this->return_unique($this->_feeds,'title');
+            var_dump($unique_feeds);
             return $this->_feeds;
         } else {
             throw new Exception('No RSS Url Specified!');
@@ -134,6 +134,7 @@ class OET_Medium {
         if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
+                var_dump($feed);
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
