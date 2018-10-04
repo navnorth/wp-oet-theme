@@ -131,10 +131,10 @@ class OET_Medium {
     public function display_posts($pubs = array()){
         var_dump($pubs);
         $publications = $this->get_publications();
-        foreach($this->_publications as $_publication){
-            var_dump(in_array($_publication->id,$pubs));
-            if (!in_array($_publication->id,$pubs))
-                unset($_publication);
+        foreach($this->_publications as $key=>$value){
+            var_dump(in_array($value->id,$pubs));
+            if (!in_array($value->id,$pubs))
+                unset($this->_publications[$key]);
         }
         var_dump($this->_publications);
         exit();
