@@ -4,7 +4,7 @@ include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.p
 use JonathanTorres\MediumSdk\Medium;
 
 class OET_Medium {
-    
+
     private $_access_token;
     private $_user;
     private $_medium;
@@ -13,7 +13,7 @@ class OET_Medium {
     private $_rss_urls = array();
     private $_feeds = array();
     private $_display;
-    
+
     public function __construct($self_access_token = null){
         if ($self_access_token){
             $this->_access_token = $self_access_token;
@@ -22,7 +22,7 @@ class OET_Medium {
         }
         $this->authenticate();
     }
-    
+
     // Authentication Medium Access Token
     private function authenticate(){
         if ($this->_access_token) {
@@ -33,7 +33,7 @@ class OET_Medium {
             throw new Exception('Invalid Self Access Token');
         }
     }
-    
+
     // Get Medium Publications based on authenticated user
     public function get_publications(){
         if ($this->_user){
@@ -43,7 +43,7 @@ class OET_Medium {
             throw new Exception('Medium User Not Authenticated');
         }
     }
-    
+
     // Get RSS Urls
     private function get_rss_urls(){
         global $post;
@@ -54,14 +54,14 @@ class OET_Medium {
                     "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
                 );
             }
-            
+
             if ($this->_publications){
                 $i = 1;
                 foreach($this->_publications as $publication){
                     $pub_name = sanitize_title($publication->name);
                     if (strpos($publication->url,$this->_base_url)>=0)
                         $pub_name = trim(substr($publication->url,strlen($this->_base_url),strlen($publication->url)));
-                        
+
                         if (get_post_meta($post->ID, "mpublication".$i, true)=="1")
                             $this->_rss_urls[] = array(
                                     "feed_url" => "https://medium.com/feed/".$pub_name,
@@ -78,7 +78,7 @@ class OET_Medium {
             throw new Exception('Medium User Not Authenticated');
         }
     }
-    
+
     // Get Feeds
     private function get_feeds($rss_urls = array()){
         if (count($this->_rss_urls)>0) {
@@ -99,13 +99,13 @@ class OET_Medium {
                     }
                 }
             }
-            
+
             return $this->_feeds;
         } else {
             throw new Exception('No RSS Url Specified!');
         }
     }
-    
+
     function return_unique($feeds, $key){
         $temp_array = [];
         foreach ($feeds as &$v) {
@@ -115,7 +115,7 @@ class OET_Medium {
         $feeds = array_values($temp_array);
         return $feeds;
     }
-    
+
     // Get Medium Stories via JSON
     function get_medium_stories(){
         $limit = 100;
@@ -128,13 +128,13 @@ class OET_Medium {
         }
         return $feeds;
     }
-    
+
     // Display All Medium Posts
     public function display_posts(){
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
-        
+
         if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
@@ -145,13 +145,13 @@ class OET_Medium {
                     $description = substr($description,0,175);
                     $description = substr($description,0,strrpos($description," "))."...";
                 }
-                
+
                 $background = "";
                 if (substr($feed['thumbnail'],0,11)=="https://cdn")
                     $background = "background:#000000 url(". $feed['thumbnail'] .") no-repeat top left;";
                 elseif (substr($feed['thumbnail'],0,11)=="https://med")
                     $background = "background:#757575";
-                    
+
                 $title = $feed['title'];
                 if (strlen($title)>80){
                     $title = substr($title,0,80);
@@ -162,14 +162,14 @@ class OET_Medium {
                 <div class="medium" style="<?php echo $background; ?>">
                     <div class="medium-background">
                         <div class="medium-wrapper">
-                            <h1><a href="<?php echo $feed['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed['link']; ?>');"><?php echo $title; ?></a></h1>
+                            <h1><a href="<?php echo $feed['link']; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Post Click', '<?php echo $feed['link']; ?>');"><?php echo $title; ?></a></h1>
                             <p><?php echo $description ?></p>
                             <p class="mfooter">
                                 <?php if ($feed['author']=="Office of Ed Tech"): ?>
-                                <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a> in
+                                <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Author Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Author Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a> in
                                 <?php endif; ?>
                                 <?php if (isset($feed["pub_name"])){ ?>
-                                 <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $feed["pub_url"]; ?>');"><?php echo $feed["pub_name"]; ?></a>
+                                 <a href="<?php echo $feed["pub_url"]; ?>" alt="<?php echo $feed["pub_name"]; ?>" title="<?php echo $feed["pub_name"]; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Publication Click', '<?php echo $feed["pub_url"]; ?>');"><?php echo $feed["pub_name"]; ?></a>
                                 <?php } ?>
                             </p>
                         </div>
@@ -181,7 +181,7 @@ class OET_Medium {
             }
         }
     }
-    
+
     // Display All Stories
     public function display_all_stories(){
         $feeds = $this->get_medium_stories();
@@ -193,12 +193,12 @@ class OET_Medium {
                     $title = substr($title,0,80);
                     $title = substr($title,0,strrpos($title," "))."...";
                 }
-                
+
                 if (isset($feed['content']['metaDescription']))
                     $description = $feed['content']['metaDescription'];
                 else
                     $description = $feed['content']['subtitle'];
-                    
+
                 $description = strip_tags_content($description,"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
@@ -207,14 +207,14 @@ class OET_Medium {
                     $description = substr($description,0,175);
                     $description = substr($description,0,strrpos($description," "))."...";
                 }
-                
+
                 $background = "";
                 if (isset($feed['virtuals']['previewImage']['imageId'])){
                     $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
                     $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
                 } else
                     $background = "background:#757575";
-                
+
                 $story['title'] = $title;
                 $story['description'] = $description;
                 $story['background'] =  $background;
@@ -225,31 +225,31 @@ class OET_Medium {
                     <div class="medium" style="<?php echo $background; ?>">
                         <div class="medium-background">
                             <div class="medium-wrapper">
-                                <h1><a href="<?php echo $link_url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $link_url; ?>');"><?php echo $title; ?></a></h1>
+                                <h1><a href="<?php echo $link_url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Post Click', '<?php echo $link_url; ?>');"><?php echo $title; ?></a></h1>
                                 <p><?php echo $description ?></p>
                                 <p class="mfooter">
-                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
+                                    <a href="<?php echo $this->_user->data->url; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" target="_blank" class="imglink" onclick="ga('send', 'event', 'Medium Blog Author Click', '<?php echo $this->_user->data->url; ?>');"><img src="<?php echo $this->_user->data->imageUrl; ?>" alt="<?php _e('Office of Educational Technology logo','twentytwelve-child'); ?>" width="30" height="30" /></a> <a href="<?php echo $this->_user->data->url; ?>" target="_blank" onclick="ga('send', 'event', 'Medium Blog Author Click', '<?php echo $this->_user->data->url; ?>');">@<?php echo $this->_user->data->username; ?></a>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php 
+                <?php
             }
         }
     }
-    
+
     // Display Individual Post by Url
     public function display_post($url, $align="left"){
         $publications = $this->get_publications();
         $rss_urls = $this->get_rss_urls();
-        
+
         $match = false;
-        
+
         $find_url = parse_url($url);
         $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
         $story = null;
-        
+
         if (strpos($url,"@".$this->_user->data->username)){
             $feeds = $this->get_medium_stories();
             if ($feeds){
@@ -257,18 +257,18 @@ class OET_Medium {
                     $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
                     if ($post_url==$link_url){
                         $match = true;
-                        
+
                         $title = $feed['title'];
                         if (strlen($title)>80){
                             $title = substr($title,0,80);
                             $title = substr($title,0,strrpos($title," "))."...";
                         }
-                        
+
                         if (isset($feed['content']['metaDescription']))
                             $description = $feed['content']['metaDescription'];
                         else
                             $description = $feed['content']['subtitle'];
-                            
+
                         $description = strip_tags_content($description,"<h3>","</h3>");
                         $description = strip_tags_content($description,"<figure>","</figure>");
                         $description = trim(strip_tags($description));
@@ -277,14 +277,14 @@ class OET_Medium {
                             $description = substr($description,0,175);
                             $description = substr($description,0,strrpos($description," "))."...";
                         }
-                        
+
                         $background = "";
                         if (isset($feed['virtuals']['previewImage']['imageId'])){
                             $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
                             $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
                         } else
                             $background = "background:#757575";
-                        
+
                         $story['title'] = $title;
                         $story['description'] = $description;
                         $story['background'] =  $background;
@@ -300,7 +300,7 @@ class OET_Medium {
                 foreach($this->_feeds as $feed) {
                     $link = parse_url($feed[0]['link']);
                     $link_url = $link['scheme']."://".$link['host'].$link['path'];
-                    
+
                     if ($post_url==$link_url){
                         $match = true;
                         $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
@@ -311,19 +311,19 @@ class OET_Medium {
                             $description = substr($description,0,175);
                             $description = substr($description,0,strrpos($description," "))."...";
                         }
-                        
+
                         $background = "";
                         if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
                             $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
                         elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
                             $background = "background:#757575";
-                            
+
                         $title = $feed[0]['title'];
                         if (strlen($title)>80){
                             $title = substr($title,0,80);
                             $title = substr($title,0,strrpos($title," "))."...";
                         }
-                        
+
                         $story['description'] = $description;
                         $story['background'] =  $background;
                         $story['title'] = $title;
@@ -336,14 +336,14 @@ class OET_Medium {
                 }
             }
         }
-        
+
         if(!$match){
             return $this->display_invalid_text();
         } else {
             return $this->display_single_embed($story);
         }
     }
-    
+
     function display_single_embed($story){
         if ($story['align']=='center')
             $align = 'margin:0 auto';
@@ -369,7 +369,7 @@ class OET_Medium {
         ';
         return $embed;
     }
-    
+
     function display_invalid_text(){
         $background = "background:#757575";
         return $embed = '
