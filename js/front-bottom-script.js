@@ -88,7 +88,12 @@ jQuery( document ).ready(function() {
     });
     
     jQuery("#storiesform input[type=radio][name=display]").on("change",function(){
-	console.log(jQuery(this).value);
+	if (jQuery(this).value=="selective"){
+	    var status = this.checked;
+	    jQuery("#storiesform input[type=checkbox][name=publication]").each(function(){
+		this.checked = status;
+	    });
+	}
 	jQuery("#storiesform").submit();
     });
     
