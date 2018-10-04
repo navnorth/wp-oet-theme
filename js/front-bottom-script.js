@@ -89,11 +89,11 @@ jQuery( document ).ready(function() {
     
     jQuery("#storiesform input[type=radio][name=display]").on("change",function(){
 	if (jQuery(this).value=="selective"){
-	    jQuery("#storiesform input[type=checkbox][name=publication]").each(function(){
+	    jQuery("#storiesform input[type=checkbox]").each(function(){
 		this.checked = true;
 	    });
 	} else {
-	    jQuery("#storiesform input[type=checkbox][name=publication]").each(function(){
+	    jQuery("#storiesform input[type=checkbox]").each(function(){
 		this.checked = false;
 	    });
 	}
