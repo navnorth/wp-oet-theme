@@ -96,6 +96,10 @@ jQuery( document ).ready(function() {
 	jQuery("#storiesform").submit();
     });
     
+    jQuery("#storiesform input[type=checkbox]").on("change",function(){
+	jQuery("#storiesform").submit();
+    });
+    
     // Add Blur event to Contact Slider
     var slider = document.getElementById("contact-slider-content");
     slider.addEventListener("blur", custom_slider_blur, true);
