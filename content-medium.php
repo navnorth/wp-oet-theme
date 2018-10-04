@@ -10,10 +10,10 @@ $publications = $oet_medium->get_publications();
     <h3><?php _e("Select Publications", "twentytwelve-child"); ?></h3>
     <form id="storiesform" method="post">
         <input type="radio" name="display" <?php if ($_POST['display']=="all"): ?>checked="checked"<?php endif; ?> value="all"> All Medium Stories <br/>
-        <input type="radio" name="display" <?php if ($_POST['display']=="selective" || empty($_POST)): ?>checked="checked"<?php endif; ?> value="selective"> Select Publication(s) <br/>
+        <input type="radio" name="display" <?php if ($_POST['display']=="selective"): ?>checked="checked"<?php endif; ?> value="selective"> Select Publication(s) <br/>
         <div class="list-publications">
             <?php if ($publications): foreach($publications as $publication): ?>
-            <input type="checkbox" name="publication[]" <?php if(empty($_POST) || in_array($publication->id,$_POST['publication'])): ?>checked="checked"<?php endif; ?> value="<?php echo $publication->id; ?>" > <?php echo $publication->name; ?> <br/>
+            <input type="checkbox" name="publication[]" <?php if(in_array($publication->id,$_POST['publication'])): ?>checked="checked"<?php endif; ?> value="<?php echo $publication->id; ?>" > <?php echo $publication->name; ?> <br/>
             <?php endforeach; endif; ?>
         </div>
         <div class="form-footer">
