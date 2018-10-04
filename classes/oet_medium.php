@@ -86,7 +86,8 @@ class OET_Medium {
                     if ($feed['status']=="ok"){
                         foreach($feed['items'] as $item){
                             $titles = array_column($this->_feeds,"title");
-                            var_dump($item['title']);
+                            $title_exists = array_search($item['title'], $titles);
+                            var_dump($title_exists);
                             if (isset($rss_url["name"])){
                                $this->_feeds[] = array_merge($item, array("pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"])) ;
                             }
@@ -137,7 +138,6 @@ class OET_Medium {
         if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
-                var_dump($feed);
                 $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
                 $description = strip_tags_content($description,"<figure>","</figure>");
                 $description = trim(strip_tags($description));
