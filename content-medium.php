@@ -13,7 +13,7 @@ $publications = $oet_medium->get_publications();
         <input type="radio" name="display" <?php if ($_POST['display']=="selective" || empty($_POST)): ?>checked="checked"<?php endif; ?> value="selective"> Select Publication(s) <br/>
         <div class="list-publications">
             <?php if ($publications): foreach($publications as $publication): ?>
-            <input type="checkbox" name="publication[]" <?php if(empty($_POST) || in_array($publication->id,$_POST['publication'])):?>checked="checked"<?php endif; ?> value="<?php echo $publication->id; ?>" > <?php echo $publication->name; ?> <br/>
+            <input type="checkbox" name="publication[]" <?php if(empty($_POST) || in_array($publication->id,$_POST['publication'])): ?>checked="checked"<?php endif; ?> value="<?php echo $publication->id; ?>" > <?php echo $publication->name; ?> <br/>
             <?php endforeach; endif; ?>
         </div>
         <div class="form-footer">
@@ -23,6 +23,10 @@ $publications = $oet_medium->get_publications();
 </div>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <?php
-    $oet_medium->display_posts();
+    if ($_POST['display']=="all"){
+        $oet_medium->display_all_stories();
+    } else {
+        $oet_medium->display_posts();   
+    }
     ?>
 </div>
