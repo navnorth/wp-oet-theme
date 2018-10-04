@@ -85,18 +85,22 @@ class OET_Medium {
                 if ($feed){
                     if ($feed['status']=="ok"){
                         foreach($feed['items'] as $item){
-                            if (isset($rss_url["name"]))
+                            if (isset($rss_url["name"])){
                                $this->_feeds[] = array_merge($item, array("pub_name"=>$rss_url["name"],"pub_url"=>$rss_url["url"])) ;
-                            else
+                               var_dump($item);
+                            }
+                            else{
                                $this->_feeds[] = $item;
-                            
+                               echo "test";
+                               var_dump($item);
+                            }
                             $unique_feeds[] = $item;
                         }
                     }
                 }
             }
             $unique_feeds = array_unique($unique_feeds);
-            var_dump($unique_feeds);
+            //var_dump($unique_feeds);
             return $this->_feeds;
         } else {
             throw new Exception('No RSS Url Specified!');
