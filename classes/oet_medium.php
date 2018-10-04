@@ -53,7 +53,7 @@ class OET_Medium {
                     "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
                 );
             }
-            var_dump($this->_publications);
+            
             if ($this->_publications){
                 $i = 1;
                 foreach($this->_publications as $publication){
@@ -141,6 +141,7 @@ class OET_Medium {
             $pub_only = true;
         
         $rss_urls = $this->get_rss_urls($pub_only);
+        var_dump($rss_urls);
         $feeds = $this->get_feeds();
         
         if ($this->_feeds) {
