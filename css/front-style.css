@@ -431,7 +431,7 @@ ul.checkbox_list input {
 	text-overflow: ellipsis;
 	width:265px;
 }
-.medium-list .medium { min-height:425px; }
+.single-medium .medium { margin:0 auto; }
 .medium-wrapper p.mfooter a.imglink{
 	border-radius: 100%;
 	overflow: hidden;
