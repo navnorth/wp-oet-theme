@@ -7,7 +7,9 @@
  * @since 0.2.8
  */
 $excerpt = "";
-$img_url = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
+$image = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'medium' );
+//$img_url = wp_get_attachment_url( get_post_thumbnail_id($post_id) );
+$img_url = $image[0];
 $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true);
 ?>
 <article id="post-<?php echo $post_id; ?>" <?php post_class(); ?>>
