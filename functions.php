@@ -410,3 +410,14 @@ function oet_search_groupby($groupby){
     return $groupby.", ".$groupby_id;
 }
 add_filter('posts_groupby', 'oet_search_groupby');
+
+function oet_test_searchwp_basic_auth_creds() {
+	
+	$credentials = array( 
+		'username' => 'guest', // the HTTP BASIC AUTH username
+		'password' => 'wordpress'  // the HTTP BASIC AUTH password
+	);
+	
+	return $credentials;
+}
+add_filter( 'searchwp_basic_auth_creds', 'oet_test_searchwp_basic_auth_creds' );
