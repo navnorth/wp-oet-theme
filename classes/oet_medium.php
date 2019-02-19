@@ -33,6 +33,29 @@ class OET_Medium {
             throw new Exception('Invalid Self Access Token');
         }
     }
+    
+    // Debug Medium Connection
+    public function debug_medium_connection(){
+        $test_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=100";
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, $test_url);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        
+        $response = curl_exec($ch);
+        
+        if ($response === FALSE) {
+            return printf("cUrl error (#%d): %s<br>\n", curl_errno($handle),
+            htmlspecialchars(curl_error($handle)));
+        }
+
+        rewind($verbose);
+        $verboseLog = stream_get_contents($verbose);
+
+        $ret =  "Verbose information:\n<pre>". htmlspecialchars($verboseLog). "</pre>\n";
+    }
 
     // Get Medium Publications based on authenticated user
     public function get_publications(){

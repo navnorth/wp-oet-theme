@@ -41,4 +41,23 @@ jQuery( document ).ready(function() {
 	    jQuery(".meta_main_wrp input[type=checkbox]").prop("checked",false);
 	}
     });
+    
+    jQuery("#debug_medium").on("click", function(e){
+	e.preventDefault();
+	data = {
+	    action: 'debug_medium_connection',
+	}
+	
+	//* Process the AJAX POST request
+	jQuery.post(
+	    ajaxurl,
+	    data
+	    ).done( function(response) {
+	    verbose = jQuery("#oer_verbose_block");
+	    verbose.html("");
+	    verbose.html(response);
+	});
+
+	return false;
+    });
 });
