@@ -95,3 +95,10 @@
     text-transform: uppercase;
 }
 .meta_main_wrapper { margin: 5px 20px; }
+.medium-debug-btn {
+    height: 32px !important;
+    font-weight: bold;
+    background-color: #294179 !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+}
