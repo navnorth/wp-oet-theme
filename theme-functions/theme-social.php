@@ -88,8 +88,8 @@ function socialmedia_settings()
 					  </div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
-							<div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /></div>
-					  </div>
+							<div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /> <button id="debug_medium" class="medium-debug-btn button">Debug</button></div>
+					  </div><div id="oer_verbose_block"></div>
 					  <div class="oer_sclmda_sub_wrapper">
 							<div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
 							<div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
