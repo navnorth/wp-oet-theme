@@ -55,6 +55,7 @@ class OET_Medium {
         $verboseLog = stream_get_contents($verbose);
 
         $ret =  "Verbose information:\n<pre>". htmlspecialchars($verboseLog). "</pre>\n";
+        return $ret;
     }
 
     // Get Medium Publications based on authenticated user
