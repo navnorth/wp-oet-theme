@@ -411,8 +411,7 @@ function oet_search_groupby($groupby){
 }
 add_filter('posts_groupby', 'oet_search_groupby');
 
-function oet_test_searchwp_basic_auth_creds() {
-	
+function oet_test_searchwp_basic_auth_creds() {	
 	$credentials = array( 
 		'username' => 'guest', // the HTTP BASIC AUTH username
 		'password' => 'wordpress'  // the HTTP BASIC AUTH password
