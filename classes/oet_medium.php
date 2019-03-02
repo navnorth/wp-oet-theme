@@ -59,7 +59,7 @@ class OET_Medium {
 
         $debug = ob_get_clean();
 
-        $ret =  "Verbose information:\n<pre>". htmlspecialchars($debug). "</pre>\n";
+        $ret =  "<h5>Debugging connection:</h5>\n<pre>". htmlspecialchars($debug). "</pre>\n";
         return $ret;
     }
 
