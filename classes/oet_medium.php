@@ -36,7 +36,8 @@ class OET_Medium {
     
     // Debug Medium Connection
     public function debug_medium_connection(){
-        $test_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=100";
+        $limit = 100;
+        $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
         
         ob_start();
         $log = fopen("php://output","w");
@@ -44,7 +45,7 @@ class OET_Medium {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, $test_url);
+        curl_setopt($ch, CURLOPT_URL, $all_url);
         curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_STDERR, $log);
         
