@@ -102,3 +102,8 @@
     color: #ffffff !important;
     text-transform: uppercase;
 }
+#oer_verbose_block pre {
+    padding: 15px;
+    border: 1px solid #cdcdcd;
+    overflow:auto;
+}
