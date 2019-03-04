@@ -6,7 +6,7 @@ use JonathanTorres\MediumSdk\Medium;
 class OET_Medium {
 
     private $_access_token;
-    public $_user;
+    private $_user;
     private $_medium;
     private $_base_url = "https://medium.com/";
     private $_publications;
@@ -32,6 +32,16 @@ class OET_Medium {
         } else {
             throw new Exception('Invalid Self Access Token');
         }
+    }
+    
+    // Return Authenticated User
+    public function get_authenticated_user(){
+        $user = null;
+        
+        if (isset($this->_user))
+            $user = $this->_user;
+            
+         return $user;
     }
     
     // Debug Medium Connection
