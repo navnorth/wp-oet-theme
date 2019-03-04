@@ -24,7 +24,7 @@ function socialmedia_settings()
 		if (isset($mediumaccesstoken)){
 			update_option("mediumaccesstoken", $mediumaccesstoken);
 			$verified  = verify_token($mediumaccesstoken);
-			echo $verified;
+			echo $verified->_user;
 		}
 		if (isset($enablecontactslider))
 			update_option("enablecontactslider", $enablecontactslider);
