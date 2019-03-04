@@ -58,7 +58,7 @@ function publication_metabox_func()
 		<div class="meta_fld_wrp">
 			<input type="text" name="button_one_text" value="<?php echo $button_one_text; ?>" placeholder="Button Text">
             <input type="text" name="button_one_link" value="<?php echo $button_one_link; ?>" placeholder="Button Link">
-            <input type="text" name="button_one_color" value="<?php echo $button_one_color; ?>" placeholder="Button Colour Code">{wihout "#"}
+            <input type="text" name="button_one_color" value="<?php echo $button_one_color; ?>" placeholder="Button Colour Code">{without "#"}
 		</div>
     </div>
     <div class="meta_main_wrp">
@@ -66,7 +66,7 @@ function publication_metabox_func()
 		<div class="meta_fld_wrp">
 			<input type="text" name="button_two_text" value="<?php echo $button_two_text; ?>" placeholder="Button Text">
             <input type="text" name="button_two_link" value="<?php echo $button_two_link; ?>" placeholder="Button Link">
-            <input type="text" name="button_two_color" value="<?php echo $button_two_color; ?>" placeholder="Button Colour Code">{wihout "#"}
+            <input type="text" name="button_two_color" value="<?php echo $button_two_color; ?>" placeholder="Button Colour Code">{without "#"}
 		</div>
     </div>
 
