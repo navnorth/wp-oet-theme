@@ -430,9 +430,9 @@ add_action('wp_ajax_debug_medium_connection', 'oet_debug_medium_connection');
 function oet_debug_medium_connection(){
     //Checking if curl is enabled
     if (in_array("curl", get_loaded_extensions())){
-	$response = "CURL is enabled in this server.";
+	$response = "<h4 class='green'>CURL is enabled in this server.</h4>";
     } else {
-	$response = "CURL is not enabled in this server. Please install.";
+	$response = "<h4 class='red'>CURL is not enabled in this server. Please install.</h4>";
     }
     
     $self_access_token = get_option("mediumaccesstoken");
