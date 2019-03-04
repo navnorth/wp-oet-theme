@@ -6,6 +6,7 @@ function twentytwelve_menu()
 add_action('admin_menu', 'twentytwelve_menu');
 function socialmedia_settings()
 {
+	$notice = null;
 	if(isset($_POST["save_social"]))
 	{
 		extract($_POST);
@@ -24,7 +25,9 @@ function socialmedia_settings()
 		if (isset($mediumaccesstoken)){
 			update_option("mediumaccesstoken", $mediumaccesstoken);
 			$verified  = verify_token($mediumaccesstoken);
-			var_dump($verified);
+			if ($verified->errors){
+				$null = "Medium Self Access Token could not be verified, please try the Debug option for more information.";
+			}
 		}
 		if (isset($enablecontactslider))
 			update_option("enablecontactslider", $enablecontactslider);
@@ -62,7 +65,11 @@ function socialmedia_settings()
 	$return = '';
 	$return .=  '<div class="wrap">
 					<h2>Theme Settings</h2>';
-					
+	
+	if ($notice){
+		$return .= '<div class="notice notice-warning is-dismissible"><p>'.$notice.'</p></div>';
+	}
+	
 	$return .= '<form method="post">';
 		$return .= '<div class="oer_sclmda_wrpr">
 			<div class="oer_sclmda_sub_wrapper">
