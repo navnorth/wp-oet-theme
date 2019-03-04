@@ -428,18 +428,22 @@ add_filter( 'searchwp_basic_auth_creds', 'oet_test_searchwp_basic_auth_creds' );
 
 add_action('wp_ajax_debug_medium_connection', 'oet_debug_medium_connection');
 function oet_debug_medium_connection(){
+    $curl = true;
     //Checking if curl is enabled
     if (in_array("curl", get_loaded_extensions())){
 	$response = "<h4 class='green'>CURL is enabled in this server.</h4>";
     } else {
 	$response = "<h4 class='red'>CURL is not enabled in this server. Please install.</h4>";
+	$curl = false;
     }
     
     $self_access_token = get_option("mediumaccesstoken");
     
     // Self Access Token Authentication
-    $oet_medium = new OET_Medium($self_access_token);
-    $response .= $oet_medium->debug_medium_connection();
+    if ($curl){
+	$oet_medium = new OET_Medium($self_access_token);
+	$response .= $oet_medium->debug_medium_connection();
+    }
     echo $response;
     
     die();
