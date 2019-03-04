@@ -375,6 +375,12 @@ function getMediumPublications(){
     return $publications;
 }
 
+function verify_token($self_access_token){
+    $medium = new Medium($self_access_token);
+    $user = $medium->getAuthenticatedUser();
+    return $user;
+}
+
 function add_tag_to_pages(){
     register_taxonomy_for_object_type('post_tag', 'page');
 }

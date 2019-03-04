@@ -21,8 +21,11 @@ function socialmedia_settings()
 			update_option("google_url", $google_url);
 		if (isset($linktonwltr))
 			update_option("linktonwltr", $linktonwltr);
-		if (isset($mediumaccesstoken))
+		if (isset($mediumaccesstoken)){
 			update_option("mediumaccesstoken", $mediumaccesstoken);
+			$verified  = verify_token($mediumaccesstoken);
+			echo $verified;
+		}
 		if (isset($enablecontactslider))
 			update_option("enablecontactslider", $enablecontactslider);
 		if (isset($contactsliderpage))
@@ -62,44 +65,44 @@ function socialmedia_settings()
 					
 	$return .= '<form method="post">';
 		$return .= '<div class="oer_sclmda_wrpr">
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Google Analytics ID</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="google_analytics_id" value="'. $google_analytics_id.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Twitter</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="twitter_url" value="'. $twitter_url.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Facebook</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="facebook_url" value="'. $facebook_url.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Youtube</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="yotube_url" value="'. $yotube_url.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Google Plus</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="google_url" value="'. $google_url.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
-							<div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
-							<div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /> <button id="debug_medium" class="medium-debug-btn button">Debug</button></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
-							<div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
-					  </div>
-					  <div class="oer_sclmda_sub_wrapper">
-							<div class="oer_sclmda_txt"></div>
-							<div class="oer_sclmda_fld"><input type="submit" name="save_social" value="Save Settings" /></div>
-					  </div>
-					  <div id="oer_verbose_block"></div>
-					</div>';
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Google Analytics ID</strong></div>
+				      <div class="oer_sclmda_fld"><input type="text" name="google_analytics_id" value="'. $google_analytics_id.'" /></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Twitter</strong></div>
+				      <div class="oer_sclmda_fld"><input type="text" name="twitter_url" value="'. $twitter_url.'" /></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Facebook</strong></div>
+				      <div class="oer_sclmda_fld"><input type="text" name="facebook_url" value="'. $facebook_url.'" /></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Youtube</strong></div>
+				      <div class="oer_sclmda_fld"><input type="text" name="yotube_url" value="'. $yotube_url.'" /></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Google Plus</strong></div>
+				      <div class="oer_sclmda_fld"><input type="text" name="google_url" value="'. $google_url.'" /></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
+				      <div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
+				      <div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /> <button id="debug_medium" class="medium-debug-btn button">Debug</button></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
+				      <div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
+			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"></div>
+				      <div class="oer_sclmda_fld"><input type="submit" name="save_social" value="Save Settings" /></div>
+			</div>
+			<div id="oer_verbose_block"></div>
+		      </div>';
 	$return .= '</form>';
 	
 	echo $return;
