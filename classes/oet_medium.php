@@ -6,7 +6,7 @@ use JonathanTorres\MediumSdk\Medium;
 class OET_Medium {
 
     private $_access_token;
-    private $_user;
+    public $_user;
     private $_medium;
     private $_base_url = "https://medium.com/";
     private $_publications;
