@@ -26,7 +26,7 @@ function socialmedia_settings()
 			update_option("mediumaccesstoken", $mediumaccesstoken);
 			$verified  = verify_token($mediumaccesstoken);
 			if ($verified->errors){
-				$null = "Medium Self Access Token could not be verified, please try the Debug option for more information.";
+				$notice = "Medium Self Access Token could not be verified, please try the Debug option for more information.";
 			}
 		}
 		if (isset($enablecontactslider))
