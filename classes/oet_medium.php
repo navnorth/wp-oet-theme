@@ -281,106 +281,110 @@ class OET_Medium {
 
     // Display Individual Post by Url
     public function display_post($url, $align="left"){
-        $publications = $this->get_publications();
-        $rss_urls = $this->get_rss_urls();
-
-        $match = false;
-
-        $find_url = parse_url($url);
-        $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
-        $story = null;
-
-        if (strpos($url,"@".$this->_user->data->username)){
-            $feeds = $this->get_medium_stories();
-            if ($feeds){
-                foreach($feeds as $feed){
-                    $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
-                    if ($post_url==$link_url){
-                        $match = true;
-
-                        $title = $feed['title'];
-                        if (strlen($title)>80){
-                            $title = substr($title,0,80);
-                            $title = substr($title,0,strrpos($title," "))."...";
+        try{
+            $publications = $this->get_publications();
+            $rss_urls = $this->get_rss_urls();
+    
+            $match = false;
+    
+            $find_url = parse_url($url);
+            $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
+            $story = null;
+    
+            if (strpos($url,"@".$this->_user->data->username)){
+                $feeds = $this->get_medium_stories();
+                if ($feeds){
+                    foreach($feeds as $feed){
+                        $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
+                        if ($post_url==$link_url){
+                            $match = true;
+    
+                            $title = $feed['title'];
+                            if (strlen($title)>80){
+                                $title = substr($title,0,80);
+                                $title = substr($title,0,strrpos($title," "))."...";
+                            }
+    
+                            if (isset($feed['content']['metaDescription']))
+                                $description = $feed['content']['metaDescription'];
+                            else
+                                $description = $feed['content']['subtitle'];
+    
+                            $description = strip_tags_content($description,"<h3>","</h3>");
+                            $description = strip_tags_content($description,"<figure>","</figure>");
+                            $description = trim(strip_tags($description));
+    
+                            if (strlen($description)>175){
+                                $description = substr($description,0,175);
+                                $description = substr($description,0,strrpos($description," "))."...";
+                            }
+    
+                            $background = "";
+                            if (isset($feed['virtuals']['previewImage']['imageId'])){
+                                $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
+                                $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
+                            } else
+                                $background = "background:#757575";
+    
+                            $story['title'] = $title;
+                            $story['description'] = $description;
+                            $story['background'] =  $background;
+                            $story['align'] = $align;
+                            $story['link'] = $link_url;
+                            break;
                         }
-
-                        if (isset($feed['content']['metaDescription']))
-                            $description = $feed['content']['metaDescription'];
-                        else
-                            $description = $feed['content']['subtitle'];
-
-                        $description = strip_tags_content($description,"<h3>","</h3>");
-                        $description = strip_tags_content($description,"<figure>","</figure>");
-                        $description = trim(strip_tags($description));
-
-                        if (strlen($description)>175){
-                            $description = substr($description,0,175);
-                            $description = substr($description,0,strrpos($description," "))."...";
-                        }
-
-                        $background = "";
-                        if (isset($feed['virtuals']['previewImage']['imageId'])){
-                            $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
-                            $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
-                        } else
-                            $background = "background:#757575";
-
-                        $story['title'] = $title;
-                        $story['description'] = $description;
-                        $story['background'] =  $background;
-                        $story['align'] = $align;
-                        $story['link'] = $link_url;
+                    }
+                }
+            } else {
+                $feeds = $this->get_feeds();
+                if ($this->_feeds) {
+                    foreach($this->_feeds as $feed) {
+                        $link = parse_url($feed[0]['link']);
+                        $link_url = $link['scheme']."://".$link['host'].$link['path'];
+    
+                        if ($post_url==$link_url){
+                            $match = true;
+                            $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
+                            $description = strip_tags_content($description,"<figure>","</figure>");
+                            $description = trim(strip_tags($description));
+    
+                            if (strlen($description)>175){
+                                $description = substr($description,0,175);
+                                $description = substr($description,0,strrpos($description," "))."...";
+                            }
+    
+                            $background = "";
+                            if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
+                                $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
+                            elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
+                                $background = "background:#757575";
+    
+                            $title = $feed[0]['title'];
+                            if (strlen($title)>80){
+                                $title = substr($title,0,80);
+                                $title = substr($title,0,strrpos($title," "))."...";
+                            }
+    
+                            $story['description'] = $description;
+                            $story['background'] =  $background;
+                            $story['title'] = $title;
+                            $story['align'] = $align;
+                            $story['link'] = $feed[0]['link'];
+                            $story['pub_name'] = $feed["pub_name"];
+                            $story['pub_url'] = $feed["pub_url"];
                         break;
+                        }
                     }
                 }
             }
-        } else {
-            $feeds = $this->get_feeds();
-            if ($this->_feeds) {
-                foreach($this->_feeds as $feed) {
-                    $link = parse_url($feed[0]['link']);
-                    $link_url = $link['scheme']."://".$link['host'].$link['path'];
-
-                    if ($post_url==$link_url){
-                        $match = true;
-                        $description = strip_tags_content($feed[0]['description'],"<h3>","</h3>");
-                        $description = strip_tags_content($description,"<figure>","</figure>");
-                        $description = trim(strip_tags($description));
-
-                        if (strlen($description)>175){
-                            $description = substr($description,0,175);
-                            $description = substr($description,0,strrpos($description," "))."...";
-                        }
-
-                        $background = "";
-                        if (substr($feed[0]['thumbnail'],0,11)=="https://cdn")
-                            $background = "background:#000000 url(". $feed[0]['thumbnail'] .") no-repeat top left;";
-                        elseif (substr($feed[0]['thumbnail'],0,11)=="https://med")
-                            $background = "background:#757575";
-
-                        $title = $feed[0]['title'];
-                        if (strlen($title)>80){
-                            $title = substr($title,0,80);
-                            $title = substr($title,0,strrpos($title," "))."...";
-                        }
-
-                        $story['description'] = $description;
-                        $story['background'] =  $background;
-                        $story['title'] = $title;
-                        $story['align'] = $align;
-                        $story['link'] = $feed[0]['link'];
-                        $story['pub_name'] = $feed["pub_name"];
-                        $story['pub_url'] = $feed["pub_url"];
-                    break;
-                    }
-                }
+    
+            if(!$match){
+                return $this->display_invalid_text();
+            } else {
+                return $this->display_single_embed($story);
             }
-        }
-
-        if(!$match){
-            return $this->display_invalid_text();
-        } else {
-            return $this->display_single_embed($story);
+        } catch (Exception $e){
+            return $this->display_medium_post_unavailable($url);
         }
     }
 
@@ -411,6 +415,21 @@ class OET_Medium {
     }
 
     function display_invalid_text(){
+        $background = "background:#757575";
+        return $embed = '
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="medium" style="'.$background.'">
+                <div class="medium-background">
+                    <div class="medium-wrapper">
+                        <p>Medium post invalid</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ';
+    }
+    
+    function display_medium_post_unavailable($url){
         $background = "background:#757575";
         return $embed = '
         <div class="col-md-4 col-sm-6 col-xs-12">

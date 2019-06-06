@@ -448,3 +448,18 @@ function oet_debug_medium_connection(){
 
     die();
 }
+
+function display_medium_post_error($url){
+    $background = "background:#757575";
+    return $embed = '
+    <div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="medium" style="'.$background.'">
+	    <div class="medium-background">
+		<div class="medium-wrapper">
+		    <p>Medium integration temporarily unavailable - <a href="'.$url.'" target="_blank">Read the Article</a></p>
+		</div>
+	    </div>
+	</div>
+    </div>
+    ';
+}
