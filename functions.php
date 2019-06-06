@@ -47,12 +47,12 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 use JonathanTorres\MediumSdk\Medium;
- 
+
  //Add search thumbnail
-if ( function_exists( 'add_image_size' ) ) { 
+if ( function_exists( 'add_image_size' ) ) {
     add_image_size( 'search-thumbnail', 230, 9999 ); //230 pixels wide (and unlimited height)
 }
- 
+
 function theme_back_enqueue_script()
 {
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
@@ -283,16 +283,16 @@ function get_excerpt_by_id($post_id){
     $the_post = get_post($post_id); //Gets post ID
     $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
     $the_excerpt = do_shortcode($the_excerpt);
-    
+
     $the_excerpt = apply_filters('the_content', $the_excerpt);
     $the_excerpt = str_replace(']]>', ']]>', $the_excerpt);
 
     $excerpt_length = apply_filters('excerpt_length', 55); //Sets excerpt length by word count
-    
+
     $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-    
+
     $the_excerpt = wp_trim_words( $the_excerpt, $excerpt_length, $excerpt_more );
-    
+
     return $the_excerpt;
 }
 
@@ -352,9 +352,9 @@ function get_medium_posts_json($json_url){
 /**
  * Strip Tags and Content
  **/
-function strip_tags_content($text, $start_tag, $end_tag) { 
+function strip_tags_content($text, $start_tag, $end_tag) {
     $text = preg_replace('#'.$start_tag.'(.*?)'.$end_tag.'#', '', $text, 1);
-    return $text; 
+    return $text;
 }
 
 /**
@@ -362,7 +362,7 @@ function strip_tags_content($text, $start_tag, $end_tag) {
  **/
 function getMediumPublications(){
     $publications = array();
-    
+
     $client_id = get_option("mediumclientid");
     $client_secret = get_option("mediumclientsecret");
     $self_access_token = get_option("mediumaccesstoken");
@@ -371,7 +371,7 @@ function getMediumPublications(){
     $medium = new Medium($self_access_token);
     $user = $medium->getAuthenticatedUser();
     $publications = $medium->publications($user->data->id)->data;
-    
+
     return $publications;
 }
 
@@ -403,25 +403,25 @@ add_filter( "posts_join" , "oet_search_join" );
 
 function oet_search_groupby($groupby){
     global $wpdb;
-  
+
     // we need to group on post ID
     $groupby_id = "{$wpdb->posts}.ID";
     if(!is_search() || strpos($groupby, $groupby_id) !== false) return $groupby;
-  
+
     // groupby was empty, use ours
     if(!strlen(trim($groupby))) return $groupby_id;
-  
+
     // wasn't empty, append ours
     return $groupby.", ".$groupby_id;
 }
 add_filter('posts_groupby', 'oet_search_groupby');
 
-function oet_test_searchwp_basic_auth_creds() {	
-	$credentials = array( 
+function oet_test_searchwp_basic_auth_creds() {
+	$credentials = array(
 		'username' => 'guest', // the HTTP BASIC AUTH username
 		'password' => 'wordpress'  // the HTTP BASIC AUTH password
 	);
-	
+
 	return $credentials;
 }
 add_filter( 'searchwp_basic_auth_creds', 'oet_test_searchwp_basic_auth_creds' );
@@ -431,20 +431,35 @@ function oet_debug_medium_connection(){
     $curl = true;
     //Checking if curl is enabled
     if (in_array("curl", get_loaded_extensions())){
-	$response = "<h4 class='green'>CURL is enabled in this server.</h4>";
+	   $response = "<h4 class='green'>CURL is enabled on this server.</h4>";
     } else {
-	$response = "<h4 class='red'>CURL is not enabled in this server. Please install.</h4>";
-	$curl = false;
+	   $response = "<h4 class='red'>CURL is not enabled on this server. Please install.</h4>";
+	   $curl = false;
     }
-    
+
     $self_access_token = get_option("mediumaccesstoken");
-    
+
     // Self Access Token Authentication
     if ($curl){
-	$oet_medium = new OET_Medium($self_access_token);
-	$response .= $oet_medium->debug_medium_connection();
+        $oet_medium = new OET_Medium($self_access_token);
+        $response .= $oet_medium->debug_medium_connection();
     }
     echo $response;
-    
+
     die();
+}
+
+function display_medium_post_error($url){
+    $background = "background:#757575";
+    return $embed = '
+    <div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="medium" style="'.$background.'">
+	    <div class="medium-background">
+		<div class="medium-wrapper">
+		    <p>Medium integration temporarily unavailable - <a href="'.$url.'" target="_blank">Read the Article</a></p>
+		</div>
+	    </div>
+	</div>
+    </div>
+    ';
 }
