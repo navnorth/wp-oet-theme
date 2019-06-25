@@ -184,7 +184,7 @@ class OET_Medium {
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
 
-        if ($this->_feeds) {
+        if (is_array($this->_feeds) && count($this->_feeds)>0) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
                 $description = strip_tags_content($feed['description'],"<h3>","</h3>");
