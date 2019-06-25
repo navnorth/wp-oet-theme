@@ -461,7 +461,7 @@ class OET_Medium {
             <div class="medium" style="'.$background.'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
-                        <p>Medium post invalid</p>
+                        <p>Medium integration temporarily unavailable - <a href="'.$url.'" target="_blank">Read the Article</a></p>
                     </div>
                 </div>
             </div>
