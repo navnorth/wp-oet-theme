@@ -404,7 +404,7 @@ class OET_Medium {
             }
     
             if(!$match){
-                return $this->display_invalid_text();
+                return $this->display_medium_post_unavailable($url);
             } else {
                 return $this->display_single_embed($story);
             }
