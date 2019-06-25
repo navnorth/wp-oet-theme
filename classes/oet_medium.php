@@ -228,6 +228,8 @@ class OET_Medium {
             <?php
             $fcnt++;
             }
+        } else {
+            throw new Exception('Cannot get any medium posts.');
         }
     }
 
