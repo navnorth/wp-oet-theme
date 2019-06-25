@@ -47,7 +47,7 @@ class OET_Medium {
     // Debug Medium Connection
     public function debug_medium_connection(){
         $limit = 100;
-        $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
+        $all_url = $this->_base_url."@".$this->_user->data->username."/latest?format=json&limit=".$limit;
         
         ob_start();
         $log = fopen("php://output","w");
@@ -91,7 +91,7 @@ class OET_Medium {
         if ($this->_user){
             if ($this->_display=="all"){
                 $this->_rss_urls[] = array(
-                    "feed_url" => "https://medium.com/feed/@".$this->_user->data->username
+                    "feed_url" => $this->_base_url."feed/@".$this->_user->data->username
                 );
             }
 
@@ -104,7 +104,7 @@ class OET_Medium {
 
                         if (get_post_meta($post->ID, "mpublication".$i, true)=="1")
                             $this->_rss_urls[] = array(
-                                    "feed_url" => "https://medium.com/feed/".$pub_name,
+                                    "feed_url" => $this->_base_url."feed/".$pub_name,
                                     "name" => $publication->name,
                                     "url" => $publication->url
                                    );
@@ -159,14 +159,23 @@ class OET_Medium {
     // Get Medium Stories via JSON
     function get_medium_stories(){
         $limit = 100;
-        $all_url = "https://medium.com/@".$this->_user->data->username."/latest?format=json&limit=".$limit;
+        $all_url = $this->_base_url."@".$this->_user->data->username."/latest?format=json&limit=".$limit;
         $data = get_medium_posts_json($all_url);
         $feeds = array();
         $index = 0;
-        foreach($data['payload']['references']['Post'] as $post){
-            $feeds[]=$post;
+        if ($this->isJson($data)){
+            foreach($data['payload']['references']['Post'] as $post){
+                $feeds[]=$post;
+            }
+            return $feeds;
+        } else {
+            return false;
         }
-        return $feeds;
+    }
+    
+    private function isJson($string) {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
     }
 
     // Display All Medium Posts
