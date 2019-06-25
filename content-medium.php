@@ -20,9 +20,8 @@ $pub_display = get_post_meta($post->ID, "mpubdisplay", true);
 } catch(Exception $e) {
     ?>
     <div class="col-md-12 col-sm-12 col-xs-12 medium-error">
-        <div class="panel panel-primary col-md-6 col-md-offset-3">
-            <div class="panel-heading">Medium Connection Error</div>
-            <div class="panel-body">Medium integration temporarily unavailable - <a href="https://medium.com/@OfficeofEdTech" target="_blank">Visit our Blog</a></div>
+        <div class="archived-disclaimer">
+            Medium integration temporarily unavailable - <a href="https://medium.com/@OfficeofEdTech" target="_blank">Visit our Blog</a>
         </div>
     </div>
     <?php
