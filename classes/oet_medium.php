@@ -184,7 +184,7 @@ class OET_Medium {
         $rss_urls = $this->get_rss_urls();
         $feeds = $this->get_feeds();
 
-        if (is_array($this->_feeds) && count($this->_feeds)>0) {
+        if ($this->_feeds) {
             $fcnt = 1;
             foreach($this->_feeds as $feed) {
                 $description = strip_tags_content($feed['description'],"<h3>","</h3>");
@@ -229,7 +229,14 @@ class OET_Medium {
             $fcnt++;
             }
         } else {
-            throw new Exception('Cannot get any medium posts.');
+            ?>
+            <div class="col-md-12 col-sm-12 col-xs-12 medium-error">
+                <div class="panel panel-primary col-md-6 col-md-offset-3">
+                    <div class="panel-heading">Medium Connection Error</div>
+                    <div class="panel-body">Medium integration temporarily unavailable - <a href="https://medium.com/@OfficeofEdTech" target="_blank">Visit our Blog</a></div>
+                </div>
+            </div>
+            <?php
         }
     }
 
@@ -287,6 +294,15 @@ class OET_Medium {
                 </div>
                 <?php
             }
+        } else {
+            ?>
+            <div class="col-md-12 col-sm-12 col-xs-12 medium-error">
+                <div class="panel panel-primary col-md-6 col-md-offset-3">
+                    <div class="panel-heading">Medium Connection Error</div>
+                    <div class="panel-body">Medium integration temporarily unavailable - <a href="https://medium.com/@OfficeofEdTech" target="_blank">Visit our Blog</a></div>
+                </div>
+            </div>
+            <?php
         }
     }
 
