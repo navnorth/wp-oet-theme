@@ -29,6 +29,8 @@ class OET_Medium {
             // Self Access Token Authentication
             $this->_medium = new Medium($this->_access_token);
             $this->_user = $this->_medium->getAuthenticatedUser();
+            var_dump($this->_user);
+            exit();
         } else {
             throw new Exception('Invalid Self Access Token');
         }
