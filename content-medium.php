@@ -17,14 +17,6 @@ $pub_display = get_post_meta($post->ID, "mpubdisplay", true);
     ?>
 </div>
 <?php
-} catch(Exception $e) {
-    ?>
-    <div class="col-md-12 col-sm-12 col-xs-12 medium-error">
-        <div class="archived-disclaimer">
-            Medium integration temporarily unavailable - <a href="https://medium.com/@OfficeofEdTech" target="_blank">Visit our Blog</a>
-        </div>
-    </div>
-    <?php
 } catch(MediumAuthException $e) {
     ?>
     <div class="col-md-12 col-sm-12 col-xs-12 medium-error">
@@ -33,4 +25,12 @@ $pub_display = get_post_meta($post->ID, "mpubdisplay", true);
         </div>
     </div>
     <?php
-}
+} catch(Exception $e) {
+    ?>
+    <div class="col-md-12 col-sm-12 col-xs-12 medium-error">
+        <div class="archived-disclaimer">
+            Medium integration temporarily unavailable - <a href="https://medium.com/@OfficeofEdTech" target="_blank">Visit our Blog</a>
+        </div>
+    </div>
+    <?php
+} 
