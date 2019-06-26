@@ -376,8 +376,12 @@ function getMediumPublications(){
 }
 
 function verify_token($self_access_token){
-    $medium = new OET_Medium($self_access_token);
-    return $medium->get_authenticated_user();
+    try {
+	$medium = new OET_Medium($self_access_token);
+	return $medium->get_authenticated_user();
+    } catch(MediumAuthException $e){
+	return false;
+    }
 }
 
 function add_tag_to_pages(){
