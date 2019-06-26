@@ -25,7 +25,7 @@ function socialmedia_settings()
 		if (isset($mediumaccesstoken)){
 			update_option("mediumaccesstoken", $mediumaccesstoken);
 			$verified  = verify_token($mediumaccesstoken);
-			if ($verified->errors){
+			if (!$verified || $verified->errors){
 				$notice = "Medium Self Access Token could not be verified, please try the Debug option for more information.";
 			}
 		}
