@@ -3,6 +3,14 @@ include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.p
 
 use JonathanTorres\MediumSdk\Medium;
 
+class MediumAuthException extends Exception{
+    public function errorMessage(){
+        $error = 'Error on line '. $this->getLine().' in ' . $this->getFile() .': <b>'.$this->getMessage().'</b> Unable to authenticate through Medium';
+        return $error;
+    }
+}
+
+
 class OET_Medium {
 
     private $_access_token;
@@ -30,7 +38,7 @@ class OET_Medium {
             $this->_medium = new Medium($this->_access_token);
             $this->_user = $this->_medium->getAuthenticatedUser();
         } else {
-            throw new Exception('Invalid Self Access Token');
+            throw new MediumAuthException('Invalid Self Access Token');
         }
     }
     
