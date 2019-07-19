@@ -219,6 +219,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .bg_img_of_icns h3 { color: #fff !important}
 .bg_img_of_icns .btn_dwnld, .bg_img_of_icns .link_dwnlds { margin-top: 0; margin-bottom: 0}
 .bg_img_of_icns { background:#294179; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
+.row.bg_img_of_icns { width:100%; float:none; }
 .bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
 
 
@@ -230,7 +231,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .main-menu {  background: #294179; width: 100%; float: left }
 .main-menu li { position: relative}
 .sub-menu { background: #294179; float: left; left: 0; width: 250px; position: absolute; z-index: 999; display: none; top: 39px; border-top: 1px solid #fff }
-.sub-menu li { display: block; width: 100%; padding-left: 20px}
+.sub-menu li { display: block; width: 100%; padding-left: 20px; padding-right:5px; }
 .sub-menu li a { font-size: 14px; padding: 8px 0 !important; width: 100%}
 .main-menu li:hover .sub-menu { display: block}
 .main-menu ul { margin-left: 15px; line-height: 23px}
