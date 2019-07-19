@@ -12,7 +12,7 @@ jQuery( document ).ready(function() {
 		window.print();
 	});
 
-	var heght = jQuery("#lnk_btn_cntnr_center").height()
+	var heght = jQuery("#lnk_btn_cntnr_center > div.col-md-8").height()
 	jQuery(".link_dwnlds").height(heght);
 
 	var a_hght = jQuery(".link_dwnlds").children("div").children("a").height();
