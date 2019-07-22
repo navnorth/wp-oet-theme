@@ -897,4 +897,33 @@ function oet_medium_func($attribute, $content = null){
 	
 	return $return;
 }
+
+/**
+ *
+ * Social Media Button shortcode
+ *
+ **/
+add_shortcode("oet_social", "oet_social_func");
+function oet_social_func(){
+	global $post;
+	$content = '';
+	
+	// Page Url to share
+	$page_url = urlencode(get_permalink($post->ID));
+	
+	// Page Title to share
+	$page_title = str_replace( ' ', '%20', get_the_title($post->ID));
+	
+	$twitterURL = 'https://twitter.com/intent/tweet?text='.$page_title.'&amp;url='.$page_url.'&amp;via=oet';
+        $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$page_url;
+	$mail_url = 'mailto:test@test.com?subject='.$page_title.'&body='.$page_url;
+	
+	$content .= '<div class="ssba ssba-wrap"><div>';
+	$content .= '<a class="ssba_facebook_share" href="'. $facebookURL .'" onclick="openWindow(this.href,\'Share via Facebook\',250,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_fb.png') .'" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook"></a>';
+	$content .= '<a class="ssba_twitter_share" href="'. $twitterURL .'" onclick="openWindow(this.href,\'Share via Twitter\',250,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_twr.png') .'" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter"></a>';
+	$content .= '<a class="ssba_email_share" href="'.$mail_url.'" onclick="openWindow(this.href,\'Share via Email\',250,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_mailto.png') .'" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone"></a>';
+	$content .= '</div></div>';
+	
+	return $content;
+}
 ?>

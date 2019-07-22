@@ -473,3 +473,6 @@ ul.checkbox_list input {
 }
 .list-publications { margin:5px 20px; }
 #story-options { padding:0 25px 25px; }
+.story_sharewidgeticns .oet-social-img { width:auto !important; }
+.story_sharewidget .story_sharewidgeticns .ssba-wrap > div > a { margin:10px 5px; }
+.story_sharewidget .story_sharewidgeticns .ssba-wrap span#stEmbed { margin: 0 5px; }
