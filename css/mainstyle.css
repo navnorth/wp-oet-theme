@@ -219,7 +219,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .bg_img_of_icns h3 { color: #fff !important}
 .bg_img_of_icns .btn_dwnld, .bg_img_of_icns .link_dwnlds { margin-top: 0; margin-bottom: 0}
 .bg_img_of_icns { background:#294179; color: #fff; font-style: italic; margin: 5px 0 15px !important; float: left;}
-.row.bg_img_of_icns { width:100%; float:none; }
+.row.bg_img_of_icns { width:100%; float:none; overflow:hidden; }
 .bg_img_of_icns a {font-family: 'Raleway-Light'; font-style: normal }
 
 
