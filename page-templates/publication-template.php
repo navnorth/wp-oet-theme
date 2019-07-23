@@ -58,7 +58,7 @@
 				{
 					echo '<p class="pblctn_scl_icn_hedng"> Share this Report </p>';
 					echo '<div class="pblctn_scl_icns">';
-								echo do_shortcode("[ssba]");
+								echo do_shortcode("[oet_social]");
 					echo '</div>';
 				}
 		     ?>

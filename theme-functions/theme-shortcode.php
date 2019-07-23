@@ -198,7 +198,7 @@ function featured_item_func($attr, $content = null)
 	if(isset($sharing) && strtolower($sharing) == 'show')
 	{
 		$return .= '<div class="col-md-7 col-sm-7 col-xs-7 rght_sid_socl_icn">';
-			$return .= do_shortcode("[ssba]");
+			$return .= do_shortcode("[oet_social]");
 		$return .= '</div>';
 	}
     $return .= '</div>';
