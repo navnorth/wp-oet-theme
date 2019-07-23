@@ -40,7 +40,7 @@
     <div class="col-md-4 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
 
         <p class="story_scl_icn_hedng">Share this Story</p>
-        <div class="story_scl_icns"><?php echo do_shortcode("[ssba]"); ?></div>
+        <div class="story_scl_icns"><?php echo do_shortcode("[oet_social]"); ?></div>
 
         <?php
 
