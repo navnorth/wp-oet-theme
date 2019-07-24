@@ -102,3 +102,11 @@ jQuery(window).load(function(){
     a_margin = a_margin/2;
     jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
 });
+
+function openWindow(url, title, width, height) {
+  var left = (screen.width - width) / 2;
+  var top = (screen.height - height) / 4;
+  var popupWindow = window.open(url,
+			      title,
+			      'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left);
+}
