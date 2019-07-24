@@ -919,9 +919,9 @@ function oet_social_func(){
 	$mail_url = 'mailto:?subject='.$page_title.'&amp;body='.$page_url;
 	
 	$content .= '<div class="ssba ssba-wrap"><div>';
-	$content .= '<a class="ssba_facebook_share" href="'. $facebookURL .'" onclick="openWindow(this.href,\'Share via Facebook\',250,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_fb.png') .'" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook"></a>';
-	$content .= '<a class="ssba_twitter_share" href="'. $twitterURL .'" onclick="openWindow(this.href,\'Share via Twitter\',250,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_twr.png') .'" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter"></a>';
-	$content .= '<a class="ssba_email_share" href="'.$mail_url.'" onclick="openWindow(this.href,\'Share via Email\',250,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_mailto.png') .'" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone"></a>';
+	$content .= '<a class="ssba_facebook_share" href="'. $facebookURL .'" onclick="openWindow(this.href,\'Share via Facebook\',450,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_fb.png') .'" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook"></a>';
+	$content .= '<a class="ssba_twitter_share" href="'. $twitterURL .'" onclick="openWindow(this.href,\'Share via Twitter\',450,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_twr.png') .'" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter"></a>';
+	$content .= '<a class="ssba_email_share" href="'.$mail_url.'" onclick="openWindow(this.href,\'Share via Email\',450,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_mailto.png') .'" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone"></a>';
 	$content .= '</div></div>';
 	
 	return $content;
