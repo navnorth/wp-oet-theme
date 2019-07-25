@@ -19,17 +19,20 @@ aside.widget {
     letter-spacing: 0.5px;
     padding: 0 0 10px;
 }
-.pblctn_scl_icns .ssba > div
+.pblctn_scl_icns .ssba > div,
+.ssba > div
 {
 	text-align:center !important;
 	margin-top: 10px;
 }
-.pblctn_scl_icns .ssba > div > a
+.pblctn_scl_icns .ssba > div > a,
+.ssba > div > a
 {
 	margin: 0px !important;
 	padding: 6px !important;
 }
-.pblctn_scl_icns .ssba > div > a > img {
+.pblctn_scl_icns .ssba > div > a > img,
+.ssba > div > a > img {
     border: 0 none;
     box-shadow: none !important;
     display: inline !important;
