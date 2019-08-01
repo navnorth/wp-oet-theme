@@ -298,10 +298,10 @@ function get_excerpt_by_id($post_id){
 
 
 function compareType($array1, $array2) {
-    if ( $array1[typeId] == $array2[typeId] )
+    if ( $array1['typeId'] == $array2['typeId'] )
         return 0;
-    if ( $array1[typeId] < $array2[typeId] )
-         return -1;
+    if ( $array1['typeId'] < $array2['typeId'] )
+        return -1;
     return 1;
 }
 
