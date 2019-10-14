@@ -11,7 +11,7 @@ function disruptive_content_fun($attr, $content = null)
 
 	if (strpos($button_color,"#")===false)
 		$button_color = "#".$button_color;
-	
+
 	$return = '';
     $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
@@ -37,13 +37,13 @@ add_shortcode('oet_accordion_group', 'oet_accordion_group_func');
 function oet_accordion_group_func($atts, $content = null)
 {
 	$accordion_id = "accordion";
-	
+
 	if (!empty($atts)) {
 		extract($atts);
 		if ($id)
 			$accordion_id = $id;
 	}
-	
+
 	$return = '';
 	$return .= '<div class="panel-group" id="'.$accordion_id.'" role="tablist" aria-multiselectable="true">';
 			$content = str_replace( "<p>","", $content );
@@ -857,7 +857,7 @@ function parse_data_attributes( $data ) {
  function publication_intro_func($attribute, $content = null) {
 
 	if (is_array($attribute)) extract($attribute);
-	
+
 	$return = '<div class="intro">
 			<div class="intro-goal">
 				<div class="title">'.$title.'</div>
@@ -871,30 +871,30 @@ function parse_data_attributes( $data ) {
  /**
   * Single Post Medium Embed
   * Shortcode Example : [oet_medium url=""]
-  **/ 
+  **/
 add_shortcode("oet_medium", "oet_medium_func");
 function oet_medium_func($attribute, $content = null){
 	$return = "";
-	
+
 	if (is_array($attribute)) extract($attribute);
 	try{
 		if ($url) {
 			$self_access_token = get_option("mediumaccesstoken");
-			$oet_medium = new OET_Medium($self_access_token);
-			
+			$oet_medium = new OET_Medium($self_access_token, false);
+
 			if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
-				$oet_medium->display_invalid_text();	
+				$oet_medium->display_invalid_text();
 			}
-			
+            
 			if ($align && $align!=="")
-				$return =  $oet_medium->display_post($url, $align);
+				$return =  $oet_medium->display_post_by_jsonUrl($url, $align);
 			else
-				$return =  $oet_medium->display_post($url);
+				$return =  $oet_medium->display_post_by_jsonUrl($url);
 		}
 	} catch(Exception $e){
 		$return =  display_medium_post_error($url);
 	}
-	
+
 	return $return;
 }
 
@@ -907,23 +907,26 @@ add_shortcode("oet_social", "oet_social_func");
 function oet_social_func(){
 	global $post;
 	$content = '';
-	
+
+	// get theme URL for image paths
+	$theme_url = get_bloginfo('stylesheet_directory');
+
 	// Page Url to share
 	$page_url = urlencode(get_permalink($post->ID));
-	
+
 	// Page Title to share
 	$page_title = str_replace( ' ', '%20', get_the_title($post->ID));
-	
-	$twitterURL = 'https://twitter.com/intent/tweet?text='.$page_title.'&amp;url='.$page_url.'&amp;via=oet';
-        $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$page_url;
+
+	$twitterURL = 'https://twitter.com/intent/tweet?text='.$page_title.'&amp;url='.$page_url.'&amp;via=officeofedtech';
+    $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$page_url;
 	$mail_url = 'mailto:?subject='.$page_title.'&amp;body='.$page_url;
-	
+
 	$content .= '<div class="ssba ssba-wrap"><div>';
-	$content .= '<a class="ssba_facebook_share" href="'. $facebookURL .'" onclick="openWindow(this.href,\'Share via Facebook\',450,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_fb.png') .'" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook"></a>';
-	$content .= '<a class="ssba_twitter_share" href="'. $twitterURL .'" onclick="openWindow(this.href,\'Share via Twitter\',450,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_twr.png') .'" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter"></a>';
-	$content .= '<a class="ssba_email_share" href="'.$mail_url.'" onclick="openWindow(this.href,\'Share via Email\',450,250); return false;"><img src="'. home_url('/wp-content/themes/wp-oet-theme/images/share_mailto.png') .'" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone"></a>';
+	$content .= '<a class="ssba_facebook_share" href="'. $facebookURL .'" onclick="openWindow(this.href,\'Share via Facebook\',450,250); return false;"><img src="'. $theme_url .'/images/share_fb.png" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook"></a>';
+	$content .= '<a class="ssba_twitter_share" href="'. $twitterURL .'" onclick="openWindow(this.href,\'Share via Twitter\',450,250); return false;"><img src="'. $theme_url .'/images/share_twr.png" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter"></a>';
+	$content .= '<a class="ssba_email_share" href="'. $mail_url .'" onclick="openWindow(this.href,\'Share via Email\',450,250); return false;"><img src="'. $theme_url .'/images/share_mailto.png" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone"></a>';
 	$content .= '</div></div>';
-	
+
 	return $content;
 }
 ?>
