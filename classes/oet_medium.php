@@ -448,7 +448,6 @@ class OET_Medium {
                     $description = substr($description,0,175);
                     $description = substr($description,0,strrpos($description," "))."...";
                 }
-                var_dump($description);
 
                 $background = "";
                 $url_path = "https://miro.medium.com/max/";
