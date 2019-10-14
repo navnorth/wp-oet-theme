@@ -880,16 +880,16 @@ function oet_medium_func($attribute, $content = null){
 	try{
 		if ($url) {
 			$self_access_token = get_option("mediumaccesstoken");
-			$oet_medium = new OET_Medium($self_access_token);
+			$oet_medium = new OET_Medium($self_access_token, false);
 
 			if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
 				$oet_medium->display_invalid_text();
 			}
-
+            
 			if ($align && $align!=="")
-				$return =  $oet_medium->display_post($url, $align);
+				$return =  $oet_medium->display_post_by_jsonUrl($url, $align);
 			else
-				$return =  $oet_medium->display_post($url);
+				$return =  $oet_medium->display_post_by_jsonUrl($url);
 		}
 	} catch(Exception $e){
 		$return =  display_medium_post_error($url);

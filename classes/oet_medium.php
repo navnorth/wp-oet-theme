@@ -22,13 +22,14 @@ class OET_Medium {
     private $_feeds = array();
     private $_display;
 
-    public function __construct($self_access_token = null){
+    public function __construct($self_access_token = null, $auth = true){
         if ($self_access_token){
             $this->_access_token = $self_access_token;
         } else {
             $this->_access_token = get_option("mediumaccesstoken");
         }
-        $this->authenticate();
+        if ($auth)
+            $this->authenticate();
     }
 
     // Authentication Medium Access Token
@@ -178,6 +179,14 @@ class OET_Medium {
             return $feeds;
         } else {
             return false;
+        }
+    }
+    
+    // Get Medium Stories via JSON
+    function get_medium_story($url){
+        $data = get_medium_posts_json($url);
+        if (!empty($data)){
+            return $data;
         }
     }
     
@@ -420,8 +429,64 @@ class OET_Medium {
             return $this->display_medium_post_unavailable($url);
         }
     }
+    
+    // Display Individual Post by Url
+    public function display_post_by_jsonUrl($url, $align="left"){
+        try{
+            
+            $find_url = parse_url($url);
+            $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
+    
+            $feeds = $this->get_medium_story($url);
+            if (!empty($feeds)) {
+                $feed = $feeds['payload'];
+                $description = strip_tags_content($feed['value']['content']['subtitle'],"<h3>","</h3>");
+                $description = strip_tags_content($description,"<figure>","</figure>");
+                $description = trim(strip_tags($description));
+                
+                if (strlen($description)>175){
+                    $description = substr($description,0,175);
+                    $description = substr($description,0,strrpos($description," "))."...";
+                }
+                var_dump($description);
+
+                $background = "";
+                $url_path = "https://miro.medium.com/max/";
+                if (isset($feed['value']['virtuals']['previewImage'])){
+                    $pImage = $feed['value']['virtuals']['previewImage'];
+                    $thumbnail_url = $url_path.$pImage['originalWidth']."/".$pImage['imageId'];
+                    $background = "background:#000000 url(". $thumbnail_url .") no-repeat top left;";
+                }
+
+                $title = $feed['value']['title'];
+                if (strlen($title)>80){
+                    $title = substr($title,0,80);
+                    $title = substr($title,0,strrpos($title," "))."...";
+                }
+
+                $story['description'] = $description;
+                $story['background'] =  $background;
+                $story['title'] = $title;
+                $story['align'] = $align;
+                $story['link'] = $feed['value']['mediumUrl'];
+                foreach($feed['references']['User'] as $user){
+                    $medium_path = "https://medium.com/";
+                    $story['pub_name'] = $user['name'];
+                    $story['pub_url'] = $medium_path."@".$user['username'];
+                    $story['pub_logo'] = $user['imageId'];
+                }
+            }
+            return $this->display_single_embed($story);
+        } catch (Exception $e){
+            return $this->display_medium_post_unavailable($url);
+        }
+    }
 
     function display_single_embed($story){
+        $logo_url = "";
+        $logo_path = "https://miro.medium.com/fit/c/160/160/";
+        if (isset($story['pub_logo']))
+            $logo_url = $logo_path . $story['pub_logo'];
         if ($story['align']=='center')
             $align = 'margin:0 auto';
         else
@@ -434,10 +499,11 @@ class OET_Medium {
                         <h1><a href="'.$story['link'].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story['link'].'\');">'.$story['title'].'</a></h1>
                         <p>'.$story['description'].'</p>
                         <p class="mfooter">
-                            <a href="'.$this->_user->data->url.'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$this->_user->data->url.'\');"><img src="'.$this->_user->data->imageUrl.'" alt="Office of Educational Technology logo" width="30" height="30" /></a> <a href="'.$this->_user->data->url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$this->_user->data->url.'\');">@'.$this->_user->data->username.'</a>';
-        if (isset($story["pub_name"]) && $story["pub_name"]!==""){
+                            <a href="'.$story["pub_url"].'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');"><img src="'.$logo_url.'" alt="Office of Educational Technology logo" width="30" height="30" /></a>
+                             <a href="'.$story["pub_url"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$story["pub_name"].'</a>';
+        /*if (isset($story["pub_name"]) && $story["pub_name"]!==""){
             $embed .= 'in <a href="'.$story["pub_url"].'" alt="'.$story["pub_name"].'" title="'.$story["pub_name"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$story["pub_name"].'</a>';
-        }
+        }*/
         $embed .= '     </p>
                     </div>
                 </div>
