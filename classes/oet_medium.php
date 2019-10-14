@@ -438,6 +438,7 @@ class OET_Medium {
             $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
     
             $feeds = $this->get_medium_story($url);
+            
             if (!empty($feeds)) {
                 $feed = $feeds['payload'];
                 $description = strip_tags_content($feed['value']['content']['subtitle'],"<h3>","</h3>");
@@ -468,11 +469,17 @@ class OET_Medium {
                 $story['title'] = $title;
                 $story['align'] = $align;
                 $story['link'] = $feed['value']['mediumUrl'];
+                $medium_path = "https://medium.com/";
                 foreach($feed['references']['User'] as $user){
-                    $medium_path = "https://medium.com/";
-                    $story['pub_name'] = $user['name'];
-                    $story['pub_url'] = $medium_path."@".$user['username'];
-                    $story['pub_logo'] = $user['imageId'];
+                    $story['user_name'] = $user['username'];
+                    $story['user_url'] = $medium_path."@".$user['username'];
+                    $story['user_logo'] = $user['imageId'];
+                }
+                if (isset($feed['references']['Collection'])){
+                    foreach($feed['references']['Collection'] as $collection){
+                        $story['pub_name'] = $collection['name'];
+                        $story['pub_url'] = $medium_path.$collection['slug'];
+                    }
                 }
             }
             return $this->display_single_embed($story);
@@ -484,8 +491,8 @@ class OET_Medium {
     function display_single_embed($story){
         $logo_url = "";
         $logo_path = "https://miro.medium.com/fit/c/160/160/";
-        if (isset($story['pub_logo']))
-            $logo_url = $logo_path . $story['pub_logo'];
+        if (isset($story['user_logo']))
+            $logo_url = $logo_path . $story['user_logo'];
         if ($story['align']=='center')
             $align = 'margin:0 auto';
         else
@@ -498,11 +505,11 @@ class OET_Medium {
                         <h1><a href="'.$story['link'].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story['link'].'\');">'.$story['title'].'</a></h1>
                         <p>'.$story['description'].'</p>
                         <p class="mfooter">
-                            <a href="'.$story["pub_url"].'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');"><img src="'.$logo_url.'" alt="Office of Educational Technology logo" width="30" height="30" /></a>
-                             <a href="'.$story["pub_url"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$story["pub_name"].'</a>';
-        /*if (isset($story["pub_name"]) && $story["pub_name"]!==""){
+                            <a href="'.$story["user_url"].'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["user_url"].'\');"><img src="'.$logo_url.'" alt="Office of Educational Technology logo" width="30" height="30" /></a>
+                             <a href="'.$story["user_url"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["user_url"].'\');">@'.$story["user_name"].'</a> ';
+        if (isset($story["pub_name"]) && $story["pub_name"]!==""){
             $embed .= 'in <a href="'.$story["pub_url"].'" alt="'.$story["pub_name"].'" title="'.$story["pub_name"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$story["pub_name"].'</a>';
-        }*/
+        }
         $embed .= '     </p>
                     </div>
                 </div>
