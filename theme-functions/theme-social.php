@@ -18,8 +18,6 @@ function socialmedia_settings()
 			update_option("facebook_url", $facebook_url);
 		if (isset($yotube_url))
 			update_option("yotube_url", $yotube_url);
-		if (isset($google_url))
-			update_option("google_url", $google_url);
 		if (isset($linktonwltr))
 			update_option("linktonwltr", $linktonwltr);
 		if (isset($mediumaccesstoken)){
@@ -39,7 +37,6 @@ function socialmedia_settings()
 	$twitter_url = get_option("twitter_url");
 	$facebook_url = get_option("facebook_url");
 	$yotube_url = get_option("yotube_url");
-	$google_url = get_option("google_url");	
 	$linktonwltr = get_option("linktonwltr");
 	$mediumaccesstoken = get_option("mediumaccesstoken");
 	$enablecontactslider = get_option("enablecontactslider");
@@ -87,10 +84,6 @@ function socialmedia_settings()
 			<div class="oer_sclmda_sub_wrapper">
 				      <div class="oer_sclmda_txt"><strong>Youtube</strong></div>
 				      <div class="oer_sclmda_fld"><input type="text" name="yotube_url" value="'. $yotube_url.'" /></div>
-			</div>
-			<div class="oer_sclmda_sub_wrapper">
-				      <div class="oer_sclmda_txt"><strong>Google Plus</strong></div>
-				      <div class="oer_sclmda_fld"><input type="text" name="google_url" value="'. $google_url.'" /></div>
 			</div>
 			<div class="oer_sclmda_sub_wrapper">
 				      <div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
