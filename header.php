@@ -70,7 +70,6 @@
 					define("twitter_url", get_option("twitter_url"));
 					define("facebook_url", get_option("facebook_url"));
 					define("yotube_url", get_option("yotube_url"));
-					define("google_url", get_option("google_url"));
 					define("linkedin_url", get_option("linkedin_url"));
 					define("linktonwltr", get_option("linktonwltr"));
 				?>
@@ -90,11 +89,6 @@
         			<?php if ( yotube_url !== "" ) : ?>
             			<a href="<?php echo yotube_url;?>" target="_blank" title="Subscribe on YouTube">
             			    <span class="socl_icns fa-stack"><i class="fa fa-youtube-play fa-stack-2x"></i></span>
-            			</a>
-        			<?php endif; ?>
-        			<?php if ( google_url !== "" ) : ?>
-            			<a href="<?php echo google_url;?>" target="_blank" title="Follow Us on Google+">
-            			    <span class="socl_icns fa-stack"><i class="fa fa-google-plus fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>
         			<?php if ( linktonwltr !== "" ) : ?>
