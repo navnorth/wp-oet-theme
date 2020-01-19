@@ -6,8 +6,50 @@ require_once( $parse_uri[0] . 'wp-load.php' );
 extract($_REQUEST);
 if($action == "show_popup")
 {
+	?>
+	<div id="oet-shrtcdv2-form">
+		<div class="oet-shrtcdv2-left-column">
+				<ul>
+						<li><div data="accordian" class="oet-shrtcdv2_tab">Accordion</div></li>
+						<li><div data="banner" class="oet-shrtcdv2_tab">Disruptive Content</div></li>
+						<li><div data="button" class="oet-shrtcdv2_tab">Button</div></li>
+						<li><div data="featured_content" class="oet-shrtcdv2_tab">Featured Content</div></li>
+						<li><div data="featured_video" class="oet-shrtcdv2_tab">Featured Video</div></li>
+						<li><div data="pull_quotes" class="oet-shrtcdv2_tab">Pull Quotes</div></li>
+						<li><div data="left_column" class="oet-shrtcdv2_tab">Left Column</div></li>
+						<li><div data="right_column" class="oet-shrtcdv2_tab">Right Column</div></li>
+						<li><div data="recommended_resources" class="oet-shrtcdv2_tab">Recommended Resource</div></li>
+						<li><div data="featured_content_box" class="oet-shrtcdv2_tab">Featured Content Box</div></li>
+						<li><div data="bsgrid" class="oet-shrtcdv2_tab">Bootstrap Grid</div></li>
+						<li><div data="spacer" class="oet-shrtcdv2_tab">Spacer</div></li>
+						<li><div data="callout_box" class="oet-shrtcdv2_tab">Callout Box</div></li>
+						<li><div data="publication_intro" class="oet-shrtcdv2_tab">Publication Intro</div></li>
+						<li><div data="oet_story" class="oet-shrtcdv2_tab">Story Embed</div></li>
+						<li><div data="oet_medium" class="oet-shrtcdv2_tab">Medium Embed</div></li>					
+				</ul>
+		</div>
+		<div class="oet-shrtcdv2-right-column">
+			<div class="oet-shrtcdv2-block">
+				<h2>SHORTCODE</h2>
+				<textarea class="oet-shrtcdv2_shortcode" rows="10" cols="50" disabled></textarea>
+			</div>
+			
+			<div class="oet-shrtcdv2-block">
+				<h2>PREVIEW</h2>
+				<div class='oet-shrtcdv2_preview'></div>
+			</div>
+			
+			<div class="oet-shrtcdv2-block">
+				<input type="button" id="oet-shrtcdv2-submit" onclick="oetInsertShortcode();" class="button-primary" value="Insert Shortcode" name="submit" />
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	<?
 	$return = '';
-	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table">
+	$return .= '<div id="oet-shortcode-form" style="display:none;"><div id="oet-table" class="form-table">
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="accordian">
 							<div class="oert_snglimgtiny">
@@ -185,19 +227,19 @@ if($action == "show_popup")
 				switch (shortcode_type)
 				{
 				   case "accordian":
-					   var shortcode = "[oet_accordion_group id=\'accordion1\'][oet_accordion title=\'\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][oet_accordion title=\'\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][/oet_accordion_group]";
+					   var shortcode = "[oet_accordion_group id=\'accordion1\'][oet_accordion title=\'Title Here\' accordion_series=\'one\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][oet_accordion title=\'Title Here\' accordion_series=\'two\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][oet_accordion title=\'Title Here\' accordion_series=\'three\' expanded=\'\' group_id=\'accordion1\'] your content goes here [/oet_accordion][/oet_accordion_group]";
 					   break;
 				   case "banner":
-					   var shortcode = "[disruptive_content title=\'\' main_text=\'\' button_text=\'\' button_color=\'\' button_url=\'\']";
+					   var shortcode = "[disruptive_content title=\'Title Here\' main_text=\'Text Here\' button_text=\'Button Text\' button_color=\'\' button_url=\'\']";
 					   break;
 				   case "button":
-					   var shortcode = "[oet_button text=\'\' button_color=\'\' text_color=\'\' font_face=\'\' font_size=\'\' font_weight=\'\' url=\'\' new_window=\'yes/no\']";
+					   var shortcode = "[oet_button text=\'Button Text\' button_color=\'\' text_color=\'\' font_face=\'\' font_size=\'\' font_weight=\'\' url=\'\' new_window=\'yes/no\']";
 					   break;
 				   case "featured_content":
 					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video":
-					   var shortcode = "[featured_video heading=\'\' videoid=\'\' description=\'\' height=\'\']";
+					   var shortcode = "[featured_video heading=\'Mindful Minutes: Technology For Learning\' videoid=\'6xmh0OO330Q\' description=\'\' height=\'\']";
 					   break;
 				   case "left_column":
 					   var shortcode = "[home_left_column heading=\'yes/no\'] your content goes here [/home_left_column]";
@@ -227,7 +269,7 @@ if($action == "show_popup")
 					   var shortcode = "[publication_intro title=\'\']Intro content goes here[/publication_intro]";
 					   break;
 				   case "oet_story":
-					   var shortcode = "[oet_story id=\'\' width=6 alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
+					   var shortcode = "[oet_story id=\'\' width=\'6\' alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
 					   break;
 				   case "oet_medium":
 					   var shortcode = "[oet_medium url=\'\' align=\'\']";

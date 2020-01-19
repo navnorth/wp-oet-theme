@@ -274,6 +274,8 @@ hr { width: 100%;}
     margin-bottom: 60px;
     font-family: 'Raleway-Semibold', sans-serif !important;
     background:#294179;
+		float:left;
+		width: 100%;
 }
 .page .intro:before {
     content: "";
