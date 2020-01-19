@@ -43,6 +43,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcode Button.
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
+ 
+/**
+* Theme Shortcode.
+*/
+ require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
@@ -58,6 +63,12 @@ function theme_back_enqueue_script()
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
+  wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+  wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
+  wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+  wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
+  wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
+  wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -298,10 +309,10 @@ function get_excerpt_by_id($post_id){
 
 
 function compareType($array1, $array2) {
-    if ( $array1['typeId'] == $array2['typeId'] )
+    if ( $array1[typeId] == $array2[typeId] )
         return 0;
-    if ( $array1['typeId'] < $array2['typeId'] )
-        return -1;
+    if ( $array1[typeId] < $array2[typeId] )
+         return -1;
     return 1;
 }
 
@@ -376,12 +387,8 @@ function getMediumPublications(){
 }
 
 function verify_token($self_access_token){
-    try {
-	$medium = new OET_Medium($self_access_token);
-	return $medium->get_authenticated_user();
-    } catch(MediumAuthException $e){
-	return false;
-    }
+    $medium = new OET_Medium($self_access_token);
+    return $medium->get_authenticated_user();
 }
 
 function add_tag_to_pages(){
@@ -451,19 +458,4 @@ function oet_debug_medium_connection(){
     echo $response;
 
     die();
-}
-
-function display_medium_post_error($url){
-    $background = "background:#757575";
-    return $embed = '
-    <div class="col-md-4 col-sm-6 col-xs-12">
-	<div class="medium" style="'.$background.'">
-	    <div class="medium-background">
-		<div class="medium-wrapper">
-		    <p>Medium integration temporarily unavailable - <a href="'.$url.'" target="_blank">Read the Article</a></p>
-		</div>
-	    </div>
-	</div>
-    </div>
-    ';
 }
