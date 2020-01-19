@@ -92,7 +92,6 @@ jQuery( document ).ready(function() {
 	}
 });
 
-/*
 jQuery(window).load(function(){
     var heght = jQuery("#lnk_btn_cntnr_center").children("div.col-md-8").height();
     jQuery(".link_dwnlds").height(heght);
@@ -103,7 +102,7 @@ jQuery(window).load(function(){
     a_margin = a_margin/2;
     jQuery(".link_dwnlds").children("div").children("a").css("margin-top", a_margin+"px");
 });
-*/
+
 function openWindow(url, title, width, height) {
   var left = (screen.width - width) / 2;
   var top = (screen.height - height) / 4;
