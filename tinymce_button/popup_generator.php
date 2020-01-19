@@ -4,10 +4,53 @@ $parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
 require_once( $parse_uri[0] . 'wp-load.php' );
 
 extract($_REQUEST);
+
 if($action == "show_popup")
 {
 	$return = '';
-	$return .= '<div id="oet-shortcode-form"><div id="oet-table" class="form-table">
+
+	$return .= '<div id="oet-shrtcdv2-form">';
+		$return .= '<div class="oet-shrtcdv2-left-column">';
+				$return .= '<ul>';
+						$return .= '<li><div data="accordian" class="oet-shrtcdv2_tab">Accordion</div></li>';
+						$return .= '<li><div data="banner" class="oet-shrtcdv2_tab">Disruptive Content</div></li>';
+						$return .= '<li><div data="button" class="oet-shrtcdv2_tab">Button</div></li>';
+						$return .= '<li><div data="featured_content" class="oet-shrtcdv2_tab">Featured Content</div></li>';
+						$return .= '<li><div data="featured_video" class="oet-shrtcdv2_tab">Featured Video</div></li>';
+						$return .= '<li><div data="pull_quotes" class="oet-shrtcdv2_tab">Pull Quotes</div></li>';
+						$return .= '<li><div data="left_column" class="oet-shrtcdv2_tab">Left Column</div></li>';
+						$return .= '<li><div data="right_column" class="oet-shrtcdv2_tab">Right Column</div></li>';
+						$return .= '<li><div data="recommended_resources" class="oet-shrtcdv2_tab">Recommended Resource</div></li>';
+						$return .= '<li><div data="featured_content_box" class="oet-shrtcdv2_tab">Featured Content Box</div></li>';
+						$return .= '<li><div data="bsgrid" class="oet-shrtcdv2_tab">Bootstrap Grid</div></li>';
+						$return .= '<li><div data="spacer" class="oet-shrtcdv2_tab">Spacer</div></li>';
+						$return .= '<li><div data="callout_box" class="oet-shrtcdv2_tab">Callout Box</div></li>';
+						$return .= '<li><div data="publication_intro" class="oet-shrtcdv2_tab">Publication Intro</div></li>';
+						$return .= '<li><div data="oet_story" class="oet-shrtcdv2_tab">Story Embed</div></li>';
+						$return .= '<li><div data="oet_medium" class="oet-shrtcdv2_tab">Medium Embed</div></li>';				
+				$return .= '</ul>';
+		$return .= '</div>';
+		$return .= '<div class="oet-shrtcdv2-right-column">';
+			$return .= '<div class="oet-shrtcdv2-block">';
+				$return .= '<h2>SHORTCODE</h2>';
+				$return .= '<textarea class="oet-shrtcdv2_shortcode" rows="10" cols="50" disabled></textarea>';
+			$return .= '</div>';
+			
+			$return .= '<div class="oet-shrtcdv2-block">';
+				$return .= '<h2>PREVIEW</h2>';
+				$return .= '<div class="oet-shrtcdv2_preview"></div>';
+			$return .= '</div>';
+			
+			$return .= '<div class="oet-shrtcdv2-block">';
+				$return .= '<input type="button" id="oet-shrtcdv2-submit" onclick="oetInsertShortcode();" class="button-primary" value="Insert Shortcode" name="submit" />';
+			$return .= '</div>';
+			
+		$return .= '</div>';
+	$return .= '</div>';
+
+	
+	$return .= '<div id="oet-shortcode-form" style="display:none;"><div id="oet-table" class="form-table">
+
 					<div class="oet_sngltinyrow">
 						<div class="oet_sngltinyclm" onclick="oet_meclicked(this);" data-shortcode="accordian">
 							<div class="oert_snglimgtiny">
