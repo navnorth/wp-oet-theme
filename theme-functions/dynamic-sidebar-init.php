@@ -1,5 +1,20 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 <?php
+
+function oet_dynamic_sidebar_enqueue_scripts()
+{
+    global $post;
+    if (is_object($post) && $post->post_type == "page") {
+        wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js' );
+        wp_enqueue_style( 'bootstrap-css',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
+        wp_enqueue_style( 'fontawesome-css',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+        wp_enqueue_style( 'sidebar-css',get_stylesheet_directory_uri() . '/css/dynamic-sidebar.css' );
+        wp_enqueue_script( 'sidebar-js', get_stylesheet_directory_uri() . '/js/dynamic-sidebar.js', array('jquery') );
+        wp_localize_script( 'sidebar-js', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'oet_dynamic_sidebar_enqueue_scripts' );
+
 /**
  * Add Sidebar Section
  */
@@ -49,6 +64,8 @@ function oet_add_sidebar_section_callback() {
                                     'textarea_rows' => 6,
                                     'drag_drop_upload' => true,
                                     'teeny' => true,
+                                    'tinymce' => true,
+                                    'quicktags' => true
                                 )
                             );
                             $content .= ob_get_clean();
