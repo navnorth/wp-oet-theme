@@ -43,6 +43,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/theme-shortcode.php
  * Shortcode Button.
  */
  require_once( get_stylesheet_directory() . '/tinymce_button/shortcode_button.php' );
+ 
+/**
+* Theme Shortcode.
+*/
+ require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
@@ -58,6 +63,12 @@ function theme_back_enqueue_script()
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
+  wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+  wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
+  wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
+  wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
+  wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
+  wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
