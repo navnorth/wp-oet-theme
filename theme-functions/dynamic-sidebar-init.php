@@ -36,11 +36,11 @@ function oet_add_sidebar_section_callback() {
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="oet_sidebar_section_title">Title:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section_title[]" placeholder = "Section Title">
+                            <input type="text" class="form-control" name="oet_sidebar_section[title][]" placeholder = "Section Title">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_icon">Icon:</label>
-                            <select name="oet_sidebar_section_icon[]" class="form-control">
+                            <select name="oet_sidebar_section[icon][]" class="form-control">
                                 <option value="fa-star">Star</option>
                                 <option value="fa-compress">Compress</option>
                                 <option value="fa-cogs">Cogs</option>
@@ -59,7 +59,7 @@ function oet_add_sidebar_section_callback() {
                             wp_editor( '',
                                 'oer-sidebar-section-'.$totalSections,
                                 $settings = array(
-                                    'textarea_name' => 'oet_sidebar_section_html[]',
+                                    'textarea_name' => 'oet_sidebar_section[html][]',
                                     'media_buttons' => true,
                                     'textarea_rows' => 6,
                                     'drag_drop_upload' => true,
@@ -75,5 +75,23 @@ function oet_add_sidebar_section_callback() {
     
     echo $content;
     exit();
+}
+
+/**
+ * Save sidebar sections fields
+ */
+add_action('save_post', 'oet_save_page_custom_fields');
+function oet_save_page_custom_fields() {
+    global $post;
+    
+    //Check first if $post is not empty
+    if ($post) {
+        if ($post->post_type == 'page') {
+            //Save Sidebar Section
+            if (isset($_POST['oet_sidebar_section'])) {
+                update_post_meta($post->ID, 'oet_sidebar_section', $_POST['oet_sidebar_section']);
+            }
+        }
+    }
 }
 ?>
