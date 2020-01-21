@@ -292,7 +292,7 @@ function load_recaptcha_callback_script(){
     <?php
 }
 
-function get_excerpt_by_id($post_id){
+function get_excerpt_by_id($post_id, $word_count=55){
     $the_post = get_post($post_id); //Gets post ID
     $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
     $the_excerpt = do_shortcode($the_excerpt);
@@ -300,7 +300,7 @@ function get_excerpt_by_id($post_id){
     $the_excerpt = apply_filters('the_content', $the_excerpt);
     $the_excerpt = str_replace(']]>', ']]>', $the_excerpt);
 
-    $excerpt_length = apply_filters('excerpt_length', 55); //Sets excerpt length by word count
+    $excerpt_length = apply_filters('excerpt_length', $word_count); //Sets excerpt length by word count
 
     $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
 

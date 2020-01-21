@@ -94,4 +94,103 @@ function oet_save_page_custom_fields() {
         }
     }
 }
+
+/**
+ * Display Dynamic Sidebar
+ **/
+function oet_display_dynamic_sidebar($page_id){
+    $sidebar_content = "";
+    // Get Page Meta by Id
+    $sidebar_sections = get_post_meta( $page_id, 'oet_sidebar_section' );
+    if (!empty($sidebar_sections)) {
+        // Display dynamic sidebar sections
+        $sidebar_section = $sidebar_sections[0];
+        $sidebar_count = count($sidebar_section['title']);
+        for($index=0;$index<$sidebar_count;$index++){
+            $title = $sidebar_section['title'][$index];
+            $icon = $sidebar_section['icon'][$index];
+            $html = $sidebar_section['html'][$index];
+            $sidebar_content .= '<div class="col-md-12 col-sm-6 col-xs-6">';
+            $sidebar_content .= '   <div class="pblctn_box">';
+            $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
+            $sidebar_content .= '   </div>';
+            $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
+            $sidebar_content .=     $html;
+            $sidebar_content .= '</div>';
+        }
+    } else {
+        // Default featured content sidebar
+        $sidebar_content = oet_display_default_sidebar($page_id);
+    }
+    return $sidebar_content;
+}
+
+/**
+ * Display Default Sidebar if no dynamic sidebar specified
+ *
+ * Returns 4 related contents based on tags/categories
+ **/
+function oet_display_default_sidebar($page_id, $related_count=4){
+    $html = "";
+    // Get tags/categories of page
+    $terms = wp_get_post_terms($page_id, array('category','post_tag'), array('fields'=> 'all'));
+    if (empty($terms)) $terms = array();
+    $term_list = wp_list_pluck($terms, 'slug');
+    
+    $related_args = array(
+        'post_type'         => array('page', 'post'),
+        'posts_per_page'    => $related_count,
+        'post_status'       => 'publish',
+        'post__not_in'      => array($page_id),
+        'orderby'           => 'rand',
+        'tax_query'         => array(
+            'relation'      => 'OR',
+            array(
+                'taxonomy'  => 'category',
+                'field'     => 'slug',
+                'terms'     => $term_list
+            ),
+            array(
+                'taxonomy'  => 'post_tag',
+                'field'     => 'slug',
+                'terms'     => $term_list
+            )
+        )
+    );
+    
+    $related_posts = new WP_Query($related_args);
+     
+    if ($related_posts->have_posts()){
+        $html .= '<div class="col-md-12 col-sm-6 col-xs-6">';
+        $html .= '   <div class="pblctn_box">';
+        $html .= '       <span class="socl_icns fa-stack"><i class="fa fa-star"></i></span>';
+        $html .= '   </div>';
+        $html .= '   <h4 class="rght_sid_wdgt_hedng">Related Content</h4>';
+        $index = 0;
+        while($related_posts->have_posts()): $related_posts->the_post();
+            $excerpt = '';
+            if ($index==0)
+                $html .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.get_the_permalink().'">'.get_the_title().'</a></p>';
+            else
+                $html .= '<p class="hdng_mtr"><a href="'.get_the_permalink().'">'.get_the_title().'</a></p>';
+                
+            $related_id = get_the_ID();
+            var_dump($related_id);
+            if (function_exists('display_story_excerpt')){
+                $excerpt = display_story_excerpt($related_id, 100);
+            }
+            
+            if (strlen($excerpt)<=0) {
+                $excerpt = get_excerpt_by_id($related_id, 15);
+            }
+            
+            $html .= '<p>'.$excerpt.'</p>';
+            $index++;
+        endwhile;
+        $html .= '</div>';
+    }
+    wp_reset_postdata();
+    
+    return $html;
+}
 ?>
