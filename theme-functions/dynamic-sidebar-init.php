@@ -175,7 +175,7 @@ function oet_display_default_sidebar($page_id, $related_count=4){
                 $html .= '<p class="hdng_mtr"><a href="'.get_the_permalink().'">'.get_the_title().'</a></p>';
                 
             $related_id = get_the_ID();
-            var_dump($related_id);
+            
             if (function_exists('display_story_excerpt')){
                 $excerpt = display_story_excerpt($related_id, 100);
             }
