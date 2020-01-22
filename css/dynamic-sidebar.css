@@ -1,4 +1,9 @@
-.oet-sidebar-section-wrapper.panel-default > .panel-heading { overflow:hidden; background-color: #f5f5f5 !important; padding:10px 15px !important; }
-.oet-sidebar-section-wrapper .panel-title { float:left; line-height:normal; }
-.oet-sidebar-section-wrapper .oet-sortable-handle { float:left; }
-.oet-sidebar-section-wrapper .oet-remove-sidebar-section { float:right; padding:0 5px; }
+.oet-sidebar-section-wrapper.panel-default > .panel-heading,
+.oet-sidebar-section-type-wrapper.panel-default > .panel-heading { overflow:hidden; background-color: #f5f5f5 !important; padding:10px 15px !important; }
+.oet-sidebar-section-wrapper .panel-title,
+.oet-sidebar-section-type-wrapper .panel-title{ float:left; line-height:normal; }
+.oet-sidebar-section-wrapper .oet-sortable-handle,
+.oet-sidebar-section-type-wrapper .oet-sortable-handle{ float:left; }
+.oet-sidebar-section-wrapper .oet-remove-sidebar-section ,
+.oet-sidebar-section-type-wrapper .oet-remove-sidebar-section-content{ float:right; padding:0 5px; }
+.oet-sidebar-section-wrapper .oet-content-sections.subsection-visible { border: 1px solid #dddddd; padding:10px 15px; }
