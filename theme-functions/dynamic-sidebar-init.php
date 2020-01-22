@@ -73,7 +73,7 @@ function oet_add_sidebar_section_callback() {
                         <div class="form-group">
                             <label for="oet_sidebar_section_type">Content Type:</label>
                             <select name="oet_sidebar_section[type][]" class="form-control oet-sidebar-section-type">
-                                <option value=""></option>
+                                <option value="html">Free-form HTML</option>
                                 <option value="link">Page Link</option>
                                 <option value="image">Image</option>
                                 <option value="related">Related Content</option>
@@ -99,9 +99,43 @@ add_action('wp_ajax_nopriv_oet_sidebar_content_type_callback', 'oet_sidebar_cont
 function oet_sidebar_content_type_callback() {
     $totalSections = isset($_REQUEST['row_id']) ? $_REQUEST['row_id'] : '25';
     $type = isset($_REQUEST['type']) ? $_REQUEST['type']: "";
-    $content = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$totalSections.'">
+    $content = get_fields_from_content_type($type, $totalSections);
+    echo $content;
+    exit();
+}
+
+/** Get Fields From Selected Content Type **/
+function get_fields_from_content_type($type, $rowid, $value=""){
+    $fields_section = '';
+    switch ($type){
+        case "html":
+            // Free Form HTML
+            $fields_section = '<div class="form-group">
+                        <label for="oet_sidebar_section_html">HTML Content:</label>';
+                        ob_start(); // Start Output buffer
+                        wp_editor( $value,
+                            'oer-sidebar-section-'.($rowid),
+                            $settings = array(
+                                'textarea_name' => 'oet_sidebar_section[html][]',
+                                'media_buttons' => true,
+                                'textarea_rows' => 6,
+                                'drag_drop_upload' => true,
+                                'teeny' => true,
+                                'tinymce' => true,
+                                'quicktags' => true
+                            )
+                        );
+            $fields_section .= ob_get_clean();
+            $fields_section .=  '</div>';
+            break;
+        case "link":
+        case "image":
+        case "youtube":
+        case "story":
+        case "medium":
+            $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Content '.$totalSections.'</h3>
+                        <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
                         <span class="oet-sortable-handle">
                             <i class="fa fa-arrow-down sidebar-section-reorder-down" aria-hidden="true"></i>
                             <i class="fa fa-arrow-up sidebar-section-reorder-up" aria-hidden="true"></i>
@@ -111,15 +145,15 @@ function oet_sidebar_content_type_callback() {
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_title">Title:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content][title][]" placeholder = "Content Title">
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_html">Short Description:</label>';
                             ob_start(); // Start Output buffer
                             wp_editor( '',
-                                'oer-sidebar-section-type-'.$totalSections,
+                                'oer-sidebar-section-type-'.$rowid,
                                 $settings = array(
-                                    'textarea_name' => 'oet_sidebar_section[content][description][]',
+                                    'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
                                     'media_buttons' => true,
                                     'textarea_rows' => 6,
                                     'drag_drop_upload' => true,
@@ -128,16 +162,66 @@ function oet_sidebar_content_type_callback() {
                                     'quicktags' => true
                                 )
                             );
-                            $content .= ob_get_clean();
-                $content .= '</div>
+                            $fields_section .= ob_get_clean();
+                $fields_section .= '</div>
+                        <div class="form-group">';
+                $fields_section .= generatecontentfieldtype($type);
+                $fields_section .= '</div>
                     </div>
                 </div>
                 <div class="form-group button-row-content">
                     <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More Content</button>
-                </div>';      
-    
-    echo $content;
-    exit();
+                </div>';   
+            break;
+        case "related":
+            break;
+    }
+    return $fields_section;
+}
+
+/** Generate Field Types **/
+function generatecontentfieldtype($type){
+    $content = "";
+    switch ($type){
+        case "link":
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Url:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Url">
+                        </div>';
+            break;
+        case "image":
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_image_url">Image:</label>
+                            <div class="oet_section_image_thumbnail_holder"></div>
+                            <button name="oet_sidebar_section_image_button" class="oet_sidebar_section_image_button" class="ui-button" alt="Select Image">Select Image</button>
+                            <input type="hidden" name="oet_sidebar_section[content]['.$type.'][url][]" class="oet_sidebar_section_image_url" value="" />
+                        </div>';
+            break;
+        case "youtube":
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Youtube URL:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Youtube Url">
+                        </div>';
+            break;
+        case "story":
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_story">Story:</label>
+                            <select name="oet_sidebar_section[content]['.$type.'][story][]" class="form-control oet-sidebar-section-story">';
+            $stories = oet_get_stories();
+            foreach($stories as $story){
+                $content .= '<option value="'.$story->ID.'">'.$story->post_title.'</option>';
+            }
+            $content .= '   </select>
+                        </div>';
+            break;
+        case "medium":
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Medium Post URL:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url">
+                        </div>';
+            break;
+    }
+    return $content;
 }
 
 /**
@@ -255,5 +339,18 @@ function oet_display_default_sidebar($page_id, $related_count=4){
     wp_reset_postdata();
     
     return $html;
+}
+
+/** Get Stories **/
+function oet_get_stories(){
+    $args = array(
+        'post_type'         => array('stories'),
+        'posts_per_page'    => -1,
+        'post_status'       => 'publish',
+    );
+    
+    $stories = new WP_Query($args);
+    
+    return $stories->posts;
 }
 ?>

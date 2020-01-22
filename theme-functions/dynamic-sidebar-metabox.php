@@ -46,26 +46,9 @@ global $post;
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="oet_sidebar_section_html"><?php _e("HTML Content:", OET_THEME_SLUG); ?></label>
-                    <?php
-                    wp_editor( $html,
-                        'oer-sidebar-section-'.($index+1),
-                        $settings = array(
-                            'textarea_name' => 'oet_sidebar_section[html][]',
-                            'media_buttons' => true,
-                            'textarea_rows' => 6,
-                            'drag_drop_upload' => true,
-                            'teeny' => true,
-                            'tinymce' => true,
-                            'quicktags' => true
-                        )
-                    );
-                    ?>
-                </div>
-                <div class="form-group">
                     <label for="oet_sidebar_section_type">Content Type:</label>
                     <select name="oet_sidebar_section[type][]" class="form-control oet-sidebar-section-type">
-                        <option value=""></option>
+                        <option value="html" <?php selected($type,'html'); ?>>Free-form HTML</option>
                         <option value="link" <?php selected($type,'link'); ?>>Page Link</option>
                         <option value="image" <?php selected($type,'image'); ?>>Image</option>
                         <option value="related" <?php selected($type,'related'); ?>>Related Content</option>
@@ -74,7 +57,9 @@ global $post;
                         <option value="medium" <?php selected($type,'medium'); ?>>Medium Post</option>
                     </select>
                 </div>
-                <div class="form-group oet-content-sections"></div>
+                <div class="form-group oet-content-sections subsection-visible">
+                    <?php echo get_fields_from_content_type($type, $index+1, $html); ?>
+                </div>
             </div>
         </div>    
         <?php
