@@ -54,7 +54,7 @@ function oet_add_sidebar_section_callback() {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="oet_sidebar_section_html"><?php _e("HTML Text:", OET_THEME_SLUG); ?></label>';
+                            <label for="oet_sidebar_section_html"><?php _e("HTML Content:", OET_THEME_SLUG); ?></label>';
                             ob_start(); // Start Output buffer
                             wp_editor( '',
                                 'oer-sidebar-section-'.$totalSections,
@@ -68,9 +68,72 @@ function oet_add_sidebar_section_callback() {
                                     'quicktags' => true
                                 )
                             );
+                        $content .= ob_get_clean();
+                $content .= '</div>
+                        <div class="form-group">
+                            <label for="oet_sidebar_section_type">Content Type:</label>
+                            <select name="oet_sidebar_section[type][]" class="form-control oet-sidebar-section-type">
+                                <option value=""></option>
+                                <option value="link">Page Link</option>
+                                <option value="image">Image</option>
+                                <option value="related">Related Content</option>
+                                <option value="youtube">YouTube Video</option>
+                                <option value="story">Story</option>
+                                <option value="medium">Medium Post</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>';      
+    
+    echo $content;
+    exit();
+}
+
+
+/**
+ * Add Content Section By Type
+ */
+add_action('wp_ajax_oet_sidebar_content_type_callback', 'oet_sidebar_content_type_callback');
+add_action('wp_ajax_nopriv_oet_sidebar_content_type_callback', 'oet_sidebar_content_type_callback');
+
+function oet_sidebar_content_type_callback() {
+    $totalSections = isset($_REQUEST['row_id']) ? $_REQUEST['row_id'] : '25';
+    $type = isset($_REQUEST['type']) ? $_REQUEST['type']: "";
+    $content = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$totalSections.'">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Content '.$totalSections.'</h3>
+                        <span class="oet-sortable-handle">
+                            <i class="fa fa-arrow-down sidebar-section-reorder-down" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-up sidebar-section-reorder-up" aria-hidden="true"></i>
+                        </span>
+                        <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"><i class="fa fa-trash-o"></i> </span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="oet_sidebar_section_content_title">Title:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content][title][]" placeholder = "Content Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="oet_sidebar_section_content_html">Short Description:</label>';
+                            ob_start(); // Start Output buffer
+                            wp_editor( '',
+                                'oer-sidebar-section-type-'.$totalSections,
+                                $settings = array(
+                                    'textarea_name' => 'oet_sidebar_section[content][description][]',
+                                    'media_buttons' => true,
+                                    'textarea_rows' => 6,
+                                    'drag_drop_upload' => true,
+                                    'teeny' => true,
+                                    'tinymce' => true,
+                                    'quicktags' => true
+                                )
+                            );
                             $content .= ob_get_clean();
                 $content .= '</div>
                     </div>
+                </div>
+                <div class="form-group button-row-content">
+                    <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More Content</button>
                 </div>';      
     
     echo $content;
