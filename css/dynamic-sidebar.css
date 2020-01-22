@@ -1,4 +1,4 @@
-.oet-sidebar-section-wrapper .panel-heading { overflow:hidden; }
-.oet-sidebar-section-wrapper .panel-title { float:left; }
+.oet-sidebar-section-wrapper.panel-default > .panel-heading { overflow:hidden; background-color: #f5f5f5 !important; padding:10px 15px !important; }
+.oet-sidebar-section-wrapper .panel-title { float:left; line-height:normal; }
 .oet-sidebar-section-wrapper .oet-sortable-handle { float:left; }
 .oet-sidebar-section-wrapper .oet-remove-sidebar-section { float:right; padding:0 5px; }

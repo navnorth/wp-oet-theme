@@ -6,12 +6,15 @@ global $post;
     <?php
     $sidebar_sections = get_post_meta($post->ID,"oet_sidebar_section")[0];
     $index = 0;
+    $type = "";
     if (!empty($sidebar_sections)){
         $count = count($sidebar_sections['title']);
         for($index=0;$index<$count;$index++){
             $title = $sidebar_sections['title'][$index];
             $icon = $sidebar_sections['icon'][$index];
             $html = $sidebar_sections['html'][$index];
+            if (isset($sidebar_sections['type'][$index]))
+                $type = $sidebar_sections['type'][$index];
         ?>
         <div class="panel panel-default oet-sidebar-section-wrapper" id="oet_sidebar_section_'.$totalSections.'">
             <div class="panel-heading">
@@ -43,7 +46,7 @@ global $post;
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="oet_sidebar_section_html"><?php _e("HTML Text:", OET_THEME_SLUG); ?></label>
+                    <label for="oet_sidebar_section_html"><?php _e("HTML Content:", OET_THEME_SLUG); ?></label>
                     <?php
                     wp_editor( $html,
                         'oer-sidebar-section-'.($index+1),
@@ -59,6 +62,19 @@ global $post;
                     );
                     ?>
                 </div>
+                <div class="form-group">
+                    <label for="oet_sidebar_section_type">Content Type:</label>
+                    <select name="oet_sidebar_section[type][]" class="form-control oet-sidebar-section-type">
+                        <option value=""></option>
+                        <option value="link" <?php selected($type,'link'); ?>>Page Link</option>
+                        <option value="image" <?php selected($type,'image'); ?>>Image</option>
+                        <option value="related" <?php selected($type,'related'); ?>>Related Content</option>
+                        <option value="youtube" <?php selected($type,'youtube'); ?>>YouTube Video</option>
+                        <option value="story" <?php selected($type,'story'); ?>>Story</option>
+                        <option value="medium" <?php selected($type,'medium'); ?>>Medium Post</option>
+                    </select>
+                </div>
+                <div class="form-group oet-content-sections"></div>
             </div>
         </div>    
         <?php
