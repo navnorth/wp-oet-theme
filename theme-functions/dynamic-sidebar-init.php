@@ -110,13 +110,14 @@ function get_fields_from_content_type($type, $rowid, $value=""){
     switch ($type){
         case "html":
             // Free Form HTML
+            $html = $value[0];
             $fields_section = '<div class="form-group">
                         <label for="oet_sidebar_section_html">HTML Content:</label>';
                         ob_start(); // Start Output buffer
-                        wp_editor( $value,
+                        wp_editor( $html,
                             'oer-sidebar-section-'.($rowid),
                             $settings = array(
-                                'textarea_name' => 'oet_sidebar_section[html][]',
+                                'textarea_name' => 'oet_sidebar_section[content][html][]',
                                 'media_buttons' => true,
                                 'textarea_rows' => 6,
                                 'drag_drop_upload' => true,
@@ -321,13 +322,14 @@ function oet_display_dynamic_sidebar($page_id){
         for($index=0;$index<$sidebar_count;$index++){
             $title = $sidebar_section['title'][$index];
             $icon = $sidebar_section['icon'][$index];
-            $html = $sidebar_section['html'][$index];
+            $type = (isset($sidebar_section['type'][$index])?$sidebar_section['type'][$index]:"");
+            $content_type = (isset($sidebar_section['content'][$type])?$sidebar_section['content'][$type]:"");
             $sidebar_content .= '<div class="col-md-12 col-sm-6 col-xs-6">';
             $sidebar_content .= '   <div class="pblctn_box">';
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';
             $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
-            $sidebar_content .=     $html;
+            $sidebar_content .=     display_sidebar_content_type($type, $index, $content_type);
             $sidebar_content .= '</div>';
         }
     } else {
@@ -404,6 +406,31 @@ function oet_display_default_sidebar($page_id, $related_count=4){
     wp_reset_postdata();
     
     return $html;
+}
+
+/** Display Content Types on front-end **/
+function display_sidebar_content_type($type, $sectionid, $sidebar_content){
+    $content = "";
+    switch ($type){
+        case "html":
+            $html = $sidebar_content[0];
+            $content = $html;
+            break;
+        case "link":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $link_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                if ($index==0)
+                    $content .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.$link_url.'">'.$title.'</a></p>';
+                else
+                    $content .= '<p class="hdng_mtr"><a href="'.$link_url.'">'.$title.'</a></p>';
+                $content .= '<p>'.$description.'</p>';
+            }
+            break;
+    }
+    return $content;
 }
 
 /** Get Stories **/
