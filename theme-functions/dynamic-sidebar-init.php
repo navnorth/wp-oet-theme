@@ -54,23 +54,6 @@ function oet_add_sidebar_section_callback() {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="oet_sidebar_section_html"><?php _e("HTML Content:", OET_THEME_SLUG); ?></label>';
-                            ob_start(); // Start Output buffer
-                            wp_editor( '',
-                                'oer-sidebar-section-'.$totalSections,
-                                $settings = array(
-                                    'textarea_name' => 'oet_sidebar_section[html][]',
-                                    'media_buttons' => true,
-                                    'textarea_rows' => 6,
-                                    'drag_drop_upload' => true,
-                                    'teeny' => true,
-                                    'tinymce' => true,
-                                    'quicktags' => true
-                                )
-                            );
-                        $content .= ob_get_clean();
-                $content .= '</div>
-                        <div class="form-group">
                             <label for="oet_sidebar_section_type">Content Type:</label>
                             <select name="oet_sidebar_section[type][]" class="form-control oet-sidebar-section-type">
                                 <option value="html">Free-form HTML</option>
