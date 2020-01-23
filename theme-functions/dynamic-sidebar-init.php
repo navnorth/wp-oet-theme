@@ -133,7 +133,63 @@ function get_fields_from_content_type($type, $rowid, $value=""){
         case "youtube":
         case "story":
         case "medium":
-            $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
+            $contents = "";
+            if (!empty($value)){
+                $contents = $value;
+                $count = count($contents['title']);
+                for($index=0;$index<$count;$index++){
+                    $val = "";
+                    $title = $contents['title'][$index];
+                    $description = $contents['description'][$index];
+                    if ($type=="link" || $type=="image" || $type=="youtube" || $type=="medium")
+                        $val = $contents['url'][$index];
+                    elseif ($type=="story")
+                        $val = $contents['story'][$index];
+                    $rowid = $index + 1;
+                    $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
+                            <span class="oet-sortable-handle">
+                                <i class="fa fa-arrow-down sidebar-section-reorder-down" aria-hidden="true"></i>
+                                <i class="fa fa-arrow-up sidebar-section-reorder-up" aria-hidden="true"></i>
+                            </span>
+                            <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"><i class="fa fa-trash-o"></i> </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="oet_sidebar_section_content_title">Title:</label>
+                                <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title" value="'.$title.'">
+                            </div>
+                            <div class="form-group">
+                                <label for="oet_sidebar_section_content_html">Short Description:</label>';
+                                ob_start(); // Start Output buffer
+                                wp_editor( $description,
+                                    'oer-sidebar-section-type-'.$rowid,
+                                    $settings = array(
+                                        'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
+                                        'media_buttons' => true,
+                                        'textarea_rows' => 6,
+                                        'drag_drop_upload' => true,
+                                        'teeny' => true,
+                                        'tinymce' => true,
+                                        'quicktags' => true
+                                    )
+                                );
+                                $fields_section .= ob_get_clean();
+                    $fields_section .= '</div>
+                            <div class="form-group">';
+                    $fields_section .= generatecontentfieldtype($type, $val);
+                    $fields_section .= '</div>
+                        </div>
+                    </div>';
+                }
+                if ($count>0){
+                    $fields_section .= '<div class="form-group button-row-content">
+                        <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More '.ucwords($type).'</button>
+                    </div>';
+                }
+            } else {
+                $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                     <div class="panel-heading">
                         <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
                         <span class="oet-sortable-handle">
@@ -168,10 +224,13 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                 $fields_section .= generatecontentfieldtype($type);
                 $fields_section .= '</div>
                     </div>
-                </div>
-                <div class="form-group button-row-content">
-                    <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More Content</button>
-                </div>';   
+                </div>';
+                if ($rowid==1) {
+                $fields_section .= '<div class="form-group button-row-content">
+                        <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More '.ucwords($type).'</button>
+                    </div>';
+                }
+            }
             break;
         case "related":
             break;
@@ -180,27 +239,33 @@ function get_fields_from_content_type($type, $rowid, $value=""){
 }
 
 /** Generate Field Types **/
-function generatecontentfieldtype($type){
+function generatecontentfieldtype($type, $value=""){
     $content = "";
     switch ($type){
         case "link":
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Url:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Url">
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Url" value="'.$value.'">
                         </div>';
             break;
         case "image":
+            $img = "";
+            $buttonText = "Select Image";
+            if (!empty($value)){
+                $img = '<img src="' . $value . '" class="oet-section-image-thumbnail" width="200"><span class="btn btn-danger btn-sm oet-remove-section-image" title="Remove Image"><i class="fa fa-minus-circle"></i></span>';
+                $buttonText = "Change Image";
+            }
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_image_url">Image:</label>
-                            <div class="oet_section_image_thumbnail_holder"></div>
-                            <button name="oet_sidebar_section_image_button" class="oet_sidebar_section_image_button" class="ui-button" alt="Select Image">Select Image</button>
-                            <input type="hidden" name="oet_sidebar_section[content]['.$type.'][url][]" class="oet_sidebar_section_image_url" value="" />
+                            <div class="oet_section_image_thumbnail_holder">'.$img.'</div>
+                            <button name="oet_sidebar_section_image_button" class="oet_sidebar_section_image_button" class="ui-button" alt="'.$buttonText.'">'.$buttonText.'</button>
+                            <input type="hidden" name="oet_sidebar_section[content]['.$type.'][url][]" class="oet_sidebar_section_image_url" value="'.$value.'" />
                         </div>';
             break;
         case "youtube":
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Youtube URL:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Youtube Url">
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Youtube Url" value="'.$value.'">
                         </div>';
             break;
         case "story":
@@ -209,7 +274,7 @@ function generatecontentfieldtype($type){
                             <select name="oet_sidebar_section[content]['.$type.'][story][]" class="form-control oet-sidebar-section-story">';
             $stories = oet_get_stories();
             foreach($stories as $story){
-                $content .= '<option value="'.$story->ID.'">'.$story->post_title.'</option>';
+                $content .= '<option value="'.$story->ID.'" '.selected($value,$story->ID, false).'>'.$story->post_title.'</option>';
             }
             $content .= '   </select>
                         </div>';
@@ -217,7 +282,7 @@ function generatecontentfieldtype($type){
         case "medium":
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Medium Post URL:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url">
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url" value="'.$value.'">
                         </div>';
             break;
     }

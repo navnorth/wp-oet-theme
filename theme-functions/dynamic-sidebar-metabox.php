@@ -10,11 +10,11 @@ global $post;
     if (!empty($sidebar_sections)){
         $count = count($sidebar_sections['title']);
         for($index=0;$index<$count;$index++){
-            $title = $sidebar_sections['title'][$index];
-            $icon = $sidebar_sections['icon'][$index];
-            $html = $sidebar_sections['html'][$index];
-            if (isset($sidebar_sections['type'][$index]))
-                $type = $sidebar_sections['type'][$index];
+            $title = (isset($sidebar_sections['title'][$index])?$sidebar_sections['title'][$index]:"");
+            $icon = (isset($sidebar_sections['icon'][$index])?$sidebar_sections['icon'][$index]:"");
+            $html = (isset($sidebar_sections['html'][$index])?$sidebar_sections['html'][$index]:"");
+            $type = (isset($sidebar_sections['type'][$index])?$sidebar_sections['type'][$index]:"");
+            $content_type = (isset($sidebar_sections['content'][$type])?$sidebar_sections['content'][$type]:"");
         ?>
         <div class="panel panel-default oet-sidebar-section-wrapper" id="oet_sidebar_section_'.$totalSections.'">
             <div class="panel-heading">
@@ -58,7 +58,12 @@ global $post;
                     </select>
                 </div>
                 <div class="form-group oet-content-sections subsection-visible">
-                    <?php echo get_fields_from_content_type($type, $index+1, $html); ?>
+                    <?php
+                    if ($type=="html")
+                        echo get_fields_from_content_type($type, $index+1, $html);
+                    else
+                        echo get_fields_from_content_type($type, $index+1, $content_type);
+                    ?>
                 </div>
             </div>
         </div>    

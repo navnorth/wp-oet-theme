@@ -30,9 +30,8 @@ jQuery( document ).ready(function($) {
                 e.preventDefault();
                 var content_section = $(this).closest('.oet-sidebar-section-wrapper').find('.oet-content-sections');
                 content_section.html('').removeClass('subsection-visible');
-                console.log(content_section);
                         
-                var content_count = parseInt($('.oet-sidebar-section-type-wrapper').length, 10);
+                var content_count = parseInt(content_section.find('.oet-sidebar-section-type-wrapper').length, 10);
                 var id = content_count + 1;
                 var type = $(this).children("option:selected").val();
                 $.post(oet_ajax_object.ajaxurl,
@@ -43,6 +42,31 @@ jQuery( document ).ready(function($) {
                 }).done(function (response) {
                     if (type!=="related")
                         content_section.append(response).addClass('subsection-visible');
+                    var textAreaId = 'oer-sidebar-section-type-' + id;
+                    tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
+                    tinymce.execCommand( 'mceAddEditor', false, textAreaId );
+                    quicktags({ id: textAreaId });
+                });
+            });
+        },
+        
+        /** Add Content Type Editor **/
+        addContentTypeEditor: function(){
+             $(document).on("click", '.oet-add-sidebar-section-content', function(e){
+                e.preventDefault();
+                var btn = $(this).closest('.button-row-content');
+                        
+                var content_count = parseInt($(this).closest('.oet-content-sections').find('.oet-sidebar-section-type-wrapper').length, 10);
+                var id = content_count + 1;
+                var type =  $(this).closest('.oet-sidebar-section-wrapper').find('.oet-sidebar-section-type').children("option:selected").val();
+                $.post(oet_ajax_object.ajaxurl,
+                {
+                    action:'oet_sidebar_content_type_callback',
+                    row_id: id,
+                    type: type
+                }).done(function (response) {
+                    btn.before(response);
+                    
                     var textAreaId = 'oer-sidebar-section-type-' + id;
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
@@ -93,4 +117,5 @@ jQuery( document ).ready(function($) {
     OET_Dynamic_Sidebar.addSidebarSection();
     OET_Dynamic_Sidebar.displayContentTypeEditor();
     OET_Dynamic_Sidebar.selectSidebarSectionImage();
+    OET_Dynamic_Sidebar.addContentTypeEditor();
 });
