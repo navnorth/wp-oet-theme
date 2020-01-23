@@ -59,10 +59,7 @@ global $post;
                 </div>
                 <div class="form-group oet-content-sections subsection-visible">
                     <?php
-                    if ($type=="html")
-                        echo get_fields_from_content_type($type, $index+1, $html);
-                    else
-                        echo get_fields_from_content_type($type, $index+1, $content_type);
+                    echo get_fields_from_content_type($type, $index+1, $content_type);
                     ?>
                 </div>
             </div>
