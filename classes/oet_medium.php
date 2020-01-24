@@ -322,7 +322,7 @@ class OET_Medium {
     }
 
     // Display Individual Post by Url
-    public function display_post($url, $align="left"){
+    public function display_post($url, $align="left", $width=""){
         try{
             $publications = $this->get_publications();
             $rss_urls = $this->get_rss_urls();
@@ -421,12 +421,12 @@ class OET_Medium {
             }
     
             if(!$match){
-                return $this->display_medium_post_unavailable($url);
+                return $this->display_medium_post_unavailable($url, $width);
             } else {
                 return $this->display_single_embed($story);
             }
         } catch (Exception $e){
-            return $this->display_medium_post_unavailable($url);
+            return $this->display_medium_post_unavailable($url, $width);
         }
     }
     
@@ -534,10 +534,13 @@ class OET_Medium {
         ';
     }
     
-    function display_medium_post_unavailable($url){
+    function display_medium_post_unavailable($url, $width=""){
         $background = "background:#757575";
+        $style = "";
+        if ($width!=="")
+            $style = ' style="width:'.$width.';'"';
         return $embed = '
-        <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12"'.$style.'>
             <div class="medium" style="'.$background.'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
