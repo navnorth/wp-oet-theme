@@ -537,6 +537,8 @@ class OET_Medium {
     function display_medium_post_unavailable($url, $width=""){
         $background = "background:#757575";
         $style = "";
+        var_dump($width);
+        exit();
         if ($width!=="")
             $style = ' style="width:'.$width.';"';
         return $embed = '
