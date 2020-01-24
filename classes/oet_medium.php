@@ -538,7 +538,7 @@ class OET_Medium {
         $background = "background:#757575";
         $style = "";
         if ($width!=="")
-            $style = ' style="width:'.$width.';'"';
+            $style = ' style="width:'.$width.';"';
         return $embed = '
         <div class="col-md-4 col-sm-6 col-xs-12"'.$style.'>
             <div class="medium" style="'.$background.'">
