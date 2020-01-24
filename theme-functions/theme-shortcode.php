@@ -997,7 +997,7 @@ function oet_medium_func($attribute, $content = null){
 		}
 		
 		if (($align && $align!=="") && ($width && $width!==""))
-			$return =  $oet_medium->display_post($url, $align, $width);
+			$return =  $oet_medium->display_post_by_jsonUrl($url, $align, $width);
         elseif (($align && $align!=="") && (!$width))
             $return =  $oet_medium->display_post($url, $align);
 		else

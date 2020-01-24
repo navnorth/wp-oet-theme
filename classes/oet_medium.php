@@ -431,7 +431,7 @@ class OET_Medium {
     }
     
     // Display Individual Post by Url
-    public function display_post_by_jsonUrl($url, $align="left"){
+    public function display_post_by_jsonUrl($url, $align="left", $width=""){
         try{
             
             $find_url = parse_url($url);
@@ -484,7 +484,7 @@ class OET_Medium {
             }
             return $this->display_single_embed($story);
         } catch (Exception $e){
-            return $this->display_medium_post_unavailable($url);
+            return $this->display_medium_post_unavailable($url, $width);
         }
     }
 
