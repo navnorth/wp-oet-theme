@@ -996,10 +996,15 @@ function oet_medium_func($attribute, $content = null){
 			$oet_medium->display_invalid_text();	
 		}
 		
-		if (($align && $align!=="") && ($width && $width!==""))
-			$return =  $oet_medium->display_post($url, $align, $width);
-        elseif (($align && $align!=="") && (!$width))
-            $return =  $oet_medium->display_post($url, $align);
+        $attr = array();
+		if ($align && $align!=="")
+            $attr['align'] = $align;
+        
+        if ($width && $width!=="")
+            $attr['width'] = $width;
+			
+        if (!empty($attr))
+            $return =  $oet_medium->display_post($url, $attr);
 		else
 			$return =  $oet_medium->display_post($url);
 	}

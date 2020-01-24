@@ -322,7 +322,10 @@ class OET_Medium {
     }
 
     // Display Individual Post by Url
-    public function display_post($url, $align="left", $width=""){
+    public function display_post($url, $attribute){
+        if (is_array($attribute))
+            extract($attribute);
+            
         try{
             $publications = $this->get_publications();
             $rss_urls = $this->get_rss_urls();
@@ -431,7 +434,10 @@ class OET_Medium {
     }
     
     // Display Individual Post by Url
-    public function display_post_by_jsonUrl($url, $align="left", $width=""){
+    public function display_post_by_jsonUrl($url, $attribute){
+        if (is_array($attribute))
+            extract($attribute);
+            
         try{
             
             $find_url = parse_url($url);
@@ -537,8 +543,6 @@ class OET_Medium {
     function display_medium_post_unavailable($url, $width=""){
         $background = "background:#757575";
         $style = "";
-        var_dump($width);
-        exit();
         if ($width!=="")
             $style = ' style="width:'.$width.';"';
         return $embed = '
