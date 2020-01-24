@@ -312,7 +312,10 @@ function oet_display_dynamic_sidebar($page_id){
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';
             $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
-            $sidebar_content .=     display_sidebar_content_type($type, $index, $content_type);
+            if ($type=="related")
+                $sidebar_content .=     display_sidebar_content_type($type, $index, $sidebar_section);
+            else
+                $sidebar_content .=     display_sidebar_content_type($type, $index, $content_type);
             $sidebar_content .= '</div>';
         }
     } else {
@@ -327,7 +330,7 @@ function oet_display_dynamic_sidebar($page_id){
  *
  * Returns 4 related contents based on tags/categories
  **/
-function oet_display_default_sidebar($page_id, $related_count=4){
+function oet_display_default_sidebar($page_id, $related_count=4, $display_header=true){
     $html = "";
     // Get tags/categories of page
     $terms = wp_get_post_terms($page_id, array('category','post_tag'), array('fields'=> 'all'));
@@ -356,13 +359,19 @@ function oet_display_default_sidebar($page_id, $related_count=4){
     );
     
     $related_posts = new WP_Query($related_args);
-     
+    $heading_title = "Related Content";
+    
+    if (!empty($title))
+        $heading_title = $title;
+        
     if ($related_posts->have_posts()){
-        $html .= '<div class="col-md-12 col-sm-6 col-xs-6">';
-        $html .= '   <div class="pblctn_box">';
-        $html .= '       <span class="socl_icns fa-stack"><i class="fa fa-star"></i></span>';
-        $html .= '   </div>';
-        $html .= '   <h4 class="rght_sid_wdgt_hedng">Related Content</h4>';
+        if ($display_header){
+            $html .= '<div class="col-md-12 col-sm-6 col-xs-6">';
+            $html .= '   <div class="pblctn_box">';
+            $html .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
+            $html .= '   </div>';
+            $html .= '   <h4 class="rght_sid_wdgt_hedng">'.$heading_title.'</h4>';
+        }
         $index = 0;
         while($related_posts->have_posts()): $related_posts->the_post();
             $excerpt = '';
@@ -393,6 +402,8 @@ function oet_display_default_sidebar($page_id, $related_count=4){
 
 /** Display Content Types on front-end **/
 function display_sidebar_content_type($type, $sectionid, $sidebar_content){
+    global $post;
+    
     $content = "";
     switch ($type){
         case "html":
@@ -411,6 +422,26 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                     $content .= '<p class="hdng_mtr"><a href="'.$link_url.'">'.$title.'</a></p>';
                 $content .= '<p>'.$description.'</p>';
             }
+            break;
+        case "image":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $image_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sdbr_img_cntnt";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                $content .= '<div class="'.$hclass.'">';
+                $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+                $content .= '<p class="'.$class.'">'.$title.'</p>';
+                $content .= '<p>'.$description.'</p>';
+                $content .= '</div>';
+            }
+            break;
+        case "related":
+            $content = oet_display_default_sidebar($post->ID,4,false);
             break;
     }
     return $content;

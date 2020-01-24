@@ -340,6 +340,11 @@ h4 { font-family: 'Raleway-Light' !important}
 .search-results article { overflow:hidden; }
 .medium-error .panel-heading { padding:10px 15px !important; }
 .medium-error .panel-primary { padding-left:0; padding-right:0; }
+
+/** dynamic sidebar styles **/
+.pblctn_right_sid_mtr .sdbr_img_cntnt { border-top:1px solid #ccc; width:100%; overflow:hidden; margin-top:10px !important; padding-top:10px; }
+/** end of dynamic sidebar styles **/
+
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
 }
