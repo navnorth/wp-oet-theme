@@ -16,7 +16,7 @@ global $post;
             $type = (isset($sidebar_sections['type'][$index])?$sidebar_sections['type'][$index]:"");
             $content_type = (isset($sidebar_sections['content'][$type])?$sidebar_sections['content'][$type]:"");
         ?>
-        <div class="panel panel-default oet-sidebar-section-wrapper" id="oet_sidebar_section_'.$totalSections.'">
+        <div class="panel panel-default oet-sidebar-section-wrapper" id="oet_sidebar_section_<?php echo ($index+1); ?>">
             <div class="panel-heading">
                 <h3 class="panel-title">Section <?php echo ($index + 1); ?></h3>
                 <span class="oet-sortable-handle">
@@ -57,11 +57,13 @@ global $post;
                         <option value="medium" <?php selected($type,'medium'); ?>>Medium Post</option>
                     </select>
                 </div>
+                <?php if ($type!=="related") { ?>
                 <div class="form-group oet-content-sections subsection-visible">
                     <?php
                     echo get_fields_from_content_type($type, $index+1, $content_type);
                     ?>
                 </div>
+                <?php } ?>
             </div>
         </div>    
         <?php

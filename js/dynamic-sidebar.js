@@ -16,7 +16,7 @@ jQuery( document ).ready(function($) {
                  row_id: id
                 }).done(function (response) {
                     btn.before(response);
-                    var textAreaId = 'oer-sidebar-section-' + id;
+                    var textAreaId = 'oet-sidebar-section-' + id;
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
@@ -34,6 +34,7 @@ jQuery( document ).ready(function($) {
                 var content_count = parseInt(content_section.find('.oet-sidebar-section-type-wrapper').length, 10);
                 var id = content_count + 1;
                 var type = $(this).children("option:selected").val();
+                
                 $.post(oet_ajax_object.ajaxurl,
                 {
                     action:'oet_sidebar_content_type_callback',
@@ -42,7 +43,7 @@ jQuery( document ).ready(function($) {
                 }).done(function (response) {
                     if (type!=="related")
                         content_section.append(response).addClass('subsection-visible');
-                    var textAreaId = 'oer-sidebar-section-type-' + id;
+                    var textAreaId = 'oet-sidebar-section-type-' + id;
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
@@ -59,6 +60,7 @@ jQuery( document ).ready(function($) {
                 var content_count = parseInt($(this).closest('.oet-content-sections').find('.oet-sidebar-section-type-wrapper').length, 10);
                 var id = content_count + 1;
                 var type =  $(this).closest('.oet-sidebar-section-wrapper').find('.oet-sidebar-section-type').children("option:selected").val();
+                
                 $.post(oet_ajax_object.ajaxurl,
                 {
                     action:'oet_sidebar_content_type_callback',
@@ -67,7 +69,7 @@ jQuery( document ).ready(function($) {
                 }).done(function (response) {
                     btn.before(response);
                     
-                    var textAreaId = 'oer-sidebar-section-type-' + id;
+                    var textAreaId = 'oet-sidebar-section-type-' + id;
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });

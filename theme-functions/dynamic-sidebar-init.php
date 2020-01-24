@@ -65,6 +65,23 @@ function oet_add_sidebar_section_callback() {
                                 <option value="medium">Medium Post</option>
                             </select>
                         </div>
+                        <div class="form-group oet-content-sections">
+                            <label for="oet_sidebar_section_html">HTML Content:</label>';
+                            ob_start(); // Start Output buffer
+                            wp_editor( '',
+                                'oer-sidebar-section-'.($totalSections),
+                                $settings = array(
+                                    'textarea_name' => 'oet_sidebar_section[content][html][]',
+                                    'media_buttons' => true,
+                                    'textarea_rows' => 6,
+                                    'drag_drop_upload' => true,
+                                    'teeny' => true,
+                                    'tinymce' => true,
+                                    'quicktags' => true
+                                )
+                            );
+                $content .= ob_get_clean();
+                $content .=  '</div>
                     </div>
                 </div>';      
     
@@ -94,7 +111,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
         case "html":
             // Free Form HTML
             $html = $value[0];
-            $fields_section = '<div class="form-group">
+            $fields_section = '<div class="form-group oet-content-sections">
                         <label for="oet_sidebar_section_html">HTML Content:</label>';
                         ob_start(); // Start Output buffer
                         wp_editor( $html,
@@ -130,7 +147,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     elseif ($type=="story")
                         $val = $contents['story'][$index];
                     $rowid = $index + 1;
-                    $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
+                    $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                         <div class="panel-heading">
                             <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
                             <span class="oet-sortable-handle">
@@ -161,7 +178,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 );
                                 $fields_section .= ob_get_clean();
                     $fields_section .= '</div>
-                            <div class="form-group">';
+                            <div class="form-group oet-content-sections">';
                     $fields_section .= generatecontentfieldtype($type, $val);
                     $fields_section .= '</div>
                         </div>
@@ -204,7 +221,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                             );
                             $fields_section .= ob_get_clean();
                 $fields_section .= '</div>
-                        <div class="form-group">';
+                        <div class="form-group oet-content-sections">';
                 $fields_section .= generatecontentfieldtype($type);
                 $fields_section .= '</div>
                     </div>
@@ -442,6 +459,21 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
             break;
         case "related":
             $content = oet_display_default_sidebar($post->ID,4,false);
+            break;
+        case "medium":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $medium_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                
+                if (FALSE==strpos($medium_url,"format=json"))
+                    $medium_url .= "?format=json";
+                
+                $content = '<div class="sidebar-medium-post">';
+                $content .= do_shortcode('[oet_medium url="'.$medium_url.'"]');
+                $content .= '</div>';
+            }
             break;
     }
     return $content;
