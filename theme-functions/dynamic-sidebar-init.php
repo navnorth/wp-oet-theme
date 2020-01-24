@@ -470,7 +470,12 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 if (FALSE==strpos($medium_url,"format=json"))
                     $medium_url .= "?format=json";
                 
-                $content = '<div class="sidebar-medium-post">';
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sidebar-medium-post";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                
+                $content = '<div class="'.$hclass.'">';
                 $content .= '<p class="'.$class.'">'.$title.'</p>';
                 $content .= '<p>'.$description.'</p>';
                 $content .= do_shortcode('[oet_medium url="'.$medium_url.'" width="100%"]');
