@@ -996,8 +996,6 @@ function oet_medium_func($attribute, $content = null){
 			$oet_medium->display_invalid_text();	
 		}
 		
-        var_dump($width);
-        exit();
 		if (($align && $align!=="") && ($width && $width!==""))
 			$return =  $oet_medium->display_post($url, $align, $width);
         elseif (($align && $align!=="") && (!$width))
