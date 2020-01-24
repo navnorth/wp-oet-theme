@@ -476,7 +476,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                     $hclass .= " brdr_mrgn_none";
                 
                 $content = '<div class="'.$hclass.'">';
-                $content .= '<p class="'.$class.'">'.$title.'</p>';
+                $content .= '<p class="'.$class.'"><a href="'.$medium_url.'" target="_blank">'.$title.'</a></p>';
                 $content .= '<p>'.$description.'</p>';
                 $content .= do_shortcode('[oet_medium url="'.$medium_url.'" width="100%"]');
                 $content .= '</div>';
