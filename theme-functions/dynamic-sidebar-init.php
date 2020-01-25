@@ -481,6 +481,26 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 $content .= '</div>';
             }
             break;
+        case "story":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $story_id =  (isset($sidebar_content['story'][$index])?$sidebar_content['story'][$index]:"");
+                
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sidebar-story-post";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                
+                $content .= '<div class="'.$hclass.'">';
+                $content .= '<p class="'.$class.'">'.$title.'</p>';
+                $content .= '<p>'.$description.'</p>';
+                if (shortcode_exists('oet_story'))
+                    $content .= do_shortcode('[oet_story id="'.$story_id.'" width=12][/oet_story]');
+                $content .= '</div>';
+            }
+            break;
         case "medium":
             $count = count($sidebar_content['title']);
             for($index=0;$index<$count;$index++){
