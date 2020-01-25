@@ -138,8 +138,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
             if (!empty($value)){
                 $contents = $value;
                 $count = count($contents['title']);
+                $val = "";
                 for($index=0;$index<$count;$index++){
-                    $val = "";
                     $title = $contents['title'][$index];
                     $description = $contents['description'][$index];
                     if ($type=="link" || $type=="image" || $type=="youtube" || $type=="medium")
@@ -147,7 +147,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     elseif ($type=="story")
                         $val = $contents['story'][$index];
                     $rowid = $index + 1;
-                    $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
+                    $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                         <div class="panel-heading">
                             <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
                             <span class="oet-sortable-handle">
@@ -410,7 +410,9 @@ function oet_display_default_sidebar($page_id, $related_count=4, $display_header
             $html .= '<p>'.$excerpt.'</p>';
             $index++;
         endwhile;
-        $html .= '</div>';
+        if ($display_header){
+            $html .= '</div>';
+        }
     }
     wp_reset_postdata();
     
@@ -450,7 +452,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 $hclass = "sdbr_img_cntnt";
                 if ($index==0)
                     $hclass .= " brdr_mrgn_none";
-                $content .= '<div class="'.$hclass.'">';
+                $content = '<div class="'.$hclass.'">';
                 $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
                 $content .= '<p class="'.$class.'">'.$title.'</p>';
                 $content .= '<p>'.$description.'</p>';
@@ -459,6 +461,25 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
             break;
         case "related":
             $content = oet_display_default_sidebar($post->ID,4,false);
+            break;
+        case "youtube":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $youtube_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sidebar-youtube-video";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                
+                $content .= '<div class="'.$hclass.'">';
+                $content .= oet_youtube_embed_code($youtube_url);
+                $content .= '<p class="'.$class.'">'.$title.'</p>';
+                $content .= '<p>'.$description.'</p>';
+                $content .= '</div>';
+            }
             break;
         case "medium":
             $count = count($sidebar_content['title']);
@@ -497,5 +518,37 @@ function oet_get_stories(){
     $stories = new WP_Query($args);
     
     return $stories->posts;
+}
+
+/** Youtube Embed **/
+function oet_youtube_embed_code($url) {
+	$embed_code = "";
+	
+	$youtube_id = oet_get_youtube_id($url);
+	
+	//Generate embed code
+	if ($youtube_id) {
+		$embed_code = '<div class="youtube-videoWrapper"><iframe width="640" height="360" src="https://www.youtube.com/embed/'.$youtube_id.'?rel=0" frameborder="0" allowfullscreen></iframe></div>';
+	}
+	return $embed_code;
+}
+
+/** Get Youtube Id **/
+function oet_get_youtube_id($url){
+	$youtube_id = null;
+	
+	if (preg_match('/youtube\.com\/watch\?v=([^\&\?\/]+)/', $url, $id)) {
+		$youtube_id = $id[1];
+	} else if (preg_match('/youtube\.com\/embed\/([^\&\?\/]+)/', $url, $id)) {
+		$youtube_id = $id[1];
+	} else if (preg_match('/youtube\.com\/v\/([^\&\?\/]+)/', $url, $id)) {
+		$youtube_id = $id[1];
+	} else if (preg_match('/youtu\.be\/([^\&\?\/]+)/', $url, $id)) {
+		$youtube_id = $id[1];
+	} else if (preg_match('/youtube\.com\/verify_age\?next_url=\/watch%3Fv%3D([^\&\?\/]+)/', $url, $id)) {
+		$youtube_id = $id[1];
+	}
+	
+	return $youtube_id;
 }
 ?>
