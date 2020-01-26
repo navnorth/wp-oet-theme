@@ -114,10 +114,67 @@ jQuery( document ).ready(function($) {
             });
         },
         
+        // Drag and drop elements
+        sidebarSectionSortable: function () {
+
+            $(document).on('click', '.sidebar-section-reorder-up', function(){
+                var $current = $(this).closest('.oet-sidebar-section-wrapper');
+                var $previous = $current.prev('.oet-sidebar-section-wrapper');
+                if($previous.length !== 0){
+                    $current.insertBefore($previous);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+
+            $(document).on('click', '.sidebar-section-reorder-down', function(){
+                var $current = $(this).closest('.oet-sidebar-section-wrapper');
+                var $next = $current.next('.oet-sidebar-section-wrapper');
+                if($next.length !== 0){
+                    $current.insertAfter($next);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+
+        },
+
+        // Change order value in hidden field and reinitialize the text editor
+        changeElementOrder: function() {
+            $(".oet_dynamic_sidebar_wrapper .oet-sidebar-section-wrapper").each(function (index) {
+                var count = index + 1;
+
+                var position = $(this).find('.element-order').val();
+                var newvalue = $(this).find('.element-order').val(count);
+                // reassign all of the numbers once it's loaded.
+
+                var textAreaId = $(this).find('textarea').attr('id');
+
+                if (typeof textAreaId !== 'undefined') {
+                    tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
+                    tinymce.execCommand( 'mceAddEditor', false, textAreaId );
+                }
+            });
+
+            OET_Dynamic_Sidebar.toggleUpDownButton();
+        },
+
+        // Show/Hide up/down button
+        toggleUpDownButton: function() {
+            // Hide the up button in the first child
+            $('.sidebar-section-reorder-up').removeClass('hide');
+            $('.sidebar-section-reorder-down').removeClass('hide');
+            $('.sidebar-section-reorder-up').first().addClass('hide');
+            $('.sidebar-section-reorder-down').last().addClass('hide');
+
+        },
+        
     };
     
     OET_Dynamic_Sidebar.addSidebarSection();
     OET_Dynamic_Sidebar.displayContentTypeEditor();
     OET_Dynamic_Sidebar.selectSidebarSectionImage();
     OET_Dynamic_Sidebar.addContentTypeEditor();
+    OET_Dynamic_Sidebar.sidebarSectionSortable();
+    OET_Dynamic_Sidebar.changeElementOrder();
 });

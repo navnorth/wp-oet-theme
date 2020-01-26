@@ -12,11 +12,13 @@ global $post;
         for($index=0;$index<$count;$index++){
             $title = (isset($sidebar_sections['title'][$index])?$sidebar_sections['title'][$index]:"");
             $icon = (isset($sidebar_sections['icon'][$index])?$sidebar_sections['icon'][$index]:"");
+            $order = (isset($sidebar_sections['order'][$index])?$sidebar_sections['order'][$index]:($index+1));
             $html = (isset($sidebar_sections['html'][$index])?$sidebar_sections['html'][$index]:"");
             $type = (isset($sidebar_sections['type'][$index])?$sidebar_sections['type'][$index]:"");
             $content_type = (isset($sidebar_sections['content'][$type])?$sidebar_sections['content'][$type]:"");
         ?>
         <div class="panel panel-default oet-sidebar-section-wrapper" id="oet_sidebar_section_<?php echo ($index+1); ?>">
+            <input type="hidden" name="oet_sidebar_section[order][]" class="element-order" value="<?php echo $order;?>">
             <div class="panel-heading">
                 <h3 class="panel-title">Section <?php echo ($index + 1); ?></h3>
                 <span class="oet-sortable-handle">
