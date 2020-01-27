@@ -116,7 +116,7 @@ jQuery( document ).ready(function($) {
         
         // Drag and drop elements
         sidebarSectionSortable: function () {
-
+            // Sidebar sections re-order function
             $(document).on('click', '.sidebar-section-reorder-up', function(){
                 var $current = $(this).closest('.oet-sidebar-section-wrapper');
                 var $previous = $current.prev('.oet-sidebar-section-wrapper');
@@ -136,7 +136,111 @@ jQuery( document ).ready(function($) {
                 }
                 return false;
             });
+            
+            // Image reorder function
+            $(document).on('click', '.sidebar-section-image-reorder-up', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $previous = $current.prev('.oet-sidebar-section-type-wrapper');
+                if($previous.length !== 0){
+                    $current.insertBefore($previous);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
 
+            $(document).on('click', '.sidebar-section-image-reorder-down', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $next = $current.next('.oet-sidebar-section-type-wrapper');
+                if($next.length !== 0){
+                    $current.insertAfter($next);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+            
+            // Link reorder function
+            $(document).on('click', '.sidebar-section-link-reorder-up', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $previous = $current.prev('.oet-sidebar-section-type-wrapper');
+                if($previous.length !== 0){
+                    $current.insertBefore($previous);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+
+            $(document).on('click', '.sidebar-section-link-reorder-down', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $next = $current.next('.oet-sidebar-section-type-wrapper');
+                if($next.length !== 0){
+                    $current.insertAfter($next);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+            
+            // Youtube reorder function
+            $(document).on('click', '.sidebar-section-youtube-reorder-up', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $previous = $current.prev('.oet-sidebar-section-type-wrapper');
+                if($previous.length !== 0){
+                    $current.insertBefore($previous);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+
+            $(document).on('click', '.sidebar-section-youtube-reorder-down', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $next = $current.next('.oet-sidebar-section-type-wrapper');
+                if($next.length !== 0){
+                    $current.insertAfter($next);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+            
+            // Story reorder function
+            $(document).on('click', '.sidebar-section-story-reorder-up', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $previous = $current.prev('.oet-sidebar-section-type-wrapper');
+                if($previous.length !== 0){
+                    $current.insertBefore($previous);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+
+            $(document).on('click', '.sidebar-section-story-reorder-down', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $next = $current.next('.oet-sidebar-section-type-wrapper');
+                if($next.length !== 0){
+                    $current.insertAfter($next);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+            
+            // Medium reorder function
+            $(document).on('click', '.sidebar-section-medium-reorder-up', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $previous = $current.prev('.oet-sidebar-section-type-wrapper');
+                if($previous.length !== 0){
+                    $current.insertBefore($previous);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
+
+            $(document).on('click', '.sidebar-section-medium-reorder-down', function(){
+                var $current = $(this).closest('.oet-sidebar-section-type-wrapper');
+                var $next = $current.next('.oet-sidebar-section-type-wrapper');
+                if($next.length !== 0){
+                    $current.insertAfter($next);
+                    OET_Dynamic_Sidebar.changeElementOrder();
+                }
+                return false;
+            });
         },
 
         // Change order value in hidden field and reinitialize the text editor
@@ -161,12 +265,41 @@ jQuery( document ).ready(function($) {
 
         // Show/Hide up/down button
         toggleUpDownButton: function() {
-            // Hide the up button in the first child
+            // Hide the up button in the main sidebar section
             $('.sidebar-section-reorder-up').removeClass('hide');
             $('.sidebar-section-reorder-down').removeClass('hide');
             $('.sidebar-section-reorder-up').first().addClass('hide');
             $('.sidebar-section-reorder-down').last().addClass('hide');
-
+            
+            // Hide the up/down button in the image content type fields section
+            $('.sidebar-section-image-reorder-up').removeClass('hide');
+            $('.sidebar-section-image-reorder-down').removeClass('hide');
+            $('.sidebar-section-image-reorder-up').first().addClass('hide');
+            $('.sidebar-section-image-reorder-down').last().addClass('hide');
+            
+            // Hide the up/down button in the link content type fields section
+            $('.sidebar-section-link-reorder-up').removeClass('hide');
+            $('.sidebar-section-link-reorder-down').removeClass('hide');
+            $('.sidebar-section-link-reorder-up').first().addClass('hide');
+            $('.sidebar-section-link-reorder-down').last().addClass('hide');
+            
+            // Hide the up/down button in the youtube content type fields section
+            $('.sidebar-section-youtube-reorder-up').removeClass('hide');
+            $('.sidebar-section-youtube-reorder-down').removeClass('hide');
+            $('.sidebar-section-youtube-reorder-up').first().addClass('hide');
+            $('.sidebar-section-youtube-reorder-down').last().addClass('hide');
+            
+            // Hide the up/down button in the story content type fields section
+            $('.sidebar-section-story-reorder-up').removeClass('hide');
+            $('.sidebar-section-story-reorder-down').removeClass('hide');
+            $('.sidebar-section-story-reorder-up').first().addClass('hide');
+            $('.sidebar-section-story-reorder-down').last().addClass('hide');
+            
+            // Hide the up/down button in the medium content type fields section
+            $('.sidebar-section-medium-reorder-up').removeClass('hide');
+            $('.sidebar-section-medium-reorder-down').removeClass('hide');
+            $('.sidebar-section-medium-reorder-up').first().addClass('hide');
+            $('.sidebar-section-medium-reorder-down').last().addClass('hide');
         },
         
     };

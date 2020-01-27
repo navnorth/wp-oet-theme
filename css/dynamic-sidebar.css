@@ -7,3 +7,15 @@
 .oet-sidebar-section-wrapper .oet-remove-sidebar-section ,
 .oet-sidebar-section-type-wrapper .oet-remove-sidebar-section-content{ float:right; padding:0 5px; }
 .oet-sidebar-section-wrapper .oet-content-sections.subsection-visible { border: 1px solid #dddddd; padding:10px 15px; }
+.oet-sidebar-section-wrapper .sidebar-section-reorder-up,
+.oet-sidebar-section-wrapper .sidebar-section-reorder-down,
+.oet-sidebar-section-wrapper .sidebar-section-image-reorder-up,
+.oet-sidebar-section-wrapper .sidebar-section-image-reorder-down,
+.oet-sidebar-section-wrapper .sidebar-section-link-reorder-up,
+.oet-sidebar-section-wrapper .sidebar-section-link-reorder-down,
+.oet-sidebar-section-wrapper .sidebar-section-youtube-reorder-up,
+.oet-sidebar-section-wrapper .sidebar-section-youtube-reorder-down,
+.oet-sidebar-section-wrapper .sidebar-section-story-reorder-up,
+.oet-sidebar-section-wrapper .sidebar-section-story-reorder-down,
+.oet-sidebar-section-wrapper .sidebar-section-medium-reorder-up,
+.oet-sidebar-section-wrapper .sidebar-section-medium-reorder-down{ cursor:pointer; }

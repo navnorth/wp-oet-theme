@@ -151,8 +151,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                         <div class="panel-heading">
                             <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
                             <span class="oet-sortable-handle">
-                                <i class="fa fa-arrow-down sidebar-section-reorder-down" aria-hidden="true"></i>
-                                <i class="fa fa-arrow-up sidebar-section-reorder-up" aria-hidden="true"></i>
+                                <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
+                                <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
                             </span>
                             <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"><i class="fa fa-trash-o"></i> </span>
                         </div>
@@ -194,8 +194,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     <div class="panel-heading">
                         <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
                         <span class="oet-sortable-handle">
-                            <i class="fa fa-arrow-down sidebar-section-reorder-down" aria-hidden="true"></i>
-                            <i class="fa fa-arrow-up sidebar-section-reorder-up" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
                         </span>
                         <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"><i class="fa fa-trash-o"></i> </span>
                     </div>
