@@ -505,3 +505,11 @@ add_action( 'add_meta_boxes', 'oet_register_meta_boxes' );
  function oet_display_dynamic_sidebar_callback(){
     include_once( OET_THEME_PATH . "/theme-functions/dynamic-sidebar-metabox.php" );    
  }
+
+ function add_modals_to_footer(){
+    $screen = get_current_screen();
+    if ( 'post' == $screen->base && 'page' == $screen->id ){
+        include_once(OET_THEME_PATH.'/inner-templates/popups/delete-section-confirm-popup.php');
+    }
+}
+add_action( 'admin_footer', 'add_modals_to_footer', 10 );
