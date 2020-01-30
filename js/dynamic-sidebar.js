@@ -302,6 +302,22 @@ jQuery( document ).ready(function($) {
             $('.sidebar-section-medium-reorder-down').last().addClass('hide');
         },
         
+        // Delete sidebar section
+        deleteSidebarSection: function () {
+            $(document).on('click', '.oet-remove-sidebar-section',function(e) {
+                var moduleId = $(this).closest('.panel-default').attr('id');
+                e.preventDefault();
+                $('#oet-delete-section-confirm-popup').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
+                .on('click', '#oet-delete-section-confirm-popup-btn', function(e) {
+                    $('#' + moduleId).remove();
+                    $('#oet-delete-section-confirm-popup').modal('hide');
+                });
+            });
+        }
+        
     };
     
     OET_Dynamic_Sidebar.addSidebarSection();
@@ -310,4 +326,5 @@ jQuery( document ).ready(function($) {
     OET_Dynamic_Sidebar.addContentTypeEditor();
     OET_Dynamic_Sidebar.sidebarSectionSortable();
     OET_Dynamic_Sidebar.changeElementOrder();
+    OET_Dynamic_Sidebar.deleteSidebarSection();
 });
