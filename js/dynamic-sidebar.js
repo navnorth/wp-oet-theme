@@ -316,6 +316,22 @@ jQuery( document ).ready(function($) {
                     $('#oet-delete-section-confirm-popup').modal('hide');
                 });
             });
+        },
+        
+        // Delete sidebar section
+        deleteSectionContentFields: function () {
+            $(document).on('click', '.oet-remove-sidebar-section-content',function(e) {
+                var moduleId = $(this).closest('.panel-default').attr('id');
+                e.preventDefault();
+                $('#oet-delete-section-confirm-popup').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
+                .on('click', '#oet-delete-section-confirm-popup-btn', function(e) {
+                    $('#' + moduleId).remove();
+                    $('#oet-delete-section-confirm-popup').modal('hide');
+                });
+            });
         }
         
     };
@@ -327,4 +343,5 @@ jQuery( document ).ready(function($) {
     OET_Dynamic_Sidebar.sidebarSectionSortable();
     OET_Dynamic_Sidebar.changeElementOrder();
     OET_Dynamic_Sidebar.deleteSidebarSection();
+    OET_Dynamic_Sidebar.deleteSectionContentFields();
 });

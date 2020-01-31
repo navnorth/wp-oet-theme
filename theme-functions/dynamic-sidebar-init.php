@@ -138,6 +138,9 @@ function get_fields_from_content_type($type, $rowid, $value=""){
             if (!empty($value)){
                 $contents = $value;
                 $count = count($contents['title']);
+                $disabled = "";
+                if ($count==1)
+                    $disabled = ' disabled="disabled"';
                 $val = "";
                 for($index=0;$index<$count;$index++){
                     $title = $contents['title'][$index];
@@ -154,7 +157,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
                                 <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
                             </span>
-                            <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"><i class="fa fa-trash-o"></i> </span>
+                            <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"'.$disabled.'><i class="fa fa-trash-o"></i> </span>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
