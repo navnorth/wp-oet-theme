@@ -363,6 +363,7 @@ h4 { font-family: 'Raleway-Light' !important}
 	width:100%;
 }
 .sidebar-story-post .story-embed-box { margin-top:0; border:none; padding:0; }
+#map_canvas img { margin:0; }
 /** end of dynamic sidebar styles **/
 
 @media (min-width: 1200px){
