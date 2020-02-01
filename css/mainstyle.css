@@ -364,7 +364,7 @@ h4 { font-family: 'Raleway-Light' !important}
 }
 .sidebar-story-post .story-embed-box { margin-top:0; border:none; padding:0; }
 #map_canvas img { margin:0; }
-#map_canvas .gmnoprint .gm-style-mtc button { font-size:16px !important; }
+#map_canvas .gmnoprint .gm-style-mtc div[role='button'] { font-size:16px !important; }
 /** end of dynamic sidebar styles **/
 
 @media (min-width: 1200px){
