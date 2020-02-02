@@ -86,7 +86,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .navi_bg li a:focus { outline: none;}
 .ftr_lnks li { font-size: 13px; padding: 13px 35px 13px 0;}
 .ftr_lnks ul { padding: 0 !important}
-.ftr_lnks { padding-left: 0 !important}
+.ftr_lnks { padding-left: 0 !important; padding-right:0 !important;}
 .ftr_lnks li a { color: #555}
 .form-control-feedback { top: 1px !important; cursor: pointer}
 .form-control-feedback:hover { opacity: .6}
@@ -139,7 +139,7 @@ iframe { border: 0;  max-width:100%; }
 
 .ftr_strp { height: 25px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
-.ftr_logo { padding-right: 0 !important}
+.ftr_logo { padding-left: 0 !important; padding-right: 0 !important;}
 .fa-envelope, .fa-youtube-play, .fa-google-plus { font-size: 20px !important}
 .soclize a { color: #fff; text-decoration: none}
 .soclize a:hover,
@@ -619,3 +619,67 @@ h4 { font-family: 'Raleway-Light' !important}
 @media (max-width: 300px){
 
 }
+
+
+.oet-featured-card-content-wrapper {
+  left: 0px;
+  top: 0px;
+  min-width: 100%;
+  min-height: 100%;
+}
+.oet-featured-card {
+	position: relative;
+  background-size: cover !important;
+  padding: 50px !important;
+  float: left;
+  z-index: 1;
+  width: 100%;
+}
+.oet-featured-card::before {
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+	z-index: -1;
+}
+.oet-featured-card-title {
+    font-size: 32px;
+		line-height: 39px;
+    color: #fff;
+    font-family: "Raleway-Bold" !important;
+    margin-bottom: 32px;
+}
+.oet-featured-card-desc {
+    font-size: 16px;
+    color: #fff;
+    font-family: "Raleway-Regular" !important;
+    margin-bottom: 36px;
+}
+.oet-featured-card-btn{
+		Background-color:#e57200;
+		padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    font-family: "Raleway-Regular" !important;
+    margin-bottom: 36px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+}
+.oet-featured-card-btn:hover{
+		color:#ffffff !important;
+		text-decoration: none !important;
+		opacity: .85;
+}
+.oet-featured-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+

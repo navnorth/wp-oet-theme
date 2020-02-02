@@ -27,7 +27,8 @@ if($action == "show_popup")
 						$return .= '<li><div data="callout_box" class="oet-shrtcdv2_tab">Callout Box</div></li>';
 						$return .= '<li><div data="publication_intro" class="oet-shrtcdv2_tab">Publication Intro</div></li>';
 						$return .= '<li><div data="oet_story" class="oet-shrtcdv2_tab">Story Embed</div></li>';
-						$return .= '<li><div data="oet_medium" class="oet-shrtcdv2_tab">Medium Embed</div></li>';				
+						$return .= '<li><div data="oet_medium" class="oet-shrtcdv2_tab">Medium Embed</div></li>';
+						$return .= '<li><div data="oet_featured_card" class="oet-shrtcdv2_tab">Featured Card</div></li>';			
 				$return .= '</ul>';
 		$return .= '</div>';
 		$return .= '<div class="oet-shrtcdv2-right-column">';
@@ -273,6 +274,9 @@ if($action == "show_popup")
 					   break;
 				   case "oet_medium":
 					   var shortcode = "[oet_medium url=\'\' align=\'\']";
+						 break;
+					 case "oet_featured_card":
+	 						var shortcode = "[oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\' align=\'\']your content goes here[/oet_featured_card]";
 					   break;
 				   default:
 				   	   var shortcode = "";

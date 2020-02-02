@@ -62,18 +62,24 @@ function oetInsertShortcode(){
   }
   else
   {
-    var cursor = jQuery("#content").prop("selectionStart");
+    var editorid = '#'+jQuery('body').attr('currenteditor');
+    var cursor = jQuery(editorid).prop("selectionStart");
     if(!cursor) cursor = 0;
-    var content = jQuery("#content").val();
+    var content = jQuery(editorid).val();
     var textBefore = content.substring(0,  cursor );
     var textAfter  = content.substring( cursor, content.length );
-    jQuery("#content").val( textBefore + shortcode + textAfter );
+    jQuery(editorid).val( textBefore + shortcode + textAfter );
   }
   tb_remove();
 }
 
 
-
+jQuery(document).on('click','.quicktags-toolbar input[value="add shortcodes"]',function(){
+  var eid = jQuery(this).attr('id');
+  eid = eid.replace('qt_','');
+  eid = eid.replace('_shortcodes','');
+  jQuery('body').attr('currenteditor',eid);
+});
 
 
 // ********************
