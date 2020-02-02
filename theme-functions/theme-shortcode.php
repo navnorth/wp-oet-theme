@@ -326,7 +326,7 @@ function feature_video_func($attr, $content = null)
 
 	$tracking_script .= "</script>";
 
-	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
 	if(isset($heading) && !empty($heading))
 	{
 		$return .= '<h4>'. $heading .'</h4>';
@@ -1010,6 +1010,44 @@ function oet_medium_func($attribute, $content = null){
 	}
 	
 	return $return;
+}
+
+
+
+/**
+ * OET Featured Card
+ * Shortcode Example : [oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\' align=\'\']your content goes here[/oet_featured_card]
+ **/ 
+add_shortcode("oet_featured_card", "oet_featured_card_func");
+function oet_featured_card_func($attribute, $content = null){
+ $return = "";
+ 
+ if (is_array($attribute)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attribute);	
+			foreach($_arr as $key => $value) $$key = $value;	
+		}else{
+			extract($attribute);;
+		}
+ }
+ $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
+ $bg = (!empty($background_image))? $background_image: $default_bg;
+ $_cont = (strlen($content)>210)? substr($content,0,230).' ...': $content;
+ $return = '<div class="oet-featured-card">
+ 							<div class="oet-featured-card-content-wrapper">
+		 						<div class="oet-featured-card-title">'.$title.' jj jghjhjh jgh</div>
+								<div class="oet-featured-card-desc">'.$_cont.'</div>
+			 					<a href="#" class="oet-featured-card-btn">'.$button_text.'</a>
+							</div>
+	 					</div>
+						<style>
+							.oet-featured-card::before {
+								background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');
+							}
+						</style>';
+		
+
+ return $return;
 }
 
 remove_filter( 'the_content', 'wpautop' );

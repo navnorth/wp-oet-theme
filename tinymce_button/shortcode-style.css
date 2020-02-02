@@ -1,6 +1,58 @@
 /* ******************** */
 /* FROM MAINSTYLE.css */
 /* ******************** */
+@font-face{font-family:'Raleway-Bold';
+	src:url(../fonts/Raleway-Bold.eot);
+	src:url(../fonts/Raleway-Bold.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/Raleway-Bold.ttf) format('truetype'),
+		url(../fonts/Raleway-Bold.svg#glyphicons_halflingsregular) format('svg')}
+
+@font-face{font-family:'Raleway-SemiBold';
+	src:url(../fonts/Raleway-SemiBold.eot);
+	src:url(../fonts/Raleway-SemiBold.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/Raleway-SemiBold.ttf) format('truetype'),
+		url(../fonts/Raleway-SemiBold.svg#glyphicons_halflingsregular) format('svg')}
+
+@font-face{font-family:'Raleway-Regular';
+	src:url(../fonts/Raleway-Regular.eot);
+	src:url(../fonts/Raleway-Regular.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/Raleway-Regular.ttf) format('truetype'),
+		url(../fonts/Raleway-Regular.svg#glyphicons_halflingsregular) format('svg')}
+
+@font-face{font-family:'Raleway-Light';
+	src:url(../fonts/Raleway-Light.eot);
+	src:url(../fonts/Raleway-Light.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/Raleway-Light.ttf) format('truetype'),
+		url(../fonts/Raleway-Light.svg#glyphicons_halflingsregular) format('svg')}
+
+
+@font-face{font-family:'Raleway-SemiBold-Italic';
+	src:url(../fonts/Raleway-SemiBold-Italic.eot);
+	src:url(../fonts/Raleway-SemiBold-Italic.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/Raleway-SemiBold-Italic.ttf) format('truetype'),
+		url(../fonts/Raleway-SemiBold-Italic.svg#glyphicons_halflingsregular) format('svg')}
+
+
+@font-face{font-family:'Raleway-Light-Italic';
+	src:url(../fonts/Raleway-Light-Italic.eot);
+	src:url(../fonts/Raleway-Light-Italic.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/Raleway-Light-Italic.ttf) format('truetype'),
+		url(../fonts/Raleway-Light-Italic.svg#glyphicons_halflingsregular) format('svg')}
+
+
+@font-face{font-family:'CharisSILR';
+	src:url(../fonts/CharisSILR.eot);
+	src:url(../fonts/CharisSILR.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/CharisSILR.ttf) format('truetype'),
+		url(../fonts/CharisSILR.svg#glyphicons_halflingsregular) format('svg')}
+
+
+@font-face{font-family:'CharisSILB';
+	src:url(../fonts/CharisSILB.eot);
+	src:url(../fonts/CharisSILB.eot?#iefix) format('embedded-opentype'),
+		url(../fonts/CharisSILB.ttf) format('truetype'),
+		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
+		
 /*body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !important;}*/
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 7px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center; line-height: 1.5em;}
@@ -211,6 +263,66 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .tlkt_rght_sid .btn_dwnld {  margin: 10px 0 0;}
 .tlkt_rght_sid ul { float: left; width: 100%}
 
+
+.oet-featured-card-content-wrapper {
+  left: 0px;
+  top: 0px;
+  min-width: 100%;
+  min-height: 100%;
+}
+.oet-featured-card {
+	position: relative;
+  background-size: cover !important;
+  padding: 50px !important;
+  float: left;
+  z-index: 1;
+  width: 100%;
+}
+.oet-featured-card::before {
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+	z-index: -1;
+}
+.oet-featured-card-title {
+    font-size: 32px;
+		line-height: 39px;
+    color: #fff;
+    font-family: "Raleway-Bold" !important;
+    margin-bottom: 36px;
+}
+.oet-featured-card-desc {
+    font-size: 16px;
+    color: #fff;
+    font-family: "Raleway-Regular" !important;
+    margin-bottom: 36px;
+}
+.oet-featured-card-btn{
+		Background-color:#e57200;
+		padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    font-family: "Raleway-Regular" !important;
+    margin-bottom: 36px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+}
+.oet-featured-card-btn:hover{
+		color:#ffffff !important;
+		text-decoration: none !important;
+		opacity: .85;
+}
+.oet-featured-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* ******************** */
 /* FROM FRONT-STYLE.CSS */
