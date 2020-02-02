@@ -481,3 +481,129 @@ ul.checkbox_list input {
 .story_sharewidgeticns .oet-social-img { width:auto !important; }
 .story_sharewidget .story_sharewidgeticns .ssba-wrap > div > a { margin:10px 5px; }
 .story_sharewidget .story_sharewidgeticns .ssba-wrap span#stEmbed { margin: 0 5px; }
+
+.row.ftr.oet-footer { background-color: #2a4378; padding: 10px; }
+.oet-footer-seal {float: left;margin: 5px 30px 0px 30px;}
+.oet-footer div.ftr_lnks .menu-footer-menu-container ul li a {color: #ffffff !important;}
+.ftr_logo>a {display: block;margin: 0px 20px;float: right;}
+@media (max-width: 610px){
+	.oet-footer div.ftr_lnks .menu-footer-menu-container ul li {padding-right:10px !important;}
+}
+@media (max-width: 525px){
+	.oet-footer-seal {
+    margin: 0px auto !important;
+    width: 100%;
+    text-align: center;
+	}
+	.oet-footer div.ftr_lnks .menu-footer-menu-container ul li {padding-right:0px !important;}
+	.ftr_logo>a {float:none !important;}
+}
+
+
+/************************************** */
+/**** HOMEPAGE TEMPLATE ACF STARTS **** */
+/************************************** */
+/*----------3COLUMNS----------*/
+.oet_3column_layout {
+		padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+.oet_acf_homepage_3column_layout.ovlp {margin-left: -32px !important; margin-right: -32px !important;}
+
+/*--------TRENDING NOW--------*/
+.oet_3column_wrapper div {font-family: 'Raleway-Regular'; box-sizing: border-box;}
+.oet-trending-image, .oet-trending-title, .oet-trending-description, .oet-trending-button {margin: 10px 0px;}
+.oet_trendingnow_layout div, .oet_trendingnow_layout img {display:block; float:left; width:100%;}
+.oet_trendingnow_layout img {width:100%; height: 250px;}
+.oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family:'Raleway-SemiBold' !important;}
+.oet-trending-description {min-height: 100px; max-height:100px; overflow: hidden; text-overflow: ellipsis;}
+.oet-trending-title {font-size: 24px; font-family: 'Raleway-SemiBold' !important; color: #E57200; line-height: 24px;}
+.oet-trending-title i {color: #222;}
+.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;
+-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+.oet_trendingnow_layout a:hover {color: #ffffff !important; text-decoration: none; opacity: .9;}
+.oet_trendingnow_layout .pad {padding-left:20px; padding-right:20px;}
+.oet_3column_wrapper .ovlp {margin-left: -50px !important; margin-right: -50px !important;}
+@media (max-width: 991px){
+	.oet-trending-description {min-height: 0px !important; max-height: none !important;}
+	.oet_trendingnow_layout img {width:100%; height: auto !important;}
+	.oet_trendingnow_layout .pad {padding-left:0px !important; padding-right:0px !important;}
+	.oet_3column_wrapper .ovlp {margin-left: 0px !important; margin-right: 0px !important;}
+}
+/*--------TILELINKS--------*/
+.oet_tilelinks_wrapper {
+	position: relative;
+	background-size: cover !important;
+	padding: 50px !important;
+	float: left;
+}
+.oet_tilelinks_wrapper::before {
+  background-size: cover;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+	z-index: -1;
+}
+.oet_tilelinks_background_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: rgba(34, 57, 105, 0.8);
+}
+.oet-tilelinks-section-title {
+	font-family: 'Raleway-SemiBold' !important;
+	text-align:center;
+	padding:10px 0px; 
+	margin:0px 0px 30px 0px;
+  width: 100%;
+}
+.oet-tilelinks-content-wrapper {
+  left: 0px;
+  top: 0px;
+  min-width: 100%;
+  min-height: 100%;
+}
+.oet-tilelinks-button-block a {
+	margin: 0px auto;
+  display: block;
+	width:100%;
+  max-width: 350px;
+  min-width: 350px;
+  text-align: center;
+  padding: 10px 10px;
+  line-height: 26px;
+}
+.oet-tilelinks-button-block a:hover {text-decoration: none !important;}
+.oet-tilelinks-button-block table {margin: 20px auto; max-width: 350px;}
+.oet-tilelinks-button-block table, .oet-tilelinks-button-block table tr, .oet-tilelinks-button-block table tr td {
+  border: 0px !important;
+	background: transparent !important;
+	width: 100%;
+}
+.oet-tilelinks-button-block table tr td {
+  vertical-align: middle !important;
+  padding: 0px !important;
+  margin: 0px !important;
+	height: 90px !important;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	cursor:pointer;
+}
+@media (max-width: 991px){.oet_tilelinks_wrapper {min-height: none !important;}}
+@media (max-width: 512px){
+.oet-tilelinks-button-block a {min-width: auto !important; max-width: none !important;}
+.oet-tilelinks-button-block table {max-width: none !important;}
+}
+/*--------SPACER--------*/
+.oet-tilelinks-spacer {padding: 75px 0px 0px 0px !important;float: left;width: 100%;}
+.slideshow_container_style-light {float: left;}
+/************************************** */
+/****  HOMEPAGE TEMPLATE ACF ENDS  **** */
+/************************************** */
