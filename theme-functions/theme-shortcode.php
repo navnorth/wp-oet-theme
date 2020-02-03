@@ -1037,7 +1037,7 @@ function oet_featured_card_func($attribute, $content = null){
  							<div class="oet-featured-card-content-wrapper">
 		 						<div class="oet-featured-card-title">'.$title.' jj jghjhjh jgh</div>
 								<div class="oet-featured-card-desc">'.$_cont.'</div>
-			 					<a href="#" class="oet-featured-card-btn">'.$button_text.'</a>
+			 					<a href="#" class="oet-featured-card-btn">'.$button_text.'&nbsp;&nbsp;→</a>
 							</div>
 	 					</div>
 						<style>
