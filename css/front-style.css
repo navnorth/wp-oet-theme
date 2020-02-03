@@ -596,7 +596,13 @@ ul.checkbox_list input {
 	border-radius: 5px;
 	cursor:pointer;
 }
-@media (max-width: 991px){.oet_tilelinks_wrapper {min-height: none !important;}}
+@media (max-width: 991px){
+	.oet_tilelinks_wrapper {min-height: none !important;}
+	.oet_3column_wrapper, .oet_trendingnow_layout, .oet_acf_homepage_2column_layout, .oet_2column_layout {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+}
 @media (max-width: 512px){
 .oet-tilelinks-button-block a {min-width: auto !important; max-width: none !important;}
 .oet-tilelinks-button-block table {max-width: none !important;}

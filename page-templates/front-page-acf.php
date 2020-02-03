@@ -44,7 +44,7 @@
                 $columnlayouts[1] = get_sub_field('oet_acf_homepage_column_2');
                 ?><div class="col-xs-12 oet_acf_homepage_2column_layout ovlp"><?php
                 foreach ($columnlayouts as $columnlayout) {  //Column FC
-                  ?><div class="col-xs-6 oet_2column_layout"><?php
+                  ?><div class="col-xs-12 col-md-6 col-lg-6 oet_2column_layout"><?php
                   if(!empty($columnlayout)): 
                     foreach ($columnlayout as $subfieldlayout) { //Subfields FC w/in Column FC
                       if(!empty($subfieldlayout)): 
