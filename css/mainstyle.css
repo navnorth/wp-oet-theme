@@ -170,7 +170,7 @@ iframe { border: 0;  max-width:100%; }
 .pblctn_lft_sid_img_cntnr .col-md-3{ text-align: center}
 .pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-left: 0 !important}
 .btn_dwnld {width: 129px; font-size:14pt; font-weight:bold; padding: 10px 0; margin: 15px 0 0; text-align: center; background: #e57200; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'Raleway-Regular';}
-.btn_dwnld:hover, .btn_dwnld:focus { opacity: .9; color:#2A4378 !important; }
+.btn_dwnld:hover, .btn_dwnld:focus, .home_dwnld_btn a:hover, .home_dwnld_btn:active { opacity: .9; color:#2A4378 !important; }
 .link_dwnlds a, .link_dwnlds a:hover { color: #fff; text-decoration: none}
 .pblctn_scl_icns { height: 50px	}
 .story_scl_icns { margin-bottom: 18px; }
