@@ -97,7 +97,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 .bnr_img img { width: 100.2% }
 .bnr_img { padding-right: 0 !important }
 .border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'Raleway-Bold'; letter-spacing: .5px }
-.hdng_mtr, .hdng_mtr a { font-size: 18px; color: #e57200; font-family: 'Raleway-Bold' !important}
+.hdng_mtr, .hdng_mtr a { font-size: 17px; color: #e57200; font-family: 'Raleway-Bold' !important; font-weight:500; line-height:20px;}
 .hdng_mtr a:hover { cursor: pointer; color: #F58516}
 /*.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}*/
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
@@ -108,7 +108,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'CharisSILR' !
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
 .lft_sid_mtr img, .rght_sid_mtr img { float: left; margin: 0 25px 25px 0}
-.lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-family:'Raleway-Light'; font-size: 15px}
+.lft_sid_mtr h4:first-child, .rght_sid_mtr h4:first-child { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 5px; font-size: 20px; font-weight: bold; color: #294179; font-family: 'Raleway-Bold' !important; line-height: 23px; }
 .lft_sid_mtr p, .rght_sid_mtr p {  margin: 0 0 10px}
 .date { font-family: 'Raleway-Bold' !important; font-size: 13px}
 .sprtn_brdr { position: absolute; top: 80px; bottom: 35px; width: 1px; background: #ddd; right: 0}
