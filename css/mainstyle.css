@@ -522,6 +522,7 @@ button:hover {
 }
 #map_canvas img { margin:0; }
 #map_canvas .gmnoprint .gm-style-mtc div[role='button'] { font-size:16px !important; }
+#map_canvas .gm-style .gm-style-mtc label { margin-bottom: 0; margin-top: 2px;}
 /** end of dynamic sidebar styles **/
 
 @media (min-width: 1200px){
