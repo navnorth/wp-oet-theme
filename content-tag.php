@@ -16,8 +16,12 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_
         <div class="col-md-3 col-sm-6 col-xs-12 archive_image">
             <img class="search_story_featured_image" src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" />
         </div>
+        <?php else: ?>
+        <div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">
+            <div class="search-result-icon"><i class="fa fa-file-text fa-5x"></i></div>
+        </div>
         <?php endif; ?>
-        <div class="col-md-9 col-sm-6 col-xs-12 archive_content<?php if(empty($img_url)) : ?>_full<?php endif; ?>">
+        <div class="col-md-9 col-sm-6 col-xs-12 archive_content">
             <h3><a href="<?php echo get_the_permalink($post_id); ?>"><?php printf(__('%s', SCP_SLUG), get_the_title($post_id)) ?></a></h3>
             <h4 class="recent_story_loc">
             <?php

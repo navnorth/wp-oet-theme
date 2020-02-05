@@ -92,7 +92,12 @@ $results = array();
 							else
 								echo '<div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">'.$thumbnail.'</div>';
 							$full_width = false;
-						}
+						} else {
+                            echo '<div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">
+                                <div class="search-result-icon">'.search_result_default_icon($result['type']).'</div>
+                            </div>';
+                            $full_width = false;
+                        }
 						?>
 						<div class="<?php if ($full_width==true): ?>col-md-12 col-sm-12<?php else: ?>col-md-9 col-sm-6<?php endif; ?> col-xs-12 search-result-content">
 							<header class="search-header">

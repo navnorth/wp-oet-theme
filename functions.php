@@ -513,3 +513,27 @@ add_action( 'add_meta_boxes', 'oet_register_meta_boxes' );
     }
 }
 add_action( 'admin_footer', 'add_modals_to_footer', 10 );
+
+function search_result_default_icon($type){
+    $icon = 'fa-file-o';
+    
+    switch($type){
+        case "resources":
+            $icon = "fa-external-link";
+            break;
+        case "publications":
+            $icon = "fa-bar-chart-o";
+            break;
+        case "initiatives":
+            $icon = "fa-folder-o";
+            break;
+        case "archives":
+            $icon = "fa-archive";
+            break;
+        case "other results":
+            $icon = "fa-files-o";
+            break;
+    }
+    
+    return '<i class="fa '.$icon.' fa-5x"></i>';
+}
