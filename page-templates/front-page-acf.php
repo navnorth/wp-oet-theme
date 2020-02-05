@@ -168,7 +168,7 @@
                     .oet-tilelinks-section-title{
                       font-size: <?php echo $tl_hdr_fontsize ?>px;
                       color: <?php echo $tl_hdr_fontcolor ?>;
-                      font-family:'Raleway-<?php echo $tl_hdr_fontweight ?>' !important;
+                      font-family:'WorkSans-<?php echo $tl_hdr_fontweight ?>' !important;
                     }
                     </style>
                     <?php
