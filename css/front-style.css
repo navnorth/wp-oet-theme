@@ -380,15 +380,26 @@ ul.checkbox_list input {
 .wp-caption p.wp-caption-text { margin: 20px; }
 .program_toc_box > div { margin-top:30px; }
 .search-results .search_story_featured_image { max-width:230px; width:100%; height:auto; }
-.search-results .content-type-heading { margin-top:30px; margin-bottom:10px; }
+.search-results .content-type-heading { margin-top:30px; margin-bottom:10px; font-size: 28px; line-height:33px; color:#E57200; }
 .search-results .archive-heading { font-size:28px; }
 .search-results .entry-content { overflow:hidden; margin-bottom:15px; }
 .search-results .archived-post h3 { font-size:20px; }
-.search-results .search-header h4.entry-parent-title { margin-bottom:0; }
-.search-results .search-header h3.entry-title { margin-top:10px; }
+.search-results .search-header h4.entry-parent-title { margin-bottom:0;}
+.search-results .search-header h3.entry-title { margin-top:10px; font-size: 22px; line-height: 26px; }
 .search-results .search-header h4.entry-parent-title { font-weight:bold; color: #4b4e53; }
 .search-results .search-publication-thumbnail { height:150px; overflow:hidden; }
 .search-results .search-publication-thumbnail img { position:absolute; bottom:0; margin-bottom:0; }
+.search-results .search-thumbnail .search-result-icon {
+	width: 230px;
+    margin: 0 auto;
+    background: #E0E0E0;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.search-results .search-thumbnail .search-result-icon .fa { color:#294179; }
 .main-menu ul li.menu-item-has-children > a:focus { text-decoration:underline; }
 .main-menu li:focus .sub-menu { display:block; }
 .medium {

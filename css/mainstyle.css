@@ -448,7 +448,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .slideshow_container_style-light .slideshow_transparent:hover, .slideshow_container_style-light .slideshow_transparent { opacity: 1 !important}
 .slideshow_container_style-light .slideshow_description_box { background: none !important}
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description,
-.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { margin-left: 20px; text-align: left; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'WorkSans-Bold'; letter-spacing: .5px; color: #4b4e53}
+.slideshow_container_style-light .slideshow_description_box div.slideshow_description a { margin-left: 20px; text-align: left; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'WorkSans-SemiBold'; letter-spacing: .5px; color: #4b4e53}
 
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a:hover,
 .slideshow_container_style-light .slideshow_description_box div.slideshow_description a:focus,
