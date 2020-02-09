@@ -1016,7 +1016,7 @@ function oet_medium_func($attribute, $content = null){
 
 /**
  * OET Featured Card
- * Shortcode Example : [oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\' align=\'\']your content goes here[/oet_featured_card]
+ * Shortcode Example : [oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\']your content goes here[/oet_featured_card]
  **/ 
 add_shortcode("oet_featured_card", "oet_featured_card_func");
 function oet_featured_card_func($attribute, $content = null){
@@ -1033,11 +1033,12 @@ function oet_featured_card_func($attribute, $content = null){
  $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
  $bg = (!empty($background_image))? $background_image: $default_bg;
  $_cont = (strlen($content)>210)? substr($content,0,230).' ...': $content;
+ $_url = (!empty($url))? $url: '#';
  $return = '<div class="oet-featured-card">
  							<div class="oet-featured-card-content-wrapper">
 		 						<div class="oet-featured-card-title">'.$title.' jj jghjhjh jgh</div>
 								<div class="oet-featured-card-desc">'.$_cont.'</div>
-			 					<a href="#" class="oet-featured-card-btn">'.$button_text.'</a>
+			 					<a href="'.$_url'" class="oet-featured-card-btn">'.$button_text.'</a>
 							</div>
 	 					</div>
 						<style>
