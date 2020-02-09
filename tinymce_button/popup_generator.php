@@ -276,7 +276,7 @@ if($action == "show_popup")
 					   var shortcode = "[oet_medium url=\'\' align=\'\']";
 						 break;
 					 case "oet_featured_card":
-	 						var shortcode = "[oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\']your content goes here[/oet_featured_card]";
+	 						var shortcode = "[oet_featured_card title=\'Title Here\' button_text=\'Read More\' background_image=\'\' url=\'\']your content goes here[/oet_featured_card]";
 					   break;
 				   default:
 				   	   var shortcode = "";

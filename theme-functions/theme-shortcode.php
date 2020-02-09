@@ -1036,7 +1036,7 @@ function oet_featured_card_func($attribute, $content = null){
  $_url = (!empty($url))? $url: '#';
  $return = '<div class="oet-featured-card">
  							<div class="oet-featured-card-content-wrapper">
-		 						<div class="oet-featured-card-title">'.$title.' jj jghjhjh jgh</div>
+		 						<div class="oet-featured-card-title">'.$title.'</div>
 								<div class="oet-featured-card-desc">'.$_cont.'</div>
 			 					<a href="'.$_url.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;&nbsp;→</a>
 							</div>
