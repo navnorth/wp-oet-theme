@@ -111,7 +111,8 @@
                             $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
                             $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
                             $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
-                            $_desc = (strlen($_tmp)>210)? substr($_tmp,0,210).' ...': $_tmp;
+                            $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
+                            echo $_desc;
                             $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
                             ?>
                               <div class="oet-trending-image pad"><img src="<?php echo $_img; ?>" alt="trending-now-image" /></div>
