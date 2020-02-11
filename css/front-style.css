@@ -527,7 +527,10 @@ ul.checkbox_list input {
 .oet_trendingnow_layout div, .oet_trendingnow_layout img {display:block; float:left; width:100%;}
 .oet_trendingnow_layout img {width:100%; height: 250px;}
 .oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family:'WorkSans-SemiBold' !important;}
-.oet-trending-description {min-height: 100px; overflow: hidden;}
+.oet-trending-description {min-height: 105px; overflow: hidden;}
+@media (max-width: 1200px){
+	.oet-trending-description {min-height: 125px !important;}
+}
 .oet-trending-title {font-size: 24px; font-family: 'WorkSans-SemiBold' !important; color: #E57200; line-height: 24px;}
 .oet-trending-title i {color: #222;}
 .oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;
