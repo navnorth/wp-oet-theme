@@ -1032,7 +1032,7 @@ function oet_featured_card_func($attribute, $content = null){
  }
  $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
  $bg = (!empty($background_image))? $background_image: $default_bg;
- $_cont = (strlen($content)>210)? substr($content,0,230).' ...': $content;
+ $_cont = (strlen($content)>210)? substr($content,0,130).' ...': $content;
  $_button_link = (!empty($button_link))? $button_link: '#';
  $return = '<div class="adminoverridewidth col-md-4 col-sm-6 col-xs-12">
 	 						<div class="oet-featured-card">
