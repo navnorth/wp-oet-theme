@@ -826,15 +826,18 @@ button:hover {
     margin-bottom: 36px;
 }
 .oet-featured-card-btn{
-		Background-color:#e57200;
+		display: block;
+		text-align: center;
+		Background-color: #e57200;
 		padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    font-family: "WorkSans-Regular" !important;
-    margin-bottom: 36px;
+		font-size: 16px;
+		color: #fff;
+		font-family: "WorkSans-Regular" !important;
+		margin-bottom: 36px;
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
 		border-radius: 3px;
+		max-width: 180px;
 }
 .oet-featured-card-btn:hover{
 		color:#ffffff !important;
