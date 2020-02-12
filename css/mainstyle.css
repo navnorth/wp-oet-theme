@@ -791,14 +791,22 @@ button:hover {
 .oet-featured-card {
 	position: relative;
   background-size: cover !important;
-	margin: 5% 1% !important;
+  margin: 5% 1% !important;
   padding: 30px !important;
   float: left;
   z-index: 1;
   width: 100%;
-	max-width: 335px !important;
-	height:100%;
-	min-height: 425px !important;
+  max-width: 335px !important;
+  height: 100%;
+  min-height: 425px !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-width: 0px;
+  border-style: solid;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+  overflow: hidden;
 }
 .oet-featured-card::before {
   background-size: cover;
