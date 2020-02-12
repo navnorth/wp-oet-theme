@@ -277,6 +277,14 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
   float: left;
   z-index: 1;
   width: 100%;
+	border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-width: 0px;
+  border-style: solid;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+  overflow: hidden;
 }
 .adminoverridewidth {width: 100% !important;}
 .oet-featured-card::before {
@@ -310,7 +318,6 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 		padding: 10px 20px;
 		font-size: 16px;
 		color: #fff;
-		font-family: "WorkSans-Regular" !important;
 		margin-bottom: 36px;
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
