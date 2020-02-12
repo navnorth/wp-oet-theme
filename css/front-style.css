@@ -496,7 +496,7 @@ ul.checkbox_list input {
 .row.ftr.oet-footer { background-color: #2a4378; padding: 10px; }
 .oet-footer-seal {float: left;margin: 5px 30px 0px 30px;}
 .oet-footer div.ftr_lnks .menu-footer-menu-container ul li a {color: #ffffff !important;}
-.ftr_logo>a {display: block;margin: 0px 20px;float: right;}
+.ftr_logo>a {display: block;margin: -12px 20px 0px 20px;float: right;}
 @media (max-width: 610px){
 	.oet-footer div.ftr_lnks .menu-footer-menu-container ul li {padding-right:10px !important;}
 }
@@ -507,7 +507,7 @@ ul.checkbox_list input {
     text-align: center;
 	}
 	.oet-footer div.ftr_lnks .menu-footer-menu-container ul li {padding-right:0px !important;}
-	.ftr_logo>a {float:none !important;}
+	.ftr_logo>a {float:none !important; margin-top:0px !important;}
 }
 
 
