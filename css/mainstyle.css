@@ -817,6 +817,7 @@ button:hover {
     color: #fff;
     font-family: "WorkSans-Bold" !important;
     margin-bottom: 32px;
+		margin-top: 10px;
 }
 .oet-featured-card-desc {
     font-size: 16px;
