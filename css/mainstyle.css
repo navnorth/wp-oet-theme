@@ -796,8 +796,6 @@ button:hover {
   z-index: 1;
   width: 100%;
 	max-width: 335px !important;
-	margin-left:15px;
-	margin-right:15px;
 }
 .oet-featured-card::before {
   background-size: cover;
