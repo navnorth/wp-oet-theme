@@ -115,10 +115,10 @@ color palette:
 	font-family:'OpenSans-Regular';
 	src:url('../fonts/OpenSans-Regular.eot');
 	src:url('../fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans.woff') format('woff'),
+		url('../fonts/OpenSans-Regular.woff') format('woff'),
 		url('../fonts/OpenSans-Regular.woff2') format('woff2'),
 		url('../fonts/OpenSans-Regular.ttf') format("truetype"),
-		url('../fonts/OpenSans.svg#opensans') format('svg');
+		url('../fonts/OpenSans-Regular.svg#opensans') format('svg');
 }
 
 @font-face{

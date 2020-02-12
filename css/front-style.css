@@ -399,6 +399,7 @@ ul.checkbox_list input {
     align-items: center;
     justify-content: center;
 }
+.search-results .search-thumbnail .search-result-icon .search-result-svg { width:75px; height:auto; }
 .search-results .search-thumbnail .search-result-icon .fa { color:#294179; }
 .main-menu ul li.menu-item-has-children > a:focus { text-decoration:underline; }
 .main-menu li:focus .sub-menu { display:block; }
