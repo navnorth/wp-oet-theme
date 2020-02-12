@@ -20,7 +20,7 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_
         </div>
         <?php else: ?>
         <div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">
-            <div class="search-result-icon"><i class="fa fa-file-text fa-5x"></i></div>
+            <div class="search-result-icon"><?php echo search_result_default_icon('stories'); ?></div>
         </div>
         <?php endif; ?>
         <div class="col-md-9 col-sm-6 col-xs-12 search_story_content">
