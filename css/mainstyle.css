@@ -812,8 +812,8 @@ button:hover {
 	z-index: -1;
 }
 .oet-featured-card-title {
-    font-size: 32px;
-		line-height: 39px;
+    font-size: 24px;
+		line-height: 28px;
     color: #fff;
     font-family: "WorkSans-Bold" !important;
     margin-bottom: 32px;
