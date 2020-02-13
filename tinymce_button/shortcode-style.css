@@ -328,11 +328,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 		text-decoration: none !important;
 		opacity: .85;
 }
-.oet-featured-card-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+
 
 /* ******************** */
 /* FROM FRONT-STYLE.CSS */
