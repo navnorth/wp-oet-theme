@@ -10,8 +10,7 @@ function add_image_metabox()
 	
 	if ($template!=="page-templates/blog-template.php") {
 		add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
-        if ($template=="page-templates/story-template.php")
-            add_meta_box( "story_metabox", "Story Metabox", "story_metabox_func", "page" );
+        add_meta_box( "story_metabox", "Story Metabox", "story_metabox_func", "page" );
 	} else {
 		add_meta_box( "blog_metabox", "Select Publications", "blog_metabox_func", "page");
 	}
