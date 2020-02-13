@@ -53,11 +53,15 @@ jQuery( document ).ready(function() {
 	    ajaxurl,
 	    data
 	    ).done( function(response) {
-	    verbose = jQuery("#oer_verbose_block");
-	    verbose.html("");
-	    verbose.html(response);
-	});
+            verbose = jQuery("#oer_verbose_block");
+            verbose.html("");
+            verbose.html(response);
+        });
 
 	return false;
     });
+    
+    jQuery("#page_template").on("change", function(){
+        jQuery('#story_metabox').toggle(jQuery(this).val()=='page-templates/story-template.php');
+    }).change();
 });
