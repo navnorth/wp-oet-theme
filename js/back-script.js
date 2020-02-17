@@ -63,5 +63,10 @@ jQuery( document ).ready(function() {
     
     jQuery("#page_template").on("change", function(){
         jQuery('#story_metabox').toggle(jQuery(this).val()=='page-templates/story-template.php');
+        var sidebar_templates = ['page-templates/publication-template.php', 'default'];
+        if (sidebar_templates.indexOf(jQuery(this).val())==-1)
+            jQuery('#oet-sidebar-metabox').toggle(false);
+        else
+            jQuery('#oet-sidebar-metabox').toggle(true);
     }).change();
 });
