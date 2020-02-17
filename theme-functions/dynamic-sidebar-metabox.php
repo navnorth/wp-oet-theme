@@ -4,7 +4,10 @@ global $post;
 ?>
 <div class="oet_dynamic_sidebar_wrapper">
     <?php
-    $sidebar_sections = get_post_meta($post->ID,"oet_sidebar_section")[0];
+    $sidebar_sections = null;
+    $sidebar_section = get_post_meta($post->ID,"oet_sidebar_section");
+    if ($sidebar_section)
+        $sidebar_sections = $sidebar_section[0];
     $index = 0;
     $type = "";
     if (!empty($sidebar_sections)){
