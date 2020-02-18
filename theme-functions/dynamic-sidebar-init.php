@@ -123,7 +123,9 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 'drag_drop_upload' => true,
                                 'teeny' => true,
                                 'tinymce' => true,
-                                'quicktags' => true
+                                'quicktags' => true,
+                                'editor_class' => 'oet-wp-editor',
+                                'default_editor' => 'html'
                             )
                         );
             $fields_section .= ob_get_clean();
@@ -168,7 +170,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 <label for="oet_sidebar_section_content_html">Short Description:</label>';
                                 ob_start(); // Start Output buffer
                                 wp_editor( $description,
-                                    'oer-sidebar-section-type-'.$rowid,
+                                    'oer-sidebar-section-'.$type.'-'.$rowid,
                                     $settings = array(
                                         'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
                                         'media_buttons' => true,
@@ -176,7 +178,9 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                         'drag_drop_upload' => true,
                                         'teeny' => true,
                                         'tinymce' => true,
-                                        'quicktags' => true
+                                        'quicktags' => true,
+                                        'editor_class' => 'oet-wp-editor',
+                                        'default_editor' => 'html'
                                     )
                                 );
                                 $fields_section .= ob_get_clean();
@@ -219,7 +223,9 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                     'drag_drop_upload' => true,
                                     'teeny' => true,
                                     'tinymce' => true,
-                                    'quicktags' => true
+                                    'quicktags' => true,
+                                    'editor_class' => 'oet-wp-editor',
+                                    'default_editor' => 'html'
                                 )
                             );
                             $fields_section .= ob_get_clean();
