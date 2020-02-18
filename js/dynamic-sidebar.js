@@ -2,6 +2,7 @@
  * OET Dynamic Sidebar
  */
 jQuery( document ).ready(function($) {
+    var active_editors = [];
     var OET_Dynamic_Sidebar = {
         addSidebarSection: function(){
             $(document).on("click", '.oet-add-sidebar-section', function(e){
@@ -22,6 +23,37 @@ jQuery( document ).ready(function($) {
                     quicktags({ id: textAreaId });
                 });
             });
+        },
+        
+        /** Initialize WP Editor **/
+        initializeActiveEditors: function(){
+            $.each( $('.oet-wp-editor'), function( i, editor ) {
+                var editor_id = $(editor).attr('id');
+                wp.editor.initialize(
+                  editor_id,
+                  {
+                    tinymce: {
+                      wpautop: true,
+                      plugins : 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
+                      toolbar1: 'bold italic underline strikethrough | bullist numlist | blockquote hr wp_more | alignleft aligncenter alignright | link unlink | fullscreen | wp_adv',
+                      toolbar2: 'formatselect alignjustify forecolor | pastetext removeformat charmap | outdent indent | undo redo | wp_help'
+                    },
+                    quicktags: true,
+                    mediaButtons: true,
+                  }
+                );
+            
+                var mce_editor = tinymce.get(editor_id);
+                if(mce_editor) {
+                  val = wp.editor.getContent(editor_id); // Visual tab is active
+                } else {
+                  val = $('#'+editor_id).val(); // HTML tab is active
+                }
+             
+                // Save id for removal later on
+                active_editors.push(editor_id);
+            
+              });
         },
         
         /** Display Content Type Editor **/
@@ -336,6 +368,7 @@ jQuery( document ).ready(function($) {
         
     };
     
+    OET_Dynamic_Sidebar.initializeActiveEditors();
     OET_Dynamic_Sidebar.addSidebarSection();
     OET_Dynamic_Sidebar.displayContentTypeEditor();
     OET_Dynamic_Sidebar.selectSidebarSectionImage();
