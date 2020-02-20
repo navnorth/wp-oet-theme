@@ -799,6 +799,7 @@ button:hover {
   max-width: 335px !important;
   height: 100%;
   min-height: 425px !important;
+	max-height: 425px !important;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -820,38 +821,65 @@ button:hover {
 	z-index: -1;
 }
 .oet-featured-card-title {
-    font-size: 24px;
-		line-height: 28px;
-    color: #fff;
-    font-family: "WorkSans-Bold" !important;
-    margin-bottom: 32px;
-		margin-top: 10px;
+	font-size: 24px;
+	line-height: 28px;
+	color: #fff;
+	font-family: "WorkSans-Bold" !important;
+	margin-bottom: 22px;
+	margin-top: 10px !important;
+	width: 100%;
+	max-height: 82px;
+	height: 100%;
+	
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 .oet-featured-card-desc {
     font-size: 16px;
     color: #fff;
     font-family: "WorkSans-Regular" !important;
-    margin-bottom: 36px;
+    margin-bottom: 26px;
+		width: 100%;
+		    word-spacing: -1px;
+		
+		min-height: 180px;
+    max-height: 180px;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+   	text-overflow: ellipsis;
+   	display: -webkit-box;
+   	-webkit-line-clamp:8;
+   	-webkit-box-orient: vertical;
+		
 }
-.oet-featured-card-btn{
-		display: block;
-		Background-color: #e57200;
-		padding: 10px 20px;
-		font-size: 16px;
-		color: #fff;
-		font-family: "WorkSans-Regular" !important;
-		margin-bottom: 36px;
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
-		max-width: 180px;
+
+.oet-featured-card-btn {
+	position: absolute;
+	bottom: 38px;
+	Background-color: #e57200;
+	padding: 10px 10px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	font-family: "WorkSans-Regular" !important;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	min-width: 138px;
+    max-width: 275px;
+	display: block;
 }
 .oet-featured-card-btn:hover{
 		color:#ffffff !important;
 		text-decoration: none !important;
 		opacity: .85;
 }
-
-
+.adminoverridewidth {
+    margin-bottom: 20px !important;
+}
 
 
