@@ -64,9 +64,16 @@ jQuery( document ).ready(function() {
     jQuery("#page_template").on("change", function(){
         jQuery('#story_metabox').toggle(jQuery(this).val()=='page-templates/story-template.php');
         var sidebar_templates = ['page-templates/publication-template.php', 'default'];
+        var publication_templates = ['page-templates/publication-subsection-template.php','page-templates/publication-template.php'];
         if (sidebar_templates.indexOf(jQuery(this).val())==-1)
             jQuery('#oet-sidebar-metabox').toggle(false);
         else
             jQuery('#oet-sidebar-metabox').toggle(true);
+        
+        if (publication_templates.indexOf(jQuery(this).val())==-1)
+            jQuery('#publication_metabox').toggle(false);
+        else
+            jQuery('#publication_metabox').toggle(true);
+        
     }).change();
 });
