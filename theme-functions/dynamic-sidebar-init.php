@@ -69,9 +69,9 @@ function oet_add_sidebar_section_callback() {
                             <label for="oet_sidebar_section_html">HTML Content:</label>';
                             ob_start(); // Start Output buffer
                             wp_editor( '',
-                                'oer-sidebar-section-'.($totalSections),
+                                'oet-sidebar-section-'.($totalSections),
                                 $settings = array(
-                                    'textarea_name' => 'oet_sidebar_section[content][html][]',
+                                    'textarea_name' => 'oet_sidebar_section[content][html]['.$totalSections.'][]',
                                     'media_buttons' => true,
                                     'textarea_rows' => 6,
                                     'drag_drop_upload' => true,
@@ -117,9 +117,9 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                         <label for="oet_sidebar_section_html">HTML Content:</label>';
                         ob_start(); // Start Output buffer
                         wp_editor( $html,
-                            'oer-sidebar-section-'.($rowid),
+                            'oet-sidebar-section-'.($rowid),
                             $settings = array(
-                                'textarea_name' => 'oet_sidebar_section[content][html][]',
+                                'textarea_name' => 'oet_sidebar_section[content][html]['.$rowid.'][]',
                                 'media_buttons' => true,
                                 'textarea_rows' => 6,
                                 'drag_drop_upload' => true,
@@ -172,7 +172,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 <label for="oet_sidebar_section_content_html">Short Description:</label>';
                                 ob_start(); // Start Output buffer
                                 wp_editor( $description,
-                                    'oer-sidebar-section-'.$type.'-'.$rowid,
+                                    'oet-sidebar-section-'.$type.'-'.$rowid,
                                     $settings = array(
                                         'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
                                         'media_buttons' => true,
@@ -217,7 +217,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                             <label for="oet_sidebar_section_content_html">Short Description:</label>';
                             ob_start(); // Start Output buffer
                             wp_editor( '',
-                                'oer-sidebar-section-type-'.$rowid,
+                                'oet-sidebar-section-type-'.$rowid,
                                 $settings = array(
                                     'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
                                     'media_buttons' => true,
