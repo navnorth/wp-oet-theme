@@ -18,7 +18,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/widget-areas.php' )
 /**
  * Theme Settings.
  */
-require_once( get_stylesheet_directory() . '/theme-functions/theme-options.php' );
+//require_once( get_stylesheet_directory() . '/theme-functions/theme-options.php' );
 
 /**
  * Theme Social Media Settings.
