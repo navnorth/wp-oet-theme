@@ -18,6 +18,7 @@ jQuery( document ).ready(function($) {
                 }).done(function (response) {
                     btn.before(response);
                     var textAreaId = 'oet-sidebar-section-' + id;
+                    var cloned_element = $('')
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
@@ -368,7 +369,7 @@ jQuery( document ).ready(function($) {
         
     };
     
-    OET_Dynamic_Sidebar.initializeActiveEditors();
+    //OET_Dynamic_Sidebar.initializeActiveEditors();
     OET_Dynamic_Sidebar.addSidebarSection();
     OET_Dynamic_Sidebar.displayContentTypeEditor();
     OET_Dynamic_Sidebar.selectSidebarSectionImage();

@@ -19,6 +19,8 @@ global $post;
             $html = (isset($sidebar_sections['html'][$index])?$sidebar_sections['html'][$index]:"");
             $type = (isset($sidebar_sections['type'][$index])?$sidebar_sections['type'][$index]:"");
             $content_type = (isset($sidebar_sections['content'][$type])?$sidebar_sections['content'][$type]:"");
+            if ($type=="html")
+                $content_type = (isset($sidebar_sections['content'][$type][$order])?$sidebar_sections['content'][$type][$order]:"");
         ?>
         <div class="panel panel-default oet-sidebar-section-wrapper" id="oet_sidebar_section_<?php echo ($index+1); ?>">
             <input type="hidden" name="oet_sidebar_section[order][]" class="element-order" value="<?php echo $order;?>">
@@ -70,7 +72,7 @@ global $post;
                 </div>
                 <?php } ?>
             </div>
-        </div>    
+        </div>
         <?php
         }
     }
