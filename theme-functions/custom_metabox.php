@@ -14,16 +14,6 @@ function add_image_metabox()
 	} else {
 		add_meta_box( "blog_metabox", "Select Publications", "blog_metabox_func", "page");
 	}
-	add_meta_box( "Assign Widgets to Pages", "Assign Widgets to Pages", "asgnwidget_metabox_func", "page", "side", "high" );
-}
-function asgnwidget_metabox_func()
-{
-	global $post;
-	?>
-	<a target="_blank" href="<?php echo site_url(); ?>/wp-admin/themes.php?page=theme-options&action=widget_assign&page_id=<?php echo $post->ID;?>">
-			<strong><?php echo $post->post_title;?></strong>
-	</a>
-<?php
 }
 function publication_metabox_func()
 {

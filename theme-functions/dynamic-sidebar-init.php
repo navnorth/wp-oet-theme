@@ -77,7 +77,9 @@ function oet_add_sidebar_section_callback() {
                                     'drag_drop_upload' => true,
                                     'teeny' => true,
                                     'tinymce' => true,
-                                    'quicktags' => true
+                                    'quicktags' => true,
+                                    'editor_class' => 'oet-wp-editor',
+                                    'default_editor' => 'html'
                                 )
                             );
                 $content .= ob_get_clean();
