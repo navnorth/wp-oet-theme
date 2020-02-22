@@ -990,9 +990,8 @@ function oet_medium_func($attribute, $content = null){
 	
 	if ($url) {
 		$self_access_token = get_option("mediumaccesstoken");
-        var_dump($self_access_token);
 		$oet_medium = new OET_Medium($self_access_token);
-		var_dump($oet_medium);
+		
 		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
 			$oet_medium->display_invalid_text();	
 		}

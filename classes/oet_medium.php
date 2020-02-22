@@ -329,7 +329,8 @@ class OET_Medium {
         try{
             $publications = $this->get_publications();
             $rss_urls = $this->get_rss_urls();
-    
+            var_dump($publications);
+            var_dump($rss_urls);
             $match = false;
     
             $find_url = parse_url($url);
