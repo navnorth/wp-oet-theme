@@ -1004,9 +1004,9 @@ function oet_medium_func($attribute, $content = null){
             $attr['width'] = $width;
 			
         if (!empty($attr))
-            $return =  $oet_medium->display_post($url, $attr);
+            $return =  $oet_medium->display_post_by_jsonUrl($url, $attr);
 		else
-			$return =  $oet_medium->display_post($url);
+			$return =  $oet_medium->display_post_by_jsonUrl($url);
 	}
 	
 	return $return;
