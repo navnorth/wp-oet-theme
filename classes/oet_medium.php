@@ -444,9 +444,10 @@ class OET_Medium {
             
             $find_url = parse_url($url);
             $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
-    
-            $feeds = $this->get_medium_story($url);
             
+            $feeds = $this->get_medium_story($url);
+            var_dump($find_url);
+            var_dump($post_url);
             if (!empty($feeds)) {
                 $feed = $feeds['payload'];
                 $description = strip_tags_content($feed['value']['content']['subtitle'],"<h3>","</h3>");
