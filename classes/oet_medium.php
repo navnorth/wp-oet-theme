@@ -391,7 +391,7 @@ class OET_Medium {
                                 $title = substr($title,0,80);
                                 $title = substr($title,0,strrpos($title," "))."...";
                             }
-                            var_dump($feed['payload']['value']['content']);
+                            
                             if (isset($feed['payload']['value']['content']['metaDescription']))
                                 $description = $feed['payload']['value']['content']['metaDescription'];
                             else
@@ -405,7 +405,9 @@ class OET_Medium {
                                 $description = substr($description,0,175);
                                 $description = substr($description,0,strrpos($description," "))."...";
                             }
-    
+                            var_dump($title);
+                            var_dump($description);
+                            var_dump($feed['payload']['virtuals']);
                             $background = "";
                             if (isset($feed['payload']['value']['virtuals']['previewImage']['imageId'])){
                                 $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
