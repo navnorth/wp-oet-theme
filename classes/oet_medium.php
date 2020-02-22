@@ -338,7 +338,6 @@ class OET_Medium {
     
             if (strpos($url,"@".$this->_user->data->username)){
                 $feeds = $this->get_medium_stories();
-                var_dump($feeds);
                 if ($feeds){
                     foreach($feeds as $feed){
                         $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
@@ -380,6 +379,9 @@ class OET_Medium {
                             break;
                         }
                     }
+                } else {
+                    $feed = $this->get_medium_story($url);
+                    var_dump($feed);
                 }
             } else {
                 $feeds = $this->get_feeds();
