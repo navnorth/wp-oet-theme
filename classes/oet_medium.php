@@ -513,7 +513,7 @@ class OET_Medium {
                         <h1><a href="'.$story['link'].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story['link'].'\');">'.$story['title'].'</a></h1>
                         <p>'.$story['description'].'</p>
                         <p class="mfooter">
-                            <a href="'.$story["user_url"].'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["user_url"].'\');"><img src="'.$logo_url.'" alt="Office of Educational Technology logo" width="30" height="30" /></a><a href="'.$story["user_url"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["user_url"].'\');">@'.$story["user_name"].'</a> ';
+                            <a href="'.$story["user_url"].'" alt="Office of Educational Technology logo" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["user_url"].'\');"><img src="'.$logo_url.'" alt="Office of Educational Technology logo" width="30" height="30" /></a> <a href="'.$story["user_url"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["user_url"].'\');">@'.$story["user_name"].'</a> ';
                     if (isset($story["pub_name"]) && $story["pub_name"]!==""){
                         $embed .= 'in <a href="'.$story["pub_url"].'" alt="'.$story["pub_name"].'" title="'.$story["pub_name"].'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$story["pub_name"].'</a>';
                     }
