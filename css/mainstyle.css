@@ -371,6 +371,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 	border:none;
 	margin-top:0;
 }
+.pblctn_right_sid_mtr .sidebar-medium-post p { float:none; }
 .sidebar-medium-post .single-medium .medium .medium-background .medium-wrapper p.mfooter { width:200px; }
 .sidebar-medium-post .single-medium .medium .medium-background .medium-wrapper p.mfooter img {
 	width:auto; margin:0;
