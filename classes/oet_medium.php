@@ -441,12 +441,12 @@ class OET_Medium {
             extract($attribute);
             
         try{
-            
+            if (strpos($url,'?format=json')==FALSE)
+                $url .= '/?format=json';
             $find_url = parse_url($url);
             $post_url = $find_url['scheme']."://".$find_url['host'].$find_url['path'];
             
             $feeds = $this->get_medium_story($url);
-            var_dump($feeds);
             
             if (!empty($feeds)) {
                 $feed = $feeds['payload'];
