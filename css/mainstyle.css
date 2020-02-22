@@ -302,11 +302,11 @@ iframe { border: 0;  max-width:100%; }
 .dbl_coad_sign { font-size: 25px; color: #e57200}
 
 .pblctn_box_icns { background: #444}
-.pblctn_right_sid_mtr { padding: 0 !important;}
+.pblctn_right_sid_mtr { padding: 0 !important; margin-bottom:30px; }
 .pblctn_right_sid_mtr img, .pblctn_right_sid_mtr iframe { width: 100%; margin: 7px 0}
 .pblctn_right_sid_mtr span img  { width: auto; margin-right: 4px}
 .pblctn_right_sid_mtr .col-md-12 { margin-top: 35px; border: 1px solid #94a0bc; padding: 20px;}
-.pblctn_right_sid_mtr p { float: left; width: 100%}
+.pblctn_right_sid_mtr p { float: left; width: 100%; overflow-wrap:break-word; }
 .padding_left { padding-left: 0 !important}
 .padding_right { padding-right: 0 !important}
 .col-md-9 .col-md-3 img { width: 100%}
