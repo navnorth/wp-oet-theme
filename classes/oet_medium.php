@@ -407,7 +407,7 @@ class OET_Medium {
                             }
                             var_dump($title);
                             var_dump($description);
-                            var_dump($feed['payload']['virtuals']);
+                            var_dump($feed['payload']['value']['virtuals']);
                             $background = "";
                             if (isset($feed['payload']['value']['virtuals']['previewImage']['imageId'])){
                                 $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
