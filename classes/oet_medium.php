@@ -405,13 +405,11 @@ class OET_Medium {
                                 $description = substr($description,0,175);
                                 $description = substr($description,0,strrpos($description," "))."...";
                             }
-                            var_dump($title);
-                            var_dump($description);
-                            var_dump($feed['payload']['value']['virtuals']);
+                            
                             $background = "";
                             if (isset($feed['payload']['value']['virtuals']['previewImage']['imageId'])){
                                 $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
-                                $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
+                                $background = "background:#000000 url(". $cdn_base.$feed['payload']['value']['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
                             } else
                                 $background = "background:#757575";
     
