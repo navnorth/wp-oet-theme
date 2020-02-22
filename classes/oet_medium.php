@@ -385,17 +385,17 @@ class OET_Medium {
                         $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['payload']['value']['uniqueSlug'];
                         if ($post_url==$link_url){
                             $match = true;
-                            var_dump($feed['payload']['value']['title']);
-                            $title = $feed['title'];
+                            
+                            $title = $feed['payload']['value']['title'];
                             if (strlen($title)>80){
                                 $title = substr($title,0,80);
                                 $title = substr($title,0,strrpos($title," "))."...";
                             }
     
-                            if (isset($feed['content']['metaDescription']))
-                                $description = $feed['content']['metaDescription'];
+                            if (isset($feed['payload']['value']['content']['metaDescription']))
+                                $description = $feed['payload']['value']['content']['metaDescription'];
                             else
-                                $description = $feed['content']['subtitle'];
+                                $description = $feed['payload']['value']['content']['subtitle'];
     
                             $description = strip_tags_content($description,"<h3>","</h3>");
                             $description = strip_tags_content($description,"<figure>","</figure>");
@@ -407,7 +407,7 @@ class OET_Medium {
                             }
     
                             $background = "";
-                            if (isset($feed['virtuals']['previewImage']['imageId'])){
+                            if (isset($feed['payload']['value']['virtuals']['previewImage']['imageId'])){
                                 $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
                                 $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
                             } else
