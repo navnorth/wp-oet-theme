@@ -391,7 +391,7 @@ class OET_Medium {
                                 $title = substr($title,0,80);
                                 $title = substr($title,0,strrpos($title," "))."...";
                             }
-    
+                            var_dump($feed['payload']['value']['content']);
                             if (isset($feed['payload']['value']['content']['metaDescription']))
                                 $description = $feed['payload']['value']['content']['metaDescription'];
                             else
