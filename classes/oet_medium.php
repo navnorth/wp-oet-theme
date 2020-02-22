@@ -382,7 +382,7 @@ class OET_Medium {
                 } else {
                     $feed = $this->get_medium_story($url);
                     if ($feed){
-                        var_dump($feed);
+                        var_dump($feed['uniqueSlug']);
                         $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
                         var_dump($post_url);
                         var_dump($link_url);
