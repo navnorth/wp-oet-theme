@@ -418,7 +418,6 @@ class OET_Medium {
                             $story['background'] =  $background;
                             $story['align'] = $align;
                             $story['link'] = $link_url;
-                            break;
                         }
                     }
                 }
