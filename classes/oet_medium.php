@@ -381,7 +381,46 @@ class OET_Medium {
                     }
                 } else {
                     $feed = $this->get_medium_story($url);
-                    var_dump($feed);
+                    if ($feed){
+                        $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
+                        if ($post_url==$link_url){
+                            $match = true;
+    
+                            $title = $feed['title'];
+                            if (strlen($title)>80){
+                                $title = substr($title,0,80);
+                                $title = substr($title,0,strrpos($title," "))."...";
+                            }
+    
+                            if (isset($feed['content']['metaDescription']))
+                                $description = $feed['content']['metaDescription'];
+                            else
+                                $description = $feed['content']['subtitle'];
+    
+                            $description = strip_tags_content($description,"<h3>","</h3>");
+                            $description = strip_tags_content($description,"<figure>","</figure>");
+                            $description = trim(strip_tags($description));
+    
+                            if (strlen($description)>175){
+                                $description = substr($description,0,175);
+                                $description = substr($description,0,strrpos($description," "))."...";
+                            }
+    
+                            $background = "";
+                            if (isset($feed['virtuals']['previewImage']['imageId'])){
+                                $cdn_base = "https://cdn-images-1.medium.com/max/1024/";
+                                $background = "background:#000000 url(". $cdn_base.$feed['virtuals']['previewImage']['imageId'] .") no-repeat top left;";
+                            } else
+                                $background = "background:#757575";
+    
+                            $story['title'] = $title;
+                            $story['description'] = $description;
+                            $story['background'] =  $background;
+                            $story['align'] = $align;
+                            $story['link'] = $link_url;
+                            break;
+                        }
+                    }
                 }
             } else {
                 $feeds = $this->get_feeds();
