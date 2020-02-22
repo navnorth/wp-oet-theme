@@ -329,8 +329,7 @@ class OET_Medium {
         try{
             $publications = $this->get_publications();
             $rss_urls = $this->get_rss_urls();
-            var_dump($publications);
-            var_dump($rss_urls);
+            
             $match = false;
     
             $find_url = parse_url($url);
@@ -339,6 +338,7 @@ class OET_Medium {
     
             if (strpos($url,"@".$this->_user->data->username)){
                 $feeds = $this->get_medium_stories();
+                var_dump($feeds);
                 if ($feeds){
                     foreach($feeds as $feed){
                         $link_url = $find_url['scheme']."://".$find_url['host']."/@".$this->_user->data->username."/".$feed['uniqueSlug'];
