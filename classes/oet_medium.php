@@ -507,7 +507,7 @@ class OET_Medium {
         else
             $align = 'float:'.$story['align'];
         $embed = '
-        <div class="col-md-12 col-sm-12 col-xs-12 single-medium">
+        <div class="single-medium">
             <div class="medium" style="'.$story['background'].''.$align.'">
                 <div class="medium-background">
                     <div class="medium-wrapper">
