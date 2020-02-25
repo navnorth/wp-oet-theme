@@ -540,3 +540,49 @@ function search_result_default_icon($type){
     $svgIcon = get_stylesheet_directory_uri() . "/images/".$icon.".svg";
     return '<span class="search-result-icon-wrapper"><img class="search-result-svg" src="'.$svgIcon.'"></span>';
 }
+
+function oet_display_slideshow($page_id){
+    if( have_rows( 'oet_acf_slides', $page_id ) ){
+	$count = count( get_field('oet_acf_slides',$page_id ) );
+	if ($count==1){
+	    oet_display_static_header($page_id);	    
+	} else {
+	    oet_display_slides($page_id);
+	}
+    }
+}
+
+function oet_display_static_header($page_id){
+    while(have_rows( 'oet_acf_slides', $page_id )): the_row();
+	$headerText = get_sub_field('oet_acf_slide_header');
+	$bgImage = get_sub_field('oet_acf_slide_image');
+	$imageAltText = get_sub_field('oet_acf_slide_image_alt_text');
+	$description = get_sub_field('oet_acf_slide_description');
+	$buttonText = get_sub_field('oet_acf_slide_button_text');
+	$buttonUrl = get_sub_field('oet_acf_slide_button_url');
+    endwhile;
+    $bgStyle = "";
+    if (!empty($bgImage)){
+	$image = wp_get_attachment_url($bgImage);
+	$bgStyle = '  style="background-image:url('.$image.')"';
+    }
+?>
+    <div class="oet-acf-page-header"<?php echo $bgStyle; ?>>
+	<div class="oet-slide-wrapper">
+	    <div class="oet-acf-slide-box oet-acf-slide-1">
+		<h2 class="oet-acf-header-text"><?php echo $headerText; ?></h2>
+		<?php if (!empty($description)){ ?>
+		<p><?php echo $description; ?></p>
+		<?php  } ?>
+		<?php if (!empty($buttonUrl)) { ?>
+		<p class="oet-slide-button-row"><a href="<?php echo $buttonUrl; ?>" class="oet-slide-button"><?php echo $buttonText; ?>&nbsp;&nbsp;→</a></p>
+		<?php } ?>
+	    </div>
+	</div>
+    </div>
+<?php
+}
+
+function oet_display_slides($page_id){
+    
+}

@@ -11,10 +11,10 @@
 			//get_template_part( 'content', 'page' );
       /* SLIDER START */
     
-      
+      oet_display_slideshow(get_the_ID());
       
       //include(get_stylesheet_directory().'/slider/oet_slider_init.php');
-      echo do_shortcode('[slideshow_deploy id=’5528′]');
+      //echo do_shortcode('[slideshow_deploy id=’5528′]');
       
       
       /* SLIDER END */
