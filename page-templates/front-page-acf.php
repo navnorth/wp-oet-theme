@@ -185,10 +185,11 @@
                       $lt_btn_color = $tl_ly[0]['oet_act_homepage_tilelinks_buttoncolor'];
                       $lt_btn_fontcolor = $tl_ly[0]['oet_act_homepage_tilelinks_buttonfontcolor'];
                       $lt_btn_fontsize = $tl_ly[0]['oet_act_homepage_tilelinks_buttonfontsize'];
+                      $lt_btn_url = $tl_ly[0]['oet_act_homepage_tilelinks_url'];
                       ?>
                           <div class="col-xs-12 col-md-6 oet-tilelinks-button-block">
                             <table border="0"><tr><td style="background-color:<?php echo $lt_btn_color ?> !important;" onclick="jQuery(this).children('a')[0].click();">
-                              <a href="#" style="color:<?php echo $lt_btn_fontcolor ?>; font-size:<?php echo $lt_btn_fontsize ?>px"><?php echo $lt_btn_text ?></a>
+                              <a href="<?php echo ($lt_btn_url!='')? $lt_btn_url: '#'; ?>" style="color:<?php echo $lt_btn_fontcolor ?>; font-size:<?php echo $lt_btn_fontsize ?>px"><?php echo $lt_btn_text ?></a>
                             </td></tr></table>
                           </div>  
                     <?php 
