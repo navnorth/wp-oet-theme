@@ -604,9 +604,12 @@ function oet_display_slides($page_id){
 	    $bgCover = "";
 	    if (!empty($bgImage)){
 		$image = wp_get_attachment_url($bgImage);
-		if ($image_behavior!=="natural")
-		    $bgCover = ";background-size:cover;";
-		$bgStyle = '  style="background-image:url('.$image.')'.$bgCover.'"';
+		if ($image_behavior=="natural")
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;"';
+		elseif($image_behavior=="crop")
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:contain;"';
+		else
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
 	    }
 	?>	
 		<div class="slideshow_view oet-acf-page-header"<?php echo $bgStyle; ?>>
@@ -614,7 +617,7 @@ function oet_display_slides($page_id){
 			<div class="slideshow_description_box slideshow_transparent oet-acf-slide-box">
 			    <h2 class="oet-acf-header-text"><?php echo $headerText; ?></h2>
 			    <?php if (!empty($description)){ ?>
-			    <p><?php echo $description; ?></p>
+			    <p class="oet-acf-slide-description"><?php echo $description; ?></p>
 			    <?php  } ?>
 			    <?php if (!empty($buttonUrl)) { ?>
 			    <p class="oet-slide-button-row"><a href="<?php echo $buttonUrl; ?>" class="oet-slide-button"><?php echo $buttonText; ?>&nbsp;&nbsp;→</a></p>
