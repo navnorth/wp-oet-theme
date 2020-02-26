@@ -584,5 +584,67 @@ function oet_display_static_header($page_id){
 }
 
 function oet_display_slides($page_id){
-    
+    $image_behavior = get_field('oet_acf_image_behavior', $page_id);
+    $transition = get_field('oet_acf_slides_animation_transition', $page_id);
+    $slide_in_interval = get_field('oet_acf_slides_seconds_to_slide', $page_id);
+    $slide_interval = get_field('oet_acf_seconds_between_changing_slides', $page_id);
+    ?>
+    <div class="slideshow_container slideshow_container_style-light" style=" " data-slideshow-id="<?php echo $page_id; ?>" data-style-name="style-light" data-style-version="2.3.1" >
+	<div class="slideshow_loading_icon"></div>
+	<div class="slideshow_content" style="display: none;">
+	<?php
+	while(have_rows( 'oet_acf_slides', $page_id )): the_row();
+	    $headerText = get_sub_field('oet_acf_slide_header');
+	    $bgImage = get_sub_field('oet_acf_slide_image');
+	    $imageAltText = get_sub_field('oet_acf_slide_image_alt_text');
+	    $description = get_sub_field('oet_acf_slide_description');
+	    $buttonText = get_sub_field('oet_acf_slide_button_text');
+	    $buttonUrl = get_sub_field('oet_acf_slide_button_url');
+	    $bgStyle = "";
+	    $bgCover = "";
+	    if (!empty($bgImage)){
+		$image = wp_get_attachment_url($bgImage);
+		if ($image_behavior!=="natural")
+		    $bgCover = ";background-size:cover;";
+		$bgStyle = '  style="background-image:url('.$image.')'.$bgCover.'"';
+	    }
+	?>	
+		<div class="slideshow_view oet-acf-page-header"<?php echo $bgStyle; ?>>
+		    <div class="slideshow_slide slideshow_slide_image oet-slide-wrapper">
+			<div class="slideshow_description_box slideshow_transparent oet-acf-slide-box">
+			    <h2 class="oet-acf-header-text"><?php echo $headerText; ?></h2>
+			    <?php if (!empty($description)){ ?>
+			    <p><?php echo $description; ?></p>
+			    <?php  } ?>
+			    <?php if (!empty($buttonUrl)) { ?>
+			    <p class="oet-slide-button-row"><a href="<?php echo $buttonUrl; ?>" class="oet-slide-button"><?php echo $buttonText; ?>&nbsp;&nbsp;→</a></p>
+			    <?php } ?>
+			    <!--<div class="slideshow_title"><a href="<?php echo $buttonUrl; ?>" target="_self" ><?php echo $headerText; ?></a></div>
+			    <div class="slideshow_description"><a href="<?php echo $buttonUrl; ?>" target="_self" ><?php echo $description; ?></a></div>-->
+			</div>
+		    </div><div style="clear: both;"></div>
+		</div>
+    <?php
+    endwhile;
+    ?>
+	</div>
+	<div class="slideshow_controlPanel slideshow_transparent" style="display: none;">
+	    <ul>
+		<li class="slideshow_togglePlay" data-play-text="Play" data-pause-text="Pause"></li>
+	    </ul>
+	</div>
+	<div class="slideshow_button slideshow_previous slideshow_transparent" role="button" data-previous-text="Previous" style="display: none;"></div>
+	<div class="slideshow_button slideshow_next slideshow_transparent" role="button" data-next-text="Next" style="display: none;"></div>
+	<div class="slideshow_pagination" style="display: none;" data-go-to-text="Go to slide"><div class="slideshow_pagination_center"></div></div>
+    </div>
+    <link rel='stylesheet' id='slideshow-functional-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/functional.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='slideshow-stylesheet_style-light-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/style-light.css' type='text/css' media='all' />
+    <script type='text/javascript'>
+	/* <![CDATA[ */
+	var SlideshowPluginSettings_<?php echo $page_id; ?> = {"animation":"slide","slideSpeed":"<?php echo $slide_in_interval; ?>","descriptionSpeed":"0.4","intervalSpeed":"<?php echo $slide_interval; ?>","slidesPerView":"1","maxWidth":"0","aspectRatio":"3:1","height":"380","imageBehaviour":"natural","showDescription":"true","hideDescription":"false","preserveSlideshowDimensions":"true","enableResponsiveness":"true","play":"true","loop":"true","pauseOnHover":"true","controllable":"false","hideNavigationButtons":"false","showPagination":"true","hidePagination":"false","controlPanel":"false","hideControlPanel":"true","waitUntilLoaded":"true","showLoadingIcon":"true","random":"false","avoidFilter":"true","dimensionWidth":"3","dimensionHeight":"1"};
+	var slideshow_jquery_image_gallery_script_adminURL = "<?php echo esc_url(admin_url()); ?>";
+    /* ]]> */
+    </script>
+    <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/all.frontend.min.js'></script>
+    <?php
 }
