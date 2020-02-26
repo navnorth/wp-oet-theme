@@ -21,7 +21,13 @@ global $post;
 	<div id="content" class="row site-content" tabindex="-1">
 		
         	<div class="col-md-12 c ol-sm-12 col-xs-12 padding_left padding_right">
+		<?php
+		if( have_rows( 'oet_acf_slides') ){
+			oet_display_slideshow(get_the_ID());
+		} else {
+		?>
             	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
+		<?php } ?>
             	
 				<?php while ( have_posts() ) : the_post(); ?>
 				
