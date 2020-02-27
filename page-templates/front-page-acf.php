@@ -96,7 +96,7 @@
                 ?>
                 <div class="col-xs-12 oet_3column_wrapper">
                     <?php if($sechead !== '' && !empty($sechead)){ ?>
-                      <div class="row"><div class="oet-trending-section-title"><?php echo $sechead; ?></div></div>
+                      <div class="row"><h2 class="oet-trending-section-title"><?php echo $sechead; ?></h2></div>
                     <?php } ?>
                     <div class="row ovlp"><?php
                     foreach ($columnlayouts as $columnlayout) {  //Column FC
@@ -115,7 +115,7 @@
                             $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
                             ?>
                               <div class="oet-trending-image pad"><img src="<?php echo $_img; ?>" alt="trending-now-image" /></div>
-                              <div class="oet-trending-title pad"><?php echo $_title_icon; echo $_title; ?></div>
+                              <h3 class="oet-trending-title pad"><?php echo $_title_icon; echo $_title; ?></h3>
                               <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
                               <div class="oet-trending-button pad"><a href="<?php echo $_url; ?>">Read More&nbsp;&nbsp;→</a></div>
                             <?php

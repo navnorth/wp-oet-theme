@@ -1040,7 +1040,7 @@ function oet_featured_card_func($attribute, $content = null){
  $return = '<div class="adminoverridewidth col-md-4 col-sm-6 col-xs-12">
 	 						<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">
 	 							<div class="oet-featured-card-content-wrapper">
-			 						<div class="oet-featured-card-title">'.$title.'</div>
+			 						<h3 class="oet-featured-card-title">'.$title.'</h3>
 									<div class="oet-featured-card-desc">'.$content.'</div>
 				 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>
 								</div>
