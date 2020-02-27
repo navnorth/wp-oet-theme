@@ -676,14 +676,13 @@ function recommended_resources_func($attr, $content = null)
  add_shortcode("oet_button", "button_func");
  function button_func($attr, $content = null) {
 
-	if (is_array($attr)){
-		if ( is_admin() ) {
-			$_arr = getShortcodeAttr($attr);	
-			foreach($_arr as $key => $value) $$key = $value;
-		}
+
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($attr);	
+		foreach($_arr as $key => $value) $$key = $value;	
 	}else{
 		extract($attr);
-	} 
+	}
 
 	//Checks if content is provided otherwise display the text attribute as button text
 	$buttonText = (isset($text) && !empty($text)) ? $text : "Button";
