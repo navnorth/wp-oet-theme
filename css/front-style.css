@@ -673,8 +673,8 @@ h2.oet-acf-header-text {
 	border-radius: 4px;
 	color: #ffffff;
 	font-family: 'OpenSans-Bold';
-	font-size: 14px;
-	line-height: 19px;
+	font-size: 18px;
+  line-height: 22px;
 }
 .oet-slide-button:hover {
 	background:#e98827;
