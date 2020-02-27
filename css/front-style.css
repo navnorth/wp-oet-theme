@@ -110,7 +110,7 @@ hr { width: 100%;}
 	background-color: #e57200;
 	color: #fff;
 	font-family: 'WorkSans-Bold';
-	font-size:14px;
+	font-size:18px;
 	padding:20px !important;
 }
 .col-xs-1 { padding-left:0 !important; padding-right:0 !important; }
@@ -622,6 +622,11 @@ ul.checkbox_list input {
 .oet-tilelinks-button-block a {min-width: auto !important; max-width: none !important;}
 .oet-tilelinks-button-block table {max-width: none !important;}
 }
+/*
+.oet-tilelinks-button-block table tr td:hover a {color: #294179 !important;}
+.oet-tilelinks-button-block table tr td:hover {text-decoration: none;opacity: .9;}
+*/
+
 /*--------SPACER--------*/
 .oet-tilelinks-spacer {padding: 75px 0px 0px 0px !important;float: left;width: 100%;}
 .slideshow_container_style-light {float: left;}
