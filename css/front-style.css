@@ -109,7 +109,7 @@ hr { width: 100%;}
 .custom-button {
 	background-color: #e57200;
 	color: #fff;
-	font-family: 'WorkSans-Bold';
+	font-family: 'WorkSans-SemiBold';
 	font-size:18px;
 	padding:20px !important;
 }
@@ -534,8 +534,8 @@ ul.checkbox_list input {
 }
 .oet-trending-title {font-size: 24px; font-family: 'WorkSans-SemiBold' !important; color: #E57200; line-height: 24px;}
 .oet-trending-title i {color: #222;}
-.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:12px 15px 10px 15px;
--webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; font-size: 18px;font-weight: 800;line-height: 24px;}
+.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;
+-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
 .oet_trendingnow_layout a:hover {color: #ffffff !important; text-decoration: none; opacity: .9;}
 .oet_trendingnow_layout .pad {padding-left:20px; padding-right:20px;}
 .oet_3column_wrapper .ovlp {margin-left: -50px !important; margin-right: -50px !important;}
@@ -622,11 +622,6 @@ ul.checkbox_list input {
 .oet-tilelinks-button-block a {min-width: auto !important; max-width: none !important;}
 .oet-tilelinks-button-block table {max-width: none !important;}
 }
-/*
-.oet-tilelinks-button-block table tr td:hover a {color: #294179 !important;}
-.oet-tilelinks-button-block table tr td:hover {text-decoration: none;opacity: .9;}
-*/
-
 /*--------SPACER--------*/
 .oet-tilelinks-spacer {padding: 75px 0px 0px 0px !important;float: left;width: 100%;}
 .slideshow_container_style-light {float: left;}
@@ -677,13 +672,17 @@ h2.oet-acf-header-text {
 	padding: 10px 20px;
 	border-radius: 4px;
 	color: #ffffff;
-	font-family: 'OpenSans-Bold';
-	font-size: 18px;
-  line-height: 22px;
+	font-family: 'WorkSans-SemiBold';
+	font-size: 14pt;
+	line-height: 19px;
 }
 .oet-slide-button:hover {
 	background:#e98827;
 	text-decoration:none; 
+}
+.oet-trending-button a {
+	font-family: 'WorkSans-SemiBold';
+	font-size: 14pt;
 }
 /****************************************
  ****** End of Slideshow Styles *********
