@@ -313,7 +313,7 @@ iframe { border: 0;  max-width:100%; }
 
 .pblctn_lft_sid_img_cntnr .col-md-3{ text-align: center}
 .pblctn_lft_sid_img_cntnr .rght_sid_mtr { padding-left: 0 !important}
-.btn_dwnld {width: 129px; font-size:14pt; font-weight:bold; padding: 10px 0; margin: 15px 0 0; text-align: center; background: #e57200; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'WorkSans-Regular';}
+.btn_dwnld {width: 129px; font-size:14pt; padding: 10px 0; margin: 15px 0 0; text-align: center; background: #e57200; border: none; color: #fff; border-radius: 3px; cursor: pointer; float: left; font-family: 'WorkSans-SemiBold';}
 .btn_dwnld:hover, .btn_dwnld:focus, .home_dwnld_btn a.btn_dwnld:hover, .home_dwnld_btn:active { opacity: .9; color:#294179 !important; }
 .link_dwnlds a, .link_dwnlds a:hover { color: #fff; text-decoration: none}
 .pblctn_scl_icns { height: 50px	}
@@ -439,7 +439,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .overflow { overflow: hidden}
 .ssba img:hover { opacity: .8; transition: opacity .3s; -webkit-transition: opacity .3s; -moz-transition: opacity .3s}
 .stry_srch_frm  input[type="submit"] { font-family: "WorkSans-Regular"; }
-.sldr_readmr_btn a { font-family: "WorkSans-Regular"; }
+.sldr_readmr_btn a { font-family: "WorkSans-SemiBold"; }
 .sldr_top_hdng { font-family: "WorkSans-Bold"; }
 .stry_srch_frm .showallstories { font-family: "WorkSans-Regular"; }
 .topic_sidebar li a { font-family: 'WorkSans-Regular'; }
@@ -856,8 +856,8 @@ button:hover {
 		width: 100%;
 		    word-spacing: -1px;
 		
-		min-height: 178px;
-    max-height: 178px;
+		min-height: 180px;
+    max-height: 180px;
 		overflow: hidden;
 		-o-text-overflow: ellipsis;
    	text-overflow: ellipsis;
