@@ -856,8 +856,8 @@ button:hover {
 		width: 100%;
 		    word-spacing: -1px;
 		
-		min-height: 180px;
-    max-height: 180px;
+		min-height: 178px;
+    max-height: 178px;
 		overflow: hidden;
 		-o-text-overflow: ellipsis;
    	text-overflow: ellipsis;
