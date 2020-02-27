@@ -1030,9 +1030,6 @@ function oet_featured_card_func($attribute, $content = null){
 		}
  }
  
- echo $background_image;
- echo '<br><br>';
- 
  $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
  $bg = (!empty($background_image))? $background_image: $default_bg;
  $_cont_lg = (strlen($content)>260)? substr($content,0,260).' ...': $content;
