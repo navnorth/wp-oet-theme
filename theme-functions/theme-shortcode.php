@@ -1029,6 +1029,10 @@ function oet_featured_card_func($attribute, $content = null){
 			extract($attribute);;
 		}
  }
+ 
+ echo $background_image;
+ echo '<br><br>';
+ 
  $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
  $bg = (!empty($background_image))? $background_image: $default_bg;
  $_cont_lg = (strlen($content)>260)? substr($content,0,260).' ...': $content;
@@ -1037,19 +1041,14 @@ function oet_featured_card_func($attribute, $content = null){
  $_cont_xs = (strlen($content)>50)? substr($content,0,50).' ...': $content;
  $_button_link = (!empty($button_link))? $button_link: '#';
  $return = '<div class="adminoverridewidth col-md-4 col-sm-6 col-xs-12">
-	 						<div class="oet-featured-card">
+	 						<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">
 	 							<div class="oet-featured-card-content-wrapper">
 			 						<div class="oet-featured-card-title">'.$title.'</div>
 									<div class="oet-featured-card-desc">'.$content.'</div>
 				 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>
 								</div>
 		 					</div>
-						</div>
-						<style>
-							.oet-featured-card::before {
-								background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');
-							}
-						</style>';
+						</div>';
 		
 
  return $return;
