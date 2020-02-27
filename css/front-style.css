@@ -534,7 +534,7 @@ ul.checkbox_list input {
 }
 .oet-trending-title {font-size: 24px; font-family: 'WorkSans-SemiBold' !important; color: #E57200; line-height: 24px;}
 .oet-trending-title i {color: #222;}
-.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;
+.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:12px 15px 10px 15px;
 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; font-size: 18px;font-weight: 800;line-height: 24px;}
 .oet_trendingnow_layout a:hover {color: #ffffff !important; text-decoration: none; opacity: .9;}
 .oet_trendingnow_layout .pad {padding-left:20px; padding-right:20px;}
