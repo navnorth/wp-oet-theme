@@ -446,7 +446,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .blubrdr h4{ font-family: 'WorkSans-SemiBold'; }
 .story_back a { ]font-family: 'WorkSans-Light'; }
 .stry_browse_header { font-family: 'WorkSans-Bold' }
-.btn_dwnld { font-family: 'WorkSans-Regular'; }
+.btn_dwnld { font-family: 'WorkSans-SemiBold'; }
 .btn_dwnld:hover { color:#2A4378; }
 
 /*---------------- Slider -----------------*/
