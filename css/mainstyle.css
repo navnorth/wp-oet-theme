@@ -833,7 +833,7 @@ button:hover {
 .oet-featured-card-title {
 	font-size: 24px;
 	line-height: 28px;
-	color: #fff;
+	color: #ffffff !important;
 	font-family: "WorkSans-Bold" !important;
 	margin-bottom: 22px;
 	margin-top: 10px !important;
@@ -849,22 +849,20 @@ button:hover {
 	-webkit-box-orient: vertical;
 }
 .oet-featured-card-desc {
-    font-size: 16px;
-    color: #fff;
-    font-family: "WorkSans-Regular" !important;
-    margin-bottom: 26px;
-		width: 100%;
-		    word-spacing: -1px;
-		
-		min-height: 178px;
-    max-height: 178px;
-		overflow: hidden;
-		-o-text-overflow: ellipsis;
-   	text-overflow: ellipsis;
-   	display: -webkit-box;
-   	-webkit-line-clamp:8;
-   	-webkit-box-orient: vertical;
-		
+  font-size: 16px;
+  color: #fff;
+  font-family: "WorkSans-Regular" !important;
+  margin-bottom: 26px;
+	width: 100%;
+	word-spacing: -1px;
+	min-height: 178px;
+  max-height: 178px;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+ 	text-overflow: ellipsis;
+ 	display: -webkit-box;
+ 	-webkit-line-clamp:8;
+ 	-webkit-box-orient: vertical;
 }
 
 .oet-featured-card-btn {
@@ -880,7 +878,7 @@ button:hover {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	min-width: 138px;
-    max-width: 275px;
+  max-width: 275px;
 	display: block;
 }
 .oet-featured-card-btn:hover{
