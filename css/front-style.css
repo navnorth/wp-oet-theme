@@ -385,8 +385,8 @@ ul.checkbox_list input {
 .search-results .entry-content { overflow:hidden; margin-bottom:15px; }
 .search-results .archived-post h3 { font-size:20px; }
 .search-results .search-header h4.entry-parent-title { margin-bottom:0;}
-.search-results .search-header h3.entry-title { margin-top:10px; font-size: 22px; line-height: 26px; }
-.search-results .search-header h4.entry-parent-title { font-weight:bold; color: #4b4e53; }
+.search-results .search-header h3.entry-title { margin-top:0; font-size: 22px; line-height: 26px; margin-bottom:5px; }
+.search-results .search-header h4.entry-parent-title { font-weight:bold; color: #4b4e53; margin-top:0; margin-bottom:10px; }
 .search-results .search-publication-thumbnail { height:150px; overflow:hidden; }
 .search-results .search-publication-thumbnail img { position:absolute; bottom:0; margin-bottom:0; }
 .search-results .search-thumbnail .search-result-icon {
