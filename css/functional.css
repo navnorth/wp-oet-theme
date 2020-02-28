@@ -220,15 +220,15 @@
   margin-top: 0.2em;
   background: #2A4378;
 }
-@media (max-width: 800px){
+@media (max-width: 990px){
   .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box.oet-acf-slide-box {
     width:100% !important;
   }
   .slideshow_container .slideshow_view .slideshow_slide.oet-slide-wrapper {
-    padding: 35px !important
+    padding: 25px 25px 0 25px !important
   }
   .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box.oet-acf-slide-box {
-    padding:30px !important;
+    padding:20px !important;
     bottom:auto !important;
     right:auto !important;
   }
@@ -245,13 +245,48 @@
   .slideshow_container .slideshow_description_box.oet-acf-slide-box p.oet-slide-button-row a.oet-slide-button {
     padding:8px 12px !important;
   }
-  .slideshow_container_style-light .slideshow_pagination { bottom:60px !important; width:100% !important; }
+  .slideshow_container_style-light .slideshow_pagination { bottom:30px !important; width:100% !important; }
   .slideshow_container .slideshow_description_box.oet-acf-slide-box p.oet-slide-button-row { margin:10px 0 15px !important; }
   .slideshow_container_style-light .slideshow_pagination ul li {
     background-size: 16px 16px !important;
     width: 16px !important;
     height: 16px !important;
   }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box .oet-acf-slide-description{ max-height:80px; }
+}
+@media (max-width: 800px){
+  .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box.oet-acf-slide-box {
+    width:100% !important;
+  }
+  .slideshow_container .slideshow_view .slideshow_slide.oet-slide-wrapper {
+    padding: 25px 25px 0 25px !important
+  }
+  .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box.oet-acf-slide-box {
+    padding:20px !important;
+    bottom:auto !important;
+    right:auto !important;
+  }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box h2.oet-acf-header-text {
+    font-size:20px !important;
+    padding:0;
+  }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box p {
+    font-size:14px;
+    padding:0;
+    line-height:20px;
+  }
+  .slideshow_container .slideshow_view.oet-acf-page-header { height:275px !important; }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box p.oet-slide-button-row a.oet-slide-button {
+    padding:8px 12px !important;
+  }
+  .slideshow_container_style-light .slideshow_pagination { bottom:30px !important; width:100% !important; }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box p.oet-slide-button-row { margin:10px 0 15px !important; }
+  .slideshow_container_style-light .slideshow_pagination ul li {
+    background-size: 16px 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box .oet-acf-slide-description{ max-height:62px; }
 }
 @media (max-width: 600px){
   .slideshow_container_style-light .slideshow_pagination,
@@ -265,7 +300,7 @@
     width:100% !important;
   }
   .slideshow_container .slideshow_view .slideshow_slide.oet-slide-wrapper {
-    padding: 30px 30px 0 30px !important
+    padding: 20px 20px 0 20px !important
   }
   .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box.oet-acf-slide-box {
     padding:20px !important;
@@ -303,4 +338,5 @@
     padding: 9px;
     top: -9px;
   }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box .oet-acf-slide-description{ max-height:72px; }
 }
