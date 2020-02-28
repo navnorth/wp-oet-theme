@@ -102,19 +102,19 @@ $results = array();
 						<div class="<?php if ($full_width==true): ?>col-md-12 col-sm-12<?php else: ?>col-md-9 col-sm-6<?php endif; ?> col-xs-12 search-result-content">
 							<header class="search-header">
 							<?php if ( is_single() ) : ?>
+								<h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
 								<?php if ($parent_title) : ?>
 								<h4 class="entry-parent-title"><?php echo $parent_title; ?></h4>
 								<?php endif; ?>
-							    <h3 class="entry-title"><?php  echo get_the_title($post_id); ?></h3>
 							<?php else : ?>
+								<h3 class="entry-title">
+									<a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
+								    </h3>
 								<?php if ($parent_title) : ?>
 								<h4 class="entry-parent-title">
 									<?php echo $parent_title; ?>
 								</h4>
 								<?php endif; ?>
-							    <h3 class="entry-title">
-								<a href="<?php echo get_the_permalink($post_id); ?>" rel="bookmark"><?php echo get_the_title($post_id); ?></a>
-							    </h3>
 							<?php endif; // is_single() ?>
 							</header><!-- .entry-header -->
 			    
