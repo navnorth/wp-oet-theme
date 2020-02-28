@@ -559,7 +559,7 @@ function oet_youtube_embed_code($url) {
 	
 	//Generate embed code
 	if ($youtube_id) {
-		$embed_code = '<div class="youtube-videoWrapper"><iframe width="640" height="360" src="https://www.youtube.com/embed/'.$youtube_id.'?rel=0" frameborder="0" allowfullscreen></iframe></div>';
+		$embed_code = '<div class="youtube-videoWrapper"><iframe title="Video Embed" width="640" height="360" src="https://www.youtube.com/embed/'.$youtube_id.'?rel=0" frameborder="0" allowfullscreen></iframe></div>';
 	}
 	return $embed_code;
 }

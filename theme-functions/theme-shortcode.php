@@ -326,9 +326,12 @@ function feature_video_func($attr, $content = null)
 
 	$tracking_script .= "</script>";
 
+	$iframe_title = "Video Embed";
+	
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
 	if(isset($heading) && !empty($heading))
 	{
+		$iframe_title .= ": ".$heading;
 		$return .= '<h4>'. $heading .'</h4>';
 	}
 
@@ -341,7 +344,7 @@ function feature_video_func($attr, $content = null)
 					$height = 300;
 				}
 
-             	$return .= '<iframe id="'.$id.'" width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
+             	$return .= '<iframe id="'.$id.'" title="'.$iframe_title.'" width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
 			}
 
 			if(isset($description) && !empty($description))
@@ -488,8 +491,9 @@ function recommended_resources_func($attr, $content = null)
 			{
 				preg_match($regex, $src1, $matches);
 				$src = "//www.youtube.com/embed/".$matches[1];
+				$video_title = "Video Embed: ".$heading;
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
+					$return .= '<iframe title="'.$video_title.'" width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -512,7 +516,7 @@ function recommended_resources_func($attr, $content = null)
 				preg_match($regex, $src2, $matches);
 				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
+					$return .= '<iframe title="Video Embed" width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -535,7 +539,7 @@ function recommended_resources_func($attr, $content = null)
 				preg_match($regex, $src3, $matches);
 				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-4 col-sm-4 col-xs-4 pblctn_vdo_bg">';
-					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
+					$return .= '<iframe title="Video Embed" width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
@@ -564,7 +568,7 @@ function recommended_resources_func($attr, $content = null)
 				preg_match($regex, $src1, $matches);
 				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
+					$return .= '<iframe title="Video Embed" width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text1 .'</p>';
 				$return .= '</div>';
 			}
@@ -587,7 +591,7 @@ function recommended_resources_func($attr, $content = null)
 				preg_match($regex, $src2, $matches);
 				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
+					$return .= '<iframe title="Video Embed" width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text2 .'</p>';
 				$return .= '</div>';
 			}
@@ -610,7 +614,7 @@ function recommended_resources_func($attr, $content = null)
 				preg_match($regex, $src3, $matches);
 				$src = "//www.youtube.com/embed/".$matches[1];
 				$return .= '<div class="col-md-6 col-sm-12 col-xs-12 pblctn_vdo_bg_fr_two">';
-					$return .= '<iframe width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
+					$return .= '<iframe title="Video Embed" width="274" height="160" src="'. $src .'" allowfullscreen></iframe>';
 					$return .= '<p>'. $text3 .'</p>';
 				$return .= '</div>';
 			}
