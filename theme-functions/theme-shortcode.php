@@ -199,11 +199,11 @@ function featured_item_func($attr, $content = null)
 	{
 		if(isset($url) && !empty($url))
 		{
-			$return .= '<a href="'. $url.'"><img class="featured_item_image" src="'. $image .'" alt="Featured Image" /></a>';
+			$return .= '<a href="'. $url.'"><img class="featured_item_image" src="'. $image .'" alt="'.$image_alt.'" /></a>';
 		}
 		else
 		{
-    		$return .= '<img class="featured_item_image" src="'. $image .'" alt="Featured Image"/>';
+    		$return .= '<img class="featured_item_image" src="'. $image .'" alt="'.$image_alt.'"/>';
 		}
 	}
 	if(isset($title) && !empty($title))
