@@ -26,7 +26,7 @@
 	?>
 
        <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
-	      <h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
+	      <h1 class="pblctn_hed"><?php echo $post->post_title;?></h1>
 
 	      <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
 		     <span class="meta_date"><?php echo $publication_date; ?></span>

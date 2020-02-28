@@ -26,7 +26,7 @@ global $post;
 			oet_display_slideshow(get_the_ID());
 		} else {
 		?>
-            	<h2 class="pblctn_hed"><?php echo $post->post_title;?></h2>
+            	<h1 class="pblctn_hed"><?php echo $post->post_title;?></h1>
 		<?php } ?>
             	
 				<?php while ( have_posts() ) : the_post(); ?>
