@@ -14,7 +14,7 @@ $img_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_
     <div class="entry-content">
         <?php if(isset($img_url) && !empty($img_url)) : ?>
         <div class="col-md-3 col-sm-6 col-xs-12 archive_image">
-            <img class="search_story_featured_image" src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" />
+            <img class="search_story_featured_image" src="<?php echo $img_url; ?>" alt=" <?php echo $img_alt; ?>" />
         </div>
         <?php else: ?>
         <div class="col-md-3 col-sm-6 col-xs-12 search-thumbnail">
