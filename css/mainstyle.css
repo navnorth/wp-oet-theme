@@ -491,6 +491,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 h1,h2,h3 { font-family: 'WorkSans-SemiBold' !important }
 h1,h3 { color: #294179 !important }
+h1 {font-size:30px !important;}
 h4 { font-family: 'WorkSans-Light' !important}
 .search-results article { overflow:hidden; }
 .medium-error .panel-heading { padding:10px 15px !important; }
