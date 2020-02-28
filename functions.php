@@ -612,7 +612,7 @@ function oet_display_slides($page_id){
 		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
 	    }
 	?>	
-		<div class="slideshow_view oet-acf-page-header"<?php echo $bgStyle; ?>>
+		<div class="slideshow_view oet-acf-page-header"<?php echo $bgStyle; ?> tabindex="0">
 		    <div class="slideshow_slide slideshow_slide_image oet-slide-wrapper">
 			<div class="slideshow_description_box slideshow_transparent oet-acf-slide-box">
 			    <h2 class="oet-acf-header-text"><?php echo $headerText; ?></h2>
@@ -644,10 +644,26 @@ function oet_display_slides($page_id){
     <link rel='stylesheet' id='slideshow-stylesheet_style-light-css'  href='<?php echo get_stylesheet_directory_uri(); ?>/css/style-light.css' type='text/css' media='all' />
     <script type='text/javascript'>
 	/* <![CDATA[ */
-	var SlideshowPluginSettings_<?php echo $page_id; ?> = {"animation":"<?php echo $transition; ?>","slideSpeed":"<?php echo $slide_in_interval; ?>","descriptionSpeed":"0.4","intervalSpeed":"<?php echo $slide_interval; ?>","slidesPerView":"1","maxWidth":"0","aspectRatio":"3:1","height":"380","imageBehaviour":"natural","showDescription":"true","hideDescription":"false","preserveSlideshowDimensions":"true","enableResponsiveness":"true","play":"true","loop":"true","pauseOnHover":"true","controllable":"false","hideNavigationButtons":"false","showPagination":"true","hidePagination":"false","controlPanel":"false","hideControlPanel":"true","waitUntilLoaded":"true","showLoadingIcon":"true","random":"false","avoidFilter":"true","dimensionWidth":"3","dimensionHeight":"1"};
+	var SlideshowPluginSettings_<?php echo $page_id; ?> = {"animation":"<?php echo $transition; ?>","slideSpeed":"<?php echo $slide_in_interval; ?>","descriptionSpeed":"0.4","intervalSpeed":"<?php echo $slide_interval; ?>","slidesPerView":"1","maxWidth":"0","aspectRatio":"3:1","height":"380","imageBehaviour":"<?php echo $image_behavior; ?>","showDescription":"true","hideDescription":"false","preserveSlideshowDimensions":"true","enableResponsiveness":"true","play":"true","loop":"true","pauseOnHover":"true","controllable":"false","hideNavigationButtons":"false","showPagination":"true","hidePagination":"false","controlPanel":"false","hideControlPanel":"true","waitUntilLoaded":"true","showLoadingIcon":"true","random":"false","avoidFilter":"true","dimensionWidth":"3","dimensionHeight":"1"};
 	var slideshow_jquery_image_gallery_script_adminURL = "<?php echo esc_url(admin_url()); ?>";
     /* ]]> */
     </script>
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/all.frontend.min.js'></script>
+    <script type='text/javascript'>
+	jQuery( document ).ready(function($) {
+	    setTimeout(function(){
+	    $('.slideshow_pagination ul li.slideshow_transparent').each( function(index, val){
+		$(this).removeAttr('role');
+		$(this).find('span').attr('role','button')
+	    });
+	    },100);
+	    $('.slideshow_container .slideshow_content .slideshow_view').on("focus focusin",function(){
+		$(this).trigger("mouseenter");
+	    });
+	    $('.slideshow_container .slideshow_content .slideshow_view').on("focusout blur",function(){
+		$(this).trigger("mouseleave");
+	    });
+	});
+    </script>
     <?php
 }
