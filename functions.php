@@ -538,7 +538,7 @@ function search_result_default_icon($type){
             break;
     }
     $svgIcon = get_stylesheet_directory_uri() . "/images/".$icon.".svg";
-    return '<span class="search-result-icon-wrapper"><img class="search-result-svg" src="'.$svgIcon.'"></span>';
+    return '<span class="search-result-icon-wrapper"><img class="search-result-svg" alt=" " src="'.$svgIcon.'"></span>';
 }
 
 function oet_display_slideshow($page_id){

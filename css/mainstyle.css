@@ -535,8 +535,8 @@ button:hover {
 #map_canvas .gmnoprint .gm-style-mtc div[role='button'] { font-size:16px !important; }
 #map_canvas .gm-style .gm-style-mtc span[role='checkbox'] { vertical-align:top !important; margin:0;padding:0; display:inline; }
 #map_canvas .gm-style .gm-style-mtc label { margin-bottom: 0; margin-top: 3px;}
-.search-results h2.page-title { font-size:20px; }
-.search-results h2.page-title span { font-style:italic; }
+.search-results h1.page-title { font-size:20px; }
+.search-results h1.page-title span { font-style:italic; }
 /** end of dynamic sidebar styles **/
 
 @media (min-width: 1200px){
