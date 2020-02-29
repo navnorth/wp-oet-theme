@@ -722,8 +722,8 @@ function recommended_resources_func($attr, $content = null)
 	}
 
 	//Button Code
-	$buttonStart = "<button class='btn custom-button' style='".$btnStyle."'>";
-	$buttonEnd = "</button>";
+	$buttonStart = "<span class='btn custom-button' style='".$btnStyle."'>";
+	$buttonEnd = "</span>";
 
 	$return = $buttonStart.$buttonText.$buttonEnd;
 
