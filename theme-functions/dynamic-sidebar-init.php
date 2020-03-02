@@ -437,7 +437,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
     $content = "";
     switch ($type){
         case "html":
-            $html = $sidebar_content[0];
+            $html = $sidebar_content[$sectionid+1][0];
             $content = $html;
             break;
         case "link":
