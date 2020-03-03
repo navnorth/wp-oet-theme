@@ -314,6 +314,9 @@ function oet_save_page_custom_fields() {
             //Save Sidebar Section
             if (isset($_POST['oet_sidebar_section'])) {
                 update_post_meta($post->ID, 'oet_sidebar_section', $_POST['oet_sidebar_section']);
+            } else {
+                if (get_post_meta($post->ID, 'oet_sidebar_section'))
+                    delete_post_meta($post->ID, 'oet_sidebar_section');
             }
         }
     }
