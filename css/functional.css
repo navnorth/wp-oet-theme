@@ -223,7 +223,7 @@
 @media (max-width: 1199px){
   .slideshow_container .slideshow_view .slideshow_slide.oet-slide-wrapper { padding:40px; }
   .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box.oet-acf-slide-box { padding:25px; }
-  .slideshow_container .slideshow_description_box.oet-acf-slide-box h2.oet-acf-header-text { padding-top:0; padding-bottom:0;font-size:22px; line-height:26px; }
+  .slideshow_container .slideshow_description_box.oet-acf-slide-box h2.oet-acf-header-text { padding-top:0; padding-bottom:0;font-size:22px; line-height:26px; width: 100%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
   .slideshow_container .slideshow_description_box.oet-acf-slide-box p { font-size: 16px; line-height: 23px; max-height:100px; }
   .slideshow_container_style-light .slideshow_pagination { bottom:62px !important; }
 }
