@@ -107,6 +107,7 @@
                           //print_r($subfieldlayout);
                             $_img = (isset($subfieldlayout['oet_acf_homepage_trendingnow_image']['id']))? $subfieldlayout['oet_acf_homepage_trendingnow_image']['id']: $subfieldlayout['oet_acf_homepage_trendingnow_image'];
                             $_img = wp_get_attachment_url( $_img);
+                            $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
                             $_ico = $subfieldlayout['oet_acf_homepage_trendingnow_titleicon'];
                             $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
                             $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
@@ -114,7 +115,7 @@
                             $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
                             $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
                             ?>
-                              <div class="oet-trending-image pad"><img src="<?php echo $_img; ?>" alt="trending-now-image" /></div>
+                              <div class="oet-trending-image pad"><img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" /></div>
                               <h3 class="oet-trending-title pad"><?php echo $_title_icon; echo $_title; ?></h3>
                               <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
                               <div class="oet-trending-button pad"><a href="<?php echo $_url; ?>">Read More&nbsp;&nbsp;→</a></div>
