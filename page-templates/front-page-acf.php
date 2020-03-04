@@ -18,7 +18,7 @@
       
       
       /* SLIDER END */
-      display_acf_homepage_content();  
+      oet_display_acf_home_content();  
 		endwhile;
 	?>
 </div>
