@@ -669,7 +669,7 @@ function oet_display_slides($page_id){
 }
 
 
-function display_acf_homepage_content(){
+function oet_display_acf_home_content(){
   if( have_rows('oet_acf_homepage_row') ):        
     while ( have_rows('oet_acf_homepage_row') ) : the_row();
         
