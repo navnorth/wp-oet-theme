@@ -991,7 +991,7 @@ function oet_medium_func($attribute, $content = null){
 		 }
 	}
 	
-	if ($url) {
+	/*if ($url) {
 		$self_access_token = get_option("mediumaccesstoken");
 		$oet_medium = new OET_Medium($self_access_token);
 		
@@ -1010,6 +1010,63 @@ function oet_medium_func($attribute, $content = null){
             $return =  $oet_medium->display_post_by_jsonUrl($url, $attr);
 		else
 			$return =  $oet_medium->display_post_by_jsonUrl($url);
+	}*/
+	$background = "";
+	$footer = "";
+	$publication = "";
+	$bgcolor = "000000";
+	if (isset($bgcolor))
+		$bgcolor = "#".$bgcolor;
+	
+	if (isset($image))
+		$background = "background:".$bgcolor." url(". $image .") no-repeat top left;";
+	else
+		$background = "background:".$bgcolor." no-repeat top left;";
+	
+	if ($url){
+		if (isset($align) && $align =='center')
+		    $align = 'margin:0 auto';
+		else
+		    $align = 'float:'.$align;
+		
+		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+			$return = oet_medium_display_invalid_text($background);
+		}
+
+		if (isset($authorurl) || isset($authorname) || isset($authorlogo)){
+			$footer = '<a href="%authorurl%" alt="%authorname%" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';		
+			if (isset($authorurl))
+				$footer = str_replace("%authorurl%", $authorurl, $footer);
+			
+			if (isset($authorname))
+				$footer = str_replace("%authorname%", $authorname, $footer);
+			
+			if (isset($authorlogo))
+				$footer = str_replace("%authorlogo%", $authorlogo, $footer);
+		}
+		
+		if (isset($pubname) && $pubname!==""){
+                        $publication = 'in <a href="'.$puburl.'" alt="'.$pubname.'" title="'.$pubname.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$pubname.'</a>';
+                }
+		
+		$return = '
+		<div class="single-medium">
+		    <div class="medium" style="'.$background.''.$align.'">
+			<div class="medium-background">
+			    <div class="medium-wrapper">
+				<h1><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h1>
+				<p>'.$description.'</p>
+				<p class="mfooter">';
+		$return .= $footer;
+		$return .= $publication;
+		$return .= '    </p>
+			    </div>
+			</div>
+		    </div>
+		</div>
+		';
+	} else {
+		$return = oet_medium_display_invalid_text($background, "No Url specified");
 	}
 	
 	return $return;
