@@ -228,7 +228,7 @@ function featured_item_func($attr, $content = null)
 	}
 	if(isset($url) && !empty($url) && strtolower($button) == 'show')
 	{
-		$return .= '<div class="home_dwnld_btn"><a class="btn_dwnld" style="background-color:#e57200" href="'.$url.'">';
+		$return .= '<div class="home_dwnld_btn"><a class="btn_dwnld" style="background-color:#BA5D02" href="'.$url.'">';
 
 		if(isset($button_text) && !empty($button_text))
 		{
