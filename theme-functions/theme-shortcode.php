@@ -1049,6 +1049,16 @@ function oet_medium_func($attribute, $content = null){
                         $publication = 'in <a href="'.$puburl.'" alt="'.$pubname.'" title="'.$pubname.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$pubname.'</a>';
                 }
 		
+		if (strlen($description)>175){
+                    $description = substr($description,0,175);
+                    $description = substr($description,0,strrpos($description," "))."...";
+                }
+		
+		if (strlen($title)>80){
+                    $title = substr($title,0,80);
+                    $title = substr($title,0,strrpos($title," "))."...";
+                }
+		
 		$return = '
 		<div class="single-medium">
 		    <div class="medium" style="'.$background.''.$align.'">
