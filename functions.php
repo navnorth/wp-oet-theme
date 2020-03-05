@@ -872,3 +872,17 @@ function oet_display_acf_home_content(){
     endwhile;
   endif; 
 }
+
+function oet_medium_display_invalid_text($background="background:#000000", $text="Medium post invalid"){
+    return $embed = '
+    <div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="medium" style="'.$background.'">
+	    <div class="medium-background">
+		<div class="medium-wrapper">
+		    <p>'.$text.'</p>
+		</div>
+	    </div>
+	</div>
+    </div>
+    ';
+}
