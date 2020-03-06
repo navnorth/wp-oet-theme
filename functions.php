@@ -226,7 +226,7 @@ function load_contact_slider() {
     <!-- Sliding div starts here -->
     <!--<div id="contact-slider" style="right:-342px;">-->
     <div id="contact-slider">
-	<button id="contact-slider-sidebar" aria-expanded="false" onclick="open_panel()" data-redirect="<?php echo home_url("contact"); ?>" aria-label="Contact Us Collapsed"><img src="<?php echo get_stylesheet_directory_uri();?>/images/contact-slide-button.png" alt="Contact Us"></button>
+	<button id="contact-slider-sidebar" class="cs-sidebar-button" aria-expanded="false" onclick="open_panel()" data-redirect="<?php echo home_url("contact"); ?>" aria-label="Contact Us Collapsed">Contact Us <i class="fa fa-comments"></i></button>
 	<div id="contact-slider-content">
 	    <button class="contact-slider-close" onclick="close_panel();" tabindex="0" aria-label="Close"></button>
 	    <?php
