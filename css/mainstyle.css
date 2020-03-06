@@ -249,6 +249,7 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'OpenSans-Regu
 .pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
 /*.rght_mtr { font-size: 12px}*/
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
+.oet_2column_layout .rght_sid_mtr>.hdng_mtr { margin-bottom:10px; }
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
 .lft_sid_mtr img, .rght_sid_mtr img { float: left; margin: 0 25px 25px 0}
