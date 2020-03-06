@@ -237,7 +237,7 @@ if($action == "show_popup")
 					   var shortcode = "[oet_button text=\'Button Text\' button_color=\'\' text_color=\'\' font_face=\'\' font_size=\'\' font_weight=\'\' url=\'\' new_window=\'yes/no\']";
 					   break;
 				   case "featured_content":
-					   var shortcode = "[featured_item heading=\'\' url=\'\' image=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' sharing=\'\']your content goes here[/featured_item]";
+					   var shortcode = "[featured_item heading=\'\' image=\'\' image_alt=\'\' title=\'\' date=\'\' button=\'\' button_text=\'\' url=\'\' sharing=\'\']your content goes here[/featured_item]";
 					   break;
 				   case "featured_video":
 					   var shortcode = "[featured_video heading=\'Mindful Minutes: Technology For Learning\' videoid=\'6xmh0OO330Q\' description=\'\' height=\'\']";
