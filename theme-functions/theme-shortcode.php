@@ -178,7 +178,7 @@ function pull_quotethemefn($atts, $content = null)
 
 /**
  * Featured Item
- * Shortcode Example : [featured_item heading='' url="" image='' title='' date='' button='' button_text='' sharing='']your content goes here[/featured_item]
+ * Shortcode Example : [featured_item heading='' image='' image_alt='' title='' date='' button='' button_text='' url="" sharing='']your content goes here[/featured_item]
  */
 add_shortcode("featured_item","featured_item_func");
 function featured_item_func($attr, $content = null)
