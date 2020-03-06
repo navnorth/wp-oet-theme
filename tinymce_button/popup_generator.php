@@ -273,7 +273,7 @@ if($action == "show_popup")
 					   var shortcode = "[oet_story id=\'\' width=\'6\' alignment=\'\' callout_color=\'\' callout_type=\'\' title=\'\'][/oet_story]";
 					   break;
 				   case "oet_medium":
-					   var shortcode = "[oet_medium url=\'\' align=\'\']";
+					   var shortcode = "[oet_medium url=\'\' align=\'center\' title=\'\' description=\'\' image=\'\' bgcolor=\'\']";
 						 break;
 					 case "oet_featured_card":
 	 						var shortcode = "[oet_featured_card title=\'Title Here\' button_text=\'Read More\' button_link=\'\' background_image=\'\']your content goes here[/oet_featured_card]";
