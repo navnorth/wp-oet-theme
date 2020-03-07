@@ -1033,21 +1033,24 @@ function oet_medium_func($attribute, $content = null){
 			$return = oet_medium_display_invalid_text($background);
 		}
 
-		if (isset($authorurl) || isset($authorname) || isset($authorlogo)){
-			$footer = '<a href="%authorurl%" alt="%authorname%" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';		
-			if (isset($authorurl))
-				$footer = str_replace("%authorurl%", $authorurl, $footer);
-			
-			if (isset($authorname))
-				$footer = str_replace("%authorname%", $authorname, $footer);
-			
-			if (isset($authorlogo))
-				$footer = str_replace("%authorlogo%", $authorlogo, $footer);
-		}
+		$footer = '<a href="%authorurl%" alt="%authorname%" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';
+		$default_author_url = "https://medium.com/@OfficeofEdTech";
+		$default_author_name = "OfficeofEdTech";
+		$default_author_logo = get_stylesheet_directory_uri()."/images/OET_logo_400px_square.png";
+		if (isset($authorurl))
+			$footer = str_replace("%authorurl%", $authorurl, $footer);
+		else
+			$footer = str_replace("%authorurl%", $default_author_url, $footer);
 		
-		if (isset($pubname) && $pubname!==""){
-                        $publication = 'in <a href="'.$puburl.'" alt="'.$pubname.'" title="'.$pubname.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$story["pub_url"].'\');">'.$pubname.'</a>';
-                }
+		if (isset($authorname))
+			$footer = str_replace("%authorname%", $authorname, $footer);
+		else
+			$footer = str_replace("%authorname%", $default_author_name, $footer);
+		
+		if (isset($authorlogo))
+			$footer = str_replace("%authorlogo%", $authorlogo, $footer);
+		else
+			$footer = str_replace("%authorlogo%", $default_author_logo, $footer);
 		
 		if (strlen($description)>175){
                     $description = substr($description,0,175);
@@ -1068,7 +1071,6 @@ function oet_medium_func($attribute, $content = null){
 				<p>'.$description.'</p>
 				<p class="mfooter">';
 		$return .= $footer;
-		$return .= $publication;
 		$return .= '    </p>
 			    </div>
 			</div>
