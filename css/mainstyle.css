@@ -2,6 +2,7 @@
 color palette:
 	Dark Grey:       #4b4e53
 	Dark Blue:       #294179
+	Link Blue (508)  #2F5C99
 	Light Grey:      #ccc
 	Light Blue:      #1f5c99
 	Blue Grey:		 #94a0bc
@@ -205,7 +206,7 @@ color palette:
 		url(../fonts/CharisSILB.ttf) format('truetype'),
 		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
 
-body { padding-top: 15px; color: #4b4e53 !important; font-family: 'OpenSans-Regular' !important; font-size:15px; }
+body { padding-top: 15px; color: #000000 !important; font-family: 'OpenSans-Regular' !important; font-size:15px; }
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 7px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center}
 .pblctn_box { width: 50px; margin: -40px auto 0}
@@ -247,8 +248,10 @@ body { padding-top: 15px; color: #4b4e53 !important; font-family: 'OpenSans-Regu
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
 .pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
 .pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
-/*.rght_mtr { font-size: 12px}*/
+/*
+.rght_mtr { font-size: 12px}
 .rght_mtr a, .rght_mtr a:hover { color: #4b4e53 }
+*/
 .oet_2column_layout .rght_sid_mtr>.hdng_mtr { margin-bottom:10px; }
 
 .lft_sid_mtr { padding-left: 0 !important; margin-bottom: 30px; position: relative}
@@ -386,7 +389,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 
 
 .pblctn_right_sid_mtr ul { float: left; padding-left: 0; list-style: none; }
-.pblctn_right_sid_mtr li a { color: #4b4e53;}
+/* .pblctn_right_sid_mtr li a { color: #4b4e53;} */
 
 .acrdn_pnl_cntnr { padding-left: 0 !important}
 

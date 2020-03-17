@@ -199,7 +199,7 @@ function featured_item_func($attr, $content = null)
 	{
 		if(isset($url) && !empty($url))
 		{
-			$return .= '<a href="'. $url.'"><img class="featured_item_image" src="'. $image .'" alt="'.$image_alt.'" /></a>';
+			$return .= '<a href="'. $url.'" title="'. $title.'"><img class="featured_item_image" src="'. $image .'" alt="'.$image_alt.'" /></a>';
 		}
 		else
 		{
