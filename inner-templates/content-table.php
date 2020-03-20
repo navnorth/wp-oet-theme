@@ -96,17 +96,22 @@ $sublinks = array();
                             $subpages = get_pages( array( 'child_of' => $parent_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc', 'parent' => $parent_id ) );
 
                             $index=0;
+                            $rowopen = false;
                             foreach($subpages as $spage) {
                                 $template = get_post_meta($spage->ID, '_wp_page_template', true);
                                 $short_title = get_post_meta($spage->ID, "short_title", true);
                                 if ($template == "page-templates/publication-subsection-template.php") {
                                     $index++;
-                                    if (($index % 3)==1) { ?>
-                                        <div class="row">
-                                    <?php }
+                                    
+                                    if (($index % 3)==1) {
+                                        $rowopen = true;
+                                    ?>
+                                    <div class="row">
+                                    <?php
+                                    }
                                     $featured_image = wp_get_attachment_url( get_post_thumbnail_id($spage->ID) );
                                     ?>
-
+                                    
                                     <div class="col-md-4" style="margin-bottom: 15px; margin-top: 15px;">
                                         <a href="<?php echo get_page_link($spage->ID); ?>">
                                             <button class="btn btn-large toc-small-button">
@@ -124,14 +129,19 @@ $sublinks = array();
                                         </a>
                                     </div>
 
-                                    <?php if (($index % 3)==0) { ?>
-                                        </div>
+                                    <?php if (($index % 3)==0) {
+                                        $rowopen = false;
+                                    ?>
+                                    </div>
                                     <?php } ?>
                                 <?php } else {
                                     $sublinks[] = $spage;
                                 } ?>
                             <?php
                             }
+                            if ($rowopen) 
+                                echo '</div>';
+                                
                         if (!empty($sublinks)) {
                             echo "<div class='clearfix'></div>";
                             echo "<hr>";

@@ -687,3 +687,8 @@ h2.oet-acf-header-text {
 /****************************************
  ****** End of Slideshow Styles *********
  ****************************************/
+.page-template-publication-subsection-template #toc.program_toc_box {
+	margin-bottom: 25px;
+	overflow: hidden;
+	clear: both;
+}
