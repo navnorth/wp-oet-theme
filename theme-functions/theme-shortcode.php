@@ -258,6 +258,7 @@ add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null)
 {
 	global $post;
+	$show_modal = true;
 
 	if ( is_admin() ) {
 		$_arr = getShortcodeAttr($attr);
@@ -267,35 +268,55 @@ function feature_video_func($attr, $content = null)
 	}
 
 	$return = '';
+	
+	if (isset($modal) && $modal=="false")
+		$show_modal = false;
+		
 	if(!isset($id) || empty($id))
-		$id = "ytplayer";
+		$id = "ytvideo";
 
+	$origin = get_site_url();
 	if(isset($videoid) && !empty($videoid))
-		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1";
+		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
+	
 
-	$tracking_script = "<script type='text/javascript'>\n";
+	$tracking_script = "<script type='text/javascript'>\n".
 
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
 				"tag.src = \"//www.youtube.com/iframe_api\"; \n ".
+				"var player; \n".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
 				"	// This code is called by the YouTube API to create the player object \n".
 				"function onYouTubeIframeAPIReady(event) { \n".
+				" console.log(event); \n".
 				"	player = new YT.Player('".$id."', { \n".
-				"	videoId: '', \n".
+				"	videoId: '".$videoid."', \n".
 				"	playerVars: { \n".
 				"		'autoplay': 0, \n".
 				"		'controls': 1, \n".
-				"		'rel' : 0 \n".
+				"		'enablejsapi': 1, \n".
+				"		'rel' : 0, \n".
+				"		'origin' : '".$origin."' \n".
 				"	}, \n".
 				"	events: { \n".
+				"		'onError': onPlayerError, \n".
 				"		'onReady': onPlayerReady, \n".
 				"		'onStateChange': onPlayerStateChange \n".
 				"		} \n".
 				"	}); \n".
 				"}\n".
 				"	var pauseFlag = false; \n".
+				"	var gaSent = false; \n".
+				"function onPlayerError(event) { \n".
+				"	if (event.data) { \n".
+				"		if (gaSent === false) { \n".
+				"			ga('send',  'event', 'Featured Video: " . esc_sql($post->post_title) . "', 'Failed', '". $video_id."'  ); \n".
+				"			gaSent = true; \n".
+				"		} \n".
+				" 	} \n".
+				"} \n".
 				"function onPlayerReady(event) { \n".
 				"	// do nothing, no tracking needed \n".
 				"} \n".
@@ -310,20 +331,20 @@ function feature_video_func($attr, $content = null)
 				"	// track when user clicks to Play \n".
 				"	if (event.data == YT.PlayerState.PLAYING) { \n".
 				"		console.log('playing'); \n".
-				"		ga('send','event','Featured Video: ".$post->post_title."','Play', videoId);\n".
+				"		ga('send','event','Featured Video: ".esc_sql($post->post_title)."','Play', videoId);\n".
 				"		pauseFlag = true; \n".
 				"	}\n".
 				"	// track when user clicks to Pause \n".
 				"	if (event.data == YT.PlayerState.PAUSED && pauseFlag) { \n".
-				"		ga('send','event','Featured Video: ".$post->post_title."', 'Pause', videoId); \n".
+				"		ga('send','event','Featured Video: ".esc_sql($post->post_title)."', 'Pause', videoId); \n".
 				"		pauseFlag = false; \n ".
 				"	} \n".
 				"	// track when video ends \n".
 				"	if (event.data == YT.PlayerState.ENDED) { \n".
-				"		ga('send', 'event','Featured Video: ".$post->post_title."', 'Finished', videoId); \n".
+				"		ga('send', 'event','Featured Video: ".esc_sql($post->post_title)."', 'Finished', videoId); \n".
 				"	}\n".
 				"} \n";
-
+	
 	$tracking_script .= "</script>";
 
 	$iframe_title = "Video Embed";
@@ -336,25 +357,30 @@ function feature_video_func($attr, $content = null)
 	}
 
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';
-
+		
+		if ($show_modal){
+			$return .= oet_modal_video_link($videoid);	
+		} else {
 			if(isset($src) && !empty($src))
 			{
 				if(empty($height))
 				{
 					$height = 300;
 				}
-
-             	$return .= '<iframe id="'.$id.'" title="'.$iframe_title.'" width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
+	
+				$return .= '<iframe id="'.$id.'" title="'.$iframe_title.'" width="540" height="'. $height.'" src="'. $src .'" allowfullscreen></iframe>';
 			}
-
-			if(isset($description) && !empty($description))
-			{
-				//$description = apply_filters('the_content', $description);
-				$return .= '<p>'. $description .'</p>';
-			}
-	$return .= $tracking_script;
-    $return .= '</div>';
+		}
+		if(isset($description) && !empty($description))
+		{
+			//$description = apply_filters('the_content', $description);
+			$return .= '<p>'. $description .'</p>';
+		}
+		$return .= '</div>';
 	$return .= '</div>';
+	add_action("wp_footer", function() use( $tracking_script ){
+		echo $tracking_script;
+	});
 	return $return;
 }
 

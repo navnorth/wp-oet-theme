@@ -506,13 +506,13 @@ add_action( 'add_meta_boxes', 'oet_register_meta_boxes' );
     include_once( OET_THEME_PATH . "/theme-functions/dynamic-sidebar-metabox.php" );
  }
 
-function add_modals_to_footer(){
+function oet_add_modals_to_footer(){
     $screen = get_current_screen();
     if ( 'post' == $screen->base && 'page' == $screen->id ){
         include_once(OET_THEME_PATH.'/inner-templates/popups/delete-section-confirm-popup.php');
     }
 }
-add_action( 'admin_footer', 'add_modals_to_footer', 10 );
+add_action( 'admin_footer', 'oet_add_modals_to_footer', 10 );
 
 function search_result_default_icon($type){
     $icon = 'file-alt';
@@ -885,4 +885,39 @@ function oet_medium_display_invalid_text($background="background:#000000", $text
 	</div>
     </div>
     ';
+}
+
+/**
+ * Video Popup Overlay
+ **/
+function oet_modal_video_link($vidid){
+    $ret = ''; $imagesrc = '';
+  
+    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';
+    $retvid = '<div id="ytvideo"></div>';
+    $reticon = '<span class="stry-youtube-play"></span>';
+  
+    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-target="#oet-video-overlay">';
+	$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
+	$ret .= '<div class="stry-video-avatar-table">';
+	    $ret .= '<div class="stry-video-avatar-cell">';
+		$ret .= $reticon;
+	    $ret .= '</div>';
+	$ret .= '</div>';
+    $ret .= '</a>';
+  
+    $ret .= '<div class="modal fade" id="oet-video-overlay" role="dialog" tabindex="-1">';
+	$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
+	    $ret .= '<div class="stry-video-table">';
+		$ret .= '<div class="stry-video-cell">';
+		    $ret .= '<div class="stry-video-content">';
+			$ret .= $retvid;
+		    $ret .= '</div>';
+		$ret .= '</div>';
+	    $ret .= '</div>';
+	$ret .= '</div>';
+	$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+    $ret .= '</div>';
+    
+    return $ret;
 }

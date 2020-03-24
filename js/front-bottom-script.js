@@ -97,4 +97,38 @@ jQuery( document ).ready(function() {
             close_panel();
         }
     }
+    
+    jQuery(document).on('click','a.oet-video-link', function(e){
+      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      oet_togglemodal(1);
+    })
+    jQuery(document).on('click','#oet-video-overlay', function(e){
+      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      oet_togglemodal(0);
+    })
+    jQuery(document).on("keydown", function(e) {
+     if (e.key == "Escape" || e.key == "Esc") { 
+       // escape key maps to keycode `27`
+       oet_togglemodal(0);
+      }
+    });
+    window.setInterval(oet_checkFocus, 1000); 
 });
+
+function oet_togglemodal(bol){
+  if(bol){ //show and play
+    player.playVideo();
+    jQuery('#oet-video-overlay').modal('show');
+  }else{ //pause and hide
+    player.pauseVideo();
+    jQuery('#oet-video-overlay').modal('hide');
+  }
+}
+
+/** Check if youtube iFrame has stolen the focus **/
+function oet_checkFocus() {
+    if(document.activeElement.tagName == "IFRAME") {
+        document.getElementById("oet-video-overlay").focus(); //return focus to overlay
+        document.body.focus();
+    }
+}

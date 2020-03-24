@@ -692,3 +692,16 @@ h2.oet-acf-header-text {
 	overflow: hidden;
 	clear: both;
 }
+#oet-video-overlay {
+    z-index: 9999;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,.65);
+    padding: 10px;
+    box-sizing: border-box;
+}
