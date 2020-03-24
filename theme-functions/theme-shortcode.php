@@ -290,7 +290,6 @@ function feature_video_func($attr, $content = null)
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
 				"	// This code is called by the YouTube API to create the player object \n".
 				"function onYouTubeIframeAPIReady(event) { \n".
-				" console.log(event); \n".
 				"	player = new YT.Player('".$id."', { \n".
 				"	videoId: '".$videoid."', \n".
 				"	playerVars: { \n".
