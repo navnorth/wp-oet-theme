@@ -109,8 +109,8 @@ hr { width: 100%;}
 .custom-button {
 	background-color: #e57200;
 	color: #fff;
-	font-family: 'WorkSans-SemiBold';
-	font-size:18px;
+	font-family: 'WorkSans-Bold';
+	font-size:19px;
 	padding:20px !important;
 }
 .col-xs-1 { padding-left:0 !important; padding-right:0 !important; }
@@ -321,8 +321,8 @@ hr { width: 100%;}
 #content .table-responsive { display:flex; }
 .question {
        font-family: 'WorkSans-Bold';
-       font-size: 18px;
-       color: #e75200;
+       font-size: 19px;
+       color: #e57200;
 }
 ul.checkbox_list {
         list-style-type: none;
