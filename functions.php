@@ -890,11 +890,11 @@ function oet_medium_display_invalid_text($background="background:#000000", $text
 /**
  * Video Popup Overlay
  **/
-function oet_modal_video_link($vidid){
+function oet_modal_video_link($vidid, $Id){
     $ret = ''; $imagesrc = '';
   
     $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';
-    $retvid = '<div id="ytvideo"></div>';
+    $retvid = '<div id="'.$Id.'"></div>';
     $reticon = '<span class="stry-youtube-play"></span>';
   
     $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-target="#oet-video-overlay">';

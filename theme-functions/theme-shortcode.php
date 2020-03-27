@@ -257,6 +257,9 @@ function featured_item_func($attr, $content = null)
 add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null)
 {
+	static $count = 0;
+	$count++;
+	
 	global $post;
 	$show_modal = true;
 
@@ -273,7 +276,7 @@ function feature_video_func($attr, $content = null)
 		$show_modal = false;
 		
 	if(!isset($id) || empty($id))
-		$id = "ytvideo";
+		$id = "ytvideo".$count;
 
 	$origin = get_site_url();
 	if(isset($videoid) && !empty($videoid))
@@ -358,7 +361,7 @@ function feature_video_func($attr, $content = null)
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';
 		
 		if ($show_modal){
-			$return .= oet_modal_video_link($videoid);	
+			$return .= oet_modal_video_link($videoid, $id);	
 		} else {
 			if(isset($src) && !empty($src))
 			{
