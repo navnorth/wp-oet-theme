@@ -128,7 +128,9 @@ function oet_togglemodal(bol){
 /** Check if youtube iFrame has stolen the focus **/
 function oet_checkFocus() {
     if(document.activeElement.tagName == "IFRAME") {
-        document.getElementById("oet-video-overlay").focus(); //return focus to overlay
-        document.body.focus();
+	if (document.getElementById("oet-video-overlay")) {
+	    document.getElementById("oet-video-overlay").focus(); //return focus to overlay
+	    document.body.focus();
+	}
     }
 }
