@@ -349,7 +349,7 @@ function oet_display_dynamic_sidebar($page_id){
             $icon = $sidebar_section['icon'][$index];
             $type = (isset($sidebar_section['type'][$index])?$sidebar_section['type'][$index]:"");
             $content_type = (isset($sidebar_section['content'][$type])?$sidebar_section['content'][$type]:"");
-            $sidebar_content .= '<div class="col-md-12 col-sm-6 col-xs-6">';
+            $sidebar_content .= '<div class="col-md-12 col-xs-12">';
             $sidebar_content .= '   <div class="pblctn_box">';
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';
