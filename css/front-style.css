@@ -705,3 +705,74 @@ h2.oet-acf-header-text {
     padding: 10px;
     box-sizing: border-box;
 }
+
+
+/****************************************
+ ****** YOUTUBE / BOOTSTRAP MODAL *******
+ ****************************************/
+.oet-youtube-modal-wrapper .modal {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px !important;
+}
+
+.oet-youtube-modal-wrapper .modal-dialog {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.oet-youtube-modal-wrapper .modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  /*margin-right: -4px;*/ /* Adjusts for spacing */
+}
+
+.oet_youtube_side_container_close {
+	position: absolute;
+	top: -38px;
+  right: -6px;
+  z-index: 999999;
+  color: #222;
+  width: 36px;
+  height: 36px;
+	cursor:pointer;
+}
+.oet_youtube_side_container_close .dashicons{
+	font-size: 46px;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+}
+.oet_youtube_side_container_close .dashicons:before {
+    position: absolute;
+    left: -5px;
+    top: 0px;
+}
+
+iframe.oet_youtube_side_container {margin: 0px !important;}
+.oet-youtube-modal-wrapper .modal-dialog {margin: 0px !important; width:100% !important;}
+.oet-youtube-modal-wrapper .modal-dialog .modal-content {
+		background-color: #000000 !important;
+    line-height: 0px !important;
+    border: 1px solid #989898;
+		overflow: hidden;
+}
+
+@media screen and (min-width: 974px){
+	.oet-youtube-modal-wrapper .modal-dialog {max-width:854px; margin:0px !important;}
+}
+
+@media screen and (max-width: 640px){
+	iframe.oet_youtube_side_container { height: 380px !important;}
+}
+
+@media screen and (max-width: 525px){
+	iframe.oet_youtube_side_container { height: 200px !important;}
+	.oet-youtube-modal-wrapper .modal { padding: 10px !important;}
+}

@@ -117,10 +117,10 @@ jQuery( document ).ready(function() {
 
 function oet_togglemodal(bol){
   if(bol){ //show and play
-    player.playVideo();
+    if (typeof(player) != 'undefined'){ player.playVideo(); }
     jQuery('#oet-video-overlay').modal('show');
   }else{ //pause and hide
-    player.pauseVideo();
+    if (typeof(player) != 'undefined'){ player.pauseVideo(); }
     jQuery('#oet-video-overlay').modal('hide');
   }
 }

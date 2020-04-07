@@ -72,4 +72,13 @@ jQuery( document ).ready(function() {
         jQuery('#publication_metabox').toggle(jQuery(this).val()=='page-templates/publication-template.php');
         
     }).change();
+    
+    jQuery('.oet_sidebar_section_youtube_modal_trg').change(function() {
+        if(this.checked) {
+            jQuery(this).siblings('.oet_sidebar_section_youtube_modal_opt').val(1);
+        }else{
+            jQuery(this).siblings('.oet_sidebar_section_youtube_modal_opt').val(0);
+        }      
+    });
+    
 });
