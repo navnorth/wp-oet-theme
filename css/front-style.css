@@ -755,6 +755,35 @@ h2.oet-acf-header-text {
     top: 0px;
 }
 
+
+
+.sidebar-youtube-video a {
+  display: block;
+  position: relative;
+}
+.oet-youtube-play-overlay {
+	position: absolute;
+	display: block;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+.oet-youtube-play-overlay img {
+  width: 75px !important;
+  top: 35%;
+  opacity: .86;
+}
+.sidebar-youtube-video a>img {
+  opacity: 0.9;
+  width: 100%;
+}
+.youtube-videoWrapper iframe {
+    width: 100% !important;
+}
+
+
 iframe.oet_youtube_side_container {margin: 0px !important;}
 .oet-youtube-modal-wrapper .modal-dialog {margin: 0px !important; width:100% !important;}
 .oet-youtube-modal-wrapper .modal-dialog .modal-content {

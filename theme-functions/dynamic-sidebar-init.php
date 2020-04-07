@@ -507,6 +507,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                   $content .= '<div class="'.$hclass.'">';
                   $content .= '<a href="#" data-toggle="modal" data-target="#oet-youtube-modal-'.$youtube_id.'">';
                   $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
+                  $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_site_url().'/wp-content/themes/wp-oet-theme/images/ytplay.png" alt=""></div>';
                   $content .= '</a>';      
                   $content .= '<p class="'.$class.'">'.$title.'</p>';
                   $content .= '<p>'.$description.'</p>';
