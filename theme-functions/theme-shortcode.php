@@ -1167,13 +1167,13 @@ function oet_social_func($attribute, $content = null){
  $return .= '<div class="ssba ssba-wrap">';
 	 $return .= '<div>';
 		 $return .= '<a class="ssba_facebook_share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftech.ed.gov%2Fnetp%2F" onclick="openWindow(this.href,\'Share via Facebook\',450,250); return false;">';
-			 $return .= '<img src="https://tech.ed.gov/wp-content/themes/wp-oet-theme-v1.7.3/images/share_fb.png" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook">';
+			 $return .= '<img src="'.get_stylesheet_directory_uri().'/images/share_fb.png" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook">';
 		 $return .= '</a>';
 		 $return .= '<a class="ssba_twitter_share" href="https://twitter.com/intent/tweet?text=National%20Education%20Technology%20Plan&amp;url=https%3A%2F%2Ftech.ed.gov%2Fnetp%2F&amp;via=officeofedtech" onclick="openWindow(this.href,\'Share via Twitter\',450,250); return false;">';
-			 $return .= '<img src="https://tech.ed.gov/wp-content/themes/wp-oet-theme-v1.7.3/images/share_twr.png" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter">';
+			 $return .= '<img src="'.get_stylesheet_directory_uri().'/images/share_twr.png" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter">';
 		 $return .= '</a>';
 		 $return .= '<a class="ssba_email_share" href="mailto:?subject=National%20Education%20Technology%20Plan&amp;body=https%3A%2F%2Ftech.ed.gov%2Fnetp%2F" onclick="openWindow(this.href,\'Share via Email\',450,250); return false;">';
-			 $return .= '<img src="https://tech.ed.gov/wp-content/themes/wp-oet-theme-v1.7.3/images/share_mailto.png" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone">';
+			 $return .= '<img src="'.get_stylesheet_directory_uri().'/images/share_mailto.png" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone">';
 		 $return .= '</a>';
 	 $return .= '</div>';
  $return .= '</div>';
