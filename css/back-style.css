@@ -109,3 +109,8 @@
 }
 .green { color:#00FF00; }
 .red { color:#FF0000; }
+.oese-prohibitedpermalinktext {
+  background:rgba(220,50,50,.1) !important;
+  width:100%;
+  min-width:100%;
+}
