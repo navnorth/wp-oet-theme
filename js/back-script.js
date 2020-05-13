@@ -89,29 +89,54 @@ jQuery( document ).ready(function() {
 /* PERMALINK VALIDATION */
 /* ******************** */
 jQuery( document ).ready(function() {
-    var posttype = getPostType();
-    if(posttype != 'undefined' && (posttype == 'page' || posttype == 'post')){
-      if(jQuery("#publish").length){
-        var btnText = jQuery("#publish").attr('value');
-        jQuery("#publish").hide();
-        jQuery('#publishing-action').append('<input type="submit" name="publish" id="secondary-publish" class="button button-primary button-large" value="'+btnText+'">')
-      }
+  var posttype = getPostType();
+  if(posttype != 'undefined' && (posttype == 'page' || posttype == 'post')){
+    //Save Draft Button
+    if(jQuery('#minor-publishing-actions #save-action #save-post').length){
+      var btnText = jQuery('#minor-publishing-actions #save-action #save-post').attr('value');
+      jQuery('#minor-publishing-actions #save-action #save-post').hide();
+      jQuery('<input type="submit" name="save" id="secondary-save-post" value="'+btnText+'" class="button">').insertAfter(jQuery('#minor-publishing-actions #save-action #save-post'));
     }
-
-    jQuery(document).on('click','#secondary-publish',function(e){
+    //Publish Button
+    if(jQuery("#publish").length){
+      var btnText = jQuery("#publish").attr('value');
+      jQuery("#publish").hide();
+      jQuery('#publishing-action').append('<input type="submit" name="publish" id="secondary-publish" class="button button-primary button-large" value="'+btnText+'">')
+    }
+  }
+  //Save Draft Title Field Enter Key Event
+  jQuery(document).on('keydown','input[name="post_title"]',function(e){
+    var keycode = (e.keyCode ? e.keyCode : e.which);
+    if(keycode == '13'){
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
-      jQuery('input[name="post_title"]').trigger('blur');    
-      var checkExist = setInterval(function() {
-         if (jQuery('span#editable-post-name').length) {
-            clearInterval(checkExist);
-            interceptPublish();
-         }
-      }, 100); // check every 100ms      
-    })
-});
+    }
+  })
+  //Save Draft Button Click Event
+  jQuery(document).on('click','#secondary-save-post',function(e){
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    jQuery('input[name="post_title"]').trigger('blur');    
+    var checkExist = setInterval(function() {
+       if (jQuery('span#editable-post-name').length) {
+          clearInterval(checkExist);
+          interceptPublish('dft');
+       }
+    }, 100); // check every 100ms      
+  })
+  //Publish Button Click Event
+  jQuery(document).on('click','#secondary-publish',function(e){
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    jQuery('input[name="post_title"]').trigger('blur');    
+    var checkExist = setInterval(function() {
+       if (jQuery('span#editable-post-name').length) {
+          clearInterval(checkExist);
+          interceptPublish('pub');
+       }
+    }, 100); // check every 100ms      
+  })
+})
 
 var itvl;
-function interceptPublish(elm){
+function interceptPublish(typ){
     
     if(jQuery('input#new-post-slug').length){
         var slug = jQuery('input#new-post-slug').val(); 
@@ -133,7 +158,11 @@ function interceptPublish(elm){
         jQuery('.oese-prohibitedpermalinktext').show(300);
       }
     }else{
-      jQuery("#publish").click();
+      if(typ == 'pub'){
+        jQuery("#publish").click();
+      }else if(typ == 'dft'){
+        jQuery("#save-post").click();
+      }
     }
 
 }

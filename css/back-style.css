@@ -114,3 +114,6 @@
   width:100%;
   min-width:100%;
 }
+input#secondary-save-post {
+    float: left;
+}
