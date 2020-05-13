@@ -113,6 +113,7 @@
   background:rgba(220,50,50,.1) !important;
   width:100%;
   min-width:100%;
+  box-sizing:border-box;
 }
 input#secondary-save-post {float: left;}
 #minor-publishing-actions #save-action #save-post{

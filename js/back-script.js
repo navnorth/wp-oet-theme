@@ -133,6 +133,14 @@ jQuery( document ).ready(function() {
        }
     }, 100); // check every 100ms      
   })
+  //Notice Dismiss
+  jQuery(document).on('click','.oese-permalink-validation-notice-dismiss',function(e){
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    jQuery('.oese-prohibitedpermalinktext.notice').hide(100,function(){
+      jQuery('.oese-prohibitedpermalinktext.notice').remove();
+    });    
+  })
+  
 })
 
 var itvl;
@@ -152,10 +160,10 @@ function interceptPublish(typ){
         }
     });
     if(found){
-      var html = '<div class="oese-prohibitedpermalinktext notice notice-error is-dismissible" style="display:none;"><p>Please make sure the permalink doesn\'t begin with words such as <strong>admin, login, and user</strong> as they are known to cause issues</p></div>';
+      var html = '<div class="oese-prohibitedpermalinktext notice notice-error is-dismissible" style="display:none;"><p>Please make sure the permalink doesn\'t begin with words such as <strong>admin, login, and user</strong> as they are known to cause issues</p><button type="button" class="oese-permalink-validation-notice-dismiss notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>';
       if (!jQuery('.oese-prohibitedpermalinktext').length){
         jQuery(html).insertAfter('hr.wp-header-end');
-        jQuery('.oese-prohibitedpermalinktext').show(300);
+        jQuery('.oese-prohibitedpermalinktext').show(100);
       }
     }else{
       if(typ == 'pub'){
