@@ -152,7 +152,7 @@ function interceptPublish(typ){
         }
     });
     if(found){
-      var html = '<div class="oese-prohibitedpermalinktext notice notice-error /*is-dismissible*/" style="display:none;"><p>Please make sure the permalink doesn\'t begin with words such as <strong>admin, login, and user</strong> as they are known to cause issues</p></div>';
+      var html = '<div class="oese-prohibitedpermalinktext notice notice-error is-dismissible" style="display:none;"><p>Please make sure the permalink doesn\'t begin with words such as <strong>admin, login, and user</strong> as they are known to cause issues</p></div>';
       if (!jQuery('.oese-prohibitedpermalinktext').length){
         jQuery(html).insertAfter('hr.wp-header-end');
         jQuery('.oese-prohibitedpermalinktext').show(300);
