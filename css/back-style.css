@@ -114,6 +114,10 @@
   width:100%;
   min-width:100%;
 }
-input#secondary-save-post {
-    float: left;
+input#secondary-save-post {float: left;}
+#minor-publishing-actions #save-action #save-post{
+  width: 0px !important;
+  padding: 0px !important;
+  border: 0px !important;
 }
+  
