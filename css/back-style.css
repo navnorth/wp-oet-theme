@@ -109,6 +109,8 @@
 }
 .green { color:#00FF00; }
 .red { color:#FF0000; }
+
+/*PERMALINK VALIDATION START*/
 .oese-prohibitedpermalinktext {
   background:rgba(220,50,50,.1) !important;
   width:100%;
@@ -121,4 +123,4 @@ input#secondary-save-post {float: left;}
   padding: 0px !important;
   border: 0px !important;
 }
-  
+/*PERMALINK VALIDATION END*/
