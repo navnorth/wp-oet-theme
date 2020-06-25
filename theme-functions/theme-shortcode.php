@@ -282,7 +282,7 @@ function feature_video_func($attr, $content = null)
 	if(isset($videoid) && !empty($videoid))
 		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
 	
-
+	$yt_host = '//www.youtube.com';
 	$tracking_script = "<script type='text/javascript'>\n".
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
@@ -292,14 +292,10 @@ function feature_video_func($attr, $content = null)
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
 				"	// This code is called by the YouTube API to create the player object \n".
 				"function onYouTubeIframeAPIReady(event) { \n".
-				" 	if (typeof(YT) == 'undefined' || typeof(YT.Player) == 'undefined') { \n".
-				"		setTimeout(function(){  \n".
-				"			console.log('YT loading'); \n".
-				"		}, 1000);  \n".
-				"		loadPlayer(); \n".
-				" 	} else { \n".
-				"		loadPlayer(); \n".
-				" 	} \n".
+				"	setTimeout(function(){  \n".
+				"		console.log('YT loading'); \n".
+				"	}, 1000);  \n".
+				"	loadPlayer(); \n".
 				"}\n".
 				"	var pauseFlag = false; \n".
 				"	var gaSent = false; \n".
@@ -319,7 +315,8 @@ function feature_video_func($attr, $content = null)
 				"		'controls': 1, \n".
 				"		'enablejsapi': 1, \n".
 				"		'rel' : 0, \n".
-				"		'origin' : '".$origin."' \n".
+				"		'origin' : '".$origin."', \n".
+				"		'host' : '".$yt_host."' \n".
 				"	}, \n".
 				"	events: { \n".
 				"		'onError': onPlayerError, \n".
