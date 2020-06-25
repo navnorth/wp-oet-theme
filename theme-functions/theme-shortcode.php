@@ -290,6 +290,7 @@ function feature_video_func($attr, $content = null)
 				"var player; \n".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
+				"window.YTConfig = { host: 'https://www.youtube.com' } \n".
 				"	// This code is called by the YouTube API to create the player object \n".
 				"function onYouTubeIframeAPIReady(event) { \n".
 				"	setTimeout(function(){  \n".
@@ -388,7 +389,7 @@ function feature_video_func($attr, $content = null)
 	$return .= '</div>';
 	add_action("wp_footer", function() use( $tracking_script ){
 		echo $tracking_script;
-	});
+	}, 100);
 	return $return;
 }
 
