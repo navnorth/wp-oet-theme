@@ -167,4 +167,6 @@ window.setInterval(function(){
     jQuery('.oet-youtube-modal-wrapper .modal').focus();
 }, 1000);
 
-sideytplayer.init();
+
+if (jQuery('.oet_youtube_side_container').length)
+	sideytplayer.init();
