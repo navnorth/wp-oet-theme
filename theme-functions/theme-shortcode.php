@@ -280,18 +280,37 @@ function feature_video_func($attr, $content = null)
 
 	$origin = get_site_url();
 	if(isset($videoid) && !empty($videoid))
-		$src = "https://www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
+		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
 	
 
 	$tracking_script = "<script type='text/javascript'>\n".
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
-				"tag.src = \"https://www.youtube.com/iframe_api\"; \n ".
+				"tag.src = \"//www.youtube.com/iframe_api\"; \n ".
 				"var player; \n".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
 				"	// This code is called by the YouTube API to create the player object \n".
 				"function onYouTubeIframeAPIReady(event) { \n".
+				" 	if (typeof(YT) == 'undefined' || typeof(YT.Player) == 'undefined') { \n".
+				"		setTimeout(function(){  \n".
+				"			loadPlayer(); \n".
+				"		}, 1000);  \n".
+				" 	} else { \n".
+				"		loadPlayer(); \n".
+				" 	} \n".
+				"}\n".
+				"	var pauseFlag = false; \n".
+				"	var gaSent = false; \n".
+				"function onPlayerError(event) { \n".
+				"	if (event.data) { \n".
+				"		if (gaSent === false) { \n".
+				"			ga('send',  'event', 'Featured Video: " . esc_sql($post->post_title) . "', 'Failed', '". $video_id."'  ); \n".
+				"			gaSent = true; \n".
+				"		} \n".
+				" 	} \n".
+				"} \n".
+				"function loadPlayer() { \n".
 				"	player = new YT.Player('".$id."', { \n".
 				"	videoId: '".$videoid."', \n".
 				"	playerVars: { \n".
@@ -307,16 +326,6 @@ function feature_video_func($attr, $content = null)
 				"		'onStateChange': onPlayerStateChange \n".
 				"		} \n".
 				"	}); \n".
-				"}\n".
-				"	var pauseFlag = false; \n".
-				"	var gaSent = false; \n".
-				"function onPlayerError(event) { \n".
-				"	if (event.data) { \n".
-				"		if (gaSent === false) { \n".
-				"			ga('send',  'event', 'Featured Video: " . esc_sql($post->post_title) . "', 'Failed', '". $video_id."'  ); \n".
-				"			gaSent = true; \n".
-				"		} \n".
-				" 	} \n".
 				"} \n".
 				"function onPlayerReady(event) { \n".
 				"	// do nothing, no tracking needed \n".
