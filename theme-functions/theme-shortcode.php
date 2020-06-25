@@ -282,11 +282,11 @@ function feature_video_func($attr, $content = null)
 	if(isset($videoid) && !empty($videoid))
 		$src = "https://www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
 	
-	$yt_host = 'https://youtube.com';
+	$yt_host = '//www.youtube.com';
 	$tracking_script = "<script type='text/javascript'>\n".
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
-				"tag.src = \"https://youtube.com/iframe_api\"; \n ".
+				"tag.src = \"//www.youtube.com/iframe_api\"; \n ".
 				"var player; \n".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
