@@ -294,8 +294,9 @@ function feature_video_func($attr, $content = null)
 				"function onYouTubeIframeAPIReady(event) { \n".
 				" 	if (typeof(YT) == 'undefined' || typeof(YT.Player) == 'undefined') { \n".
 				"		setTimeout(function(){  \n".
-				"			loadPlayer(); \n".
+				"			console.log('YT loading'); \n".
 				"		}, 1000);  \n".
+				"		loadPlayer(); \n".
 				" 	} else { \n".
 				"		loadPlayer(); \n".
 				" 	} \n".
