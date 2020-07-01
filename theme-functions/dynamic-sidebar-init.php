@@ -10,6 +10,7 @@ function oet_dynamic_sidebar_enqueue_scripts()
         wp_enqueue_style( 'fontawesome-css',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
         wp_enqueue_style( 'sidebar-css',get_stylesheet_directory_uri() . '/css/dynamic-sidebar.css' );
         wp_enqueue_script( 'sidebar-js', get_stylesheet_directory_uri() . '/js/dynamic-sidebar.js', array('jquery') );
+        wp_enqueue_script( 'medium-bg-js', get_stylesheet_directory_uri() . '/js/medium_bg_image_selection.js', array('jquery') );
         wp_localize_script( 'sidebar-js', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     }
 }
@@ -137,7 +138,6 @@ function get_fields_from_content_type($type, $rowid, $value=""){
         case "image":
         case "youtube":
         case "story":
-        case "medium":
             $contents = "";
             if (!empty($value)){
                 $contents = $value;
@@ -157,6 +157,110 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     }elseif ($type=="story"){
                         $val = $contents['story'][$index];
                     }
+                    $rowid = $index + 1;
+                    $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
+                            <span class="oet-sortable-handle">
+                                <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
+                                <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
+                            </span>
+                            <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"'.$disabled.'><i class="fa fa-trash-o"></i> </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="oet_sidebar_section_content_title">Title:</label>
+                                <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title" value="'.$title.'">
+                            </div>
+                            <div class="form-group">
+                                <label for="oet_sidebar_section_content_html">Short Description:</label>';
+                                ob_start(); // Start Output buffer
+                                wp_editor( $description,
+                                    'oet-sidebar-section-'.$type.'-'.$rowid,
+                                    $settings = array(
+                                        'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
+                                        'media_buttons' => true,
+                                        'textarea_rows' => 6,
+                                        'drag_drop_upload' => true,
+                                        'teeny' => true,
+                                        'tinymce' => true,
+                                        'quicktags' => true,
+                                        'editor_class' => 'oet-wp-editor',
+                                        'default_editor' => 'html'
+                                    )
+                                );
+                                $fields_section .= ob_get_clean();
+                    $fields_section .= '</div>
+                            <div class="form-group oet-content-sections">';
+                    $fields_section .= generatecontentfieldtype($type, $val, $mod);
+                    $fields_section .= '</div>
+                        </div>
+                    </div>';
+                }
+                if ($count>0){
+                    $fields_section .= '<div class="form-group button-row-content">
+                        <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More '.ucwords($type).'</button>
+                    </div>';
+                }
+            } else {
+                $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
+                        <span class="oet-sortable-handle">
+                            <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
+                        </span>
+                        <span class="btn btn-danger btn-sm oet-remove-sidebar-section-content" title="Delete"><i class="fa fa-trash-o"></i> </span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="oet_sidebar_section_content_title">Title:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="oet_sidebar_section_content_html">Short Description:</label>';
+                            ob_start(); // Start Output buffer
+                            wp_editor( '',
+                                'oet-sidebar-section-type-'.$rowid,
+                                $settings = array(
+                                    'textarea_name' => 'oet_sidebar_section[content]['.$type.'][description][]',
+                                    'media_buttons' => true,
+                                    'textarea_rows' => 6,
+                                    'drag_drop_upload' => true,
+                                    'teeny' => true,
+                                    'tinymce' => true,
+                                    'quicktags' => true,
+                                    'editor_class' => 'oet-wp-editor',
+                                    'default_editor' => 'html'
+                                )
+                            );
+                            $fields_section .= ob_get_clean();
+                $fields_section .= '</div>
+                        <div class="form-group oet-content-sections">';
+                $fields_section .= generatecontentfieldtype($type);
+                $fields_section .= '</div>
+                    </div>
+                </div>';
+                if ($rowid==1) {
+                $fields_section .= '<div class="form-group button-row-content">
+                        <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More '.ucwords($type).'</button>
+                    </div>';
+                }
+            }
+            break;
+        case "medium":
+            $contents = "";
+            if (!empty($value)){
+                $contents = $value;
+                $count = count($contents['title']);
+                $disabled = "";
+                if ($count==1)
+                    $disabled = ' disabled="disabled"';
+                $val = ""; $mod = "";
+                for($index=0;$index<$count;$index++){
+                    $title = $contents['title'][$index];
+                    $description = $contents['description'][$index];
+                    $val = $contents['url'][$index];
                     $rowid = $index + 1;
                     $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                         <div class="panel-heading">
@@ -303,9 +407,31 @@ function generatecontentfieldtype($type, $value="", $modal=1){
                         </div>';
             break;
         case "medium":
+            // Medium URL
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Medium Post URL:</label>
                             <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url" value="'.$value.'">
+                        </div>';
+            // Alignment
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Alignment:</label>
+                            <select class="form-control" name="oet_sidebar_section[content]['.$type.'][align][]">
+                                <option value="alignnone">None</option>
+                                <option value="alignleft">Left</option>
+                                <option value="aligncenter">Center</option>
+                                <option value="alignright">Right</option>
+                            </select>
+                        </div>';
+            // Background image
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Background Image:</label>
+                            <input type="text" class="form-control oet_medium_background_image_url" name="oet_sidebar_section[content]['.$type.'][image][]" placeholder = "Enter Background Image Url" value="'.$value.'">
+                            <button name="oet_select_medium_background_image" class="oet_select_medium_background_image" alt="Set Background Image">Set Background Image</button>
+                        </div>';
+            // Background Color if background image is not set
+            $content .= '<div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Background Color:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][color][]" placeholder = "Enter Background Color" value="'.$value.'">
                         </div>';
             break;
     }
