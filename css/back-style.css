@@ -124,3 +124,27 @@ input#secondary-save-post {float: left;}
   border: 0px !important;
 }
 /*PERMALINK VALIDATION END*/
+/** Sidebar Styles **/
+.wp-picker-container { display:block; }
+.wp-picker-container input[type=text].wp-color-picker {
+    width: 7rem;
+    line-height: 2em;
+    min-height: 24px;
+    height: 30px !important;
+}
+.wp-picker-container .wp-picker-clear { height:30px !important; }
+.oet-content-sections .row-inline { display:block; overflow:hidden; }
+.oet-content-sections .row-inline .oet_medium_background_image_url {
+    width: 86%;
+    float: left;
+}
+.oet-content-sections .row-inline .oet_select_medium_background_image {
+    width: 13%;
+    float: right;
+    height: 40px;
+    color: #0071a1;
+    border-color: #0071a1;
+    background: #f3f5f6;
+    border-radius: 5px;
+}
+/** End of Sidebar Styles **/

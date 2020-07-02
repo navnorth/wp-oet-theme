@@ -80,6 +80,10 @@ jQuery( document ).ready(function($) {
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
+                    if (type == "medium"){
+                        OET_Dynamic_Sidebar.mediumBackgroundImage();
+                        OET_Dynamic_Sidebar.mediumBGColorSelection();
+                    }
                 });
             });
         },
@@ -365,6 +369,46 @@ jQuery( document ).ready(function($) {
                     $('#oet-delete-section-confirm-popup').modal('hide');
                 });
             });
+        },
+
+        // Medium Background Color
+        mediumBGColorSelection: function() {
+            $('.oet_medium_color_picker').wpColorPicker();
+        },
+
+        // Medium Background Image
+        mediumBackgroundImage: function() {
+            $(document).ready(function() {
+                var frame,
+                    metabox = $("#oet-sidebar-metabox.postbox"),
+                    btn = metabox.find('button.oet_select_medium_background_image'),
+                    input = btn.prev('input.oet_medium_background_image_url');
+                
+                btn.on("click", function( e ){
+                    e.preventDefault();
+                    
+                    if (frame) {
+                        frame.open();
+                        return;
+                    }
+                    
+                    frame = wp.media({
+                        title: 'Select or Upload background image',
+                        button: {
+                            text: "Use this image"
+                        },
+                        multiple:false
+                    });
+                    
+                    frame.on("select", function(){
+                        var attachment = frame.state().get("selection").first().toJSON();
+                        
+                        input.val(attachment.url);
+                    });
+                    
+                    frame.open();
+                });
+            });
         }
         
     };
@@ -378,4 +422,6 @@ jQuery( document ).ready(function($) {
     OET_Dynamic_Sidebar.changeElementOrder();
     OET_Dynamic_Sidebar.deleteSidebarSection();
     OET_Dynamic_Sidebar.deleteSectionContentFields();
+    OET_Dynamic_Sidebar.mediumBGColorSelection();
+    OET_Dynamic_Sidebar.mediumBackgroundImage();
 });

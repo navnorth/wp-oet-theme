@@ -5,12 +5,13 @@ function oet_dynamic_sidebar_enqueue_scripts()
 {
     global $post;
     if (is_object($post) && $post->post_type == "page") {
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js' );
         wp_enqueue_style( 'bootstrap-css',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
         wp_enqueue_style( 'fontawesome-css',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
         wp_enqueue_style( 'sidebar-css',get_stylesheet_directory_uri() . '/css/dynamic-sidebar.css' );
-        wp_enqueue_script( 'sidebar-js', get_stylesheet_directory_uri() . '/js/dynamic-sidebar.js', array('jquery') );
-        wp_enqueue_script( 'medium-bg-js', get_stylesheet_directory_uri() . '/js/medium_bg_image_selection.js', array('jquery') );
+        wp_enqueue_script( 'sidebar-js', get_stylesheet_directory_uri() . '/js/dynamic-sidebar.js', array('jquery', 'wp-color-picker') );
         wp_localize_script( 'sidebar-js', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     }
 }
@@ -425,13 +426,15 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             // Background image
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Background Image:</label>
-                            <input type="text" class="form-control oet_medium_background_image_url" name="oet_sidebar_section[content]['.$type.'][image][]" placeholder = "Enter Background Image Url" value="'.$value.'">
-                            <button name="oet_select_medium_background_image" class="oet_select_medium_background_image" alt="Set Background Image">Set Background Image</button>
+                            <div class="row-inline">
+                                <input type="text" class="form-control oet_medium_background_image_url" name="oet_sidebar_section[content]['.$type.'][image][]" placeholder = "Enter Background Image Url" value="'.$value.'">
+                                <button name="oet_select_medium_background_image" class="oet_select_medium_background_image" alt="Set Background Image">Set Image</button>
+                            </div>
                         </div>';
             // Background Color if background image is not set
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Background Color:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][color][]" placeholder = "Enter Background Color" value="'.$value.'">
+                            <input type="text" class="form-control oet_medium_color_picker" name="oet_sidebar_section[content]['.$type.'][color][]" placeholder = "Enter Background Color" value="'.$value.'">
                         </div>';
             break;
     }
