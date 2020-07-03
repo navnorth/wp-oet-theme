@@ -372,6 +372,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .bg_img_of_icns a, .bg_img_of_icns a:hover { color:#fff; }
 .row.bg_img_of_icns { width:100%; float:none; overflow:hidden; position:relative;}
 .row.bg_img_of_icns .link_dwnlds_wrapper {padding-left: 66.6%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px; vertical-align: middle;}
+.sidebar-medium-post { margin:30px 0 0; }
 .sidebar-medium-post .single-medium {
 	padding:0;
 	border:none;

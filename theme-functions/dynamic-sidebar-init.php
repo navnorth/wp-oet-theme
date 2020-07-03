@@ -262,6 +262,10 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     $title = $contents['title'][$index];
                     $description = $contents['description'][$index];
                     $val = $contents['url'][$index];
+                    $align = $contents['align'][$index];
+                    $bgimage = $contents['image'][$index];
+                    $color = $contents['color'][$index];
+                    $values = array('url' => $val, 'align' => $align, 'image' => $bgimage, 'color' => $color);
                     $rowid = $index + 1;
                     $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                         <div class="panel-heading">
@@ -297,7 +301,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 $fields_section .= ob_get_clean();
                     $fields_section .= '</div>
                             <div class="form-group oet-content-sections">';
-                    $fields_section .= generatecontentfieldtype($type, $val, $mod);
+                    $fields_section .= generatecontentfieldtype($type, $values, $mod);
                     $fields_section .= '</div>
                         </div>
                     </div>';
@@ -411,30 +415,30 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             // Medium URL
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Medium Post URL:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url" value="'.$value.'">
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url" value="'.$value['url'].'">
                         </div>';
             // Alignment
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Alignment:</label>
                             <select class="form-control" name="oet_sidebar_section[content]['.$type.'][align][]">
-                                <option value="alignnone">None</option>
-                                <option value="alignleft">Left</option>
-                                <option value="aligncenter">Center</option>
-                                <option value="alignright">Right</option>
+                                <option value="none" '.selected( $value['align'], "none" ).'>None</option>
+                                <option value="left" '.selected( $value['align'], "left" ).'>Left</option>
+                                <option value="center" '.selected( $value['align'], "center" ).'>Center</option>
+                                <option value="right" '.selected( $value['align'], "right" ).'>Right</option>
                             </select>
                         </div>';
             // Background image
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Background Image:</label>
                             <div class="row-inline">
-                                <input type="text" class="form-control oet_medium_background_image_url" name="oet_sidebar_section[content]['.$type.'][image][]" placeholder = "Enter Background Image Url" value="'.$value.'">
+                                <input type="text" class="form-control oet_medium_background_image_url" name="oet_sidebar_section[content]['.$type.'][image][]" placeholder = "Enter Background Image Url" value="'.$value['image'].'">
                                 <button name="oet_select_medium_background_image" class="oet_select_medium_background_image" alt="Set Background Image">Set Image</button>
                             </div>
                         </div>';
             // Background Color if background image is not set
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Background Color:</label>
-                            <input type="text" class="form-control oet_medium_color_picker" name="oet_sidebar_section[content]['.$type.'][color][]" placeholder = "Enter Background Color" value="'.$value.'">
+                            <input type="text" class="form-control oet_medium_color_picker" name="oet_sidebar_section[content]['.$type.'][color][]" placeholder = "Enter Background Color" value="'.$value['color'].'">
                         </div>';
             break;
     }
@@ -698,10 +702,17 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
         case "medium":
             $count = count($sidebar_content['title']);
             for($index=0;$index<$count;$index++){
+                $bgcolor = "";
+                $background = $sidebar_content['image'][$index];
+                $align = $sidebar_content['align'][$index];
                 $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
                 $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
                 $medium_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
                 
+                if (isset($sidebar_content['color'][$index]))
+                    $bgcolor = "#".$sidebar_content['color'][$index];
+
+
                 if (FALSE==strpos($medium_url,"format=json"))
                     $medium_url .= "?format=json";
                 
@@ -710,10 +721,8 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 if ($index==0)
                     $hclass .= " brdr_mrgn_none";
                 
-                $content = '<div class="'.$hclass.'">';
-                $content .= '<p class="'.$class.'"><a href="'.$medium_url.'" target="_blank">'.$title.'</a></p>';
-                $content .= '<p>'.$description.'</p>';
-                $content .= do_shortcode('[oet_medium url="'.$medium_url.'" width="100%"]');
+                $content .= '<div class="'.$hclass.'">';
+                $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
                 $content .= '</div>';
             }
             break;

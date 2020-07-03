@@ -110,6 +110,11 @@ jQuery( document ).ready(function($) {
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
+
+                    if (type == "medium"){
+                        OET_Dynamic_Sidebar.mediumBackgroundImage();
+                        OET_Dynamic_Sidebar.mediumBGColorSelection();
+                    }
                 });
             });
         },
