@@ -401,14 +401,23 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             $content .= '</div>';
             break;
         case "story":
+            $disabled = "";
+            $story_url = "";
+            if (empty($value)){
+                $disabled = ' disabled="disabled"';
+            } else {
+                $story_url = get_permalink($value);
+            }
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_story">Story:</label>
+                            <div class="row-inline">
                             <select name="oet_sidebar_section[content]['.$type.'][story][]" class="form-control oet-sidebar-section-story">';
             $stories = oet_get_stories();
             foreach($stories as $story){
                 $content .= '<option value="'.$story->ID.'" '.selected($value,$story->ID, false).'>'.$story->post_title.'</option>';
             }
-            $content .= '   </select>
+            $content .= '   </select><span class="preview-story"'.$disabled.'><a href="'.$story_url.'" class="oet-sidebar-story-url" target="_blank"><i class="fa fa-2x fa-external-link" aria-hidden="true"></i></a></span>
+                            </div>
                         </div>';
             break;
         case "medium":
@@ -736,6 +745,8 @@ function oet_get_stories(){
         'post_type'         => array('stories'),
         'posts_per_page'    => -1,
         'post_status'       => 'publish',
+        'orderby'           => 'title',
+        'order'             => 'ASC'
     );
     
     $stories = new WP_Query($args);
@@ -773,5 +784,21 @@ function oet_get_youtube_id($url){
 	}
 	
 	return $youtube_id;
+}
+
+/**
+ * Get Story Url by Id
+ */
+add_action('wp_ajax_oet_sidebar_story_url_callback', 'oet_sidebar_story_url_callback');
+add_action('wp_ajax_nopriv_oet_sidebar_story_url_callback', 'oet_sidebar_story_url_callback');
+
+function oet_sidebar_story_url_callback(){
+    $url = "";
+    $ID = isset($_REQUEST['id']) ? $_REQUEST['id']: "";
+    if ($ID)
+        $url = get_permalink($ID);
+
+    echo $url;
+    exit();
 }
 ?>

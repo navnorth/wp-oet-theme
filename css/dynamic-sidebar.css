@@ -19,3 +19,6 @@
 .oet-sidebar-section-wrapper .sidebar-section-story-reorder-down,
 .oet-sidebar-section-wrapper .sidebar-section-medium-reorder-up,
 .oet-sidebar-section-wrapper .sidebar-section-medium-reorder-down{ cursor:pointer; }
+.row-inline .oet-sidebar-section-story { width:95%; display:inline-block; }
+.row-inline .preview-story { width: 5%; text-align: center; display: inline-block; line-height: 40px; }
+.row-inline .preview-story i { vertical-align: middle; }

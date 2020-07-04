@@ -90,7 +90,7 @@ jQuery( document ).ready(function($) {
         
         /** Add Content Type Editor **/
         addContentTypeEditor: function(){
-             $(document).on("click", '.oet-add-sidebar-section-content', function(e){
+            $(document).on("click", '.oet-add-sidebar-section-content', function(e){
                 e.preventDefault();
                 var btn = $(this).closest('.button-row-content');
                         
@@ -414,6 +414,21 @@ jQuery( document ).ready(function($) {
                     frame.open();
                 });
             });
+        },
+
+        // Get Story URL
+        getStoryURL: function(){
+            $(document).on("change", '.oet-sidebar-section-story', function(e){
+                e.preventDefault();
+                var target = $(this).parent().find('.preview-story .oet-sidebar-story-url');
+                $.post(oet_ajax_object.ajaxurl,
+                {
+                    action:'oet_sidebar_story_url_callback',
+                    id: $(this).val()
+                }).done(function (response) {
+                    target.attr('href',response);
+                });
+            });
         }
         
     };
@@ -429,4 +444,5 @@ jQuery( document ).ready(function($) {
     OET_Dynamic_Sidebar.deleteSectionContentFields();
     OET_Dynamic_Sidebar.mediumBGColorSelection();
     OET_Dynamic_Sidebar.mediumBackgroundImage();
+    OET_Dynamic_Sidebar.getStoryURL();
 });
