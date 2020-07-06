@@ -4,6 +4,7 @@ global $post;
 ?>
 <div class="oet_dynamic_sidebar_wrapper">
     <?php
+    $hidden = " hidden";
     $sidebar_sections = null;
     $sidebar_section = get_post_meta($post->ID,"oet_sidebar_section");
     if ($sidebar_section)
@@ -18,6 +19,8 @@ global $post;
             $order = (isset($sidebar_sections['order'][$index])?$sidebar_sections['order'][$index]:($index+1));
             $html = (isset($sidebar_sections['html'][$index])?$sidebar_sections['html'][$index]:"");
             $type = (isset($sidebar_sections['type'][$index])?$sidebar_sections['type'][$index]:"");
+            if ($type=="related")
+                $hidden = "";
             $content_type = (isset($sidebar_sections['content'][$type])?$sidebar_sections['content'][$type]:"");
             if ($type=="html")
                 $content_type = (isset($sidebar_sections['content'][$type][$order])?$sidebar_sections['content'][$type][$order]:"");
@@ -34,7 +37,7 @@ global $post;
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label for="oet_sidebar_section_title">Title:</label>
+                    <label fosr="oet_sidebar_section_title">Title:</label>
                     <input type="text" class="form-control" name="oet_sidebar_section[title][]" placeholder = "Section Title" value="<?php echo $title; ?>">
                 </div>
                 <div class="form-group">
@@ -64,13 +67,14 @@ global $post;
                         <option value="medium" <?php selected($type,'medium'); ?>>Medium Post</option>
                     </select>
                 </div>
-                <?php if ($type!=="related") { ?>
+                <div class="form-group oet-related-content-helper<?php echo $hidden; ?>">
+                    <em>Automatic listing of related content based on matching categories and tags from this page.</em>
+                </div>
                 <div class="form-group oet-content-sections subsection-visible">
                     <?php
                     echo get_fields_from_content_type($type, $index+1, $content_type);
                     ?>
                 </div>
-                <?php } ?>
             </div>
         </div>
         <?php

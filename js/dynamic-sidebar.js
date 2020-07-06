@@ -62,6 +62,7 @@ jQuery( document ).ready(function($) {
              $(document).on("change", '.oet-sidebar-section-type', function(e){
                 e.preventDefault();
                 var content_section = $(this).closest('.oet-sidebar-section-wrapper').find('.oet-content-sections');
+                var helper_text = $(this).parent().next('.oet-related-content-helper');
                 content_section.html('').removeClass('subsection-visible');
                         
                 var content_count = parseInt(content_section.find('.oet-sidebar-section-type-wrapper').length, 10);
@@ -74,8 +75,14 @@ jQuery( document ).ready(function($) {
                     row_id: id,
                     type: type
                 }).done(function (response) {
-                    if (type!=="related")
-                        content_section.append(response).addClass('subsection-visible');
+                    if (type=="related"){
+                        helper_text.removeClass('hidden');
+                        helper_text.show();
+                    } else { 
+                        helper_text.hide();
+                        helper_text.addClass('hidden');
+                    }
+                    content_section.append(response).addClass('subsection-visible');
                     var textAreaId = 'oet-sidebar-section-type-' + id;
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );

@@ -67,6 +67,9 @@ function oet_add_sidebar_section_callback() {
                                 <option value="medium">Medium Post</option>
                             </select>
                         </div>
+                        <div class="form-group oet-related-content-helper hidden">
+                            <em>Automatic listing of related content based on matching categories and tags from this page.</em>
+                        </div>
                         <div class="form-group oet-content-sections">
                             <label for="oet_sidebar_section_html">HTML Content:</label>';
                             ob_start(); // Start Output buffer
@@ -358,6 +361,16 @@ function get_fields_from_content_type($type, $rowid, $value=""){
             }
             break;
         case "related":
+            $contents = $value;
+            if (empty($contents))
+                $value = 4;
+            else {
+                $value = $contents['count'][0];
+            }
+            $fields_section .= '<div class="form-group">
+                                    <label for="oet_sidebar_section_title">Display Count:</label>
+                                    <input type="number" class="form-control" name="oet_sidebar_section[content]['.$type.'][count][]" value="'.$value.'">
+                            </div>';
             break;
     }
     return $fields_section;
@@ -627,7 +640,10 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
             }
             break;
         case "related":
-            $content = oet_display_default_sidebar($post->ID,4,false);
+            $count = 4;
+            if (isset($sidebar_content['content']['related']['count']))
+                $count = $sidebar_content['content']['related']['count'][0];
+            $content = oet_display_default_sidebar($post->ID,$count,false);
             break;
         case "youtube":
             $count = count($sidebar_content['title']);

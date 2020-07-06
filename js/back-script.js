@@ -25,7 +25,6 @@ jQuery( document ).ready(function() {
 	    var label = jQuery(this).find(".widget-inside input.widefat[id*='label']");
 	    setTimeout(function() {
 		var title_text = title.text();
-		console.log(title_text);
 		if (label.val().length>0) {
 		    title_text = ": " + label.val();
 		}
