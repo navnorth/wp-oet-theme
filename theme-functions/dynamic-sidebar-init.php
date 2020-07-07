@@ -143,6 +143,9 @@ function get_fields_from_content_type($type, $rowid, $value=""){
         case "youtube":
         case "story":
             $contents = "";
+            $wType = ucwords($type);
+            if ($type=="youtube")
+                $wType = "YouTube";
             if (!empty($value)){
                 $contents = $value;
                 $count = count($contents['title']);
@@ -164,7 +167,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     $rowid = $index + 1;
                     $fields_section .= '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                         <div class="panel-heading">
-                            <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
+                            <h3 class="panel-title">'.$wType.' '.$rowid.'</h3>
                             <span class="oet-sortable-handle">
                                 <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
                                 <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
@@ -209,7 +212,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
             } else {
                 $fields_section = '<div class="panel panel-default oet-sidebar-section-type-wrapper" id="oet_sidebar_section_type_'.$rowid.'">
                     <div class="panel-heading">
-                        <h3 class="panel-title">'.ucwords($type).' '.$rowid.'</h3>
+                        <h3 class="panel-title">'.$wType.' '.$rowid.'</h3>
                         <span class="oet-sortable-handle">
                             <i class="fa fa-arrow-down sidebar-section-'.$type.'-reorder-down" aria-hidden="true"></i>
                             <i class="fa fa-arrow-up sidebar-section-'.$type.'-reorder-up" aria-hidden="true"></i>
@@ -247,7 +250,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                 </div>';
                 if ($rowid==1) {
                 $fields_section .= '<div class="form-group button-row-content">
-                        <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More '.ucwords($type).'</button>
+                        <button type="button" class="btn btn-default oet-add-sidebar-section-content"><i class="fa fa-plus"></i> Add More '.$wType.'</button>
                     </div>';
                 }
             }
@@ -402,15 +405,14 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             break;
         case "youtube":
             $content .= '<div class="form-group">
-                            <label for="oet_sidebar_section_content_link_url">Youtube URL:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Youtube Url" value="'.$value.'">
+                            <label for="oet_sidebar_section_content_link_url">YouTube URL:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter YouTube Url" value="'.$value.'">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_option_modal">Playback in modal:</label>';
                $_mdl = ($modal != 0)? 'checked': '';
                $content .= '<input type="hidden" class="oet_sidebar_section_youtube_modal_opt" name="oet_sidebar_section[content]['.$type.'][modal][]" value="'. $modal .'" >';
                $content .= '<input type="checkbox" class="oet_sidebar_section_youtube_modal_trg" '. $_mdl .' >';
-               
             $content .= '</div>';
             break;
         case "story":

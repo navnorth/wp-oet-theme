@@ -63,6 +63,7 @@ jQuery( document ).ready(function($) {
                 e.preventDefault();
                 var content_section = $(this).closest('.oet-sidebar-section-wrapper').find('.oet-content-sections');
                 var helper_text = $(this).parent().next('.oet-related-content-helper');
+                helper_text.hide();
                 content_section.html('').removeClass('subsection-visible');
                         
                 var content_count = parseInt(content_section.find('.oet-sidebar-section-type-wrapper').length, 10);
