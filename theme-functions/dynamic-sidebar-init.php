@@ -445,10 +445,10 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Alignment:</label>
                             <select class="form-control" name="oet_sidebar_section[content]['.$type.'][align][]">
-                                <option value="none" '.selected( $value['align'], "none" ).'>None</option>
-                                <option value="left" '.selected( $value['align'], "left" ).'>Left</option>
-                                <option value="center" '.selected( $value['align'], "center" ).'>Center</option>
-                                <option value="right" '.selected( $value['align'], "right" ).'>Right</option>
+                                <option value="none" '.selected( $value['align'], "none", false ).'>None</option>
+                                <option value="left" '.selected( $value['align'], "left", false ).'>Left</option>
+                                <option value="center" '.selected( $value['align'], "center", false ).'>Center</option>
+                                <option value="right" '.selected( $value['align'], "right", false ).'>Right</option>
                             </select>
                         </div>';
             // Background image
