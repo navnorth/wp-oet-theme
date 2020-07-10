@@ -226,6 +226,7 @@ function load_contact_slider() {
     global $csenabled, $cspage, $wp;
     if ( $csenabled ) {
 	wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
+    wp_localize_script( 'front-bottom-script', 'oet_object', array( 'domain' => get_site_url() ) );
 ?>
     <!-- Sliding div starts here -->
     <!--<div id="contact-slider" style="right:-342px;">-->
