@@ -283,10 +283,11 @@ function feature_video_func($attr, $content = null)
 		$src = "https://www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
 	
 	$yt_host = '//www.youtube.com';
+	$iframe_src = get_stylesheet_directory_uri()."/js/iframe_api.js";
 	$tracking_script = "<script type='text/javascript'>\n".
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
-				"tag.src = \"//www.youtube.com/iframe_api\"; \n ".
+				"tag.src = \"$iframe_src\"; \n ".
 				"var player; \n".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
@@ -389,7 +390,7 @@ function feature_video_func($attr, $content = null)
 	$return .= '</div>';
 	add_action("wp_footer", function() use( $tracking_script ){
 		echo $tracking_script;
-	}, 100);
+	}, 20);
 	return $return;
 }
 
@@ -1050,6 +1051,7 @@ function oet_medium_func($attribute, $content = null){
 	$footer = "";
 	$publication = "";
 	$bgcolor = "000000";
+	$textalignment = "";
 	if (isset($bgcolor))
 		$bgcolor = "#".$bgcolor;
 
@@ -1057,6 +1059,9 @@ function oet_medium_func($attribute, $content = null){
 		$background = "background:".$bgcolor." url(". $image .") no-repeat top left;";
 	else
 		$background = "background:".$bgcolor." no-repeat top left;";
+
+	if (isset($textalign))
+		$textalignment = ' style="text-align:'.$textalign.';"';
 
 	if ($url){
 		if (isset($align) && $align =='center')
@@ -1101,7 +1106,7 @@ function oet_medium_func($attribute, $content = null){
 		<div class="single-medium">
 		    <div class="medium" style="'.$background.''.$align.'">
 			<div class="medium-background">
-			    <div class="medium-wrapper">
+			    <div class="medium-wrapper"'.$textalignment.'>
 				<h1><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h1>
 				<p>'.$description.'</p>
 				<p class="mfooter">';

@@ -159,7 +159,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     if ($type=="link" || $type=="image" || $type=="medium"){
                         $val = $contents['url'][$index];
                     }elseif ($type=="youtube"){
-                        $val = $contents['url'][$index];
+                        $val = array('type'=>$contents['type'][$index], 'id'=>$contents['id'][$index]);
                         $mod = (isset($contents['modal'][$index]) && $contents['modal'][$index] == 1 )? 1: 0;
                     }elseif ($type=="story"){
                         $val = $contents['story'][$index];
@@ -405,8 +405,15 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             break;
         case "youtube":
             $content .= '<div class="form-group">
-                            <label for="oet_sidebar_section_content_link_url">YouTube URL:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter YouTube Url" value="'.$value.'">
+                            <label for="oet_sidebar_section_content_link_url">Embed Type:</label>
+                            <select class="form-control" name="oet_sidebar_section[content]['.$type.'][type][]">
+                                <option value="video" '.selected( $value['type'], "video", false ).'>Video</option>
+                                <option value="playlist" '.selected( $value['type'], "playlist", false ).'>Playlist</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="oet_sidebar_section_content_link_url">Video/Playlist ID:</label>
+                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][id][]" placeholder = "Enter Video/Playlist ID" value="'.$value['id'].'">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_option_modal">Playback in modal:</label>';
@@ -445,7 +452,6 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Alignment:</label>
                             <select class="form-control" name="oet_sidebar_section[content]['.$type.'][align][]">
-                                <option value="none" '.selected( $value['align'], "none", false ).'>None</option>
                                 <option value="left" '.selected( $value['align'], "left", false ).'>Left</option>
                                 <option value="center" '.selected( $value['align'], "center", false ).'>Center</option>
                                 <option value="right" '.selected( $value['align'], "right", false ).'>Right</option>
@@ -653,8 +659,9 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
             for($index=0;$index<$count;$index++){
                 $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
                 $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
-                $youtube_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
-                $youtube_id = explode('v=',$youtube_url)[1];
+                //$youtube_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                $youtube_type = (isset($sidebar_content['type'][$index])?$sidebar_content['type'][$index]:"video");
+                $youtube_id = (isset($sidebar_content['id'][$index])?$sidebar_content['id'][$index]:"");
                 $youtube_modal =  (isset($sidebar_content['modal'][$index])?$sidebar_content['modal'][$index]:"0");
                 
                 $class = "hdng_mtr brdr_mrgn_none";
@@ -677,7 +684,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                     $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
                       $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
                         $content .= '<div class="modal-content">';
-                          $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'"></div>';
+                          $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'"></div>';
                         $content .= '</div>';                  
                         $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
                       $content .= '</div>';
@@ -699,7 +706,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
   
                 }else{
                   $content .= '<div class="'.$hclass.'">';
-                  $content .= oet_youtube_embed_code($youtube_url);
+                  $content .= oet_youtube_embed_by_type($youtube_type, $youtube_id);
                   $content .= '<p class="'.$class.'">'.$title.'</p>';
                   $content .= '<p>'.$description.'</p>';
                   $content .= '</div>';
@@ -749,7 +756,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                     $hclass .= " brdr_mrgn_none";
                 
                 $content .= '<div class="'.$hclass.'">';
-                $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
+                $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="none" textalign="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
                 $content .= '</div>';
             }
             break;
@@ -783,6 +790,21 @@ function oet_youtube_embed_code($url) {
 		$embed_code = '<div class="youtube-videoWrapper"><iframe class="oet-youtube-video-ifrm" title="Video Embed" width="640" height="360" src="https://www.youtube.com/embed/'.$youtube_id.'?rel=0" frameborder="0" allowfullscreen></iframe></div>';
 	}
 	return $embed_code;
+}
+
+/** Youtube Embed By Type **/
+function oet_youtube_embed_by_type($type, $videoId) {
+    $embed_code = "";
+    
+    //Generate embed code
+    if (!empty($videoId)) {
+        if ($type=="video") {
+            $embed_code = '<div class="youtube-videoWrapper"><iframe class="oet-youtube-video-ifrm" title="Video Embed" width="640" height="360" src="https://www.youtube.com/embed/'.$videoId.'?rel=0" frameborder="0" allowfullscreen></iframe></div>';
+        } elseif ($type=="playlist"){
+            $embed_code = '<div class="youtube-videoWrapper"><iframe class="oet-youtube-video-ifrm" title="Video Embed" width="640" height="360" src="https://www.youtube.com/embed/videoseries?list='.$videoId.'&rel=0" frameborder="0" allowfullscreen></iframe></div>';
+        }
+    }
+    return $embed_code;
 }
 
 /** Get Youtube Id **/
