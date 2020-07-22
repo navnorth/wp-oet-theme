@@ -17,6 +17,11 @@ function oet_dynamic_sidebar_enqueue_scripts()
 }
 add_action( 'admin_enqueue_scripts', 'oet_dynamic_sidebar_enqueue_scripts' );
 
+function add_dynamic_sidebar_preview_modal(){
+    
+}
+add_action( 'wp_footer', 'add_dynamic_sidebar_preview_modal' );
+
 /**
  * Add Sidebar Section
  */
@@ -34,15 +39,16 @@ function oet_add_sidebar_section_callback() {
                             <i class="fa fa-arrow-up sidebar-section-reorder-up" aria-hidden="true"></i>
                         </span>
                         <span class="btn btn-danger btn-sm oet-remove-sidebar-section" title="Delete"><i class="fa fa-trash-o"></i> </span>
+                        <span class="oet-preview-section btn btn-sm btn-info" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></span>
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="oet_sidebar_section_title">Title:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[title][]" placeholder = "Section Title">
+                            <input type="text" class="form-control oet-sidebar-section-title" name="oet_sidebar_section[title][]" placeholder = "Section Title">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_icon">Icon:</label>
-                            <select name="oet_sidebar_section[icon][]" class="form-control">
+                            <select name="oet_sidebar_section[icon][]" class="form-control oet-sidebar-section-icon">
                                 <option value="fa-star">Star</option>
                                 <option value="fa-compress">Compress</option>
                                 <option value="fa-cogs">Cogs</option>
@@ -84,7 +90,8 @@ function oet_add_sidebar_section_callback() {
                                     'tinymce' => true,
                                     'quicktags' => true,
                                     'editor_class' => 'oet-wp-editor',
-                                    'default_editor' => 'html'
+                                    'default_editor' => 'html',
+                                    'editor_class' => 'oet-sidebar-section-html-content-editor'
                                 )
                             );
                 $content .= ob_get_clean();
@@ -132,7 +139,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                 'tinymce' => true,
                                 'quicktags' => true,
                                 'editor_class' => 'oet-wp-editor',
-                                'default_editor' => 'html'
+                                'default_editor' => 'html',
+                                'editor_class' => 'oet-sidebar-section-html-content-editor'
                             )
                         );
             $fields_section .= ob_get_clean();
@@ -177,7 +185,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="oet_sidebar_section_content_title">Title:</label>
-                                <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title" value="'.$title.'">
+                                <input type="text" class="form-control oet-sidebar-section-'.$type.'-title" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title" value="'.$title.'">
                             </div>
                             <div class="form-group">
                                 <label for="oet_sidebar_section_content_html">Short Description:</label>';
@@ -193,7 +201,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                         'tinymce' => true,
                                         'quicktags' => true,
                                         'editor_class' => 'oet-wp-editor',
-                                        'default_editor' => 'html'
+                                        'default_editor' => 'html',
+                                        'editor_class' => 'oet-sidebar-section-'.$type.'-description'
                                     )
                                 );
                                 $fields_section .= ob_get_clean();
@@ -222,7 +231,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_title">Title:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title">
+                            <input type="text" class="form-control  oet-sidebar-section-'.$type.'-title" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_html">Short Description:</label>';
@@ -238,7 +247,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                     'tinymce' => true,
                                     'quicktags' => true,
                                     'editor_class' => 'oet-wp-editor',
-                                    'default_editor' => 'html'
+                                    'default_editor' => 'html',
+                                    'editor_class' => 'oet-sidebar-section-'.$type.'-description'
                                 )
                             );
                             $fields_section .= ob_get_clean();
@@ -285,7 +295,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="oet_sidebar_section_content_title">Title:</label>
-                                <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title" value="'.$title.'">
+                                <input type="text" class="form-control oet-sidebar-section-'.$type.'-title" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title" value="'.$title.'">
                             </div>
                             <div class="form-group">
                                 <label for="oet_sidebar_section_content_html">Short Description:</label>';
@@ -301,7 +311,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                         'tinymce' => true,
                                         'quicktags' => true,
                                         'editor_class' => 'oet-wp-editor',
-                                        'default_editor' => 'html'
+                                        'default_editor' => 'html',
+                                        'editor_class' => 'oet-sidebar-section-'.$type.'-description'
                                     )
                                 );
                                 $fields_section .= ob_get_clean();
@@ -330,7 +341,7 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_title">Title:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title">
+                            <input type="text" class="form-control oet-sidebar-section-'.$type.'-title" name="oet_sidebar_section[content]['.$type.'][title][]" placeholder = "Content Title">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_html">Short Description:</label>';
@@ -346,7 +357,8 @@ function get_fields_from_content_type($type, $rowid, $value=""){
                                     'tinymce' => true,
                                     'quicktags' => true,
                                     'editor_class' => 'oet-wp-editor',
-                                    'default_editor' => 'html'
+                                    'default_editor' => 'html',
+                                    'editor_class' => 'oet-sidebar-section-'.$type.'-description'
                                 )
                             );
                             $fields_section .= ob_get_clean();
@@ -386,7 +398,7 @@ function generatecontentfieldtype($type, $value="", $modal=1){
         case "link":
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Url:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Url" value="'.$value.'">
+                            <input type="text" class="form-control oet-sidebar-section-'.$type.'-url" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Url" value="'.$value.'">
                         </div>';
             break;
         case "image":
@@ -406,12 +418,12 @@ function generatecontentfieldtype($type, $value="", $modal=1){
         case "youtube":
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Playlist ID:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][pid][]" placeholder = "Enter Playlist ID" value="'.$value['pid'].'">
+                            <input type="text" class="form-control oet-sidebar-section-'.$type.'-playlist-id" name="oet_sidebar_section[content]['.$type.'][pid][]" placeholder = "Enter Playlist ID" value="'.$value['pid'].'">
                             <em>Leave this empty if only embedding a YouTube video and not a playlist</em>
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Video ID:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][id][]" placeholder = "Enter Video ID" value="'.$value['id'].'">
+                            <input type="text" class="form-control oet-sidebar-section-'.$type.'-video-id" name="oet_sidebar_section[content]['.$type.'][id][]" placeholder = "Enter Video ID" value="'.$value['id'].'">
                         </div>
                         <div class="form-group">
                             <label for="oet_sidebar_section_content_option_modal">Playback in modal:</label>';
@@ -444,12 +456,12 @@ function generatecontentfieldtype($type, $value="", $modal=1){
             // Medium URL
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Medium Post URL:</label>
-                            <input type="text" class="form-control" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url" value="'.$value['url'].'">
+                            <input type="text" class="form-control oet-sidebar-section-'.$type.'-post-url" name="oet_sidebar_section[content]['.$type.'][url][]" placeholder = "Enter Medium Url" value="'.$value['url'].'">
                         </div>';
             // Alignment
             $content .= '<div class="form-group">
                             <label for="oet_sidebar_section_content_link_url">Alignment:</label>
-                            <select class="form-control" name="oet_sidebar_section[content]['.$type.'][align][]">
+                            <select class="form-control oet-sidebar-section-'.$type.'-alignment" name="oet_sidebar_section[content]['.$type.'][align][]">
                                 <option value="left" '.selected( $value['align'], "left", false ).'>Left</option>
                                 <option value="center" '.selected( $value['align'], "center", false ).'>Center</option>
                                 <option value="right" '.selected( $value['align'], "right", false ).'>Right</option>
@@ -826,6 +838,224 @@ function oet_get_youtube_id($url){
 }
 
 /**
+ * Display ACF Dynamic Sidebar
+ **/
+function oet_display_acf_dynamic_sidebar($page_id){
+    $sidebar_content = "";
+    // Get Page Meta by Id
+    $sidebar_sections = get_post_meta( $page_id, 'oet_sidebar_section' );
+
+    if (have_rows('oet_sidebar', $page_id)) {
+        while ( have_rows('oet_sidebar', $page_id) ) : the_row();
+            $row = get_row();
+            $title = get_sub_field('oet_sidebar_section_title', $page_id);
+            $icon = get_sub_field('oet_sidebar_section_icon', $page_id);
+            $type = get_sub_field('oet_sidebar_section_type', $page_id);
+
+            $sidebar_content .= '<div class="col-md-12 col-xs-12">';
+            $sidebar_content .= '   <div class="pblctn_box">';
+            $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
+            $sidebar_content .= '   </div>';
+            $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
+            if ($type=="html"){
+                $content = get_sub_field('oet_sidebar_html_content', $page_id);
+                $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
+            }
+            
+            $sidebar_content .= '</div>';
+        endwhile;
+    } else {
+        // Default featured content sidebar
+        $sidebar_content = oet_display_default_sidebar($page_id);
+    }
+
+    // if (!empty($sidebar_sections)) {
+    //     // Display dynamic sidebar sections
+    //     $sidebar_section = $sidebar_sections[0];
+    //     $sidebar_count = count($sidebar_section['title']);
+    //     for($index=0;$index<$sidebar_count;$index++){
+    //         $title = $sidebar_section['title'][$index];
+    //         $icon = $sidebar_section['icon'][$index];
+    //         $type = (isset($sidebar_section['type'][$index])?$sidebar_section['type'][$index]:"");
+    //         $content_type = (isset($sidebar_section['content'][$type])?$sidebar_section['content'][$type]:"");
+    //         $sidebar_content .= '<div class="col-md-12 col-xs-12">';
+    //         $sidebar_content .= '   <div class="pblctn_box">';
+    //         $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
+    //         $sidebar_content .= '   </div>';
+    //         $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
+    //         if ($type=="related")
+    //             $sidebar_content .=     display_sidebar_content_type($type, $index, $sidebar_section);
+    //         else
+    //             $sidebar_content .=     display_sidebar_content_type($type, $index, $content_type);
+    //         $sidebar_content .= '</div>';
+    //     }
+    // } else {
+    //     // Default featured content sidebar
+    //     $sidebar_content = oet_display_default_sidebar($page_id);
+    // }
+    return $sidebar_content;
+}
+
+/** Display Content Types on front-end **/
+function display_acf_sidebar_content_type($type, $sidebar_content){
+    global $post;
+    
+    $content = "";
+    $sectionid = 0;
+    switch ($type){
+        case "html":
+            $html = $sidebar_content;
+            $content = $html;
+            break;
+        case "link":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $link_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                if ($index==0)
+                    $content .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.$link_url.'">'.$title.'</a></p>';
+                else
+                    $content .= '<p class="hdng_mtr"><a href="'.$link_url.'">'.$title.'</a></p>';
+                $content .= '<p>'.$description.'</p>';
+            }
+            break;
+        case "image":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $image_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sdbr_img_cntnt";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                $content = '<div class="'.$hclass.'">';
+                $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+                $content .= '<p class="'.$class.'">'.$title.'</p>';
+                $content .= '<p>'.$description.'</p>';
+                $content .= '</div>';
+            }
+            break;
+        case "related":
+            $count = 4;
+            if (isset($sidebar_content['content']['related']['count']))
+                $count = $sidebar_content['content']['related']['count'][0];
+            $content = oet_display_default_sidebar($post->ID,$count,false);
+            break;
+        case "youtube":
+            $count = count($sidebar_content['title']);
+            $instance = 0;
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                //$youtube_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                $youtube_type = (isset($sidebar_content['pid'][$index])?"playlist":"video");
+                $youtube_pid = (isset($sidebar_content['pid'][$index])?$sidebar_content['pid'][$index]:"");
+                $youtube_id = (isset($sidebar_content['id'][$index])?$sidebar_content['id'][$index]:"");
+                $youtube_modal =  (isset($sidebar_content['modal'][$index])?$sidebar_content['modal'][$index]:"0");
+                
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sidebar-youtube-video";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                
+                if($youtube_modal){ //modal
+                  //$content .= $instance;
+                  $content .= '<div class="'.$hclass.'">';
+                  $content .= '<a href="#" data-toggle="modal" data-target="#oet-youtube-modal-'.$youtube_id.'">';
+                  $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
+                  $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt=""></div>';
+                  $content .= '</a>';      
+                  $content .= '<p class="'.$class.'">'.$title.'</p>';
+                  $content .= '<p>'.$description.'</p>';
+                  $content .= '</div>';
+    
+                  $content .= '<div class="oet-youtube-modal-wrapper">';
+                    $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
+                      $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
+                        $content .= '<div class="modal-content">';
+                          $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
+                        $content .= '</div>';                  
+                        $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
+                      $content .= '</div>';
+                    $content .= '</div>';
+                  $content .= '</div>';
+
+                  $content .= '<script>';
+                    $content .= 'jQuery( document ).ready(function() {';  
+                      $content .= 'jQuery(document).on("shown.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+                          $content .= 'sideytplayer.play('.$instance.');';
+                      $content .= '});';  
+                      $content .= 'jQuery(document).on("hide.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+                          $content .= 'sideytplayer.pause('.$instance.');';
+                      $content .= '});';
+                    $content .= '});';
+                  $content .= '</script>';
+                  
+                  $instance++;
+  
+                }else{
+                  $content .= '<div class="'.$hclass.'">';
+                  $content .= oet_youtube_embed_by_type($youtube_type, $youtube_id, $youtube_pid);
+                  $content .= '<p class="'.$class.'">'.$title.'</p>';
+                  $content .= '<p>'.$description.'</p>';
+                  $content .= '</div>';
+                }
+            }
+            break;
+        case "story":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $story_id =  (isset($sidebar_content['story'][$index])?$sidebar_content['story'][$index]:"");
+                
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sidebar-story-post";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                
+                $content .= '<div class="'.$hclass.'">';
+                $content .= '<p class="'.$class.'">'.$title.'</p>';
+                $content .= '<p>'.$description.'</p>';
+                if (shortcode_exists('oet_story'))
+                    $content .= do_shortcode('[oet_story id="'.$story_id.'" width=12][/oet_story]');
+                $content .= '</div>';
+            }
+            break;
+        case "medium":
+            $count = count($sidebar_content['title']);
+            for($index=0;$index<$count;$index++){
+                $bgcolor = "";
+                $background = $sidebar_content['image'][$index];
+                $align = $sidebar_content['align'][$index];
+                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+                $medium_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                
+                if (isset($sidebar_content['color'][$index]))
+                    $bgcolor = "#".$sidebar_content['color'][$index];
+
+
+                if (FALSE==strpos($medium_url,"format=json"))
+                    $medium_url .= "?format=json";
+                
+                $class = "hdng_mtr brdr_mrgn_none";
+                $hclass = "sidebar-medium-post";
+                if ($index==0)
+                    $hclass .= " brdr_mrgn_none";
+                
+                $content .= '<div class="'.$hclass.'">';
+                $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="none" textalign="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
+                $content .= '</div>';
+            }
+            break;
+    }
+    return $content;
+}
+
+/**
  * Get Story Url by Id
  */
 add_action('wp_ajax_oet_sidebar_story_url_callback', 'oet_sidebar_story_url_callback');
@@ -838,6 +1068,17 @@ function oet_sidebar_story_url_callback(){
         $url = get_permalink($ID);
 
     echo $url;
+    exit();
+}
+
+/** 
+* Display Sidebar Section
+**/
+add_action('wp_ajax_oet_display_sidebar_section_callback', 'oet_display_sidebar_section_callback');
+add_action('wp_ajax_nopriv_oet_display_sidebar_section_callback', 'oet_display_sidebar_section_callback');
+function oet_display_sidebar_section_callback(){
+    $type = isset($_REQUEST['type']) ? $_REQUEST['type']: "";
+    echo $type;
     exit();
 }
 ?>
