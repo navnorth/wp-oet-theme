@@ -859,8 +859,12 @@ function oet_display_acf_dynamic_sidebar($page_id){
             $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
             if ($type=="html"){
                 $content = get_sub_field('oet_sidebar_html_content', $page_id);
-                $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
+            } elseif ($type=="link") {
+                $content = get_sub_field('oet_sidebar_page_link', $page_id);
+            } elseif ($type=="image") {
+                $content = get_sub_field('oet_sidebar_image', $page_id);
             }
+            $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
             
             $sidebar_content .= '</div>';
         endwhile;
@@ -908,34 +912,55 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             $content = $html;
             break;
         case "link":
-            $count = count($sidebar_content['title']);
-            for($index=0;$index<$count;$index++){
-                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
-                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
-                $link_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
-                if ($index==0)
-                    $content .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.$link_url.'">'.$title.'</a></p>';
-                else
-                    $content .= '<p class="hdng_mtr"><a href="'.$link_url.'">'.$title.'</a></p>';
-                $content .= '<p>'.$description.'</p>';
-            }
+            $title = $sidebar_content['oet_sidebar_page_link_title'];
+            $description = $sidebar_content['oet_sidebar_page_link_short_description'];
+            $link_url = $sidebar_content['oet_sidebar_page_link_url'];
+            $content .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.$link_url.'">'.$title.'</a></p>';
+            $content .= '<p>'.$description.'</p>';
+            // $count = count($sidebar_content['title']);
+            // for($index=0;$index<$count;$index++){
+            //     $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+            //     $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+            //     $link_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+            //     if ($index==0)
+            //         $content .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.$link_url.'">'.$title.'</a></p>';
+            //     else
+            //         $content .= '<p class="hdng_mtr"><a href="'.$link_url.'">'.$title.'</a></p>';
+            //     $content .= '<p>'.$description.'</p>';
+            // }
             break;
         case "image":
-            $count = count($sidebar_content['title']);
-            for($index=0;$index<$count;$index++){
-                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
-                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
-                $image_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
-                $class = "hdng_mtr brdr_mrgn_none";
-                $hclass = "sdbr_img_cntnt";
-                if ($index==0)
-                    $hclass .= " brdr_mrgn_none";
-                $content = '<div class="'.$hclass.'">';
-                $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
-                $content .= '<p class="'.$class.'">'.$title.'</p>';
-                $content .= '<p>'.$description.'</p>';
-                $content .= '</div>';
+            $title = $sidebar_content['oet_sidebar_image_title'];
+            $description = $sidebar_content['oet_sidebar_image_short_description'];
+            $image_url = $sidebar_content['oet_sidebar_media_image'];
+            if (isset($image_url['sizes']['medium'])){
+                $image_url = $image_url['sizes']['medium'];
+            } else {
+                $image_url = $image_url['url'];
             }
+            $class = "hdng_mtr brdr_mrgn_none";
+            $hclass = "sdbr_img_cntnt";
+            $content = '<div class="'.$hclass.'">';
+            $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+            $content .= '<p class="'.$class.'">'.$title.'</p>';
+            $content .= '<p>'.$description.'</p>';
+            $content .= '</div>';
+
+            // $count = count($sidebar_content['title']);
+            // for($index=0;$index<$count;$index++){
+            //     $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+            //     $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+            //     $image_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+            //     $class = "hdng_mtr brdr_mrgn_none";
+            //     $hclass = "sdbr_img_cntnt";
+            //     if ($index==0)
+            //         $hclass .= " brdr_mrgn_none";
+            //     $content = '<div class="'.$hclass.'">';
+            //     $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+            //     $content .= '<p class="'.$class.'">'.$title.'</p>';
+            //     $content .= '<p>'.$description.'</p>';
+            //     $content .= '</div>';
+            // }
             break;
         case "related":
             $count = 4;
