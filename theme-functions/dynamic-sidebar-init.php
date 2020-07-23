@@ -863,6 +863,8 @@ function oet_display_acf_dynamic_sidebar($page_id){
                 $content = get_sub_field('oet_sidebar_page_link', $page_id);
             } elseif ($type=="image") {
                 $content = get_sub_field('oet_sidebar_image', $page_id);
+            } elseif ($type=="related") {
+                $content = get_sub_field('oet_sidebar_related_content', $page_id);
             }
             $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
             
@@ -964,8 +966,8 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             break;
         case "related":
             $count = 4;
-            if (isset($sidebar_content['content']['related']['count']))
-                $count = $sidebar_content['content']['related']['count'][0];
+            if (isset($sidebar_content['oet_sidebar_related_content_display_count']))
+                $count = $sidebar_content['oet_sidebar_related_content_display_count'];
             $content = oet_display_default_sidebar($post->ID,$count,false);
             break;
         case "youtube":
