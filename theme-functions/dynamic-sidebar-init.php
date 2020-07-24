@@ -877,6 +877,9 @@ function oet_display_acf_dynamic_sidebar($page_id){
                 case "story":
                     $content = get_sub_field('oet_sidebar_story', $page_id);
                     break;
+                case "medium":
+                    $content = get_sub_field('oet_sidebar_medium_post', $page_id);
+                    break;
             }
             $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
             
@@ -1136,31 +1139,59 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             // }
             break;
         case "medium":
-            $count = count($sidebar_content['title']);
-            for($index=0;$index<$count;$index++){
-                $bgcolor = "";
-                $background = $sidebar_content['image'][$index];
-                $align = $sidebar_content['align'][$index];
-                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
-                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
-                $medium_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
-                
-                if (isset($sidebar_content['color'][$index]))
-                    $bgcolor = "#".$sidebar_content['color'][$index];
+            $bgcolor = "";
+            $index = 0;
+            $background = $sidebar_content['oet_sidebar_medium_post_background_image'];
+            if (isset($background['sizes']['medium']))
+                $background = $background['sizes']['medium'];
+            else
+                $background = $background['url'];
+            $align = $sidebar_content['oet_sidebar_medium_post_alignment'];
+            $title = $sidebar_content['oet_sidebar_medium_post_title'];
+            $description = $sidebar_content['oet_sidebar_medium_post_short_description'];
+            $medium_url =  $sidebar_content['oet_sidebar_medium_post_url'];
+            
+            if (isset($sidebar_content['oet_sidebar_medium_post_background_color']))
+                $bgcolor = $sidebar_content['oet_sidebar_medium_post_background_color'];
 
 
-                if (FALSE==strpos($medium_url,"format=json"))
-                    $medium_url .= "?format=json";
+            if (FALSE==strpos($medium_url,"format=json"))
+                $medium_url .= "?format=json";
+            
+            $class = "hdng_mtr brdr_mrgn_none";
+            $hclass = "sidebar-medium-post";
+            if ($index==0)
+                $hclass .= " brdr_mrgn_none";
+            
+            $content .= '<div class="'.$hclass.'">';
+            $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="none" textalign="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
+            $content .= '</div>';
+
+            // $count = count($sidebar_content['title']);
+            // for($index=0;$index<$count;$index++){
+            //     $bgcolor = "";
+            //     $background = $sidebar_content['image'][$index];
+            //     $align = $sidebar_content['align'][$index];
+            //     $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+            //     $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+            //     $medium_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
                 
-                $class = "hdng_mtr brdr_mrgn_none";
-                $hclass = "sidebar-medium-post";
-                if ($index==0)
-                    $hclass .= " brdr_mrgn_none";
+            //     if (isset($sidebar_content['color'][$index]))
+            //         $bgcolor = "#".$sidebar_content['color'][$index];
+
+
+            //     if (FALSE==strpos($medium_url,"format=json"))
+            //         $medium_url .= "?format=json";
                 
-                $content .= '<div class="'.$hclass.'">';
-                $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="none" textalign="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
-                $content .= '</div>';
-            }
+            //     $class = "hdng_mtr brdr_mrgn_none";
+            //     $hclass = "sidebar-medium-post";
+            //     if ($index==0)
+            //         $hclass .= " brdr_mrgn_none";
+                
+            //     $content .= '<div class="'.$hclass.'">';
+            //     $content .= do_shortcode('[oet_medium url="'.$medium_url.'" title="'.$title.'" description="'.$description.'" align="none" textalign="'.$align.'" bgcolor="'.$bgcolor.'" image="'.$background.'"  width="100%"]');
+            //     $content .= '</div>';
+            // }
             break;
     }
     return $content;
