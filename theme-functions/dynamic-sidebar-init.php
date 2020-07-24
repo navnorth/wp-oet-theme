@@ -857,14 +857,23 @@ function oet_display_acf_dynamic_sidebar($page_id){
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';
             $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
-            if ($type=="html"){
-                $content = get_sub_field('oet_sidebar_html_content', $page_id);
-            } elseif ($type=="link") {
-                $content = get_sub_field('oet_sidebar_page_link', $page_id);
-            } elseif ($type=="image") {
-                $content = get_sub_field('oet_sidebar_image', $page_id);
-            } elseif ($type=="related") {
-                $content = get_sub_field('oet_sidebar_related_content', $page_id);
+
+            switch ($type){
+                case "html":
+                    $content = get_sub_field('oet_sidebar_html_content', $page_id);
+                    break;
+                case "link":
+                    $content = get_sub_field('oet_sidebar_page_link', $page_id);
+                    break;
+                case "image":
+                    $content = get_sub_field('oet_sidebar_image', $page_id);
+                    break;
+                case "related":
+                    $content = get_sub_field('oet_sidebar_related_content', $page_id);
+                    break;
+                case "youtube":
+                    $content = get_sub_field('oet_sidebar_youtube_content', $page_id);
+                    break;
             }
             $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
             
@@ -971,65 +980,120 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             $content = oet_display_default_sidebar($post->ID,$count,false);
             break;
         case "youtube":
-            $count = count($sidebar_content['title']);
-            $instance = 0;
-            for($index=0;$index<$count;$index++){
-                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
-                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
-                //$youtube_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
-                $youtube_type = (isset($sidebar_content['pid'][$index])?"playlist":"video");
-                $youtube_pid = (isset($sidebar_content['pid'][$index])?$sidebar_content['pid'][$index]:"");
-                $youtube_id = (isset($sidebar_content['id'][$index])?$sidebar_content['id'][$index]:"");
-                $youtube_modal =  (isset($sidebar_content['modal'][$index])?$sidebar_content['modal'][$index]:"0");
-                
-                $class = "hdng_mtr brdr_mrgn_none";
-                $hclass = "sidebar-youtube-video";
-                if ($index==0)
-                    $hclass .= " brdr_mrgn_none";
-                
-                if($youtube_modal){ //modal
-                  //$content .= $instance;
-                  $content .= '<div class="'.$hclass.'">';
-                  $content .= '<a href="#" data-toggle="modal" data-target="#oet-youtube-modal-'.$youtube_id.'">';
-                  $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
-                  $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt=""></div>';
-                  $content .= '</a>';      
-                  $content .= '<p class="'.$class.'">'.$title.'</p>';
-                  $content .= '<p>'.$description.'</p>';
-                  $content .= '</div>';
-    
-                  $content .= '<div class="oet-youtube-modal-wrapper">';
-                    $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
-                      $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
-                        $content .= '<div class="modal-content">';
-                          $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
-                        $content .= '</div>';                  
-                        $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
-                      $content .= '</div>';
-                    $content .= '</div>';
-                  $content .= '</div>';
+            var_dump($sidebar_content);
+            $title = $sidebar_content['oet_sidebar_youtube_content_title'];
+            $description = $sidebar_content['oet_sidebar_youtube_content_short_description'];
+            $youtube_type = (isset($sidebar_content['oet_sidebar_youtube_content_playlist_id'])?"playlist":"video");
+            $youtube_pid = $sidebar_content['oet_sidebar_youtube_content_playlist_id'];
+            $youtube_id = $sidebar_content['oet_sidebar_youtube_content_video_id'];
+            $youtube_modal = $sidebar_content['oet_sidebar_youtube_content_modal_playback'];
 
-                  $content .= '<script>';
-                    $content .= 'jQuery( document ).ready(function() {';  
-                      $content .= 'jQuery(document).on("shown.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
-                          $content .= 'sideytplayer.play('.$instance.');';
-                      $content .= '});';  
-                      $content .= 'jQuery(document).on("hide.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
-                          $content .= 'sideytplayer.pause('.$instance.');';
-                      $content .= '});';
-                    $content .= '});';
-                  $content .= '</script>';
-                  
-                  $instance++;
-  
-                }else{
-                  $content .= '<div class="'.$hclass.'">';
-                  $content .= oet_youtube_embed_by_type($youtube_type, $youtube_id, $youtube_pid);
-                  $content .= '<p class="'.$class.'">'.$title.'</p>';
-                  $content .= '<p>'.$description.'</p>';
+            $class = "hdng_mtr brdr_mrgn_none";
+            $hclass = "sidebar-youtube-video";
+            if ($index==0)
+                $hclass .= " brdr_mrgn_none";
+            
+            if($youtube_modal){ //modal
+              //$content .= $instance;
+              $content .= '<div class="'.$hclass.'">';
+              $content .= '<a href="#" data-toggle="modal" data-target="#oet-youtube-modal-'.$youtube_id.'">';
+              $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
+              $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt=""></div>';
+              $content .= '</a>';      
+              $content .= '<p class="'.$class.'">'.$title.'</p>';
+              $content .= '<p>'.$description.'</p>';
+              $content .= '</div>';
+
+              $content .= '<div class="oet-youtube-modal-wrapper">';
+                $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
+                  $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
+                    $content .= '<div class="modal-content">';
+                      $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
+                    $content .= '</div>';                  
+                    $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
                   $content .= '</div>';
-                }
+                $content .= '</div>';
+              $content .= '</div>';
+
+              $content .= '<script>';
+                $content .= 'jQuery( document ).ready(function() {';  
+                  $content .= 'jQuery(document).on("shown.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+                      $content .= 'sideytplayer.play('.$instance.');';
+                  $content .= '});';  
+                  $content .= 'jQuery(document).on("hide.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+                      $content .= 'sideytplayer.pause('.$instance.');';
+                  $content .= '});';
+                $content .= '});';
+              $content .= '</script>';
+              
+              $instance++;
+
+            }else{
+              $content .= '<div class="'.$hclass.'">';
+              $content .= oet_youtube_embed_by_type($youtube_type, $youtube_id, $youtube_pid);
+              $content .= '<p class="'.$class.'">'.$title.'</p>';
+              $content .= '<p>'.$description.'</p>';
+              $content .= '</div>';
             }
+            // $count = count($sidebar_content['title']);
+            // $instance = 0;
+            // for($index=0;$index<$count;$index++){
+            //     $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+            //     $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+            //     //$youtube_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+            //     $youtube_type = (isset($sidebar_content['pid'][$index])?"playlist":"video");
+            //     $youtube_pid = (isset($sidebar_content['pid'][$index])?$sidebar_content['pid'][$index]:"");
+            //     $youtube_id = (isset($sidebar_content['id'][$index])?$sidebar_content['id'][$index]:"");
+            //     $youtube_modal =  (isset($sidebar_content['modal'][$index])?$sidebar_content['modal'][$index]:"0");
+                
+            //     $class = "hdng_mtr brdr_mrgn_none";
+            //     $hclass = "sidebar-youtube-video";
+            //     if ($index==0)
+            //         $hclass .= " brdr_mrgn_none";
+                
+            //     if($youtube_modal){ //modal
+            //       //$content .= $instance;
+            //       $content .= '<div class="'.$hclass.'">';
+            //       $content .= '<a href="#" data-toggle="modal" data-target="#oet-youtube-modal-'.$youtube_id.'">';
+            //       $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
+            //       $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt=""></div>';
+            //       $content .= '</a>';      
+            //       $content .= '<p class="'.$class.'">'.$title.'</p>';
+            //       $content .= '<p>'.$description.'</p>';
+            //       $content .= '</div>';
+    
+            //       $content .= '<div class="oet-youtube-modal-wrapper">';
+            //         $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
+            //           $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
+            //             $content .= '<div class="modal-content">';
+            //               $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
+            //             $content .= '</div>';                  
+            //             $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
+            //           $content .= '</div>';
+            //         $content .= '</div>';
+            //       $content .= '</div>';
+
+            //       $content .= '<script>';
+            //         $content .= 'jQuery( document ).ready(function() {';  
+            //           $content .= 'jQuery(document).on("shown.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+            //               $content .= 'sideytplayer.play('.$instance.');';
+            //           $content .= '});';  
+            //           $content .= 'jQuery(document).on("hide.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+            //               $content .= 'sideytplayer.pause('.$instance.');';
+            //           $content .= '});';
+            //         $content .= '});';
+            //       $content .= '</script>';
+                  
+            //       $instance++;
+  
+            //     }else{
+            //       $content .= '<div class="'.$hclass.'">';
+            //       $content .= oet_youtube_embed_by_type($youtube_type, $youtube_id, $youtube_pid);
+            //       $content .= '<p class="'.$class.'">'.$title.'</p>';
+            //       $content .= '<p>'.$description.'</p>';
+            //       $content .= '</div>';
+            //     }
+            // }
             break;
         case "story":
             $count = count($sidebar_content['title']);
