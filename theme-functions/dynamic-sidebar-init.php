@@ -874,6 +874,9 @@ function oet_display_acf_dynamic_sidebar($page_id){
                 case "youtube":
                     $content = get_sub_field('oet_sidebar_youtube_content', $page_id);
                     break;
+                case "story":
+                    $content = get_sub_field('oet_sidebar_story', $page_id);
+                    break;
             }
             $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
             
@@ -980,7 +983,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             $content = oet_display_default_sidebar($post->ID,$count,false);
             break;
         case "youtube":
-            var_dump($sidebar_content);
+            $instance = 0;
             $title = $sidebar_content['oet_sidebar_youtube_content_title'];
             $description = $sidebar_content['oet_sidebar_youtube_content_short_description'];
             $youtube_type = (isset($sidebar_content['oet_sidebar_youtube_content_playlist_id'])?"playlist":"video");
@@ -990,6 +993,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
 
             $class = "hdng_mtr brdr_mrgn_none";
             $hclass = "sidebar-youtube-video";
+            $index=0;
             if ($index==0)
                 $hclass .= " brdr_mrgn_none";
             
@@ -1096,24 +1100,40 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             // }
             break;
         case "story":
-            $count = count($sidebar_content['title']);
-            for($index=0;$index<$count;$index++){
-                $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
-                $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
-                $story_id =  (isset($sidebar_content['story'][$index])?$sidebar_content['story'][$index]:"");
+            $index = 0;
+            $title = $sidebar_content['oet_sidebar_story_title'];
+            $description = $sidebar_content['oet_sidebar_story_short_description'];
+            $story_id = $sidebar_content['oet_sidebar_story_content_story']->ID;
+
+            $class = "hdng_mtr brdr_mrgn_none";
+            $hclass = "sidebar-story-post";
+            if ($index==0)
+                $hclass .= " brdr_mrgn_none";
+            
+            $content .= '<div class="'.$hclass.'">';
+            $content .= '<p class="'.$class.'">'.$title.'</p>';
+            $content .= '<p>'.$description.'</p>';
+            if (shortcode_exists('oet_story'))
+                $content .= do_shortcode('[oet_story id="'.$story_id.'" width=12][/oet_story]');
+            $content .= '</div>';
+            // $count = count($sidebar_content['title']);
+            // for($index=0;$index<$count;$index++){
+            //     $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
+            //     $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
+            //     $story_id =  (isset($sidebar_content['story'][$index])?$sidebar_content['story'][$index]:"");
                 
-                $class = "hdng_mtr brdr_mrgn_none";
-                $hclass = "sidebar-story-post";
-                if ($index==0)
-                    $hclass .= " brdr_mrgn_none";
+            //     $class = "hdng_mtr brdr_mrgn_none";
+            //     $hclass = "sidebar-story-post";
+            //     if ($index==0)
+            //         $hclass .= " brdr_mrgn_none";
                 
-                $content .= '<div class="'.$hclass.'">';
-                $content .= '<p class="'.$class.'">'.$title.'</p>';
-                $content .= '<p>'.$description.'</p>';
-                if (shortcode_exists('oet_story'))
-                    $content .= do_shortcode('[oet_story id="'.$story_id.'" width=12][/oet_story]');
-                $content .= '</div>';
-            }
+            //     $content .= '<div class="'.$hclass.'">';
+            //     $content .= '<p class="'.$class.'">'.$title.'</p>';
+            //     $content .= '<p>'.$description.'</p>';
+            //     if (shortcode_exists('oet_story'))
+            //         $content .= do_shortcode('[oet_story id="'.$story_id.'" width=12][/oet_story]');
+            //     $content .= '</div>';
+            // }
             break;
         case "medium":
             $count = count($sidebar_content['title']);
