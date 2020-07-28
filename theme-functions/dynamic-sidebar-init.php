@@ -905,7 +905,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             break;
         case "link":
             $index = 0;
-            if !empty($sidebar_content) {
+            if (!empty($sidebar_content)) {
                 foreach($sidebar_content as $scontent){
                     $title = $scontent['oet_sidebar_page_link_title'];
                     $description = $scontent['oet_sidebar_page_link_short_description'];
