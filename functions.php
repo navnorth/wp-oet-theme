@@ -902,7 +902,7 @@ function oet_modal_video_link($vidid, $Id){
     $retvid = '<div id="'.$Id.'"></div>';
     $reticon = '<span class="stry-youtube-play"></span>';
   
-    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-target="#oet-video-overlay'.$Id.'">';
+    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-target="#oet-video-overlay">';
 	$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
 	$ret .= '<div class="stry-video-avatar-table">';
 	    $ret .= '<div class="stry-video-avatar-cell">';
@@ -911,7 +911,7 @@ function oet_modal_video_link($vidid, $Id){
 	$ret .= '</div>';
     $ret .= '</a>';
   
-    $ret .= '<div class="modal fade" id="oet-video-overlay'.$Id.'" role="dialog" tabindex="-1">';
+    $ret .= '<div class="modal fade oet-video-overlay" id="oet-video-overlay" role="dialog" tabindex="-1">';
 	$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
 	    $ret .= '<div class="stry-video-table">';
 		$ret .= '<div class="stry-video-cell">';

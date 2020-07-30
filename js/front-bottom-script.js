@@ -102,7 +102,7 @@ jQuery( document ).ready(function() {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       oet_togglemodal(1);
     })
-    jQuery(document).on('click','div[id^="oet-video-overlay"]', function(e){
+    jQuery(document).on('click','#oet-video-overlay', function(e){
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       oet_togglemodal(0);
     })
@@ -117,11 +117,15 @@ jQuery( document ).ready(function() {
 
 function oet_togglemodal(bol){
   if(bol){ //show and play
-    if (typeof(player) != 'undefined'){ player.playVideo(); }
-    jQuery('#oet-video-overlay'+player.id).modal('show');
+    if (typeof(player) != 'undefined'){ 
+        player.playVideo(); 
+    } 
+    jQuery('#oet-video-overlay').modal('show');
   }else{ //pause and hide
-    if (typeof(player) != 'undefined'){ player.pauseVideo(); }
-    jQuery('#oet-video-overlay'+player.id).modal('hide');
+    if (typeof(player) != 'undefined'){ 
+        player.pauseVideo(); 
+    } 
+    jQuery('#oet-video-overlay').modal('hide');
   }
 }
 
