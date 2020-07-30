@@ -911,7 +911,7 @@ function oet_modal_video_link($vidid, $Id){
 	$ret .= '</div>';
     $ret .= '</a>';
   
-    $ret .= '<div class="modal fade" id="oet-video-overlay'.$Id.'" role="dialog" tabindex="-1">';
+    $ret .= '<div class="modal fade oet-video-overlay" id="oet-video-overlay'.$Id.'" role="dialog" tabindex="-1">';
 	$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
 	    $ret .= '<div class="stry-video-table">';
 		$ret .= '<div class="stry-video-cell">';

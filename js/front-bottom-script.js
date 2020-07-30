@@ -118,10 +118,10 @@ jQuery( document ).ready(function() {
 function oet_togglemodal(bol){
   if(bol){ //show and play
     if (typeof(player) != 'undefined'){ player.playVideo(); }
-    jQuery('#oet-video-overlay').modal('show');
+    jQuery('.oet-video-overlay').modal('show');
   }else{ //pause and hide
     if (typeof(player) != 'undefined'){ player.pauseVideo(); }
-    jQuery('#oet-video-overlay').modal('hide');
+    jQuery('.oet-video-overlay').modal('hide');
   }
 }
 
