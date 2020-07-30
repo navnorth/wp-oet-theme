@@ -102,7 +102,7 @@ jQuery( document ).ready(function() {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       oet_togglemodal(1);
     })
-    jQuery(document).on('click','#oet-video-overlay', function(e){
+    jQuery(document).on('click','div[id^="oet-video-overlay"]', function(e){
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       oet_togglemodal(0);
     })
