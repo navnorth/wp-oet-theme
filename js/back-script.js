@@ -62,11 +62,11 @@ jQuery( document ).ready(function() {
     
     jQuery("#page_template").on("change", function(){
         jQuery('#story_metabox').toggle(jQuery(this).val()=='page-templates/story-template.php');
-        var sidebar_templates = ['page-templates/publication-template.php', 'default'];
+        /*var sidebar_templates = ['page-templates/publication-template.php', 'default'];
         if (sidebar_templates.indexOf(jQuery(this).val())==-1)
             jQuery('#oet-sidebar-metabox').toggle(false);
         else
-            jQuery('#oet-sidebar-metabox').toggle(true);
+            jQuery('#oet-sidebar-metabox').toggle(true);*/
         
         jQuery('#publication_metabox').toggle(jQuery(this).val()=='page-templates/publication-template.php');
         
@@ -141,6 +141,27 @@ jQuery( document ).ready(function() {
       jQuery("#publish").click();
     }   
   })
+  // Preview Story
+  if (jQuery('.acf-field-post-object[data-name="oet_sidebar_story_content_story"]').length) {
+    jQuery('.acf-field-post-object[data-name="oet_sidebar_story_content_story"]').each(function(){
+      let inputGrp = jQuery(this).find('.acf-input');
+      inputGrp.find('.select2-container').css({"width":"95%"});
+      inputGrp.append('<span class="preview-story"><a href="#" class="oet-sidebar-story-url" disabled="disabled" target="_blank"><i class="fa fa-2x fa-external-link" aria-hidden="true"></i></a></span>');
+    });
+    jQuery(document).on('change','.acf-field-post-object[data-name="oet_sidebar_story_content_story"] .select2-hidden-accessible', function(e){
+      e.preventDefault();
+      var target = jQuery(this).parent().find('.preview-story .oet-sidebar-story-url');
+      if (jQuery(this).val())
+        target.attr("disabled",false);
+      jQuery.post(oet_ajax_object.ajaxurl,
+      {
+          action:'oet_sidebar_story_url_callback',
+          id: jQuery(this).val()
+      }).done(function (response) {
+          target.attr('href',response);
+      });
+    });
+  }
   //Notice Dismiss
   jQuery(document).on('click','.oese-permalink-validation-notice-dismiss',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
