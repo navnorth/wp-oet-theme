@@ -162,6 +162,43 @@ jQuery( document ).ready(function() {
       });
     });
   }
+  // Preview Section
+  if (jQuery('.acf-field-flexible-content .acf-input .acf-flexible-content .values .layout').length){
+    jQuery('.acf-field-flexible-content .acf-input .acf-flexible-content .values .layout').each(function(){
+      let layoutControls = jQuery(this).find('.acf-fc-layout-controls');
+      layoutControls.prepend('<a class="oet-sidebar-preview-section acf-icon -preview small light acf-js-tolltip" href="#" data-toggle="modal" data-target="#oet-dynamic-sidebar-preview" data-name="section-preview" title="Preview"><i class="fa fa-eye" aria-hidden="true"></i></a>');
+    });
+    var target = jQuery('#oet-dynamic-sidebar-preview .modal-body .preview-body');
+    var loader = target.find('.preview-loader');
+    jQuery(document).on('click','.oet-sidebar-preview-section', function(e){
+      e.preventDefault();
+      var layout = jQuery(this).closest('.layout[data-layout="section"]');
+      var fields = layout.find('.acf-fields');
+      var data = [];
+      var modalBody = jQuery('#oet-dynamic-sidebar-preview .modal-body');
+      var page_id = jQuery('#oet-dynamic-sidebar-preview').attr('data-page-id');
+      data['title'] = fields.find('.acf-field[data-name="oet_sidebar_section_title"] .acf-input input[type="text"]').val();
+      data['icon'] = fields.find('.acf-field[data-name="oet_sidebar_section_icon"] .acf-input select').val();
+      data['type'] = fields.find('.acf-field[data-name="oet_sidebar_section_type"] .acf-input select').val();
+      jQuery.post(oet_ajax_object.ajaxurl,
+      {
+          action:'oet_display_sidebar_section_callback',
+          id: page_id,
+          type: data['type'],
+          title: data['title'],
+          icon: data['icon']
+      }).done(function (response) {
+          modalBody.append(loader);
+          loader.hide();
+          target.html(response);
+      });
+    });
+    jQuery(document).on('click','#oet-dynamic-sidebar-preview button', function(e){
+      e.preventDefault();
+      target.html(loader);
+      loader.show();
+    });
+  }
   //Notice Dismiss
   jQuery(document).on('click','.oese-permalink-validation-notice-dismiss',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
