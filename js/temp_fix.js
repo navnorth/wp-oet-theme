@@ -1,4 +1,5 @@
     // This code loads the IFrame Player API code asynchronously 
+/*
 var tag = document.createElement('script'); 
 tag.src = "http://localhost:8888/oet-test/wp-content/themes/wp-oet-theme/js/iframe_api.js"; 
 var ytplayer = new Array(10); 
@@ -124,3 +125,4 @@ setTimeout(function(){
     if (typeof(player)!=='undefined')
         player.stopVideo();
 }, 10000);  
+*/
