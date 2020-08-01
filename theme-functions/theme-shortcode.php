@@ -250,12 +250,80 @@ function featured_item_func($attr, $content = null)
 	return $return;
 }
 
+
+
+
+function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height){
+    $ret = ''; $imagesrc = '';
+    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
+  
+    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-tgt="#oet-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'">';
+			$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
+			$ret .= '<div class="stry-video-avatar-table">';
+	    	$ret .= '<div class="stry-video-avatar-cell">';
+					$ret .= '<span class="stry-youtube-play"></span>';
+	    	$ret .= '</div>';
+			$ret .= '</div>';
+    $ret .= '</a>';
+  
+    $ret .= '<div class="modal fade oet-featured-video-shrtcd-overlay" id="oet-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
+			$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
+	    	$ret .= '<div class="stry-video-table">';
+					$ret .= '<div class="stry-video-cell">';
+		    		$ret .= '<div class="stry-video-content">';
+							$ret .= '<div class="oet-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
+		    		$ret .= '</div>';
+					$ret .= '</div>';
+	      $ret .= '</div>';
+		  $ret .= '</div>';
+			$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+    $ret .= '</div>';
+    
+    return $ret;
+}
+
+
 /**
  * Featured Video
- * Shortcode Example : [featured_video heading="" src="" description="" height=""]
+ * Shortcode Example : [featured_video heading='title' videoid='GBT4f146h9U' description='description' height='300']
  */
 add_shortcode("featured_video","feature_video_func");
-function feature_video_func($attr, $content = null)
+function feature_video_func($attr, $content = null){
+	static $count = 0;
+	$count++;
+	
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($attr);
+		foreach($_arr as $key => $value) $$key = $value;
+	}else{
+		extract($attr);
+	}
+	
+	if(empty($height)){$height = 300;}
+	$origin = get_site_url();
+	$id = "ytvideo".$count;
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
+		if(isset($heading) && !empty($heading)){
+			$iframe_title .= ": ".$heading;
+			$return .= '<h4>'. $heading .'</h4>';
+		}
+		$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';	
+			$return .= oet_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height);
+			if(isset($description) && !empty($description)){
+				$return .= '<p>'. $description .'</p>';
+			}
+		$return .= '</div>';
+	$return .= '</div>';
+	
+	return $return;
+}
+
+
+/**
+ * Featured Video (Old Outdated)
+ * Shortcode Example : [featured_video heading="" src="" description="" height=""]
+ */
+function feature_video_func_old($attr, $content = null)
 {
 	static $count = 0;
 	$count++;
