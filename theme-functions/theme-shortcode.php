@@ -299,7 +299,7 @@ function feature_video_func($attr, $content = null){
 		extract($attr);
 	}
 	
-	if(empty($height)){$height = 300;}
+	if(empty($height)){$height = 405;}
 	$origin = get_site_url();
 	$id = "ytvideo".$count;
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
