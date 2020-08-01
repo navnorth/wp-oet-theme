@@ -125,7 +125,8 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var ytplayer = [];
-function onYouTubeIframeAPIReady() {
+
+window.onYouTubeIframeAPIReady = function() { //simple implementation
 
   jQuery('.oet-featured-video-shrtcd-ytvideo').each(function(i, obj) {
     var cnt = jQuery(this).attr('cnt');
