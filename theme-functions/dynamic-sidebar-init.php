@@ -4,7 +4,7 @@
 function oet_dynamic_sidebar_enqueue_scripts()
 {
     global $post;
-    if (is_object($post) && $post->post_type == "page") {
+    if (is_object($post) && $post->post_type == "post") {
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js' );
@@ -18,9 +18,11 @@ function oet_dynamic_sidebar_enqueue_scripts()
 add_action( 'admin_enqueue_scripts', 'oet_dynamic_sidebar_enqueue_scripts' );
 
 function add_dynamic_sidebar_preview_modal(){
-    
+    if (get_field('oet_sidebar')){
+        include_once( get_stylesheet_directory(). '/inner-templates/popups/dynamic_sidebar_preview.php');
+    }
 }
-add_action( 'wp_footer', 'add_dynamic_sidebar_preview_modal' );
+add_action( 'admin_footer', 'add_dynamic_sidebar_preview_modal' );
 
 /**
  * Add Sidebar Section
@@ -893,7 +895,7 @@ function oet_display_acf_dynamic_sidebar($page_id){
 }
 
 /** Display Content Types on front-end **/
-function display_acf_sidebar_content_type($type, $sidebar_content){
+function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0){
     global $post;
     
     $content = "";
@@ -935,7 +937,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
                     $hclass = "sdbr_img_cntnt";
                     if ($index==0)
                         $hclass .= " brdr_mrgn_none";
-                    $content = '<div class="'.$hclass.'">';
+                    $content .= '<div class="'.$hclass.'">';
                     $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
                     $content .= '<p class="'.$class.'">'.$title.'</p>';
                     $content .= '<p>'.$description.'</p>';
@@ -948,7 +950,10 @@ function display_acf_sidebar_content_type($type, $sidebar_content){
             $count = 4;
             if (isset($sidebar_content['oet_sidebar_related_content_display_count']))
                 $count = $sidebar_content['oet_sidebar_related_content_display_count'];
-            $content = oet_display_default_sidebar($post->ID,$count,false);
+            if ($page_id!==0)
+                $content = oet_display_default_sidebar($page_id,$count,false);
+            else
+                $content = oet_display_default_sidebar($post->ID,$count,false);
             break;
         case "youtube":
             $instance = 0;
@@ -1095,8 +1100,65 @@ function oet_sidebar_story_url_callback(){
 add_action('wp_ajax_oet_display_sidebar_section_callback', 'oet_display_sidebar_section_callback');
 add_action('wp_ajax_nopriv_oet_display_sidebar_section_callback', 'oet_display_sidebar_section_callback');
 function oet_display_sidebar_section_callback(){
+    global $post;
+    $page_id = isset($_REQUEST['id']) ? $_REQUEST['id']: $post->ID;
     $type = isset($_REQUEST['type']) ? $_REQUEST['type']: "";
-    echo $type;
+    $title = isset($_REQUEST['title']) ? $_REQUEST['title']: "";
+    $icon = isset($_REQUEST['icon']) ? $_REQUEST['icon']: "";
+    
+    $sidebar_content .= '<div class="col-md-12 col-xs-12">';
+    $sidebar_content .= '   <div class="pblctn_box">';
+    $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
+    $sidebar_content .= '   </div>';
+    $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
+    $content = oet_get_content_by_type($type,$page_id);
+    if ($type=="related")
+        $sidebar_content .=     display_acf_sidebar_content_type($type, $content, $page_id);
+    else
+        $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
+    
+    $sidebar_content .= '</div>';
+
+    echo $sidebar_content;
+
     exit();
+}
+
+function oet_get_content_by_type($type, $page_id){
+    $content = "";
+    if (have_rows('oet_sidebar', $page_id)) {
+        while ( have_rows('oet_sidebar', $page_id) ) : the_row();
+            $row = get_row();
+
+            $ctype = get_sub_field('oet_sidebar_section_type', $page_id);
+            switch ($ctype){
+                case "html":
+                    $content = get_sub_field('oet_sidebar_html_content', $page_id);
+                    break;
+                case "link":
+                    $content = get_sub_field('oet_sidebar_page_link', $page_id);
+                    break;
+                case "image":
+                    $content = get_sub_field('oet_sidebar_image', $page_id);
+                    break;
+                case "related":
+                    $content = get_sub_field('oet_sidebar_related_content', $page_id);
+                    break;
+                case "youtube":
+                    $content = get_sub_field('oet_sidebar_youtube_content', $page_id);
+                    break;
+                case "story":
+                    $content = get_sub_field('oet_sidebar_story', $page_id);
+                    break;
+                case "medium":
+                    $content = get_sub_field('oet_sidebar_medium_post', $page_id);
+                    break;
+            }
+            if ($ctype==$type){
+                break;
+            }
+        endwhile;
+    } 
+    return $content;
 }
 ?>

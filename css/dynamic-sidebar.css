@@ -6,6 +6,7 @@
 .oet-sidebar-section-type-wrapper .oet-sortable-handle{ float:left; }
 .oet-sidebar-section-wrapper .oet-remove-sidebar-section ,
 .oet-sidebar-section-type-wrapper .oet-remove-sidebar-section-content{ float:right; padding:0 5px; }
+.oet-sidebar-section-wrapper .oet-preview-section { float:right; padding:0 5px; margin-right:5px; }
 .oet-sidebar-section-wrapper .oet-content-sections.subsection-visible { border: 1px solid #dddddd; padding:10px 15px; }
 .oet-sidebar-section-wrapper .sidebar-section-reorder-up,
 .oet-sidebar-section-wrapper .sidebar-section-reorder-down,
@@ -22,3 +23,27 @@
 .row-inline .oet-sidebar-section-story { width:95%; display:inline-block; }
 .row-inline .preview-story { width: 5%; text-align: center; display: inline-block; line-height: 40px; }
 .row-inline .preview-story i { vertical-align: middle; }
+.acf-field-post-object[data-name='oet_sidebar_story_content_story'] .select2-container { width:95% !important; }
+.acf-field-post-object[data-name='oet_sidebar_story_content_story'] .preview-story { vertical-align: middle; display:inline-block; }
+.acf-field-post-object[data-name='oet_sidebar_story_content_story'] .preview-story .oet-sidebar-story-url { display: block; }
+.acf-field-post-object[data-name='oet_sidebar_story_content_story'] .preview-story .oet-sidebar-story-url[disabled]{ color:#cdcdcd; }
+#oet-dynamic-sidebar-preview.modal.fade.in { display:flex !important; justify-content: center; align-items: center; flex-direction: column; }
+#oet-dynamic-sidebar-preview.modal .modal-header button { margin-top:-10px; }
+#oet-dynamic-sidebar-preview.modal .preview-wrapper { max-height:400px; overflow:auto; }
+#oet-dynamic-sidebar-preview.modal .preview-body { width:300px; margin:0 auto; }
+#oet-dynamic-sidebar-preview.modal .preview-body .col-md-12 { margin-top: 35px; border: 1px solid #94a0bc; padding: 20px; }
+#oet-dynamic-sidebar-preview.modal .preview-body .pblctn_box { width: 50px; margin: -40px auto 0; }
+#oet-dynamic-sidebar-preview.modal .preview-body .preview-loader {
+	border: 10px solid #f3f3f3;
+	border-top:10px solid #3498db;
+	border-radius:50%;
+	width:100px;
+	height:100px;
+	animation: spin 2s linear infinite;
+	margin:0 auto;
+}
+#oet-dynamic-sidebar-preview.modal .preview-body img { width:100%; }
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
