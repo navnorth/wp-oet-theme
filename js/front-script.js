@@ -120,13 +120,13 @@ function openWindow(url, title, width, height) {
 
 /* FEATURE VIDEO START */
 var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
+tag.src = "https://www.youtube.com/player_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var ytplayer = [];
 
-window.onYouTubeIframeAPIReady = function() { //simple implementation
+window.onYouTubePlayerAPIReady = function() { //simple implementation
 
   jQuery('.oet-featured-video-shrtcd-ytvideo').each(function(i, obj) {
     var cnt = jQuery(this).attr('cnt');
