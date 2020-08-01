@@ -253,7 +253,7 @@ function featured_item_func($attr, $content = null)
 
 
 
-function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height){
+function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height, $apiurl){
     $ret = ''; $imagesrc = '';
     $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
   
@@ -266,7 +266,7 @@ function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $
 			$ret .= '</div>';
     $ret .= '</a>';
   
-    $ret .= '<div class="modal fade oet-featured-video-shrtcd-overlay" id="oet-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
+    $ret .= '<div class="modal fade oet-featured-video-shrtcd-overlay" id="oet-featured-video-shrtcd-overlay-'.$count.'" apiurl="'.$apiurl.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
 			$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
 	    	$ret .= '<div class="stry-video-table">';
 					$ret .= '<div class="stry-video-cell">';
@@ -300,6 +300,7 @@ function feature_video_func($attr, $content = null){
 	}
 	
 	if(empty($height)){$height = 405;}
+	$apiurl = get_stylesheet_directory_uri()."/js/ytplayerapi.js";
 	$origin = get_site_url();
 	$id = "ytvideo".$count;
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
@@ -308,7 +309,7 @@ function feature_video_func($attr, $content = null){
 			$return .= '<h4>'. $heading .'</h4>';
 		}
 		$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';	
-			$return .= oet_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height);
+			$return .= oet_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height, $apiurl);
 			if(isset($description) && !empty($description)){
 				$return .= '<p>'. $description .'</p>';
 			}
