@@ -253,40 +253,12 @@ function featured_item_func($attr, $content = null)
 
 
 
-function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height, $apiurl){
-    $ret = ''; $imagesrc = '';
-    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
-  
-    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-tgt="#oet-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'">';
-			$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
-			$ret .= '<div class="stry-video-avatar-table">';
-	    	$ret .= '<div class="stry-video-avatar-cell">';
-					$ret .= '<span class="stry-youtube-play"></span>';
-	    	$ret .= '</div>';
-			$ret .= '</div>';
-    $ret .= '</a>';
-  
-    $ret .= '<div class="modal fade oet-featured-video-shrtcd-overlay" id="oet-featured-video-shrtcd-overlay-'.$count.'" apiurl="'.$apiurl.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
-			$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
-	    	$ret .= '<div class="stry-video-table">';
-					$ret .= '<div class="stry-video-cell">';
-		    		$ret .= '<div class="stry-video-content">';
-							$ret .= '<div class="oet-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
-		    		$ret .= '</div>';
-					$ret .= '</div>';
-	      $ret .= '</div>';
-		  $ret .= '</div>';
-			$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
-    $ret .= '</div>';
-    
-    return $ret;
-}
-
 
 /**
  * Featured Video
  * Shortcode Example : [featured_video heading='title' videoid='GBT4f146h9U' description='description' height='300']
  */
+echo '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
 add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null){
 	static $count = 0;
@@ -317,6 +289,35 @@ function feature_video_func($attr, $content = null){
 	$return .= '</div>';
 	
 	return $return;
+}
+
+function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height, $apiurl){
+    $ret = ''; $imagesrc = '';
+    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
+  
+    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-tgt="#oet-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'">';
+			$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
+			$ret .= '<div class="stry-video-avatar-table">';
+	    	$ret .= '<div class="stry-video-avatar-cell">';
+					$ret .= '<span class="stry-youtube-play"></span>';
+	    	$ret .= '</div>';
+			$ret .= '</div>';
+    $ret .= '</a>';
+  
+    $ret .= '<div class="modal fade oet-featured-video-shrtcd-overlay" id="oet-featured-video-shrtcd-overlay-'.$count.'" apiurl="'.$apiurl.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
+			$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
+	    	$ret .= '<div class="stry-video-table">';
+					$ret .= '<div class="stry-video-cell">';
+		    		$ret .= '<div class="stry-video-content">';
+							$ret .= '<div class="oet-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
+		    		$ret .= '</div>';
+					$ret .= '</div>';
+	      $ret .= '</div>';
+		  $ret .= '</div>';
+			$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+    $ret .= '</div>';
+    
+    return $ret;
 }
 
 

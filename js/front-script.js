@@ -119,68 +119,85 @@ function openWindow(url, title, width, height) {
 
 
 /* FEATURE VIDEO START */
+
+
+console.log('1:'+typeof(YT));
 var tag = document.createElement('script');
 var apiurl = jQuery('.oet-featured-video-shrtcd-overlay').attr('apiurl');
-tag.src = apiurl;
+tag.src = ytplayerapiurl;
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var ytplayer = [];
+var focuscontainer;
+
 
 window.onYouTubePlayerAPIReady = function() { //simple implementation
-
-  jQuery('.oet-featured-video-shrtcd-ytvideo').each(function(i, obj) {
-    var cnt = jQuery(this).attr('cnt');
-    var playid = jQuery(this).attr('id');
-    var vidid = jQuery(this).attr('vidid');
-    var hght = jQuery(this).attr('hght');
-    var orgn = jQuery(this).attr('orgn');
-    var frametitle = jQuery(this).attr('frametitle');
-    ytplayer[cnt] = new YT.Player(playid, {
-      height: hght,
-      width: '766',
+    
+    setTimeout(function(){
       
-      playerVars: { 
-        autoplay: 0,
-        enablejsapi: 1,
-        origin: orgn,
-        rel: 0
-      },
-      videoId: vidid,
-      events: {
-        //Inline function to get the featured video attributes
-        'onStateChange': function(e) {
-            if (e.data == 1) { //play
-              ga('send','event','Featured Video: '+frametitle,'Play', vidid);
-            }
-            if (e.data == 2) { //paused
-              ga('send','event','Featured Video: '+frametitle, 'Pause', vidid);
-            }
-            if (e.data == 0) { //ended
-              ga('send', 'event','Featured Video: '+frametitle, 'Finished', vidid);
-            }
+      console.log('2:'+typeof(YT));
+      jQuery('.oet-featured-video-shrtcd-ytvideo').each(function(i, obj) {
+        var cnt = jQuery(this).attr('cnt');
+        var playid = jQuery(this).attr('id');
+        var vidid = jQuery(this).attr('vidid');
+        var hght = jQuery(this).attr('hght');
+        var orgn = jQuery(this).attr('orgn');
+        var frametitle = jQuery(this).attr('frametitle');
+        ytplayer[cnt] = new YT.Player(playid, {
+          height: hght,
+          width: '766',  
+          playerVars: { 
+            autoplay: 0,
+            enablejsapi: 1,
+            origin: orgn,
+            rel: 0
+          },
+          videoId: vidid,
+          events: {
+            //Inline function to get the featured video attributes
+            'onStateChange': function(e) {
+                if (e.data == 1) { //play
+                  ga('send','event','Featured Video: '+frametitle,'Play', vidid);
+                }
+                if (e.data == 2) { //paused
+                  ga('send','event','Featured Video: '+frametitle, 'Pause', vidid);
+                }
+                if (e.data == 0) { //ended
+                  ga('send', 'event','Featured Video: '+frametitle, 'Finished', vidid);
+                }
+              }
           }
-      }
+          
+        });
+      });
       
-    });
-  });
-  
+      
+      jQuery(document).on('click','.stry-video-close', function(){
+        jQuery('.oet-featured-video-shrtcd-overlay').modal('hide');
+      });
+
+      jQuery(document).on('click','.oet-video-link',function(e){
+          var cnt = jQuery(this).attr('cnt');
+          if(typeof ytplayer[cnt] != 'undefined' && typeof ytplayer[cnt].playVideo == 'function'){
+            var modalid = jQuery(this).attr('data-tgt');
+            jQuery(modalid).modal('show');
+            ytplayer[cnt].playVideo();
+            focuscontainer = setInterval(function() {
+                  jQuery('#oet-featured-video-shrtcd-overlay-'+cnt).focus();
+            }, 500);
+          }
+      });
+
+      jQuery(document).on('hide.bs.modal', '.oet-featured-video-shrtcd-overlay', function () {
+          var cnt = jQuery(this).attr('cnt');
+          ytplayer[cnt].pauseVideo();
+          clearInterval(focuscontainer);
+      });
+      
+    }, 500);
 }
 
-jQuery(document).on('click','.stry-video-close', function(){
-  jQuery('.oet-featured-video-shrtcd-overlay').modal('hide');
-});
 
-jQuery(document).on('click','.oet-video-link',function(e){
-  var cnt = jQuery(this).attr('cnt');
-  var modalid = jQuery(this).attr('data-tgt');
-  jQuery(modalid).modal('show');
-  ytplayer[cnt].playVideo();
-});
-
-jQuery(document).on('hide.bs.modal', '.oet-featured-video-shrtcd-overlay', function () {
-    var cnt = jQuery(this).attr('cnt');
-    ytplayer[cnt].pauseVideo();
-});
 
 /* FEATURE VIDEO END */
