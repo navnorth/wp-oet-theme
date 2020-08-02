@@ -119,14 +119,15 @@ function openWindow(url, title, width, height) {
 
 
 /* FEATURE VIDEO START */
+jQuery(document).ready(function(){
+  var tag = document.createElement('script');
+  var apiurl = jQuery('.oet-featured-video-shrtcd-overlay').attr('apiurl');
+  //tag.src = ytplayerapiurl;
+  tag.srv = 'https://www.youtube.com/iframe_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
 
-
-console.log('1:'+typeof(YT));
-var tag = document.createElement('script');
-var apiurl = jQuery('.oet-featured-video-shrtcd-overlay').attr('apiurl');
-tag.src = ytplayerapiurl;
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var ytplayer = [];
 var focuscontainer;
@@ -136,7 +137,6 @@ window.onYouTubePlayerAPIReady = function() { //simple implementation
     
     setTimeout(function(){
       
-      console.log('2:'+typeof(YT));
       jQuery('.oet-featured-video-shrtcd-ytvideo').each(function(i, obj) {
         var cnt = jQuery(this).attr('cnt');
         var playid = jQuery(this).attr('id');
