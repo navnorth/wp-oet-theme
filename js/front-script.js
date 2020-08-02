@@ -133,7 +133,7 @@ var ytplayer = [];
 var focuscontainer;
 
 
-window.onYouTubePlayerAPIReady = function() { //simple implementation
+window.onYouTubeIframeAPIReady = function() { //simple implementation
     
     setTimeout(function(){
       
