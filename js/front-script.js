@@ -123,7 +123,7 @@ jQuery(document).ready(function(){
   var tag = document.createElement('script');
   var apiurl = jQuery('.oet-featured-video-shrtcd-overlay').attr('apiurl');
   //tag.src = ytplayerapiurl;
-  tag.srv = 'https://www.youtube.com/iframe_api';
+  tag.srv = 'https://www.youtube.com/player_api';
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 });
@@ -133,7 +133,7 @@ var ytplayer = [];
 var focuscontainer;
 
 
-window.onYouTubeIframeAPIReady = function() { //simple implementation
+window.onYouTubePlayerAPIReady = function() { //simple implementation
     
     setTimeout(function(){
       
