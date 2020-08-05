@@ -147,4 +147,36 @@ input#secondary-save-post {float: left;}
     background: #f3f5f6;
     border-radius: 5px;
 }
+.pblctn_right_sid_mtr .sidebar-youtube-video {
+    border-top: 1px solid #ccc;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 10px !important;
+    padding-top: 10px;
+}
+#oet-dynamic-sidebar-preview .sidebar-youtube-video {
+    border-top: 1px solid #ccc;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 10px !important;
+    padding-top: 10px;
+}
+#oet-dynamic-sidebar-preview .sidebar-youtube-video a>img {
+    opacity: 0.9;
+    width: 100%;
+}
+#oet-dynamic-sidebar-preview .oet-youtube-play-overlay {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+#oet-dynamic-sidebar-preview .oet-youtube-play-overlay img {
+    width: 75px !important;
+    top: 35%;
+    opacity: .86;
+}
 /** End of Sidebar Styles **/
