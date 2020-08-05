@@ -653,7 +653,8 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 if ($index==0)
                     $hclass .= " brdr_mrgn_none";
                 $content = '<div class="'.$hclass.'">';
-                $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+                if (!empty($image_url))
+                    $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
                 $content .= '<p class="'.$class.'">'.$title.'</p>';
                 $content .= '<p>'.$description.'</p>';
                 $content .= '</div>';
@@ -938,7 +939,8 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0){
                     if ($index==0)
                         $hclass .= " brdr_mrgn_none";
                     $content .= '<div class="'.$hclass.'">';
-                    $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+                    if (!empty($image_url))
+                        $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
                     $content .= '<p class="'.$class.'">'.$title.'</p>';
                     $content .= '<p>'.$description.'</p>';
                     $content .= '</div>';
