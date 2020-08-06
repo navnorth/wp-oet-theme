@@ -1,14 +1,13 @@
     // This code loads the IFrame Player API code asynchronously 
-/*
 var tag = document.createElement('script'); 
-tag.src = "http://localhost:8888/oet-test/wp-content/themes/wp-oet-theme/js/iframe_api.js"; 
-var ytplayer = new Array(10); 
+tag.src = "https://www.youtube.com/player_api"; 
+var ytplayer = []; 
 var yplayer;
 var firstScriptTag = document.getElementsByTagName('script')[0]; 
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
 window.YTConfig = { host: 'https://www.youtube.com' } 
     // This code is called by the YouTube API to create the player object 
-function onYouTubeIframeAPIReady(event) { 
+window.onYouTubePlayerAPIReady = function() { 
     setTimeout(function(){  
         console.log('YT loading'); 
     }, 5000);  
@@ -31,13 +30,16 @@ jQuery('.vdo_bg').each(function(index){
     vidLink.attr('data-Id',pId);
     vidLink.attr('data-target','#oet-video-overlayytvideo'+pId.toString());
     jQuery(this).find('.modal').attr('id','oet-video-overlayytvideo'+pId.toString());
+    jQuery(this).find('.modal').attr('data-Id',pId);
     
 });
 function loadYTPlayers() {
     vids = ['GBT4f146h9U','Aki99TM5MMI','7ssz7ZiHoTo','OLyIZaUw0m8','0BDYGOEsSoA','yvl_xTXGcs8','V3XlKqEDtR4','QX18iiFWtP8','MJOGK--sNdY','4RvgEIJsRek'];
     jQuery.each(vids, function(key,value){
         let id = key+1;
-        loadYTPlayer(value,id.toString());
+        setTimeout(function(){  
+            loadYTPlayer(value,id.toString());
+        }, 500);
     });
 }
 function loadYTPlayer(videoId, Id) { 
@@ -63,14 +65,16 @@ function onTempPlayerReady(event) {
     // do nothing, no tracking needed 
 } 
 function onTempPlayerStateChange(event) { 
-    console.log(event.target);
-    var url = event.target.getVideoUrl(); 
-    var match = url.match(/[?&]v=([^&]+)/); 
-    if( match != null) 
-    { 
-        var videoId = match[1]; 
-    } 
-    videoId = String(videoId); 
+    videoId = 0;
+    if (typeof(event.target)!=="undefined"  && typeof(event.target.getVideoUrl)=="function") {
+        var url = event.target.getVideoUrl(); 
+        var match = url.match(/[?&]v=([^&]+)/); 
+        if( match != null) 
+        { 
+            var videoId = match[1]; 
+        } 
+        videoId = String(videoId); 
+    }
     // track when user clicks to Play 
     if (event.data == YT.PlayerState.PLAYING) { 
         console.log('playing'); 
@@ -91,32 +95,35 @@ function oet_toggletempmodal(bol, Id){
     if (typeof(player) !== 'undefined')
         player.stopVideo();
   if(bol){ //show and play
-    if (typeof(ytplayer[Id]) !== 'undefined'){ 
+    console.log(Id);
+    if (typeof(ytplayer[Id]) !== 'undefined'  && typeof ytplayer[Id].playVideo == 'function'){ 
         ytplayer[Id].playVideo();
-        jQuery('#oet-video-overlayytvideo'+Id).modal('show');
     } 
+    jQuery('#oet-video-overlayytvideo'+Id).modal('show');
   }else{ //pause and hide
-    if (typeof(ytplayer[Id]) !== 'undefined'){ 
+    if (typeof(ytplayer[Id]) !== 'undefined'  && typeof ytplayer[Id].pauseVideo == 'function'){ 
+        console.log(ytplayer[Id]);
         ytplayer[Id].pauseVideo();
-        if ( typeof(ytplayer[Id]) !== 'undefined' )
-            ytplayer[Id].pauseVideo()
-        jQuery('#oet-video-overlayytvideo'+Id).modal('hide');
     } 
+    jQuery('#oet-video-overlayytvideo'+Id).modal('hide');
   }
 }
 jQuery(document).on('click','a.oet-video-link', function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
     let Id = jQuery(this).attr('data-Id');
+    console.log(Id);
     setTimeout(function(){  
-        yplayer = ytplayer[Id];
-        if (typeof ytplayer[Id] !=="undefined")
+        if(typeof ytplayer[Id] != 'undefined'){
             ytplayer[Id].playVideo();
+        }
     }, 2000);
 });
 jQuery(document).on('click','div[id^="oet-video-overlay"]', function(e){
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      let Id = jQuery(this).attr('data-Id');
+      console.log(Id);
       setTimeout(function(){  
-        oet_toggletempmodal(0, jQuery(this).attr('data-id'));
+        oet_toggletempmodal(0, Id);
         },1000);
     })
 setTimeout(function(){  
@@ -125,4 +132,3 @@ setTimeout(function(){
     if (typeof(player)!=='undefined')
         player.stopVideo();
 }, 10000);  
-*/
