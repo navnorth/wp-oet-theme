@@ -179,4 +179,5 @@ input#secondary-save-post {float: left;}
     top: 35%;
     opacity: .86;
 }
+#oet-dynamic-sidebar-preview .preview-wrapper ul { list-style:disc; padding-left:25px; }
 /** End of Sidebar Styles **/

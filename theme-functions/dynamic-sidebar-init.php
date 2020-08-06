@@ -4,7 +4,7 @@
 function oet_dynamic_sidebar_enqueue_scripts()
 {
     global $post;
-    if (is_object($post) && $post->post_type == "post") {
+    if (is_object($post) && $post->post_type == "page") {
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'wp-color-picker' );
         wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js' );

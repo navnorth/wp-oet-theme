@@ -1089,10 +1089,9 @@ function oet_medium_func($attribute, $content = null){
 	if (is_array($attribute)){
 		 if ( is_admin() ) {
 			 $_arr = getShortcodeAttr($attribute);
-			 foreach($_arr as $key => $value) $$key = $value;
-		 }else{
-			 extract($attribute);;
-		 }
+			 //foreach($_arr as $key => $value) $$key = $value;
+		}
+		extract($attribute);;
 	}
 
 	/*if ($url) {
@@ -1130,7 +1129,7 @@ function oet_medium_func($attribute, $content = null){
 
 	if (isset($textalign))
 		$textalignment = ' style="text-align:'.$textalign.';"';
-
+	
 	if ($url){
 		if (isset($align) && $align =='center')
 		    $align = 'margin:0 auto';

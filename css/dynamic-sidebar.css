@@ -43,6 +43,87 @@
 	margin:0 auto;
 }
 #oet-dynamic-sidebar-preview.modal .preview-body img { width:100%; }
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium {
+    padding: 0;
+    border: none;
+    margin-top: 0;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium {
+    margin: 0 auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-color: #eee #ddd #bbb;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+    min-height: 425px;
+    margin: 5% 1%;
+    color: #ffffff;
+    background-size: cover !important;
+    position: relative;
+    box-sizing: content-box;
+    height: auto;
+    max-width: 335px;
+    width: 100%;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .medium-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(22, 22, 22, 0.65);
+    padding: 30px;
+    border-radius: 5px;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .medium-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium h1 {
+    font-size: 30px;
+    margin-top: 0;
+    -webkit-font-smoothing: antialiased;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium h1 a {
+    color: #ffffff !important;
+    text-shadow: 1px 4px 10px rgba(0, 0, 0, 1);
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .medium-wrapper p.mfooter a.imglink {
+    border-radius: 100%;
+    overflow: hidden;
+    display: inline-block;
+    border: 1px solid #ffffff;
+    margin-bottom: -11px;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium .medium-background .medium-wrapper p.mfooter {
+    width: 200px;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium p {
+    text-shadow: 1px 4px 10px rgba(0, 0, 0, 1);
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium p.mfooter {
+    height: 32px;
+    bottom: 30px;
+}
+#oet-dynamic-sidebar-preview.modal  .sidebar-medium-post .single-medium .medium-wrapper p.mfooter {
+    position: absolute;
+    bottom: -30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 265px;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium .medium-background .medium-wrapper p.mfooter img {
+    width: auto;
+    margin: 0;
+}
+#oet-dynamic-sidebar-preview.modal .sidebar-medium-post .medium a {
+    color: #ffffff !important;
+}
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
