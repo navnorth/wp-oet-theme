@@ -855,7 +855,7 @@ function oet_display_acf_dynamic_sidebar($page_id){
             $icon = get_sub_field('oet_sidebar_section_icon', $page_id);
             $type = get_sub_field('oet_sidebar_section_type', $page_id);
 
-            $sidebar_content .= '<div class="col-md-12 col-xs-12">';
+            $sidebar_content .= '<div class="col-md-12 col-xs-12 oet-sidebar-section-'.$type.'">';
             $sidebar_content .= '   <div class="pblctn_box">';
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';

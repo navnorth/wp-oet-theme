@@ -547,6 +547,8 @@ button:hover {
 .search-results h1.page-title span { font-style:italic; }
 /** end of dynamic sidebar styles **/
 
+.pblctn_right_sid_mtr .oet-sidebar-section-html ul { list-style:disc; padding-left:25px; }
+
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
 }

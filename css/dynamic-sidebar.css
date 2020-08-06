@@ -83,6 +83,10 @@
     height: 100%;
     width: 100%;
 }
+#oet-dynamic-sidebar-preview .sidebar-youtube-video a {
+    display: block;
+    position: relative;
+}
 #oet-dynamic-sidebar-preview.modal .sidebar-medium-post .single-medium .medium h1 {
     font-size: 30px;
     margin-top: 0;
