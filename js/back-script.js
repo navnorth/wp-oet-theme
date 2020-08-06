@@ -195,7 +195,7 @@ jQuery( document ).ready(function() {
     });
     jQuery(document).on('click','#oet-dynamic-sidebar-preview button', function(e){
       e.preventDefault();
-      jQuery(this).closest('#oet-dynamic-sidebar-preview').modal('hide');
+      jQuery(this).closest('#oet-dynamic-sidebar-preview').removeClass('in');
       target.html(loader);
       loader.show();
     });
