@@ -250,19 +250,17 @@ function featured_item_func($attr, $content = null)
 	return $return;
 }
 
-
-
-
-
 /**
  * Featured Video
  * Shortcode Example : [featured_video heading='title' videoid='GBT4f146h9U' description='description' height='300']
  */
-echo '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
 add_shortcode("featured_video","feature_video_func");
 function feature_video_func($attr, $content = null){
 	static $count = 0;
 	$count++;
+
+	if ($count==1)
+		$return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
 	
 	if ( is_admin() ) {
 		$_arr = getShortcodeAttr($attr);
