@@ -7,6 +7,16 @@ jQuery(document).ready(function(){
     var yplayer;
     var pauseFlag = false; 
     var gaSent = false; 
+    var playQueue = {
+        content:null,
+        push: function(fn) {
+            this.content = fn;
+        },
+        pop: function() {
+            this.content.call();
+            this.content = null;
+        }
+    }
     var firstScriptTag = document.getElementsByTagName('script')[0]; 
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
 
@@ -14,8 +24,8 @@ jQuery(document).ready(function(){
     window.onYouTubePlayerAPIReady = function() { 
         setTimeout(function(){  
             console.log('YT loading'); 
-        }, 5000);  
-        loadYTPlayers(); 
+            loadYTPlayers(); 
+        }, 6000);  
     }
     
     jQuery('.vdo_bg').each(function(index){
@@ -55,14 +65,15 @@ jQuery(document).ready(function(){
         e.preventDefault();
         let pId = jQuery(this).attr('data-Id');
         var vidSrc = jQuery(this).children('iframe').attr('src');
-
+        console.log(ytplayer[pId]);
         if (typeof ytplayer[pId].playVideo == 'function'){
             ytplayer[pId].playVideo();
         } else {
+            playQueue.push(function(){ ytplayer[pId].playVideo(); })
             var fn = function() {
                 ytplayer[pId].playVideo();
             }
-            setTimeout(fn, 1000);
+            setTimeout(fn, 2000);
         }
         //jQuery(this).children('iframe').attr('src', vidSrc);
         jQuery(this).fadeIn();
@@ -73,24 +84,25 @@ jQuery(document).ready(function(){
         e.preventDefault();
 
         let pId = jQuery(this).attr('data-Id');
+        console.log(ytplayer[pId]);
         if (typeof ytplayer[pId].pauseVideo == 'function'){
             ytplayer[pId].pauseVideo();
         } else {
             var fn = function() {
                 ytplayer[pId].pauseVideo();
             }
-            setTimeout(fn, 1000);
+            setTimeout(fn, 2000);
         }
         //jQuery(this).children('iframe').attr('src', '');
         jQuery(this).fadeOut();
     });
 
-    setTimeout(function(){  
+    /*setTimeout(function(){  
         console.log('YT loading'); 
         loadYTPlayers(); 
         if (typeof(player)!=='undefined')
             player = null;
-    }, 10000);  
+    }, 10000);  */
 
     function onTempPlayerError(event) { 
         if (event.data) { 
@@ -180,5 +192,7 @@ jQuery(document).ready(function(){
 
     function onTempPlayerReady(event) { 
         // do nothing, no tracking needed 
+        //console.log(playQueue);
+        //if (playQueue.content) playQueue.pop();
     } 
 });
