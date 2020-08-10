@@ -792,8 +792,32 @@ iframe.oet_youtube_side_container {margin: 0px !important;}
 		overflow: hidden;
 }
 
+/** Featured Video Style Fixes **/
+.vdo_bg a.oet-video-link{ display:block !important; }
+.lft_sid_mtr .vdo_bg img, .rght_sid_mtr .vdo_bg img { width:100% !important; }
+.vdo_bg p { height: unset !important; margin: 0px !important; }
+.vdo_bg p:nth-of-type(2) { display: block; padding: 15px !important; float: left; width: 100%; box-sizing: border-box; }
+body.home .vdo_bg { min-height: 0px !important; margin-top: 0px !important; }
+.vdo_bg { min-height: 340px !important; margin-top: 10px; width: 100% !important; }
+body.home .lft_sid_mtr h4 { height: auto !important; display: block; width: auto !important; }
+.lft_sid_mtr h4 { height: 52px; display: table-cell; vertical-align: bottom; width: 1000px !important; }
+body.home .stry-video-avatar-table{ top: 40% !important; }
+.stry-video-avatar-table { top: 25% !important; }
+
+@media screen and (max-width: 1200px) {
+	.stry-video-avatar-table { top: 20% !important; } 
+}
+
+@media screen and (max-width:  992px) {
+	.stry-video-avatar-table { top: 40% !important; }
+}
+
 @media screen and (min-width: 974px){
 	.oet-youtube-modal-wrapper .modal-dialog {max-width:854px; margin:0px !important;}
+}
+
+@media screen and (max-width:  650px) {
+	.stry-video-avatar-table {top: 30% !important;}
 }
 
 @media screen and (max-width: 640px){
@@ -803,4 +827,8 @@ iframe.oet_youtube_side_container {margin: 0px !important;}
 @media screen and (max-width: 525px){
 	iframe.oet_youtube_side_container { height: 200px !important;}
 	.oet-youtube-modal-wrapper .modal { padding: 10px !important;}
+}
+
+@media screen and (max-width:  420px) {
+	.stry-video-avatar-table { top: 25% !important; }
 }
