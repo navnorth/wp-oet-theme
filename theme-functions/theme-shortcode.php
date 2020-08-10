@@ -312,7 +312,7 @@ function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $
 					$ret .= '</div>';
 	      $ret .= '</div>';
 		  $ret .= '</div>';
-			$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+			$ret .= '<a href="javascript:void(0);" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
     $ret .= '</div>';
     
     return $ret;
