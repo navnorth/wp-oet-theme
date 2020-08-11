@@ -13,7 +13,6 @@ function oet_dynamic_sidebar_enqueue_scripts()
         wp_enqueue_style( 'sidebar-css',get_stylesheet_directory_uri() . '/css/dynamic-sidebar.css' );
         wp_enqueue_script( 'sidebar-js', get_stylesheet_directory_uri() . '/js/dynamic-sidebar.js', array('jquery', 'wp-color-picker') );
         wp_localize_script( 'sidebar-js', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-        wp_enqueue_script( 'back-bottom-script-js', get_stylesheet_directory_uri() . '/js/back-bottom-scripts.js' );
     }
 }
 add_action( 'admin_enqueue_scripts', 'oet_dynamic_sidebar_enqueue_scripts' );
@@ -893,7 +892,7 @@ function oet_display_acf_dynamic_sidebar($page_id){
 }
 
 /** Display Content Types on front-end **/
-function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0){
+function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $admin_display=false){
     global $post;
     
     $content = "";
@@ -982,27 +981,30 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0){
                       $content .= '<p>'.$description.'</p>';
                       $content .= '</div>';
 
-                      $content .= '<div class="oet-youtube-modal-wrapper">';
-                        $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
-                          $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
-                            $content .= '<div class="modal-content">';
-                              $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
-                            $content .= '</div>';                  
-                            $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
+                      // only show modal on frontend and not through sidebar preview modal
+                      if (!$admin_display) {
+                          $content .= '<div class="oet-youtube-modal-wrapper">';
+                            $content .= '<div class="modal fade" tabindex="-1" id="oet-youtube-modal-'.$youtube_id.'" role="dialog" aria-labelledby="'.$title.'" aria-hidden="true">';
+                              $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';                  
+                                $content .= '<div class="modal-content">';
+                                  $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
+                                $content .= '</div>';                  
+                                $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
+                              $content .= '</div>';
+                            $content .= '</div>';
                           $content .= '</div>';
-                        $content .= '</div>';
-                      $content .= '</div>';
 
-                      $content .= '<script>';
-                        $content .= 'jQuery( document ).ready(function() {';  
-                          $content .= 'jQuery(document).on("shown.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
-                              $content .= 'sideytplayer.play('.$instance.');';
-                          $content .= '});';  
-                          $content .= 'jQuery(document).on("hide.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
-                              $content .= 'sideytplayer.pause('.$instance.');';
-                          $content .= '});';
-                        $content .= '});';
-                      $content .= '</script>';
+                          $content .= '<script>';
+                            $content .= 'jQuery( document ).ready(function() {';  
+                              $content .= 'jQuery(document).on("shown.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+                                  $content .= 'sideytplayer.play('.$instance.');';
+                              $content .= '});';  
+                              $content .= 'jQuery(document).on("hide.bs.modal","#oet-youtube-modal-'.$youtube_id.'", function () {';
+                                  $content .= 'sideytplayer.pause('.$instance.');';
+                              $content .= '});';
+                            $content .= '});';
+                          $content .= '</script>';
+                        }
                       
                       $instance++;
 
@@ -1108,9 +1110,9 @@ function oet_display_sidebar_section_callback(){
     $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
     $content = oet_get_content_by_type($type,$page_id);
     if ($type=="related")
-        $sidebar_content .=     display_acf_sidebar_content_type($type, $content, $page_id);
+        $sidebar_content .=     display_acf_sidebar_content_type($type, $content, $page_id, true);
     else
-        $sidebar_content .=     display_acf_sidebar_content_type($type, $content);
+        $sidebar_content .=     display_acf_sidebar_content_type($type, $content, 0, true);
     
     $sidebar_content .= '</div>';
 
