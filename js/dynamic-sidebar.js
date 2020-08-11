@@ -522,7 +522,8 @@ jQuery( document ).ready(function($) {
 
             if (jQuery('.oet_youtube_side_container').length)
                 sideytplayer.init();
-        }    
+        }        
+    }
     
     //OET_Dynamic_Sidebar.initializeActiveEditors();
     OET_Dynamic_Sidebar.addSidebarSection();
