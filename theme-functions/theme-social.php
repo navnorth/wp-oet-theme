@@ -32,7 +32,7 @@ function socialmedia_settings()
 		if (isset($contactsliderpage))
 			update_option("contactsliderpage", $contactsliderpage);
 	}
-	
+
 	$google_analytics_id = get_option("google_analytics_id");
 	$twitter_url = get_option("twitter_url");
 	$facebook_url = get_option("facebook_url");
@@ -41,32 +41,32 @@ function socialmedia_settings()
 	$mediumaccesstoken = get_option("mediumaccesstoken");
 	$enablecontactslider = get_option("enablecontactslider");
 	$contactsliderpage = get_option("contactsliderpage");
-	
+
 	//get all pages with contact slider template
 	$contact_pages = get_pages(array(
 		'meta_key' => '_wp_page_template',
 		'meta_value' => 'page-templates/contact-slider.php'
 	));
-	
+
 	$options = "";
-	
+
 	foreach($contact_pages as $page){
 		$selected="";
 		if ($contactsliderpage==$page->ID) {
-			$selected = " selected";		
+			$selected = " selected";
 		}
 		$options .= "<option value='".$page->ID."'".$selected.">".$page->post_title."</option>";
 	}
-	
-	
+
+
 	$return = '';
 	$return .=  '<div class="wrap">
 					<h2>Theme Settings</h2>';
-	
+
 	if ($notice){
 		$return .= '<div class="notice notice-warning is-dismissible"><p>'.$notice.'</p></div>';
 	}
-	
+
 	$return .= '<form method="post">';
 		$return .= '<div class="oer_sclmda_wrpr">
 			<div class="oer_sclmda_sub_wrapper">
@@ -98,13 +98,13 @@ function socialmedia_settings()
 				      <div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
 			</div>
 			<div class="oer_sclmda_sub_wrapper">
-				      <div class="oer_sclmda_txt"></div>
+				      <div class="oer_sclmda_txt">(v'.OET_THEME_VERSION.')</div>
 				      <div class="oer_sclmda_fld"><input type="submit" name="save_social" value="Save Settings" /></div>
 			</div>
 			<div id="oer_verbose_block"></div>
 		      </div>';
 	$return .= '</form>';
-	
+
 	echo $return;
 }
 ?>

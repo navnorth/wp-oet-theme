@@ -8,6 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
+define( "OET_THEME_VERSION", "1.9.0" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -76,13 +77,13 @@ function theme_back_enqueue_script()
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
   wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-  
+
   if(get_admin_page_title() == 'Edit Page'){
     wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
     wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
     wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
   }
-  
+
   wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
   wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
 }
@@ -897,11 +898,11 @@ function oet_medium_display_invalid_text($background="background:#000000", $text
  **/
 function oet_modal_video_link($vidid, $Id){
     $ret = ''; $imagesrc = '';
-  
+
     $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';
     $retvid = '<div id="'.$Id.'"></div>';
     $reticon = '<span class="stry-youtube-play"></span>';
-  
+
     $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-target="#oet-video-overlay">';
 	$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
 	$ret .= '<div class="stry-video-avatar-table">';
@@ -910,7 +911,7 @@ function oet_modal_video_link($vidid, $Id){
 	    $ret .= '</div>';
 	$ret .= '</div>';
     $ret .= '</a>';
-  
+
     $ret .= '<div class="modal fade oet-video-overlay" id="oet-video-overlay" role="dialog" tabindex="-1">';
 	$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
 	    $ret .= '<div class="stry-video-table">';
@@ -923,7 +924,7 @@ function oet_modal_video_link($vidid, $Id){
 	$ret .= '</div>';
 	$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
     $ret .= '</div>';
-    
+
     return $ret;
 }
 
