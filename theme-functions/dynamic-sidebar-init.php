@@ -13,6 +13,7 @@ function oet_dynamic_sidebar_enqueue_scripts()
         wp_enqueue_style( 'sidebar-css',get_stylesheet_directory_uri() . '/css/dynamic-sidebar.css' );
         wp_enqueue_script( 'sidebar-js', get_stylesheet_directory_uri() . '/js/dynamic-sidebar.js', array('jquery', 'wp-color-picker') );
         wp_localize_script( 'sidebar-js', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+        wp_enqueue_script( 'back-bottom-script-js', get_stylesheet_directory_uri() . '/js/back-bottom-scripts.js' );
     }
 }
 add_action( 'admin_enqueue_scripts', 'oet_dynamic_sidebar_enqueue_scripts' );
