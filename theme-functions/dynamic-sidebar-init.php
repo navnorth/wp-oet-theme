@@ -759,10 +759,6 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 
                 if (isset($sidebar_content['color'][$index]))
                     $bgcolor = "#".$sidebar_content['color'][$index];
-
-
-                if (FALSE==strpos($medium_url,"format=json"))
-                    $medium_url .= "?format=json";
                 
                 $class = "hdng_mtr brdr_mrgn_none";
                 $hclass = "sidebar-medium-post";
@@ -1060,10 +1056,6 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0){
                     
                     if (isset($scontent['oet_sidebar_medium_post_background_color']))
                         $bgcolor = $scontent['oet_sidebar_medium_post_background_color'];
-
-
-                    if (FALSE==strpos($medium_url,"format=json"))
-                        $medium_url .= "?format=json";
                     
                     $class = "hdng_mtr brdr_mrgn_none";
                     $hclass = "sidebar-medium-post";
