@@ -513,6 +513,7 @@ function oet_save_page_custom_fields() {
  **/
 function oet_display_dynamic_sidebar($page_id){
     $sidebar_content = "";
+
     // Get Page Meta by Id
     $sidebar_sections = get_post_meta( $page_id, 'oet_sidebar_section' );
     if (!empty($sidebar_sections)) {
@@ -529,6 +530,7 @@ function oet_display_dynamic_sidebar($page_id){
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';
             $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
+            // Related content only
             if ($type=="related")
                 $sidebar_content .=     display_sidebar_content_type($type, $index, $sidebar_section);
             else
