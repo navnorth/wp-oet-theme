@@ -75,7 +75,7 @@
        </div>
        <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
 	   <?php //echo oer_dynamic_sidebar('publication-template', $page_id);
-       echo oet_display_dynamic_sidebar($page_id);
+       echo oet_display_acf_dynamic_sidebar($page_id);
        ?>
        </div>
 </div>
