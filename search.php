@@ -159,5 +159,5 @@ $results = array();
 
 	</div><!-- .row -->
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>
