@@ -1085,13 +1085,12 @@ function parse_data_attributes( $data ) {
 add_shortcode("oet_medium", "oet_medium_func");
 function oet_medium_func($attribute, $content = null){
 	$return = "";
-
 	if (is_array($attribute)){
 		 if ( is_admin() ) {
 			 $_arr = getShortcodeAttr($attribute);
-			 //foreach($_arr as $key => $value) $$key = $value;
+			 foreach($_arr as $key => $value) $$key = $value;
 		}
-		extract($attribute);;
+		extract($attribute);
 	}
 
 	/*if ($url) {
