@@ -47,9 +47,9 @@ jQuery( document ).ready(function() {
 	
 	jQuery('.main-menu ul li a').on('focus', function(){
 	    if (jQuery(this).parent().has('.sub-menu').length>0) {
-		jQuery(this).parent().find('.sub-menu').toggle();
+			jQuery(this).parent().find('.sub-menu').toggle();
 	    } else {
-		jQuery(this).parent().prev().find('.sub-menu').toggle();
+			/*jQuery(this).parent().prev().find('.sub-menu').toggle();*/
 	    }
 	});
 	

@@ -220,7 +220,7 @@ input#secondary-save-post {float: left;}
 .oet-shrtcdv2_preview .medium p.mfooter { height:32px; bottom:30px; }
 .oet-shrtcdv2_preview .medium-wrapper p.mfooter {
     position: absolute;
-    bottom: -20px;
+    bottom: -10px;
     white-space: nowrap;
     text-overflow: ellipsis;
     width:265px;
