@@ -500,10 +500,10 @@ function display_medium_post_error($url){
 /**
  * Register Sidebar metabox.
  */
-function oet_register_meta_boxes() {
+/*function oet_register_meta_boxes() {
     add_meta_box( 'oet-sidebar-metabox', __( 'Sidebar', OET_THEME_SLUG ), 'oet_display_dynamic_sidebar_callback', 'page' );
 }
-add_action( 'add_meta_boxes', 'oet_register_meta_boxes' );
+add_action( 'add_meta_boxes', 'oet_register_meta_boxes' );*/
 
  /**
   * Sidebar Metabox callback
