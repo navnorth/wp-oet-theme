@@ -14,11 +14,19 @@
 
 get_header();
 global $post;
+$page_id = get_the_ID();
+
+// Check if ACF oet_sidebar is set
+$w_sidebar = have_rows('oet_sidebar',$page_id);
+$left_content = "col-md-9 col-sm-12 col-xs-12 ";
+if (!$w_sidebar){
+	$left_content = "col-md-12 col-sm-12 col-xs-12 ";
+}
 ?>
 
 	<div id="content" class="row site-content" tabindex="-1">
 
-        <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
+        <div class="<?php echo $left_content; ?>padding_left pblctn_lft_sid_img_cntnr">
         	<h1 class="pblctn_head"><?php echo $post->post_title;?></h2>
 		<?php if (has_tag(array("archive","archived"),$post)): ?>
 		<div class="archived-disclaimer">
@@ -39,15 +47,9 @@ global $post;
 		}
 		?>
          </div>
-
-        <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-            <?php
-				$page_id = get_the_ID();
-				//echo oet_display_dynamic_sidebar($page_id);
-				echo oet_display_acf_dynamic_sidebar($page_id);
-			?>
-        </div>
-
+        <?php  if ($w_sidebar) {
+			echo oet_display_acf_dynamic_sidebar($page_id);
+		 } ?>
     </div>
 
 <?php get_footer(); ?>

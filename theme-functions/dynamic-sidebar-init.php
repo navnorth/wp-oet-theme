@@ -847,6 +847,7 @@ function oet_display_acf_dynamic_sidebar($page_id){
     $sidebar_sections = get_post_meta( $page_id, 'oet_sidebar_section' );
 
     if (have_rows('oet_sidebar', $page_id)) {
+        $sidebar_content .= '<div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">';
         while ( have_rows('oet_sidebar', $page_id) ) : the_row();
             $row = get_row();
             $title = get_sub_field('oet_sidebar_section_title', $page_id);
@@ -886,6 +887,7 @@ function oet_display_acf_dynamic_sidebar($page_id){
             
             $sidebar_content .= '</div>';
         endwhile;
+        $sidebar_content .= '</div>';
     } else {
         // Default featured content sidebar
         $sidebar_content = oet_display_default_sidebar($page_id);
