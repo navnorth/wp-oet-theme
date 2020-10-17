@@ -35,7 +35,7 @@
 
        <div class="<?php echo $left_content; ?>padding_left pblctn_lft_sid_img_cntnr">
 	      <h1 class="pblctn_hed"><?php echo $post->post_title;?></h1>
-
+	      <?php if (!empty($publication_date) || !empty($image) || !empty($button_one_link) || !empty($button_one_text) || !$social_status || !empty($button_two_text) ) { ?>
 	      <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
 		     <span class="meta_date"><?php echo $publication_date; ?></span>
 		     <?php
@@ -71,7 +71,7 @@
 				}
 		     ?>
 	      </div>
-
+	      <?php } ?>
         <?php
 			while ( have_posts() ) : the_post();
 				get_template_part( 'content', 'page' );
