@@ -21,7 +21,7 @@
 		$button_two_color = get_post_meta($post->ID, "button_two_color", true);
 
 		$social_status = get_post_meta($post->ID, "social_status", true);
-
+		
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 
 		// Check if ACF oet_sidebar is set
@@ -35,7 +35,7 @@
 
        <div class="<?php echo $left_content; ?>padding_left pblctn_lft_sid_img_cntnr">
 	      <h1 class="pblctn_hed"><?php echo $post->post_title;?></h1>
-	      <?php if (!empty($publication_date) || !empty($image) || !empty($button_one_link) || !empty($button_one_text) || !$social_status || !empty($button_two_text) ) { ?>
+	      <?php if (!empty($publication_date) || !empty($image) || !empty($button_one_text) || (!empty($social_status) && $social_status!=="false") || !empty($button_two_text) ) { ?>
 	      <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
 		     <span class="meta_date"><?php echo $publication_date; ?></span>
 		     <?php
