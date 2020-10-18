@@ -86,6 +86,42 @@ function theme_back_enqueue_script()
 
   wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
   wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
+
+  if (class_exists('acf')){
+    // qTip2 CSS
+    wp_enqueue_style( 'acf-tooltip-qTip2-css', get_stylesheet_directory_uri() . "/css/jquery.qtip.min.css", false, '3.0.3');
+
+    // ACF Tooltip CSS
+    wp_enqueue_style( 'acf-tooltip-css', get_stylesheet_directory_uri() . "/css/acf-tooltip-style.css");
+
+    // qTip2 JS
+    wp_enqueue_script( 'acf-tooltip-qTip2-js', get_stylesheet_directory_uri() . "/js/jquery.qtip.min.js", array('jquery'), '3.0.3', true );
+
+
+    wp_register_script( 'acf-tooltip-js', get_stylesheet_directory_uri() . "/js/acf-tooltip-script.js", array('jquery'), '1.0.1', true );
+
+    $tooltip_fieldeditor = apply_filters( "acf/tooltip/fieldeditor", FALSE );
+    $tooltip_css = apply_filters( "acf/tooltip/css", "" );
+    $tooltip_style = apply_filters( "acf/tooltip/style", 'qtip-acf' );
+    $tooltip_position_my = apply_filters( "acf/tooltip/position/my", 'center left' );
+    $tooltip_position_at = apply_filters( "acf/tooltip/position/at", 'center right' );
+    $tooltip_class_only = apply_filters( "acf/tooltip/class/only", '' );
+    $tooltip_class_exclude = apply_filters( "acf/tooltip/class/exclude", '' );
+
+    // localize
+    wp_localize_script('acf-tooltip-js', 'acfTooltip', array(
+        'style'                 => $tooltip_style,
+        'my'                    => $tooltip_position_my,
+        'at'                    => $tooltip_position_at,
+        'class'                 => $tooltip_class_only,
+        'exclude_class'         => $tooltip_class_exclude,
+        'fieldeditor'           => $tooltip_fieldeditor,
+        'acf_version_compare'   => version_compare(acf()->version, '5.7.0')
+    ));
+
+    // ACF Tooltip JS
+    wp_enqueue_script( 'acf-tooltip-js');
+  }
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
