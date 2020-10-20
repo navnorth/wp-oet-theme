@@ -22,7 +22,11 @@
 
 		$social_status = get_post_meta($post->ID, "social_status", true);
 		
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+
+		if (!$image){
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );			
+		}
 
 		// Check if ACF oet_sidebar is set
 		$w_sidebar = have_rows('oet_sidebar',$page_id);
