@@ -624,11 +624,11 @@ function oet_display_slides($page_id){
 	    if (!empty($bgImage)){
 		$image = wp_get_attachment_url($bgImage);
 		if ($image_behavior=="natural")
-		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;"';
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
 		elseif($image_behavior=="crop")
 		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:contain;"';
 		else
-		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:100% 100%;"';
 	    }
 	?>
 		<div class="slideshow_view oet-acf-page-header"<?php echo $bgStyle; ?> tabindex="0">
