@@ -1173,7 +1173,7 @@ function oet_medium_func($attribute, $content = null){
 		    <div class="medium" style="'.$background.''.$align.'">
 			<div class="medium-background">
 			    <div class="medium-wrapper"'.$textalignment.'>
-				<h1><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h1>
+				<h2><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h2>
 				<p>'.$description.'</p>
 				<p class="mfooter">';
 		$return .= $footer;

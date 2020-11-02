@@ -812,7 +812,7 @@ button:hover {
 .oet-featured-card {
 	position: relative;
   background-size: cover !important;
-  margin: 5% 1% !important;
+  margin: 0 1% !important;
   padding: 30px !important;
   float: left;
   z-index: 1;
@@ -829,6 +829,12 @@ button:hover {
   border-style: solid;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
   overflow: hidden;
+}
+@media (max-width: 991px){
+	.oet-featured-card {
+		margin: 0 auto !important;
+		float: none;
+	}
 }
 .oet-featured-card::before {
   background-size: cover;
