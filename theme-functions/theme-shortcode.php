@@ -307,7 +307,9 @@ function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $
 	    	$ret .= '<div class="stry-video-table">';
 					$ret .= '<div class="stry-video-cell">';
 		    		$ret .= '<div class="stry-video-content">';
+		    		$ret .= '<div class="video-container">';
 							$ret .= '<div class="oet-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
+					$ret .= '</div>';
 		    		$ret .= '</div>';
 					$ret .= '</div>';
 	      $ret .= '</div>';
