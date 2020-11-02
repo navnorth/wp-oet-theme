@@ -808,6 +808,8 @@ button:hover {
   top: 0px;
   min-width: 100%;
   min-height: 100%;
+	font-family: 'WorkSans-Regular'; 
+	box-sizing: border-box;
 }
 .oet-featured-card {
 	position: relative;
@@ -877,7 +879,7 @@ button:hover {
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
  	text-overflow: ellipsis;
- 	display: -webkit-box;
+ 	display: -webkit-box !important;
  	-webkit-line-clamp:8;
  	-webkit-box-orient: vertical;
 }
