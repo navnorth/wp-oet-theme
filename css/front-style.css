@@ -800,6 +800,7 @@ body.home .vdo_bg { min-height: 0px !important; margin-top: 0px !important; }
 .vdo_bg { min-height: 340px !important; margin-top: 10px; width: 100% !important; }
 body.home .lft_sid_mtr h4 { height: auto !important; display: block; width: auto !important; }
 .lft_sid_mtr h4 { height: 52px; display: table-cell; vertical-align: bottom; width: 1000px !important; }
+.rght_sid_mtr.lft_sid_mtr h4 { height: auto; display: block; vertical-align: top; width: auto !important; }
 body.home .stry-video-avatar-table{ top: 40% !important; }
 .stry-video-avatar-table { top: 25% !important; }
 
