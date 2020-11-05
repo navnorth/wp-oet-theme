@@ -551,6 +551,7 @@ button:hover {
 
 @media (min-width: 1200px){
 	.container { width: 1140px !important;}
+	.mobile-search-btn {display:none;}
 }
 
 @media (max-width: 1200px){
@@ -559,6 +560,7 @@ button:hover {
 	.tlkt_stp_vdo_cntnr .pblctn_vdo_bg { width: 32.8222% !important; }
 	.hdr .col-xs-offset-2 { margin-left: 15px !important }
 	.tlkt_rght_sid h3 { width: 72%; }
+	.mobile-search-btn {display:none;}
 }
 @media (max-width: 990px){
 	.pblctn_right_sid_mtr { text-align: center}
@@ -707,20 +709,21 @@ button:hover {
 
         }
         .mobile-search-btn {
-	        padding: 4px 3px;
-	        line-height: 20px;
-	        font-size: 16px;
-	        color: #ffffff;
-	        background: #294179;
-	        right: 17%;
-	        width: 16%;
-	        top: -2px;
-	        position: absolute;
+					padding: 9px 3px;
+					line-height: 20px;
+					font-size: 16px;
+					color: #ffffff;
+					background: #294179;
+					right: 18%;
+					width: 16%;
+					top: -7px;
+					position: absolute;
+					display:inline;
     	}
         .navi_icn { float:right; margin-top:-48px; }
         .navi_bg { border-top:none;margin-top: -10px; margin-right: -10px; }
         .soclize { width:35% !important; position:absolute; }
-        .hdr { position:relative;}
+        .hdr { position:relative; margin-bottom:50px !important;}
         .form-group.gray_bg {
             position: absolute;
             left: 0;
@@ -793,10 +796,15 @@ button:hover {
 	.mobile-search-btn {
         font-size: 14px;
         right: 14%;
-        padding:6px 3px;
+        /*padding:6px 3px;*/
         width: 12%;
+				top: -8px;
 	}
     .navi_icn { margin-top:-35px !important; margin-bottom:10px; }
+		
+	.hdr {
+    margin-bottom: 36px !important;
+	}
 }
 @media (max-width: 300px){
 

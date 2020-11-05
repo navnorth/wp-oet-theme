@@ -64,7 +64,7 @@ jQuery( document ).ready(function() {
 			} else {
 			    jQuery('.form-group.gray_bg').show();
 			    jQuery('.top_strp').css({"margin-top":"50px"});
-			    jQuery('.navi_icn').css({"margin-top":"-93px"})
+			    //jQuery('.navi_icn').css({"margin-top":"-93px"})
 			    jQuery('#content').css({"margin-top":"45px"});
 			}
 	    });
