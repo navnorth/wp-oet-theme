@@ -637,6 +637,13 @@ ul.checkbox_list input {
 	padding:0;
 	overflow:hidden;
 }
+@media screen and (max-width: 990px) {
+	.oet-acf-page-header .oet-slide-wrapper .oet-acf-slide-box {
+	    width: 100%;
+	}
+}
+
+
 .oet-slide-wrapper {
 	background: linear-gradient(180deg, rgba(41, 65, 121, 0.65) 0%, #FFFFFF 100%);
 	padding: 50px;
