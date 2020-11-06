@@ -956,3 +956,7 @@ function oese_add_home_detector()  {
   }
 }
 add_action( 'admin_footer', 'oese_add_home_detector' );
+
+// make wpautop lower in priority
+remove_filter('the_content', 'wpautop');
+add_filter('the_content', 'wpautop', 12);

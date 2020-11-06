@@ -247,6 +247,8 @@ function featured_item_func($attr, $content = null)
 	}
     $return .= '</div>';
 
+    $return = wpautop(trim($return));
+
 	return $return;
 }
 
@@ -286,6 +288,8 @@ function feature_video_func($attr, $content = null){
 		$return .= '</div>';
 	$return .= '</div>';
 	
+	$return = wpautop(trim($return));
+
 	return $return;
 }
 
