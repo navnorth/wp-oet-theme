@@ -959,4 +959,20 @@ add_action( 'admin_footer', 'oese_add_home_detector' );
 
 // make wpautop lower in priority
 remove_filter('the_content', 'wpautop');
-add_filter('the_content', 'wpautop', 12);
+add_filter('the_content', function($content){
+    if (has_shortcode($content, 'featured_video')) {
+        return $content;
+    }
+    return wpautop($content);
+});
+
+function insert_ytapiurl_script(){
+    global $post;
+    if($post && has_shortcode($post->post_content,'featured_video')){
+        $script_name = "yt-api-script";
+        wp_register_script( $script_name, '' );
+        wp_enqueue_script( $script_name );
+        wp_add_inline_script( $script_name, 'var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js";' );
+    }
+}
+add_action('wp_enqueue_scripts','insert_ytapiurl_script',1);

@@ -247,7 +247,7 @@ function featured_item_func($attr, $content = null)
 	}
     $return .= '</div>';
 
-    $return = wpautop(trim($return));
+    $return = trim($return);
 
 	return $return;
 }
@@ -261,8 +261,10 @@ function feature_video_func($attr, $content = null){
 	static $count = 0;
 	$count++;
 
-	if ($count==1)
-		$return .= '<script>var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js"</script>';
+	//if ($count==1){
+	//	add_action( 'wp_enqueue_scripts', 'insert_ytapiurl_script' );
+	//}
+		
 	
 	if ( is_admin() ) {
 		$_arr = getShortcodeAttr($attr);
@@ -288,7 +290,7 @@ function feature_video_func($attr, $content = null){
 		$return .= '</div>';
 	$return .= '</div>';
 	
-	$return = wpautop(trim($return));
+	$return = trim($return);
 
 	return $return;
 }
