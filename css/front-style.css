@@ -657,6 +657,12 @@ ul.checkbox_list input {
 	background: #2A4378;
 	padding: 30px;
 }
+.oet-acf-slide-box p.oet-acf-slide-description a { color:#ffffff; text-decoration: underline; display:inline !important; font-family:'OpenSans-Regular'; }
+.oet-acf-slide-box p.oet-acf-slide-description a:hover { text-decoration:underline; font-family:'OpenSans-Light'; }
+.oet-acf-slide-box p.oet-acf-slide-description strong { font-family:'OpenSans-Bold'; }
+.oet-acf-slide-box p.oet-acf-slide-description i, .oet-acf-slide-box p.oet-acf-slide-description em { font-family:'OpenSans-Light-Italic'; }
+.oet-acf-slide-box p.oet-acf-slide-description strong em, .oet-acf-slide-box p.oet-acf-slide-description em strong,
+.oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family:'OpenSans-Bold-Italic'; }
 h2.oet-acf-header-text {
 	font-family: 'WorkSans-Bold';
 	font-size: 24px;
