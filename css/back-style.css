@@ -73,7 +73,7 @@
 .oer_sclmda_txt {
     float: left;
     padding: 8px 0 0 25px;
-    width: 10%;
+    width: 20%;
 }
 .oer_sclmda_fld {
     float: left;
@@ -83,7 +83,7 @@
 .oer_sclmda_fld > input[type="password"]{
     float: left;
     padding: 5px 10px;
-    width: 50%;
+    width: 60%;
 }
 
 .oer_sclmda_fld input[type="submit"] {
@@ -93,14 +93,16 @@
     font-weight: bolder;
     padding: 10px;
     text-transform: uppercase;
+    cursor:pointer;
 }
 .meta_main_wrapper { margin: 5px 20px; }
 .medium-debug-btn {
-    height: 32px !important;
+    height: 38px !important;
     font-weight: bold;
     background-color: #294179 !important;
     color: #ffffff !important;
     text-transform: uppercase;
+    margin:1px 0 !important;
 }
 #oer_verbose_block pre {
     padding: 15px;
@@ -109,7 +111,13 @@
 }
 .green { color:#00FF00; }
 .red { color:#FF0000; }
-
+.oer_sclmda_fld.checkinput input[type='checkbox']{ 
+    float: left;
+    vertical-align: middle;
+    margin: 10px 5px 10px 0;
+}
+.oer_sclmda_fld.checkinput input[type='text'] { width:57.5%; }
+.oet-settings-error { margin-left:25%; color:#ff0000; }
 /*PERMALINK VALIDATION START*/
 .oese-prohibitedpermalinktext {
   background:rgba(220,50,50,.1) !important;

@@ -976,3 +976,19 @@ function insert_ytapiurl_script(){
     }
 }
 add_action('wp_enqueue_scripts','insert_ytapiurl_script',1);
+
+function oet_egg_script() {
+  $script = "";
+
+  // Include Crazy Egg Script
+  $egg_script_enabled = get_option('enablecrazyegg');
+  $egg_script_address = get_option('crazyeggaddress');
+
+  // Include Crazy Egg Script
+  if ($egg_script_enabled && !empty($egg_script_address)){
+    $egg_script_address = preg_replace( "#^[^:/.]*[:/]+#i", "//", $egg_script_address );
+    $script .= "<script type='text/javascript' src='".$egg_script_address."' async='async'></script>";
+  }
+  
+  return $script;
+}

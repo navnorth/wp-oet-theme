@@ -4,6 +4,12 @@ function twentytwelve_menu()
 	add_theme_page('Theme Settings', 'Theme Settings', 'edit_theme_options', 'socialmedia-options', 'socialmedia_settings');
 }
 add_action('admin_menu', 'twentytwelve_menu');
+
+function oet_add_theme_settings_script(){
+	wp_enqueue_script( 'theme-settings-script', get_stylesheet_directory_uri() . '/js/theme-settings-script.js' );
+}
+add_action('admin_enqueue_scripts','oet_add_theme_settings_script');
+
 function socialmedia_settings()
 {
 	$notice = null;
@@ -31,6 +37,19 @@ function socialmedia_settings()
 			update_option("enablecontactslider", $enablecontactslider);
 		if (isset($contactsliderpage))
 			update_option("contactsliderpage", $contactsliderpage);
+		if (isset($enablecrazyegg))
+			update_option("enablecrazyegg", $enablecrazyegg);
+		else {
+			if (get_option('enablecrazyegg'))
+				delete_option('enablecrazyegg');
+		}
+
+		if (isset($crazyeggaddress))
+			update_option("crazyeggaddress", $crazyeggaddress);
+		else {
+			if (get_option('crazyeggaddress'))
+				delete_option('crazyeggaddress');	
+		}
 	}
 
 	$google_analytics_id = get_option("google_analytics_id");
@@ -41,6 +60,12 @@ function socialmedia_settings()
 	$mediumaccesstoken = get_option("mediumaccesstoken");
 	$enablecontactslider = get_option("enablecontactslider");
 	$contactsliderpage = get_option("contactsliderpage");
+	$enablecrazyegg = get_option("enablecrazyegg");
+	$crazyeggaddress = get_option("crazyeggaddress");
+	$cdisabled = "";
+
+	if (!$enablecrazyegg)
+		$cdisabled = "disabled";
 
 	//get all pages with contact slider template
 	$contact_pages = get_pages(array(
@@ -67,7 +92,7 @@ function socialmedia_settings()
 		$return .= '<div class="notice notice-warning is-dismissible"><p>'.$notice.'</p></div>';
 	}
 
-	$return .= '<form method="post">';
+	$return .= '<form id="oet_theme_settings_form" method="post">';
 		$return .= '<div class="oer_sclmda_wrpr">
 			<div class="oer_sclmda_sub_wrapper">
 				      <div class="oer_sclmda_txt"><strong>Google Analytics ID</strong></div>
@@ -97,6 +122,11 @@ function socialmedia_settings()
 				      <div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
 				      <div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
 			</div>
+			<div class="oer_sclmda_sub_wrapper">
+				      <div class="oer_sclmda_txt"><strong>Enable Crazy Egg tracking script</strong></div>
+				      <div class="oer_sclmda_fld checkinput"><input type="checkbox" id="enablecrazyegg" name="enablecrazyegg" value="1" '.checked("1",$enablecrazyegg,false).' /><input type="text" name="crazyeggaddress" id="crazyeggaddress" value="'. $crazyeggaddress.'" '.$cdisabled.'/></div>
+			</div>
+			<div class="settings-error oet-settings-error hidden">Crazy Egg Script Address cannot be empty!</div>
 			<div class="oer_sclmda_sub_wrapper">
 				      <div class="oer_sclmda_txt">(v'.OET_THEME_VERSION.')</div>
 				      <div class="oer_sclmda_fld"><input type="submit" name="save_social" value="Save Settings" /></div>
