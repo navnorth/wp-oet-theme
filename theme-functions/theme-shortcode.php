@@ -195,6 +195,7 @@ function featured_item_func($attr, $content = null)
 	{
     	$return .= '<h4>'. $heading .'</h4>';
 	}
+	$image_alt = (isset($image_alt) && !empty($image_alt))? $image_alt: '';
 	if(isset($image) && !empty($image))
 	{
 		if(isset($url) && !empty($url))
@@ -277,6 +278,8 @@ function feature_video_func($attr, $content = null){
 	$apiurl = get_stylesheet_directory_uri()."/js/ytplayerapi.js";
 	$origin = get_site_url();
 	$id = "ytvideo".$count;
+	$videoid = (isset($videoid) && !empty($videoid))? $videoid: '';
+	$return = ''; $iframe_title = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
 		if(isset($heading) && !empty($heading)){
 			$iframe_title .= ": ".$heading;

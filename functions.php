@@ -779,8 +779,8 @@ function oet_display_acf_home_content(){
                         $_img = (isset($subfieldlayout['oet_acf_homepage_trendingnow_image']['id']))? $subfieldlayout['oet_acf_homepage_trendingnow_image']['id']: $subfieldlayout['oet_acf_homepage_trendingnow_image'];
                         $_img = wp_get_attachment_url( $_img);
                         $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
-                        $_ico = $subfieldlayout['oet_acf_homepage_trendingnow_titleicon'];
-                        $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
+                        $_ico = (isset($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']) && !empty($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']))?$subfieldlayout['oet_acf_homepage_trendingnow_titleicon']:'none';
+                        $_title_icon = ($_ico != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
                         $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
                         $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
                         $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
