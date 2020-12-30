@@ -242,3 +242,4 @@ input#secondary-save-post {float: left;}
     margin-bottom: -11px;
 }
 /** End of Shortcode Preview Styles **/
+.wp-admin #wpfooter { position: relative; }
