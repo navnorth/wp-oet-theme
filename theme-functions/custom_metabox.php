@@ -146,52 +146,54 @@ function save_featured_metabox()
 {
 	global $post;
     
-    if (isset($_POST["publication_date"]))
-        update_post_meta($post->ID, "publication_date", $_POST["publication_date"] );
-    
-    if (isset($_POST["short_title"]))
-        update_post_meta($post->ID, "short_title", $_POST["short_title"] );
-
-    if (isset($_POST["button_one_text"]))
-        update_post_meta($post->ID, "button_one_text", $_POST["button_one_text"] );
-    
-    if (isset($_POST["button_one_link"]))
-        update_post_meta($post->ID, "button_one_link", $_POST["button_one_link"] );
-    
-    if (isset($_POST["button_one_color"]))
-        update_post_meta($post->ID, "button_one_color", $_POST["button_one_color"] );
-
-    if (isset($_POST["button_two_text"]))
-        update_post_meta($post->ID, "button_two_text", $_POST["button_two_text"] );
-    
-    if (isset($_POST["button_two_link"]))
-        update_post_meta($post->ID, "button_two_link", $_POST["button_two_link"] );
-    
-    if (isset($_POST["button_two_color"]))
-        update_post_meta($post->ID, "button_two_color", $_POST["button_two_color"] );
+    if (is_object($post)){
+        if (isset($_POST["publication_date"]))
+            update_post_meta($post->ID, "publication_date", $_POST["publication_date"] );
         
-    if (isset($_POST["social_status"]))
-        update_post_meta($post->ID, "social_status", $_POST["social_status"] );
+        if (isset($_POST["short_title"]))
+            update_post_meta($post->ID, "short_title", $_POST["short_title"] );
 
-    if (isset($_POST["box_one_header"]))
-        update_post_meta($post->ID, "box_one_header", $_POST["box_one_header"] );
-    
-    if (isset($_POST["box_one_text"]))
-        update_post_meta($post->ID, "box_one_text", $_POST["box_one_text"] );
-    
-    if (isset($_POST["box_two_header"]))
-        update_post_meta($post->ID, "box_two_header", $_POST["box_two_header"] );
-    
-    if (isset($_POST["box_two_text"]))
-        update_post_meta($post->ID, "box_two_text", $_POST["box_two_text"] );
-	
-	if  (get_post_meta($post->ID, '_wp_page_template', true)=="page-templates/blog-template.php"){
-		update_post_meta($post->ID, "mpubdisplay", $_POST['mpubdisplay']);
-		$publications = getMediumPublications();
-		$count = count($publications);
-		for($i=1;$i<=$count;$i++){
-			update_post_meta($post->ID, "mpublication".$i, $_POST["mpublication".$i] );
-		}
-	}
+        if (isset($_POST["button_one_text"]))
+            update_post_meta($post->ID, "button_one_text", $_POST["button_one_text"] );
+        
+        if (isset($_POST["button_one_link"]))
+            update_post_meta($post->ID, "button_one_link", $_POST["button_one_link"] );
+        
+        if (isset($_POST["button_one_color"]))
+            update_post_meta($post->ID, "button_one_color", $_POST["button_one_color"] );
+
+        if (isset($_POST["button_two_text"]))
+            update_post_meta($post->ID, "button_two_text", $_POST["button_two_text"] );
+        
+        if (isset($_POST["button_two_link"]))
+            update_post_meta($post->ID, "button_two_link", $_POST["button_two_link"] );
+        
+        if (isset($_POST["button_two_color"]))
+            update_post_meta($post->ID, "button_two_color", $_POST["button_two_color"] );
+            
+        if (isset($_POST["social_status"]))
+            update_post_meta($post->ID, "social_status", $_POST["social_status"] );
+
+        if (isset($_POST["box_one_header"]))
+            update_post_meta($post->ID, "box_one_header", $_POST["box_one_header"] );
+        
+        if (isset($_POST["box_one_text"]))
+            update_post_meta($post->ID, "box_one_text", $_POST["box_one_text"] );
+        
+        if (isset($_POST["box_two_header"]))
+            update_post_meta($post->ID, "box_two_header", $_POST["box_two_header"] );
+        
+        if (isset($_POST["box_two_text"]))
+            update_post_meta($post->ID, "box_two_text", $_POST["box_two_text"] );
+    	
+    	if  (get_post_meta($post->ID, '_wp_page_template', true)=="page-templates/blog-template.php"){
+    		update_post_meta($post->ID, "mpubdisplay", $_POST['mpubdisplay']);
+    		$publications = getMediumPublications();
+    		$count = count($publications);
+    		for($i=1;$i<=$count;$i++){
+    			update_post_meta($post->ID, "mpublication".$i, $_POST["mpublication".$i] );
+    		}
+    	}
+    }
 }
 ?>
