@@ -859,7 +859,7 @@ function oet_display_acf_dynamic_sidebar($page_id){
             $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
             $sidebar_content .= '   </div>';
             $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
-
+            $content = '';
             switch ($type){
                 case "html":
                     $content = get_sub_field('oet_sidebar_html_content', $page_id);

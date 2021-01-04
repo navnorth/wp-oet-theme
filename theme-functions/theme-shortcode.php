@@ -1019,6 +1019,7 @@ function parse_data_attributes( $data ) {
 	$class_attrs[] = $attr_type;
 
 	//Set Color
+	$color=(!isset($color))?false:$color;
 	if ($color){
 
 		$color_class = $color;
@@ -1044,7 +1045,7 @@ function parse_data_attributes( $data ) {
 	//Set Width
 	$attr_width = 12;
 	$class_attrs[] = "col-xs-".$attr_width;
-
+	$width=(!isset($width))?false:$width;
 	if ($width) {
 		$attr_width = "col-md-".$width;
 		$class_attrs[] = $attr_width;
@@ -1052,6 +1053,7 @@ function parse_data_attributes( $data ) {
 	}
 
 	//Set Alignment
+	$alignment=(!isset($alignment))?false:$alignment;
 	if ($alignment)
 		$class_attrs[] = "pull-".$alignment;
 
