@@ -14,7 +14,13 @@ function disruptive_content_fun($attr, $content = null)
 		extract($attr);
 	}
 
-
+	$title=(!isset($title) && !empty($title))?'':$title;
+	$button_color=(!isset($button_color) && !empty($button_color))?'':$button_color;
+	$button_url=(!isset($button_url) && !empty($button_url))?'':$button_url;
+	$button_text=(!isset($button_text) && !empty($button_text))?'':$button_text;
+	$main_text=(!isset($main_text) && !empty($main_text))?'':$main_text;
+	
+	
 	if (strpos($button_color,"#")===false)
 		$button_color = "#".$button_color;
 
@@ -765,6 +771,8 @@ function recommended_resources_func($attr, $content = null)
 		 	}else{
 		 		extract($attr);
 		 	}
+	 $title=(!isset($title) && !empty($title))?'':$title;
+	 $align=(!isset($align) && !empty($align))?'':$align;
 	 $return = '';
 		$return .= '<div class="pblctn_right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
@@ -1013,6 +1021,7 @@ function parse_data_attributes( $data ) {
 
 	//Set Type
 	$attr_type = "checkmark";
+	$type=(!isset($type) && !empty($type))?'':$type;
 	if ($type)
 		$attr_type = $type;
 
@@ -1080,7 +1089,7 @@ function parse_data_attributes( $data ) {
  	 		extract($attribute);;
  	 	}
  	}
-
+	$title=(!isset($title) && !empty($title))?'':$title;
 	$return = '<div class="intro">
 			<div class="intro-goal">
 				<div class="title">'.$title.'</div>
@@ -1105,7 +1114,9 @@ function oet_medium_func($attribute, $content = null){
 		}
 		extract($attribute);
 	}
-
+	
+	$description=(!isset($description) && !empty($description))?'':$description;
+	$title=(!isset($title) && !empty($title))?'':$title;
 	/*if ($url) {
 		$self_access_token = get_option("mediumaccesstoken");
 		$oet_medium = new OET_Medium($self_access_token);
