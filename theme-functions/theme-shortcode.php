@@ -906,7 +906,7 @@ function recommended_resources_func($attr, $content = null)
     $atts = shortcode_atts( array(
       "xclass" => false,
       "data"   => false
-	), $atts );&& !empty($type)
+	), $atts );
 
     $class  = 'row';
     $class .= ( $atts['xclass'] )   ? ' ' . $atts['xclass'] : '';
