@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "1.9.0" );
+define( "OET_THEME_VERSION", "1.9.5" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -989,7 +989,7 @@ function oet_egg_script() {
     $egg_script_address = preg_replace( "#^[^:/.]*[:/]+#i", "//", $egg_script_address );
     $script .= "<script type='text/javascript' src='".$egg_script_address."' async='async'></script>";
   }
-  
+
   return $script;
 }
 
