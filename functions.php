@@ -993,4 +993,4 @@ function oet_egg_script() {
   return $script;
 }
 
-add_filter('use_block_editor_for_post', '__return_false', 10);
+//add_filter('use_block_editor_for_post', '__return_false', 10);
