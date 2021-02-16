@@ -285,6 +285,7 @@ iframe { border: 0;  max-width:100%; }
 .vdo_bg p, .pblctn_vdo_bg p { font-size: 15px;}
 .vdo_bg p { margin: 20px; }
 .pblctn_vdo_bg p { margin: 14px; }
+#content b, #content strong { font-family:'OpenSans-Bold'; }
 
 .ftr_strp { height: 25px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
