@@ -60,7 +60,11 @@ require_once( get_stylesheet_directory() . '/theme-functions/dynamic-sidebar-ini
 /**
 * Theme Shortcode.
 */
- require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
+require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
+/**
+* OET Shortcodes Block
+**/
+require_once( OET_THEME_PATH . '/blocks/oet-shortcodes-block/init.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
