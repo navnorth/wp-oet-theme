@@ -19,7 +19,7 @@
  */
 function create_block_oet_shortcodes_block_init() {
 	$dir = dirname( __FILE__ );
-	$path_url = get_stylesheet_directory_uri().'/blocks/oet-shortcodes-block/';
+	$dir_url = get_stylesheet_directory_uri().'/blocks/oet-shortcodes-block/';
 
 	$script_asset_path = "$dir/build/index.asset.php";
 	if ( ! file_exists( $script_asset_path ) ) {
@@ -31,7 +31,7 @@ function create_block_oet_shortcodes_block_init() {
 	$script_asset = require( $script_asset_path );
 	wp_register_script(
 		'create-block-oet-shortcodes-block-editor',
-		$path_url.$index_js,
+		$dir_url.$index_js,
 		$script_asset['dependencies'],
 		$script_asset['version']
 	);
@@ -41,7 +41,7 @@ function create_block_oet_shortcodes_block_init() {
 	$editor_css = 'build/index.css';
 	wp_register_style(
 		'create-block-oet-shortcodes-block-editor',
-		$path_url.$editor_css,
+		$dir_url.$editor_css,
 		array(),
 		filemtime( "$dir/$editor_css" )
 	);
@@ -49,7 +49,7 @@ function create_block_oet_shortcodes_block_init() {
 	$style_css = 'build/style-index.css';
 	wp_register_style(
 		'create-block-oet-shortcodes-block',
-		$path_url.$style_css,
+		$dir_url.$style_css,
 		array(),
 		filemtime( "$dir/$style_css" )
 	);
@@ -72,7 +72,7 @@ function oet_display_shortcode( $attributes, $ajax = false ){
 
 	$html = "<div class='oet-shortcode'>";
 	if (isset($shortcodeText)){
-		$html .= do_shortcode($shortcodeText);
+		$html .= do_shortcode(stripslashes($shortcodeText));
 	}
 	$html .= "</div>";
 	
