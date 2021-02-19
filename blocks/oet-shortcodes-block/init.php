@@ -72,7 +72,7 @@ function oet_display_shortcode( $attributes, $ajax = false ){
 
 	$html = "<div class='oet-shortcode'>";
 	if (isset($shortcodeText)){
-		$html .= do_shortcode(stripslashes($shortcodeText));
+		$html .= do_shortcode($shortcodeText);
 	}
 	$html .= "</div>";
 	
