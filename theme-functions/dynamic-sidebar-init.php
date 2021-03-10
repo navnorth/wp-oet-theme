@@ -650,6 +650,7 @@ function display_sidebar_content_type($type, $sectionid, $sidebar_content){
                 $title = (isset($sidebar_content['title'][$index])?$sidebar_content['title'][$index]:"");
                 $description = (isset($sidebar_content['description'][$index])?$sidebar_content['description'][$index]:"");
                 $image_url =  (isset($sidebar_content['url'][$index])?$sidebar_content['url'][$index]:"");
+                
                 $class = "hdng_mtr brdr_mrgn_none";
                 $hclass = "sdbr_img_cntnt";
                 if ($index==0)
@@ -927,8 +928,16 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
             if (!empty($sidebar_content)) {
                 foreach($sidebar_content as $scontent){
                     $title = $scontent['oet_sidebar_image_title'];
+                    $image_alt = $title . " featured image";
                     $description = $scontent['oet_sidebar_image_short_description'];
                     $image_url = $scontent['oet_sidebar_media_image'];
+                    $image_title = $image_url['title'];
+
+                    if (!empty($image_url['alt']))
+                        $image_alt = $image_url['alt'];
+                    elseif (!empty($image_title))
+                        $image_alt = str_replace("-"," ", $image_title);
+
                     if (isset($image_url['sizes']['medium'])){
                         $image_url = $image_url['sizes']['medium'];
                     } else {
@@ -940,7 +949,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
                         $hclass .= " brdr_mrgn_none";
                     $content .= '<div class="'.$hclass.'">';
                     if (!empty($image_url))
-                        $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'"></a></div>';
+                        $content .= '<div class="hdng_img_mtr"><a href="'.$image_url.'" target="_blank"><img src="'.$image_url.'" alt="'.$image_alt.'"></a></div>';
                     $content .= '<p class="'.$class.'">'.$title.'</p>';
                     $content .= '<p>'.$description.'</p>';
                     $content .= '</div>';
@@ -979,7 +988,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
                       $content .= '<div class="'.$hclass.'">';
                       $content .= '<a href="#" data-toggle="modal" data-target="#oet-youtube-modal-'.$youtube_id.'">';
                       $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
-                      $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt=""></div>';
+                      $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt="play youtube video"></div>';
                       $content .= '</a>';      
                       $content .= '<p class="'.$class.'">'.$title.'</p>';
                       $content .= '<p>'.$description.'</p>';
