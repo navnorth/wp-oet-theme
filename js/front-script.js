@@ -45,11 +45,17 @@ jQuery( document ).ready(function() {
 	     }
 	});
 	
+	/* Nav menu focus handler */
 	jQuery('.main-menu ul li a').on('focus', function(){
+		var nav =  jQuery('.main-menu');
+		/* main menu with submenus */
 	    if (jQuery(this).parent().has('.sub-menu').length>0) {
 			jQuery(this).parent().find('.sub-menu').toggle();
 	    } else {
-			/*jQuery(this).parent().prev().find('.sub-menu').toggle();*/
+	    	/* main menu without submenus*/
+	    	if (jQuery(this).closest('.sub-menu').length==0){
+	    		nav.find('.sub-menu').toggle(false);
+	    	}
 	    }
 	});
 	
