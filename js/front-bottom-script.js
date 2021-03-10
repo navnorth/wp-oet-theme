@@ -106,6 +106,17 @@ jQuery( document ).ready(function() {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       oet_togglemodal(0);
     })
+    /* Close Modal */
+    jQuery(document).on('click','.oet_youtube_side_container_close', function(e){
+      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      oet_togglemodal(0);  
+    })
+    /* Close Modal on escape, enter and space key press when focus is on modal close button */
+    jQuery(document).on('keydown','.oet_youtube_side_container_close', function(e){
+      if (e.key == "Escape" || e.key == "Esc" || e.key == "Enter" || e.keyCode == 13 || e.keyCode == 32 ) { 
+        jQuery('.oet_youtube_side_container_close').trigger("click");
+      }
+    })
     jQuery(document).on("keydown", function(e) {
      if (e.key == "Escape" || e.key == "Esc") { 
        // escape key maps to keycode `27`
@@ -122,6 +133,7 @@ function oet_togglemodal(bol){
     } 
     jQuery('#oet-video-overlay').modal('show');
   }else{ //pause and hide
+    console.log('test');
     if (typeof(player) != 'undefined'){ 
         player.pauseVideo(); 
     } 
@@ -214,9 +226,9 @@ sideytplayer = {
     }
 };
 
-window.setInterval(function(){
+/*window.setInterval(function(){
     jQuery('.oet-youtube-modal-wrapper .modal').focus();
-}, 1000);
+}, 1000);*/
 
 
 if (jQuery('.oet_youtube_side_container').length)
