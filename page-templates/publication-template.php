@@ -8,6 +8,8 @@
 
        <?php
 		global $post;
+		$alt_text = "";
+
 		$page_id = get_the_ID();
 
 		$publication_date = get_post_meta($post->ID, "publication_date", true);
@@ -21,8 +23,15 @@
 		$button_two_color = get_post_meta($post->ID, "button_two_color", true);
 
 		$social_status = get_post_meta($post->ID, "social_status", true);
+
+		$image_id = get_post_thumbnail_id( $post->ID );
 		
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$image = wp_get_attachment_image_src( $image_id, 'full' );
+
+		/** Get Image Alt **/
+		$image_alt = get_post_meta( $image_id, "_wp_attachment_image_alt", true); 
+		if (!empty($image_alt))
+			$alt_text = "alt='".$image_alt."'";
 
 		// Check if ACF oet_sidebar is set
 		$w_sidebar = have_rows('oet_sidebar',$page_id);
@@ -43,9 +52,9 @@
 				{
             		if(isset($button_one_link) && !empty($button_one_link))
             		{
-            			echo '<a href="' . $button_one_link . '" onclick="ga(\'send\', \'event\', \'download\', \'' . $button_one_link . '\');" target="_blank">';
+            			echo '<a href="' . $button_one_link . '" title="Download this Publication" onclick="ga(\'send\', \'event\', \'download\', \'' . $button_one_link . '\');" target="_blank">';
             		}
-            		echo '<img src="'. $image[0] .'"/>';
+            		echo '<img '.$alt_text.' src="'. $image[0] .'"/>';
             		if(isset($button_one_link) && !empty($button_one_link))
             		{
             			echo '</a>';
