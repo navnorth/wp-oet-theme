@@ -10,7 +10,6 @@ function add_image_metabox()
 	
 	if ($template!=="page-templates/blog-template.php") {
 		add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
-        add_meta_box( "story_metabox", "Story Metabox", "story_metabox_func", "page" );
 	} else {
 		add_meta_box( "blog_metabox", "Select Publications", "blog_metabox_func", "page");
 	}
@@ -68,44 +67,6 @@ function publication_metabox_func()
         </div>
     </div>
 	<?php
-}
-
-function story_metabox_func()
-{
-    global $post;
-    $box_one_header = get_post_meta($post->ID, "box_one_header", true);
-    $box_one_text = get_post_meta($post->ID, "box_one_text", true);
-
-    $box_two_header = get_post_meta($post->ID, "box_two_header", true);
-    $box_two_text = get_post_meta($post->ID, "box_two_text", true);
-
-    ?>
-    <div class="meta_main_wrp">
-        <label>Box One Header</label>
-        <div class="meta_fld_wrp">
-            <input type="text" name="box_one_header" value="<?php echo $box_one_header; ?>">
-        </div>
-    </div>
-    <div class="meta_main_wrp">
-        <label>Box One Text</label>
-        <div class="meta_fld_wrp">
-            <textarea name="box_one_text"><?php echo $box_one_text; ?></textarea>
-        </div>
-    </div>
-
-    <div class="meta_main_wrp">
-        <label>Box Two Header</label>
-        <div class="meta_fld_wrp">
-            <input type="text" name="box_two_header" value="<?php echo $box_two_header; ?>">
-        </div>
-    </div>
-    <div class="meta_main_wrp">
-        <label>Box Two Text</label>
-        <div class="meta_fld_wrp">
-            <textarea name="box_two_text"><?php echo $box_two_text; ?></textarea>
-        </div>
-    </div>
-    <?php
 }
 
 function blog_metabox_func() {
