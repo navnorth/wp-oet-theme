@@ -264,10 +264,12 @@ function google_analytics_with_userid(){
 add_action('wp_head', 'google_analytics_with_userid');
 
 function load_contact_slider() {
-    global $csenabled, $cspage, $wp;
+    global $csenabled, $cspage, $wp, $post;
     if ( $csenabled ) {
-	wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
-    wp_localize_script( 'front-bottom-script', 'oet_object', array( 'domain' => get_site_url() ) );
+        if (is_object($post) && $post->post_type!=="stories"){
+	       wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
+            wp_localize_script( 'front-bottom-script', 'oet_object', array( 'domain' => get_site_url() ) );
+        }
 ?>
     <!-- Sliding div starts here -->
     <!--<div id="contact-slider" style="right:-342px;">-->
