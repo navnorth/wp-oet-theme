@@ -123,7 +123,7 @@ jQuery( document ).ready(function() {
        oet_togglemodal(0);
       }
     });
-    window.setInterval(oet_checkFocus, 1000); 
+    //window.setInterval(oet_checkFocus, 1000); 
 });
 
 function oet_togglemodal(bol){

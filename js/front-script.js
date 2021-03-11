@@ -190,7 +190,7 @@ window.onYouTubePlayerAPIReady = function() { //simple implementation
             jQuery(modalid).modal('show');
             ytplayer[cnt].playVideo();
             focuscontainer = setInterval(function() {
-                  jQuery('#oet-featured-video-shrtcd-overlay-'+cnt).focus();
+                  //jQuery('#oet-featured-video-shrtcd-overlay-'+cnt).focus();
             }, 500);
           }
       });
