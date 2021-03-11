@@ -1117,31 +1117,13 @@ function oet_medium_func($attribute, $content = null){
 	
 	$description=(!isset($description))?'':$description;
 	$title=(!isset($title))?'':$title;
-	/*if ($url) {
-		$self_access_token = get_option("mediumaccesstoken");
-		$oet_medium = new OET_Medium($self_access_token);
-
-		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
-			$oet_medium->display_invalid_text();
-		}
-
-        $attr = array();
-		if ($align && $align!=="")
-            $attr['align'] = $align;
-
-        if ($width && $width!=="")
-            $attr['width'] = $width;
-
-        if (!empty($attr))
-            $return =  $oet_medium->display_post_by_jsonUrl($url, $attr);
-		else
-			$return =  $oet_medium->display_post_by_jsonUrl($url);
-	}*/
+	
 	$background = "";
 	$footer = "";
 	$publication = "";
 	$bgcolor = "000000";
 	$textalignment = "";
+
 	if (isset($bgcolor))
 		$bgcolor = "#".$bgcolor;
 
@@ -1163,10 +1145,12 @@ function oet_medium_func($attribute, $content = null){
 			$return = oet_medium_display_invalid_text($background);
 		}
 
-		$footer = '<a href="%authorurl%" alt="%authorname%" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';
+		$footer = '<a href="%authorurl%" alt="%authorname%" title="Go to the Office of Ed Tech Medium Blog" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" title="Go to the Office of Ed Tech Medium Blog" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';
+
 		$default_author_url = "https://medium.com/@OfficeofEdTech";
 		$default_author_name = "OfficeofEdTech";
 		$default_author_logo = get_stylesheet_directory_uri()."/images/OET_logo_400px_square.png";
+		
 		if (isset($authorurl))
 			$footer = str_replace("%authorurl%", $authorurl, $footer);
 		else
