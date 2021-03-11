@@ -1002,7 +1002,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
                                 $content .= '<div class="modal-content">';
                                   $content .= '<div id="player'.$youtube_id.'" class="oet_youtube_side_container" inst="'.$instance.'" yid="'.$youtube_id.'" ytype="'.$youtube_type.'" ypid="'.$youtube_pid.'"></div>';
                                 $content .= '</div>';                  
-                                $content .= '<a class="oet_youtube_side_container_close" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
+                                $content .= '<a class="oet_youtube_side_container_close" tabindex="0" data-dismiss="modal"><span class="dashicons dashicons-no-alt"></span></a>';
                               $content .= '</div>';
                             $content .= '</div>';
                           $content .= '</div>';
