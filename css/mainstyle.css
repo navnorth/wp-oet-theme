@@ -207,7 +207,7 @@ color palette:
 
 body { padding-top: 15px; color: #000000 !important; font-family: 'OpenSans-Regular' !important; font-size:15px; }
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
-.pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 10px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center}
+.pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 6px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center; display: flex; align-items: center; justify-content: center;}
 .pblctn_box { width: 50px; margin: -40px auto 0}
 .soclize .socl_icns { background: #4a4f55;  font-size: 12px; padding: 18px;  margin: 0 0 0 6px;}
 .rght_sid_socl_icn { padding-left: 0 !important}
