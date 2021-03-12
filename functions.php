@@ -670,24 +670,38 @@ function oet_display_slides($page_id){
     <script type='text/javascript'>
 	/* <![CDATA[ */
 	var SlideshowPluginSettings_<?php echo $page_id; ?> = {"animation":"<?php echo $transition; ?>","slideSpeed":"<?php echo $slide_in_interval; ?>","descriptionSpeed":"0.4","intervalSpeed":"<?php echo $slide_interval; ?>","slidesPerView":"1","maxWidth":"0","aspectRatio":"3:1","height":"380","imageBehaviour":"<?php echo $image_behavior; ?>","showDescription":"true","hideDescription":"false","preserveSlideshowDimensions":"true","enableResponsiveness":"true","play":"true","loop":"true","pauseOnHover":"true","controllable":"false","hideNavigationButtons":"false","showPagination":"true","hidePagination":"false","controlPanel":"false","hideControlPanel":"true","waitUntilLoaded":"true","showLoadingIcon":"true","random":"false","avoidFilter":"true","dimensionWidth":"3","dimensionHeight":"1"};
-	var slideshow_jquery_image_gallery_script_adminURL = "<?php echo esc_url(admin_url()); ?>";
+	   var slideshow_jquery_image_gallery_script_adminURL = "<?php echo esc_url(admin_url()); ?>";
     /* ]]> */
     </script>
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/all.frontend.min.js'></script>
     <script type='text/javascript'>
 	jQuery( document ).ready(function($) {
+        var oet_slideshow = SlideshowPluginSettings_<?php echo $page_id; ?>;
 	    setTimeout(function(){
 	    $('.slideshow_pagination ul li.slideshow_transparent').each( function(index, val){
-		$(this).removeAttr('role');
-		$(this).find('span').attr('role','button')
+		  /*$(this).removeAttr('role');
+          $(this).removeAttr('tabindex');
+		  $(this).find('span').attr('role','button');
+          $(this).find('span').attr('tabindex','0');*/
 	    });
 	    },100);
+        $('.slideshow_button.slideshow_previous, .slideshow_button.slideshow_next').removeAttr('role');
 	    $('.slideshow_container .slideshow_content .slideshow_view').on("focus focusin",function(){
-		$(this).trigger("mouseenter");
+		    $(this).closest('.slideshow_content').trigger("mouseenter");
+            $('.slideshow_container .slideshow_content').css("position","relative !important");
 	    });
 	    $('.slideshow_container .slideshow_content .slideshow_view').on("focusout blur",function(){
-		$(this).trigger("mouseleave");
+            $(this).closest('.slideshow_content').trigger("mouseleave");
 	    });
+        $('.slideshow_container .slideshow_content .slideshow_view').each(function(index, val){
+            $(this).removeAttr("tabindex");
+        });
+        $(document).on("keydown", '.slideshow_pagination .slideshow_pagination_center .slideshow_transparent', function(e){
+            
+            var nextId = $(this).attr('data-view-id');
+            if (e.keyCode==13 || e.keyCode==32)
+                console.log(e.keyCode);
+        });
 	});
     </script>
     <?php
