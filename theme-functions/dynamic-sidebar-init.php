@@ -990,7 +990,7 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
                       $content .= '<img src="http://img.youtube.com/vi/'.$youtube_id.'/mqdefault.jpg" alt="'.$title.'"/>';
                       $content .= '<div class="oet-youtube-play-overlay"><img src="'.get_stylesheet_directory_uri().'/images/ytplay.png" alt="play youtube video"></div>';
                       $content .= '</a>';      
-                      $content .= '<p class="'.$class.'">'.$title.'</p>';
+                      $content .= '<h2 class="'.$class.'">'.$title.'</h2>';
                       $content .= '<p>'.$description.'</p>';
                       $content .= '</div>';
 
