@@ -35,8 +35,7 @@ $sublinks = array();
                                 $featured_image = wp_get_attachment_url( get_post_thumbnail_id($spage->ID) );
                                 ?>
                                 <div class="col-md-6" style="margin-bottom: 30px;">
-                                    <a href="<?php echo get_page_link($spage->ID); ?>">
-                                        <button class="btn btn-large toc-button">
+                                    <a href="<?php echo get_page_link($spage->ID); ?>" class="btn btn-large toc-button">
                                             <?php if ($featured_image): ?>
                                                 <img src="<?php echo $featured_image; ?>" height="60px" style="margin-right: 15px;">
                                             <?php endif; ?>
@@ -47,7 +46,6 @@ $sublinks = array();
                                                 echo $spage->post_title;
                                             endif;
                                             ?>
-                                        </button>
                                     </a>
                                 </div>
                                 <?php
