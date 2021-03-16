@@ -659,7 +659,7 @@ function oet_display_slides($page_id){
 	<div class="slideshow_controlPanel slideshow_transparent" style="display: none;">
 	    <ul>
 		<li class="slideshow_togglePlay" data-play-text="Play" data-pause-text="Pause"></li>
-	    </ul>
+	    </ul>  
 	</div>
 	<div class="slideshow_button slideshow_previous slideshow_transparent" role="button" data-previous-text="Previous" style="display: none;"></div>
 	<div class="slideshow_button slideshow_next slideshow_transparent" role="button" data-next-text="Next" style="display: none;"></div>
@@ -676,13 +676,21 @@ function oet_display_slides($page_id){
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/all.frontend.min.js'></script>
     <script type='text/javascript'>
 	jQuery( document ).ready(function($) {
-        var oet_slideshow = SlideshowPluginSettings_<?php echo $page_id; ?>;
+        var oet_slideshow = $('.slideshow_container .slideshow_content')
+
+        // Create Live Region
+        var liveregion = document.createElement('div');
+        liveregion.setAttribute('aria-live', 'polite');
+        liveregion.setAttribute('aria-atomic', 'true');
+        liveregion.setAttribute('class', 'oet-slideshow-liveregion visuallyhidden');
+        oet_slideshow.append(liveregion);
+
 	    setTimeout(function(){
-	    $('.slideshow_pagination ul li.slideshow_transparent').each( function(index, val){
-		  /*$(this).removeAttr('role');
-          $(this).removeAttr('tabindex');
-		  $(this).find('span').attr('role','button');
-          $(this).find('span').attr('tabindex','0');*/
+        $('.slideshow_pagination .slideshow_pagination_center .slideshow_transparent').each(function(index, val){
+            $(this).removeAttr('title');
+        });
+	    $('.slideshow_view.oet-acf-page-header').each( function(index, val){
+            $(this).attr('data-index', index);
 	    });
 	    },100);
         $('.slideshow_button.slideshow_previous, .slideshow_button.slideshow_next').removeAttr('role');
@@ -696,11 +704,17 @@ function oet_display_slides($page_id){
         $('.slideshow_container .slideshow_content .slideshow_view').each(function(index, val){
             $(this).removeAttr("tabindex");
         });
+        $(document).on("click", '.slideshow_pagination .slideshow_pagination_center .slideshow_transparent', function(e){
+            let oet_slide_id = $(this).attr('data-view-id');
+            let oet_container = $(this).closest(".slideshow_container");
+            let oet_curslide_title = oet_container.find('.slideshow_content .slideshow_view[data-index='+oet_slide_id+'] .oet-acf-header-text').text();
+            $('.oet-slideshow-liveregion').text(oet_curslide_title);
+        });
         $(document).on("keydown", '.slideshow_pagination .slideshow_pagination_center .slideshow_transparent', function(e){
-            
             var nextId = $(this).attr('data-view-id');
-            if (e.keyCode==13 || e.keyCode==32)
-                console.log(e.keyCode);
+            if (e.keyCode==13 || e.keyCode==32){
+                $(this).trigger("click");
+            }
         });
 	});
     </script>
