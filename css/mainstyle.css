@@ -509,7 +509,7 @@ h4 { font-family: 'WorkSans-Light' !important}
 /** dynamic sidebar styles **/
 .pblctn_right_sid_mtr .sdbr_img_cntnt,
 .pblctn_right_sid_mtr .sidebar-youtube-video{ border-top:1px solid #ccc; width:100%; overflow:hidden; margin-top:10px !important; padding-top:10px; }
-.pblctn_right_sid_mtr .hdng_mtr { font-size:18px; }
+.pblctn_right_sid_mtr .hdng_mtr { font-size:19px; }
 .youtube-videoWrapper {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -802,7 +802,7 @@ button:hover {
 				top: -8px;
 	}
     .navi_icn { margin-top:-35px !important; margin-bottom:10px; }
-		
+
 	.hdr {
     margin-bottom: 36px !important;
 	}
@@ -817,7 +817,7 @@ button:hover {
   top: 0px;
   min-width: 100%;
   min-height: 100%;
-	font-family: 'WorkSans-Regular'; 
+	font-family: 'WorkSans-Regular';
 	box-sizing: border-box;
 }
 .oet-featured-card {
