@@ -177,16 +177,47 @@ jQuery( document ).ready(function() {
       var data = [];
       var modalBody = jQuery('#oet-dynamic-sidebar-preview .modal-body');
       var page_id = jQuery('#oet-dynamic-sidebar-preview').attr('data-page-id');
+      var acf_layout = jQuery(this).closest('.acf-fc-layout-controls');
+      var acf_fields = acf_layout.next('.acf-fields');
+      var acf_repeater = acf_fields.find('.acf-field-repeater:not(.acf-hidden) .acf-table .acf-row:not(.acf-clone)');
+      var acf_data = [];
+      
       data['title'] = fields.find('.acf-field[data-name="oet_sidebar_section_title"] .acf-input input[type="text"]').val();
       data['icon'] = fields.find('.acf-field[data-name="oet_sidebar_section_icon"] .acf-input select').val();
       data['type'] = fields.find('.acf-field[data-name="oet_sidebar_section_type"] .acf-input select').val();
+
+      var i = 0;
+      switch (data['type']){
+        case "image":
+          acf_repeater.each(function(index,val){
+            /* Title */
+            let acf_title_instance = jQuery(this).find('.acf-field.acf-field-text:not(.acf-hidden)');
+            let acf_title = acf_title_instance.find(".acf-input input").val();
+
+            /* WYSIWYG Content */
+            let acf_wysiwyg_instance = jQuery(this).find('.acf-field.acf-field-wysiwyg:not(.acf-hidden)');
+            let acf_editor_id = acf_wysiwyg_instance.find('.wp-editor-area').attr('id');
+            let acf_iframe = jQuery('#' + acf_editor_id + '_ifr');
+            let acf_editorContent = jQuery('#tinymce[data-id="' + acf_editor_id + '"]', acf_iframe.contents()).html();
+
+            /* Image */
+            let acf_image = jQuery(this).find('.acf-field.acf-field-image:not(.acf-hidden)');
+            let acf_image_id = acf_image.find('.acf-input .has-value input').val();
+            let acf_image_url = acf_image.find('.acf-input .has-value .show-if-value.image-wrap img').attr('src');
+            acf_data[i] = { "title" : acf_title, "content": acf_editorContent, "image_id": acf_image_id, "image_url":acf_image_url };
+            i++;
+          });
+          break;
+      }
+      
       jQuery.post(oet_ajax_object.ajaxurl,
       {
           action:'oet_display_sidebar_section_callback',
           id: page_id,
           type: data['type'],
           title: data['title'],
-          icon: data['icon']
+          icon: data['icon'], 
+          data: acf_data
       }).done(function (response) {
           modalBody.append(loader);
           loader.hide();

@@ -1111,17 +1111,23 @@ add_action('wp_ajax_oet_display_sidebar_section_callback', 'oet_display_sidebar_
 add_action('wp_ajax_nopriv_oet_display_sidebar_section_callback', 'oet_display_sidebar_section_callback');
 function oet_display_sidebar_section_callback(){
     global $post;
+    $content = [];
     $page_id = isset($_REQUEST['id']) ? $_REQUEST['id']: $post->ID;
     $type = isset($_REQUEST['type']) ? $_REQUEST['type']: "";
     $title = isset($_REQUEST['title']) ? $_REQUEST['title']: "";
     $icon = isset($_REQUEST['icon']) ? $_REQUEST['icon']: "";
+    $data = isset($_REQUEST['data']) ? $_REQUEST['data']: "";
     
     $sidebar_content .= '<div class="col-md-12 col-xs-12">';
     $sidebar_content .= '   <div class="pblctn_box">';
     $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
     $sidebar_content .= '   </div>';
     $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
-    $content = oet_get_content_by_type($type,$page_id);
+
+    foreach ($data as $datum){
+        $content[] = oet_preview_content_by_type($type,$datum);
+    }
+    
     if ($type=="related")
         $sidebar_content .=     display_acf_sidebar_content_type($type, $content, $page_id, true);
     else
@@ -1170,5 +1176,59 @@ function oet_get_content_by_type($type, $page_id){
         endwhile;
     } 
     return $content;
+}
+
+function oet_preview_content_by_type($type, $data){
+    $content = null;
+    switch ($type){
+        case "html":
+            $content = get_sub_field('oet_sidebar_html_content', $page_id);
+            break;
+        case "link":
+            $content = get_sub_field('oet_sidebar_page_link', $page_id);
+            break;
+        case "image":
+            $image_id = $data['image_id'];
+            $image_data = null;
+            if ($image_id!=="")
+                $image_data = wp_get_attachment_metadata($image_id);
+                $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                $image_data['alt'] = $image_alt;
+                $image_title = get_the_title($image_id);
+                $image_data['title'] = $image_title;
+                $image_sizes = oet_get_all_image_sizes($image_id);
+                $image_data['sizes'] = $image_sizes;
+            $content = array(
+                "oet_sidebar_image_title" => $data['title'],
+                "oet_sidebar_image_short_description" => $data['content'],
+                "oet_sidebar_media_image" => $image_data
+            );
+            break;
+        case "related":
+            $content = get_sub_field('oet_sidebar_related_content', $page_id);
+            break;
+        case "youtube":
+            $content = get_sub_field('oet_sidebar_youtube_content', $page_id);
+            break;
+        case "story":
+            $content = get_sub_field('oet_sidebar_story', $page_id);
+            break;
+        case "medium":
+            $content = get_sub_field('oet_sidebar_medium_post', $page_id);
+            break;
+    }
+    return $content;
+}
+
+function oet_get_all_image_sizes($image_id){
+    $image_sizes = [];
+    $sizes = get_intermediate_image_sizes();
+    foreach($sizes as $size){
+        $source = wp_get_attachment_image_src($image_id, $size);
+        $image_sizes[$size] = $source[0];
+        $image_sizes[$size."-width"] = $source[1];
+        $image_sizes[$size."-height"] = $source[2];
+    }
+    return $image_sizes;
 }
 ?>

@@ -188,6 +188,13 @@ input#secondary-save-post {float: left;}
     opacity: .86;
 }
 #oet-dynamic-sidebar-preview .preview-wrapper ul { list-style:disc; padding-left:25px; }
+#oet-dynamic-sidebar-preview .preview-wrapper .sdbr_img_cntnt, #oet-dynamic-sidebar-preview .preview-wrapper .sidebar-youtube-video {
+    border-top: 1px solid #ccc;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 10px !important;
+    padding-top: 10px;
+}
 /** End of Sidebar Styles **/
 /** Shortcode Preview Styles **/
 .oet-shrtcdv2_preview .medium {
