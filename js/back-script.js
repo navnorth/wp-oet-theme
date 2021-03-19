@@ -185,7 +185,7 @@ jQuery( document ).ready(function() {
       data['title'] = fields.find('.acf-field[data-name="oet_sidebar_section_title"] .acf-input input[type="text"]').val();
       data['icon'] = fields.find('.acf-field[data-name="oet_sidebar_section_icon"] .acf-input select').val();
       data['type'] = fields.find('.acf-field[data-name="oet_sidebar_section_type"] .acf-input select').val();
-
+      
       var i = 0;
       switch (data['type']){
         case "image":
@@ -205,6 +205,34 @@ jQuery( document ).ready(function() {
             let acf_image_id = acf_image.find('.acf-input .has-value input').val();
             let acf_image_url = acf_image.find('.acf-input .has-value .show-if-value.image-wrap img').attr('src');
             acf_data[i] = { "title" : acf_title, "content": acf_editorContent, "image_id": acf_image_id, "image_url":acf_image_url };
+            i++;
+          });
+          break;
+        case "youtube":
+          acf_repeater.each(function(index,val){
+            /* Title */
+            let acf_title_instance = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_youtube_content_title]:not(.acf-hidden)');
+            let acf_title = acf_title_instance.find(".acf-input input").val();
+
+            /* WYSIWYG Content */
+            let acf_wysiwyg_instance = jQuery(this).find('.acf-field.acf-field-wysiwyg:not(.acf-hidden)');
+            let acf_editor_id = acf_wysiwyg_instance.find('.wp-editor-area').attr('id');
+            let acf_iframe = jQuery('#' + acf_editor_id + '_ifr');
+            let acf_editorContent = jQuery('#tinymce[data-id="' + acf_editor_id + '"]', acf_iframe.contents()).html();
+
+            /* Playlist ID */
+            let acf_playlist = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_youtube_content_playlist_id]:not(.acf-hidden)');
+            let acf_playlist_id = acf_playlist.find(".acf-input input").val();
+
+            /* Youtube Video ID */
+            let acf_yt_video = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_youtube_content_video_id]:not(.acf-hidden)');
+            let acf_yt_video_id = acf_yt_video.find(".acf-input input").val();
+
+            /* Youtube Video ID */
+            let acf_playback = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_youtube_content_modal_playback]:not(.acf-hidden)');
+            let acf_playback_modal = acf_playback.find(".acf-input input[type=checkbox").is(":checked");
+
+            acf_data[i] = { "title" : acf_title, "content": acf_editorContent, "playlist_id": acf_playlist_id, "video_id": acf_yt_video_id, "playback_modal": acf_playback_modal };
             i++;
           });
           break;

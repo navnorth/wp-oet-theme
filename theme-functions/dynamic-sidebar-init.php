@@ -1125,7 +1125,9 @@ function oet_display_sidebar_section_callback(){
     $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
 
     foreach ($data as $datum){
+        $ccontent = oet_get_content_by_type($type,$page_id);
         $content[] = oet_preview_content_by_type($type,$datum);
+        
     }
     
     if ($type=="related")
@@ -1205,10 +1207,16 @@ function oet_preview_content_by_type($type, $data){
             );
             break;
         case "related":
-            $content = get_sub_field('oet_sidebar_related_content', $page_id);
+            
             break;
         case "youtube":
-            $content = get_sub_field('oet_sidebar_youtube_content', $page_id);
+            $content = array(
+                "oet_sidebar_youtube_content_title" => $data['title'],
+                "oet_sidebar_youtube_content_short_description" => $data['content'],
+                "oet_sidebar_youtube_content_playlist_id" => $data['playlist_id'],
+                "oet_sidebar_youtube_content_video_id" => $data['video_id'],
+                "oet_sidebar_youtube_content_modal_playback" => $data['playback_modal']
+            );
             break;
         case "story":
             $content = get_sub_field('oet_sidebar_story', $page_id);
