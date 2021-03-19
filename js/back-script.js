@@ -188,6 +188,16 @@ jQuery( document ).ready(function() {
       
       var i = 0;
       switch (data['type']){
+        case "html":
+          /* WYSIWYG Content */
+          let acf_wysiwyg_instance = acf_fields.find('.acf-field.acf-field-wysiwyg[data-name=oet_sidebar_html_content]:not(.acf-hidden)');
+          let acf_editor_id = acf_wysiwyg_instance.find('.wp-editor-area').attr('id');
+          let acf_iframe = jQuery('#' + acf_editor_id + '_ifr');
+          let acf_editorContent = jQuery('#tinymce[data-id="' + acf_editor_id + '"]', acf_iframe.contents()).html();
+          
+          acf_data[i] = { "content": acf_editorContent };
+          
+          break;
         case "image":
           acf_repeater.each(function(index,val){
             /* Title */

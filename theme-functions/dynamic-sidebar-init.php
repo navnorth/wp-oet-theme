@@ -1127,7 +1127,10 @@ function oet_display_sidebar_section_callback(){
 
     foreach ($data as $datum){
         $ccontent = oet_get_content_by_type($type,$page_id);
-        $content[] = oet_preview_content_by_type($type,$datum);
+        if($type=="html")
+            $content = oet_preview_content_by_type($type,$datum);
+        else
+            $content[] = oet_preview_content_by_type($type,$datum);
         
     }
     
@@ -1185,7 +1188,7 @@ function oet_preview_content_by_type($type, $data){
     $content = null;
     switch ($type){
         case "html":
-            $content = get_sub_field('oet_sidebar_html_content', $page_id);
+            $content = $data['content'];
             break;
         case "link":
             $content = get_sub_field('oet_sidebar_page_link', $page_id);
