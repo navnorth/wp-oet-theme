@@ -236,6 +236,39 @@ jQuery( document ).ready(function() {
             i++;
           });
           break;
+        case "medium":
+          acf_repeater.each(function(index,val){
+            /* Title */
+            let acf_title_instance = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_medium_post_title]:not(.acf-hidden)');
+            let acf_title = acf_title_instance.find(".acf-input input").val();
+
+            /* WYSIWYG Content */
+            let acf_wysiwyg_instance = jQuery(this).find('.acf-field.acf-field-wysiwyg:not(.acf-hidden)');
+            let acf_editor_id = acf_wysiwyg_instance.find('.wp-editor-area').attr('id');
+            let acf_iframe = jQuery('#' + acf_editor_id + '_ifr');
+            let acf_editorContent = jQuery('#tinymce[data-id="' + acf_editor_id + '"]', acf_iframe.contents()).html();
+
+            /* Medium Post Url */
+            let acf_medium = jQuery(this).find('.acf-field.acf-field-url[data-name=oet_sidebar_medium_post_url]:not(.acf-hidden)');
+            let acf_medium_url = acf_medium.find(".acf-input input").val();
+
+            /* Alignment */
+            let acf_post = jQuery(this).find('.acf-field.acf-field-select[data-name=oet_sidebar_medium_post_alignment]:not(.acf-hidden)');
+            let acf_post_alignment = acf_post.find(".acf-input select").val();
+
+            /* Background Image */
+            let acf_image = jQuery(this).find('.acf-field.acf-field-image[data-name=oet_sidebar_medium_post_background_image]:not(.acf-hidden)');
+            let acf_image_id = acf_image.find('.acf-input input').val();
+            let acf_image_url = acf_image.find('.acf-input .show-if-value.image-wrap img').attr('src');
+
+            /* Background Color */
+            let acf_background = jQuery(this).find('.acf-field.acf-field-color-picker[data-name=oet_sidebar_medium_post_background_color]:not(.acf-hidden)');
+            let acf_background_color = acf_background.find('.acf-input input').val();
+            
+            acf_data[i] = { "title" : acf_title, "content": acf_editorContent, "medium_url": acf_medium_url, "alignment": acf_post_alignment, "image_id": acf_image_id, "image_url": acf_image_url, "bg_color": acf_background_color };
+            i++;
+          });
+          break;
       }
       
       jQuery.post(oet_ajax_object.ajaxurl,

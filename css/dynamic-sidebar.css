@@ -115,7 +115,7 @@
 }
 #oet-dynamic-sidebar-preview.modal  .sidebar-medium-post .single-medium .medium-wrapper p.mfooter {
     position: absolute;
-    bottom: -30px;
+    bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

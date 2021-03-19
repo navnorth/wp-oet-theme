@@ -1067,11 +1067,12 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
                         $background = $background['url'];
                     $align = $scontent['oet_sidebar_medium_post_alignment'];
                     $title = $scontent['oet_sidebar_medium_post_title'];
-                    $description = $scontent['oet_sidebar_medium_post_short_description'];
+                    $description = strip_tags($scontent['oet_sidebar_medium_post_short_description']);
                     $medium_url =  $scontent['oet_sidebar_medium_post_url'];
                     
-                    if (isset($scontent['oet_sidebar_medium_post_background_color']))
-                        $bgcolor = $scontent['oet_sidebar_medium_post_background_color'];
+                    if (isset($scontent['oet_sidebar_medium_post_background_color'])){
+                        $bgcolor = str_replace("#","",$scontent['oet_sidebar_medium_post_background_color']);
+                    }
                     
                     $class = "hdng_mtr brdr_mrgn_none";
                     $hclass = "sidebar-medium-post";
@@ -1192,7 +1193,7 @@ function oet_preview_content_by_type($type, $data){
         case "image":
             $image_id = $data['image_id'];
             $image_data = null;
-            if ($image_id!=="")
+            if ($image_id!==""){
                 $image_data = wp_get_attachment_metadata($image_id);
                 $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
                 $image_data['alt'] = $image_alt;
@@ -1200,6 +1201,7 @@ function oet_preview_content_by_type($type, $data){
                 $image_data['title'] = $image_title;
                 $image_sizes = oet_get_all_image_sizes($image_id);
                 $image_data['sizes'] = $image_sizes;
+            }
             $content = array(
                 "oet_sidebar_image_title" => $data['title'],
                 "oet_sidebar_image_short_description" => $data['content'],
@@ -1222,7 +1224,27 @@ function oet_preview_content_by_type($type, $data){
             $content = get_sub_field('oet_sidebar_story', $page_id);
             break;
         case "medium":
-            $content = get_sub_field('oet_sidebar_medium_post', $page_id);
+            $image_id = $data['image_id'];
+            $image_data = null;
+            if ($image_id!==""){
+                $image_data = wp_get_attachment_metadata($image_id);
+                $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                $image_data['alt'] = $image_alt;
+                $image_title = get_the_title($image_id);
+                $image_data['title'] = $image_title;
+                $image_sizes = oet_get_all_image_sizes($image_id);
+                $image_data['sizes'] = $image_sizes;
+            } else {
+                $image_data = false;
+            }
+            $content = array(
+                "oet_sidebar_medium_post_title" => $data['title'],
+                "oet_sidebar_medium_post_short_description" => $data['content'],
+                "oet_sidebar_medium_post_url" => $data['medium_url'],
+                "oet_sidebar_medium_post_alignment" => $data['alignment'],
+                "oet_sidebar_medium_post_background_image" => $image_data,
+                "oet_sidebar_medium_post_background_color" => $data['bg_color']
+            );
             break;
     }
     return $content;

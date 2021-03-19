@@ -1121,16 +1121,16 @@ function oet_medium_func($attribute, $content = null){
 	$background = "";
 	$footer = "";
 	$publication = "";
-	$bgcolor = "000000";
+	$bg_color = "000000";
 	$textalignment = "";
 
 	if (isset($bgcolor))
-		$bgcolor = "#".$bgcolor;
-
-	if (isset($image))
-		$background = "background:".$bgcolor." url(". $image .") no-repeat top left;";
+		$bg_color = "#".$bgcolor;
+	
+	if (isset($image) && $image!=="")
+		$background = "background:".$bg_color." url(". $image .") no-repeat top left;";
 	else
-		$background = "background:".$bgcolor." no-repeat top left;";
+		$background = "background:".$bg_color." no-repeat top left;";
 
 	if (isset($textalign))
 		$textalignment = ' style="text-align:'.$textalign.';"';
