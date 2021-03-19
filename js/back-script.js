@@ -198,6 +198,25 @@ jQuery( document ).ready(function() {
           acf_data[i] = { "content": acf_editorContent };
           
           break;
+        case "link":
+          acf_repeater.each(function(index,val){
+            /* Title */
+            let acf_title_instance = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_page_link_title]:not(.acf-hidden)');
+            let acf_title = acf_title_instance.find(".acf-input input").val();
+
+            /* WYSIWYG Content */
+            let acf_wysiwyg_instance = jQuery(this).find('.acf-field.acf-field-wysiwyg[data-name=oet_sidebar_page_link_short_description]:not(.acf-hidden)');
+            let acf_editor_id = acf_wysiwyg_instance.find('.wp-editor-area').attr('id');
+            let acf_iframe = jQuery('#' + acf_editor_id + '_ifr');
+            let acf_editorContent = jQuery('#tinymce[data-id="' + acf_editor_id + '"]', acf_iframe.contents()).html();
+
+            /* Page URL */
+            let acf_page= jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_page_link_url]:not(.acf-hidden)');
+            let acf_page_url = acf_page.find(".acf-input input").val();
+            acf_data[i] = { "title" : acf_title, "content": acf_editorContent, "page_url": acf_page_url };
+            i++;
+          });
+          break;
         case "image":
           acf_repeater.each(function(index,val){
             /* Title */

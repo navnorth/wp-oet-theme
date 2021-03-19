@@ -1191,7 +1191,11 @@ function oet_preview_content_by_type($type, $data){
             $content = $data['content'];
             break;
         case "link":
-            $content = get_sub_field('oet_sidebar_page_link', $page_id);
+            $content = array(
+                "oet_sidebar_page_link_title" => $data['title'],
+                "oet_sidebar_page_link_short_description" => $data['content'],
+                "oet_sidebar_page_link_url" => $data['page_url']
+            );
             break;
         case "image":
             $image_id = $data['image_id'];
