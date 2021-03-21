@@ -136,6 +136,9 @@
     width: 100%;
     margin-top: 5px;
 }
+#oet-dynamic-sidebar-preview.modal .preview-body .sidebar-story-post .story-embed-box { border:none; margin-top:0; padding:0; }
+#oet-dynamic-sidebar-preview.modal .preview-body .sidebar-story-post { overflow:hidden; }
+#oet-dynamic-sidebar-preview.modal .preview-body .sidebar-story-post:not(first-child) { margin-top:25px;  }
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }

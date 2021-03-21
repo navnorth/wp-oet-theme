@@ -298,6 +298,32 @@ jQuery( document ).ready(function() {
             i++;
           });
           break;
+        case "related":
+          /* Alignment */
+            let acf_display = jQuery(this).find('.acf-field.acf-field-number[data-name=oet_sidebar_related_content_display_count]:not(.acf-hidden)');
+            let acf_display_count = acf_display.find(".acf-input input").val();
+            acf_data[i] = { "count" : acf_title };
+          break;
+        case "story":
+          acf_repeater.each(function(index,val){
+            /* Title */
+            let acf_title_instance = jQuery(this).find('.acf-field.acf-field-text[data-name=oet_sidebar_story_title]:not(.acf-hidden)');
+            let acf_title = acf_title_instance.find(".acf-input input").val();
+
+            /* WYSIWYG Content */
+            let acf_wysiwyg_instance = jQuery(this).find('.acf-field.acf-field-wysiwyg[data-name=oet_sidebar_story_short_description]:not(.acf-hidden)');
+            let acf_editor_id = acf_wysiwyg_instance.find('.wp-editor-area').attr('id');
+            let acf_iframe = jQuery('#' + acf_editor_id + '_ifr');
+            let acf_editorContent = jQuery('#tinymce[data-id="' + acf_editor_id + '"]', acf_iframe.contents()).html();
+
+            /* Story */
+            let acf_story = jQuery(this).find('.acf-field.acf-field-post-object[data-name=oet_sidebar_story_content_story]:not(.acf-hidden)');
+            let acf_story_id = acf_story.find(".acf-input select").val();
+            
+            acf_data[i] = { "title" : acf_title, "content": acf_editorContent, "story_id": acf_story_id };
+            i++;
+          });
+          break;
       }
       
       jQuery.post(oet_ajax_object.ajaxurl,

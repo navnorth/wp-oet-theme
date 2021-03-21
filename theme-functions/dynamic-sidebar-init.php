@@ -1127,11 +1127,10 @@ function oet_display_sidebar_section_callback(){
 
     foreach ($data as $datum){
         $ccontent = oet_get_content_by_type($type,$page_id);
-        if($type=="html")
+        if($type=="html" || $type=="related")
             $content = oet_preview_content_by_type($type,$datum);
         else
             $content[] = oet_preview_content_by_type($type,$datum);
-        
     }
     
     if ($type=="related")
@@ -1216,7 +1215,7 @@ function oet_preview_content_by_type($type, $data){
             );
             break;
         case "related":
-            
+            $content = $data['count'];
             break;
         case "youtube":
             $content = array(
@@ -1228,7 +1227,12 @@ function oet_preview_content_by_type($type, $data){
             );
             break;
         case "story":
-            $content = get_sub_field('oet_sidebar_story', $page_id);
+            $story_data = get_post($data['story_id']);
+            $content = array(
+                "oet_sidebar_story_title" => $data['title'],
+                "oet_sidebar_story_short_description" => $data['content'],
+                "oet_sidebar_story_content_story" => $story_data
+            );
             break;
         case "medium":
             $image_id = $data['image_id'];
