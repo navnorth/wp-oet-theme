@@ -1121,10 +1121,10 @@ function oet_medium_func($attribute, $content = null){
 	$background = "";
 	$footer = "";
 	$publication = "";
-	$bg_color = "000000";
+	$bg_color = "#000000";
 	$textalignment = "";
-
-	if (isset($bgcolor))
+	
+	if (isset($bgcolor) && !empty($bgcolor))
 		$bg_color = "#".$bgcolor;
 	
 	if (isset($image) && $image!=="")
