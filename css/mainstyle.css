@@ -509,7 +509,7 @@ h4 { font-family: 'WorkSans-Light' !important}
 /** dynamic sidebar styles **/
 .pblctn_right_sid_mtr .sdbr_img_cntnt,
 .pblctn_right_sid_mtr .sidebar-youtube-video{ border-top:1px solid #ccc; width:100%; overflow:hidden; margin-top:10px !important; padding-top:10px; }
-.pblctn_right_sid_mtr .hdng_mtr { font-size:19px; }
+.pblctn_right_sid_mtr .hdng_mtr { font-size:19px; font-weight:bold; }
 .youtube-videoWrapper {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
