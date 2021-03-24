@@ -302,7 +302,7 @@ jQuery( document ).ready(function() {
           /* Alignment */
             let acf_display = jQuery(this).find('.acf-field.acf-field-number[data-name=oet_sidebar_related_content_display_count]:not(.acf-hidden)');
             let acf_display_count = acf_display.find(".acf-input input").val();
-            acf_data[i] = { "count" : acf_title };
+            acf_data[i] = { "count" : acf_display_count };
           break;
         case "story":
           acf_repeater.each(function(index,val){

@@ -904,15 +904,15 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
     $sectionid = 0;
     switch ($type){
         case "html":
-            $html = $sidebar_content;
+            $html = stripslashes($sidebar_content);
             $content = $html;
             break;
         case "link":
             $index = 0;
             if (!empty($sidebar_content)) {
                 foreach($sidebar_content as $scontent){
-                    $title = $scontent['oet_sidebar_page_link_title'];
-                    $description = $scontent['oet_sidebar_page_link_short_description'];
+                    $title = stripslashes($scontent['oet_sidebar_page_link_title']);
+                    $description = stripslashes($scontent['oet_sidebar_page_link_short_description']);
                     $link_url = $scontent['oet_sidebar_page_link_url'];
                     if ($index==0)
                         $content .= '<p class="hdng_mtr brdr_mrgn_none"><a href="'.$link_url.'">'.$title.'</a></p>';
@@ -927,9 +927,9 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
             $index = 0;
             if (!empty($sidebar_content)) {
                 foreach($sidebar_content as $scontent){
-                    $title = $scontent['oet_sidebar_image_title'];
+                    $title = stripslashes($scontent['oet_sidebar_image_title']);
                     $image_alt = $title . " featured image";
-                    $description = $scontent['oet_sidebar_image_short_description'];
+                    $description = stripslashes($scontent['oet_sidebar_image_short_description']);
                     $image_url = $scontent['oet_sidebar_media_image'];
                     $image_title = $image_url['title'];
 
@@ -971,8 +971,8 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
             $index=0;
             if (!empty($sidebar_content)) {
                 foreach($sidebar_content as $scontent){
-                    $title = $scontent['oet_sidebar_youtube_content_title'];
-                    $description = $scontent['oet_sidebar_youtube_content_short_description'];
+                    $title = stripslashes($scontent['oet_sidebar_youtube_content_title']);
+                    $description = stripslashes($scontent['oet_sidebar_youtube_content_short_description']);
                     $youtube_type = (isset($scontent['oet_sidebar_youtube_content_playlist_id'])?"playlist":"video");
                     $youtube_pid = $scontent['oet_sidebar_youtube_content_playlist_id'];
                     $youtube_id = $scontent['oet_sidebar_youtube_content_video_id'];
@@ -1036,8 +1036,8 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
             $index = 0;
             if (!empty($sidebar_content)) {
                 foreach($sidebar_content as $scontent){
-                    $title = $scontent['oet_sidebar_story_title'];
-                    $description = $scontent['oet_sidebar_story_short_description'];
+                    $title = stripslashes($scontent['oet_sidebar_story_title']);
+                    $description = stripslashes($scontent['oet_sidebar_story_short_description']);
                     $story_id = $scontent['oet_sidebar_story_content_story']->ID;
 
                     $class = "hdng_mtr brdr_mrgn_none";
@@ -1066,8 +1066,8 @@ function display_acf_sidebar_content_type($type, $sidebar_content, $page_id=0, $
                     else
                         $background = $background['url'];
                     $align = $scontent['oet_sidebar_medium_post_alignment'];
-                    $title = $scontent['oet_sidebar_medium_post_title'];
-                    $description = strip_tags($scontent['oet_sidebar_medium_post_short_description']);
+                    $title = stripslashes($scontent['oet_sidebar_medium_post_title']);
+                    $description = stripslashes(strip_tags($scontent['oet_sidebar_medium_post_short_description']));
                     $medium_url =  $scontent['oet_sidebar_medium_post_url'];
                     
                     if (isset($scontent['oet_sidebar_medium_post_background_color'])){
@@ -1123,7 +1123,7 @@ function oet_display_sidebar_section_callback(){
     $sidebar_content .= '   <div class="pblctn_box">';
     $sidebar_content .= '       <span class="socl_icns fa-stack"><i class="fa '.$icon.'"></i></span>';
     $sidebar_content .= '   </div>';
-    $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. $title .'</p>';
+    $sidebar_content .= '   <p class="rght_sid_wdgt_hedng">'. stripslashes($title) .'</p>';
 
     foreach ($data as $datum){
         $ccontent = oet_get_content_by_type($type,$page_id);
