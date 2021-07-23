@@ -404,7 +404,7 @@ input#secondary-save-post {float: left;}
 }
 
 .block-editor-writing-flow ul,
-.block-editor-writing-flow ol {padding-left: 20px;}
+.block-editor-writing-flow ol {padding-left: 20px !important;}
 .block-editor-writing-flow .block-editor-block-list__layout p,
 .block-editor-writing-flow .block-editor-block-list__layout li{
   color: #000000 !important;
