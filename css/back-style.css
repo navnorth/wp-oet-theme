@@ -1,3 +1,147 @@
+/** Work Sans and Open Sans Font Declaration **/
+/** Work Sans **/
+@font-face{
+	font-family:'WorkSans-Bold';
+	src:url('../fonts/WorkSans-Bold.eot');
+	src:url('../fonts/WorkSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-Bold.woff') format('woff'),
+		url('../fonts/WorkSans-Bold.woff2') format('woff2'),
+		url('../fonts/WorkSans-Bold.otf') format('opentype'),
+		url('../fonts/WorkSans-Bold.svg#worksans') format('svg');
+}
+
+@font-face{
+	font-family:'WorkSans-Bold-Italic';
+	src:url('../fonts/WorkSans-BoldItalic.eot');
+	src:url('../fonts/WorkSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-BoldItalic.woff') format('woff'),
+		url('../fonts/WorkSans-BoldItalic.woff2') format('woff2'),
+		url('../fonts/WorkSans-BoldItalic.otf') format('opentype'),
+		url('../fonts/WorkSans-BoldItalic.svg#worksans') format('svg');
+}
+
+@font-face{
+	font-family:'WorkSans-SemiBold';
+	src:url('../fonts/WorkSans-SemiBold.eot');
+	src:url('../fonts/WorkSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-SemiBold.woff') format('woff'),
+		url('../fonts/WorkSans-SemiBold.woff2') format('woff2'),
+		url('../fonts/WorkSans-SemiBold.otf') format('opentype'),
+		url('../fonts/WorkSans-SemiBold.svg#worksans') format('svg');
+}
+
+@font-face{
+	font-family:'WorkSans-Regular';
+	src:url('../fonts/WorkSans-Regular.eot');
+	src:url('../fonts/WorkSans-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-Regular.woff') format('woff'),
+		url('../fonts/WorkSans-Regular.woff2') format('woff2'),
+		url('../fonts/WorkSans-Regular.otf') format('opentype'),
+		url('../fonts/WorkSans-Regular.svg#worksans') format('svg');
+}
+
+@font-face{
+	font-family:'WorkSans-Light';
+	src:url('../fonts/WorkSans-Light.eot');
+	src:url('../fonts/WorkSans-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-Light.woff') format('woff'),
+		url('../fonts/WorkSans-Light.woff2') format('woff2'),
+		url('../fonts/WorkSans-Light.otf') format('opentype'),
+		url('../fonts/WorkSans-Light.svg#worksans') format('svg');
+}
+
+@font-face{
+	font-family:'WorkSans-SemiBold-Italic';
+	src:url('../fonts/WorkSans-SemiBoldItalic.eot');
+	src:url('../fonts/WorkSans-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-SemiBoldItalic.woff') format('woff'),
+		url('../fonts/WorkSans-SemiBoldItalic.woff2') format('woff2'),
+		url('../fonts/WorkSans-SemiBoldItalic.otf') format('opentype'),
+		url('../fonts/WorkSans-SemiBoldItalic.svg#worksans') format('svg');
+}
+
+@font-face{
+	font-family:'WorkSans-Light-Italic';
+	src:url('../fonts/WorkSans-LightItalic.eot');
+	src:url('../fonts/WorkSans-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/WorkSans-LightItalic.woff') format('woff'),
+		url('../fonts/WorkSans-LightItalic.woff2') format('woff2'),
+		url('../fonts/WorkSans-LightItalic.otf') format('opentype'),
+		url('../fonts/WorkSans-LightItalic.svg#worksans') format('svg');
+}
+
+/** Open Sans **/
+@font-face{
+	font-family:'OpenSans-Bold';
+	src:url('../fonts/OpenSans-Bold.eot');
+	src:url('../fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-Bold.woff') format('woff'),
+		url('../fonts/OpenSans-Bold.woff2') format('woff2'),
+		url('../fonts/OpenSans-Bold.ttf') format("truetype"),
+		url('../fonts/OpenSans-Bold.svg#opensans') format('svg');
+}
+
+@font-face{
+	font-family:'OpenSans-Bold-Italic';
+	src:url('../fonts/OpenSans-BoldItalic.eot');
+	src:url('../fonts/OpenSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-BoldItalic.woff') format('woff'),
+		url('../fonts/OpenSans-BoldItalic.woff2') format('woff2'),
+		url('../fonts/OpenSans-BoldItalic.ttf') format("truetype"),
+		url('../fonts/OpenSans-BoldItalic.svg#opensans') format('svg');
+}
+
+@font-face{
+	font-family:'OpenSans-SemiBold';
+	src:url('../fonts/OpenSans-Semibold.eot');
+	src:url('../fonts/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-Semibold.woff') format('woff'),
+		url('../fonts/OpenSans-Semibold.woff2') format('woff2'),
+		url('../fonts/OpenSans-Semibold.ttf') format("truetype"),
+		url('../fonts/OpenSans-Semibold.svg#opensans') format('svg');
+}
+
+@font-face{
+	font-family:'OpenSans-Regular';
+	src:url('../fonts/OpenSans-Regular.eot');
+	src:url('../fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-Regular.woff') format('woff'),
+		url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+		url('../fonts/OpenSans-Regular.ttf') format("truetype"),
+		url('../fonts/OpenSans-Regular.svg#opensans') format('svg');
+}
+
+@font-face{
+	font-family:'OpenSans-Light';
+	src:url('../fonts/OpenSans-Light.eot');
+	src:url('../fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-Light.woff') format('woff'),
+		url('../fonts/OpenSans-Light.woff2') format('woff2'),
+		url('../fonts/OpenSans-Light.ttf') format("truetype"),
+		url('../fonts/OpenSans-Light.svg#opensans') format('svg');
+}
+
+@font-face{
+	font-family:'OpenSans-SemiBold-Italic';
+	src:url('../fonts/OpenSans-SemiboldItalic.eot');
+	src:url('../fonts/OpenSans-SemiboldItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-SemiboldItalic.woff') format('woff'),
+		url('../fonts/OpenSans-SemiboldItalic.woff2') format('woff2'),
+		url('../fonts/OpenSans-SemiboldItalic.ttf') format("truetype"),
+		url('../fonts/OpenSans-SemiboldItalic.svg#opensans') format('svg');
+}
+
+@font-face{
+	font-family:'OpenSans-Light-Italic';
+	src:url('../fonts/OpenSans-LightItalic.eot');
+	src:url('../fonts/OpenSans-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/OpenSans-LightItalic.woff') format('woff'),
+		url('../fonts/OpenSans-LightItalic.woff2') format('woff2'),
+		url('../fonts/OpenSans-LightItalic.ttf') format("truetype"),
+		url('../fonts/OpenSans-LightItalic.svg#opensans') format('svg');
+}
+/** End of Work Sans and Open Sans Font Declaration **/
+
 .meta_main_wrp {
     height: auto;
     margin: 10px 0;
@@ -249,3 +393,77 @@ input#secondary-save-post {float: left;}
     margin-bottom: -11px;
 }
 /** End of Shortcode Preview Styles **/
+
+
+/* -------- Frontend Styles ----------*/
+
+.block-editor-writing-flow .editor-post-title .editor-post-title__input{
+  font-family: 'WorkSans-SemiBold' !important;
+  font-size: 30px !important;
+  color: #294179 !important;
+}
+
+.block-editor-writing-flow .block-editor-block-list__layout p,
+.block-editor-writing-flow .block-editor-block-list__layout li{
+  color: #000000 !important;
+  font-family: 'OpenSans-Regular' !important;
+  font-size: 15px;
+}
+
+.block-editor-writing-flow .editor-post-title{
+  margin-bottom:0px !important;
+}
+
+.block-editor-writing-flow table tr {border: 1px solid #ccc;}
+.block-editor-writing-flow table tr:first-child {background: #294179;}
+.block-editor-writing-flow table tr:first-child td,
+.block-editor-writing-flow table tr:first-child th,
+.block-editor-writing-flow table tr:first-child td a {
+  color: #fff !important;
+  font-family: 'WorkSans-Bold';
+}
+.block-editor-writing-flow table tr {
+    border: 1px solid #ccc;
+}
+.block-editor-writing-flow table tr td, 
+.block-editor-writing-flow table tr th {
+    color: #000000 !important;
+    padding: 5px;
+    font-family: 'OpenSans-Regular' !important;
+    font-size: 14px;
+    line-height: 2;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    vertical-align: top;
+}
+
+.block-editor-writing-flow h1 {font-size: 30px !important;}
+.block-editor-writing-flow h2 {font-size: 30px !important;}
+.block-editor-writing-flow h3 {font-size: 24px !important;}
+.block-editor-writing-flow h4 {font-size: 18px !important;}
+.block-editor-writing-flow h5 {font-size: 14px !important;}
+.block-editor-writing-flow h5 {font-size: 12px !important;}
+
+.block-editor-writing-flow h1,
+.block-editor-writing-flow h3 {color: #294179 !important;}
+.block-editor-writing-flow h2,
+.block-editor-writing-flow h4,
+.block-editor-writing-flow h5,
+.block-editor-writing-flow h6 {color: inherit !important;}
+
+.block-editor-writing-flow h1,
+.block-editor-writing-flow h2,
+.block-editor-writing-flow h3 {font-family: 'WorkSans-SemiBold' !important; margin-top: 20px; margin-bottom: 10px;}
+.block-editor-writing-flow h4 {font-family: 'WorkSans-Light' !important; margin-top: 10px; margin-bottom: 10px;}
+.block-editor-writing-flow h5,
+.block-editor-writing-flow h6 {font-family: inherit !important; margin-top: 10px; margin-bottom: 10px;}
+
+.block-editor-writing-flow h1,
+.block-editor-writing-flow h2,
+.block-editor-writing-flow h3,
+.block-editor-writing-flow h4,
+.block-editor-writing-flow h5,
+.block-editor-writing-flow h6 {font-weight: 500; line-height: 1.1;}
+
+/* -------- End of Frontend Styles ----------*/
