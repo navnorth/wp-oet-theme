@@ -205,7 +205,7 @@ color palette:
 		url(../fonts/CharisSILB.ttf) format('truetype'),
 		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
 
-body { padding-top: 15px; color: #000000 !important; font-family: 'OpenSans-Regular' !important; font-size:15px; }
+body { padding-top: 15px; color: #000000; font-family: 'OpenSans-Regular' !important; font-size:15px; }
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 6px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center; display: flex; align-items: center; justify-content: center;}
 .pblctn_box { width: 50px; margin: -40px auto 0}
@@ -241,7 +241,7 @@ body { padding-top: 15px; color: #000000 !important; font-family: 'OpenSans-Regu
 .bnr_img img { width: 100.2% }
 .bnr_img { padding-right: 0 !important }
 .border_blue p { margin-left: 20px; font-size: 16px; line-height: 35px; margin-top: 20px; font-family: 'WorkSans-Bold'; letter-spacing: .5px }
-.hdng_mtr, .hdng_mtr a { font-size: 19px; color: #E57200; font-family: 'WorkSans-Bold' !important; line-height:26px;}
+.hdng_mtr, .hdng_mtr a { font-size: 19px; color: #E57200; font-family: 'WorkSans-Bold' !important; line-height:26px;margin-top: 15px;}
 .hdng_mtr a:hover { cursor: pointer; }
 /*.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}*/
 .rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
@@ -420,7 +420,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .navi_icn { color: #fff; width: 100%; padding: 20px 0; display: none !important; background: #294179; cursor: pointer }
 .responsiv-menu li:last-child { border-bottom: none}
 
-.bg_img_of_icns p { font-style: normal}
+.bg_img_of_icns p { font-style: normal; margin: 10px 0px 15px; }
 
 .link_dwnlds {display: table; height: 100%;}
 .link_dwnlds { float: left; width: 100%; margin-bottom: 20px}
