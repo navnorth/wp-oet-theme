@@ -604,6 +604,14 @@ div#oet-shrtcdv2-form {
     font-size: 15px;
 }
 
+.medium .medium-wrapper p {
+	color:#fff !important;
+}
+.oet-shortcode h3 {
+    line-height: 1.1em !important;
+}
+
+
 /* preloader */
   .oet-shortcode-spinner-table {
     display: table;
