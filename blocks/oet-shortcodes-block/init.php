@@ -76,7 +76,7 @@ function oet_display_shortcode( $attributes, $ajax = false ){
 	}
 	$html .= "</div>";
 	
-	return $html;
+	return stripslashes($html);
 }
 
 function wp_oer_ajax_display_shortcode_text(){
