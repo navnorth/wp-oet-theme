@@ -71,6 +71,7 @@ function publication_metabox_func()
 
 function blog_metabox_func() {
 	global $post;
+	$publications  = null;
 	
 	$mpubdisplay = get_post_meta($post->ID, "mpubdisplay", true);
 	?>
@@ -83,7 +84,7 @@ function blog_metabox_func() {
 	<div class="meta_main_wrapper">
 	<?php
 	
-	$publications = getMediumPublications();
+	//$publications = getMediumPublications();
 
 	if ($publications){
 		$i=1;

@@ -1,7 +1,7 @@
 <?php
 function twentytwelve_menu()
 {
-	add_theme_page('Theme Settings', 'Theme Settings', 'edit_theme_options', 'socialmedia-options', 'socialmedia_settings');
+	add_theme_page('Theme Settings', 'Theme Settings', 'edit_theme_options', 'oet-theme-options', 'socialmedia_settings');
 }
 add_action('admin_menu', 'twentytwelve_menu');
 
@@ -26,13 +26,6 @@ function socialmedia_settings()
 			update_option("yotube_url", $yotube_url);
 		if (isset($linktonwltr))
 			update_option("linktonwltr", $linktonwltr);
-		if (isset($mediumaccesstoken)){
-			update_option("mediumaccesstoken", $mediumaccesstoken);
-			$verified  = verify_token($mediumaccesstoken);
-			if (!$verified || $verified->errors){
-				$notice = "Medium Self Access Token could not be verified, please try the Debug option for more information.";
-			}
-		}
 		if (isset($enablecontactslider))
 			update_option("enablecontactslider", $enablecontactslider);
 		if (isset($contactsliderpage))
@@ -57,7 +50,6 @@ function socialmedia_settings()
 	$facebook_url = get_option("facebook_url");
 	$yotube_url = get_option("yotube_url");
 	$linktonwltr = get_option("linktonwltr");
-	$mediumaccesstoken = get_option("mediumaccesstoken");
 	$enablecontactslider = get_option("enablecontactslider");
 	$contactsliderpage = get_option("contactsliderpage");
 	$enablecrazyegg = get_option("enablecrazyegg");
@@ -113,10 +105,6 @@ function socialmedia_settings()
 					<div class="oer_sclmda_sub_wrapper">
 						      <div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
 						      <div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
-					</div>
-					<div class="oer_sclmda_sub_wrapper">
-						      <div class="oer_sclmda_txt"><strong>Medium Self Access Token:</strong></div>
-						      <div class="oer_sclmda_fld"><input type="password" name="mediumaccesstoken" value="'. $mediumaccesstoken .'" /> <button id="debug_medium" class="medium-debug-btn button">Debug</button></div>
 					</div>
 					<div class="oer_sclmda_sub_wrapper">
 						      <div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>

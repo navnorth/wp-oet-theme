@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "1.9.6" );
+define( "OET_THEME_VERSION", "1.9.5" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -24,7 +24,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/widget-areas.php' )
 /**
  * Theme Social Media Settings.
  */
-require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' );
+require_once( get_stylesheet_directory() . '/theme-functions/theme-settings.php' );
 
 /**
  * Theme Shortcode.
@@ -446,14 +446,14 @@ function getMediumPublications(){
     return $publications;
 }
 
-function verify_token($self_access_token){
+/*--function verify_token($self_access_token){
     try {
 	$medium = new OET_Medium($self_access_token);
 	return $medium->get_authenticated_user();
     } catch(MediumAuthException $e){
 	return false;
     }
-}
+}--*/
 
 function add_tag_to_pages(){
     register_taxonomy_for_object_type('post_tag', 'page');
@@ -659,7 +659,7 @@ function oet_display_slides($page_id){
 	<div class="slideshow_controlPanel slideshow_transparent" style="display: none;">
 	    <ul>
 		<li class="slideshow_togglePlay" data-play-text="Play" data-pause-text="Pause"></li>
-	    </ul>
+	    </ul>  
 	</div>
 	<div class="slideshow_button slideshow_previous slideshow_transparent" role="button" data-previous-text="Previous" style="display: none;"></div>
 	<div class="slideshow_button slideshow_next slideshow_transparent" role="button" data-next-text="Next" style="display: none;"></div>

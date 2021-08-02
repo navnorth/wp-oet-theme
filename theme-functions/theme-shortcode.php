@@ -1,5 +1,5 @@
 <?php
-include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
+//include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
 /**
  * Disruptive Content
  * Shortcode Example : [disruptive_content title='' main_text='' button_text='' button_color='' button_url='']
@@ -101,7 +101,7 @@ $group_id = "accordion";
 				  $uptcls = '';
 			  }
 
-			  $return .= '<a href="javascript:void(0);" class="'.$class.'" role="button" data-toggle="collapse" data-parent="#'.$group_id.'" href="#collapse'. $group_id. $accordion_series .'" data-target="#collapse'. $group_id. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $group_id. $accordion_series .'">';
+			  $return .= '<a class="'.$class.'" role="button" data-toggle="collapse" data-parent="#'.$group_id.'" href="#collapse'. $group_id. $accordion_series .'" data-target="#collapse'. $group_id. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $group_id. $accordion_series .'">';
 			  $return .= $title;
 			$return .= '</a>';
 		 $return .= ' </h5>';
@@ -217,11 +217,11 @@ function featured_item_func($attr, $content = null)
 	{
     	if(isset($url) && !empty($url))
 		{
-			$return .= '<div class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></div>';
+			$return .= '<p class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></p>';
 		}
 		else
 		{
-    		$return .= '<div class="hdng_mtr">'. $title .'</div>';
+    		$return .= '<p class="hdng_mtr">'. $title .'</p>';
 		}
 	}
 	if(isset($date) && !empty($date))
@@ -496,9 +496,9 @@ function home_right_column_func($atts, $content = null)
 	}
 
 	$return = '';
-	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 rght_sid_mtr"><p>';
+	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 rght_sid_mtr">';
 			$return .= do_shortcode($content);
-	$return .= '</p></div>';
+	$return .= '</div>';
 	return $return;
 }
 
@@ -520,7 +520,7 @@ function home_left_column_func($atts, $content = null)
 
 	$return = '';
 	$return .= '<div class="col-md-6 col-sm-12 col-xs-12 lft_sid_mtr">';
-			$return .= '<p>'.do_shortcode($content).'</p>';
+			$return .= do_shortcode($content);
 	if( (isset($divider) && ($divider == 'yes')) || !(isset($divider)) )
 	{
 		$return .= '<div class="sprtn_brdr"></div>';
@@ -531,19 +531,12 @@ function home_left_column_func($atts, $content = null)
 
 /**
  * Featured Area
- * Shortcode Example : [oet_featured_area heading="" image="" title="" button="yes/no" button_text="" button_url=""]your content goes here[/oet_featured_area]
+ * Shortcode Example : [oet_featured_area heading="" image="" title=""]your content goes here[/oet_featured_area]
  */
 add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
-function oet_featured_area_descrptn($atts, $content = null)
+function oet_featured_area_descrptn($attr, $content = null)
 {
-	if (is_array($atts)){
-		if ( is_admin() ) {
-			$_arr = getShortcodeAttr($atts);
-			foreach($_arr as $key => $value) $$key = $value;
-		}else{
-			extract($atts);
-		}
-	}
+	extract($attr);
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
@@ -558,21 +551,14 @@ function oet_featured_area_descrptn($atts, $content = null)
 			}
 			if(isset($title) && !empty($title))
 			{
-				$return .= '<div class="hdng_mtr">'. $title .'</div>';
+				$return .= '<p class="hdng_mtr">'. $title .'</p>';
 			}
 			if(isset($content) && !empty($content))
 			{
 				//$description = apply_filters('the_content', $content);
 				$return .= '<p>'. $content .'</p>';
 			}
-			if(isset($button) && $button == 'yes')
-			{
-				$_btn_txt = (isset($button_text) && !empty($button_text))? $button_text: 'Learn more';
-				$_btn_url = (isset($button_url) && !empty($button_url))? $button_url: '#';
-				$return .= '<a class="btn_dwnld" href="/privacy/">Learn more</a>';
-			}
-			
-			
+
 			$return .= '</div>';
 	$return .= '</div>';
 	return $return;
@@ -792,19 +778,20 @@ function recommended_resources_func($attr, $content = null)
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
 
-						if(isset($top_icon) && !empty($top_icon))
-						{
-							$return .= '<span class="socl_icns fa-stack"><i class="fa fa-'.$top_icon.' "></i></span>';
-						}
-						else
-						{
-							$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
-						}
+		if(isset($top_icon) && !empty($top_icon))
+		{
+			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-'.$top_icon.' "></i></span>';
+		}
+		else
+		{
+			$return .= '<span class="socl_icns fa-stack"><i class="fa fa-star "></i></span>';
+		}
 
-				$return .= '</div>';
-            $return .= '<p class="rght_sid_wdgt_hedng">'. $title .'</p><div class="cntnbx_cntnr" style="text-align:'. $align.'"><p>'.$content.'</p></div>';
-      $return .= '</div>';
-	$return .= '</div>';
+		$return .= '</div>';
+            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
+            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
+        $return .= '</div>';
+		$return .= '</div>';
 
 		return $return;
  }
@@ -984,7 +971,7 @@ $atts = shortcode_atts( array(
     $data_props = parse_data_attributes( $atts['data'] );
 
     return sprintf(
-      '<div class="%s"%s><p>%s</p></div>',
+      '<div class="%s"%s>%s</div>',
       esc_attr( $class ),
       ( $data_props ) ? ' ' . $data_props : '',
       do_shortcode( $content )
@@ -1081,7 +1068,7 @@ function parse_data_attributes( $data ) {
 
 	$attrs = implode(" ", $class_attrs);
 
-	$return = '<div class="'.$attrs.'"><p>'.$content.'</p></div>'.$style;
+	$return = '<div class="'.$attrs.'">'.$content.'</div>'.$style;
 
 	return $return;
 
