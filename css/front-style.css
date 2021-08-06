@@ -12,7 +12,8 @@ aside.widget {
 }
 .widget h3 {
     border-bottom: 1px solid #ccc;
-    font-family: "WorkSans-Light";
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
     font-size: 15px;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -108,7 +109,8 @@ hr { width: 100%;}
 .custom-button {
 	background-color: #e57200;
 	color: #fff;
-	font-family: 'WorkSans-Bold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: bold;
 	font-size:19px;
 	padding:20px !important;
 }
@@ -134,7 +136,8 @@ hr { width: 100%;}
 	width: 100%;
 	font-size: 24px !important;
 	color: white !important;
-	font-family: 'WorkSans-Semibold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	line-height:1.25em;
 	white-space:normal !important;
 }
@@ -162,7 +165,8 @@ hr { width: 100%;}
 	width: 100%;
 	font-size: 14px !important;
 	color: white !important;
-	font-family: 'WorkSans-SemiBold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	white-space:normal !important;
 }
 .default-toc { margin-top:25px; }
@@ -270,7 +274,8 @@ hr { width: 100%;}
 .page .intro {
     position: relative;
     margin-bottom: 60px;
-    font-family: 'WorkSans-SemiBold', sans-serif !important;
+    font-family: 'Work Sans', sans-serif !important;
+    font-weight: 600 !important
     background:#294179;
 		float:left;
 		width: 100%;
@@ -312,21 +317,22 @@ hr { width: 100%;}
 	vertical-align:top;
 }
 #content tr:first-child { background: #294179; }
-#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; font-family:'WorkSans-Bold'; }
+#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; font-family: 'Work Sans', sans-serif; font-weight: bold; }
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
 #content tr td, #content tr th { padding:5px }
 #content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
 #content .table-responsive { display:flex; }
 .question {
-       font-family: 'WorkSans-Bold';
-       font-size: 19px;
-       color: #e57200;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: bold;
+    font-size: 19px;
+    color: #e57200;
 }
 ul.checkbox_list {
-        list-style-type: none;
-        margin: 0px;
-        padding: 0px;
-    }
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
 ul.checkbox_list input {
    margin: 8px 12px;
 }
@@ -521,17 +527,14 @@ ul.checkbox_list input {
 .oet_acf_homepage_3column_layout.ovlp {margin-left: -32px !important; margin-right: -32px !important;}
 
 /*--------TRENDING NOW--------*/
-/*.oet_3column_wrapper div {font-family: 'WorkSans-Regular'; box-sizing: border-box;}*/
 .oet-trending-image, .oet-trending-title, .oet-trending-description, .oet-trending-button {margin: 10px 0px;}
-/*.oet_trendingnow_layout div, .oet_trendingnow_layout img {display:block; float:left; width:100%;}
-.oet_trendingnow_layout img {width:100%; height: 250px;}*/
 .adminoverridewidth {width:100%;}
-.oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family:'WorkSans-SemiBold' !important;}
+.oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; }
 .oet-trending-description {min-height: 105px; overflow: hidden;}
 @media (max-width: 1200px){
 	.oet-trending-description {min-height: 125px !important;}
 }
-.oet-trending-title {font-size: 24px; font-family: 'WorkSans-SemiBold' !important; color: #E57200 !important; line-height: 24px;}
+.oet-trending-title {font-size: 24px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; color: #E57200 !important; line-height: 24px;}
 .oet-trending-title i {color: #222;}
 /*.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;*/
 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
@@ -571,7 +574,8 @@ ul.checkbox_list input {
   background-color: rgba(34, 57, 105, 0.8);
 }
 .oet-tilelinks-section-title {
-	font-family: 'WorkSans-SemiBold' !important;
+	font-family: 'Work Sans', sans-serif !important;
+	font-weight: 600 !important;
 	text-align:center;
 	padding:10px 0px; 
 	margin:0px 0px 30px 0px;
@@ -663,7 +667,8 @@ ul.checkbox_list input {
 .oet-acf-slide-box p.oet-acf-slide-description strong em, .oet-acf-slide-box p.oet-acf-slide-description em strong,
 .oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family:'OpenSans-Bold-Italic'; }
 h2.oet-acf-header-text {
-	font-family: 'WorkSans-Bold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: bold;
 	font-size: 24px;
 	line-height: 28px;
 	color: #FFFFFF;
@@ -683,7 +688,8 @@ h2.oet-acf-header-text {
 	padding: 10px 20px;
 	border-radius: 4px;
 	color: #ffffff;
-	font-family: 'WorkSans-SemiBold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	font-size: 14pt;
 	line-height: 19px;
 }
@@ -692,7 +698,8 @@ h2.oet-acf-header-text {
 	text-decoration:none; 
 }
 .oet-trending-button a {
-	font-family: 'WorkSans-SemiBold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	font-size: 14pt;
 }
 /****************************************
