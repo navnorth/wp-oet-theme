@@ -874,7 +874,8 @@ function oet_display_acf_home_content(){
                 .oet-tilelinks-section-title{
                   font-size: <?php echo $tl_hdr_fontsize ?>px;
                   color: <?php echo $tl_hdr_fontcolor ?>;
-                  font-family:'WorkSans-<?php echo $tl_hdr_fontweight ?>' !important;
+                  font-family:'Work Sans' !important;
+                  font-weight: <?php echo $tl_hdr_fontweight ?> !important;
                 }
                 </style>
                 <?php

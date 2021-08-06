@@ -660,12 +660,12 @@ ul.checkbox_list input {
 	background: #2A4378;
 	padding: 30px;
 }
-.oet-acf-slide-box p.oet-acf-slide-description a { color:#ffffff; text-decoration: underline; display:inline !important; font-family:'OpenSans-Regular'; }
-.oet-acf-slide-box p.oet-acf-slide-description a:hover { text-decoration:none; font-family:'OpenSans-Regular'; }
-.oet-acf-slide-box p.oet-acf-slide-description strong { font-family:'OpenSans-Bold'; }
-.oet-acf-slide-box p.oet-acf-slide-description i, .oet-acf-slide-box p.oet-acf-slide-description em { font-family:'OpenSans-Light-Italic'; }
+.oet-acf-slide-box p.oet-acf-slide-description a { color:#ffffff; text-decoration: underline; display:inline !important; font-family: 'Open Sans', sans-serif; }
+.oet-acf-slide-box p.oet-acf-slide-description a:hover { text-decoration:none; font-family: 'Open Sans', sans-serif; }
+.oet-acf-slide-box p.oet-acf-slide-description strong { font-family: 'Open Sans', sans-serif; font-weight: bold; }
+.oet-acf-slide-box p.oet-acf-slide-description i, .oet-acf-slide-box p.oet-acf-slide-description em { font-family: 'Open Sans', sans-serif; font-weight: 300;  font-style: italic; }
 .oet-acf-slide-box p.oet-acf-slide-description strong em, .oet-acf-slide-box p.oet-acf-slide-description em strong,
-.oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family:'OpenSans-Bold-Italic'; }
+.oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family: 'Open Sans', sans-serif; font-weight: bold; font-style: italic;  }
 h2.oet-acf-header-text {
 	font-family: 'Work Sans', sans-serif;
 	font-weight: bold;
@@ -675,7 +675,8 @@ h2.oet-acf-header-text {
 	margin-top:0; 
 }
 .oet-acf-page-header p {
-	font-family: 'OpenSans-Light';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 25px;
 	color: #FFFFFF;

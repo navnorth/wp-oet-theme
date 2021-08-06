@@ -8,151 +8,6 @@ color palette:
 	Pumpkin Orange:  #e57200
 */
 
-/** Work Sans and Open Sans Font Declaration **/
-/** Work Sans **/
-/**--@font-face{
-	font-family:'WorkSans-Bold';
-	src:url('../fonts/WorkSans-Bold.eot');
-	src:url('../fonts/WorkSans-Bold.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-Bold.woff') format('woff'),
-		url('../fonts/WorkSans-Bold.woff2') format('woff2'),
-		url('../fonts/WorkSans-Bold.otf') format('opentype'),
-		url('../fonts/WorkSans-Bold.svg#worksans') format('svg');
-}
-
-@font-face{
-	font-family:'WorkSans-Bold-Italic';
-	src:url('../fonts/WorkSans-BoldItalic.eot');
-	src:url('../fonts/WorkSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-BoldItalic.woff') format('woff'),
-		url('../fonts/WorkSans-BoldItalic.woff2') format('woff2'),
-		url('../fonts/WorkSans-BoldItalic.otf') format('opentype'),
-		url('../fonts/WorkSans-BoldItalic.svg#worksans') format('svg');
-}
-
-@font-face{
-	font-family:'WorkSans-SemiBold';
-	src:url('../fonts/WorkSans-SemiBold.eot');
-	src:url('../fonts/WorkSans-SemiBold.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-SemiBold.woff') format('woff'),
-		url('../fonts/WorkSans-SemiBold.woff2') format('woff2'),
-		url('../fonts/WorkSans-SemiBold.otf') format('opentype'),
-		url('../fonts/WorkSans-SemiBold.svg#worksans') format('svg');
-}
-
-@font-face{
-	font-family:'WorkSans-Regular';
-	src:url('../fonts/WorkSans-Regular.eot');
-	src:url('../fonts/WorkSans-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-Regular.woff') format('woff'),
-		url('../fonts/WorkSans-Regular.woff2') format('woff2'),
-		url('../fonts/WorkSans-Regular.otf') format('opentype'),
-		url('../fonts/WorkSans-Regular.svg#worksans') format('svg');
-}
-
-@font-face{
-	font-family:'WorkSans-Light';
-	src:url('../fonts/WorkSans-Light.eot');
-	src:url('../fonts/WorkSans-Light.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-Light.woff') format('woff'),
-		url('../fonts/WorkSans-Light.woff2') format('woff2'),
-		url('../fonts/WorkSans-Light.otf') format('opentype'),
-		url('../fonts/WorkSans-Light.svg#worksans') format('svg');
-}
-
-@font-face{
-	font-family:'WorkSans-SemiBold-Italic';
-	src:url('../fonts/WorkSans-SemiBoldItalic.eot');
-	src:url('../fonts/WorkSans-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-SemiBoldItalic.woff') format('woff'),
-		url('../fonts/WorkSans-SemiBoldItalic.woff2') format('woff2'),
-		url('../fonts/WorkSans-SemiBoldItalic.otf') format('opentype'),
-		url('../fonts/WorkSans-SemiBoldItalic.svg#worksans') format('svg');
-}
-
-@font-face{
-	font-family:'WorkSans-Light-Italic';
-	src:url('../fonts/WorkSans-LightItalic.eot');
-	src:url('../fonts/WorkSans-LightItalic.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/WorkSans-LightItalic.woff') format('woff'),
-		url('../fonts/WorkSans-LightItalic.woff2') format('woff2'),
-		url('../fonts/WorkSans-LightItalic.otf') format('opentype'),
-		url('../fonts/WorkSans-LightItalic.svg#worksans') format('svg');
-}--**/
-
-/** Open Sans **/
-@font-face{
-	font-family:'OpenSans-Bold';
-	src:url('../fonts/OpenSans-Bold.eot');
-	src:url('../fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-Bold.woff') format('woff'),
-		url('../fonts/OpenSans-Bold.woff2') format('woff2'),
-		url('../fonts/OpenSans-Bold.ttf') format("truetype"),
-		url('../fonts/OpenSans-Bold.svg#opensans') format('svg');
-}
-
-@font-face{
-	font-family:'OpenSans-Bold-Italic';
-	src:url('../fonts/OpenSans-BoldItalic.eot');
-	src:url('../fonts/OpenSans-BoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-BoldItalic.woff') format('woff'),
-		url('../fonts/OpenSans-BoldItalic.woff2') format('woff2'),
-		url('../fonts/OpenSans-BoldItalic.ttf') format("truetype"),
-		url('../fonts/OpenSans-BoldItalic.svg#opensans') format('svg');
-}
-
-@font-face{
-	font-family:'OpenSans-SemiBold';
-	src:url('../fonts/OpenSans-Semibold.eot');
-	src:url('../fonts/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-Semibold.woff') format('woff'),
-		url('../fonts/OpenSans-Semibold.woff2') format('woff2'),
-		url('../fonts/OpenSans-Semibold.ttf') format("truetype"),
-		url('../fonts/OpenSans-Semibold.svg#opensans') format('svg');
-}
-
-@font-face{
-	font-family:'OpenSans-Regular';
-	src:url('../fonts/OpenSans-Regular.eot');
-	src:url('../fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-Regular.woff') format('woff'),
-		url('../fonts/OpenSans-Regular.woff2') format('woff2'),
-		url('../fonts/OpenSans-Regular.ttf') format("truetype"),
-		url('../fonts/OpenSans-Regular.svg#opensans') format('svg');
-}
-
-@font-face{
-	font-family:'OpenSans-Light';
-	src:url('../fonts/OpenSans-Light.eot');
-	src:url('../fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-Light.woff') format('woff'),
-		url('../fonts/OpenSans-Light.woff2') format('woff2'),
-		url('../fonts/OpenSans-Light.ttf') format("truetype"),
-		url('../fonts/OpenSans-Light.svg#opensans') format('svg');
-}
-
-@font-face{
-	font-family:'OpenSans-SemiBold-Italic';
-	src:url('../fonts/OpenSans-SemiboldItalic.eot');
-	src:url('../fonts/OpenSans-SemiboldItalic.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-SemiboldItalic.woff') format('woff'),
-		url('../fonts/OpenSans-SemiboldItalic.woff2') format('woff2'),
-		url('../fonts/OpenSans-SemiboldItalic.ttf') format("truetype"),
-		url('../fonts/OpenSans-SemiboldItalic.svg#opensans') format('svg');
-}
-
-@font-face{
-	font-family:'OpenSans-Light-Italic';
-	src:url('../fonts/OpenSans-LightItalic.eot');
-	src:url('../fonts/OpenSans-LightItalic.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/OpenSans-LightItalic.woff') format('woff'),
-		url('../fonts/OpenSans-LightItalic.woff2') format('woff2'),
-		url('../fonts/OpenSans-LightItalic.ttf') format("truetype"),
-		url('../fonts/OpenSans-LightItalic.svg#opensans') format('svg');
-}
-/** End of Work Sans and Open Sans Font Declaration **/
-
-
 @font-face{font-family:'Raleway-Bold';
 	src:url(../fonts/Raleway-Bold.eot);
 	src:url(../fonts/Raleway-Bold.eot?#iefix) format('embedded-opentype'),
@@ -205,7 +60,7 @@ color palette:
 		url(../fonts/CharisSILB.ttf) format('truetype'),
 		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
 
-body { padding-top: 15px; color: #000000 !important; font-family: 'OpenSans-Regular' !important; font-size:15px; }
+body { padding-top: 15px; color: #000000 !important; font-family: 'Open Sans', sans-serif !important; font-size:15px; }
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 6px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center; display: flex; align-items: center; justify-content: center;}
 .pblctn_box { width: 50px; margin: -40px auto 0}
@@ -225,7 +80,7 @@ body { padding-top: 15px; color: #000000 !important; font-family: 'OpenSans-Regu
 .top_strp_img { float: left; background: url(../images/top_strap_img.png) 0 0 no-repeat}
 .top_strp { overflow: hidden; background: url(../images/top_strap_img.png) 0 0 no-repeat; height: 55px}
 .navi_bg ul { padding: 0; margin-bottom: 0}
-.navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'OpenSans-SemiBold'}
+.navi_bg li, .ftr_lnks li { display: inline; float: left; font-family: 'Open Sans', sans-serif; font-weight: 600;}
 .navi_bg li a {color: #fff; font-size: 16px; padding: 8px 18px; float: left}
 .navi_bg li a:focus { outline: none;}
 .ftr_lnks li { font-size: 13px; padding: 13px 35px 13px 0;}
@@ -285,7 +140,7 @@ iframe { border: 0;  max-width:100%; }
 .vdo_bg p, .pblctn_vdo_bg p { font-size: 15px;}
 .vdo_bg p { margin: 20px; }
 .pblctn_vdo_bg p { margin: 14px; }
-#content b, #content strong { font-family:'OpenSans-Bold'; }
+#content b, #content strong { font-family: 'Open Sans', sans-serif; font-weight: bold; }
 
 .ftr_strp { height: 25px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
@@ -341,7 +196,7 @@ iframe { border: 0;  max-width:100%; }
 .blog_mtr { color: #294179; font-family: 'Work Sans', sans-serif; font-weight: normal; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
 blockquote { border-left: none !important; font-size: auto !important; padding: 0 !important;}
 .blog_date { margin: 0 0 30px; font-size: 16px }
-.blog_athr { font-size: 16px; margin:0; font-family: 'OpenSans-Bold' }
+.blog_athr { font-size: 16px; margin:0; font-family: 'Open Sans', sans-serif; font-weight: bold; }
 .blog_date, .panel-default>.panel-heading+.panel-collapse>.panel-body {  }
 .pblctn_paramtr { letter-spacing: .5px; line-height: 25px;}
 .pblctn_paramtr ul { margin-bottom: 25px}
@@ -364,7 +219,7 @@ blockquote { border-left: none !important; font-size: auto !important; padding: 
 .stp_cntnr ul { padding-left: 0; font-size: 15px}
 .btm_lnk_blustrp a { color: #e57200; }
 .btm_lnk_blustrp a:hover, .btm_lnk_blustrp a:focus { color: #F58516}
-.btm_lnk_blustrp { text-align: center; font-family: 'OpenSans-Bold'; font-size: 18px; margin: 20px 0 70px}
+.btm_lnk_blustrp { text-align: center; font-family: 'Open Sans', sans-serif; font-weight: bold; font-size: 18px; margin: 20px 0 70px}
 .story_right_sid_mtr>.pblctn_scl_icn_hedng, .pblctn_right_sid_mtr>.story_scl_icn_hedng { font-family: 'Work Sans', sans-serif; font-weight: 300; margin-top: 25px}
 
 .bg_img_of_icns h3 { color: #fff !important}
@@ -443,7 +298,7 @@ a.btn_dwnld:hover, a.btn_dwnld:focus { opacity: 1 !important; color: #333 !impor
 .raleway_lght_font { font-family: 'Work Sans', sans-serif; font-weight: 300; }
 .raleway_smbold_font { font-family: 'Work Sans', sans-serif; font-weight: 600; }
 
-.charis_bold_font { font-family: 'OpenSans-Bold' }
+.charis_bold_font { font-family: 'Open Sans', sans-serif; font-weight: bold; }
 
 .overflow { overflow: hidden}
 .ssba img:hover { opacity: .8; transition: opacity .3s; -webkit-transition: opacity .3s; -moz-transition: opacity .3s}
