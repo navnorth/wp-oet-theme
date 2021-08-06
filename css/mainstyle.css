@@ -8,58 +8,6 @@ color palette:
 	Pumpkin Orange:  #e57200
 */
 
-@font-face{font-family:'Raleway-Bold';
-	src:url(../fonts/Raleway-Bold.eot);
-	src:url(../fonts/Raleway-Bold.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Bold.ttf) format('truetype'),
-		url(../fonts/Raleway-Bold.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-SemiBold';
-	src:url(../fonts/Raleway-SemiBold.eot);
-	src:url(../fonts/Raleway-SemiBold.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-SemiBold.ttf) format('truetype'),
-		url(../fonts/Raleway-SemiBold.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-Regular';
-	src:url(../fonts/Raleway-Regular.eot);
-	src:url(../fonts/Raleway-Regular.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Regular.ttf) format('truetype'),
-		url(../fonts/Raleway-Regular.svg#glyphicons_halflingsregular) format('svg')}
-
-@font-face{font-family:'Raleway-Light';
-	src:url(../fonts/Raleway-Light.eot);
-	src:url(../fonts/Raleway-Light.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Light.ttf) format('truetype'),
-		url(../fonts/Raleway-Light.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'Raleway-SemiBold-Italic';
-	src:url(../fonts/Raleway-SemiBold-Italic.eot);
-	src:url(../fonts/Raleway-SemiBold-Italic.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-SemiBold-Italic.ttf) format('truetype'),
-		url(../fonts/Raleway-SemiBold-Italic.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'Raleway-Light-Italic';
-	src:url(../fonts/Raleway-Light-Italic.eot);
-	src:url(../fonts/Raleway-Light-Italic.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/Raleway-Light-Italic.ttf) format('truetype'),
-		url(../fonts/Raleway-Light-Italic.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'CharisSILR';
-	src:url(../fonts/CharisSILR.eot);
-	src:url(../fonts/CharisSILR.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/CharisSILR.ttf) format('truetype'),
-		url(../fonts/CharisSILR.svg#glyphicons_halflingsregular) format('svg')}
-
-
-@font-face{font-family:'CharisSILB';
-	src:url(../fonts/CharisSILB.eot);
-	src:url(../fonts/CharisSILB.eot?#iefix) format('embedded-opentype'),
-		url(../fonts/CharisSILB.ttf) format('truetype'),
-		url(../fonts/CharisSILB.svg#glyphicons_halflingsregular) format('svg')}
-
 body { padding-top: 15px; color: #000000 !important; font-family: 'Open Sans', sans-serif !important; font-size:15px; }
 .soclize .socl_icns, .rght_sid_socl_icn .socl_icns, .pblctn_box .socl_icns { border-radius: 30px; }
 .pblctn_box .socl_icns { background: #294179; font-size: 18px; padding: 6px 0; width: 50px; height: 50px; color: #fff; border: 5px solid #fff; text-align: center; display: flex; align-items: center; justify-content: center;}
