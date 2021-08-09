@@ -468,4 +468,13 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow h5,
 .block-editor-writing-flow h6 {font-weight: 500; line-height: 1.1;}
 
+.oet-shortcode .intro {
+    position: relative;
+    margin-bottom: 60px;
+    font-family: "WorkSans-SemiBold",sans-serif !important;
+    background: #294179;
+    float: left;
+    width: 100%;
+}
+
 /* -------- End of Frontend Styles ----------*/

@@ -271,16 +271,19 @@ hr { width: 100%;}
 }
 
 /* Publication Intro Shortcode styles */
-.page .intro {
+
+.page .intro,
+.oet-shortcode .intro {
     position: relative;
     margin-bottom: 60px;
     font-family: 'Work Sans', sans-serif !important;
-    font-weight: 600 !important
+    font-weight: 600 !important;
     background:#294179;
 		float:left;
 		width: 100%;
 }
-.page .intro:before {
+.page .intro:before,
+.oet-shortcode .intro:before {
     content: "";
     background-position: center;
     position: absolute;
@@ -291,13 +294,15 @@ hr { width: 100%;}
     left: 0;
     right: 0;
 }
-.page .intro .intro-goal {
+.page .intro .intro-goal,
+.oet-shortcode .intro .intro-goal {
     position: relative;
     color: white !important;
     padding: 60px;
     font-size: 18px;
 }
-.page .intro .intro-goal .title {
+.page .intro .intro-goal .title,
+.oet-shortcode .intro .intro-goal .title {
     font-size: 36px;
     margin-bottom: 20px;
 }
