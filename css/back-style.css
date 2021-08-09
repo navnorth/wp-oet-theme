@@ -528,4 +528,23 @@ input#secondary-save-post {float: left;}
     padding: 30px;
 }
 
+.pull-out-box.light-bulb {
+    border: 2px solid darkgray;
+    padding: 30px;
+}
+.pull-out-box.light-bulb:before {
+    content: '\f0eb';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 15px;
+    color: white;
+    background-color: darkgray;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+
 /* -------- End of Frontend Styles ----------*/
