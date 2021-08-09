@@ -477,4 +477,25 @@ input#secondary-save-post {float: left;}
     width: 100%;
 }
 
+
+/* Callout Box */
+.pull-out-box.book:before {
+    content: '\f02d';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 5px 10px;
+    color: white;
+    background-color: #e57200;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.book {
+    border: 2px solid #e57200;
+    padding: 30px;
+}
+
 /* -------- End of Frontend Styles ----------*/
