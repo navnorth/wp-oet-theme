@@ -468,6 +468,20 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow h5,
 .block-editor-writing-flow h6 {font-weight: 500; line-height: 1.1;}
 
+.block-editor-writing-flow .pull-out-box h1,
+.block-editor-writing-flow .pull-out-box h2,
+.block-editor-writing-flow .pull-out-box h3,
+.block-editor-writing-flow .pull-out-box h4,
+.block-editor-writing-flow .pull-out-box h5,
+.block-editor-writing-flow .pull-out-box h6 {line-height: 1.1 !important;}
+
+.block-editor-writing-flow .pull-out-box {
+	color: #000000 !important;
+	font-family: 'OpenSans-Regular' !important;
+	font-size:15px !important;
+	line-height: 1.714285714 !important;
+}
+
 .oet-shortcode .intro {
     position: relative;
     margin-bottom: 60px;
@@ -477,6 +491,22 @@ input#secondary-save-post {float: left;}
     width: 100%;
 }
 
+/* Disruptive Content */
+.disruptive_content p {
+    color: #fff !important;
+}
+
+/* Featured Content Box */
+.featured_content_box .cntnbx_cntnr {
+    font-size: 15px;
+    line-height: 1.7em;
+		color: #000000 !important;
+}
+
+.featured_content_box .pblctn_box .socl_icns i {
+    font-style: normal !important;
+		line-height:1em !important;
+}
 
 /* Callout Box */
 .pull-out-box.book:before {

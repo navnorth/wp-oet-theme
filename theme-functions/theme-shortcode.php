@@ -25,7 +25,7 @@ function disruptive_content_fun($attr, $content = null)
 		$button_color = "#".$button_color;
 
 	$return = '';
-    $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
+    $return .= '<div class="disruptive_content row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
             $return .= '<h3>'. $title .'</h3>';
             $return .= '<p>';
@@ -774,7 +774,7 @@ function recommended_resources_func($attr, $content = null)
 	 $title=(!isset($title))?'':$title;
 	 $align=(!isset($align))?'':$align;
 	 $return = '';
-		$return .= '<div class="pblctn_right_sid_mtr">';
+		$return .= '<div class="featured_content_box pblctn_right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
 
