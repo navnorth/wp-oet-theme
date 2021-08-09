@@ -409,8 +409,8 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow .block-editor-block-list__layout li{
   color: #000000;
   font-family: 'OpenSans-Regular' !important;
-  font-size: 15px;
 }
+.block-editor-writing-flow .block-editor-block-list__layout p { font-size: 15px;}
 
 .block-editor-writing-flow .editor-post-title{
   margin-bottom:0px !important;
