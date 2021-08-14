@@ -270,8 +270,10 @@ hr { width: 100%;}
     top: -30px;
 }
 
-/* Publication Intro Shortcode styles */
+/* OET SHORTCODE IN GENERAL */
+.oet-shortcode {display:flow-root;}
 
+/* Publication Intro Shortcode styles */
 .page .intro,
 .oet-shortcode .intro {
     position: relative;

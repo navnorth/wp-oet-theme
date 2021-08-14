@@ -82,7 +82,7 @@ iframe { border: 0;  max-width:100%; }
 
 .tlkt_stp_vdo_cntnr .pblctn_vdo_bg img {padding: 0; height: auto}
 .tlkt_stp_vdo_cntnr { margin-top: 10px}
-.tlkt_stp_vdo_cntnr .pblctn_vdo_bg { margin-left: 5px; width: 32.9222% !important}
+.tlkt_stp_vdo_cntnr .pblctn_vdo_bg { margin-left: .5%; width: 32.9222% !important}
 .tlkt_stp_vdo_cntnr .pblctn_vdo_bg a { float: left; height: 160px; overflow: hidden; margin-bottom: 20px;}
 .tlkt_stp_vdo_cntnr .pblctn_vdo_bg:first-child { margin-left: 0}
 
