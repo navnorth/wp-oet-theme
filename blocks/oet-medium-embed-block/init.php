@@ -39,7 +39,8 @@ function oet_medium_embed_block_init() {
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_set_script_translations( 'oet-block-medium_embed-block_editor-script', 'oet_medium_embed' );
+    wp_localize_script( 'oet-block-medium-embed-block-editor-script', 'oet_medium_embed', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+    wp_set_script_translations( 'oet-block-medium-embed-block-editor-script', 'oet-medium-embed' );
 
     $editor_css = 'build/index.css';
     wp_register_style(
@@ -83,6 +84,50 @@ function oet_add_oet_block_category( $categories ) {
 }
 add_filter( 'block_categories_all', 'oet_add_oet_block_category', 10, 2);
 
+// Medium Embed Block HTML to display
 function oet_display_medium_embed($attributes, $ajax = false){
-    print_r($attributes);
+    $html = "";
+    $shortcodeText = "";
+    if (!empty($attributes)) {
+        extract($attributes);
+
+        $shortcodeText = "[oet_medium";
+        if (isset($attributes['url']) && $attributes['url']!=="")
+            $shortcodeText .= sprintf(" url='%s'",esc_url($attributes['url']));
+        if (isset($attributes['title']) && $attributes['title']!=="")
+            $shortcodeText .= sprintf(" title='%s'",$attributes['title']);
+        if (isset($attributes['description']) && $attributes['description']!=="")
+            $shortcodeText .= sprintf(" description='%s'",$attributes['description']);
+        if (isset($attributes['align']) && $attributes['align']!=="")
+            $shortcodeText .= sprintf(" align='%s'",$attributes['align']);
+        if (isset($attributes['textalign']) && $attributes['textalign']!=="")
+            $shortcodeText .= sprintf(" textalign='%s'",$attributes['textalign']);
+        if (isset($attributes['bgImage']) && $attributes['bgImage']!=="")
+            $shortcodeText .= sprintf(" image='%s'",$attributes['bgImage']);
+        if (isset($attributes['bgcolor']) && $attributes['bgcolor']!=="")
+            $shortcodeText .= sprintf(" bgcolor='%s'",str_replace('#','',$attributes['bgcolor']));
+        if (isset($attributes['authorurl']) && $attributes['authorurl']!=="")
+            $shortcodeText .= sprintf(" authorurl='%s'",$attributes['authorurl']);
+        if (isset($attributes['authorname']) && $attributes['authorname']!=="")
+            $shortcodeText .= sprintf(" authorname='%s'",$attributes['authorname']);
+        if (isset($attributes['authorlogo']) && $attributes['authorlogo']!=="")
+            $shortcodeText .= sprintf(" authorlogo='%s'",$attributes['authorlogo']);
+        $shortcodeText .= "]";
+
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+    }
+    
+    return $html;
 }
+
+// Display Medium Embed ajax
+function wp_oer_ajax_display_medium_embed(){
+    $shortcode = oet_display_medium_embed($_POST, true);
+    echo $shortcode;
+    die();
+}
+add_action( 'wp_ajax_display_medium_embed', 'wp_oer_ajax_display_medium_embed' );
+add_action( 'wp_ajax_nopriv_display_medium_embed', 'wp_oer_ajax_display_medium_embed' );
+
