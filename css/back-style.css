@@ -523,46 +523,10 @@ input#secondary-save-post {float: left;}
       line-height: 1em !important;
 }
 
-/* Callout Box */
-/*.pull-out-box.book:before {
-    content: '\f02d';
-    font-family: FontAwesome;
-    font-size: 20px;
-    padding: 5px 10px;
-    color: white;
-    background-color: #e57200;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    position: absolute;
-    border: 10px solid white;
-    top: -30px;
+.editor-post-title .editor-post-title__input {
+	padding:0px !Important;
+	text-overflow: ellipsis !important;
 }
-.pull-out-box.book {
-    border: 2px solid #e57200;
-    padding: 30px;
-}
-
-.pull-out-box.light-bulb {
-    border: 2px solid darkgray;
-    padding: 30px;
-}
-.pull-out-box.light-bulb:before {
-    content: '\f0eb';
-    font-family: FontAwesome;
-    font-size: 20px;
-    padding: 6px 15px;
-    color: white;
-    background-color: darkgray;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    position: absolute;
-    border: 10px solid white;
-    top: -30px;
-}
-*/
-
 
 /** Pull Out box styles **/
 
