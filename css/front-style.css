@@ -172,6 +172,7 @@ hr { width: 100%;}
 .default-toc { margin-top:25px; }
 
 /** Pull Out box styles **/
+
 .pull-out-box {
     position: relative;
     margin: 30px;
@@ -269,6 +270,7 @@ hr { width: 100%;}
     border: 10px solid white;
     top: -30px;
 }
+
 
 /* OET SHORTCODE IN GENERAL */
 .oet-shortcode {display:flow-root;}

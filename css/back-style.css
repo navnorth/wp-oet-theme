@@ -491,6 +491,17 @@ input#secondary-save-post {float: left;}
     width: 100%;
 }
 
+/* *************** */
+/*    Editor Css   */
+/* *************** */
+/*
+.editor-post-title__block .editor-post-title__input {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+*/
+
+
 /* Disruptive Content */
 .disruptive_content p {
     color: #fff !important;
@@ -508,8 +519,12 @@ input#secondary-save-post {float: left;}
 		line-height:1em !important;
 }
 
+.oet-shortcode .featured_content_box .pblctn_box .socl_icns {
+      line-height: 1em !important;
+}
+
 /* Callout Box */
-.pull-out-box.book:before {
+/*.pull-out-box.book:before {
     content: '\f02d';
     font-family: FontAwesome;
     font-size: 20px;
@@ -546,5 +561,114 @@ input#secondary-save-post {float: left;}
     border: 10px solid white;
     top: -30px;
 }
+*/
 
+
+/** Pull Out box styles **/
+
+.pull-out-box {
+    position: relative;
+    margin: 30px;
+}
+.pull-out-box.big-text {
+    font-size: 1.4em;
+}
+.pull-out-box.book {
+    border: 2px solid #e57200;
+    padding: 30px;
+}
+.pull-out-box.book:before {
+    content: '\f02d';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 5px 10px;
+    color: white;
+    background-color: #e57200;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.light-bulb {
+    border: 2px solid darkgray;
+    padding: 30px;
+}
+.pull-out-box.light-bulb:before {
+    content: '\f0eb';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 15px;
+    color: white;
+    background-color: darkgray;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.exclamation {
+    border: 2px solid green;
+    padding: 30px;
+}
+.pull-out-box.exclamation:before {
+    content: '\f12a';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 17px;
+    color: white;
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.checkmark {
+    border: 2px solid #294179;
+    padding: 30px;
+}
+.pull-out-box.checkmark:before {
+    content: '\f00c';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 11px;
+    color: white;
+    background-color: #294179;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+.pull-out-box.sun {
+    border: 2px solid red;
+    padding: 30px;
+}
+.pull-out-box.sun:before {
+    content: '\f185';
+    font-family: FontAwesome;
+    font-size: 20px;
+    padding: 6px 11px;
+    color: white;
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    position: absolute;
+    border: 10px solid white;
+    top: -30px;
+}
+
+.pull-out-box:before {
+		line-height: 1.4em;
+}
+
+.story-embed-content p {
+    color: #fff !important;
+}
 /* -------- End of Frontend Styles ----------*/
