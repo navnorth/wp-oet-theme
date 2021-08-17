@@ -20,6 +20,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
+require_once( __DIR__ . '/oet-medium-data.php' );
 function oet_medium_embed_block_init() {
     $dir = dirname( __FILE__ );
     $dir_url = get_stylesheet_directory_uri().'/blocks/oet-medium-embed-block/';
@@ -123,11 +124,20 @@ function oet_display_medium_embed($attributes, $ajax = false){
 }
 
 // Display Medium Embed ajax
-function wp_oer_ajax_display_medium_embed(){
+function oet_ajax_display_medium_embed(){
     $shortcode = oet_display_medium_embed($_POST, true);
     echo $shortcode;
     die();
 }
-add_action( 'wp_ajax_display_medium_embed', 'wp_oer_ajax_display_medium_embed' );
-add_action( 'wp_ajax_nopriv_display_medium_embed', 'wp_oer_ajax_display_medium_embed' );
+add_action( 'wp_ajax_display_medium_embed', 'oet_ajax_display_medium_embed' );
+add_action( 'wp_ajax_nopriv_display_medium_embed', 'oet_ajax_display_medium_embed' );
 
+// Get Medium Data By Url
+function oet_get_medium_data_form_url(){
+    $medium_data = new OET_Medium_Data($_POST['medium_url']);
+    $medium_post = $medium_data->get_medium_post();
+    echo json_encode($medium_post);
+    die();
+}
+add_action( 'wp_ajax_get_medium_post', 'oet_get_medium_data_form_url' );
+add_action( 'wp_ajax_nopriv_get_medium_post', 'oet_get_medium_data_form_url' );
