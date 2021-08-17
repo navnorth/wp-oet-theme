@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "1.9.5" );
+define( "OET_THEME_VERSION", "2.0.0" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -663,7 +663,7 @@ function oet_display_slides($page_id){
 	<div class="slideshow_controlPanel slideshow_transparent" style="display: none;">
 	    <ul>
 		<li class="slideshow_togglePlay" data-play-text="Play" data-pause-text="Pause"></li>
-	    </ul>  
+	    </ul>
 	</div>
 	<div class="slideshow_button slideshow_previous slideshow_transparent" role="button" data-previous-text="Previous" style="display: none;"></div>
 	<div class="slideshow_button slideshow_next slideshow_transparent" role="button" data-next-text="Next" style="display: none;"></div>
