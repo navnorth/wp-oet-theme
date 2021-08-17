@@ -84,6 +84,7 @@ function oet_add_oet_block_category( $categories ) {
     );
 }
 add_filter( 'block_categories_all', 'oet_add_oet_block_category', 10, 2);
+add_filter( 'block_categories', 'oet_add_oet_block_category', 10, 2);
 
 // Medium Embed Block HTML to display
 function oet_display_medium_embed($attributes, $ajax = false){
