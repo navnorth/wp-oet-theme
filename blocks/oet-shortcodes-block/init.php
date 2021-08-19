@@ -66,17 +66,19 @@ add_action( 'init', 'create_block_oet_shortcodes_block_init' );
 
 function oet_display_shortcode( $attributes, $ajax = false ){
 	$html = "";
+	$block_class = "";
 	if (!empty($attributes))
 		extract($attributes);
 	
-
-	$html = "<div class='oet-shortcode'>";
+	if (isset($displayblock) && $displayblock)
+		$block_class = " blk";
+	$html = "<div class='oet-shortcode".$block_class."'>";
 	if (isset($shortcodeText)){
 		$html .= do_shortcode($shortcodeText);
 	}
 	$html .= "</div>";
 	
-	return stripslashes($html);
+	return $html;
 }
 
 function wp_oer_ajax_display_shortcode_text(){
