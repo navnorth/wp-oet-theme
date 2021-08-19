@@ -536,14 +536,7 @@ function home_left_column_func($atts, $content = null)
 add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
 function oet_featured_area_descrptn($attr, $content = null)
 {
-	if (is_array($attr)){
-		if ( is_admin() ) {
-			$_arr = getShortcodeAttr($attr);
-			foreach($_arr as $key => $value) $$key = $value;
-		}else{
-			extract($attr);
-		}
-	}
+	extract($attr);
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
@@ -795,10 +788,8 @@ function recommended_resources_func($attr, $content = null)
 		}
 
 		$return .= '</div>';
-            
-            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">';
-							$return .= '<p class="rght_sid_wdgt_hedng">'. $title .'</p>'.$content;
-						$return .= '</div>';
+            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
+            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
         $return .= '</div>';
 		$return .= '</div>';
 
