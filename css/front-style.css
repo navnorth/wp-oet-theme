@@ -175,7 +175,7 @@ hr { width: 100%;}
 
 .pull-out-box {
     position: relative;
-    margin: 30px;
+    margin: 30px 0px;
 }
 .pull-out-box.big-text {
     font-size: 1.4em;
