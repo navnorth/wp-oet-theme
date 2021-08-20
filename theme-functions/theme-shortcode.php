@@ -155,7 +155,8 @@ function pull_quotethemefn($atts, $content = null)
 
 	$return = '';
 	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
-		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
+		//$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
+		$return .= '<i class="fa fa-quote-left oet_pull_quote_icon"></i>';
 	$return .= '</div>';
 
 	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
@@ -536,7 +537,14 @@ function home_left_column_func($atts, $content = null)
 add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
 function oet_featured_area_descrptn($attr, $content = null)
 {
-	extract($attr);
+	if (is_array($attr)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attr);
+			foreach($_arr as $key => $value) $$key = $value;
+		}else{
+			extract($attr);
+		}
+	}
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
@@ -788,8 +796,10 @@ function recommended_resources_func($attr, $content = null)
 		}
 
 		$return .= '</div>';
-            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
-            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
+						$return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">';
+							$return .= '<p class="rght_sid_wdgt_hedng">'. $title .'</p>'.$content;
+						$return .= '</div>';
+						
         $return .= '</div>';
 		$return .= '</div>';
 

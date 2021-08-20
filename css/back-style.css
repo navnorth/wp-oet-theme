@@ -408,7 +408,7 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow .block-editor-block-list__layout p,
 .block-editor-writing-flow .block-editor-block-list__layout li{
   color: #000000;
-  font-family: 'OpenSans-Regular' !important;
+  font-family: 'OpenSans-Regular';
 }
 .block-editor-writing-flow .block-editor-block-list__layout p { font-size: 15px;}
 
@@ -494,54 +494,72 @@ input#secondary-save-post {float: left;}
 /* *************** */
 /*    Editor Css   */
 /* *************** */
-/*
-.editor-post-title__block .editor-post-title__input {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-}
-*/
-
 
 /* Disruptive Content */
-.disruptive_content p {
+.block-editor-writing-flow .disruptive_content p {
     color: #fff !important;
 }
 
 /* Featured Content Box */
-.featured_content_box .cntnbx_cntnr {
+.block-editor-writing-flow .featured_content_box .cntnbx_cntnr {
     font-size: 15px;
     line-height: 1.7em;
 		color: #000000 !important;
 }
 
-.featured_content_box .pblctn_box .socl_icns i {
+.block-editor-writing-flow .featured_content_box .pblctn_box .socl_icns i {
     font-style: normal !important;
 		line-height:1em !important;
 }
 
-.oet-shortcode .featured_content_box .pblctn_box .socl_icns {
+.block-editor-writing-flow .oet-shortcode .featured_content_box .pblctn_box .socl_icns {
       line-height: 1em !important;
 }
 
+/* Editor Post/Page Title */
 .editor-post-title .editor-post-title__input {
 	padding:0px !Important;
 	text-overflow: ellipsis !important;
 }
 
-/** Pull Out box styles **/
-
-.pull-out-box {
-    position: relative;
-    margin: 30px;
+/* oet_featured_area */
+.block-editor-writing-flow .oet-shortcode .lft_sid_mtr h4 {
+    height: 52px;
+    display: table-cell;
+    vertical-align: bottom;
+    width: 1000px !important;
 }
-.pull-out-box.big-text {
+.block-editor-writing-flow  .oet-shortcode .lft_sid_mtr h4, .rght_sid_mtr h4, .oet_2column_layout h4 {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 19px;
+    color: #294179 !important;
+    font-family: 'Work Sans', sans-serif !important;
+    font-weight: 400;
+    line-height: 23px;
+}
+.block-editor-writing-flow .hdng_mtr, .hdng_mtr a {
+    font-size: 19px !important;
+    color: #E57200 !important;
+    font-family: 'Work Sans', sans-serif !important;
+    font-weight: bold !important;
+    line-height: 26px;
+}
+
+/** Pull Out box styles **/
+.block-editor-writing-flow .pull-out-box {
+    position: relative;
+    margin: 30px 0px;
+}
+.block-editor-writing-flow .pull-out-box.big-text {
     font-size: 1.4em;
 }
-.pull-out-box.book {
+.block-editor-writing-flow .pull-out-box.book {
     border: 2px solid #e57200;
     padding: 30px;
 }
-.pull-out-box.book:before {
+.block-editor-writing-flow .pull-out-box.book:before {
     content: '\f02d';
     font-family: FontAwesome;
     font-size: 20px;
@@ -555,11 +573,11 @@ input#secondary-save-post {float: left;}
     border: 10px solid white;
     top: -30px;
 }
-.pull-out-box.light-bulb {
+.block-editor-writing-flow .pull-out-box.light-bulb {
     border: 2px solid darkgray;
     padding: 30px;
 }
-.pull-out-box.light-bulb:before {
+.block-editor-writing-flow .pull-out-box.light-bulb:before {
     content: '\f0eb';
     font-family: FontAwesome;
     font-size: 20px;
@@ -573,11 +591,11 @@ input#secondary-save-post {float: left;}
     border: 10px solid white;
     top: -30px;
 }
-.pull-out-box.exclamation {
+.block-editor-writing-flow .pull-out-box.exclamation {
     border: 2px solid green;
     padding: 30px;
 }
-.pull-out-box.exclamation:before {
+.block-editor-writing-flow .pull-out-box.exclamation:before {
     content: '\f12a';
     font-family: FontAwesome;
     font-size: 20px;
@@ -591,11 +609,13 @@ input#secondary-save-post {float: left;}
     border: 10px solid white;
     top: -30px;
 }
-.pull-out-box.checkmark {
+/*
+.block-editor-writing-flow .pull-out-box.checkmark:before {
     border: 2px solid #294179;
     padding: 30px;
 }
-.pull-out-box.checkmark:before {
+
+.block-editor-writing-flow .pull-out-box.checkmark {
     content: '\f00c';
     font-family: FontAwesome;
     font-size: 20px;
@@ -609,11 +629,12 @@ input#secondary-save-post {float: left;}
     border: 10px solid white;
     top: -30px;
 }
-.pull-out-box.sun {
+*/
+.block-editor-writing-flow .pull-out-box.sun {
     border: 2px solid red;
     padding: 30px;
 }
-.pull-out-box.sun:before {
+.block-editor-writing-flow .pull-out-box.sun:before {
     content: '\f185';
     font-family: FontAwesome;
     font-size: 20px;
@@ -628,11 +649,18 @@ input#secondary-save-post {float: left;}
     top: -30px;
 }
 
-.pull-out-box:before {
+.block-editor-writing-flow .pull-out-box:before {
 		line-height: 1.4em;
 }
 
-.story-embed-content p {
+.block-editor-writing-flow .story-embed-content p {
     color: #fff !important;
+}
+
+/* Pull Quote */
+.oet_pull_quote_icon::before {
+    font-size: 24px;
+    color: #e57200;
+    font-style: normal !important;
 }
 /* -------- End of Frontend Styles ----------*/
