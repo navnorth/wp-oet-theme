@@ -273,7 +273,7 @@ hr { width: 100%;}
 
 
 /* OET SHORTCODE IN GENERAL */
-.oet-shortcode {display:flow-root;}
+.oet-shortcode.flx {display:flex;}
 
 /* Publication Intro Shortcode styles */
 .page .intro,

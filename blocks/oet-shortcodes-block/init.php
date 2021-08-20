@@ -70,8 +70,8 @@ function oet_display_shortcode( $attributes, $ajax = false ){
 	if (!empty($attributes))
 		extract($attributes);
 	
-	if (isset($displayblock) && $displayblock)
-		$block_class = " blk";
+	if (isset($displayflex) && $displayflex)
+		$block_class = " flx";
 	$html = "<div class='oet-shortcode".$block_class."'>";
 	if (isset($shortcodeText)){
 		$html .= do_shortcode($shortcodeText);
