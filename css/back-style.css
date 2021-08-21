@@ -556,7 +556,7 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow .oet-shortcode.flx .pull-center {
     margin-left: auto !important;
     margin-right: auto !important;
-		float: none; !important;
+		float: none !important;
 }
 
 /** Pull Out box styles **/
