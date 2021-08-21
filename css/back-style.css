@@ -547,6 +547,18 @@ input#secondary-save-post {float: left;}
     line-height: 26px;
 }
 
+.block-editor-writing-flow .oet-shortcode.flx .pull-right {
+    margin-left: auto;
+}
+.block-editor-writing-flow .oet-shortcode.flx .pull-left {
+    margin-right: auto;
+}
+.block-editor-writing-flow .oet-shortcode.flx .pull-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+		float: none; !important;
+}
+
 /** Pull Out box styles **/
 .block-editor-writing-flow .pull-out-box {
     position: relative;

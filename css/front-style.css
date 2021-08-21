@@ -171,6 +171,18 @@ hr { width: 100%;}
 }
 .default-toc { margin-top:25px; }
 
+
+.oet-shortcode.flx .pull-right {
+    margin-left: auto;
+}
+.oet-shortcode.flx .pull-left {
+    margin-right: auto;
+}
+.oet-shortcode.flx .pull-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 /** Pull Out box styles **/
 
 .pull-out-box {
