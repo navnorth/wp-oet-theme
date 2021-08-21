@@ -675,4 +675,9 @@ input#secondary-save-post {float: left;}
     color: #e57200;
     font-style: normal !important;
 }
+.oet_pull_quote_icon img {
+    max-width: none !important;
+    margin-bottom: 10px;
+    box-shadow: unset;
+}
 /* -------- End of Frontend Styles ----------*/

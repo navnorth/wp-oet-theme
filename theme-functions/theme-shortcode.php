@@ -154,12 +154,11 @@ function pull_quotethemefn($atts, $content = null)
 
 
 	$return = '';
-	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
-		//$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
-		$return .= '<i class="fa fa-quote-left oet_pull_quote_icon"></i>';
+	$return .= '<div class="col-md-1 col-sm-1 col-xs-1 oet_pull_quote_icon">';
+		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
 	$return .= '</div>';
 
-	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
+	$return .= '<div class="col-md-11 col-sm-11 col-xs-11 oet_pull_quote_text">';
 	if(isset($content) && !empty($content))
 	{
 		$return .= '<blockquote class="blog_mtr"><span></span>';
