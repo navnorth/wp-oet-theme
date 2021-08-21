@@ -271,9 +271,16 @@ hr { width: 100%;}
     top: -30px;
 }
 
+/* Pull Quote */
+.oet_pull_quote_icon::before {
+    font-size: 24px;
+    color: #e57200;
+    font-style: normal !important;
+}
+
 
 /* OET SHORTCODE IN GENERAL */
-.oet-shortcode {display:flow-root;}
+.oet-shortcode.flx {display:flex;}
 
 /* Publication Intro Shortcode styles */
 .page .intro,
