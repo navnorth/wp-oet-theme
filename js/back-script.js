@@ -1,5 +1,6 @@
 function showPublicationMetabox(){
-  var select = jQuery('#page_template,.edit-post-sidebar .editor-page-attributes__template.components-select-control select.components-select-control__input, .edit-post-sidebar .components-select-control .components-select-control__input');
+  var select = jQuery('#page_template,.edit-post-sidebar .components-panel__body.is-opened [data-wp-component="Flex"].components-select-control .components-select-control__input, .edit-post-sidebar .components-panel__body.is-opened .editor-page-attributes__template.components-select-control .components-select-control__input');
+  console.log(select);
   console.log(select.val());
   if (select.length){
     jQuery('#story_metabox').toggle(select.val()=='page-templates/story-template.php');
@@ -65,7 +66,7 @@ jQuery( document ).ready(function() {
 	   return false;
   });
     
-  jQuery(document).on("change","#page_template,.edit-post-sidebar .editor-page-attributes__template.components-select-control select.components-select-control__input, .edit-post-sidebar .components-select-control .components-select-control__input", showPublicationMetabox);
+  jQuery(document).on("change",'#page_template,.edit-post-sidebar .components-panel__body.is-opened [data-wp-component="Flex"].components-select-control .components-select-control__input, .edit-post-sidebar .components-panel__body.is-opened .editor-page-attributes__template.components-select-control .components-select-control__input', showPublicationMetabox);
     
   jQuery('.oet_sidebar_section_youtube_modal_trg').change(function() {
     if(this.checked) {
