@@ -1,7 +1,5 @@
 function showPublicationMetabox(){
   var select = jQuery('#page_template,.edit-post-sidebar .components-panel__body.is-opened [data-wp-component="Flex"].components-select-control .components-select-control__input, .edit-post-sidebar .components-panel__body.is-opened .editor-page-attributes__template.components-select-control .components-select-control__input');
-  console.log(select);
-  console.log(select.val());
   if (select.length){
     jQuery('#story_metabox').toggle(select.val()=='page-templates/story-template.php');
     jQuery('#publication_metabox').toggle(select.val()=='page-templates/publication-template.php');
