@@ -1,85 +1,81 @@
+function showPublicationMetabox(){
+  var select = jQuery('#page_template,.edit-post-sidebar .editor-page-attributes__template.components-select-control select.components-select-control__input, .edit-post-sidebar .components-select-control .components-select-control__input');
+  console.log(select.val());
+  if (select.length){
+    jQuery('#story_metabox').toggle(select.val()=='page-templates/story-template.php');
+    jQuery('#publication_metabox').toggle(select.val()=='page-templates/publication-template.php');
+  }
+}
+
 jQuery( document ).ready(function() {
-    //enable/disable during load
-    if (jQuery("#enablecontactslider").is(':checked')) {
-	jQuery('#contactsliderpage').prop('disabled',false);
-    } else {
-	jQuery('#contactsliderpage').prop('disabled',true);
-    }
+  //enable/disable during load
+  if (jQuery("#enablecontactslider").is(':checked')) {
+    jQuery('#contactsliderpage').prop('disabled',false);
+  } else {
+    jQuery('#contactsliderpage').prop('disabled',true);
+  }
     
-    jQuery('#page_template').on('change', function() {
-	  //alert(this.value);
-	});
+  //enable/disable contact slider dropbox on ticking enable slider checkbox
+  jQuery('#enablecontactslider').on('change', function() {
+  	if (jQuery(this).is(':checked')) {
+  	    jQuery('#contactsliderpage').prop('disabled',false);
+  	} else {
+  	    jQuery('#contactsliderpage').prop('disabled',true);
+  	}
+  });
     
-    //enable/disable contact slider dropbox on ticking enable slider checkbox
-    jQuery('#enablecontactslider').on('change', function() {
-	if (jQuery(this).is(':checked')) {
-	    jQuery('#contactsliderpage').prop('disabled',false);
-	} else {
-	    jQuery('#contactsliderpage').prop('disabled',true);
-	}
-    });
-    
-    jQuery(".widget[id*='featuredcontentwidgetdetails'").each(function(i, obj){
-	if (jQuery(this).find('.widget-title span.in-widget-title').length) {
+  jQuery(".widget[id*='featuredcontentwidgetdetails'").each(function(i, obj){
+	 if (jQuery(this).find('.widget-title span.in-widget-title').length) {
 	    var title = jQuery(this).find('.widget-title span.in-widget-title');
 	    var label = jQuery(this).find(".widget-inside input.widefat[id*='label']");
 	    setTimeout(function() {
-		var title_text = title.text();
-		if (label.val().length>0) {
-		    title_text = ": " + label.val();
-		}
-		title.html(title_text);
+		    var title_text = title.text();
+		    if (label.val().length>0) {
+		      title_text = ": " + label.val();
+		    }
+		    title.html(title_text);
 	    }, 1);
-	}
-    });
+    }
+  });
     
-    jQuery("input[type=radio][name=mpubdisplay]").on("change",function(){
-	if (jQuery(this).value=="selective"){
+  jQuery("input[type=radio][name=mpubdisplay]").on("change",function(){
+    if (jQuery(this).value=="selective"){
 	    jQuery(".meta_main_wrp input[type=checkbox]").prop("checked",true);
-	} else {
+    } else {
 	    jQuery(".meta_main_wrp input[type=checkbox]").prop("checked",false);
-	}
-    });
+    }
+  });
     
-    jQuery("#debug_medium").on("click", function(e){
-	e.preventDefault();
-	data = {
+  jQuery("#debug_medium").on("click", function(e){
+    e.preventDefault();
+    data = {
 	    action: 'debug_medium_connection',
-	}
-	
-	//* Process the AJAX POST request
-	jQuery.post(
+    }
+
+    //* Process the AJAX POST request
+    jQuery.post(
 	    ajaxurl,
 	    data
 	    ).done( function(response) {
-            verbose = jQuery("#oer_verbose_block");
-            verbose.html("");
-            verbose.html(response);
-        });
+        verbose = jQuery("#oer_verbose_block");
+        verbose.html("");
+        verbose.html(response);
+    });
 
-	return false;
-    });
+	   return false;
+  });
     
-    jQuery("#page_template").on("change", function(){
-        jQuery('#story_metabox').toggle(jQuery(this).val()=='page-templates/story-template.php');
-        /*var sidebar_templates = ['page-templates/publication-template.php', 'default'];
-        if (sidebar_templates.indexOf(jQuery(this).val())==-1)
-            jQuery('#oet-sidebar-metabox').toggle(false);
-        else
-            jQuery('#oet-sidebar-metabox').toggle(true);*/
-        
-        jQuery('#publication_metabox').toggle(jQuery(this).val()=='page-templates/publication-template.php');
-        
-    }).change();
+  jQuery(document).on("change","#page_template,.edit-post-sidebar .editor-page-attributes__template.components-select-control select.components-select-control__input, .edit-post-sidebar .components-select-control .components-select-control__input", showPublicationMetabox);
     
-    jQuery('.oet_sidebar_section_youtube_modal_trg').change(function() {
-        if(this.checked) {
-            jQuery(this).siblings('.oet_sidebar_section_youtube_modal_opt').val(1);
-        }else{
-            jQuery(this).siblings('.oet_sidebar_section_youtube_modal_opt').val(0);
-        }      
-    });
-    
+  jQuery('.oet_sidebar_section_youtube_modal_trg').change(function() {
+    if(this.checked) {
+      jQuery(this).siblings('.oet_sidebar_section_youtube_modal_opt').val(1);
+    }else{
+      jQuery(this).siblings('.oet_sidebar_section_youtube_modal_opt').val(0);
+    }      
+  });
+  
+  setTimeout(function(){ showPublicationMetabox(); },500);
 });
 
 

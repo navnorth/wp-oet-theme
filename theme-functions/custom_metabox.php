@@ -8,10 +8,10 @@ function add_image_metabox()
 	if (!empty($post))
 		$template = get_post_meta($post->ID, '_wp_page_template', true);
 	
-	if ($template!=="page-templates/blog-template.php") {
-		add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
-	} else {
+	if ($template=="page-templates/blog-template.php") {
 		add_meta_box( "blog_metabox", "Select Publications", "blog_metabox_func", "page");
+	} else {
+		add_meta_box( "publication_metabox", "Publication Metabox", "publication_metabox_func", "page" );
 	}
 }
 function publication_metabox_func()
