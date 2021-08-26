@@ -196,7 +196,7 @@ function featured_item_func($attr, $content = null)
 		extract($attr);
 	}
 	$return = '';
-	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr oese_featured_item">';
 	if(isset($heading) && !empty($heading))
 	{
     	$return .= '<h4>'. $heading .'</h4>';
