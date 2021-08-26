@@ -422,7 +422,7 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow table tr:first-child th,
 .block-editor-writing-flow table tr:first-child td a {
   color: #fff !important;
-  font-family: 'WorkSans-Bold';
+  font-family: 'WorkSans-Bold', sans-serif !important;
 }
 .block-editor-writing-flow table tr {
     border: 1px solid #ccc;
@@ -445,21 +445,21 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow h3 {font-size: 24px !important;}
 .block-editor-writing-flow h4 {font-size: 18px !important;}
 .block-editor-writing-flow h5 {font-size: 14px !important;}
-.block-editor-writing-flow h5 {font-size: 12px !important;}
+.block-editor-writing-flow h6 {font-size: 12px !important;}
 
 .block-editor-writing-flow h1,
 .block-editor-writing-flow h3 {color: #294179 !important;}
 .block-editor-writing-flow h2,
 .block-editor-writing-flow h4,
 .block-editor-writing-flow h5,
-.block-editor-writing-flow h6 {color: inherit !important;}
+.block-editor-writing-flow h6 {color: #000000 !important;}
 
 .block-editor-writing-flow h1,
 .block-editor-writing-flow h2,
 .block-editor-writing-flow h3 {font-family: 'WorkSans-SemiBold' !important; margin-top: 20px; margin-bottom: 10px;}
 .block-editor-writing-flow h4 {font-family: 'WorkSans-Light' !important; margin-top: 10px; margin-bottom: 10px;}
 .block-editor-writing-flow h5,
-.block-editor-writing-flow h6 {font-family: inherit !important; margin-top: 10px; margin-bottom: 10px;}
+.block-editor-writing-flow h6 {font-family: 'WorkSans-Regular' !important; margin-top: 10px; margin-bottom: 10px;}
 
 .block-editor-writing-flow h1,
 .block-editor-writing-flow h2,
@@ -494,6 +494,15 @@ input#secondary-save-post {float: left;}
 /* *************** */
 /*    Editor Css   */
 /* *************** */
+
+/* Accordion */
+.block-editor-writing-flow .oet-shortcode #accordion .panel-heading h5.panel-title a {
+    font-family: 'WorkSans-Bold',sans-serif !important;
+    font-size: 16px !important;
+}
+.block-editor-writing-flow .oet-shortcode #accordion .panel-heading h5.panel-title a:hover {
+		text-decoration: underline;
+}
 
 /* Disruptive Content */
 .block-editor-writing-flow .disruptive_content p {
@@ -530,15 +539,29 @@ input#secondary-save-post {float: left;}
     width: 1000px !important;
 }
 .block-editor-writing-flow  .oet-shortcode .lft_sid_mtr h4, .rght_sid_mtr h4, .oet_2column_layout h4 {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    font-size: 19px;
+    border-bottom: 1px solid #ccc !important;
+    margin-bottom: 15px !important;
+    padding-bottom: 5px !important;
+    font-size: 19px !important;
     color: #294179 !important;
     font-family: 'Work Sans', sans-serif !important;
-    font-weight: 400;
-    line-height: 23px;
+    font-weight: 400 !important;
+    line-height: 23px !important;
 }
+.block-editor-writing-flow .oet-shortcode .oese_featured_item .hdng_mtr, 
+.block-editor-writing-flow .oet-shortcode .oese_featured_item .hdng_mtr a {
+    font-size: 19px !important;
+    color: #E57200 !important;
+    font-family: 'WorkSans-Bold', sans-serif !important;
+    line-height: 26px !important;
+}
+.block-editor-writing-flow .oet-shortcode .oese_featured_item .date b, 
+.block-editor-writing-flow .oet-shortcode .oese_featured_item .date strong{
+		font-family: 'Open Sans', sans-serif !important;
+    font-weight: bold !important;
+		font-size: 13px !important;
+}
+.block-editor-writing-flow .oet-shortcode .oese_featured_item .date {line-height: 18px;}
 .block-editor-writing-flow .hdng_mtr, .hdng_mtr a {
     font-size: 19px !important;
     color: #E57200 !important;
@@ -670,12 +693,12 @@ input#secondary-save-post {float: left;}
 }
 
 /* Pull Quote */
-.oet_pull_quote_icon::before {
+.block-editor-writing-flow .oet_pull_quote_icon::before {
     font-size: 24px;
     color: #e57200;
     font-style: normal !important;
 }
-.oet_pull_quote_icon img {
+.block-editor-writing-flow .oet_pull_quote_icon img {
     max-width: none !important;
     margin-bottom: 10px;
     box-shadow: unset;

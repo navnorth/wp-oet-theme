@@ -112,6 +112,9 @@ iframe { border: 0;  max-width:100%; }
 
 .pblctn_box_icns { background: #444}
 .pblctn_right_sid_mtr { padding: 0 !important;}
+.featured_content_box .cntnbx_cntnr p {
+    margin-bottom: 5px !important;
+}
 .pblctn_right_sid_mtr img, .pblctn_right_sid_mtr iframe { width: 100%; margin: 7px 0}
 .pblctn_right_sid_mtr span img  { width: auto; margin-right: 4px}
 .pblctn_right_sid_mtr .col-md-12 { margin-top: 35px; border: 1px solid #94a0bc; padding: 20px;}
@@ -140,14 +143,19 @@ iframe { border: 0;  max-width:100%; }
 
 .pblctn_scl_icns .fa-envelope, .pblctn_scl_icns .fa-youtube-play, .pblctn_scl_icns .fa-google-plus { font-size: 25px !important}
 .pblctn_scl_icns .fa-google-plus { font-weight: bold}
-.blog_mtr { color: #294179; font-family: 'Raleway', sans-serif; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
+.blog_mtr { color: #294179; font-family: 'WorkSans-regular', sans-serif !important; font-style: italic; font-size: 20px; line-height: 30px; margin: 0 0 15px;}
 blockquote { border-left: none !important; font-size: auto !important; padding: 0 !important;}
 .blog_date { margin: 0 0 30px; font-size: 16px }
-.blog_athr { font-size: 16px; margin:0; font-family: 'CharisSILB' }
+.blog_athr {
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
 .blog_date, .panel-default>.panel-heading+.panel-collapse>.panel-body {  }
 .pblctn_paramtr { letter-spacing: .5px; line-height: 25px;}
 .pblctn_paramtr ul { margin-bottom: 25px}
-.rght_sid_wdgt_hedng { font-family: 'Raleway', sans-serif !important; font-weight: bold !important; font-size: 17px !important}
+.rght_sid_wdgt_hedng { font-family: 'WorkSans-Bold', sans-serif !important; font-size: 17px !important}
 .pblctn_right_sid_mtr p{ margin: 0 0 10px}
 .meta_date { font-family: 'Raleway', sans-serif; font-weight: bold; margin: -19px 0 10px; float: left; text-align: center; width: 100%; }
 .brdr_mrgn_none { border-top: none !important; margin: 0 !important}
@@ -512,8 +520,12 @@ div#oet-shrtcdv2-form {
 .page .intro {float:left;	width: 100%;}
 .bg_img_of_icns p {margin: 10px 0 10px !important;}
 .blog_date {margin: 0 0 30px !important; font-size: 16px !important;}
-.blog_athr {font-size: 16px;margin: 0;font-family: 'CharisSILB'; font-weight: 700;}
-
+.blog_athr {
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
 
 /* preloader */
   .oet-shortcode-spinner-table {
