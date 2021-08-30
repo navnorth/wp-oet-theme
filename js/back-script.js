@@ -356,8 +356,13 @@ jQuery( document ).ready(function() {
     var expand = jQuery(this).attr('aria-expanded');
     var postbox = jQuery(this).closest('.postbox');
     var closed = postbox.hasClass('closed');
+    
+    // manual condition instead of toggle as the latter doesn't work on test server
+    if (expand===true)
+      postbox.find('.inside').hide();
+    else if (expand===false)
+      postbox.find('.inside').show();
     jQuery(this).attr('aria-expanded',(expand===true)?'false':'true');
-    postbox.find('.inside').toggle();
     jQuery(this).closest('.postbox').toggleClass('closed');
   })
 })
