@@ -350,6 +350,16 @@ jQuery( document ).ready(function() {
     });    
   })
   
+  //Override fix for metabox expand/collapse
+  jQuery(document).on('click','button.handlediv',function(e){
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    var expand = jQuery(this).attr('aria-expanded');
+    var postbox = jQuery(this).closest('.postbox');
+    var closed = postbox.hasClass('closed');
+    jQuery(this).attr('aria-expanded',(expand===true)?'false':'true');
+    postbox.find('.inside').toggle();
+    jQuery(this).closest('.postbox').toggleClass('closed');
+  })
 })
 
 var itvl;
