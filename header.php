@@ -60,7 +60,7 @@
                 	<div class="form-group has-feedback gray_bg">
 
                         <form id="searchform" class="searchform" action="<?php echo site_url();?>" method="get" role="search">
-                        	<input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s" />
+                        	<input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s" aria-label="search" />
                       		<a href="javascript:" onClick="jQuery(this).closest('form').submit()">
                                 <span class="form-control-feedback ">
                               		<img src="<?php echo get_stylesheet_directory_uri();?>/images/search_icn.png" alt="Search"/>
