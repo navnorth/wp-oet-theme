@@ -168,9 +168,11 @@
   color: #FFFFFF;
   margin-top: 0;
   text-align:left;
+  padding: 10px 0;
 }
 .slideshow_container .slideshow_description_box.oet-acf-slide-box p {
   text-align:left;
+  padding: 5px 0;
 }
 .slideshow_container .slideshow_description_box.oet-acf-slide-box p.oet-slide-button-row{
   margin: 0 0 15px !important;
