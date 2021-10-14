@@ -10,8 +10,8 @@
 		while ( have_posts() ) : the_post();
 			//get_template_part( 'content', 'page' );
       /* SLIDER START */
-    
-      oet_display_slideshow(get_the_ID());
+      echo oet_acf_slider_func(get_the_ID());
+      /*oet_display_slideshow(get_the_ID());*/
       
       //include(get_stylesheet_directory().'/slider/oet_slider_init.php');
       //echo do_shortcode('[slideshow_deploy id=’5528′]');
