@@ -816,6 +816,14 @@ form#searchform.focused {border: 2px solid #333333 !important;}
 }
 
 
+@media screen and (max-width: 1199px) {
+	#oet-acf-slider .oet_acf_slide_title {
+			white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	}
+}
+
 @media screen and (max-width: 991px) {
 	.oetslider-ring {left:43%;}
 	#oet-acf-slider {height: 260px;}
