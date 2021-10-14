@@ -44,11 +44,12 @@ function oet_acf_slider_func($_id){
   					$_image_header = trim($_slide['oet_acf_slide_header']," ");
             $_image_description = trim($_slide['oet_acf_slide_description']," ");
   					$_image_link = trim($_slide['oet_acf_slide_button_url']," ");
-            $_image_link_target = '_blank';
+            $_image_link_target = 'target="_blank"';
 
   					$_vis = ($_cnt > 0)? 'style="visibility:hidden;"': '';
                 $_html .= '<li class="oet_acf_slide" data-index="'.$_cnt.'">';
-                    $_html .= '<div class="oet_acf_slide_content" '.$_image_link_target.'>';
+                    $bgStyle = '  style="background-image:url('.$_image_url.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
+                    $_html .= '<div class="oet_acf_slide_content" '.$bgStyle.'>';
                         $_caption_html = '<div class="oet_acf_slide_caption_wrapper">';
                           $_caption_html .= '<div class="oet_acf_slide_caption_block">';
                             $_caption_html .= ($_image_header != '')?'<h2 class="oet_acf_slide_title">'.$_image_header.'</h2>': '';
@@ -60,15 +61,9 @@ function oet_acf_slider_func($_id){
                             $_caption_html .= '</p>';
                           $_caption_html .= '</div>';
                         $_caption_html .= '</div>';
-                        if($_image_link != ''){                        
-                          //$_html .= '<a href="'.$_image_link.'" target="'.$_image_link_target.'" class="no_target_change external_link" tabindex="-1">';					                    
-                              $_html .= '<img src="'.$_image_url.'" style="width:100%" alt="'.$_image_alt.'">';   
-                              $_html .= $_caption_html;             
-                          //$_html .= '</a>';                                         
-                        }else{
-                          $_html .= '<img src="'.$_image_url.'" style="width:100%" alt="">';
-                          $_html .= $_caption_html;
-                        }      
+                        $_html .= '<img src="'.$_image_url.'" style="width:100%;display:none;" alt="">';
+                        $_html .= $_caption_html;
+                        
                     $_html .= '</div>';
                 $_html .= '</li>';
     
