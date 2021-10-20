@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "2.0.0" );
+define( "OET_THEME_VERSION", "2.0.1" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
