@@ -56,6 +56,7 @@
   height: 0;
   overflow: hidden !important;
 }
+.slideshow_container .slideshow_view.slideshow_currentView { top:0 !important; left:0 !important; }
 .slideshow_container .slideshow_view .slideshow_slide {
   position: relative !important;
   float: left !important;
@@ -160,15 +161,18 @@
   left: auto !important;
 }
 .slideshow_container .slideshow_description_box.oet-acf-slide-box h2.oet-acf-header-text{
-  font-family: 'WorkSans-Bold';
+  font-family: 'Work Sans', sans-serif;
+  font-weight: bold;
   font-size: 24px;
   line-height: 28px;
   color: #FFFFFF;
   margin-top: 0;
   text-align:left;
+  padding: 0 0 10px;
 }
 .slideshow_container .slideshow_description_box.oet-acf-slide-box p {
   text-align:left;
+  padding: 5px 0;
 }
 .slideshow_container .slideshow_description_box.oet-acf-slide-box p.oet-slide-button-row{
   margin: 0 0 15px !important;
@@ -338,6 +342,7 @@
     width: 14px !important;
     height: 14px !important;
   }
+  /*
   .navi_icn {
     margin-top: -10px !important;
   }
@@ -345,5 +350,6 @@
     padding: 6px;
     top: -9px;
   }
+  */
   .slideshow_container .slideshow_description_box.oet-acf-slide-box .oet-acf-slide-description{ max-height:72px; }
 }

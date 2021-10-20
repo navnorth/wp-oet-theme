@@ -62,6 +62,8 @@ jQuery( document ).ready(function($) {
              $(document).on("change", '.oet-sidebar-section-type', function(e){
                 e.preventDefault();
                 var content_section = $(this).closest('.oet-sidebar-section-wrapper').find('.oet-content-sections');
+                var helper_text = $(this).parent().next('.oet-related-content-helper');
+                helper_text.hide();
                 content_section.html('').removeClass('subsection-visible');
                         
                 var content_count = parseInt(content_section.find('.oet-sidebar-section-type-wrapper').length, 10);
@@ -74,19 +76,29 @@ jQuery( document ).ready(function($) {
                     row_id: id,
                     type: type
                 }).done(function (response) {
-                    if (type!=="related")
-                        content_section.append(response).addClass('subsection-visible');
+                    if (type=="related"){
+                        helper_text.removeClass('hidden');
+                        helper_text.show();
+                    } else { 
+                        helper_text.hide();
+                        helper_text.addClass('hidden');
+                    }
+                    content_section.append(response).addClass('subsection-visible');
                     var textAreaId = 'oet-sidebar-section-type-' + id;
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
+                    if (type == "medium"){
+                        OET_Dynamic_Sidebar.mediumBackgroundImage();
+                        OET_Dynamic_Sidebar.mediumBGColorSelection();
+                    }
                 });
             });
         },
         
         /** Add Content Type Editor **/
         addContentTypeEditor: function(){
-             $(document).on("click", '.oet-add-sidebar-section-content', function(e){
+            $(document).on("click", '.oet-add-sidebar-section-content', function(e){
                 e.preventDefault();
                 var btn = $(this).closest('.button-row-content');
                         
@@ -106,6 +118,11 @@ jQuery( document ).ready(function($) {
                     tinymce.execCommand( 'mceRemoveEditor', false, textAreaId );
                     tinymce.execCommand( 'mceAddEditor', false, textAreaId );
                     quicktags({ id: textAreaId });
+
+                    if (type == "medium"){
+                        OET_Dynamic_Sidebar.mediumBackgroundImage();
+                        OET_Dynamic_Sidebar.mediumBGColorSelection();
+                    }
                 });
             });
         },
@@ -365,10 +382,64 @@ jQuery( document ).ready(function($) {
                     $('#oet-delete-section-confirm-popup').modal('hide');
                 });
             });
+        },
+
+        // Medium Background Color
+        mediumBGColorSelection: function() {
+            $('.oet_medium_color_picker').wpColorPicker();
+        },
+
+        // Medium Background Image
+        mediumBackgroundImage: function() {
+            $(document).ready(function() {
+                var frame,
+                    metabox = $("#oet-sidebar-metabox.postbox"),
+                    btn = metabox.find('button.oet_select_medium_background_image'),
+                    input = btn.prev('input.oet_medium_background_image_url');
+                
+                btn.on("click", function( e ){
+                    e.preventDefault();
+                    
+                    if (frame) {
+                        frame.open();
+                        return;
+                    }
+                    
+                    frame = wp.media({
+                        title: 'Select or Upload background image',
+                        button: {
+                            text: "Use this image"
+                        },
+                        multiple:false
+                    });
+                    
+                    frame.on("select", function(){
+                        var attachment = frame.state().get("selection").first().toJSON();
+                        
+                        input.val(attachment.url);
+                    });
+                    
+                    frame.open();
+                });
+            });
+        },
+
+        // Get Story URL
+        getStoryURL: function(){
+            $(document).on("change", '.oet-sidebar-section-story', function(e){
+                e.preventDefault();
+                var target = $(this).parent().find('.preview-story .oet-sidebar-story-url');
+                $.post(oet_ajax_object.ajaxurl,
+                {
+                    action:'oet_sidebar_story_url_callback',
+                    id: $(this).val()
+                }).done(function (response) {
+                    target.attr('href',response);
+                });
+            });
         }
-        
-    };
-    
+    }
+
     //OET_Dynamic_Sidebar.initializeActiveEditors();
     OET_Dynamic_Sidebar.addSidebarSection();
     OET_Dynamic_Sidebar.displayContentTypeEditor();
@@ -378,4 +449,7 @@ jQuery( document ).ready(function($) {
     OET_Dynamic_Sidebar.changeElementOrder();
     OET_Dynamic_Sidebar.deleteSidebarSection();
     OET_Dynamic_Sidebar.deleteSectionContentFields();
+    OET_Dynamic_Sidebar.mediumBGColorSelection();
+    OET_Dynamic_Sidebar.mediumBackgroundImage();
+    OET_Dynamic_Sidebar.getStoryURL();
 });

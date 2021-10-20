@@ -1,7 +1,6 @@
 .site-content
 {
 	min-height: 400px;
-	margin-top: 10px;
 }
 aside.widget {
     float: left;
@@ -13,7 +12,8 @@ aside.widget {
 }
 .widget h3 {
     border-bottom: 1px solid #ccc;
-    font-family: "WorkSans-Light";
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
     font-size: 15px;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -109,7 +109,8 @@ hr { width: 100%;}
 .custom-button {
 	background-color: #e57200;
 	color: #fff;
-	font-family: 'WorkSans-Bold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: bold;
 	font-size:19px;
 	padding:20px !important;
 }
@@ -135,7 +136,8 @@ hr { width: 100%;}
 	width: 100%;
 	font-size: 24px !important;
 	color: white !important;
-	font-family: 'WorkSans-Semibold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	line-height:1.25em;
 	white-space:normal !important;
 }
@@ -163,16 +165,29 @@ hr { width: 100%;}
 	width: 100%;
 	font-size: 14px !important;
 	color: white !important;
-	font-family: 'WorkSans-SemiBold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	white-space:normal !important;
 }
 .default-toc { margin-top:25px; }
 
+
+.oet-shortcode.flx .pull-right {
+    margin-left: auto;
+}
+.oet-shortcode.flx .pull-left {
+    margin-right: auto;
+}
+.oet-shortcode.flx .pull-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 /** Pull Out box styles **/
+
 .pull-out-box {
     position: relative;
     margin: 30px;
-    width: auto; /* so margin matches others */
 }
 .pull-out-box.big-text {
     font-size: 1.4em;
@@ -268,16 +283,30 @@ hr { width: 100%;}
     top: -30px;
 }
 
+/* Pull Quote */
+.oet_pull_quote_icon::before {
+    font-size: 24px;
+    color: #e57200;
+    font-style: normal !important;
+}
+
+
+/* OET SHORTCODE IN GENERAL */
+.oet-shortcode.flx {display:flex;}
+
 /* Publication Intro Shortcode styles */
-.page .intro {
+.page .intro,
+.oet-shortcode .intro {
     position: relative;
     margin-bottom: 60px;
-    font-family: 'WorkSans-SemiBold', sans-serif !important;
+    font-family: 'Work Sans', sans-serif !important;
+    font-weight: 600 !important;
     background:#294179;
 		float:left;
 		width: 100%;
 }
-.page .intro:before {
+.page .intro:before,
+.oet-shortcode .intro:before {
     content: "";
     background-position: center;
     position: absolute;
@@ -288,13 +317,15 @@ hr { width: 100%;}
     left: 0;
     right: 0;
 }
-.page .intro .intro-goal {
+.page .intro .intro-goal,
+.oet-shortcode .intro .intro-goal {
     position: relative;
     color: white !important;
     padding: 60px;
     font-size: 18px;
 }
-.page .intro .intro-goal .title {
+.page .intro .intro-goal .title,
+.oet-shortcode .intro .intro-goal .title {
     font-size: 36px;
     margin-bottom: 20px;
 }
@@ -314,21 +345,22 @@ hr { width: 100%;}
 	vertical-align:top;
 }
 #content tr:first-child { background: #294179; }
-#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; font-family:'WorkSans-Bold'; }
+#content tr:first-child th, #content tr:first-child td, #content tr:first-child td a { color:#fff; font-family: 'Work Sans', sans-serif; font-weight: bold; }
 #content tr:first-child th[scope=col] { font-weight:800; vertical-align:bottom; }
 #content tr td, #content tr th { padding:5px }
 #content tr td[scope=row], #content tr th[scope=row] { font-weight:bold; }
 #content .table-responsive { display:flex; }
 .question {
-       font-family: 'WorkSans-Bold';
-       font-size: 19px;
-       color: #e57200;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: bold;
+    font-size: 19px;
+    color: #e57200;
 }
 ul.checkbox_list {
-        list-style-type: none;
-        margin: 0px;
-        padding: 0px;
-    }
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
 ul.checkbox_list input {
    margin: 8px 12px;
 }
@@ -422,8 +454,8 @@ ul.checkbox_list input {
 	max-width:335px;
 	width:100%;
 }
-.medium h1 { font-size:30px; margin-top:0; -webkit-font-smoothing:antialiased; }
-.medium h1 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
+.medium h1, .medium h2 { font-size:30px; margin-top:0; -webkit-font-smoothing:antialiased; }
+.medium h1 a, .medium h2 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium a:focus { outline-width:2px; }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium-background {
@@ -523,26 +555,24 @@ ul.checkbox_list input {
 .oet_acf_homepage_3column_layout.ovlp {margin-left: -32px !important; margin-right: -32px !important;}
 
 /*--------TRENDING NOW--------*/
-.oet_3column_wrapper div {font-family: 'WorkSans-Regular'; box-sizing: border-box;}
 .oet-trending-image, .oet-trending-title, .oet-trending-description, .oet-trending-button {margin: 10px 0px;}
-.oet_trendingnow_layout div, .oet_trendingnow_layout img {display:block; float:left; width:100%;}
-.oet_trendingnow_layout img {width:100%; height: 250px;}
-.oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family:'WorkSans-SemiBold' !important;}
+.adminoverridewidth {width:100%;}
+.oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; }
 .oet-trending-description {min-height: 105px; overflow: hidden;}
 @media (max-width: 1200px){
 	.oet-trending-description {min-height: 125px !important;}
 }
-.oet-trending-title {font-size: 24px; font-family: 'WorkSans-SemiBold' !important; color: #E57200 !important; line-height: 24px;}
+.oet-trending-title {font-size: 24px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; color: #E57200 !important; line-height: 24px;}
 .oet-trending-title i {color: #222;}
-.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;
+/*.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;*/
 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
-.oet_trendingnow_layout a:hover {color: #ffffff !important; text-decoration: none; opacity: .9;}
-.oet_trendingnow_layout .pad {padding-left:20px; padding-right:20px;}
+/*.oet_trendingnow_layout a:hover {color: #ffffff !important; text-decoration: none; opacity: .9;}
+.oet_trendingnow_layout .pad {padding-left:20px; padding-right:20px;}*/
 .oet_3column_wrapper .ovlp {margin-left: -50px !important; margin-right: -50px !important;}
 @media (max-width: 991px){
 	.oet-trending-description {min-height: 0px !important; max-height: none !important;}
-	.oet_trendingnow_layout img {width:100%; height: auto !important;}
-	.oet_trendingnow_layout .pad {padding-left:0px !important; padding-right:0px !important;}
+	/*.oet_trendingnow_layout img {width:100%; height: auto !important;}
+	.oet_trendingnow_layout .pad {padding-left:0px !important; padding-right:0px !important;}*/
 	.oet_3column_wrapper .ovlp {margin-left: 0px !important; margin-right: 0px !important;}
 }
 /*--------TILELINKS--------*/
@@ -572,7 +602,8 @@ ul.checkbox_list input {
   background-color: rgba(34, 57, 105, 0.8);
 }
 .oet-tilelinks-section-title {
-	font-family: 'WorkSans-SemiBold' !important;
+	font-family: 'Work Sans', sans-serif !important;
+	font-weight: 600 !important;
 	text-align:center;
 	padding:10px 0px; 
 	margin:0px 0px 30px 0px;
@@ -582,7 +613,6 @@ ul.checkbox_list input {
   left: 0px;
   top: 0px;
   min-width: 100%;
-  min-height: 100%;
 }
 .oet-tilelinks-button-block a {
 	margin: 0px auto;
@@ -638,6 +668,13 @@ ul.checkbox_list input {
 	padding:0;
 	overflow:hidden;
 }
+@media screen and (max-width: 990px) {
+	.oet-acf-page-header .oet-slide-wrapper .oet-acf-slide-box {
+	    width: 100%;
+	}
+}
+
+
 .oet-slide-wrapper {
 	background: linear-gradient(180deg, rgba(41, 65, 121, 0.65) 0%, #FFFFFF 100%);
 	padding: 50px;
@@ -651,15 +688,23 @@ ul.checkbox_list input {
 	background: #2A4378;
 	padding: 30px;
 }
+.oet-acf-slide-box p.oet-acf-slide-description a { color:#ffffff; text-decoration: underline; display:inline !important; font-family: 'Open Sans', sans-serif; }
+.oet-acf-slide-box p.oet-acf-slide-description a:hover { text-decoration:none; font-family: 'Open Sans', sans-serif; }
+.oet-acf-slide-box p.oet-acf-slide-description strong { font-family: 'Open Sans', sans-serif; font-weight: bold; }
+.oet-acf-slide-box p.oet-acf-slide-description i, .oet-acf-slide-box p.oet-acf-slide-description em { font-family: 'Open Sans', sans-serif; font-weight: 300;  font-style: italic; }
+.oet-acf-slide-box p.oet-acf-slide-description strong em, .oet-acf-slide-box p.oet-acf-slide-description em strong,
+.oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family: 'Open Sans', sans-serif; font-weight: bold; font-style: italic;  }
 h2.oet-acf-header-text {
-	font-family: 'WorkSans-Bold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: bold;
 	font-size: 24px;
 	line-height: 28px;
 	color: #FFFFFF;
 	margin-top:0; 
 }
 .oet-acf-page-header p {
-	font-family: 'OpenSans-Light';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 25px;
 	color: #FFFFFF;
@@ -672,7 +717,8 @@ h2.oet-acf-header-text {
 	padding: 10px 20px;
 	border-radius: 4px;
 	color: #ffffff;
-	font-family: 'WorkSans-SemiBold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	font-size: 14pt;
 	line-height: 19px;
 }
@@ -681,7 +727,8 @@ h2.oet-acf-header-text {
 	text-decoration:none; 
 }
 .oet-trending-button a {
-	font-family: 'WorkSans-SemiBold';
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
 	font-size: 14pt;
 }
 /****************************************
@@ -793,8 +840,33 @@ iframe.oet_youtube_side_container {margin: 0px !important;}
 		overflow: hidden;
 }
 
+/** Featured Video Style Fixes **/
+.vdo_bg a.oet-video-link{ display:block !important; }
+.lft_sid_mtr .vdo_bg img, .rght_sid_mtr .vdo_bg img { width:100% !important; }
+.vdo_bg p { height: unset !important; margin: 0px !important; }
+.vdo_bg p:nth-of-type(2) { display: block; padding: 15px !important; float: left; width: 100%; box-sizing: border-box; }
+body.home .vdo_bg { min-height: 0px !important; margin-top: 0px !important; }
+.vdo_bg { min-height: 340px !important; margin-top: 10px; width: 100% !important; }
+body.home .lft_sid_mtr h4 { height: auto !important; display: block; width: auto !important; }
+.lft_sid_mtr h4 { height: 52px; display: table-cell; vertical-align: bottom; width: 1000px !important; }
+.rght_sid_mtr.lft_sid_mtr h4 { height: auto; display: block; vertical-align: top; width: auto !important; }
+body.home .stry-video-avatar-table{ top: 40% !important; }
+.stry-video-avatar-table { top: 25% !important; }
+
+@media screen and (max-width: 1200px) {
+	.stry-video-avatar-table { top: 20% !important; } 
+}
+
+@media screen and (max-width:  992px) {
+	.stry-video-avatar-table { top: 40% !important; }
+}
+
 @media screen and (min-width: 974px){
 	.oet-youtube-modal-wrapper .modal-dialog {max-width:854px; margin:0px !important;}
+}
+
+@media screen and (max-width:  650px) {
+	.stry-video-avatar-table {top: 30% !important;}
 }
 
 @media screen and (max-width: 640px){
@@ -804,4 +876,8 @@ iframe.oet_youtube_side_container {margin: 0px !important;}
 @media screen and (max-width: 525px){
 	iframe.oet_youtube_side_container { height: 200px !important;}
 	.oet-youtube-modal-wrapper .modal { padding: 10px !important;}
+}
+
+@media screen and (max-width:  420px) {
+	.stry-video-avatar-table { top: 25% !important; }
 }

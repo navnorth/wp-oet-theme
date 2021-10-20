@@ -4,15 +4,17 @@ include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_mediu
 
 try {
 $self_access_token = get_option("mediumaccesstoken");
-$oet_medium = new OET_Medium($self_access_token);
+//$oet_medium = new OET_Medium($self_access_token);
 $pub_display = get_post_meta($post->ID, "mpubdisplay", true);
 
 ?>
     <?php
     if ($pub_display=="all"){
-        $oet_medium->display_all_stories();
+        //$oet_medium->display_all_stories();
+        echo "All Medium Stories";
     } else {
-        $oet_medium->display_posts();   
+        echo "Medium Posts";
+        //$oet_medium->display_posts();   
     }
     ?>
 <?php

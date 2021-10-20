@@ -3,11 +3,13 @@
  * Template Name: Publication Template
  */
 ?>
-<?php get_header();?>
+<?php  get_header(); ?>
  <div id="content" class="row" tabindex="-1">
 
        <?php
 		global $post;
+		$alt_text = "";
+
 		$page_id = get_the_ID();
 
 		$publication_date = get_post_meta($post->ID, "publication_date", true);
@@ -22,12 +24,27 @@
 
 		$social_status = get_post_meta($post->ID, "social_status", true);
 
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+		$image_id = get_post_thumbnail_id( $post->ID );
+		
+		$image = wp_get_attachment_image_src( $image_id, 'full' );
+
+		/** Get Image Alt **/
+		$image_alt = get_post_meta( $image_id, "_wp_attachment_image_alt", true); 
+		if (!empty($image_alt))
+			$alt_text = "alt='".$image_alt."'";
+
+		// Check if ACF oet_sidebar is set
+		$w_sidebar = have_rows('oet_sidebar',$page_id);
+		$left_content = "col-md-9 col-sm-12 col-xs-12 ";
+		
+		if (!$w_sidebar){
+			$left_content = "col-md-12 col-sm-12 col-xs-12 ";
+		}
 	?>
 
-       <div class="col-md-9 c ol-sm-12 col-xs-12 padding_left pblctn_lft_sid_img_cntnr">
+       <div class="<?php echo $left_content; ?>padding_left pblctn_lft_sid_img_cntnr">
 	      <h1 class="pblctn_hed"><?php echo $post->post_title;?></h1>
-
+	      <?php if (!empty($publication_date) || !empty($image) || !empty($button_one_text) || (!empty($social_status) && $social_status!=="false") || !empty($button_two_text) ) { ?>
 	      <div class="col-md-3 col-sm-3 col-xs-4 padding_left ">
 		     <span class="meta_date"><?php echo $publication_date; ?></span>
 		     <?php
@@ -35,9 +52,9 @@
 				{
             		if(isset($button_one_link) && !empty($button_one_link))
             		{
-            			echo '<a href="' . $button_one_link . '" onclick="ga(\'send\', \'event\', \'download\', \'' . $button_one_link . '\');" target="_blank">';
+            			echo '<a href="' . $button_one_link . '" title="Download this Publication" onclick="ga(\'send\', \'event\', \'download\', \'' . $button_one_link . '\');" target="_blank">';
             		}
-            		echo '<img src="'. $image[0] .'"/>';
+            		echo '<img '.$alt_text.' src="'. $image[0] .'"/>';
             		if(isset($button_one_link) && !empty($button_one_link))
             		{
             			echo '</a>';
@@ -63,7 +80,7 @@
 				}
 		     ?>
 	      </div>
-
+	      <?php } ?>
         <?php
 			while ( have_posts() ) : the_post();
 				get_template_part( 'content', 'page' );
@@ -73,10 +90,6 @@
 	
 
        </div>
-       <div class="col-md-3 col-sm-12 col-xs-12 pblctn_right_sid_mtr">
-	   <?php //echo oer_dynamic_sidebar('publication-template', $page_id);
-       echo oet_display_dynamic_sidebar($page_id);
-       ?>
-       </div>
+       <?php  if ($w_sidebar) { echo oet_display_acf_dynamic_sidebar($page_id);  } ?>
 </div>
 <?php get_footer();?>

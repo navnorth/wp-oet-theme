@@ -1,5 +1,5 @@
 <?php
-include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
+//include_once wp_normalize_path( get_stylesheet_directory() . '/classes/oet_medium.php' );
 /**
  * Disruptive Content
  * Shortcode Example : [disruptive_content title='' main_text='' button_text='' button_color='' button_url='']
@@ -14,12 +14,18 @@ function disruptive_content_fun($attr, $content = null)
 		extract($attr);
 	}
 
-
+	$title=(!isset($title))?'':$title;
+	$button_color=(!isset($button_color))?'':$button_color;
+	$button_url=(!isset($button_url))?'':$button_url;
+	$button_text=(!isset($button_text))?'':$button_text;
+	$main_text=(!isset($main_text))?'':$main_text;
+	
+	
 	if (strpos($button_color,"#")===false)
 		$button_color = "#".$button_color;
 
 	$return = '';
-    $return .= '<div class="row bg_img_of_icns" id="lnk_btn_cntnr_center">';
+    $return .= '<div class="disruptive_content row bg_img_of_icns" id="lnk_btn_cntnr_center">';
         $return .= '<div class="col-md-8 col-sm-8 col-xs-8" >';
             $return .= '<h3>'. $title .'</h3>';
             $return .= '<p>';
@@ -95,7 +101,7 @@ $group_id = "accordion";
 				  $uptcls = '';
 			  }
 
-			  $return .= '<a class="'.$class.'" role="button" data-toggle="collapse" data-parent="#'.$group_id.'" href="#collapse'. $group_id. $accordion_series .'" data-target="#collapse'. $group_id. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $group_id. $accordion_series .'">';
+			  $return .= '<a class="'.$class.'" role="button" data-toggle="collapse" data-parent="#'.$group_id.'" data-target="#collapse'. $group_id. $accordion_series .'" aria-expanded="false" aria-controls="collapse'. $group_id. $accordion_series .'">';
 			  $return .= $title;
 			$return .= '</a>';
 		 $return .= ' </h5>';
@@ -148,11 +154,11 @@ function pull_quotethemefn($atts, $content = null)
 
 
 	$return = '';
-	$return .= '<div class="col-md-1 col-sm-1 col-xs-1">';
+	$return .= '<div class="col-md-1 col-sm-1 col-xs-1 oet_pull_quote_icon">';
 		$return .= '<img src="'. get_stylesheet_directory_uri() .'/images/dbl_cod_img.png" alt="Quote"/>';
 	$return .= '</div>';
 
-	$return .= '<div class="col-md-11 col-sm-11 col-xs-11">';
+	$return .= '<div class="col-md-11 col-sm-11 col-xs-11 oet_pull_quote_text">';
 	if(isset($content) && !empty($content))
 	{
 		$return .= '<blockquote class="blog_mtr"><span></span>';
@@ -190,11 +196,12 @@ function featured_item_func($attr, $content = null)
 		extract($attr);
 	}
 	$return = '';
-	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr">';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr oese_featured_item">';
 	if(isset($heading) && !empty($heading))
 	{
     	$return .= '<h4>'. $heading .'</h4>';
 	}
+	$image_alt = (isset($image_alt) && !empty($image_alt))? $image_alt: '';
 	if(isset($image) && !empty($image))
 	{
 		if(isset($url) && !empty($url))
@@ -247,15 +254,93 @@ function featured_item_func($attr, $content = null)
 	}
     $return .= '</div>';
 
+    $return = trim($return);
+
 	return $return;
 }
 
 /**
  * Featured Video
- * Shortcode Example : [featured_video heading="" src="" description="" height=""]
+ * Shortcode Example : [featured_video heading='title' videoid='GBT4f146h9U' description='description' height='300']
  */
 add_shortcode("featured_video","feature_video_func");
-function feature_video_func($attr, $content = null)
+function feature_video_func($attr, $content = null){
+	static $count = 0;
+	$count++;
+
+	//if ($count==1){
+	//	add_action( 'wp_enqueue_scripts', 'insert_ytapiurl_script' );
+	//}
+		
+	
+	if ( is_admin() ) {
+		$_arr = getShortcodeAttr($attr);
+		foreach($_arr as $key => $value) $$key = $value;
+	}else{
+		extract($attr);
+	}
+	
+	if(empty($height)){$height = 405;}
+	$apiurl = get_stylesheet_directory_uri()."/js/ytplayerapi.js";
+	$origin = get_site_url();
+	$id = "ytvideo".$count;
+	$videoid = (isset($videoid) && !empty($videoid))? $videoid: '';
+	$return = ''; $iframe_title = '';
+	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
+		if(isset($heading) && !empty($heading)){
+			$iframe_title .= ": ".$heading;
+			$return .= '<h4>'. $heading .'</h4>';
+		}
+		$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';	
+			$return .= oet_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height, $apiurl);
+			if(isset($description) && !empty($description)){
+				$return .= '<p>'. $description .'</p>';
+			}
+		$return .= '</div>';
+	$return .= '</div>';
+	
+	$return = trim($return);
+
+	return $return;
+}
+
+function oet_generate_modal_video($vidid, $Id, $iframe_title, $origin, $count, $height, $apiurl){
+    $ret = ''; $imagesrc = '';
+    $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';  
+  
+    $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-tgt="#oet-featured-video-shrtcd-overlay-'.$count.'" cnt="'.$count.'">';
+			$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
+			$ret .= '<div class="stry-video-avatar-table">';
+	    	$ret .= '<div class="stry-video-avatar-cell">';
+					$ret .= '<span class="stry-youtube-play"></span>';
+	    	$ret .= '</div>';
+			$ret .= '</div>';
+    $ret .= '</a>';
+  
+    $ret .= '<div class="modal fade oet-featured-video-shrtcd-overlay" id="oet-featured-video-shrtcd-overlay-'.$count.'" apiurl="'.$apiurl.'" cnt="'.$count.'" role="dialog" tabindex="-1">';
+			$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
+	    	$ret .= '<div class="stry-video-table">';
+					$ret .= '<div class="stry-video-cell">';
+		    		$ret .= '<div class="stry-video-content">';
+		    		$ret .= '<div class="video-container">';
+							$ret .= '<div class="oet-featured-video-shrtcd-ytvideo" id="'.$Id.'" cnt="'.$count.'" frametitle="'.$iframe_title.'" vidid="'.$vidid.'" hght="'.$height.'" orgn="'.$origin.'"></div>';						
+					$ret .= '</div>';
+		    		$ret .= '</div>';
+					$ret .= '</div>';
+	      $ret .= '</div>';
+		  $ret .= '</div>';
+			$ret .= '<a href="javascript:void(0);" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
+    $ret .= '</div>';
+    
+    return $ret;
+}
+
+
+/**
+ * Featured Video (Old Outdated)
+ * Shortcode Example : [featured_video heading="" src="" description="" height=""]
+ */
+function feature_video_func_old($attr, $content = null)
 {
 	static $count = 0;
 	$count++;
@@ -280,34 +365,24 @@ function feature_video_func($attr, $content = null)
 
 	$origin = get_site_url();
 	if(isset($videoid) && !empty($videoid))
-		$src = "//www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
+		$src = "https://www.youtube.com/embed/".$videoid."?enablejsapi=1&#038;origin=".$origin;
 	
-
+	$yt_host = '//www.youtube.com';
+	$iframe_src = get_stylesheet_directory_uri()."/js/iframe_api.js";
 	$tracking_script = "<script type='text/javascript'>\n".
-
 	$tracking_script .= " 	// This code loads the IFrame Player API code asynchronously \n".
 				"var tag = document.createElement('script'); \n".
-				"tag.src = \"//www.youtube.com/iframe_api\"; \n ".
+				"tag.src = \"$iframe_src\"; \n ".
 				"var player; \n".
 				"var firstScriptTag = document.getElementsByTagName('script')[0]; \n".
 				"firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); \n".
+				"window.YTConfig = { host: 'https://www.youtube.com' } \n".
 				"	// This code is called by the YouTube API to create the player object \n".
 				"function onYouTubeIframeAPIReady(event) { \n".
-				"	player = new YT.Player('".$id."', { \n".
-				"	videoId: '".$videoid."', \n".
-				"	playerVars: { \n".
-				"		'autoplay': 0, \n".
-				"		'controls': 1, \n".
-				"		'enablejsapi': 1, \n".
-				"		'rel' : 0, \n".
-				"		'origin' : '".$origin."' \n".
-				"	}, \n".
-				"	events: { \n".
-				"		'onError': onPlayerError, \n".
-				"		'onReady': onPlayerReady, \n".
-				"		'onStateChange': onPlayerStateChange \n".
-				"		} \n".
-				"	}); \n".
+				"	setTimeout(function(){  \n".
+				"		console.log('YT loading'); \n".
+				"	}, 1000);  \n".
+				"	loadPlayer(); \n".
 				"}\n".
 				"	var pauseFlag = false; \n".
 				"	var gaSent = false; \n".
@@ -318,6 +393,24 @@ function feature_video_func($attr, $content = null)
 				"			gaSent = true; \n".
 				"		} \n".
 				" 	} \n".
+				"} \n".
+				"function loadPlayer() { \n".
+				"	player = new YT.Player('".$id."', { \n".
+				"	videoId: '".$videoid."', \n".
+				"	playerVars: { \n".
+				"		'autoplay': 0, \n".
+				"		'controls': 1, \n".
+				"		'enablejsapi': 1, \n".
+				"		'rel' : 0, \n".
+				"		'origin' : '".$origin."', \n".
+				"		'host' : '".$yt_host."' \n".
+				"	}, \n".
+				"	events: { \n".
+				"		'onError': onPlayerError, \n".
+				"		'onReady': onPlayerReady, \n".
+				"		'onStateChange': onPlayerStateChange \n".
+				"		} \n".
+				"	}); \n".
 				"} \n".
 				"function onPlayerReady(event) { \n".
 				"	// do nothing, no tracking needed \n".
@@ -382,7 +475,7 @@ function feature_video_func($attr, $content = null)
 	$return .= '</div>';
 	add_action("wp_footer", function() use( $tracking_script ){
 		echo $tracking_script;
-	});
+	}, 20);
 	return $return;
 }
 
@@ -443,7 +536,14 @@ function home_left_column_func($atts, $content = null)
 add_shortcode('oet_featured_area', 'oet_featured_area_descrptn');
 function oet_featured_area_descrptn($attr, $content = null)
 {
-	extract($attr);
+	if (is_array($attr)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attr);
+			foreach($_arr as $key => $value) $$key = $value;
+		}else{
+			extract($attr);
+		}
+	}
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
@@ -678,8 +778,10 @@ function recommended_resources_func($attr, $content = null)
 		 	}else{
 		 		extract($attr);
 		 	}
+	 $title=(!isset($title))?'':$title;
+	 $align=(!isset($align))?'':$align;
 	 $return = '';
-		$return .= '<div class="pblctn_right_sid_mtr">';
+		$return .= '<div class="featured_content_box pblctn_right_sid_mtr">';
 		$return .= '<div class="col-md-12 col-sm-6 col-xs-6">';
         $return .= '<div class="pblctn_box">';
 
@@ -693,8 +795,10 @@ function recommended_resources_func($attr, $content = null)
 		}
 
 		$return .= '</div>';
-            $return .= '<P class="rght_sid_wdgt_hedng">'. $title .'</P>';
-            $return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">'.$content.'</div>';
+						$return .= '<div class="cntnbx_cntnr" style="text-align:'. $align.'">';
+							$return .= '<p class="rght_sid_wdgt_hedng">'. $title .'</p>'.$content;
+						$return .= '</div>';
+						
         $return .= '</div>';
 		$return .= '</div>';
 
@@ -926,12 +1030,14 @@ function parse_data_attributes( $data ) {
 
 	//Set Type
 	$attr_type = "checkmark";
+	$type=(!isset($type))?'':$type;
 	if ($type)
 		$attr_type = $type;
 
 	$class_attrs[] = $attr_type;
 
 	//Set Color
+	$color=(!isset($color))?false:$color;
 	if ($color){
 
 		$color_class = $color;
@@ -957,7 +1063,7 @@ function parse_data_attributes( $data ) {
 	//Set Width
 	$attr_width = 12;
 	$class_attrs[] = "col-xs-".$attr_width;
-
+	$width=(!isset($width))?false:$width;
 	if ($width) {
 		$attr_width = "col-md-".$width;
 		$class_attrs[] = $attr_width;
@@ -965,6 +1071,7 @@ function parse_data_attributes( $data ) {
 	}
 
 	//Set Alignment
+	$alignment=(!isset($alignment))?false:$alignment;
 	if ($alignment)
 		$class_attrs[] = "pull-".$alignment;
 
@@ -991,7 +1098,7 @@ function parse_data_attributes( $data ) {
  	 		extract($attribute);;
  	 	}
  	}
-
+	$title=(!isset($title))?'':$title;
 	$return = '<div class="intro">
 			<div class="intro-goal">
 				<div class="title">'.$title.'</div>
@@ -1009,48 +1116,34 @@ function parse_data_attributes( $data ) {
 add_shortcode("oet_medium", "oet_medium_func");
 function oet_medium_func($attribute, $content = null){
 	$return = "";
-
 	if (is_array($attribute)){
 		 if ( is_admin() ) {
 			 $_arr = getShortcodeAttr($attribute);
 			 foreach($_arr as $key => $value) $$key = $value;
-		 }else{
-			 extract($attribute);;
-		 }
-	}
-
-	/*if ($url) {
-		$self_access_token = get_option("mediumaccesstoken");
-		$oet_medium = new OET_Medium($self_access_token);
-
-		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
-			$oet_medium->display_invalid_text();
 		}
-
-        $attr = array();
-		if ($align && $align!=="")
-            $attr['align'] = $align;
-
-        if ($width && $width!=="")
-            $attr['width'] = $width;
-
-        if (!empty($attr))
-            $return =  $oet_medium->display_post_by_jsonUrl($url, $attr);
-		else
-			$return =  $oet_medium->display_post_by_jsonUrl($url);
-	}*/
+		extract($attribute);
+	}
+	
+	$description=(!isset($description))?'':$description;
+	$title=(!isset($title))?'':$title;
+	
 	$background = "";
 	$footer = "";
 	$publication = "";
-	$bgcolor = "000000";
-	if (isset($bgcolor))
-		$bgcolor = "#".$bgcolor;
-
-	if (isset($image))
-		$background = "background:".$bgcolor." url(". $image .") no-repeat top left;";
+	$bg_color = "#000000";
+	$textalignment = "";
+	
+	if (isset($bgcolor) && !empty($bgcolor))
+		$bg_color = "#".$bgcolor;
+	
+	if (isset($image) && $image!=="")
+		$background = "background:".$bg_color." url(". $image .") no-repeat top left;";
 	else
-		$background = "background:".$bgcolor." no-repeat top left;";
+		$background = "background:".$bg_color." no-repeat top left;";
 
+	if (isset($textalign))
+		$textalignment = ' style="text-align:'.$textalign.';"';
+	
 	if ($url){
 		if (isset($align) && $align =='center')
 		    $align = 'margin:0 auto';
@@ -1061,10 +1154,12 @@ function oet_medium_func($attribute, $content = null){
 			$return = oet_medium_display_invalid_text($background);
 		}
 
-		$footer = '<a href="%authorurl%" alt="%authorname%" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';
+		$footer = '<a href="%authorurl%" title="Go to the Office of Ed Tech Medium Blog" target="_blank" class="imglink" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');"><img src="%authorlogo%" alt="%authorname%" width="30" height="30" /></a> <a href="%authorurl%" title="Go to the Office of Ed Tech Medium Blog" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \'%authorurl%\');">@%authorname%</a> ';
+
 		$default_author_url = "https://medium.com/@OfficeofEdTech";
 		$default_author_name = "OfficeofEdTech";
 		$default_author_logo = get_stylesheet_directory_uri()."/images/OET_logo_400px_square.png";
+		
 		if (isset($authorurl))
 			$footer = str_replace("%authorurl%", $authorurl, $footer);
 		else
@@ -1094,8 +1189,8 @@ function oet_medium_func($attribute, $content = null){
 		<div class="single-medium">
 		    <div class="medium" style="'.$background.''.$align.'">
 			<div class="medium-background">
-			    <div class="medium-wrapper">
-				<h1><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h1>
+			    <div class="medium-wrapper"'.$textalignment.'>
+				<h2><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h2>
 				<p>'.$description.'</p>
 				<p class="mfooter">';
 		$return .= $footer;
@@ -1163,21 +1258,24 @@ add_filter( 'the_content', 'shortcode_unautop', 100 );
  **/
 add_shortcode("oet_social", "oet_social_func");
 function oet_social_func($attribute, $content = null){
- $return = "";
- $return .= '<div class="ssba ssba-wrap">';
+	global $post;
+	$url = rawurlencode(get_permalink($post->ID));
+	$title = rawurlencode($post->post_title);
+	$return = "";
+	$return .= '<div class="ssba ssba-wrap">';
 	 $return .= '<div>';
-		 $return .= '<a class="ssba_facebook_share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftech.ed.gov%2Fnetp%2F" onclick="openWindow(this.href,\'Share via Facebook\',450,250); return false;">';
+		 $return .= '<a class="ssba_facebook_share" href="https://www.facebook.com/sharer/sharer.php?u='.$url.'" onclick="openWindow(this.href,\'Share via Facebook\',450,250); return false;">';
 			 $return .= '<img src="'.get_stylesheet_directory_uri().'/images/share_fb.png" title="Facebook" class="ssba ssba-img oet-social-img" alt="Share on Facebook">';
 		 $return .= '</a>';
-		 $return .= '<a class="ssba_twitter_share" href="https://twitter.com/intent/tweet?text=National%20Education%20Technology%20Plan&amp;url=https%3A%2F%2Ftech.ed.gov%2Fnetp%2F&amp;via=officeofedtech" onclick="openWindow(this.href,\'Share via Twitter\',450,250); return false;">';
+		 $return .= '<a class="ssba_twitter_share" href="https://twitter.com/intent/tweet?text='.$title.'&amp;url='.$url.'&amp;via=officeofedtech" onclick="openWindow(this.href,\'Share via Twitter\',450,250); return false;">';
 			 $return .= '<img src="'.get_stylesheet_directory_uri().'/images/share_twr.png" title="Twitter" class="ssba ssba-img oet-social-img" alt="Tweet about this on Twitter">';
 		 $return .= '</a>';
-		 $return .= '<a class="ssba_email_share" href="mailto:?subject=National%20Education%20Technology%20Plan&amp;body=https%3A%2F%2Ftech.ed.gov%2Fnetp%2F" onclick="openWindow(this.href,\'Share via Email\',450,250); return false;">';
+		 $return .= '<a class="ssba_email_share" href="mailto:?subject='.$title.'&amp;body='.$url.'" onclick="openWindow(this.href,\'Share via Email\',450,250); return false;">';
 			 $return .= '<img src="'.get_stylesheet_directory_uri().'/images/share_mailto.png" title="Email" class="ssba ssba-img oet-social-img" alt="Email to someone">';
 		 $return .= '</a>';
 	 $return .= '</div>';
- $return .= '</div>';
- return $return;
+	$return .= '</div>';
+	return $return;
 }
 
 ?>

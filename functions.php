@@ -8,6 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
+define( "OET_THEME_VERSION", "2.0.1" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -23,7 +24,7 @@ require_once( get_stylesheet_directory() . '/theme-functions/widget-areas.php' )
 /**
  * Theme Social Media Settings.
  */
-require_once( get_stylesheet_directory() . '/theme-functions/theme-social.php' );
+require_once( get_stylesheet_directory() . '/theme-functions/theme-settings.php' );
 
 /**
  * Theme Shortcode.
@@ -59,9 +60,22 @@ require_once( get_stylesheet_directory() . '/theme-functions/dynamic-sidebar-ini
 /**
 * Theme Shortcode.
 */
- require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
+require_once( get_stylesheet_directory() . '/tinymce_button/shortcode-ajax.php' );
+/**
+* OET Shortcodes Block
+**/
+require_once( OET_THEME_PATH . '/blocks/oet-shortcodes-block/init.php' );
+/**
+* OET Medium Embed Block
+**/
+require_once( OET_THEME_PATH . '/blocks/oet-medium-embed-block/init.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
+
+/**
+ * Include Slider
+ */
+include( OET_THEME_PATH . "/modules/oet-acf-slider/oet-acf-slider.php");
 
 use JonathanTorres\MediumSdk\Medium;
 
@@ -76,15 +90,51 @@ function theme_back_enqueue_script()
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
   wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-  
+
   if(get_admin_page_title() == 'Edit Page'){
     wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
     wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
     wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
   }
-  
+
   wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
   wp_enqueue_script('shortcode_script', get_stylesheet_directory_uri() . '/tinymce_button/shortcode_script.js' );
+
+  if (class_exists('acf')){
+    // qTip2 CSS
+    wp_enqueue_style( 'acf-tooltip-qTip2-css', get_stylesheet_directory_uri() . "/css/jquery.qtip.min.css", false, '3.0.3');
+
+    // ACF Tooltip CSS
+    wp_enqueue_style( 'acf-tooltip-css', get_stylesheet_directory_uri() . "/css/acf-tooltip-style.css");
+
+    // qTip2 JS
+    wp_enqueue_script( 'acf-tooltip-qTip2-js', get_stylesheet_directory_uri() . "/js/jquery.qtip.min.js", array('jquery'), '3.0.3', true );
+
+
+    wp_register_script( 'acf-tooltip-js', get_stylesheet_directory_uri() . "/js/acf-tooltip-script.js", array('jquery'), '1.0.1', true );
+
+    $tooltip_fieldeditor = apply_filters( "acf/tooltip/fieldeditor", FALSE );
+    $tooltip_css = apply_filters( "acf/tooltip/css", "" );
+    $tooltip_style = apply_filters( "acf/tooltip/style", 'qtip-acf' );
+    $tooltip_position_my = apply_filters( "acf/tooltip/position/my", 'center left' );
+    $tooltip_position_at = apply_filters( "acf/tooltip/position/at", 'center right' );
+    $tooltip_class_only = apply_filters( "acf/tooltip/class/only", '' );
+    $tooltip_class_exclude = apply_filters( "acf/tooltip/class/exclude", '' );
+
+    // localize
+    wp_localize_script('acf-tooltip-js', 'acfTooltip', array(
+        'style'                 => $tooltip_style,
+        'my'                    => $tooltip_position_my,
+        'at'                    => $tooltip_position_at,
+        'class'                 => $tooltip_class_only,
+        'exclude_class'         => $tooltip_class_exclude,
+        'fieldeditor'           => $tooltip_fieldeditor,
+        'acf_version_compare'   => version_compare(acf()->version, '5.7.0')
+    ));
+
+    // ACF Tooltip JS
+    wp_enqueue_script( 'acf-tooltip-js');
+  }
 }
 add_action( 'admin_enqueue_scripts', 'theme_back_enqueue_script' );
 
@@ -223,9 +273,12 @@ function google_analytics_with_userid(){
 add_action('wp_head', 'google_analytics_with_userid');
 
 function load_contact_slider() {
-    global $csenabled, $cspage, $wp;
+    global $csenabled, $cspage, $wp, $post;
     if ( $csenabled ) {
-	wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
+        if (is_object($post) && $post->post_type!=="stories"){
+	       wp_enqueue_script('front-bottom-script', get_stylesheet_directory_uri() . '/js/front-bottom-script.js' );
+            wp_localize_script( 'front-bottom-script', 'oet_object', array( 'domain' => get_site_url() ) );
+        }
 ?>
     <!-- Sliding div starts here -->
     <!--<div id="contact-slider" style="right:-342px;">-->
@@ -402,14 +455,14 @@ function getMediumPublications(){
     return $publications;
 }
 
-function verify_token($self_access_token){
+/*--function verify_token($self_access_token){
     try {
 	$medium = new OET_Medium($self_access_token);
 	return $medium->get_authenticated_user();
     } catch(MediumAuthException $e){
 	return false;
     }
-}
+}--*/
 
 function add_tag_to_pages(){
     register_taxonomy_for_object_type('post_tag', 'page');
@@ -494,29 +547,6 @@ function display_medium_post_error($url){
     </div>
     ';
 }
-
-/**
- * Register Sidebar metabox.
- */
-function oet_register_meta_boxes() {
-    add_meta_box( 'oet-sidebar-metabox', __( 'Sidebar', OET_THEME_SLUG ), 'oet_display_dynamic_sidebar_callback', 'page' );
-}
-add_action( 'add_meta_boxes', 'oet_register_meta_boxes' );
-
- /**
-  * Sidebar Metabox callback
-  */
- function oet_display_dynamic_sidebar_callback(){
-    include_once( OET_THEME_PATH . "/theme-functions/dynamic-sidebar-metabox.php" );
- }
-
-function oet_add_modals_to_footer(){
-    $screen = get_current_screen();
-    if ( 'post' == $screen->base && 'page' == $screen->id ){
-        include_once(OET_THEME_PATH.'/inner-templates/popups/delete-section-confirm-popup.php');
-    }
-}
-add_action( 'admin_footer', 'oet_add_modals_to_footer', 10 );
 
 function search_result_default_icon($type){
     $icon = 'file-alt';
@@ -609,11 +639,11 @@ function oet_display_slides($page_id){
 	    if (!empty($bgImage)){
 		$image = wp_get_attachment_url($bgImage);
 		if ($image_behavior=="natural")
-		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;"';
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
 		elseif($image_behavior=="crop")
 		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:contain;"';
 		else
-		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:cover;"';
+		    $bgStyle = '  style="background-image:url('.$image.');background-repeat:no-repeat;background-position:center center;background-size:100% 100%;"';
 	    }
 	?>
 		<div class="slideshow_view oet-acf-page-header"<?php echo $bgStyle; ?> tabindex="0">
@@ -649,24 +679,52 @@ function oet_display_slides($page_id){
     <script type='text/javascript'>
 	/* <![CDATA[ */
 	var SlideshowPluginSettings_<?php echo $page_id; ?> = {"animation":"<?php echo $transition; ?>","slideSpeed":"<?php echo $slide_in_interval; ?>","descriptionSpeed":"0.4","intervalSpeed":"<?php echo $slide_interval; ?>","slidesPerView":"1","maxWidth":"0","aspectRatio":"3:1","height":"380","imageBehaviour":"<?php echo $image_behavior; ?>","showDescription":"true","hideDescription":"false","preserveSlideshowDimensions":"true","enableResponsiveness":"true","play":"true","loop":"true","pauseOnHover":"true","controllable":"false","hideNavigationButtons":"false","showPagination":"true","hidePagination":"false","controlPanel":"false","hideControlPanel":"true","waitUntilLoaded":"true","showLoadingIcon":"true","random":"false","avoidFilter":"true","dimensionWidth":"3","dimensionHeight":"1"};
-	var slideshow_jquery_image_gallery_script_adminURL = "<?php echo esc_url(admin_url()); ?>";
+	   var slideshow_jquery_image_gallery_script_adminURL = "<?php echo esc_url(admin_url()); ?>";
     /* ]]> */
     </script>
     <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/js/all.frontend.min.js'></script>
     <script type='text/javascript'>
 	jQuery( document ).ready(function($) {
+        var oet_slideshow = $('.slideshow_container .slideshow_content')
+
+        // Create Live Region
+        var liveregion = document.createElement('div');
+        liveregion.setAttribute('aria-live', 'polite');
+        liveregion.setAttribute('aria-atomic', 'true');
+        liveregion.setAttribute('class', 'oet-slideshow-liveregion visuallyhidden');
+        oet_slideshow.append(liveregion);
+
 	    setTimeout(function(){
-	    $('.slideshow_pagination ul li.slideshow_transparent').each( function(index, val){
-		$(this).removeAttr('role');
-		$(this).find('span').attr('role','button')
+        $('.slideshow_pagination .slideshow_pagination_center .slideshow_transparent').each(function(index, val){
+            $(this).removeAttr('title');
+        });
+	    $('.slideshow_view.oet-acf-page-header').each( function(index, val){
+            $(this).attr('data-index', index);
 	    });
 	    },100);
+        $('.slideshow_button.slideshow_previous, .slideshow_button.slideshow_next').removeAttr('role');
 	    $('.slideshow_container .slideshow_content .slideshow_view').on("focus focusin",function(){
-		$(this).trigger("mouseenter");
+		    $(this).closest('.slideshow_content').trigger("mouseenter");
+            $('.slideshow_container .slideshow_content').css("position","relative !important");
 	    });
 	    $('.slideshow_container .slideshow_content .slideshow_view').on("focusout blur",function(){
-		$(this).trigger("mouseleave");
+            $(this).closest('.slideshow_content').trigger("mouseleave");
 	    });
+        $('.slideshow_container .slideshow_content .slideshow_view').each(function(index, val){
+            $(this).removeAttr("tabindex");
+        });
+        $(document).on("click", '.slideshow_pagination .slideshow_pagination_center .slideshow_transparent', function(e){
+            let oet_slide_id = $(this).attr('data-view-id');
+            let oet_container = $(this).closest(".slideshow_container");
+            let oet_curslide_title = oet_container.find('.slideshow_content .slideshow_view[data-index='+oet_slide_id+'] .oet-acf-header-text').text();
+            $('.oet-slideshow-liveregion').text(oet_curslide_title);
+        });
+        $(document).on("keydown", '.slideshow_pagination .slideshow_pagination_center .slideshow_transparent', function(e){
+            var nextId = $(this).attr('data-view-id');
+            if (e.keyCode==13 || e.keyCode==32){
+                $(this).trigger("click");
+            }
+        });
 	});
     </script>
     <?php
@@ -764,8 +822,8 @@ function oet_display_acf_home_content(){
                         $_img = (isset($subfieldlayout['oet_acf_homepage_trendingnow_image']['id']))? $subfieldlayout['oet_acf_homepage_trendingnow_image']['id']: $subfieldlayout['oet_acf_homepage_trendingnow_image'];
                         $_img = wp_get_attachment_url( $_img);
                         $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
-                        $_ico = $subfieldlayout['oet_acf_homepage_trendingnow_titleicon'];
-                        $_title_icon = ($subfieldlayout['oet_acf_homepage_trendingnow_titleicon'] != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
+                        $_ico = (isset($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']) && !empty($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']))?$subfieldlayout['oet_acf_homepage_trendingnow_titleicon']:'none';
+                        $_title_icon = ($_ico != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
                         $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
                         $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
                         $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
@@ -825,7 +883,8 @@ function oet_display_acf_home_content(){
                 .oet-tilelinks-section-title{
                   font-size: <?php echo $tl_hdr_fontsize ?>px;
                   color: <?php echo $tl_hdr_fontcolor ?>;
-                  font-family:'WorkSans-<?php echo $tl_hdr_fontweight ?>' !important;
+                  font-family:'Work Sans' !important;
+                  font-weight: <?php echo $tl_hdr_fontweight ?> !important;
                 }
                 </style>
                 <?php
@@ -896,11 +955,11 @@ function oet_medium_display_invalid_text($background="background:#000000", $text
  **/
 function oet_modal_video_link($vidid, $Id){
     $ret = ''; $imagesrc = '';
-  
+
     $imagesrc = 'https://img.youtube.com/vi/'.$vidid.'/mqdefault.jpg';
     $retvid = '<div id="'.$Id.'"></div>';
     $reticon = '<span class="stry-youtube-play"></span>';
-  
+
     $ret .= '<a href="#" class="oet-video-link" data-toggle="modal" data-target="#oet-video-overlay">';
 	$ret .= '<img src="'.$imagesrc.'" alt="Story Video"/>';
 	$ret .= '<div class="stry-video-avatar-table">';
@@ -909,8 +968,8 @@ function oet_modal_video_link($vidid, $Id){
 	    $ret .= '</div>';
 	$ret .= '</div>';
     $ret .= '</a>';
-  
-    $ret .= '<div class="modal fade" id="oet-video-overlay" role="dialog" tabindex="-1">';
+
+    $ret .= '<div class="modal fade oet-video-overlay" id="oet-video-overlay" role="dialog" tabindex="-1">';
 	$ret .= '<div class="stry-video-modal modal-dialog modal-lg">';
 	    $ret .= '<div class="stry-video-table">';
 		$ret .= '<div class="stry-video-cell">';
@@ -922,6 +981,73 @@ function oet_modal_video_link($vidid, $Id){
 	$ret .= '</div>';
 	$ret .= '<a href="#" class="stry-video-close" hst="1"><span class="dashicons dashicons-no-alt"></span></a>';
     $ret .= '</div>';
-    
+
     return $ret;
 }
+
+function oese_add_home_detector()  {
+  $d = is_front_page();
+  if(isset($_GET['post'])){
+      if(get_option("page_on_front") == $_GET['post']){
+        $_str = '';
+        $_str .= '<script>';
+        $_str .= 'jQuery(document).ready(function(){';
+            $_str .= 'jQuery("body").addClass("home");';
+        $_str .= '});';
+        $_str .= '</script>';
+        echo $_str;
+      }
+  }
+}
+add_action( 'admin_footer', 'oese_add_home_detector' );
+
+// make wpautop lower in priority
+remove_filter('the_content', 'wpautop');
+add_filter('the_content', function($content){
+    if (has_shortcode($content, 'featured_video')) {
+        return $content;
+    }
+    return wpautop($content);
+});
+
+function insert_ytapiurl_script(){
+    global $post;
+    if($post && has_shortcode($post->post_content,'featured_video')){
+        $script_name = "yt-api-script";
+        wp_register_script( $script_name, '' );
+        wp_enqueue_script( $script_name );
+        wp_add_inline_script( $script_name, 'var ytplayerapiurl = "'.get_stylesheet_directory_uri(). '/js/ytplayerapi.js";' );
+    }
+}
+add_action('wp_enqueue_scripts','insert_ytapiurl_script',1);
+
+function oet_egg_script() {
+  $script = "";
+
+  // Include Crazy Egg Script
+  $egg_script_enabled = get_option('enablecrazyegg');
+  $egg_script_address = get_option('crazyeggaddress');
+
+  // Include Crazy Egg Script
+  if ($egg_script_enabled && !empty($egg_script_address)){
+    $egg_script_address = preg_replace( "#^[^:/.]*[:/]+#i", "//", $egg_script_address );
+    $script .= "<script type='text/javascript' src='".$egg_script_address."' async='async'></script>";
+  }
+
+  return $script;
+}
+
+function oet_fix_post_id_on_preview($null, $post_id) {
+    if (is_preview()) {
+        return get_the_ID();
+    } else {
+        $acf_post_id = isset($post_id->ID) ? $post_id->ID : $post_id;
+
+        if (!empty($acf_post_id)) {
+            return $acf_post_id;
+        } else {
+            return $null;
+        }
+    }
+}
+add_filter( 'acf/pre_load_post_id', 'oet_fix_post_id_on_preview', 10, 2 );
