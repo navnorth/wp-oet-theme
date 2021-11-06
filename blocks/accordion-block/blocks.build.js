@@ -1,5 +1,5 @@
 /**
- * BLOCK: oese-accordion-block
+ * BLOCK: oet-accordion-block
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -77,15 +77,15 @@ const accordionicon = wp.element.createElement(
  *                             registered; otherwise `undefined`.
  */
 
-registerBlockType("cgb/oese-accordion-block", {
+registerBlockType("cgb/oet-accordion-block", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __("Accordion Block"),
   // Block title.
   icon: accordionicon,
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: "oese-block-category",
+  category: "oet-block-category",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-  keywords: [__("oese-accordion-block"), __("accordion")],
+  keywords: [__("oet-accordion-block"), __("accordion")],
   attributes: {
     blockid: {
       type: "string"
@@ -102,7 +102,7 @@ registerBlockType("cgb/oese-accordion-block", {
     const attributes = props.attributes;
     const setAttributes = props.setAttributes; //Set block instance ID
 
-    let oeseblk_accordion_list = [];
+    let oetblk_accordion_list = [];
     const blocks = wp.data.select("core/block-editor").getBlocks();
     const CONTENT_TEMPLATE = [
       [
@@ -114,7 +114,7 @@ registerBlockType("cgb/oese-accordion-block", {
     ];
     blocks.map((val) => {
   
-      if (val.name == "cgb/oese-accordion-block") {
+      if (val.name == "cgb/oet-accordion-block") {
         var uniq = "cb" + new Date().getTime();
         var cid = val.clientId;
         var attr = wp.data.select("core/block-editor").getBlockAttributes(cid);
@@ -133,7 +133,7 @@ registerBlockType("cgb/oese-accordion-block", {
 
     function getInnerBlocks(innerblock) {
       innerblock.map((blk) => {
-        if (blk.name == "cgb/oese-accordion-block") {
+        if (blk.name == "cgb/oet-accordion-block") {
           var inuniq = "cb" + new Date().getTime();
           var incid = blk.clientId;
           var inattr = wp.data
@@ -169,7 +169,7 @@ registerBlockType("cgb/oese-accordion-block", {
 
     let arr = Array.apply(null, {
       length: 10
-    }).map(Number.call, Number); // Creates a <p class='wp-block-cgb-block-oese-accordion-block'></p>.
+    }).map(Number.call, Number); // Creates a <p class='wp-block-cgb-block-oet-accordion-block'></p>.
 
     return React.createElement(
       "div",
@@ -208,13 +208,13 @@ registerBlockType("cgb/oese-accordion-block", {
       React.createElement(
         "div",
         {
-          class: "oeseblk-" + attributes.blockid
+          class: "oetblk-" + attributes.blockid
         },
         React.createElement(
           "div",
           {
-            class: "oese-blk-accordion",
-            id: "oese-blk-accordion-parent-" + attributes.blockid
+            class: "oet-blk-accordion",
+            id: "oet-blk-accordion-parent-" + attributes.blockid
           },
           React.createElement(
             "div",
@@ -224,25 +224,25 @@ registerBlockType("cgb/oese-accordion-block", {
             React.createElement(
               "div",
               {
-                class: "oese-blk-accordion-header",
+                class: "oet-blk-accordion-header",
                 id: "headingOne"
               },
               React.createElement(
                 "h5",
                 {
-                  class: "mb-0 oese-blk-accordion-title"
+                  class: "mb-0 oet-blk-accordion-title"
                 },
                 React.createElement(
                   "a",
                   {
                     class: attributes.accordionexpanded
-                      ? "btn btn-primary oese-blk-accordion-button"
-                      : "btn btn-primary oese-blk-accordion-button collapsed",
+                      ? "btn btn-primary oet-blk-accordion-button"
+                      : "btn btn-primary oet-blk-accordion-button collapsed",
                     "data-toggle": "collapse",
-                    href: "#" + attributes.blockid + "-oeseCollapse",
+                    href: "#" + attributes.blockid + "-oetCollapse",
                     role: "button",
                     "aria-expanded": attributes.accordionexpanded,
-                    "aria-controls": attributes.blockid+"-oeseCollapse"
+                    "aria-controls": attributes.blockid+"-oetCollapse"
                   },
                   React.createElement("input", {
                     type: "text",
@@ -256,10 +256,10 @@ registerBlockType("cgb/oese-accordion-block", {
             React.createElement(
               "div",
               {
-                id: attributes.blockid + "-oeseCollapse",
+                id: attributes.blockid + "-oetCollapse",
                 class: attributes.accordionexpanded
-                  ? "oese-blk-accordion-content collapse show in"
-                  : "oese-blk-accordion-content collapse",
+                  ? "oet-blk-accordion-content collapse show in"
+                  : "oet-blk-accordion-content collapse",
                 "aria-labelledby": "headingOne",
                 tabindex: "0"
               },
@@ -291,13 +291,13 @@ registerBlockType("cgb/oese-accordion-block", {
       React.createElement(
         "div",
         {
-          class: "oeseblk-" + attributes.blockid
+          class: "oetblk-" + attributes.blockid
         },
         React.createElement(
           "div",
           {
-            class: "oese-blk-accordion",
-            id: "oese-blk-accordion-parent-" + attributes.blockid
+            class: "oet-blk-accordion",
+            id: "oet-blk-accordion-parent-" + attributes.blockid
           },
           React.createElement(
             "div",
@@ -307,25 +307,25 @@ registerBlockType("cgb/oese-accordion-block", {
             React.createElement(
               "div",
               {
-                class: "oese-blk-accordion-header",
+                class: "oet-blk-accordion-header",
                 id: "headingOne"
               },
               React.createElement(
                 "h5",
                 {
-                  class: "mb-0 oese-blk-accordion-title"
+                  class: "mb-0 oet-blk-accordion-title"
                 },
                 React.createElement(
                   "a",
                   {
                     class: attributes.accordionexpanded
-                      ? "btn btn-primary oese-blk-accordion-button"
-                      : "btn btn-primary oese-blk-accordion-button collapsed",
+                      ? "btn btn-primary oet-blk-accordion-button"
+                      : "btn btn-primary oet-blk-accordion-button collapsed",
                     "data-toggle": "collapse",
-                    href: "#" + attributes.blockid + "-oeseCollapse",
+                    href: "#" + attributes.blockid + "-oetCollapse",
                     role: "button",
                     "aria-expanded": attributes.accordionexpanded,
-                    "aria-controls": attributes.blockid+"-oeseCollapse",
+                    "aria-controls": attributes.blockid+"-oetCollapse",
                     "aria-label": attributes.accordiontitle
                   },
                   attributes.accordiontitle
@@ -335,10 +335,10 @@ registerBlockType("cgb/oese-accordion-block", {
             React.createElement(
               "div",
               {
-                id: attributes.blockid + "-oeseCollapse",
+                id: attributes.blockid + "-oetCollapse",
                 class: attributes.accordionexpanded
-                  ? "oese-blk-accordion-content collapse show in"
-                  : "oese-blk-accordion-content collapse",
+                  ? "oet-blk-accordion-content collapse show in"
+                  : "oet-blk-accordion-content collapse",
                 tabindex: "0"
               },
               React.createElement(

@@ -4,17 +4,18 @@
  * CSS for both Frontend+Backend.
  */
 
-.oese-blk-accordion {
-    background-color: #f2f2f2 !important;
+.oet-blk-accordion {
+  border: 1px solid #dddddd;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
     margin-bottom:10px;
+    
 }
-.oese-blk-accordion-header {
+.oet-blk-accordion-header {
     background-color: transparent !important;
 }
-.oese-blk-accordion-header a.oese-blk-accordion-button {
+.oet-blk-accordion-header a.oet-blk-accordion-button {
   display: block;
   position: relative;
   width: 100%;
@@ -24,10 +25,12 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 20px;
   padding-right: 60px;
   line-height: 34px;
-  color: #1F5C99 !important;
+  color: #294179 !important;
   background-color: transparent !important;
   border-left: none !important;
   border-top: none !important;
@@ -35,60 +38,65 @@
   border-bottom : none !important;
   /*border-bottom: 1px solid #d4d4d4 !important;*/
   border-radius: 0 !important;
-  font-family: 'Raleway', sans-serif !important; font-weight: 600 !important;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: bold;
   font-size: 1.2em !important;
   outline: unset;
 }
 
-.oese-blk-accordion-header a.oese-blk-accordion-button:focus{
-  text-decoration: underline;
+.oet-blk-accordion-header a.oet-blk-accordion-button:focus{
   box-shadow: unset !important;
 }
-.oese-blk-accordion-header a.oese-blk-accordion-button:focus-visible{
+.oet-blk-accordion-header a.oet-blk-accordion-button:focus-visible{
   text-decoration: underline;
   box-shadow: 0px 0px 0px 3px rgba(0,123,255,0.50) !important;
   -webkit-box-shadow: 0px 0px 0px 3px rgba(0,123,255,0.50) !important;
   -moz-box-shadow: 0px 0px 0px 3px rgba(0,123,255,0.50) !important;
 }
 
-.oese-blk-accordion .oese-blk-accordion-content:focus{
+.oet-blk-accordion .oet-blk-accordion-content:focus{
   box-shadow: unset !important;
 }
-.oese-blk-accordion .oese-blk-accordion-content:focus-visible{
+.oet-blk-accordion .oet-blk-accordion-content:focus-visible{
   box-shadow: 0px 0px 0px 3px rgba(0,123,255,0.50) !important;
   -webkit-box-shadow: 0px 0px 0px 3px rgba(0,123,255,0.50) !important;
   -moz-box-shadow: 0px 0px 0px 3px rgba(0,123,255,0.50) !important;
 }
 
-.oese-blk-accordion-header a.oese-blk-accordion-button.collapsed{
+.oet-blk-accordion-header a.oet-blk-accordion-button.collapsed{
   border-bottom: 0px !important;
 }
 
-.oese-blk-accordion-header a.oese-blk-accordion-button:hover {
+.oet-blk-accordion-header a.oet-blk-accordion-button:hover {
   text-decoration:underline;
 }
-.oese-blk-accordion-header {
+.oet-blk-accordion-header {
   padding: 0px !important;
 }
-.oese-blk-accordion-title{
+.oet-blk-accordion-title{
   margin:0px auto !important;
+  font-size: 16px;
+  color: inherit;
 }
-.oese-blk-accordion-content {
+.oet-blk-accordion-content {
     border-top: 1px solid #d4d4d4;
     border-right: 0px;
     border-bottom: 0px;
     border-left: 0px;
     overflow:hidden;
 }
-.oese-blk-accordion-content .card-body {
+.oet-blk-accordion-content .card-body {
     padding: 20px;
 }
-.oese-blk-accordion-content p {
+.oet-blk-accordion-content p {
     margin-top: 0px !important;
+    line-height: 23px;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px;
 }
 
 
-.oese-blk-accordion-header .oese-blk-accordion-button:after {
+.oet-blk-accordion-header .oet-blk-accordion-button:after {
     content: "\f068";
     font-family: 'FontAwesome';
     color: #fff;
@@ -97,15 +105,16 @@
     vertical-align: middle !important;
     position: absolute !important;
     right: 25px !important;
-    color: #1F5C99 !important;
+    color: #626262 !important;
+    font-weight: 400 !important;
 }
 
-.oese-blk-accordion-header .oese-blk-accordion-button.collapsed:after {
+.oet-blk-accordion-header .oet-blk-accordion-button.collapsed:after {
     content: "\f067";
 }
 
-.oese-blk-accordion-button input::placeholder {color: #8c8f94 !important;}
-.oese-blk-accordion-button:-ms-input-placeholder {color: #8c8f94 !important;}
-.oese-blk-accordion-button::-ms-input-placeholder {color: #8c8f94 !important;}
+.oet-blk-accordion-button input::placeholder {color: #8c8f94 !important;}
+.oet-blk-accordion-button:-ms-input-placeholder {color: #8c8f94 !important;}
+.oet-blk-accordion-button::-ms-input-placeholder {color: #8c8f94 !important;}
 
-.oese-blk-accordion-header a.oese-blk-accordion-button input {padding:0px !important;}
+.oet-blk-accordion-header a.oet-blk-accordion-button input {padding:0px !important;}

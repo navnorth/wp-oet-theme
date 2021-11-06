@@ -27,10 +27,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
-function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
+function oet_accordion_block_cgb_block_assets() { // phpcs:ignore
 	// Register block styles for both frontend + backend.
 	wp_register_style(
-		'oese_accordion_block-cgb-style-css', // Handle.
+		'oet_accordion_block-cgb-style-css', // Handle.
 		get_stylesheet_directory_uri().'/blocks/accordion-block/blocks.style.css', // Block style CSS.
 		is_admin() ? array( 'wp-editor' ) : null, // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
@@ -38,7 +38,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 
 	// Register block editor script for backend.
 	wp_register_script(
-		'oese_accordion_block-cgb-block-js', // Handle.
+		'oet_accordion_block-cgb-block-js', // Handle.
 		get_stylesheet_directory_uri().'/blocks/accordion-block/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
 		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
@@ -47,7 +47,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	
 	// Enqueue Frontend Script
 	wp_enqueue_script(
-    'oese_accordion_block-cgb-script-js',
+    'oet_accordion_block-cgb-script-js',
     get_stylesheet_directory_uri().'/blocks/accordion-block/blocks.script.js',
     [  'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor' ],
     null,
@@ -56,7 +56,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	
 	// Register block editor styles for backend.
 	wp_register_style(
-		'oese_accordion_block-cgb-block-editor-css', // Handle.
+		'oet_accordion_block-cgb-block-editor-css', // Handle.
 		get_stylesheet_directory_uri().'/blocks/accordion-block/blocks.editor.css', // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
@@ -64,7 +64,7 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 
 	// WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
 	wp_localize_script(
-		'oese_accordion_block-cgb-block-js',
+		'oet_accordion_block-cgb-block-js',
 		'cgbGlobal', // Array containing dynamic data for a JS Global.
 		[
 			'pluginDirPath' => plugin_dir_path( __DIR__ ),
@@ -86,16 +86,16 @@ function oese_accordion_block_cgb_block_assets() { // phpcs:ignore
 	 * @since 1.16.0
 	 */
 	register_block_type(
-		'cgb/block-oese-accordion-block', array(
+		'cgb/block-oet-accordion-block', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
-			'style'         => 'oese_accordion_block-cgb-style-css',
+			'style'         => 'oet_accordion_block-cgb-style-css',
 			// Enqueue blocks.build.js in the editor only.
-			'editor_script' => 'oese_accordion_block-cgb-block-js',
+			'editor_script' => 'oet_accordion_block-cgb-block-js',
 			// Enqueue blocks.editor.build.css in the editor only.
-			'editor_style'  => 'oese_accordion_block-cgb-block-editor-css',
+			'editor_style'  => 'oet_accordion_block-cgb-block-editor-css',
 		)
 	);
 }
 
 // Hook: Block assets.
-add_action( 'init', 'oese_accordion_block_cgb_block_assets' );
+add_action( 'init', 'oet_accordion_block_cgb_block_assets' );
