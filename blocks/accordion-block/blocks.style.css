@@ -29,7 +29,7 @@
   padding-bottom: 8px;
   padding-left: 20px;
   padding-right: 60px;
-  line-height: 34px;
+  line-height: 42px;
   color: #294179 !important;
   background-color: transparent !important;
   border-left: none !important;
@@ -75,8 +75,6 @@
 }
 .oet-blk-accordion-title{
   margin:0px auto !important;
-  font-size: 16px;
-  color: inherit;
 }
 .oet-blk-accordion-content {
     border-top: 1px solid #d4d4d4;
