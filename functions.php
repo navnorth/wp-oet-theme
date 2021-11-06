@@ -77,6 +77,12 @@ include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.p
  */
 include( OET_THEME_PATH . "/modules/oet-acf-slider/oet-acf-slider.php");
 
+/**
+* Shortcodes Blocks
+**/
+$_vsn = (int)explode('.',get_bloginfo('version'))[0];
+if($_vsn > 4) require_once( get_stylesheet_directory() . '/blocks/accordion-block/init.php' );
+
 use JonathanTorres\MediumSdk\Medium;
 
  //Add search thumbnail
