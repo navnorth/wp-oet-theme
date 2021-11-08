@@ -93,7 +93,7 @@ iframe { border: 0;  max-width:100%; }
 .ftr_strp { height: 25px; margin-top: 30px}
 .ftr { border-bottom: 1px solid #ccc; margin-bottom: 10px;}
 .ftr_logo { padding-left: 0 !important; padding-right: 0 !important;}
-.fa-envelope, .fa-youtube-play, .fa-google-plus { font-size: 20px !important}
+.fa-envelope, .fa-youtube, .fa-medium-m, .fa-facebook-f, .fa-twitter { font-size: 20px !important}
 .soclize a { color: #fff; text-decoration: none}
 .soclize a:hover,
 .soclize a:focus{text-decoration: none}

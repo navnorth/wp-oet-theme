@@ -152,7 +152,7 @@ function theme_front_enqueue_script()
     $cspage = get_option("contactsliderpage");
 
 	wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
-	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'fontawesome-all-style',get_stylesheet_directory_uri() . '/css/font-awesome.all.min.css' );
     wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
 
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
