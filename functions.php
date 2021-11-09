@@ -77,6 +77,12 @@ include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.p
  */
 include( OET_THEME_PATH . "/modules/oet-acf-slider/oet-acf-slider.php");
 
+/**
+* Shortcodes Blocks
+**/
+$_vsn = (int)explode('.',get_bloginfo('version'))[0];
+if($_vsn > 4) require_once( get_stylesheet_directory() . '/blocks/accordion-block/init.php' );
+
 use JonathanTorres\MediumSdk\Medium;
 
  //Add search thumbnail
@@ -146,7 +152,7 @@ function theme_front_enqueue_script()
     $cspage = get_option("contactsliderpage");
 
 	wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
-	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'fontawesome-all-style',get_stylesheet_directory_uri() . '/css/font-awesome.all.min.css' );
     wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
 
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
@@ -168,6 +174,26 @@ function theme_front_enqueue_script()
 	}
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
+
+/* Frontend loaded Google fonts*/
+function load_frontend_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'wp_head', 'load_frontend_google_fonts' );
+
+/* Admin loaded Google fonts*/
+function load_admin_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'admin_head', 'load_admin_google_fonts' );
 
 function oer_dynamic_sidebar($index, $page_id)
 {
