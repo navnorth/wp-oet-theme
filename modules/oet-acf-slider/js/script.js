@@ -127,7 +127,7 @@
                     $('.bullet[data-index="'+indice+'"').attr('aria-label','Slide '+ (parseInt($this.data('index')) + 1) +' current slide');
                     $this.show();
                     var oese_acf_slider_liveregion_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h2.oet_acf_slide_title').text();
-                    jQuery('.oet-acf-slider-accessibility-liveregion').html(oese_acf_slider_liveregion_title);
+                    jQuery('.oet-acf-slider-accessibility-liveregion').html('Current Slide '+oese_acf_slider_liveregion_title);
                 }else {
                     $('.bullet[data-index="'+$this.data('index')+'"').attr('aria-label','Slide '+ (parseInt($this.data('index')) + 1));
                 }
@@ -174,7 +174,12 @@
               
               if(progress > autoplay_interval){
                 progress = 0;
-                next_slide_auto();
+                var oet_acf_slide_scrolltop = jQuery('#oet-acf-slider').offset().top;
+                var oet_acf_slide_height = jQuery('#oet-acf-slider').outerHeight();
+                var oet_act_slide_scroll_bottom = oet_acf_slide_scrolltop + oet_acf_slide_height;
+                if(jQuery(window).scrollTop() < oet_act_slide_scroll_bottom){
+                  next_slide_auto();
+                }
               }else{
                 progress = (!gbl_pause)? progress + 50: progress; 
               }
