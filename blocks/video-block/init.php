@@ -21,7 +21,7 @@
  * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/writing-your-first-block-type/
  */
 function oet_video_block_init() {
-	//register_block_type( __DIR__ );
+    //register_block_type( __DIR__ );
     $dir = dirname( __FILE__ );
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -80,12 +80,10 @@ function oet_vide_block_display( $attributes , $ajax = false ) {
             $shortcodeText .= sprintf(" description='%s'",$attributes['description']);
         if (isset($attributes['height']) && $attributes['height']!=="")
             $shortcodeText .= sprintf(" height='%s'",$attributes['height']);
-        if (isset($attributes['url']) && $attributes['url']!==""){
-            $videoId = "";
-            $shortcodeText .= sprintf(" videoId='%s'",$videoId);
-        }
+        if (isset($attributes['videoId']) && $attributes['videoId']!=="")
+            $shortcodeText .= sprintf(" videoid='%s'",$attributes['videoId']);
         $shortcodeText .= "]";
-
+        $shortcodeText = htmlspecialchars($shortcodeText);
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
         }
@@ -93,3 +91,25 @@ function oet_vide_block_display( $attributes , $ajax = false ) {
     
     return $html;
 }
+
+// Display Medium Embed ajax
+function oet_ajax_display_video_block(){
+    $shortcode = oet_vide_block_display($_POST, true);
+    echo $shortcode;
+    die();
+}
+add_action( 'wp_ajax_display_video_block', 'oet_ajax_display_video_block' );
+add_action( 'wp_ajax_nopriv_display_video_block', 'oet_ajax_display_video_block' );
+
+function oet_get_YT_videoId() {
+    if ($_POST){
+        $url = $_POST['url'];
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+        $youtube_id = $match[1];
+        $youtube_id = $match[1];
+        echo json_encode(array("video_id" => $youtube_id));
+    }
+    die();
+}
+add_action( 'wp_ajax_get_video_id', 'oet_get_YT_videoId' );
+add_action( 'wp_ajax_nopriv_get_video_id', 'oet_get_YT_videoId' );
