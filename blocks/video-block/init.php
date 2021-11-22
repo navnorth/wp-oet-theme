@@ -23,6 +23,7 @@
 function oet_video_block_init() {
     //register_block_type( __DIR__ );
     $dir = dirname( __FILE__ );
+    $dir_url = get_stylesheet_directory_uri().'/blocks/video-block/';
 
     $script_asset_path = "$dir/build/index.asset.php";
     if ( ! file_exists( $script_asset_path ) ) {
@@ -35,7 +36,7 @@ function oet_video_block_init() {
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oet-video-block-editor-script',
-        plugins_url( $index_js, __FILE__ ),
+        $dir_url.$index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -45,7 +46,7 @@ function oet_video_block_init() {
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-video-block-editor-style',
-        plugins_url( $editor_css, __FILE__ ),
+        $dir_url.$editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
     );
@@ -53,7 +54,7 @@ function oet_video_block_init() {
     $style_css = 'build/style-index.css';
     wp_register_style(
         'oet-video-block-style',
-        plugins_url( $style_css, __FILE__ ),
+        $dir_url.$style_css,
         array(),
         filemtime( "$dir/$style_css" )
     );
@@ -73,20 +74,24 @@ function oet_vide_block_display( $attributes , $ajax = false ) {
     if (!empty($attributes)) {
         extract($attributes);
 
+        if (!$ajax)
+            $html .= '<div class="oet-video-block">';
         $shortcodeText = "[featured_video";
-        if (isset($attributes['heading']) && $attributes['heading']!=="")
+        if (isset($attributes['heading']))
             $shortcodeText .= sprintf(" heading='%s'",$attributes['heading']);
-        if (isset($attributes['description']) && $attributes['description']!=="")
+        if (isset($attributes['description']))
             $shortcodeText .= sprintf(" description='%s'",$attributes['description']);
-        if (isset($attributes['height']) && $attributes['height']!=="")
+        if (isset($attributes['height']))
             $shortcodeText .= sprintf(" height='%s'",$attributes['height']);
-        if (isset($attributes['videoId']) && $attributes['videoId']!=="")
+        if (isset($attributes['videoId']))
             $shortcodeText .= sprintf(" videoid='%s'",$attributes['videoId']);
         $shortcodeText .= "]";
         $shortcodeText = htmlspecialchars($shortcodeText);
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
         }
+        if (!$ajax)
+            $html .= '</div>';
     }
     
     return $html;
