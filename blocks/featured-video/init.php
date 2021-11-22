@@ -63,16 +63,18 @@ function oet_video_block_init() {
         'editor_script'     => 'oet-video-block-editor-script',
         'editor_style'      => 'oet-video-block-editor-style',
         'style'             => 'oet-video-block-style',
-        'render_callback'   => 'oet_vide_block_display'
+        'render_callback'   => 'oet_video_block_display'
     ) );
 }
 add_action( 'init', 'oet_video_block_init' );
 
-function oet_vide_block_display( $attributes , $ajax = false ) {
+function oet_video_block_display( $attributes , $ajax = false ) {
     $html = "";
     $shortcodeText = "";
+
     if (!empty($attributes)) {
         extract($attributes);
+            
 
         if (!$ajax)
             $html .= '<div class="oet-video-block">';
@@ -93,14 +95,19 @@ function oet_vide_block_display( $attributes , $ajax = false ) {
         if (!$ajax)
             $html .= '</div>';
     }
-    
+
     return $html;
 }
 
 // Display Medium Embed ajax
 function oet_ajax_display_video_block(){
-    $shortcode = oet_vide_block_display($_POST, true);
-    echo $shortcode;
+    $vidId = $_POST['attributes']['videoId'];
+    if (!oet_yt_exists($videoId))
+        echo json_encode(array('error'=> true, "message"=>"Video does not exist."));
+    else {
+        $shortcode = oet_video_block_display($_POST, true);
+        echo $shortcode;
+    }
     die();
 }
 add_action( 'wp_ajax_display_video_block', 'oet_ajax_display_video_block' );
@@ -112,9 +119,39 @@ function oet_get_YT_videoId() {
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
         $youtube_id = $match[1];
         $youtube_id = $match[1];
-        echo json_encode(array("video_id" => $youtube_id));
+
+        $vid_title = oet_yt_title($youtube_id);
+
+        if (isset($vid_title) && !empty($vid_title)){
+            echo json_encode(array("video_id" => $youtube_id, "video_title" => $vid_title));
+        } else {
+            echo json_encode(array("error" => true, "message" => "Video does not exist."));
+        }
     }
     die();
 }
 add_action( 'wp_ajax_get_video_id', 'oet_get_YT_videoId' );
 add_action( 'wp_ajax_nopriv_get_video_id', 'oet_get_YT_videoId' );
+
+function oet_yt_exists($videoID) {
+    $yt_url = "https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=$videoID&format=json";
+    $headers = get_headers($yt_url);
+
+    return (substr($headers[0], 9, 3) !== "404" || substr($headers[0], 9, 3) !== "401");
+}
+
+
+function oet_yt_title($videoID) {
+    $yt_url = "https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=$videoID&format=json";
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $yt_url);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $yt_data = json_decode($response,true);
+
+    return $yt_data['title'];
+}
