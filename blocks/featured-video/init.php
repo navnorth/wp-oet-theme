@@ -125,7 +125,7 @@ function oet_get_YT_videoId() {
         if (isset($vid_title) && !empty($vid_title)){
             echo json_encode(array("video_id" => $youtube_id, "video_title" => $vid_title));
         } else {
-            echo json_encode(array("error" => true, "message" => "Video does not exist."));
+            echo json_encode(array("error" => true, "message" => "Please enter a valid URL."));
         }
     }
     die();
