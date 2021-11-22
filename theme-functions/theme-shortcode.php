@@ -271,12 +271,11 @@ function feature_video_func($attr, $content = null){
 	//if ($count==1){
 	//	add_action( 'wp_enqueue_scripts', 'insert_ytapiurl_script' );
 	//}
-		
-	
-	if ( is_admin() ) {
-		$_arr = getShortcodeAttr($attr);
-		foreach($_arr as $key => $value) $$key = $value;
-	}else{
+	if (is_array($attr)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attr);
+			foreach($_arr as $key => $value) $$key = $value;
+		}	
 		extract($attr);
 	}
 	
