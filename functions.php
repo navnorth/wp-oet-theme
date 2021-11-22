@@ -69,6 +69,10 @@ require_once( OET_THEME_PATH . '/blocks/oet-shortcodes-block/init.php' );
 * OET Medium Embed Block
 **/
 require_once( OET_THEME_PATH . '/blocks/oet-medium-embed-block/init.php' );
+/**
+* OET Video Block
+**/
+require_once( OET_THEME_PATH . '/blocks/video-block/init.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
