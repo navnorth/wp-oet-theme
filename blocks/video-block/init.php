@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       OET Video Block
- * Description:       Example block written with ESNext standard and JSX support – build step required.
+ * Plugin Name:       Featured Video Block
+ * Description:       Displays featured video block on a page.
  * Requires at least: 5.6
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -23,7 +23,7 @@
 function oet_video_block_init() {
     //register_block_type( __DIR__ );
     $dir = dirname( __FILE__ );
-    $dir_url = get_stylesheet_directory_uri().'/blocks/video-block/';
+    $dir_url = get_stylesheet_directory_uri().'/blocks/featured-video/';
 
     $script_asset_path = "$dir/build/index.asset.php";
     if ( ! file_exists( $script_asset_path ) ) {
