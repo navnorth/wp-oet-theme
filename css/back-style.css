@@ -448,11 +448,11 @@ input#secondary-save-post {float: left;}
 .block-editor-writing-flow h6 {font-size: 12px !important;}
 
 .block-editor-writing-flow h1,
-.block-editor-writing-flow h3 {color: #294179 !important;}
+.block-editor-writing-flow h3 {color: #294179;}
 .block-editor-writing-flow h2,
 .block-editor-writing-flow h4,
 .block-editor-writing-flow h5,
-.block-editor-writing-flow h6 {color: #000000 !important;}
+.block-editor-writing-flow h6 {color: #000000;}
 
 .block-editor-writing-flow h1,
 .block-editor-writing-flow h2,
