@@ -13,17 +13,7 @@
  * @package           oet-block
  */
 
- /*Load Plugin last (Remove when loaded from another plugin)*/
- function this_plugin_last() {
- 	$wp_path_to_this_file = preg_replace('/(.*)plugins\/(.*)$/', WP_PLUGIN_DIR."/$2", __FILE__);
- 	$this_plugin = plugin_basename(trim($wp_path_to_this_file));
- 	$active_plugins = get_option('active_plugins');
- 	$this_plugin_key = array_search($this_plugin, $active_plugins);
-         array_splice($active_plugins, $this_plugin_key, 1);
-         array_push($active_plugins, $this_plugin);
-         update_option('active_plugins', $active_plugins);
- }
- add_action("activated_plugin", "this_plugin_last");
+
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
