@@ -71,18 +71,20 @@ add_action( 'init', 'oet_video_block_init' );
 function oet_video_block_display( $attributes , $ajax = false ) {
     $html = "";
     $shortcodeText = "";
-
     if (!empty($attributes)) {
         extract($attributes);
-            
 
         if (!$ajax)
             $html .= '<div class="oet-video-block">';
         $shortcodeText = "[featured_video";
         if (isset($attributes['heading']))
             $shortcodeText .= sprintf(" heading='%s'",$attributes['heading']);
-        if (isset($attributes['description']))
-            $shortcodeText .= sprintf(" description='%s'",$attributes['description']);
+        if (isset($attributes['description'])){
+            if ($attributes['description']=="")
+                $shortcodeText .= " description='Edit video description'";
+            else
+                $shortcodeText .= sprintf(" description='%s'",$attributes['description']);
+        }
         if (isset($attributes['height']))
             $shortcodeText .= sprintf(" height='%s'",$attributes['height']);
         if (isset($attributes['videoId']))
@@ -95,7 +97,7 @@ function oet_video_block_display( $attributes , $ajax = false ) {
         if (!$ajax)
             $html .= '</div>';
     }
-
+    
     return $html;
 }
 
@@ -117,7 +119,6 @@ function oet_get_YT_videoId() {
     if ($_POST){
         $url = $_POST['url'];
         preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-        $youtube_id = $match[1];
         $youtube_id = $match[1];
 
         $vid_title = oet_yt_title($youtube_id);
