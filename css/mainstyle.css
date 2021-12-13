@@ -721,5 +721,4 @@ button:hover {
 .adminoverridewidth {
     margin-bottom: 20px !important;
 }
-
-
+.wp-block-image img { height: auto; }
