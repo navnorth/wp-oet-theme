@@ -82,7 +82,7 @@ function wp_oer_subject_resources_block_init(){
 }
 
 function oet_featured_content_block_json_init() {
-	register_block_type( __DIR__ );
+    register_block_type( __DIR__ );
 }
 
 if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
@@ -91,11 +91,53 @@ if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
     add_action( 'init', 'oet_featured_content_block_json_init' );
 }
 
+// Featured Content Block Display
 function oet_featured_content_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
     if (!empty($attributes)) {
         extract($attributes);
+
+        if (!$ajax)
+            $html = '<div class="oet-featured-content-block">';
+
+        $shortcodeText = "[featured_item";
+        if (isset($heading))
+            $shortcodeText .= " heading='".$heading."'";
+        if (isset($image))
+            $shortcodeText .= " image='".$image."'";
+        if (isset($imageAlt))
+            $shortcodeText .= " image_alt='".$imageAlt."'";
+        if (isset($postDate))
+            $shortcodeText .= " date='".$postDate."'";
+        if (isset($button))
+            $shortcodeText .= " button='".$button."'";
+        if (isset($buttonText))
+            $shortcodeText .= " button_text='".$buttonText."'";
+        if (isset($url))
+            $shortcodeText .= " url='".$url."'";
+        if (isset($sharing))
+            $shortcodeText .= " sharing='".$sharing."'";
+        $shortcodeText .= "]";
+        if (isset($content))
+            $shortcodeText .= $content;
+        $shortcodeText .= "[/featured_item]";
+
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+
+        if (!$ajax)
+            $html .= '</div>';
     }
     return $html;
 }
+
+// Display Featured Content Block Preview via Ajax
+function oet_ajax_display_featured_content_block(){
+    $shortcode = oet_featured_content_block_display($_POST, true);
+    echo $shortcode;
+    die();
+}
+add_action( 'wp_ajax_display_featured_content', 'oet_ajax_display_featured_content_block' );
+add_action( 'wp_ajax_nopriv_display_featured_content', 'oet_ajax_display_featured_content_block' );
