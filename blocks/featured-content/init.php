@@ -40,22 +40,7 @@ function wp_oer_subject_resources_block_init(){
     );
     wp_localize_script( 'oet-featured-content-block-editor', 'oet_featured_content', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
 
-    $front_asset_path = "$dir/build/front.asset.php";
-    if ( ! file_exists( $front_asset_path ) ) {
-        throw new Error(
-            'You need to run `npm start` or `npm run build` for the "create-block/oer-object-resources-block" block first.'
-        );
-    }
-
-    $frontend_js = 'build/front.js';
-    $front_asset = require( $front_asset_path );
-    wp_register_script(
-        'oet-featured-content-block-frontend',
-        plugins_url( $frontend_js, __FILE__ ),
-        $front_asset['dependencies'],
-        $front_asset['version']
-    );
-
+    
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-featured-content-block-editor',
@@ -75,7 +60,6 @@ function wp_oer_subject_resources_block_init(){
     register_block_type( 'oet-block/oet-featured-content-block', array(
         'editor_script' => 'oet-featured-content-block-editor',
         'editor_style'  => 'oet-featured-content-block-editor',
-        'script'        => 'oet-featured-content-block-frontend',
         'style'         => 'oet-featured-content-block-css',
         'render_callback' => 'oet_featured_content_block_display'
     ) );
@@ -85,10 +69,18 @@ function oet_featured_content_block_json_init() {
     register_block_type( __DIR__ );
 }
 
-if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
-    add_action( 'init', 'wp_oer_subject_resources_block_init' );
-} else {
+if ( is_version_58() ) {
     add_action( 'init', 'oet_featured_content_block_json_init' );
+} else {
+    add_action( 'init', 'oet_featured_content_block_init' );
+}
+
+function is_version_58(){
+    if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 // Featured Content Block Display
