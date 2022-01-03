@@ -96,6 +96,8 @@ function oet_featured_content_block_display($attributes, $ajax = false){
         $shortcodeText = "[featured_item";
         if (isset($heading))
             $shortcodeText .= " heading='".$heading."'";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
         if (isset($image))
             $shortcodeText .= " image='".$image."'";
         if (isset($imageAlt))
