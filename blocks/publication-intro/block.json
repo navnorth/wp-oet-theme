@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "oet-block/oet-publication-intro-block",
+	"version": "0.1.0",
+	"title": "OET Publication Intro",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Displays publication introduction section on a page.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "oet-publication-intro",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
