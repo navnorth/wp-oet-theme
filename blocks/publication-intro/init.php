@@ -67,27 +67,61 @@ function oet_publication_intro_block_init(){
 
 // Register Block via block.json
 function oet_publication_intro_block_json_init() {
-	register_block_type( __DIR__ );
+    register_block_type( __DIR__ );
 }
-add_action( 'init', 'create_block_oet_publication_intro_block_init' );
 
 // Checks WP version to register block via block json if version is 5.8 or later
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_featured_content_block_init' );
+    add_action( 'init', 'oet_publication_intro_block_init' );
 } else {
-    add_action( 'init', 'oet_featured_content_block_json_init' );
+    add_action( 'init', 'oet_publication_intro_block_json_init' );
 }
 
 // Checks WP version
-function is_version_58(){
-    if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
-        return false;
-    } else {
-        return true;
+if (!function_exists('is_version_58')) {
+    function is_version_58(){
+        if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '<' ) ) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 
-// Render Callback that gets displayed
+// Render Callback of Publication Intro Block that gets displayed
 function oet_publication_intro_block_display($attrs, $ajax = false){
-    print_r($attrs);
+    $html = "";
+    $shortcodeText = "";
+    if (!empty($attributes)) {
+        extract($attributes);
+        
+        if (!$ajax)
+            $html = '<div class="oet-publication-intro-block">';
+
+        $shortcodeText = "[publication_intro";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
+        $shortcodeText .= "]";
+        if (isset($content))
+            $shortcodeText .= $content;
+        $shortcodeText .= "[/publication_intro]";
+
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+
+        if (!$ajax)
+            $html .= '</div>';
+    }
+    return $html;
 }
+
+
+// Display Publication Intro Block Preview via Ajax
+function oet_ajax_display_publication_intro_block(){
+    $shortcode = oet_publication_intro_block_display($_POST, true);
+    echo $shortcode;
+    die();
+}
+add_action( 'wp_ajax_display_publication_intro', 'oet_ajax_display_publication_intro_block' );
+add_action( 'wp_ajax_nopriv_display_publication_intro', 'oet_ajax_display_publication_intro_block' );
