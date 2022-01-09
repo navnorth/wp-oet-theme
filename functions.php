@@ -74,6 +74,11 @@ require_once( OET_THEME_PATH . '/blocks/oet-medium-embed-block/init.php' );
 **/
 require_once( OET_THEME_PATH . '/blocks/featured-video/init.php' );
 
+/**
+* OET Featured Item Block
+**/
+require_once( OET_THEME_PATH . '/blocks/oet-featured-item-block/init.php' );
+
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 /**
