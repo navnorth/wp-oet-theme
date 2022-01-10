@@ -84,38 +84,30 @@ function is_version_58(){
 }
 
 // Featured Content Block Display
+/**
+ * Featured Content Box
+ * Shortcode Example : [featured_content_box title='' top_icon='' align='']your content goes here[/featured_content_box]
+ */
 function oet_featured_content_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
     if (!empty($attributes)) {
         extract($attributes);
-
+        
         if (!$ajax)
             $html = '<div class="oet-featured-content-block">';
 
-        $shortcodeText = "[featured_item";
-        if (isset($heading))
-            $shortcodeText .= " heading='".$heading."'";
+        $shortcodeText = "[featured_content_box";
         if (isset($title))
             $shortcodeText .= " title='".$title."'";
-        if (isset($image))
-            $shortcodeText .= " image='".$image."'";
-        if (isset($imageAlt))
-            $shortcodeText .= " image_alt='".$imageAlt."'";
-        if (isset($postDate))
-            $shortcodeText .= " date='".$postDate."'";
-        if (isset($button))
-            $shortcodeText .= " button='".$button."'";
-        if (isset($buttonText))
-            $shortcodeText .= " button_text='".$buttonText."'";
-        if (isset($url))
-            $shortcodeText .= " url='".$url."'";
-        if (isset($sharing))
-            $shortcodeText .= " sharing='".$sharing."'";
+        if (isset($topIcon))
+            $shortcodeText .= " top_icon='".$topIcon."'";
+        if (isset($align))
+            $shortcodeText .= " align='".$align."'";
         $shortcodeText .= "]";
         if (isset($content))
             $shortcodeText .= $content;
-        $shortcodeText .= "[/featured_item]";
+        $shortcodeText .= "[/featured_content_box]";
 
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
