@@ -13,8 +13,6 @@
  * @package           oet-block
  */
 
-
-
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
  * Behind the scenes, it registers also all assets so they can be enqueued
@@ -23,83 +21,89 @@
  * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/writing-your-first-block-type/
  */
  
-if ( ! defined( 'ABSPATH' ) ) {
- 	exit;
+ global $wp_version;
+ function oet_blocks_oet_featured_item_block_block_init() {
+ 	register_block_type( __DIR__ );
+ }
+ 
+ function oet_blocks_oet_featured_item_block_block_init_legacy(){
+ 	$__oet_relative_path = (strpos(__DIR__, 'blocks') !== false)? get_stylesheet_directory_uri().'/blocks/oet-featured-item-block/':plugin_dir_url( __FILE__ );
+ 	$oet_featured_item_block_json= file_get_contents($__oet_relative_path."/block.json");
+ 	wp_register_script('oet_featured_item_block_js', $__oet_relative_path.'/build/index.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), null, true	);
+ 	wp_register_style('oet_featured_item_block_editor_css', $__oet_relative_path.'/build/index.css',array( 'wp-edit-blocks' ),null);
+ 	wp_register_style('oet_featured_item_block_front_css', $__oet_relative_path.'/build/style-index.css',array( 'wp-edit-blocks' ),null);
+  //wp_register_script('oet_featured_item_block-backend-js', $__oet_relative_path.'/backend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), null, true );
+  wp_localize_script('oet_featured_item_block_js', 'oet_featured_item_legacy_marker', $oet_featured_item_block_json);
+   register_block_type(
+ 		'oet-block/oet-featured-item-block', array(
+ 			'editor_script' => 'oet_featured_item_block_js',
+ 			'editor_style'  => 'oet_featured_item_block_editor_css',
+ 			'style'         => 'oet_featured_item_block_front_css'
+ 		)
+ 	);
+ }
+
+ if($wp_version < 5.8){
+  add_action( 'admin_head' , 'oet_featured_item_loadconditional_toolbar_css_legacy' );
+ 	add_action( 'init', 'oet_blocks_oet_featured_item_block_block_init_legacy' );
+ }else{
+  add_action( 'admin_head' , 'oet_featured_item_loadconditional_toolbar_css' );
+ 	add_action( 'init', 'oet_blocks_oet_featured_item_block_block_init' );
+ }
+
+function oet_featured_item_block_backend_script(){
+ $__oet_relative_path = (strpos(__DIR__, 'blocks') !== false)? get_stylesheet_directory_uri().'/blocks/oet-featured-item-block/':plugin_dir_url( __FILE__ );
+ wp_enqueue_script('oet_featured_item_block-backend-js', $__oet_relative_path.'/backend.js',array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'jquery' ), '1.0' );
+}
+add_action( 'admin_enqueue_scripts', 'oet_featured_item_block_backend_script' );
+
+
+function oet_featured_item_loadconditional_toolbar_css_legacy(){
+	ob_start();
+	?>
+		<style>
+		/* core/heading - Disable Everythig */
+		/* .block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .popover-slot {display:none !important;} */
+    .block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(3),
+		.block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4) {display:none !important;}
+
+		/* core/paragraph - Disable switcher/reposition and options menu */
+		.block-editor__container.oet-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4) {display:none !important;}
+    
+		/* core/button - Disable everything except the link */
+    .block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(1),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2)>div:nth-of-type(1),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(3),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4) {display:none !important;}
+		</style>
+	<?php
+	echo ob_get_clean();
 }
 
-function oet_blocks_oet_featured_item_block_block_init() {
-  $dir_url = get_stylesheet_directory_uri().'/blocks/oet-featured-item-block/';
-	// Register block editor styles for backend.
-	wp_register_style(	
-		'oet_featured_item_block-block-editor-css', // Handle.
-		$dir_url.'build/index.css',
-		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
-	);
-	
-	// Register block styles for both frontend.
-	wp_register_style(
-		'oet_featured_item_block-style-css', // Handle.
-		$dir_url.'build/style-index.css',
-		is_admin() ? array( 'wp-editor' ) : null, // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
-	);
-	
-	// Register block editor script for backend.
-	wp_register_script(
-		'oet_featured_item_block-block-js', // Handle.
-		$dir_url.'build/index.js',
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
-		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
-		true // Enqueue the script in the footer.
-	);
-	
-	// Register backend script.
-	wp_register_script(
-		'oet_featured_item_block-backend-js', // Handle.
-		$dir_url.'backend.js',
-		array( 'jquery', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
-		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
-		true // Enqueue the script in the footer.
-	);
-	
-	
-	register_block_type(
-		'oet-block/oet-featured-item-block', array(
-			// Enqueue blocks.style.build.css on both frontend & backend.
-			'style'         => 'oet_featured_item_block-style-css',
-			// Enqueue blocks.build.js in the editor only.
-			'editor_script' => 'oet_featured_item_block-block-js',
-			// Enqueue blocks.editor.build.css in the editor only.
-			'editor_style'  => 'oet_featured_item_block-block-editor-css',
-			
-			'script' => 'oet_featured_item_block-backend-js'
-		)
-	);
-	
+
+function oet_featured_item_loadconditional_toolbar_css(){
+	ob_start();
+	?>
+		<style>
+		/* core/heading - Disable Everything */
+ /* .block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .components-popover__content {display:none !important;} */
+    .block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(3),
+		.block-editor__container.oet-featured-item-title-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4) {display:none !important;}
+    
+		/* core/paragraph - Disable switcher/reposition and options menu */
+		.block-editor__container.oet-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oet-featured-item-content-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(5) {display:none !important;}
+		/* core/button - Disable everything except the link */
+    .block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(1),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(2),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(3)>div>div>button:nth-of-type(1),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(4),
+		.block-editor__container.oet-featured-item-button-toolbar-hide .edit-post-visual-editor .block-editor-block-toolbar>div:nth-of-type(5) {display:none !important;}
+		</style>
+	<?php
+	echo ob_get_clean();
 }
-
-add_action( 'init', 'oet_blocks_oet_featured_item_block_block_init' );
-
-
-
-add_action( 'init', 'oet_featured_item_color_palette_func' );
-function oet_featured_item_color_palette_func() {	
-		$existing = get_theme_support( 'editor-color-palette' );
-		$new = array_merge( $existing[0], array(
-		    array(
-		        'name' => __( 'Orange', 'wp_oet_theme' ),
-		        'slug' => 'oet-color-pallete-orage',
-		        'color' => '#e57200',
-		    ),
-		    array(
-		        'name' => __( 'Black', 'wp_oet_theme' ),
-		        'slug' => 'oet-color-pallete-black',
-		        'color' => '#000000',
-		    ),
-		));
-		add_theme_support( 'editor-color-palette',  $new);
-}
-
 
 
