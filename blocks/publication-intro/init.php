@@ -89,7 +89,7 @@ if (!function_exists('is_version_58')) {
 }
 
 // Render Callback of Publication Intro Block that gets displayed
-function oet_publication_intro_block_display($attrs, $ajax = false){
+function oet_publication_intro_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
     if (!empty($attributes)) {
@@ -105,7 +105,7 @@ function oet_publication_intro_block_display($attrs, $ajax = false){
         if (isset($content))
             $shortcodeText .= $content;
         $shortcodeText .= "[/publication_intro]";
-
+        
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
         }
@@ -113,13 +113,14 @@ function oet_publication_intro_block_display($attrs, $ajax = false){
         if (!$ajax)
             $html .= '</div>';
     }
+    
     return $html;
 }
 
 
 // Display Publication Intro Block Preview via Ajax
 function oet_ajax_display_publication_intro_block(){
-    $shortcode = oet_publication_intro_block_display($_POST, true);
+    $shortcode = oet_publication_intro_block_display($_POST['attributes'], true);
     echo $shortcode;
     die();
 }
