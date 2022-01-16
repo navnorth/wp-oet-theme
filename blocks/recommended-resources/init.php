@@ -72,7 +72,40 @@ if (!function_exists('is_version_58')) {
     }
 }
 
-// Display Featured Card Block
+// Display Recommended Resources Block
+/**
+ * Recommended Resources
+ * Shortcode Example : [recommended_resources heading='' media_type1='' src1='' text1='' link1='' media_type2='' src2='' text2='' link2='' media_type3='' src3='' text3=''  link3='']
+ */
 function oet_recommended_resources_block_display($attributes, $ajax = false){
-    print_r($attributes);
+    $html = "";
+    $shortcodeText = "";
+
+    if (!empty($attributes)){
+        extract($attributes);
+
+        $shortcodeText = '[recommended_resources';
+
+        if (isset($heading))
+            $shortcodeText .= ' heading="'.$heading.'"';
+        if (isset($mediaType1))
+            $shortcodeText .= ' media_type1="'.$mediaType1.'"';
+
+        $shortcodeText .= ']';
+
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+    }
+    return $html;
 }
+
+
+// Display Recommended Resources Block Preview via Ajax
+function oet_ajax_display_recommended_resources_block(){
+    $shortcode = oet_recommended_resources_block_display($_POST['attributes'], true);
+    echo $shortcode;
+    die();
+}
+add_action( 'wp_ajax_display_recommended_resources', 'oet_ajax_display_recommended_resources_block' );
+add_action( 'wp_ajax_nopriv_display_recommended_resources', 'oet_ajax_display_recommended_resources_block' );
