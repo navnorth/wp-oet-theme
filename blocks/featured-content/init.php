@@ -121,7 +121,7 @@ function oet_featured_content_block_display($attributes, $ajax = false){
 
 // Display Featured Content Block Preview via Ajax
 function oet_ajax_display_featured_content_block(){
-    $shortcode = oet_featured_content_block_display($_POST, true);
+    $shortcode = oet_featured_content_block_display($_POST['attributes'], true);
     echo $shortcode;
     die();
 }
