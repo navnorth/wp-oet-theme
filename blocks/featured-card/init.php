@@ -49,13 +49,6 @@ function oet_featured_card_block_json_init() {
     register_block_type( __DIR__ );
 }
 
-// Checks WP version to register block via block json if version is 5.8 or later
-if ( is_version_58() ) {
-    add_action( 'init', 'oet_featured_card_block_init' );
-} else {
-    add_action( 'init', 'oet_featured_card_block_json_init' );
-}
-
 // Checks WP version
 if (!function_exists('is_version_58')) {
     function is_version_58(){
@@ -67,7 +60,61 @@ if (!function_exists('is_version_58')) {
     }
 }
 
-// Display Featured Card Block
-function oet_featured_card_block_display($attributes){
-    print_r($attributes);
+// Checks WP version to register block via block json if version is 5.8 or later
+if ( is_version_58() ) {
+    add_action( 'init', 'oet_featured_card_block_init' );
+} else {
+    add_action( 'init', 'oet_featured_card_block_json_init' );
 }
+
+// Display Featured Card Block
+/**
+ * OET Featured Card
+ * Shortcode Example : [oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\']your content goes here[/oet_featured_card]
+ **/
+function oet_featured_card_block_display($attributes, $ajax = false){
+    $html = "";
+    $shortcodeText = "";
+    
+    if (is_array($attributes)){
+        extract($attributes);
+
+        if (!$ajax)
+            $html .= '<div class="oet-featured-card-block">';
+
+        
+        $shortcodeText = "[oet_featured_card";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
+        if (isset($buttonText))
+            $shortcodeText .= " button_text='".$buttonText."'";
+        if (isset($backgroundImage) && !empty($backgroundImage))
+            $shortcodeText .= " background_image='".$backgroundImage."'";
+        if (isset($url))
+            $shortcodeText .= " url='".$url."'";
+        $shortcodeText .= "]";
+
+        if (isset($content))
+            $shortcodeText .= $content;
+
+        $shortcodeText .= "[/oet_featured_card]";
+        
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+
+
+        if (!$ajax)
+            $html .= '</div>';
+    }
+    return $html;
+}
+
+// Display Featured Card Block Preview via Ajax
+function oet_ajax_display_featured_card_block(){
+    $shortcode = oet_publication_intro_block_display($_POST['attributes'], true);
+    echo $shortcode;
+    die();
+}
+add_action( 'wp_ajax_display_featured_card', 'oet_ajax_display_featured_card_block' );
+add_action( 'wp_ajax_nopriv_display_featured_card', 'oet_ajax_display_featured_card_block' );

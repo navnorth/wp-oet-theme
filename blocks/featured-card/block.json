@@ -1,12 +1,12 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "create-block/oet-featured-card",
+	"name": "oet-block/oet-featured-card-block",
 	"version": "0.1.0",
-	"title": "Oet Featured Card",
+	"title": "Featured Card",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"description": "This block displays featured card section on the page.",
 	"supports": {
 		"html": false
 	},
