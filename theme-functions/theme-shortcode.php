@@ -1015,7 +1015,6 @@ function parse_data_attributes( $data ) {
  */
  add_shortcode("oet_callout", "oet_callout_func");
  function oet_callout_func($attribute, $content = null) {
-
 	if (is_array($attribute)){
 		if ( is_admin() ) {
 	 		$_arr = getShortcodeAttr($attribute);
@@ -1088,15 +1087,14 @@ function parse_data_attributes( $data ) {
  */
  add_shortcode("publication_intro", "publication_intro_func");
  function publication_intro_func($attribute, $content = null) {
-
 	 if (is_array($attribute)){
  		if ( is_admin() ) {
  	 		$_arr = getShortcodeAttr($attribute);
  	 		foreach($_arr as $key => $value) $$key = $value;
- 	 	}else{
- 	 		extract($attribute);;
  	 	}
+ 	 	extract($attribute);;
  	}
+ 	
 	$title=(!isset($title))?'':$title;
 	$return = '<div class="intro">
 			<div class="intro-goal">
