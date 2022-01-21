@@ -73,6 +73,10 @@ require_once( OET_THEME_PATH . '/blocks/oet-medium-embed-block/init.php' );
 * OET Video Block
 **/
 require_once( OET_THEME_PATH . '/blocks/featured-video/init.php' );
+/**
+* OET Publication Intro Block
+**/
+require_once( OET_THEME_PATH . '/blocks/publication-intro/init.php' );
 
 /**
 * OET Featured Item Block
