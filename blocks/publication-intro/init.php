@@ -120,13 +120,6 @@ function oet_publication_intro_block_json_init() {
     );
 }
 
-// Checks WP version to register block via block json if version is 5.8 or later
-if ( is_version_58() ) {
-    add_action( 'init', 'oet_publication_intro_block_json_init' );
-} else {
-    add_action( 'init', 'oet_publication_intro_block_init' );
-}
-
 // Checks WP version
 if (!function_exists('is_version_58')) {
     function is_version_58(){
@@ -136,6 +129,13 @@ if (!function_exists('is_version_58')) {
             return true;
         }
     }
+}
+
+// Checks WP version to register block via block json if version is 5.8 or later
+if ( is_version_58() ) {
+    add_action( 'init', 'oet_publication_intro_block_json_init' );
+} else {
+    add_action( 'init', 'oet_publication_intro_block_init' );
 }
 
 // Render Callback of Publication Intro Block that gets displayed
