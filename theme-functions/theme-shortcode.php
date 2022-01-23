@@ -596,12 +596,14 @@ function share_the_toolkit_func($atts, $content = null)
 add_shortcode("recommended_resources","recommended_resources_func");
 function recommended_resources_func($attr, $content = null)
 {
-	if ( is_admin() ) {
-		$_arr = getShortcodeAttr($attr);
-		foreach($_arr as $key => $value) $$key = $value;
-	}else{
-		extract($attr);
+	if (is_array($attr)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attr);
+			foreach($_arr as $key => $value) $$key = $value;
+		}
+		extract($attr);	
 	}
+	
 	$return = '';
 	$regex = "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/";
 	if(isset($heading) && !empty($heading))
@@ -769,14 +771,14 @@ function recommended_resources_func($attr, $content = null)
  */
  add_shortcode("featured_content_box", "featured_content_box_func");
 
- function featured_content_box_func($attr, $content = null)
- {
-	 if ( is_admin() ) {
-	 		$_arr = getShortcodeAttr($attr);
-		 		foreach($_arr as $key => $value) $$key = $value;
-		 	}else{
-		 		extract($attr);
-		 	}
+ function featured_content_box_func($attr, $content = null){
+ 	if (is_array($attr)) {
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attr);
+	 		foreach($_arr as $key => $value) $$key = $value;
+	 	}
+ 		extract($attr);
+ 	}
 	 $title=(!isset($title))?'':$title;
 	 $align=(!isset($align))?'':$align;
 	 $return = '';
