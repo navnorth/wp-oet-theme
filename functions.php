@@ -83,6 +83,11 @@ require_once( OET_THEME_PATH . '/blocks/publication-intro/init.php' );
 **/
 require_once( OET_THEME_PATH . '/blocks/oet-featured-item-block/init.php' );
 
+/**
+* OET Featured Content Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-content/init.php' );
+
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 /**
@@ -113,7 +118,7 @@ function theme_back_enqueue_script()
   if(get_admin_page_title() == 'Edit Page'){
     wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
     wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
-    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.all.min.css' );
   }
 
   wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
