@@ -1,9 +1,25 @@
 <?php
 /**
- * 
- * OET Recommended Resources Block 
- * 
- **/
+ * Plugin Name:       OET Recommended Resources
+ * Description:       Example block written with ESNext standard and JSX support – build step required.
+ * Requires at least: 5.8
+ * Requires PHP:      7.0
+ * Version:           0.1.0
+ * Author:            The WordPress Contributors
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       oet-recommended-resources
+ *
+ * @package           oet-block
+ */
+
+/**
+ * Registers the block using the metadata loaded from the `block.json` file.
+ * Behind the scenes, it registers also all assets so they can be enqueued
+ * through the block editor in the corresponding context.
+ *
+ * @see https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/writing-your-first-block-type/
+ */
 function oet_recommended_resources_block_init(){
     $dir = dirname(__FILE__);
     $version_58 = is_version_58();
@@ -80,7 +96,13 @@ if (!function_exists('is_version_58')) {
 function oet_recommended_resources_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
-
+    $mediaLink1 = "";
+    $mediaLink2 = "";
+    $mediaLink3 = "";
+    $mediaType1 = "video";
+    $mediaType2 = "video";
+    $mediaType3 = "video";
+    //var_dump($attributes);
     if (!empty($attributes)){
         extract($attributes);
 
@@ -90,9 +112,31 @@ function oet_recommended_resources_block_display($attributes, $ajax = false){
             $shortcodeText .= ' heading="'.$heading.'"';
         if (isset($mediaType1))
             $shortcodeText .= ' media_type1="'.$mediaType1.'"';
+        if (isset($mediaSource1))
+            $shortcodeText .= ' src1="'.$mediaSource1.'"';
+        if (isset($mediaText1))
+            $shortcodeText .= ' text1="'.$mediaText1.'"';
+        if (isset($mediaLink1))
+            $shortcodeText .= ' link1="'.$mediaLink1.'"';
+        if (isset($mediaType2))
+            $shortcodeText .= ' media_type2="'.$mediaType2.'"';
+        if (isset($mediaSource2))
+            $shortcodeText .= ' src2="'.$mediaSource2.'"';
+        if (isset($mediaText2))
+            $shortcodeText .= ' text2="'.$mediaText2.'"';
+        if (isset($mediaLink2))
+            $shortcodeText .= ' link2="'.$mediaLink2.'"';
+        if (isset($mediaType3))
+            $shortcodeText .= ' media_type3="'.$mediaType3.'"';
+        if (isset($mediaSource3))
+            $shortcodeText .= ' src3="'.$mediaSource3.'"';
+        if (isset($mediaText3))
+            $shortcodeText .= ' text3="'.$mediaText3.'"';
+        if (isset($mediaLink3))
+            $shortcodeText .= ' link3="'.$mediaLink3.'"';
 
         $shortcodeText .= ']';
-
+        
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
         }
