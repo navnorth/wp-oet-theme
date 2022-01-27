@@ -73,11 +73,20 @@ require_once( OET_THEME_PATH . '/blocks/oet-medium-embed-block/init.php' );
 * OET Video Block
 **/
 require_once( OET_THEME_PATH . '/blocks/featured-video/init.php' );
+/**
+* OET Publication Intro Block
+**/
+require_once( OET_THEME_PATH . '/blocks/publication-intro/init.php' );
 
 /**
 * OET Featured Item Block
 **/
 require_once( OET_THEME_PATH . '/blocks/oet-featured-item-block/init.php' );
+
+/**
+* OET Featured Content Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-content/init.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
@@ -109,7 +118,7 @@ function theme_back_enqueue_script()
   if(get_admin_page_title() == 'Edit Page'){
     wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
     wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
-    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.all.min.css' );
   }
 
   wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
@@ -858,16 +867,36 @@ function oet_display_acf_home_content(){
                         $_img = wp_get_attachment_url( $_img);
                         $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
                         $_ico = (isset($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']) && !empty($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']))?$subfieldlayout['oet_acf_homepage_trendingnow_titleicon']:'none';
-                        $_title_icon = ($_ico != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
+                        $_title_icon = ($_ico != 'none')? '<i class="fa '.$_ico.'"></i>': '';
                         $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
                         $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
                         $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
                         $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
+                        $_target = ($subfieldlayout['oet_acf_trendingnow_link_target'])?'_blank':'_self';
                         ?>
-                          <div class="oet-trending-image pad"><img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" /></div>
-                          <h3 class="oet-trending-title pad"><?php echo $_title_icon; echo $_title; ?></h3>
+                          <div class="oet-trending-image pad">
+                            <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
+                            <?php if(empty($oetacf_TrendingnowLink)){ ?>
+                              <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
+                              <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
+                            <?php }else{ ?>
+                              <a href="<?php echo $oetacf_TrendingnowLink; ?>" target="<?php echo $_target ?>">
+                                <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
+                              </a>
+                              <a href="<?php echo $oetacf_TrendingnowLink; ?>" target="<?php echo $_target ?>">
+                                <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
+                              </a>
+                            <?php } ?>
+                          </div>
+                          
+                          
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
-                          <div class="oet-trending-button pad"><a href="<?php echo $_url; ?>">Read More&nbsp;&nbsp;→</a></div>
+                          <div class="oet-trending-button pad">
+                          <?php $subButtonLinkText = trim($subfieldlayout['oet_acf_homepage_trendingnow_bottom_link_text']);?>
+                          <?php if(!empty($subButtonLinkText) && !empty($oetacf_TrendingnowLink)){ ?>
+                            <a href="<?php echo $_url; ?>" target="<?php echo $_target ?>"><?php echo $subButtonLinkText; ?>&nbsp;<i class="fa fa-chevron-right"></i></a>
+                          <?php } ?>
+                          </div>
                         <?php
                       endif;
                     }
