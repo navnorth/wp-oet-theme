@@ -10,7 +10,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       oet-disruptive-content
  *
- * @package           oet-block
+ * @package           create-block
  */
 
 /**
@@ -118,5 +118,34 @@ if ( is_version_58() ) {
  * Shortcode Example : [disruptive_content title='' main_text='' button_text='' button_color='' button_url='']
  */
 function oet_disruptive_content_block_display( $attributes, $ajax = false ){
-    print_r($attributes);
+    $html = "";
+    $shortcodeText = "";
+    if (!empty($attributes)) {
+        extract($attributes);
+        
+        if (!$ajax)
+            $html = '<div class="oet-disruptive-content-block">';
+
+        $shortcodeText = "[disruptive_content";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
+        if (isset($mainText))
+            $shortcodeText .= " main_text='".$mainText."'";
+        if (isset($buttonText))
+            $shortcodeText .= " button_text='".$buttonText."'";
+        if (isset($buttonColor))
+            $shortcodeText .= " button_color='".$buttonColor."'";
+        if (isset($buttonUrl))
+            $shortcodeText .= " button_url='".$buttonUrl."'";
+        $shortcodeText .= "]";
+        
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+
+        if (!$ajax)
+            $html .= '</div>';
+    }
+    
+    return $html;
 }
