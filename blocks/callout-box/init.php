@@ -118,6 +118,36 @@ if ( is_version_58() ) {
  * Shortcode Example : [oet_callout type='check' width='12' color='00529f' alignment='left']content[/oet_callout]
  */
 function oet_callout_box_block_display( $attributes, $ajax = false ){
-    print_r($attributes);
+    $html = "";
+    $shortcodeText = "";
+    if (!empty($attributes)) {
+        extract($attributes);
+        
+        if (!$ajax)
+            $html = '<div class="oet-callout-box-block">';
+
+        $shortcodeText = "[oet_callout";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
+        if (isset($width))
+            $shortcodeText .= " width='".$width."'";
+        if (isset($color))
+            $shortcodeText .= " color='".$color."'";
+        if (isset($alignment))
+            $shortcodeText .= " alignment='".$alignment."'";
+        $shortcodeText .= "]";
+        if (isset($content))
+            $shortcodeText .= $content;
+        $shortcodeText .= "[/oet_callout]";
+        
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+
+        if (!$ajax)
+            $html .= '</div>';
+    }
+    
+    return $html;
 }
 
