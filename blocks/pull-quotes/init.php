@@ -108,9 +108,9 @@ if (!function_exists('is_version_58')) {
 
 // Checks WP version to register block via block json if version is 5.8 or later
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_pull_quotes_block_json_init' );
-} else {
     add_action( 'init', 'oet_pull_quotes_block_init' );
+} else {
+    add_action( 'init', 'oet_pull_quotes_block_json_init' );
 }
 
 // Render Callback of Pull Quotes Block
@@ -128,8 +128,10 @@ function oet_pull_quotes_block_display($attributes, $ajax = false){
             $html = '<div class="oet-pull-quotes-block">';
 
         $shortcodeText = "[pull_quote";
-        if (isset($title))
-            $shortcodeText .= " title='".$title."'";
+        if (isset($speaker))
+            $shortcodeText .= " speaker='".$speaker."'";
+        if (isset($additionalInfo))
+            $shortcodeText .= " additional_info='".$additionalInfo."'";
         $shortcodeText .= "]";
         if (isset($content))
             $shortcodeText .= $content;
