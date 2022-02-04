@@ -84,7 +84,7 @@ function oet_pull_quotes_block_json_init() {
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-publication-intro-block-editor', 'oet_publication_intro', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
+    wp_localize_script( 'oet-publication-intro-block-editor', 'oet_pull_quotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58, 'theme_url' => get_stylesheet_directory() ) );
 
     register_block_type( 
         __DIR__ ,
