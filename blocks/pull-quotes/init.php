@@ -38,7 +38,7 @@ function oet_pull_quotes_block_init(){
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-pull-quotes-block-editor', 'oet_pull_quotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
+    wp_localize_script( 'oet-pull-quotes-block-editor', 'oet_pull_quotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58, 'theme_url' => get_stylesheet_directory_uri() ) );
 
 
     $editor_css = 'build/index.css';
@@ -84,7 +84,7 @@ function oet_pull_quotes_block_json_init() {
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-publication-intro-block-editor', 'oet_pull_quotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58, 'theme_url' => get_stylesheet_directory() ) );
+    wp_localize_script( 'oet-publication-intro-block-editor', 'oet_pull_quotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58, 'theme_url' => get_stylesheet_directory_uri() ) );
 
     register_block_type( 
         __DIR__ ,
@@ -152,7 +152,7 @@ function oet_pull_quotes_block_display($attributes, $ajax = false){
 // Display Pull Quotes Block Preview via Ajax
 function oet_ajax_display_pull_quotes_block(){
     $shortcode = oet_pull_quotes_block_display($_POST['attributes'], true);
-    echo $shortcode;
+    echo wpautop(stripslashes($shortcode));
     die();
 }
 add_action( 'wp_ajax_display_pull_quotes', 'oet_ajax_display_pull_quotes_block' );
