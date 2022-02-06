@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "oet-block/oet-pull-quotes-block",
 	"version": "0.1.0",
-	"title": "OET Pull Quotes",
+	"title": "Pull Quotes",
 	"category": "oet-block-category",
 	"icon": "format-quote",
 	"description": "This block displays pull quotes box on a page.",
