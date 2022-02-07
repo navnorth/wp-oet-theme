@@ -88,6 +88,11 @@ require_once( OET_THEME_PATH . '/blocks/oet-featured-item-block/init.php' );
 **/
 require_once( OET_THEME_PATH . '/blocks/featured-content/init.php' );
 
+/**
+* OET Pull Quotes Block
+**/
+require_once( OET_THEME_PATH . '/blocks/pull-quotes/init.php' );
+
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 /**
