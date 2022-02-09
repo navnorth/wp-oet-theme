@@ -106,4 +106,3 @@ function oet_featured_item_loadconditional_toolbar_css(){
 	echo ob_get_clean();
 }
 
-
