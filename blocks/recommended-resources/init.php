@@ -70,13 +70,6 @@ function oet_recommended_resources_block_json_init() {
     register_block_type( __DIR__ );
 }
 
-// Checks WP version to register block via block json if version is 5.8 or later
-if ( is_version_58() ) {
-    add_action( 'init', 'oet_recommended_resources_block_init' );
-} else {
-    add_action( 'init', 'oet_recommended_resources_block_json_init' );
-}
-
 // Checks WP version
 if (!function_exists('is_version_58')) {
     function is_version_58(){
@@ -86,6 +79,13 @@ if (!function_exists('is_version_58')) {
             return true;
         }
     }
+}
+
+// Checks WP version to register block via block json if version is 5.8 or later
+if ( is_version_58() ) {
+    add_action( 'init', 'oet_recommended_resources_block_init' );
+} else {
+    add_action( 'init', 'oet_recommended_resources_block_json_init' );
 }
 
 // Display Recommended Resources Block
@@ -105,6 +105,9 @@ function oet_recommended_resources_block_display($attributes, $ajax = false){
     //var_dump($attributes);
     if (!empty($attributes)){
         extract($attributes);
+
+        if (!$ajax)
+            $html = '<div class="oet-recommended-resources-block">';
 
         $shortcodeText = '[recommended_resources';
 
@@ -140,6 +143,9 @@ function oet_recommended_resources_block_display($attributes, $ajax = false){
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
         }
+
+        if (!$ajax)
+            $html .= '</div>';
     }
     return $html;
 }
