@@ -83,13 +83,13 @@ function oet_disruptive_content_block_json_init() {
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-featured-content-block-editor', 'oet_featured_content', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
+    wp_localize_script( 'oet-featured-content-block-editor', 'oet_disruptive_content', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
 
     register_block_type( 
         __DIR__ ,
         array(
-            'editor_script' => 'oet-featured-content-block-editor',
-            'render_callback' => 'oet_featured_content_block_display',
+            'editor_script' => 'oet-disruptive-content-block-editor',
+            'render_callback' => 'oet_disruptive_content_block_display',
         )
     );
 }
@@ -149,3 +149,12 @@ function oet_disruptive_content_block_display( $attributes, $ajax = false ){
     
     return $html;
 }
+
+// Display Pull Quotes Block Preview via Ajax
+function oet_ajax_display_disruptive_content_block(){
+    $shortcode = oet_disruptive_content_block_display($_POST['attributes'], true);
+    echo wpautop(stripslashes($shortcode));
+    die();
+}
+add_action( 'wp_ajax_display_disruptive_content', 'oet_ajax_display_disruptive_content_block' );
+add_action( 'wp_ajax_nopriv_display_disruptive_content', 'oet_ajax_display_disruptive_content_block' );
