@@ -17,7 +17,7 @@ function oet_featured_card_block_init(){
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-featured-card-block-editor', 'oet_featured_card', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
+    wp_localize_script( 'oet-featured-card-block-editor', 'oet_featured_card', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58, 'theme_url' => get_stylesheet_directory_uri() ) );
 
 
     $editor_css = 'build/index.css';
@@ -70,7 +70,7 @@ if ( is_version_58() ) {
 // Display Featured Card Block
 /**
  * OET Featured Card
- * Shortcode Example : [oet_featured_card title=\'\' button_text=\'Read More\' background_image=\'\' url=\'\']your content goes here[/oet_featured_card]
+ * Shortcode Example : [oet_featured_card title='Eu sem integer vitae' button_text='Read More' button_link='' background_image='']Gravida quis blandit turpis cursus in hac habitasse. In nisl nisi scelerisque eu ultrices vitae. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Sed risus ultricies tristique nulla. Congue quisque egestas diam in arcu cursus. [/oet_featured_card]
  **/
 function oet_featured_card_block_display($attributes, $ajax = false){
     $html = "";
@@ -112,7 +112,7 @@ function oet_featured_card_block_display($attributes, $ajax = false){
 
 // Display Featured Card Block Preview via Ajax
 function oet_ajax_display_featured_card_block(){
-    $shortcode = oet_publication_intro_block_display($_POST['attributes'], true);
+    $shortcode = oet_featured_card_block_display($_POST['attributes'], true);
     echo $shortcode;
     die();
 }
