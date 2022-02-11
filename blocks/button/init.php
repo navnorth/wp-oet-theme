@@ -118,15 +118,15 @@ if (!function_exists('is_version_58')) {
 
 // Checks WP version to register block via block json if version is 5.8 or later
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_pull_quotes_block_init' );
+    add_action( 'init', 'oet_button_block_init' );
 } else {
-    add_action( 'init', 'oet_pull_quotes_block_json_init' );
+    add_action( 'init', 'oet_button_block_json_init' );
 }
 
 // Render Callback of Button Block
 /**
  * Button
- * Shortcode Example : [btn button_color ='' text='' text_color='#ffffff']
+ * Shortcode Example : [oet_button text='Show more' button_color='#0000ff' text_color='#ffffff' font_face='Open Sans' font_size='14' font_weight='bold' url='http://navigationnorth.com/' new_window='yes']
  */
 function oet_button_block_display($attributes, $ajax = false){
     $html = "";
@@ -137,15 +137,24 @@ function oet_button_block_display($attributes, $ajax = false){
         if (!$ajax)
             $html = '<div class="oet-button-block">';
 
-        $shortcodeText = "[btn";
-        if (isset($speaker))
-            $shortcodeText .= " speaker='".$speaker."'";
-        if (isset($additionalInfo))
-            $shortcodeText .= " additional_info='".$additionalInfo."'";
+        $shortcodeText = "[oet_button";
+        if (isset($buttonColor))
+            $shortcodeText .= " button_color='".$buttonColor."'";
+        if (isset($text))
+            $shortcodeText .= " text='".$text."'";
+        if (isset($textColor))
+            $shortcodeText .= " text_color='".$textColor."'";
+        if (isset($fontFace))
+            $shortcodeText .= " font_face='".$fontFace."'";
+        if (isset($fontSize))
+            $shortcodeText .= " font_size='".$fontSize."'";
+        if (isset($fontWeight))
+            $shortcodeText .= " font_weight='".$fontWeight."'";
+        if (isset($url))
+            $shortcodeText .= " url='".$url."'";
+        if (isset($newWindow))
+            $shortcodeText .= " new_window='".($newWindow=="true"?'yes':'no')."'";
         $shortcodeText .= "]";
-        if (isset($content))
-            $shortcodeText .= $content;
-        $shortcodeText .= "[/btn]";
         
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
