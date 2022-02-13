@@ -91,7 +91,7 @@ function oet_featured_card_block_display($attributes, $ajax = false){
         if (isset($backgroundImage) && !empty($backgroundImage))
             $shortcodeText .= " background_image='".$backgroundImage."'";
         if (isset($url))
-            $shortcodeText .= " url='".$url."'";
+            $shortcodeText .= " button_link='".$url."'";
         $shortcodeText .= "]";
 
         if (isset($content))

@@ -7,12 +7,19 @@
 add_shortcode("disruptive_content", "disruptive_content_fun" );
 function disruptive_content_fun($attr, $content = null)
 {
-	if ( is_admin() ) {
+	if (is_array($attr)) {
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attr);
+	 		foreach($_arr as $key => $value) $$key = $value;
+	 	}
+ 		extract($attr);
+ 	}
+	/**--if ( is_admin() ) {
 		$_arr = getShortcodeAttr($attr);
 		foreach($_arr as $key => $value) $$key = $value;
 	}else{
 		extract($attr);
-	}
+	}--**/
 
 	$title=(!isset($title))?'':$title;
 	$button_color=(!isset($button_color))?'':$button_color;
@@ -144,13 +151,21 @@ function getShortcodeAttr($atts){
 add_shortcode('pull_quote', 'pull_quotethemefn');
 function pull_quotethemefn($atts, $content = null)
 {
-	if ( is_admin() ) {
+	if (is_array($atts)) {
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($atts);
+	 		foreach($_arr as $key => $value) $$key = $value;
+	 	}
+ 		extract($atts);
+ 	}
+	/**--if ( is_admin() ) {
 		$_arr = getShortcodeAttr($atts);
 		foreach($_arr as $key => $value) $$key = $value;
 	}else{
 		$speaker = $atts['speaker'];
 		$additional_info = $atts['additional_info'];
-	}
+		extract($atts);
+	}--**/
 
 
 	$return = '';
@@ -596,12 +611,14 @@ function share_the_toolkit_func($atts, $content = null)
 add_shortcode("recommended_resources","recommended_resources_func");
 function recommended_resources_func($attr, $content = null)
 {
-	if ( is_admin() ) {
-		$_arr = getShortcodeAttr($attr);
-		foreach($_arr as $key => $value) $$key = $value;
-	}else{
-		extract($attr);
+	if (is_array($attr)){
+		if ( is_admin() ) {
+			$_arr = getShortcodeAttr($attr);
+			foreach($_arr as $key => $value) $$key = $value;
+		}
+		extract($attr);	
 	}
+	
 	$return = '';
 	$regex = "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/";
 	if(isset($heading) && !empty($heading))
@@ -769,14 +786,14 @@ function recommended_resources_func($attr, $content = null)
  */
  add_shortcode("featured_content_box", "featured_content_box_func");
 
- function featured_content_box_func($attr, $content = null)
- {
-	 if ( is_admin() ) {
-	 		$_arr = getShortcodeAttr($attr);
-		 		foreach($_arr as $key => $value) $$key = $value;
-		 	}else{
-		 		extract($attr);
-		 	}
+ function featured_content_box_func($attr, $content = null){
+ 	if (is_array($attr)) {
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attr);
+	 		foreach($_arr as $key => $value) $$key = $value;
+	 	}
+ 		extract($attr);
+ 	}
 	 $title=(!isset($title))?'':$title;
 	 $align=(!isset($align))?'':$align;
 	 $return = '';
@@ -1015,7 +1032,6 @@ function parse_data_attributes( $data ) {
  */
  add_shortcode("oet_callout", "oet_callout_func");
  function oet_callout_func($attribute, $content = null) {
-
 	if (is_array($attribute)){
 		if ( is_admin() ) {
 	 		$_arr = getShortcodeAttr($attribute);
@@ -1088,15 +1104,14 @@ function parse_data_attributes( $data ) {
  */
  add_shortcode("publication_intro", "publication_intro_func");
  function publication_intro_func($attribute, $content = null) {
-
 	 if (is_array($attribute)){
  		if ( is_admin() ) {
  	 		$_arr = getShortcodeAttr($attribute);
  	 		foreach($_arr as $key => $value) $$key = $value;
- 	 	}else{
- 	 		extract($attribute);;
  	 	}
+ 	 	extract($attribute);;
  	}
+ 	
 	$title=(!isset($title))?'':$title;
 	$return = '<div class="intro">
 			<div class="intro-goal">
@@ -1214,36 +1229,35 @@ function oet_medium_func($attribute, $content = null){
  **/
 add_shortcode("oet_featured_card", "oet_featured_card_func");
 function oet_featured_card_func($attribute, $content = null){
- $return = "";
+	$return = "";
 
- if (is_array($attribute)){
+	if (is_array($attribute)){
 		if ( is_admin() ) {
 			$_arr = getShortcodeAttr($attribute);
 			foreach($_arr as $key => $value) $$key = $value;
-		}else{
-			extract($attribute);;
 		}
- }
+		extract($attribute);
+	}
 
- $default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
- $bg = (!empty($background_image))? $background_image: $default_bg;
- $_cont_lg = (strlen($content)>260)? substr($content,0,260).' ...': $content;
- $_cont_md = (strlen($content)>180)? substr($content,0,180).' ...': $content;
- $_cont_sm = (strlen($content)>110)? substr($content,0,110).' ...': $content;
- $_cont_xs = (strlen($content)>50)? substr($content,0,50).' ...': $content;
- $_button_link = (!empty($button_link))? $button_link: '#';
- $return = '<div class="adminoverridewidth col-md-4 col-sm-6 col-xs-12">
-	 						<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">
-	 							<div class="oet-featured-card-content-wrapper">
-			 						<h3 class="oet-featured-card-title">'.$title.'</h3>
-									<div class="oet-featured-card-desc">'.$content.'</div>
-				 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>
-								</div>
-		 					</div>
-						</div>';
+	$default_bg = get_stylesheet_directory_uri().'/images/oet_featured_card_bg.png';
+	$bg = (!empty($background_image))? $background_image: $default_bg;
+	$_cont_lg = (strlen($content)>260)? substr($content,0,260).' ...': $content;
+	$_cont_md = (strlen($content)>180)? substr($content,0,180).' ...': $content;
+	$_cont_sm = (strlen($content)>110)? substr($content,0,110).' ...': $content;
+	$_cont_xs = (strlen($content)>50)? substr($content,0,50).' ...': $content;
+	$_button_link = (!empty($button_link))? $button_link: '#';
+	$return = '<div class="adminoverridewidth col-md-4 col-sm-6 col-xs-12">
+							<div class="oet-featured-card" style="background-image: linear-gradient(rgba(44, 67, 116, 0.85), rgba(44, 67, 116, 0.85)), url('.$bg.');">
+								<div class="oet-featured-card-content-wrapper">
+		 						<h3 class="oet-featured-card-title">'.$title.'</h3>
+								<div class="oet-featured-card-desc">'.$content.'</div>
+			 					<a href="'.$_button_link.'" class="oet-featured-card-btn">'.$button_text.'&nbsp;→</a>
+							</div>
+	 					</div>
+					</div>';
 
 
- return $return;
+	return $return;
 }
 
 remove_filter( 'the_content', 'wpautop' );
