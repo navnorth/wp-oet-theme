@@ -1,15 +1,20 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "oet-block/oet-publication-intro-block",
+	"name": "oet-block/oet-pull-quotes-block",
 	"version": "0.1.0",
-	"title": "Publication Intro",
+	"title": "Pull Quotes",
 	"category": "oet-block-category",
-	"icon": "format-aside",
-	"description": "Displays publication introduction section on a page.",
-	"keywords": [ "OET", "publication", "publication intro" ],
+	"icon": "format-quote",
+	"description": "This block displays pull quotes box on a page.",
+	"supports": {
+		"html": false
+	},
 	"attributes": {
-        "title": {
+        "speaker": {
+            "type": "string"
+        },
+        "additionalInfo": {
             "type": "string"
         },
         "content": {
@@ -23,10 +28,7 @@
             "type": "string"
         }
     },
-	"supports": {
-		"html": false
-	},
-	"textdomain": "oet-publication-intro-block",
+	"textdomain": "oet-pull-quotes-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
