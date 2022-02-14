@@ -10,7 +10,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       oet-disruptive-content
  *
- * @package           oet-block
+ * @package           create-block
  */
 
 /**
@@ -22,6 +22,7 @@
  */
 function oet_disruptive_content_block_init(){
     $dir = dirname(__FILE__);
+    $dir_url = get_stylesheet_directory_uri().'/blocks/disruptive-content/';
     $version_58 = is_version_58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -34,7 +35,7 @@ function oet_disruptive_content_block_init(){
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oet-disruptive-content-block-editor',
-        plugins_url( $index_js, __FILE__ ),
+        $dir_url . $index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -44,7 +45,7 @@ function oet_disruptive_content_block_init(){
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-disruptive-content-block-editor',
-        plugins_url( $editor_css, __FILE__ ),
+        $dir_url . $editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
     );
@@ -52,7 +53,7 @@ function oet_disruptive_content_block_init(){
     $style_css = 'build/style-index.css';
     wp_register_style(
         'oet-disruptive-content-block-css',
-        plugins_url( $style_css, __FILE__ ),
+        $dir_url . $style_css,
         array(),
         filemtime( "$dir/$style_css" )
     );
@@ -67,6 +68,7 @@ function oet_disruptive_content_block_init(){
 
 function oet_disruptive_content_block_json_init() {
     $dir = dirname(__FILE__);
+    $dir_url = get_stylesheet_directory_uri().'/blocks/disruptive-content/';
     $version_58 = is_version_58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -78,18 +80,27 @@ function oet_disruptive_content_block_json_init() {
     $index_js     = 'build/index.js';
     $script_asset = require( $script_asset_path );
     wp_register_script(
-        'oet-featured-content-block-editor',
-        plugins_url( $index_js, __FILE__ ),
+        'oet-disruptive-content-block-editor',
+        $dir_url . $index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-featured-content-block-editor', 'oet_featured_content', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
+    wp_localize_script( 'oet-disruptive-content-block-editor', 'oet_disruptive_content', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => $version_58 ) );
+
+    $editor_css = 'build/index.css';
+    wp_register_style(
+        'oet-disruptive-content-block-editor',
+        $dir_url . $editor_css,
+        array(),
+        filemtime( "$dir/$editor_css" )
+    );
 
     register_block_type( 
         __DIR__ ,
         array(
-            'editor_script' => 'oet-featured-content-block-editor',
-            'render_callback' => 'oet_featured_content_block_display',
+            'editor_script' => 'oet-disruptive-content-block-editor',
+            'editor_style'  => 'oet-disruptive-content-block-editor',
+            'render_callback' => 'oet_disruptive_content_block_display',
         )
     );
 }
@@ -106,9 +117,9 @@ if (!function_exists('is_version_58')) {
 }
 
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_disruptive_content_block_init' );
-} else {
     add_action( 'init', 'oet_disruptive_content_block_json_init' );
+} else {
+    add_action( 'init', 'oet_disruptive_content_block_init' );
 }
 
 
@@ -118,5 +129,43 @@ if ( is_version_58() ) {
  * Shortcode Example : [disruptive_content title='' main_text='' button_text='' button_color='' button_url='']
  */
 function oet_disruptive_content_block_display( $attributes, $ajax = false ){
-    print_r($attributes);
+    $html = "";
+    $shortcodeText = "";
+    if (!empty($attributes)) {
+        extract($attributes);
+        
+        if (!$ajax)
+            $html = '<div class="oet-disruptive-content-block">';
+
+        $shortcodeText = "[disruptive_content";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
+        if (isset($mainText))
+            $shortcodeText .= " main_text='".$mainText."'";
+        if (isset($buttonText))
+            $shortcodeText .= " button_text='".$buttonText."'";
+        if (isset($buttonColor))
+            $shortcodeText .= " button_color='".$buttonColor."'";
+        if (isset($buttonUrl))
+            $shortcodeText .= " button_url='".$buttonUrl."'";
+        $shortcodeText .= "]";
+        
+        if (isset($shortcodeText)){
+            $html .= do_shortcode($shortcodeText);
+        }
+
+        if (!$ajax)
+            $html .= '</div>';
+    }
+    
+    return $html;
 }
+
+// Display Pull Quotes Block Preview via Ajax
+function oet_ajax_display_disruptive_content_block(){
+    $shortcode = oet_disruptive_content_block_display($_POST['attributes'], true);
+    echo wpautop(stripslashes($shortcode));
+    die();
+}
+add_action( 'wp_ajax_display_disruptive_content', 'oet_ajax_display_disruptive_content_block' );
+add_action( 'wp_ajax_nopriv_display_disruptive_content', 'oet_ajax_display_disruptive_content_block' );

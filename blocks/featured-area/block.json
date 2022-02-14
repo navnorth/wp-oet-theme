@@ -1,29 +1,39 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "oet-block/oet-disruptive-content-block",
+	"name": "oet-block/oet-featured-area-block",
 	"version": "0.1.0",
-	"title": "Disruptive Content",
+	"title": "Featured Area",
 	"category": "oet-block-category",
-	"icon": "embed-post",
-	"description": "Displays disruptive content block on a page",
+	"icon": "welcome-view-site",
+	"description": "This block displays featured area section on the page.",
 	"supports": {
 		"html": false
 	},
 	"attributes": {
+        "heading": {
+            "type": "string"
+        },
+        "image": {
+            "type": "string",
+            "default": ""
+        },
+        "imageId": {
+            "type": "number",
+            "default": 0
+        },
+        "imageWidth": {
+            "type": "number",
+            "default": 0
+        },
+        "imageHeight": {
+            "type": "number",
+            "default": 0
+        },
         "title": {
             "type": "string"
         },
-        "mainText": {
-            "type": "string"
-        },
-        "buttonText": {
-            "type": "string"
-        },
-        "buttonColor": {
-            "type": "string"
-        },
-        "buttonUrl": {
+        "content": {
             "type": "string"
         },
         "isChanged": {
@@ -34,7 +44,7 @@
             "type": "string"
         }
     },
-	"textdomain": "oet-disruptive-content-block",
+	"textdomain": "oet-featured-area-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

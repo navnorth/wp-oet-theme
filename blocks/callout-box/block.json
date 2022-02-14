@@ -10,6 +10,34 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+        "type": {
+            "type": "string",
+            "default": "checkmark"
+        },
+        "width": {
+            "type": "number",
+            "default": 12
+        },
+        "color": {
+            "type": "string",
+            "default": "#00529f"
+        },
+        "alignment": {
+            "type": "string",
+            "default": "left"
+        },
+        "content": {
+            "type": "string"
+        },
+        "isChanged": {
+            "type": "boolean",
+            "default": false
+        },
+        "blockId": {
+            "type": "string"
+        }
+    },
 	"textdomain": "oet-callout-box-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
