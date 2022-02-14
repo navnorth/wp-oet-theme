@@ -828,13 +828,13 @@ function recommended_resources_func($attr, $content = null)
  add_shortcode("oet_button", "button_func");
  function button_func($attr, $content = null) {
 
-
-	if ( is_admin() ) {
-		$_arr = getShortcodeAttr($attr);
-		foreach($_arr as $key => $value) $$key = $value;
-	}else{
-		extract($attr);
-	}
+ 	if (is_array($attr)) {
+ 		if ( is_admin() ) {
+ 			$_arr = getShortcodeAttr($attr);
+	 		foreach($_arr as $key => $value) $$key = $value;
+	 	}
+ 		extract($attr);
+ 	}
 
 	//Checks if content is provided otherwise display the text attribute as button text
 	$buttonText = (isset($text) && !empty($text)) ? $text : "Button";
@@ -1036,9 +1036,8 @@ function parse_data_attributes( $data ) {
 		if ( is_admin() ) {
 	 		$_arr = getShortcodeAttr($attribute);
 	 		foreach($_arr as $key => $value) $$key = $value;
-	 	}else{
-	 		extract($attribute);;
 	 	}
+	 	extract($attribute);;
 	}
 	$class_attrs = array("pull-out-box");
 	$style =  "";

@@ -113,6 +113,11 @@ require_once( OET_THEME_PATH . '/blocks/callout-box/init.php' );
 **/
 require_once( OET_THEME_PATH . '/blocks/disruptive-content/init.php' );
 
+/**
+* OET Button Block
+**/
+require_once( OET_THEME_PATH . '/blocks/button/init.php' );
+
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 /**
