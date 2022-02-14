@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Oet Featured Area
+ * Plugin Name:       OET Featured Area
  * Description:       Example block written with ESNext standard and JSX support – build step required.
  * Requires at least: 5.8
  * Requires PHP:      7.0
@@ -138,10 +138,12 @@ function oet_featured_area_block_display($attributes, $ajax = false){
             $html = '<div class="oet-featured-area-block">';
 
         $shortcodeText = "[oet_featured_area";
-        if (isset($speaker))
-            $shortcodeText .= " speaker='".$speaker."'";
-        if (isset($additionalInfo))
-            $shortcodeText .= " additional_info='".$additionalInfo."'";
+        if (isset($heading))
+            $shortcodeText .= " heading='".$heading."'";
+        if (isset($image))
+            $shortcodeText .= " image='".$image."'";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
         $shortcodeText .= "]";
         if (isset($content))
             $shortcodeText .= $content;
