@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Oet Story Embed
+ * Plugin Name:       OET Story Embed
  * Description:       Example block written with ESNext standard and JSX support – build step required.
  * Requires at least: 5.8
  * Requires PHP:      7.0
@@ -118,12 +118,50 @@ if (!function_exists('is_version_58')) {
 
 // Checks WP version to register block via block json if version is 5.8 or later
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_story_embed_block_json_init' );
-} else {
     add_action( 'init', 'oet_story_embed_block_init' );
+} else {
+    add_action( 'init', 'oet_story_embed_block_json_init' );
+}
+
+function oet_add_stories_route(){
+    register_rest_route(
+        'oet/v2',
+        'stories',
+        array(  'methods'=>'GET',
+            'callback'=>'oet_story_embed_get_stories',
+            'permission_callback' => function(){
+                return current_user_can('edit_posts');
+            }
+        )
+    );
+}
+add_action( 'rest_api_init' , 'oet_add_stories_route' );
+
+function oet_story_embed_get_stories(){
+    $story_posts = array();
+    $args = array(
+            'post_type'         => 'stories',
+            'post_status'       => 'publish',
+            'posts_per_page'    => -1,
+            'orderby'           => 'title',
+            'order'             => 'asc'
+        );
+
+    $stories = new WP_Query($args);
+
+    if (count($stories->posts)>0){
+        foreach($stories->posts as $story){
+            $story_posts[] = array('value'=> $story->ID, 'label' => $story->post_title);
+        }
+    }
+    return $story_posts;
 }
 
 // Render Callback of Story Embed Block
+/**
+ * Story Embed
+ * Shortcode Example : [oet_story id='2376' width='6' alignment='' callout_color='' callout_type='' title='']Content[/oet_story]
+ */
 function oet_story_embed_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
@@ -133,7 +171,7 @@ function oet_story_embed_block_display($attributes, $ajax = false){
         if (!$ajax)
             $html = '<div class="oet-pull-quotes-block">';
 
-        $shortcodeText = "[pull_quote";
+        $shortcodeText = "[oet_story";
         if (isset($speaker))
             $shortcodeText .= " speaker='".$speaker."'";
         if (isset($additionalInfo))
@@ -141,7 +179,7 @@ function oet_story_embed_block_display($attributes, $ajax = false){
         $shortcodeText .= "]";
         if (isset($content))
             $shortcodeText .= $content;
-        $shortcodeText .= "[/pull_quote]";
+        $shortcodeText .= "[/oet_story]";
         
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
