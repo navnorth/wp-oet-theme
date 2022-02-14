@@ -127,8 +127,8 @@ function oet_callout_box_block_display( $attributes, $ajax = false ){
             $html = '<div class="oet-callout-box-block">';
 
         $shortcodeText = "[oet_callout";
-        if (isset($title))
-            $shortcodeText .= " title='".$title."'";
+        if (isset($type))
+            $shortcodeText .= " type='".$type."'";
         if (isset($width))
             $shortcodeText .= " width='".$width."'";
         if (isset($color))
@@ -151,3 +151,12 @@ function oet_callout_box_block_display( $attributes, $ajax = false ){
     return $html;
 }
 
+
+// Display Callout Box Block Preview via Ajax
+function oet_ajax_display_callout_box_block(){
+    $shortcode = oet_callout_box_block_display($_POST['attributes'], true);
+    echo wpautop(stripslashes($shortcode));
+    die();
+}
+add_action( 'wp_ajax_display_callout_box', 'oet_ajax_display_callout_box_block' );
+add_action( 'wp_ajax_nopriv_display_callout_box', 'oet_ajax_display_callout_box_block' );
