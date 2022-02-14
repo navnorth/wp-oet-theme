@@ -94,12 +94,21 @@ function oet_button_block_json_init() {
         filemtime( "$dir/$editor_css" )
     );
 
+    $style_css = 'build/style-index.css';
+    wp_register_style(
+        'oet-button-block-style',
+        plugins_url( $style_css, __FILE__ ),
+        array(),
+        filemtime( "$dir/$style_css" )
+    );
+
 
     register_block_type( 
         __DIR__ ,
         array(
             'editor_script' => 'oet-button-block-editor',
             'editor_style'  => 'oet-button-block-editor-style',
+            'style'         => 'oet-button-block-style',
             'render_callback' => 'oet_button_block_display',
         )
     );
