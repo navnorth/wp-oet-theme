@@ -10,6 +10,30 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+        "title": {
+            "type": "string"
+        },
+        "mainText": {
+            "type": "string"
+        },
+        "buttonText": {
+            "type": "string"
+        },
+        "buttonColor": {
+            "type": "string"
+        },
+        "buttonUrl": {
+            "type": "string"
+        },
+        "isChanged": {
+            "type": "boolean",
+            "default": false
+        },
+        "blockId": {
+            "type": "string"
+        }
+    },
 	"textdomain": "oet-disruptive-content-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
