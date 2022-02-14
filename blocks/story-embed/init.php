@@ -150,6 +150,7 @@ function oet_story_embed_get_stories(){
     $stories = new WP_Query($args);
 
     if (count($stories->posts)>0){
+        $story_posts[] = array('value'=> 0, 'label' => 'Select a story');
         foreach($stories->posts as $story){
             $story_posts[] = array('value'=> $story->ID, 'label' => $story->post_title);
         }
@@ -165,6 +166,7 @@ function oet_story_embed_get_stories(){
 function oet_story_embed_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
+
     if (!empty($attributes)) {
         extract($attributes);
         
@@ -172,10 +174,22 @@ function oet_story_embed_block_display($attributes, $ajax = false){
             $html = '<div class="oet-pull-quotes-block">';
 
         $shortcodeText = "[oet_story";
-        if (isset($speaker))
-            $shortcodeText .= " speaker='".$speaker."'";
-        if (isset($additionalInfo))
-            $shortcodeText .= " additional_info='".$additionalInfo."'";
+        if (isset($storyId))
+            $shortcodeText .= " id='".$storyId."'";
+        if (isset($title))
+            $shortcodeText .= " title='".$title."'";
+        if (isset($width))
+            $shortcodeText .= " width='".$width."'";
+        else 
+            $shortcodeText .= " width='6'";
+        if (isset($alignment))
+            $shortcodeText .= " alignment='".$alignment."'";
+        if (isset($calloutColor))
+            $shortcodeText .= " callout_color='".$calloutColor."'";
+        if (isset($calloutType))
+            $shortcodeText .= " callout_type='".$calloutType."'";
+        else
+            $shortcodeText .= " callout_type='checkmark'";
         $shortcodeText .= "]";
         if (isset($content))
             $shortcodeText .= $content;
