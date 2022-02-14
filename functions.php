@@ -98,6 +98,11 @@ require_once( OET_THEME_PATH . '/blocks/pull-quotes/init.php' );
 **/
 require_once( OET_THEME_PATH . '/blocks/featured-card/init.php' );
 
+/**
+* OET Featured Area Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-area/init.php' );
+
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 /**

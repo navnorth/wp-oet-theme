@@ -554,10 +554,10 @@ function oet_featured_area_descrptn($attr, $content = null)
 		if ( is_admin() ) {
 			$_arr = getShortcodeAttr($attr);
 			foreach($_arr as $key => $value) $$key = $value;
-		}else{
-			extract($attr);
 		}
+		extract($attr);
 	}
+
 	$return = '';
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 lft_sid_mtr">';
 			$return .= '<div class="col-md-12 lft_sid_mtr">';
