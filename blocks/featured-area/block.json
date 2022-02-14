@@ -1,31 +1,37 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "oet-block/oet-callout-box-block",
+	"name": "oet-block/oet-featured-area-block",
 	"version": "0.1.0",
-	"title": "Callout Box",
+	"title": "Featured Area",
 	"category": "oet-block-category",
-	"icon": "admin-comments",
-	"description": "Displays callout box on a page",
+	"icon": "welcome-view-site",
+	"description": "This block displays featured area section on the page.",
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-        "type": {
-            "type": "string",
-            "default": "checkmark"
+        "heading": {
+            "type": "string"
         },
-        "width": {
+        "image": {
+            "type": "string",
+            "default": ""
+        },
+        "imageId": {
             "type": "number",
-            "default": 12
+            "default": 0
         },
-        "color": {
-            "type": "string",
-            "default": "#00529f"
+        "imageWidth": {
+            "type": "number",
+            "default": 0
         },
-        "alignment": {
-            "type": "string",
-            "default": "left"
+        "imageHeight": {
+            "type": "number",
+            "default": 0
+        },
+        "title": {
+            "type": "string"
         },
         "content": {
             "type": "string"
@@ -38,7 +44,7 @@
             "type": "string"
         }
     },
-	"textdomain": "oet-callout-box-block",
+	"textdomain": "oet-featured-area-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
