@@ -1,34 +1,44 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "oet-block/oet-callout-box-block",
+	"name": "oet-block/oet-button-block",
 	"version": "0.1.0",
-	"title": "Callout Box",
+	"title": "Button",
 	"category": "oet-block-category",
-	"icon": "admin-comments",
-	"description": "Displays callout box on a page",
+	"icon": "button",
+	"description": "Displays button on a page",
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-        "type": {
+        "buttonColor": {
             "type": "string",
-            "default": "checkmark"
+            "default": "#e57200"
         },
-        "width": {
-            "type": "number",
-            "default": 12
-        },
-        "color": {
-            "type": "string",
-            "default": "#00529f"
-        },
-        "alignment": {
-            "type": "string",
-            "default": "left"
-        },
-        "content": {
+        "text": {
             "type": "string"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "fontFace": {
+            "type": "string"
+        },
+        "fontSize": {
+            "type": "number",
+            "default": 19
+        },
+        "fontWeight": {
+            "type": "string",
+            "default": "normal"
+        },
+        "url": {
+            "type": "string"
+        },
+        "newWindow": {
+            "type": "string",
+            "default": false
         },
         "isChanged": {
             "type": "boolean",
@@ -38,7 +48,7 @@
             "type": "string"
         }
     },
-	"textdomain": "oet-callout-box-block",
+	"textdomain": "oet-button-block",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
