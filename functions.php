@@ -93,6 +93,36 @@ require_once( OET_THEME_PATH . '/blocks/featured-content/init.php' );
 **/
 require_once( OET_THEME_PATH . '/blocks/pull-quotes/init.php' );
 
+/**
+* OET Featured Card Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-card/init.php' );
+
+/**
+* OET Featured Area Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-area/init.php' );
+
+/**
+* OET Callout Box Block
+**/
+require_once( OET_THEME_PATH . '/blocks/callout-box/init.php' );
+
+/**
+* OET Disruptive Content Block
+**/
+require_once( OET_THEME_PATH . '/blocks/disruptive-content/init.php' );
+
+/**
+* OET Button Block
+**/
+require_once( OET_THEME_PATH . '/blocks/button/init.php' );
+
+/**
+* OET Story Embed Block
+**/
+require_once( OET_THEME_PATH . '/blocks/story-embed/init.php' );
+
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
 /**

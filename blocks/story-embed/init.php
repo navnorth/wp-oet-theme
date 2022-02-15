@@ -22,6 +22,7 @@
  */
 function oet_story_embed_block_init(){
     $dir = dirname(__FILE__);
+    $dir_url = get_stylesheet_directory_uri().'/blocks/story-embed/';
     $version_58 = is_version_58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -34,7 +35,7 @@ function oet_story_embed_block_init(){
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oet-story-embed-block-editor',
-        plugins_url( $index_js, __FILE__ ),
+        $dir_url . $index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -44,7 +45,7 @@ function oet_story_embed_block_init(){
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-story-embed-block-editor-style',
-        plugins_url( $editor_css, __FILE__ ),
+        $dir_url . $editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
     );
@@ -52,7 +53,7 @@ function oet_story_embed_block_init(){
     $style_css = 'build/style-index.css';
     wp_register_style(
         'oet-story-embed-block-style',
-        plugins_url( $style_css, __FILE__ ),
+        $dir_url . $style_css,
         array(),
         filemtime( "$dir/$style_css" )
     );
@@ -68,6 +69,7 @@ function oet_story_embed_block_init(){
 // Register Block via block.json
 function oet_story_embed_block_json_init() {
     $dir = dirname(__FILE__);
+    $dir_url = get_stylesheet_directory_uri().'/blocks/story-embed/';
     $version_58 = is_version_58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -80,7 +82,7 @@ function oet_story_embed_block_json_init() {
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oet-story-embed-block-editor',
-        plugins_url( $index_js, __FILE__ ),
+        $dir_url . $index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -89,7 +91,7 @@ function oet_story_embed_block_json_init() {
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-story-embed-block-editor-style',
-        plugins_url( $editor_css, __FILE__ ),
+        $dir_url . $editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
     );
@@ -118,9 +120,9 @@ if (!function_exists('is_version_58')) {
 
 // Checks WP version to register block via block json if version is 5.8 or later
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_story_embed_block_init' );
-} else {
     add_action( 'init', 'oet_story_embed_block_json_init' );
+} else {
+    add_action( 'init', 'oet_story_embed_block_init' );
 }
 
 function oet_add_stories_route(){
