@@ -22,6 +22,7 @@
  */
 function oet_button_block_init(){
     $dir = dirname(__FILE__);
+    $dir_url = get_stylesheet_directory_uri().'/blocks/button/';
     $version_58 = is_version_58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -34,7 +35,7 @@ function oet_button_block_init(){
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oet-button-block-editor',
-        plugins_url( $index_js, __FILE__ ),
+        $dir_url . $index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -44,7 +45,7 @@ function oet_button_block_init(){
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-button-block-editor-style',
-        plugins_url( $editor_css, __FILE__ ),
+        $dir_url . $editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
     );
@@ -52,7 +53,7 @@ function oet_button_block_init(){
     $style_css = 'build/style-index.css';
     wp_register_style(
         'oet-button-block-style',
-        plugins_url( $style_css, __FILE__ ),
+        $dir_url . $style_css,
         array(),
         filemtime( "$dir/$style_css" )
     );
@@ -68,6 +69,7 @@ function oet_button_block_init(){
 // Register Block via block.json
 function oet_button_block_json_init() {
     $dir = dirname(__FILE__);
+    $dir_url = get_stylesheet_directory_uri().'/blocks/button/';
     $version_58 = is_version_58();
 
     $script_asset_path = "$dir/build/index.asset.php";
@@ -80,7 +82,7 @@ function oet_button_block_json_init() {
     $script_asset = require( $script_asset_path );
     wp_register_script(
         'oet-button-block-editor',
-        plugins_url( $index_js, __FILE__ ),
+        $dir_url . $index_js,
         $script_asset['dependencies'],
         $script_asset['version']
     );
@@ -89,9 +91,17 @@ function oet_button_block_json_init() {
     $editor_css = 'build/index.css';
     wp_register_style(
         'oet-button-block-editor-style',
-        plugins_url( $editor_css, __FILE__ ),
+        $dir_url . $editor_css,
         array(),
         filemtime( "$dir/$editor_css" )
+    );
+
+    $style_css = 'build/style-index.css';
+    wp_register_style(
+        'oet-button-block-style',
+        $dir_url . $style_css,
+        array(),
+        filemtime( "$dir/$style_css" )
     );
 
 
@@ -100,6 +110,7 @@ function oet_button_block_json_init() {
         array(
             'editor_script' => 'oet-button-block-editor',
             'editor_style'  => 'oet-button-block-editor-style',
+            'style'         => 'oet-button-block-style',
             'render_callback' => 'oet_button_block_display',
         )
     );
@@ -118,15 +129,15 @@ if (!function_exists('is_version_58')) {
 
 // Checks WP version to register block via block json if version is 5.8 or later
 if ( is_version_58() ) {
-    add_action( 'init', 'oet_pull_quotes_block_init' );
+    add_action( 'init', 'oet_button_block_json_init' );
 } else {
-    add_action( 'init', 'oet_pull_quotes_block_json_init' );
+    add_action( 'init', 'oet_button_block_init' );
 }
 
 // Render Callback of Button Block
 /**
  * Button
- * Shortcode Example : [btn button_color ='' text='' text_color='#ffffff']
+ * Shortcode Example : [oet_button text='Show more' button_color='#0000ff' text_color='#ffffff' font_face='Open Sans' font_size='14' font_weight='bold' url='http://navigationnorth.com/' new_window='yes']
  */
 function oet_button_block_display($attributes, $ajax = false){
     $html = "";
@@ -137,15 +148,24 @@ function oet_button_block_display($attributes, $ajax = false){
         if (!$ajax)
             $html = '<div class="oet-button-block">';
 
-        $shortcodeText = "[btn";
-        if (isset($speaker))
-            $shortcodeText .= " speaker='".$speaker."'";
-        if (isset($additionalInfo))
-            $shortcodeText .= " additional_info='".$additionalInfo."'";
+        $shortcodeText = "[oet_button";
+        if (isset($buttonColor))
+            $shortcodeText .= " button_color='".$buttonColor."'";
+        if (isset($text))
+            $shortcodeText .= " text='".$text."'";
+        if (isset($textColor))
+            $shortcodeText .= " text_color='".$textColor."'";
+        if (isset($fontFace))
+            $shortcodeText .= " font_face='".$fontFace."'";
+        if (isset($fontSize))
+            $shortcodeText .= " font_size='".$fontSize."'";
+        if (isset($fontWeight))
+            $shortcodeText .= " font_weight='".$fontWeight."'";
+        if (isset($url))
+            $shortcodeText .= " url='".$url."'";
+        if (isset($newWindow))
+            $shortcodeText .= " new_window='".($newWindow=="true"?'yes':'no')."'";
         $shortcodeText .= "]";
-        if (isset($content))
-            $shortcodeText .= $content;
-        $shortcodeText .= "[/btn]";
         
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
