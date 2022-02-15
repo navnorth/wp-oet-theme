@@ -171,7 +171,7 @@ function oet_story_embed_block_display($attributes, $ajax = false){
         extract($attributes);
         
         if (!$ajax)
-            $html = '<div class="oet-pull-quotes-block">';
+            $html = '<div class="oet-story-embed-block">';
 
         $shortcodeText = "[oet_story";
         if (isset($storyId))
