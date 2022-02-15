@@ -134,6 +134,16 @@ function oet_add_stories_route(){
             }
         )
     );
+    register_rest_route(
+        'oet/v2',
+        '/story/(?P<id>\d+)',
+        array(  'methods'=>'GET',
+            'callback'=>'oet_story_embed_get_story',
+            'permission_callback' => function(){
+                return current_user_can('edit_posts');
+            }
+        )
+    );
 }
 add_action( 'rest_api_init' , 'oet_add_stories_route' );
 
@@ -156,6 +166,39 @@ function oet_story_embed_get_stories(){
         }
     }
     return $story_posts;
+}
+
+function oet_story_embed_get_story($data){
+    $story_post = array();
+    $args = array(
+            'post_type'         => 'stories',
+            'post_status'       => 'publish',
+            'posts_per_page'    => -1,
+            'orderby'           => 'title',
+            'order'             => 'asc',
+            'p'                 => $data['id']
+        );
+
+    $stories = new WP_Query($args);
+
+    if (count($stories->posts)>0){
+        foreach($stories->posts as $story){
+            $excerpt = "";
+            $story_post['id'] = $story->ID;
+            $story_post['title'] = $story->post_title;
+
+            if (function_exists('display_story_excerpt')){
+                $excerpt = display_story_excerpt($data['id'], 300);
+            }
+
+            if (strlen($excerpt)<=0) {
+                $excerpt = get_excerpt_by_id($data['id']);
+            }
+
+            $story_post['content'] = $excerpt;
+        }
+    }
+    return $story_post;
 }
 
 // Render Callback of Story Embed Block
