@@ -149,7 +149,7 @@ function oet_featured_card_block_display($attributes, $ajax = false){
 // Display Featured Card Block Preview via Ajax
 function oet_ajax_display_featured_card_block(){
     $shortcode = oet_featured_card_block_display($_POST['attributes'], true);
-    echo $shortcode;
+    echo wpautop(stripslashes($shortcode));
     die();
 }
 add_action( 'wp_ajax_display_featured_card', 'oet_ajax_display_featured_card_block' );
