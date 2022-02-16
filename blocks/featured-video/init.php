@@ -77,20 +77,20 @@ function oet_video_block_display( $attributes , $ajax = false ) {
         if (!$ajax)
             $html .= '<div class="oet-video-block">';
         $shortcodeText = "[featured_video";
-        if (isset($attributes['heading']))
-            $shortcodeText .= sprintf(" heading='%s'",$attributes['heading']);
-        if (isset($attributes['description'])){
-            if ($attributes['description']=="")
-                $shortcodeText .= " description='Edit video description'";
+        if (isset($videoId))
+            $shortcodeText .= ' videoid="'.$videoId.'"';
+        if (isset($heading))
+            $shortcodeText .= ' heading="'.$heading.'"';
+        if (isset($description)){
+            if ($description=="")
+                $shortcodeText .= ' description="Edit video description"';
             else
-                $shortcodeText .= sprintf(" description='%s'",$attributes['description']);
+                $shortcodeText .= ' description="'.$description.'"';
         }
-        if (isset($attributes['height']))
-            $shortcodeText .= sprintf(" height='%s'",$attributes['height']);
-        if (isset($attributes['videoId']))
-            $shortcodeText .= sprintf(" videoid='%s'",$attributes['videoId']);
+        if (isset($height))
+            $shortcodeText .= ' height="'.$height.'"';
         $shortcodeText .= "]";
-        $shortcodeText = htmlspecialchars($shortcodeText);
+        
         if (isset($shortcodeText)){
             $html .= do_shortcode($shortcodeText);
         }
@@ -107,8 +107,8 @@ function oet_ajax_display_video_block(){
     if (!oet_yt_exists($videoId))
         echo json_encode(array('error'=> true, "message"=>"Video does not exist."));
     else {
-        $shortcode = oet_video_block_display($_POST, true);
-        echo $shortcode;
+        $shortcode = oet_video_block_display($_POST['attributes'], true);
+        echo stripslashes($shortcode);
     }
     die();
 }
