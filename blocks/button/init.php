@@ -150,8 +150,6 @@ function oet_button_block_display($attributes, $ajax = false){
             $html = '<div class="oet-button-block">';
 
         $shortcodeText = "[oet_button";
-        if (isset($blockId))
-            $shortcodeText .= " blockId='".$blockId."'";
         if (isset($buttonColor))
             $shortcodeText .= " button_color='".$buttonColor."'";
         if (isset($text))
