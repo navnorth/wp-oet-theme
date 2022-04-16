@@ -22,6 +22,14 @@
             "type": "string",
             "default": "#ffffff"
         },
+        "hoverColor": {
+            "type": "string",
+            "default": "#E89F57"
+        },
+        "hoverTextColor": {
+            "type": "string",
+            "default": "#000000"
+        },
         "fontFace": {
             "type": "string"
         },
@@ -37,8 +45,7 @@
             "type": "string"
         },
         "newWindow": {
-            "type": "string",
-            "default": false
+            "type": "boolean"
         },
         "isChanged": {
             "type": "boolean",

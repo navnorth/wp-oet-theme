@@ -827,7 +827,10 @@ function recommended_resources_func($attr, $content = null)
  */
  add_shortcode("oet_button", "button_func");
  function button_func($attr, $content = null) {
-
+ 	// Default Hover BG and Text Color
+ 	$hColor = "";
+ 	$hTextColor = "";
+ 	
  	if (is_array($attr)) {
  		if ( is_admin() ) {
  			$_arr = getShortcodeAttr($attr);
@@ -835,7 +838,7 @@ function recommended_resources_func($attr, $content = null)
 	 	}
  		extract($attr);
  	}
-
+ 	
 	//Checks if content is provided otherwise display the text attribute as button text
 	$buttonText = (isset($text) && !empty($text)) ? $text : "Button";
 	if (!empty($content)) {
@@ -873,14 +876,22 @@ function recommended_resources_func($attr, $content = null)
 		$btnStyle .= "font-weight:".$font_weight.";";
 	}
 
+	if (isset($hovercolor) && !empty($hovercolor)){
+		$hColor = $hovercolor;
+	}
+
+	if (isset($hovertextcolor) && !empty($hovertextcolor)){
+		$hTextColor = $hovertextcolor;
+	}
+
 	//Button Code
-	$buttonStart = "<span class='btn custom-button' style='".$btnStyle."'>";
+	$buttonStart = "<span class='btn custom-button' style='".$btnStyle."' onmouseover='this.style.setProperty(\"color\",\"".$hTextColor."\",\"important\");this.style.setProperty(\"background-color\",\"".$hColor."\",\"important\");' onmouseout='this.style.color=\"".$text_color."\";this.style.backgroundColor=\"".$button_color."\"'>";
 	$buttonEnd = "</span>";
 
 	$return = $buttonStart.$buttonText.$buttonEnd;
 
 	if (isset($url) && !empty($url)) {
-		$urlStart = "<a href='".$url."'";
+		$urlStart = "<a href='".$url."' onfocus='this.querySelector(\".custom-button\").style.setProperty(\"color\",\"".$hTextColor."\",\"important\");this.querySelector(\".custom-button\").style.setProperty(\"background-color\",\"".$hColor."\",\"important\");' onblur='this.querySelector(\".custom-button\").style.color=\"".$text_color."\";this.querySelector(\".custom-button\").style.backgroundColor=\"".$button_color."\"'";
 		if (isset($new_window) && ($new_window=="yes")) {
 			$urlStart .= " onmousedown='ga(\"send\", \"event\",\"Outbound\",window.location.pathname,\"".$url."\",0);' target='_blank'";
 		}

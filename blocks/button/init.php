@@ -142,6 +142,7 @@ if ( is_version_58() ) {
 function oet_button_block_display($attributes, $ajax = false){
     $html = "";
     $shortcodeText = "";
+    
     if (!empty($attributes)) {
         extract($attributes);
         
@@ -149,6 +150,8 @@ function oet_button_block_display($attributes, $ajax = false){
             $html = '<div class="oet-button-block">';
 
         $shortcodeText = "[oet_button";
+        if (isset($blockId))
+            $shortcodeText .= " blockId='".$blockId."'";
         if (isset($buttonColor))
             $shortcodeText .= " button_color='".$buttonColor."'";
         if (isset($text))
@@ -165,6 +168,10 @@ function oet_button_block_display($attributes, $ajax = false){
             $shortcodeText .= " url='".$url."'";
         if (isset($newWindow))
             $shortcodeText .= " new_window='".($newWindow=="true"?'yes':'no')."'";
+        if (isset($hoverColor))
+            $shortcodeText .= " hovercolor='".$hoverColor."'";
+        if (isset($hoverTextColor))
+            $shortcodeText .= " hovertextcolor='".$hoverTextColor."'";
         $shortcodeText .= "]";
         
         if (isset($shortcodeText)){
