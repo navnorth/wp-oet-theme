@@ -357,14 +357,19 @@ jQuery( document ).ready(function() {
     var postbox = jQuery(this).closest('.postbox');
     var closed = postbox.hasClass('closed');
     
+    jQuery(this).closest('.postbox-header').trigger('click');
+    
     // manual condition instead of toggle as the latter doesn't work on test server
-    console.log(expand);
-    if (expand===true)
+    /**--console.log(expand);
+    if (expand===true){
+      console.log('expanded');
       postbox.find('.inside').hide();
-    else if (expand===false)
+    } else if (expand===false){
+      console.log('collapsed');
       postbox.find('.inside').show();
-    jQuery(this).attr('aria-expanded',(expand===true)?'false':'true');
-    postbox.toggleClass('closed');
+    }
+    jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
+    postbox.toggleClass('closed'); -- **/
   })
 })
 
