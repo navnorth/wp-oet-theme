@@ -1,4 +1,4 @@
-var OETtemplateswitched = false;j
+var OETtemplateswitched = false;
 function showPublicationMetabox(){
   var select = jQuery('#page_template,.edit-post-sidebar .components-panel__body.is-opened [data-wp-component="Flex"].components-select-control .components-select-control__input, .edit-post-sidebar .components-panel__body.is-opened .editor-page-attributes__template.components-select-control .components-select-control__input');
   if (select.length){
