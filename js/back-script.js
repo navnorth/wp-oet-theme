@@ -6,6 +6,13 @@ function showPublicationMetabox(){
   }
 }
 
+function showSortIcons(){
+  if (jQuery('.postbox').length>1){
+      jQuery('.postbox .postbox-header button.handle-order-higher').removeClass('hidden');
+      jQuery('.postbox .postbox-header button.handle-order-lower').removeClass('hidden');
+  }
+}
+
 jQuery( document ).ready(function() {
   //enable/disable during load
   if (jQuery("#enablecontactslider").is(':checked')) {
@@ -75,6 +82,7 @@ jQuery( document ).ready(function() {
   });
   
   setTimeout(function(){ showPublicationMetabox(); },500);
+  setTimeout(showSortIcons,1000);
 });
 
 
