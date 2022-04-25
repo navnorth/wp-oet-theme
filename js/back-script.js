@@ -1,9 +1,11 @@
+var OETtemplateswitched = false;j
 function showPublicationMetabox(){
   var select = jQuery('#page_template,.edit-post-sidebar .components-panel__body.is-opened [data-wp-component="Flex"].components-select-control .components-select-control__input, .edit-post-sidebar .components-panel__body.is-opened .editor-page-attributes__template.components-select-control .components-select-control__input');
   if (select.length){
     jQuery('#story_metabox').toggle(select.val()=='page-templates/story-template.php');
     jQuery('#publication_metabox').toggle(select.val()=='page-templates/publication-template.php');
   }
+  window.OETtemplateswitched = true;
 }
 
 function showSortIcons(){
@@ -365,19 +367,20 @@ jQuery( document ).ready(function() {
     var postbox = jQuery(this).closest('.postbox');
     var closed = postbox.hasClass('closed');
     
-    jQuery(this).closest('.postbox-header').trigger('click');
-    
-    // manual condition instead of toggle as the latter doesn't work on test server
-    /**--console.log(expand);
-    if (expand===true){
-      console.log('expanded');
-      postbox.find('.inside').hide();
-    } else if (expand===false){
-      console.log('collapsed');
-      postbox.find('.inside').show();
+    if (window.OETtemplateswitched===true){
+      // manual condition instead of toggle as the latter doesn't work on test server
+      if (expand===true){
+        console.log('expanded');
+        postbox.find('.inside').hide();
+      } else if (expand===false){
+        console.log('collapsed');
+        postbox.find('.inside').show();
+      }
+      jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
+      postbox.toggleClass('closed');
+    } else {
+      jQuery(this).closest('.postbox-header').trigger('click');
     }
-    jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
-    postbox.toggleClass('closed'); -- **/
   })
 })
 
