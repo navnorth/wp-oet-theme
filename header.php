@@ -112,7 +112,7 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
             </div>
 
-            <span class="navi_icn fa-stack"><i class="fa fa-bars fa-stack-2x"></i></span>
+            <span class="navi_icn fa-stack" aria-label="menu"><i class="fa fa-bars fa-stack-2x"></i></span>
             <div class="responsiv-menu">
             	<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'responsiv-menu_ul' ) ); ?>
             </div>
