@@ -914,29 +914,27 @@ function oet_display_acf_home_content(){
                         $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
                         $_target = ($subfieldlayout['oet_acf_trendingnow_link_target'])?'_blank':'_self';
                         ?>
+                        <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
+                      
                           <div class="oet-trending-image pad">
-                            <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
                             <?php if(empty($oetacf_TrendingnowLink)){ ?>
                               <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
                               <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
                             <?php }else{ ?>
                               <a href="<?php echo $oetacf_TrendingnowLink; ?>" target="<?php echo $_target ?>">
                                 <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
-                              </a>
-                              <a href="<?php echo $oetacf_TrendingnowLink; ?>" target="<?php echo $_target ?>">
                                 <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
                               </a>
                             <?php } ?>
                           </div>
                           
-                          
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
-                          <div class="oet-trending-button pad">
+                          <!--<div class="oet-trending-button pad">
                           <?php $subButtonLinkText = trim($subfieldlayout['oet_acf_homepage_trendingnow_bottom_link_text']);?>
                           <?php if(!empty($subButtonLinkText) && !empty($oetacf_TrendingnowLink)){ ?>
                             <a href="<?php echo $_url; ?>" target="<?php echo $_target ?>"><?php echo $subButtonLinkText; ?>&nbsp;<i class="fa fa-chevron-right"></i></a>
                           <?php } ?>
-                          </div>
+                          </div>-->
                         <?php
                       endif;
                     }

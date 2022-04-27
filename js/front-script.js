@@ -96,7 +96,18 @@ jQuery( document ).ready(function() {
 		//jQuery('*[class=".slideshow_container_style-light .slideshow_pagination ul li"]').css('background', 'url(../images/slider_pager.png) 0 0 no-repeat !important;');
 		console.log('Replaced SVG images with PNG');
 	}
-  
+
+	/** enable keyboard navigation on mobile menu **/
+  if ($(window).width() < 769) {
+		$('.navi_bg .navi_icn').attr('tabindex','0');
+		$('.navi_bg .navi_icn').attr('aria-label','menu');
+		$('.navi_bg .navi_icn').on("keypress", function(e) {
+			var code = e.keyCode || e.which;
+			if(code == 13 || code == 32) { 
+   				$('.navi_bg .navi_icn .fa-bars').trigger('click');
+ 			}
+		});
+	}
 });
 
 /*
