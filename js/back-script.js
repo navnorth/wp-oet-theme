@@ -364,8 +364,11 @@ jQuery( document ).ready(function() {
   jQuery(document).on('click','button.handlediv',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
     var expand = jQuery(this).attr('aria-expanded');
+    console.log(expand);
     var postbox = jQuery(this).closest('.postbox');
+    console.log(postbox);
     var closed = postbox.hasClass('closed');
+    console.log(closed);
     jQuery(this).closest('.postbox-header').trigger('click');
 
     /**--console.log(window.OETtemplateswitched);
