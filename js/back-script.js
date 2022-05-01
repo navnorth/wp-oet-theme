@@ -371,6 +371,10 @@ jQuery( document ).ready(function() {
     console.log(closed);
     jQuery(this).closest('.postbox-header').trigger('click');
     console.log(window.OETtemplateswitched);
+    if (window.OETtemplateswitched){
+      jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
+      postbox.toggleClass('closed');
+    }
     window.OETtemplateswitched = false;
     /**--console.log(window.OETtemplateswitched);
     if (window.OETtemplateswitched===true){
