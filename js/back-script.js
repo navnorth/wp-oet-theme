@@ -370,7 +370,7 @@ jQuery( document ).ready(function() {
     var closed = postbox.hasClass('closed');
     console.log(closed);
     jQuery(this).closest('.postbox-header').trigger('click');
-
+    console.log(window.OETtemplateswitched);
     /**--console.log(window.OETtemplateswitched);
     if (window.OETtemplateswitched===true){
       // manual condition instead of toggle as the latter doesn't work on test server
