@@ -371,6 +371,7 @@ jQuery( document ).ready(function() {
     console.log(closed);
     jQuery(this).closest('.postbox-header').trigger('click');
     console.log(window.OETtemplateswitched);
+    window.OETtemplateswitched = false;
     /**--console.log(window.OETtemplateswitched);
     if (window.OETtemplateswitched===true){
       // manual condition instead of toggle as the latter doesn't work on test server
