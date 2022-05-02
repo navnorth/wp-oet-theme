@@ -150,10 +150,16 @@ if ( function_exists( 'add_image_size' ) ) {
 
 function theme_back_enqueue_script()
 {
+	$version58 = false;
+	if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '>=' ) ) {
+        $version58 = true;
+    } 
+
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
-  wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+  	wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 
+  		'ajaxurl' => admin_url( 'admin-ajax.php'), 'version_58' =>  $version58 ) );
 
   if(get_admin_page_title() == 'Edit Page'){
     wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
