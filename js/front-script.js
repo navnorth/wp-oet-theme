@@ -98,13 +98,13 @@ jQuery( document ).ready(function() {
 	}
 
 	/** enable keyboard navigation on mobile menu **/
-  if ($(window).width() < 769) {
-		$('.navi_bg .navi_icn').attr('tabindex','0');
-		$('.navi_bg .navi_icn').attr('aria-label','menu');
-		$('.navi_bg .navi_icn').on("keypress", function(e) {
+  if (jQuery(window).width() < 769) {
+		jQuery('.navi_bg .navi_icn').attr('tabindex','0');
+		jQuery('.navi_bg .navi_icn').attr('aria-label','menu');
+		jQuery('.navi_bg .navi_icn').on("keypress", function(e) {
 			var code = e.keyCode || e.which;
 			if(code == 13 || code == 32) { 
-   				$('.navi_bg .navi_icn .fa-bars').trigger('click');
+   				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
  			}
 		});
 	}

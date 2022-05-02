@@ -922,7 +922,7 @@ function oet_display_acf_home_content(){
                               <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
                             <?php }else{ ?>
                               <a href="<?php echo $oetacf_TrendingnowLink; ?>" target="<?php echo $_target ?>">
-                                <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
+                                <img src="<?php echo $_img; ?>" alt="" />
                                 <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
                               </a>
                             <?php } ?>
