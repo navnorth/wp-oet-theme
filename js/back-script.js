@@ -364,18 +364,20 @@ jQuery( document ).ready(function() {
   jQuery(document).on('click','button.handlediv',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
     var expand = jQuery(this).attr('aria-expanded');
-    console.log(expand);
     var postbox = jQuery(this).closest('.postbox');
     console.log(postbox);
     var closed = postbox.hasClass('closed');
     console.log(closed);
-    jQuery(this).closest('.postbox-header').trigger('click');
-    console.log(window.OETtemplateswitched);
-    if (window.OETtemplateswitched){
+    if (oet_ajax_object.version_58)
+      jQuery(this).closest('.postbox-header').trigger('click');
+    else {
+      if (closed){
+        postbox.removeClass('closed');
+      } else {
+        postbox.addClass('closed');
+      }
       jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
-      postbox.toggleClass('closed');
     }
-    window.OETtemplateswitched = false;
     /**--console.log(window.OETtemplateswitched);
     if (window.OETtemplateswitched===true){
       // manual condition instead of toggle as the latter doesn't work on test server
