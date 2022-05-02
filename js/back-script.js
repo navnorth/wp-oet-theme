@@ -371,7 +371,7 @@ jQuery( document ).ready(function() {
     if (oet_ajax_object.version_58)
       jQuery(this).closest('.postbox-header').trigger('click');
     else {
-      if (closed){
+      if (postbox.hasClass('closed')){
         postbox.removeClass('closed');
       } else {
         postbox.addClass('closed');
