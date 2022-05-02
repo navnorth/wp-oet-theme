@@ -365,17 +365,13 @@ jQuery( document ).ready(function() {
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
     var expand = jQuery(this).attr('aria-expanded');
     var postbox = jQuery(this).closest('.postbox');
-    console.log(postbox);
     var closed = postbox.hasClass('closed');
-    console.log(closed);
     if (oet_ajax_object.version_58)
       jQuery(this).closest('.postbox-header').trigger('click');
     else {
-      if (postbox.hasClass('closed')){
-        postbox.removeClass('closed');
-      } else {
-        postbox.addClass('closed');
-      }
+      console.log(postbox);
+      console.log(closed);
+      postbox.toggleClass('closed');
       jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
     }
     /**--console.log(window.OETtemplateswitched);
