@@ -369,31 +369,16 @@ jQuery( document ).ready(function() {
     if (oet_ajax_object.version_58)
       jQuery(this).closest('.postbox-header').trigger('click');
     else {
-      if (expand==true){
+      if (expand==='true'){
         postbox.find('.inside').hide();
-        jQuery(this).attr('aria-expanded',false);
+        jQuery(this).attr('aria-expanded','false');
         jQuery(this).closest('.postbox').addClass('closed');
       } else {
         postbox.find('.inside').show();
-        jQuery(this).attr('aria-expanded',true);
+        jQuery(this).attr('aria-expanded','true');
         jQuery(this).closest('.postbox').removeClass('closed');
       }
     }
-    /**--console.log(window.OETtemplateswitched);
-    if (window.OETtemplateswitched===true){
-      // manual condition instead of toggle as the latter doesn't work on test server
-      if (expand===true){
-        console.log('expanded');
-        postbox.find('.inside').hide();
-      } else if (expand===false){
-        console.log('collapsed');
-        postbox.find('.inside').show();
-      }
-      jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
-      postbox.toggleClass('closed');
-    } else {
-      
-    }--**/
   })
 })
 
