@@ -359,27 +359,65 @@ jQuery( document ).ready(function() {
       jQuery('.oese-prohibitedpermalinktext.notice').remove();
     });    
   })
-  
+})
+
+//Bind load event
+jQuery(window).load(function(){
+  oet_template_metaboxes_event_unbind_func();
+
+  jQuery('.edit-post-layout__metaboxes').show();
   //Override fix for metabox expand/collapse
   jQuery(document).on('mouseup','button.handlediv',function(e){
     var expand = jQuery(this).attr('aria-expanded');
     var postbox = jQuery(this).closest('.postbox');
     var closed = postbox.hasClass('closed');
-    if (oet_ajax_object.version_58)
-      jQuery(this).closest('.postbox-header').trigger('click');
-    else {
-      console.log(expand);
-      if (expand=='true'){
-        postbox.find('.inside').hide();
-        jQuery(this).attr('aria-expanded','false');
-        jQuery(this).closest('.postbox').addClass('closed');
-      } else {
-        postbox.find('.inside').show();
-        jQuery(this).attr('aria-expanded','true');
-        jQuery(this).closest('.postbox').removeClass('closed');
-      }
+
+    if (expand=='true'){
+      postbox.find('.inside').hide();
+      jQuery(this).attr('aria-expanded','false');
+      jQuery(this).closest('.postbox').addClass('closed');
+    } else {
+      postbox.find('.inside').show();
+      jQuery(this).attr('aria-expanded','true');
+      jQuery(this).closest('.postbox').removeClass('closed');
     }
   })
+
+  function oet_template_metaboxes_event_unbind_func(){
+    jQuery('button.handlediv').off('click');
+    jQuery('.toggle-indicator').off('click');
+    jQuery('h2.hndle.ui-sortable-handle').off('click');
+  }
+
+  //Reinstantiate unbind on template change
+  function oet_initiate_template_switch_observer(){
+    setTimeout(function(){
+      oet_create_template_switch_observer(document.querySelector(".edit-post-layout__metaboxes"));
+    }, 500);
+  }
+
+  var oet_template_change_observer_func = new MutationObserver(function(mutations) {
+    oet_template_metaboxes_event_unbind_func();
+  });
+
+  function oet_create_template_switch_observer(elementToObserve){
+    oet_template_change_observer_func.observe(elementToObserve, {childList: true, subtree: true });
+  }
+
+  let templateSwitchCounter = 0;
+  let templateSwitchInterval = setInterval(function(){
+    templateSwitchCounter++;
+    if(jQuery('.edit-post-layout__metaboxes').length){
+      clearInterval(templateSwitchInterval);
+      oet_initiate_template_switch_observer();
+      jQuery('.handle-order-lower').removeClass('hidden');
+      jQuery('.handle-order-higher').removeClass('hidden');
+    }else{
+      if(templateSwitchCounter > 1800){
+        clearInterval(templateSwitchInterval);
+      }
+    }
+  }, 100);
 })
 
 var itvl;
