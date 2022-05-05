@@ -362,13 +362,13 @@ jQuery( document ).ready(function() {
   
   //Override fix for metabox expand/collapse
   jQuery(document).on('mouseup','button.handlediv',function(e){
-    e.preventDefault ? e.preventDefault() : e.returnValue = false;
     var expand = jQuery(this).attr('aria-expanded');
     var postbox = jQuery(this).closest('.postbox');
     var closed = postbox.hasClass('closed');
     if (oet_ajax_object.version_58)
       jQuery(this).closest('.postbox-header').trigger('click');
     else {
+      console.log(expand);
       if (expand==='true'){
         postbox.find('.inside').hide();
         jQuery(this).attr('aria-expanded','false');
