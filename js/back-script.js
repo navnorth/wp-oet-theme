@@ -369,7 +369,7 @@ jQuery( document ).ready(function() {
       jQuery(this).closest('.postbox-header').trigger('click');
     else {
       console.log(expand);
-      if (expand==='true'){
+      if (expand=='true'){
         postbox.find('.inside').hide();
         jQuery(this).attr('aria-expanded','false');
         jQuery(this).closest('.postbox').addClass('closed');
