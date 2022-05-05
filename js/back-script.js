@@ -361,7 +361,7 @@ jQuery( document ).ready(function() {
   })
   
   //Override fix for metabox expand/collapse
-  jQuery(document).on('click','button.handlediv',function(e){
+  jQuery(document).on('mouseup','button.handlediv',function(e){
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
     var expand = jQuery(this).attr('aria-expanded');
     var postbox = jQuery(this).closest('.postbox');
@@ -369,10 +369,15 @@ jQuery( document ).ready(function() {
     if (oet_ajax_object.version_58)
       jQuery(this).closest('.postbox-header').trigger('click');
     else {
-      console.log(postbox);
-      console.log(closed);
-      postbox.toggleClass('closed');
-      jQuery(this).attr('aria-expanded',(expand==true)?'false':'true');
+      if (expand==true){
+        postbox.find('.inside').hide();
+        jQuery(this).attr('aria-expanded',false);
+        jQuery(this).closest('.postbox').addClass('closed');
+      } else {
+        postbox.find('.inside').show();
+        jQuery(this).attr('aria-expanded',true);
+        jQuery(this).closest('.postbox').removeClass('closed');
+      }
     }
     /**--console.log(window.OETtemplateswitched);
     if (window.OETtemplateswitched===true){
