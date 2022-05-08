@@ -36,8 +36,7 @@ function oet_acf_slider_enqueue() {
       <div id="oet-acf-slider">
         <div class="oet-acf-slider-content-wrapper" style="display:none;">
           <div class="oet-acf-slider-wrapper">
-            <!--<div aria-atomic="true" class="oet-acf-slider-accessibility-liveregion visuallyhidden"></div>-->
-            <div class="oet-acf-slider-accessibility-liveregion visuallyhidden"></div>
+            <div aria-atomic="true" class="oet-acf-slider-accessibility-liveregion visuallyhidden"></div>
             <ul class="slider-list">
       
             <?php
