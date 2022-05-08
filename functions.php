@@ -935,12 +935,6 @@ function oet_display_acf_home_content(){
                           </div>
                           
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
-                          <!--<div class="oet-trending-button pad">
-                          <?php $subButtonLinkText = trim($subfieldlayout['oet_acf_homepage_trendingnow_bottom_link_text']);?>
-                          <?php if(!empty($subButtonLinkText) && !empty($oetacf_TrendingnowLink)){ ?>
-                            <a href="<?php echo $_url; ?>" target="<?php echo $_target ?>"><?php echo $subButtonLinkText; ?>&nbsp;<i class="fa fa-chevron-right"></i></a>
-                          <?php } ?>
-                          </div>-->
                         <?php
                       endif;
                     }
