@@ -62,11 +62,9 @@
             jQuery('.bullet:first').addClass('active');
             jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').addClass('active');
             jQuery('.bullet:first').attr('aria-label','Slide 1 current slide');
-            var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content h2.oet_acf_slide_title').text();
-            console.log(indice);
-            console.log(oese_acf_slider_image_alt_text);
+            var oet_slide_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content h2.oet_acf_slide_title').text();
             //var oese_acf_slider_liveregion_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.oet_acf_slide_title').text();
-            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oese_acf_slider_image_alt_text+ ' link');
+            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oet_slide_title+ ' link');
         }
 
         function next_slide(idx) {
@@ -78,10 +76,11 @@
             }
             left_animate(indice);
             show_slide(indice,'nxt');
-            var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content a img').attr('alt');
+            //var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content a img').attr('alt');
+            var oet_slide_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content h2.oet_acf_slide_title').text();
             //var oese_acf_slider_liveregion_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.oet_acf_slide_title').text();
             //jQuery('.oet-acf-slider-accessibility-liveregion').html('next slide button: ' +oese_acf_slider_liveregion_title);
-            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oese_acf_slider_image_alt_text+ ' link');
+            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oet_slide_title+ ' link');
             progress = 0;
         }
         
@@ -94,9 +93,10 @@
             }
             left_animate(indice);
             show_slide(indice,'nxt');
-            var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content a img').attr('alt');
+            var oet_slide_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content h2.oet_acf_slide_title').text();
+            //var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content a img').attr('alt');
             //var oese_acf_slider_liveregion_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.oet_acf_slide_title').text();
-            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oese_acf_slider_image_alt_text+ ' link');
+            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oet_slide_title+ ' link');
             progress = 0;
         }
 
@@ -109,10 +109,11 @@
             }
             right_animate(indice);
             show_slide(indice,'prv');
-            var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content a img').attr('alt');
+            //var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content a img').attr('alt');
+            var oet_slide_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content h2.oet_acf_slide_title').text();
             //var oese_acf_slider_liveregion_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.oet_acf_slide_title').text();
             //jQuery('.oet-acf-slider-accessibility-liveregion').html('previous slide button: '+oese_acf_slider_liveregion_title);
-            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oese_acf_slider_image_alt_text+ ' link');
+            jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oet_slide_title+ ' link');
             progress = 0;
         }
 
