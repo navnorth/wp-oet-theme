@@ -63,6 +63,8 @@
             jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').addClass('active');
             jQuery('.bullet:first').attr('aria-label','Slide 1 current slide');
             var oese_acf_slider_image_alt_text = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('.oet_acf_slide_content img').attr('alt');
+            console.log(indice);
+            console.log(oese_acf_slider_image_alt_text);
             //var oese_acf_slider_liveregion_title = jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').find('h3.oet_acf_slide_title').text();
             jQuery('.oet-acf-slider-wrapper').attr('aria-label','current slide: ' +oese_acf_slider_image_alt_text+ ' link');
         }
