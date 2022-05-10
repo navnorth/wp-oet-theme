@@ -746,8 +746,6 @@ function oet_display_slides($page_id){
 			    <?php if (!empty($buttonUrl)) { ?>
 			    <p class="oet-slide-button-row"><a href="<?php echo $buttonUrl; ?>" class="oet-slide-button"><?php echo $buttonText; ?>&nbsp;&nbsp;→</a></p>
 			    <?php } ?>
-			    <!--<div class="slideshow_title"><a href="<?php echo $buttonUrl; ?>" target="_self" ><?php echo $headerText; ?></a></div>
-			    <div class="slideshow_description"><a href="<?php echo $buttonUrl; ?>" target="_self" ><?php echo $description; ?></a></div>-->
 			</div>
 		    </div><div style="clear: both;"></div>
 		</div>
