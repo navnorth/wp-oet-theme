@@ -304,5 +304,6 @@
       jQuery('.oet-acf-slider-accessibility-liveregion').html('slide '+(parseInt(oese_acf_slider_liveregion_idx) + 1) +' button: '+oese_acf_slider_image_alt_text);
     });
     */
+    jQuery('#oet-acf-slider .oet-acf-slider-accessibility-liveregion').removeAttr('aria-live');
     
 })(jQuery);
