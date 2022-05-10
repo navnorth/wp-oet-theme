@@ -58,7 +58,7 @@
 
         function show_first_slide() {
             jQuery('.oet_acf_slide').hide();
-            jQuery('.oet_acf_slide:first').show();
+            jQuery('.oet_acf_slide:first').show().removeAttr('aria-hidden');
             jQuery('.bullet:first').addClass('active');
             jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').addClass('active');
             jQuery('.bullet:first').attr('aria-label','Slide 1 current slide');
@@ -121,7 +121,9 @@
             remove_activeClass( $('.bullet') );    
             jQuery('.oet_acf_slide').each(function(i, obj) {
                 let $this = jQuery(this);
+                $this.attr('aria-hidden','true');
                 if ( $this.data('index') == indice ) {
+                    $this.removeAttr('aria-hidden');
                     $('.bullet[data-index="'+indice+'"').addClass('active');
                     jQuery('.oet-acf-slider-wrapper ul.slider-list li').removeClass('active');
                     jQuery('.oet-acf-slider-wrapper ul.slider-list li[data-index="'+indice+'"]').addClass('active');
@@ -245,7 +247,6 @@
     })
     jQuery(document).on('blur','#oet-acf-slider .slider-button', function(){
           gbl_pause = false;
-          jQuery('.oet-acf-slider-wrapper').attr('aria-label','');
           //jQuery('#oet-acf-slider').removeClass('focused');
     })
     jQuery(document).on('click','#oet-acf-slider .slider-button', function(){
