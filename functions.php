@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "2.0.1" );
+define( "OET_THEME_VERSION", "2.1.0" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -919,7 +919,7 @@ function oet_display_acf_home_content(){
                         $_target = ($subfieldlayout['oet_acf_trendingnow_link_target'])?'_blank':'_self';
                         ?>
                         <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
-                      
+
                           <div class="oet-trending-image pad">
                             <?php if(empty($oetacf_TrendingnowLink)){ ?>
                               <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
@@ -931,7 +931,7 @@ function oet_display_acf_home_content(){
                               </a>
                             <?php } ?>
                           </div>
-                          
+
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
                         <?php
                       endif;
