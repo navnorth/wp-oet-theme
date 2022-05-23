@@ -919,7 +919,7 @@ function oet_display_acf_home_content(){
                         $_target = ($subfieldlayout['oet_acf_trendingnow_link_target'])?'_blank':'_self';
                         ?>
                         <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
-
+                      
                           <div class="oet-trending-image pad">
                             <?php if(empty($oetacf_TrendingnowLink)){ ?>
                               <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
@@ -931,7 +931,7 @@ function oet_display_acf_home_content(){
                               </a>
                             <?php } ?>
                           </div>
-
+                          
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
                         <?php
                       endif;
@@ -1160,7 +1160,7 @@ function oet_disable_rest_api_from_public($result){
     }
 
     // Return an error if user is not logged in.
-    if ( ! is_user_logged_in() ) {
+    if ( ! is_user_logged_in() || false !== stripos( $_SERVER['REQUEST_URI'], 'wp-json/contact-form-7' ) ) {
         return new WP_Error(
             'rest_not_logged_in',
             __( 'You are not currently logged in.' ),
