@@ -1161,7 +1161,7 @@ function oet_disable_rest_api_from_public($result){
 
     // Return an error if user is not logged in.
     if ( ! is_user_logged_in() || false !== strpos( esc_url_raw($_SERVER['REQUEST_URI']), '\/wp-json\/contact-form-7' ) ) {
-    	var_dump(strpos( esc_url_raw($_SERVER['REQUEST_URI']), '\/wp-json\/contact-form-7' ));
+    	var_dump(strpos( esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/contact-form-7' ));
         return new WP_Error(
             'rest_not_logged_in',
             __( 'You are not currently logged in.' . esc_url_raw($_SERVER['REQUEST_URI']) . ' ' .print_r(strpos( esc_url_raw($_SERVER['REQUEST_URI']), '\/wp-json\/contact-form-7' ),true) ),
