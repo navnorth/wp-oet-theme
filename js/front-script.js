@@ -108,6 +108,13 @@ jQuery( document ).ready(function() {
  			}
 		});
 	}
+
+	/** hide recaptcha logo when contact form slider is disabled **/
+	if (jQuery('#contact-slider').length || jQuery('.wpcf7').length){
+		jQuery('.grecaptcha-badge').css({'visibilty':'visible','opacity':'1'})
+	} else {
+		jQuery('.grecaptcha-badge').css({'visibilty':'hidden','opacity':'0'})
+	}
 });
 
 /*
