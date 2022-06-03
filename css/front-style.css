@@ -874,7 +874,7 @@ body.home .stry-video-avatar-table{ top: 40% !important; }
 .medium-wrapper p.mfooter a.imglink:focus{
     outline: 1px solid #fff;
 }
-.grecaptcha-badge { visibility: hidden; opacity:0 }
+.grecaptcha-badge { opacity:0 }
 @media screen and (max-width: 1200px) {
 	.stry-video-avatar-table { top: 20% !important; } 
 }
