@@ -116,7 +116,7 @@ jQuery( document ).ready(function() {
 		} else {
 			jQuery('.grecaptcha-badge').css({'visibilty':'hidden','opacity':'0'})
 		}
-	},1000);
+	},500);
 });
 
 /*
