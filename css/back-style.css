@@ -716,3 +716,13 @@ input#secondary-save-post {float: left;}
     border-radius: 100%;
     margin-right: 5px;
 }
+.block-editor-writing-flow .oet_featured_item_block_wrapper .oet-shortcode .lft_sid_mtr h4.oet-featured-item-title {
+    font-size: 19px!important;
+    font-weight: 700!important;
+    margin-bottom: 2px!important;
+    margin-top: 0!important;
+    padding: 0!important;
+    color: #e57200!important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
