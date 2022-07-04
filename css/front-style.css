@@ -898,6 +898,10 @@ body.home .stry-video-avatar-table{ top: 40% !important; }
     padding: 0!important;
     border-bottom: none;
 }
+.pblctn_lft_sid_img_cntnr h2 {
+	color: #294179 !important;
+	font-size: 24px;
+}
 @media screen and (max-width: 1200px) {
 	.stry-video-avatar-table { top: 20% !important; } 
 }
