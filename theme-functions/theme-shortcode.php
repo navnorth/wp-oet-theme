@@ -214,7 +214,7 @@ function featured_item_func($attr, $content = null)
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr oese_featured_item">';
 	if(isset($heading) && !empty($heading))
 	{
-    	$return .= '<h4>'. $heading .'</h4>';
+    	$return .= '<h3>'. $heading .'</h3>';
 	}
 	$image_alt = (isset($image_alt) && !empty($image_alt))? $image_alt: '';
 	if(isset($image) && !empty($image))
@@ -232,11 +232,11 @@ function featured_item_func($attr, $content = null)
 	{
     	if(isset($url) && !empty($url))
 		{
-			$return .= '<p class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></p>';
+			$return .= '<h4 class="hdng_mtr"><a href="'. $url.'">'. $title .'</a></h4>';
 		}
 		else
 		{
-    		$return .= '<p class="hdng_mtr">'. $title .'</p>';
+    		$return .= '<h4 class="hdng_mtr">'. $title .'</h4>';
 		}
 	}
 	if(isset($date) && !empty($date))
@@ -303,7 +303,7 @@ function feature_video_func($attr, $content = null){
 	$return .= '<div class="col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr">';
 		if(isset($heading) && !empty($heading)){
 			$iframe_title .= ": ".$heading;
-			$return .= '<h4>'. $heading .'</h4>';
+			$return .= '<h3>'. $heading .'</h3>';
 		}
 		$return .= '<div class="col-md-12 col-sm-12 col-xs-12 vdo_bg">';	
 			$return .= oet_generate_modal_video($videoid, $id, $iframe_title, $origin, $count, $height, $apiurl);
@@ -564,7 +564,7 @@ function oet_featured_area_descrptn($attr, $content = null)
 
 			if(isset($heading) && !empty($heading))
 			{
-				$return .= '<h4>'. $heading .'</h4>';
+				$return .= '<h3>'. $heading .'</h3>';
 			}
 			if(isset($image) && !empty($image))
 			{
@@ -572,7 +572,7 @@ function oet_featured_area_descrptn($attr, $content = null)
 			}
 			if(isset($title) && !empty($title))
 			{
-				$return .= '<p class="hdng_mtr">'. $title .'</p>';
+				$return .= '<h4 class="hdng_mtr">'. $title .'</h4>';
 			}
 			if(isset($content) && !empty($content))
 			{
@@ -1215,7 +1215,7 @@ function oet_medium_func($attribute, $content = null){
 		    <div class="medium" style="'.$background.''.$align.'">
 			<div class="medium-background">
 			    <div class="medium-wrapper"'.$textalignment.'>
-				<h2><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h2>
+				<h3><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h3>
 				<p>'.$description.'</p>
 				<p class="mfooter">';
 		$return .= $footer;
