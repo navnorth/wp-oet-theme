@@ -724,4 +724,5 @@ input#secondary-save-post {float: left;}
     padding: 0!important;
     color: #e57200!important;
     border-bottom: none !important;
+    padding-bottom: 0 !important;
 }
