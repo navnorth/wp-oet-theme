@@ -716,7 +716,7 @@ input#secondary-save-post {float: left;}
     border-radius: 100%;
     margin-right: 5px;
 }
-.oet_featured_item_block_wrapper h4.oet-featured-item-title {
+.block-editor-writing-flow .oet_featured_item_block_wrapper .oet-shortcode .lft_sid_mtr h4.oet-featured-item-title {
     font-size: 19px!important;
     font-weight: 700!important;
     margin-bottom: 2px!important;
