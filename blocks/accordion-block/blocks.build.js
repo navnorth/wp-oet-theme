@@ -235,7 +235,7 @@ registerBlockType("cgb/oet-accordion-block", {
                 id: "headingOne"
               },
               React.createElement(
-                "h5",
+                "h4",
                 {
                   class: "mb-0 oet-blk-accordion-title"
                 },
@@ -318,7 +318,7 @@ registerBlockType("cgb/oet-accordion-block", {
                 id: "headingOne"
               },
               React.createElement(
-                "h5",
+                "h4",
                 {
                   class: "mb-0 oet-blk-accordion-title"
                 },
