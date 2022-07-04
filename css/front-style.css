@@ -896,6 +896,7 @@ body.home .stry-video-avatar-table{ top: 40% !important; }
     margin-bottom: 2px!important;
     margin-top: 0!important;
     padding: 0!important;
+    border-bottom: none;
 }
 @media screen and (max-width: 1200px) {
 	.stry-video-avatar-table { top: 20% !important; } 
