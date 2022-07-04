@@ -623,7 +623,7 @@ function recommended_resources_func($attr, $content = null)
 	$regex = "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/";
 	if(isset($heading) && !empty($heading))
 	{
-		$return .= '<p class="pblctn_scl_icn_hedng">'. $heading.'</p>';
+		$return .= '<h3 class="pblctn_scl_icn_hedng">'. $heading.'</h3>';
 	}
 
 	if(isset($text1) && !empty($text1) && isset($src1) && !empty($src1) && isset($text2) && !empty($text2) && isset($src2) && !empty($src2) && isset($text3) && !empty($text3) && isset($src3) && !empty($src3))
