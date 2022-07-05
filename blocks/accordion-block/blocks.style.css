@@ -40,7 +40,7 @@
   border-radius: 0 !important;
   font-family: 'Work Sans', sans-serif;
   font-weight: bold;
-  font-size: 1.2em !important;
+  font-size: 16px !important;
   outline: unset;
   text-overflow: unset;
   white-space: pre-wrap;
@@ -78,7 +78,6 @@
 .oet-blk-accordion-header {
   padding: 0px !important;
 }
-h4.oet-blk-accordion-title { font-size:16px; }
 .oet-blk-accordion-title{
   margin:0px auto !important;
 }

@@ -153,12 +153,12 @@ function theme_back_enqueue_script()
 	$version58 = false;
 	if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '>=' ) ) {
         $version58 = true;
-    }
+    } 
 
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
-  	wp_localize_script( 'theme-back-script', 'oet_ajax_object', array(
+  	wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 
   		'ajaxurl' => admin_url( 'admin-ajax.php'), 'version_58' =>  $version58 ) );
 
   if(get_admin_page_title() == 'Edit Page'){
@@ -694,7 +694,7 @@ function oet_display_static_header($page_id){
     <div class="oet-acf-page-header"<?php echo $bgStyle; ?>>
 	<div class="oet-slide-wrapper">
 	    <div class="oet-acf-slide-box oet-acf-slide-1">
-		<h2 class="oet-acf-header-text"><?php echo $headerText; ?></h2>
+		<h1 class="oet-acf-header-text"><?php echo $headerText; ?></h1>
 		<?php if (!empty($description)){ ?>
 		<p><?php echo $description; ?></p>
 		<?php  } ?>
@@ -919,7 +919,7 @@ function oet_display_acf_home_content(){
                         $_target = ($subfieldlayout['oet_acf_trendingnow_link_target'])?'_blank':'_self';
                         ?>
                         <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
-
+                      
                           <div class="oet-trending-image pad">
                             <?php if(empty($oetacf_TrendingnowLink)){ ?>
                               <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
@@ -931,7 +931,7 @@ function oet_display_acf_home_content(){
                               </a>
                             <?php } ?>
                           </div>
-
+                          
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
                         <?php
                       endif;
@@ -1161,7 +1161,7 @@ function oet_disable_rest_api_from_public($result){
 
     if (false !== strpos( esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/contact-form-7' )) {
     	return $result;
-    }
+    } 
 
     // Return an error if user is not logged in.
     if ( ! is_user_logged_in() ) {
