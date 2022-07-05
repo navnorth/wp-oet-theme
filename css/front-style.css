@@ -699,9 +699,9 @@ h2.oet-acf-header-text,
 h1.oet-acf-header-text {
 	font-family: 'Work Sans', sans-serif;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 24px !important;
 	line-height: 28px;
-	color: #FFFFFF;
+	color: #FFFFFF !important;
 	margin-top:0; 
 }
 .oet-acf-page-header p {

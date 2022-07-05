@@ -47,7 +47,7 @@ body { padding-top: 15px; color: #000000 !important; font-family: 'Open Sans', s
 .hdng_mtr, .hdng_mtr a { font-size: 19px; color: #E57200; font-family: 'Work Sans', sans-serif !important; font-weight: bold; line-height:26px;}
 .hdng_mtr a:hover { cursor: pointer; }
 /*.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { font-size: 13px; margin-bottom: 0; margin-top: 40px}*/
-.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; }
+.rght_sid_mtr>.hdng_mtr, .hdng_mtr a { margin-bottom: 0; padding-bottom:5px; }
 .pblctn_right_sid_mtr .hdng_mtr { font-size: 13px; margin-bottom: 0; border-top: 1px solid #ccc; padding-top: 10px; width: 100%; margin-top: 5px}
 .pblctn_right_sid_mtr .hdng_mtr:first-child { border-top: none; margin-top: 0}
 .oet-recommended-resources-block h3.pblctn_scl_icn_hedng { font-size:20px; }
