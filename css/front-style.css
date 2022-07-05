@@ -695,7 +695,8 @@ ul.checkbox_list input {
 .oet-acf-slide-box p.oet-acf-slide-description i, .oet-acf-slide-box p.oet-acf-slide-description em { font-family: 'Open Sans', sans-serif; font-weight: 300;  font-style: italic; }
 .oet-acf-slide-box p.oet-acf-slide-description strong em, .oet-acf-slide-box p.oet-acf-slide-description em strong,
 .oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family: 'Open Sans', sans-serif; font-weight: bold; font-style: italic;  }
-h2.oet-acf-header-text {
+h2.oet-acf-header-text,
+h1.oet-acf-header-text {
 	font-family: 'Work Sans', sans-serif;
 	font-weight: bold;
 	font-size: 24px;
@@ -901,6 +902,14 @@ body.home .stry-video-avatar-table{ top: 40% !important; }
 .pblctn_lft_sid_img_cntnr h2 {
 	color: #294179 !important;
 	font-size: 24px;
+}
+.disruptive_content h3 {
+    font-size: 21px;
+    padding-bottom: 10px;
+}
+.disruptive_content .link_dwnlds a {
+	width: 85%;
+	margin-top: 3px !important;
 }
 @media screen and (max-width: 1200px) {
 	.stry-video-avatar-table { top: 20% !important; } 
