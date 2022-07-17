@@ -119,6 +119,8 @@ function oet_display_medium_embed($attributes, $ajax = false){
             $shortcodeText .= sprintf(" authorname='%s'",$attributes['authorname']);
         if (isset($attributes['authorlogo']) && $attributes['authorlogo']!=="")
             $shortcodeText .= sprintf(" authorlogo='%s'",$attributes['authorlogo']);
+        if (isset($attributes['heading']) && $attributes['heading']!=="")
+            $shortcodeText .= sprintf(" heading='%s'",$attributes['heading']);
         $shortcodeText .= "]";
 
         if (isset($shortcodeText)){
