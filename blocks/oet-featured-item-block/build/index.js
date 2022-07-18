@@ -413,18 +413,18 @@
                             { className: "oet_featured_item_block_wrapper" },
                             (0, o.createElement)(
                                 "div",
-                                { class: t.oetblkFeaturedItemButtonDisplay ? "oet-shortcode oet_featured_item_block oetblk-" + t.blockid : "oet-shortcode oet_featured_item_block oetblk-" + t.blockid + " hidebutton" },
+                                { className: t.oetblkFeaturedItemButtonDisplay ? "oet-shortcode oet_featured_item_block oetblk-" + t.blockid : "oet-shortcode oet_featured_item_block oetblk-" + t.blockid + " hidebutton" },
                                 (0, o.createElement)(
                                     "div",
-                                    { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
-                                    (0, o.createElement)(headingTag, { class: "oet_featured_item_header" }, t.oetblkFeaturedItemHeading),
+                                    { className: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
+                                    (0, o.createElement)(headingTag, { className: "oet_featured_item_header" }, t.oetblkFeaturedItemHeading),
                                     (0, o.createElement)(
                                         "div",
-                                        { class: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
-                                        t.mediaURL && (0, o.createElement)("img", { src: t.mediaURL, class: "featured_item_image oet-featured-item-image", alt: "" })
+                                        { className: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
+                                        t.mediaURL && (0, o.createElement)("img", { src: t.mediaURL, className: "featured_item_image oet-featured-item-image", alt: "" })
                                     ),
-                                    (0, o.createElement)(titleTag, { class: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle),
-                                    (0, o.createElement)(dateTag, { class: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate),
+                                    (0, o.createElement)(titleTag, { className: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle),
+                                    (0, o.createElement)(dateTag, { className: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate),
                                     (0, o.createElement)(r.InnerBlocks.Content, null)
                                 )
                             )
