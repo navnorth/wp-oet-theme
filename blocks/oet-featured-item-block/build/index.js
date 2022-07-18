@@ -7,46 +7,46 @@
                     t = JSON.parse(
                         '{"TN":"Featured Item","W3":"oet-block-category","qv":"pressthis","WL":"Add featured item block","Y4":{"blockid":{"type":"string"},"oetblkFeaturedItemHeading":{"type":"string"},"oetblkFeaturedItemTitle":{"type":"string"},"oetblkFeaturedItemDate":{"type":"string"},"oetblkFeaturedItemButtonDisplay":{"type":"boolean","default":true},"mediaID":{"type":"number","source":"attribute","attribute":"data-id","selector":"img"},"mediaURL":{"type":"string","source":"attribute","attribute":"src","selector":"img"},"thumbnail":{"type":"string","source":"attribute","attribute":"data-thumb","selector":"img"},"thumbnailsize":{"type":"integer"}}}'
                     ),
-                    jQuery = window.jQuery,
-                    o = window.wp.element,
-                    a = window.wp.i18n,
-                    r = window.wp.blockEditor,
-                    l = window.wp.components;
-                const i = ["image"];
+                    j = window.jQuery,
+                    a = window.wp.element,
+                    l = window.wp.i18n,
+                    o = window.wp.blockEditor,
+                    i = window.wp.components;
+                const r = ["image"];
                 function n(e) {
-                    let { mediaID: t, onSelect: a } = e;
-                    return (0, o.createElement)(
-                        r.MediaUploadCheck,
+                    let { mediaID: t, onSelect: l } = e;
+                    return (0, a.createElement)(
+                        o.MediaUploadCheck,
                         null,
-                        (0, o.createElement)(r.MediaUpload, {
-                            onSelect: a,
-                            allowedTypes: i,
+                        (0, a.createElement)(o.MediaUpload, {
+                            onSelect: l,
+                            allowedTypes: r,
                             value: t,
                             render: (e) => {
                                 let { open: t } = e;
-                                return (0, o.createElement)(l.Button, { onClick: t, className: "button button-large oet-featured-item-addedit-image-button noimage" }, "Upload Image");
+                                return (0, a.createElement)(i.Button, { onClick: t, className: "button button-large oet-featured-item-addedit-image-button noimage" }, "Upload Image");
                             },
                         })
                     );
                 }
-                function c(e) {
+                function d(e) {
                     const t = e.attributes,
-                        i = e.setAttributes;
-                    let c = window.oercurrBlocksJson ? (0, r.useBlockProps)() : "";
-                    function d(e) {
+                        r = e.setAttributes;
+                    let d = window.oercurrBlocksJson ? (0, o.useBlockProps)() : "";
+                    function c(e) {
                         e.map((e) => {
                             if ("oet-block/oet-featured-item-block" == e.name) {
                                 var t = "cb" + new Date().getTime(),
-                                    o = e.clientId;
-                                wp.data.select("core/block-editor").getBlockAttributes(o).blockid || wp.data.dispatch("core/block-editor").updateBlockAttributes(o, { blockid: t });
+                                    a = e.clientId;
+                                wp.data.select("core/block-editor").getBlockAttributes(a).blockid || wp.data.dispatch("core/block-editor").updateBlockAttributes(a, { blockid: t });
                             }
-                            e.innerBlocks.length > 0 && d(e.innerBlocks);
+                            e.innerBlocks.length > 0 && c(e.innerBlocks);
                         });
                     }
                     document.body.addEventListener("keydown", function (e) {
                         if ("Backspace" == e.key) {
                             let t = wp.data.select("core/block-editor").getSelectionStart();
-                            jQuery(e.target).closest(".oet_featured_item_block_wrapper").length && "offset" in t && 0 === t.offset && e.preventDefault();
+                            j(e.target).closest(".oet_featured_item_block_wrapper").length && "offset" in t && 0 === t.offset && e.preventDefault();
                         }
                     }),
                         wp.data
@@ -55,29 +55,26 @@
                             .map((e) => {
                                 if ("oet-block/oet-featured-item-block" == e.name) {
                                     var t = "cb" + new Date().getTime(),
-                                        o = e.clientId;
-                                    wp.data.select("core/block-editor").getBlockAttributes(o).blockid || wp.data.dispatch("core/block-editor").updateBlockAttributes(o, { blockid: t });
-                                } else ("core/group" != e.name && "core/columns" != e.name) || d(e.innerBlocks);
+                                        a = e.clientId;
+                                    wp.data.select("core/block-editor").getBlockAttributes(a).blockid || wp.data.dispatch("core/block-editor").updateBlockAttributes(a, { blockid: t });
+                                } else ("core/group" != e.name && "core/columns" != e.name) || c(e.innerBlocks);
                             });
-                    const u = new Date();
-                    let m = [];
-                    const headingLevels = [
-				      { value: 'h1', label: 'H1' },
-				      { value: 'h2', label: 'H2' },
-				      { value: 'h3', label: 'H3' },
-				      { value: 'h4', label: 'H4' },
-				      { value: 'h5', label: 'H5' },
-				      { value: 'h6', label: 'H6' }
-				    ];
-                    const headingTag = (t.oetblkHeadingTag==""?"h2":t.oetblkHeadingTag);
-                    const titleTag = (t.oetblkTitleTag==""?"h3":t.oetblkTitleTag);
-                    const dateTag = (t.oetblkDateTag==""?"h4":t.oetblkDateTag);
+                    new Date();
+                    let s = [];
+                    const u = [
+                        { value: "h1", label: "H1" },
+                        { value: "h2", label: "H2" },
+                        { value: "h3", label: "H3" },
+                        { value: "h4", label: "H4" },
+                        { value: "h5", label: "H5" },
+                        { value: "h6", label: "H6" },
+                    ];
                     return (
-                        (m = t.oetblkFeaturedItemButtonDisplay
+                        (s = t.oetblkFeaturedItemButtonDisplay
                             ? [
                                   [
-	                                  "core/paragraph",
-	                                  { placeholder: "Featured Item Description", className: "oet-featured-item-content oet-featured-item-content-ytr85g9wer", align: "left", textColor: "oet-color-pallete-black", fontSize: "normal" },
+                                      "core/paragraph",
+                                      { placeholder: "Featured Item Description", className: "oet-featured-item-content oet-featured-item-content-ytr85g9wer", align: "left", textColor: "oet-color-pallete-black", fontSize: "normal" },
                                   ],
                                   ["core/button", { className: "oet-featured-item-button oet-featured-item-button-ytr85g9wer", align: "left", text: "Button Text", backgroundColor: "oet-color-pallete-orange", textColor: "white" }],
                               ]
@@ -88,63 +85,63 @@
                                   ],
                                   ["core/button", { className: "oet-featured-item-button oet-featured-item-button-ytr85g9wer hidden", align: "left", text: "Button Text", backgroundColor: "oet-color-pallete-orange", textColor: "white" }],
                               ]),
-                        (0, o.createElement)(
+                        (0, a.createElement)(
                             "div",
-                            c,
-                            (0, o.createElement)(
+                            d,
+                            (0, a.createElement)(
                                 "div",
                                 { className: "oet_featured_item_block_wrapper" },
-                                (0, o.createElement)(
-                                    r.InspectorControls,
+                                (0, a.createElement)(
+                                    o.InspectorControls,
                                     null,
-                                    (0, o.createElement)(
+                                    (0, a.createElement)(
                                         PanelBody,
-                                        { title: (0, a.__)("Featured Item Block settings"), initialOpen: !0 },
-                                        (0, o.createElement)(
+                                        { title: (0, l.__)("Featured Item Block settings"), initialOpen: !0 },
+                                        (0, a.createElement)(
                                             "div",
-                                            { className: "oet_featured_item_inspector_wrapper" },
-                                            (0, o.createElement)(l.SelectControl, {
-                                                label: (0, a.__)("Heading Tag"),
+                                            { class: "oet_featured_item_inspector_wrapper" },
+                                            (0, a.createElement)(i.SelectControl, {
+                                                label: (0, l.__)("Heading Tag"),
                                                 value: t.oetblkHeadingTag,
-                                                options: headingLevels,
+                                                options: u,
                                                 onChange: (e) => {
-                                                    i({ oetblkHeadingTag: e });
+                                                    r({ oetblkHeadingTag: e });
                                                 },
                                             }),
-                                            (0, o.createElement)(l.SelectControl, {
-                                                label: (0, a.__)("Title Tag"),
+                                            (0, a.createElement)(i.SelectControl, {
+                                                label: (0, l.__)("Title Tag"),
                                                 value: t.oetblkTitleTag,
-                                                options: headingLevels,
+                                                options: u,
                                                 onChange: (e) => {
-                                                    i({ oetblkTitleTag: e });
+                                                    r({ oetblkTitleTag: e });
                                                 },
                                             }),
-                                            (0, o.createElement)(l.SelectControl, {
-                                                label: (0, a.__)("Publishing Date Tag"),
+                                            (0, a.createElement)(i.SelectControl, {
+                                                label: (0, l.__)("Publishing Date Tag"),
                                                 value: t.oetblkDateTag,
-                                                options: headingLevels,
+                                                options: u,
                                                 onChange: (e) => {
-                                                    i({ oetblkDateTag: e });
+                                                    r({ oetblkDateTag: e });
                                                 },
                                             }),
-                                            (0, o.createElement)(l.ToggleControl, {
-                                                label: (0, a.__)("Show Button"),
-                                                help: t.oetblkFeaturedItemButtonDisplay ? (0, a.__)("Show Featured Item Button", "five") : (0, a.__)("Hide Featured Item Button", "five"),
+                                            (0, a.createElement)(i.ToggleControl, {
+                                                label: (0, l.__)("Show Button"),
+                                                help: t.oetblkFeaturedItemButtonDisplay ? (0, l.__)("Show Featured Item Button", "five") : (0, l.__)("Hide Featured Item Button", "five"),
                                                 checked: !!t.oetblkFeaturedItemButtonDisplay,
                                                 onChange: (e) => {
-                                                    return (o = !t.oetblkFeaturedItemButtonDisplay), void i({ oetblkFeaturedItemButtonDisplay: o });
-                                                    var o;
+                                                    return (a = !t.oetblkFeaturedItemButtonDisplay), void r({ oetblkFeaturedItemButtonDisplay: a });
+                                                    var a;
                                                 },
                                             }),
                                             (() => {
                                                 if (t.mediaURL)
-                                                    return (0, o.createElement)(l.RangeControl, {
-                                                        label: (0, a.__)("Image Size"),
+                                                    return (0, a.createElement)(i.RangeControl, {
+                                                        label: (0, l.__)("Image Size"),
                                                         value: t.thumbnailsize,
                                                         onChange: (e) => {
-                                                            i({ thumbnailsize: e, titlesize: 100 - e });
+                                                            r({ thumbnailsize: e, titlesize: 100 - e });
                                                         },
-                                                        help: (0, a.__)("Image width in percentage", "five"),
+                                                        help: (0, l.__)("Image width in percentage", "five"),
                                                         min: 1,
                                                         max: 100,
                                                     });
@@ -152,366 +149,363 @@
                                         )
                                     )
                                 ),
-                                (0, o.createElement)(
+                                (0, a.createElement)(
                                     "div",
-                                    { className: t.oetblkFeaturedItemButtonDisplay ? "oet-shortcode oet_featured_item_block oetblk-" + t.blockid : "oet-shortcode oet_featured_item_block oetblk-" + t.blockid + " hidebutton" },
-                                    (0, o.createElement)(
+                                    { class: t.oetblkFeaturedItemButtonDisplay ? "oet-shortcode oet_featured_item_block oetblk-" + t.blockid : "oet-shortcode oet_featured_item_block oetblk-" + t.blockid + " hidebutton" },
+                                    (0, a.createElement)(
                                         "div",
-                                        { className: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
-                                        (0, o.createElement)(
-                                            headingTag,
-                                            { className: "oet_featured_item_header" },
-                                            (0, o.createElement)("input", {
+                                        { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
+                                        (0, a.createElement)(
+                                            t.oetblkHeadingTag,
+                                            { class: "oet_featured_item_header" },
+                                            (0, a.createElement)("input", {
                                                 type: "text",
-                                                className: "oet-featured-item-header-input",
+                                                class: "oet-featured-item-header-input",
                                                 onChange: (e) => {
-                                                    i({ oetblkFeaturedItemHeading: e.target.value });
+                                                    r({ oetblkFeaturedItemHeading: e.target.value });
                                                 },
                                                 placeholder: "Featured Item Heading",
                                                 value: t.oetblkFeaturedItemHeading,
                                             })
                                         ),
-                                        (0, o.createElement)(
+                                        (0, a.createElement)(
                                             "div",
                                             {
-                                                className: t.mediaURL ? "oet-featured-item-image-wrapper-float-left" : "oet-featured-item-image-wrapper-float-left minheight",
+                                                class: t.mediaURL ? "oet-featured-item-image-wrapper-float-left" : "oet-featured-item-image-wrapper-float-left minheight",
                                                 style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { width: "110px" },
                                             },
-                                            (0, o.createElement)("img", { src: t.mediaURL, className: t.mediaURL ? "featured_item_image oet-featured-item-image" : "hidden", alt: "featured_item_image" }),
+                                            (0, a.createElement)("img", { src: t.mediaURL, class: t.mediaURL ? "featured_item_image oet-featured-item-image" : "hidden", alt: "featured_item_image" }),
                                             t.mediaURL
-                                                ? (0, o.createElement)(
-                                                      l.Button,
+                                                ? (0, a.createElement)(
+                                                      i.Button,
                                                       {
                                                           onClick: (t) => {
                                                               e.setAttributes({ mediaID: void 0, mediaURL: void 0, thumbnail: void 0, thumbnailsize: void 0 });
                                                           },
                                                           className: "button button-large oet-featured-item-delete-image-button noimage",
                                                       },
-                                                      (0, o.createElement)("span", { class: "dashicons dashicons-trash" })
+                                                      (0, a.createElement)("span", { class: "dashicons dashicons-trash" })
                                                   )
-                                                : (0, o.createElement)(n, {
+                                                : (0, a.createElement)(n, {
                                                       mediaID: t.mediaID,
                                                       onSelect: (e) => {
-                                                          i({ mediaID: e.id, mediaURL: e.url, thumbnail: e.sizes.thumbnail.url, thumbnailsize: 50 });
+                                                          r({ mediaID: e.id, mediaURL: e.url, thumbnail: e.sizes.thumbnail.url, thumbnailsize: 50 });
                                                       },
                                                   })
                                         ),
-                                        (() => {
-                                    	if (void 0 !== t.oeseblkFeaturedItemURL) {
-	                                        if ("h1" == t.oetblkTitleTag)
-	                                            return (0, o.createElement)(
-	                                                "h1",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                        if ("h2" == t.oetblkTitleTag)
-	                                            return (0, o.createElement)(
-	                                                "h2",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                        if ("h3" == t.oetblkTitleTag)
-	                                            return (0, o.createElement)(
-	                                                "h3",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                        if ("h4" == t.oetblkTitleTag)
-	                                            return (0, o.createElement)(
-	                                                "h4",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                        if ("h5" == t.oetblkTitleTag)
-	                                            return (0, o.createElement)(
-	                                                "h5",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                        if ("h6" == t.oetblkTitleTag)
-	                                            return (0, o.createElement)(
-	                                                "h6",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                    } else {
-	                                    	return (0, o.createElement)(
-	                                                "h3",
-	                                                { className: "oet-featured-item-title" },
-	                                                (0, o.createElement)("input", {
-	                                                    type: "text",
-	                                                    onChange: (e) => {
-                                                            i({ oetblkFeaturedItemTitle: e.target.value });
-                                                        },
-	                                                    value: t.oetblkFeaturedItemTitle,
-	                                                    className: "oet-color-pallete-orange-color oet-featured-item-title nolink",
-	                                                    placeholder: "Featured Item Title",
-	                                                    style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-	                                                })
-	                                            );
-	                                    }
-                                        })(),
+                                        void 0 === t.oeseblkFeaturedItemURL
+                                            ? (0, a.createElement)(
+                                                  "h3",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h1" == t.oetblkTitleTag
+                                            ? (0, a.createElement)(
+                                                  "h1",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h2" == t.oetblkTitleTag
+                                            ? (0, a.createElement)(
+                                                  "h2",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h3" == t.oetblkTitleTag
+                                            ? (0, a.createElement)(
+                                                  "h3",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h4" == t.oetblkTitleTag
+                                            ? (0, a.createElement)(
+                                                  "h4",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h5" == t.oetblkTitleTag
+                                            ? (0, a.createElement)(
+                                                  "h5",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h6" == t.oetblkTitleTag
+                                            ? (0, a.createElement)(
+                                                  "h6",
+                                                  { class: "oet-featured-item-title" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemTitle: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemTitle,
+                                                      class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
+                                                      placeholder: "Featured Item Title",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : void 0,
                                         "h1" == t.oetblkDateTag
-                                        ? (0, o.createElement)(
-                                              "h1",
-                                              { className: "oet-featured-item-date" },
-                                              (0, o.createElement)("input", {
-                                                  type: "text",
-                                                   onChange: (e) => {
-                                                        i({ oetblkFeaturedItemDate: e.target.value });
-                                                    },
-                                                  value: t.oetblkFeaturedItemDate,
-                                                  className: "oet-featured-item-date-input nolink",
-                                                  placeholder: "Publishing Date",
-                                                  style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-                                              })
-                                          )
-                                        : "h2" == t.oetblkDateTag
-                                        ? (0, o.createElement)(
-                                              "h2",
-                                              { className: "oet-featured-item-date" },
-                                              (0, o.createElement)("input", {
-                                                  type: "text",
-                                                  onChange: (e) => {
-                                                        i({ oetblkFeaturedItemDate: e.target.value });
-                                                    },
-                                                  value: t.oetblkFeaturedItemDate,
-                                                  className: "oet-featured-item-date-input nolink",
-                                                  placeholder: "Publishing Date",
-                                                  style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-                                              })
-                                          )
-                                        : "h3" == t.oetblkDateTag
-                                        ? (0, o.createElement)(
-                                              "h3",
-                                              { className: "oet-featured-item-date" },
-                                              (0, o.createElement)("input", {
-                                                  type: "text",
-                                                  onChange: (e) => {
-                                                        i({ oetblkFeaturedItemDate: e.target.value });
-                                                    },
-                                                  value: t.oetblkFeaturedItemDate,
-                                                  className: "oet-featured-item-date-input nolink",
-                                                  placeholder: "Publishing Date",
-                                                  style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-                                              })
-                                          )
-                                        : "h4" == t.oetblkDateTag
-                                        ? (0, o.createElement)(
-                                              "h4",
-                                              { className: "oet-featured-item-date" },
-                                              (0, o.createElement)("input", {
-                                                  type: "text",
-                                                  onChange: (e) => {
-                                                        i({ oetblkFeaturedItemDate: e.target.value });
-                                                    },
-                                                  value: t.oetblkFeaturedItemDate,
-                                                  className: "oet-featured-item-date-input nolink",
-                                                  placeholder: "Publishing Date",
-                                                  style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-                                              })
-                                          )
-                                        : "h5" == t.oetblkDateTag
-                                        ? (0, o.createElement)(
-                                              "h5",
-                                              { className: "oet-featured-item-date" },
-                                              (0, o.createElement)("input", {
-                                                  type: "text",
-                                                  onChange: (e) => {
-                                                        i({ oetblkFeaturedItemDate: e.target.value });
-                                                    },
-                                                  value: t.oetblkFeaturedItemDate,
-                                                  className: "oet-featured-item-date-input nolink",
-                                                  placeholder: "Publishing Date",
-                                                  style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-                                              })
-                                          )
-                                        : "h6" == t.oetblkDateTag
-                                        ? (0, o.createElement)(
-                                              "h6",
-                                              { className: "oet-featured-item-date" },
-                                              (0, o.createElement)("input", {
-                                                  type: "text",
-                                                  onChange: (e) => {
-                                                        i({ oetblkFeaturedItemDate: e.target.value });
-                                                    },
-                                                  value: t.oetblkFeaturedItemDate,
-                                                  className: "oet-featured-item-date-input nolink",
-                                                  placeholder: "Publishing Date",
-                                                  style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
-                                              })
-                                          )
-                                        : void 0,
-                                        (0, o.createElement)(r.InnerBlocks, { allowedBlocks: ["core/paragraph"], templateInsertUpdatesSelection: !1, template: m, templateLock: "all" })
+                                            ? (0, a.createElement)(
+                                                  "h1",
+                                                  { class: "oet-featured-item-date" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemDate: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemDate,
+                                                      class: "oet-featured-item-date-input nolink",
+                                                      placeholder: "Publishing Date",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h2" == t.oetblkDateTag
+                                            ? (0, a.createElement)(
+                                                  "h2",
+                                                  { class: "oet-featured-item-date" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemDate: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemDate,
+                                                      class: "oet-featured-item-date-input nolink",
+                                                      placeholder: "Publishing Date",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h3" == t.oetblkDateTag
+                                            ? (0, a.createElement)(
+                                                  "h3",
+                                                  { class: "oet-featured-item-date" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemDate: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemDate,
+                                                      class: "oet-featured-item-date-input nolink",
+                                                      placeholder: "Publishing Date",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h4" == t.oetblkDateTag
+                                            ? (0, a.createElement)(
+                                                  "h4",
+                                                  { class: "oet-featured-item-date" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemDate: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemDate,
+                                                      class: "oet-featured-item-date-input nolink",
+                                                      placeholder: "Publishing Date",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h5" == t.oetblkDateTag
+                                            ? (0, a.createElement)(
+                                                  "h5",
+                                                  { class: "oet-featured-item-date" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemDate: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemDate,
+                                                      class: "oet-featured-item-date-input nolink",
+                                                      placeholder: "Publishing Date",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : "h6" == t.oetblkDateTag
+                                            ? (0, a.createElement)(
+                                                  "h6",
+                                                  { class: "oet-featured-item-date" },
+                                                  (0, a.createElement)("input", {
+                                                      type: "text",
+                                                      onChange: (e) => {
+                                                          r({ oetblkFeaturedItemDate: e.target.value });
+                                                      },
+                                                      value: t.oetblkFeaturedItemDate,
+                                                      class: "oet-featured-item-date-input nolink",
+                                                      placeholder: "Publishing Date",
+                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                  })
+                                              )
+                                            : void 0,
+                                        (0, a.createElement)(o.InnerBlocks, { allowedBlocks: ["core/paragraph"], templateInsertUpdatesSelection: !1, template: s, templateLock: "all" })
                                     )
                                 )
                             )
                         )
                     );
                 }
-                function d(e) {
+                function c(e) {
                     const t = e.attributes;
-                    return (0, o.createElement)(
+                    return (0, a.createElement)(
                         "div",
                         null,
-                        (0, o.createElement)(
+                        (0, a.createElement)(
                             "div",
                             { className: "oet_featured_item_block_wrapper" },
-                            (0, o.createElement)(
+                            (0, a.createElement)(
                                 "div",
-                                { className: t.oetblkFeaturedItemButtonDisplay ? "oet-shortcode oet_featured_item_block oetblk-" + t.blockid : "oet-shortcode oet_featured_item_block oetblk-" + t.blockid + " hidebutton" },
-                                (0, o.createElement)(
+                                { class: t.oetblkFeaturedItemButtonDisplay ? "oet-shortcode oet_featured_item_block oetblk-" + t.blockid : "oet-shortcode oet_featured_item_block oetblk-" + t.blockid + " hidebutton" },
+                                (0, a.createElement)(
                                     "div",
-                                    { className: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
-                                    (0, o.createElement)(headingTag, { className: "oet_featured_item_header" }, t.oetblkFeaturedItemHeading),
-                                    (0, o.createElement)(
+                                    { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
+                                    (0, a.createElement)(t.oetblkHeadingTag, { class: "oet_featured_item_header" }, t.oetblkFeaturedItemHeading),
+                                    (0, a.createElement)(
                                         "div",
-                                        { className: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
-                                        t.mediaURL && (0, o.createElement)("img", { src: t.mediaURL, className: "featured_item_image oet-featured-item-image", alt: "" })
+                                        { class: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
+                                        t.mediaURL && (0, a.createElement)("img", { src: t.mediaURL, class: "featured_item_image oet-featured-item-image", alt: "" })
                                     ),
-                                    (0, o.createElement)(titleTag, { className: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle),
-                                    (0, o.createElement)(dateTag, { className: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate),
-                                    (0, o.createElement)(r.InnerBlocks.Content, null)
+                                    (0, a.createElement)(t.oetblkTitleTag, { class: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle),
+                                    (0, a.createElement)(t.oetblkDateTag, { class: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate),
+                                    (0, a.createElement)(o.InnerBlocks.Content, null)
                                 )
                             )
                         )
                     );
                 }
-                const { __: __ } = wp.i18n;
+                const { __: s } = wp.i18n;
                 (window.oercurrBlocksJson = "undefined" == typeof oet_featured_item_legacy_marker),
                     window.oercurrBlocksJson
-                        ? (0, e.registerBlockType)("oet-block/oet-featured-item-block", { edit: c, save: d, example: () => {} })
+                        ? (0, e.registerBlockType)("oet-block/oet-featured-item-block", { edit: d, save: c, example: () => {} })
                         : (0, e.registerBlockType)("oet-block/oet-featured-item-block", {
-                              title: __(t.TN),
+                              title: s(t.TN),
                               icon: t.qv,
-                              description: __(t.WL),
+                              description: s(t.WL),
                               category: t.W3,
-                              keywords: [__("oet"), __("featured"), __("item"), __("block")],
+                              keywords: [s("oet"), s("featured"), s("item"), s("block")],
                               attributes: t.Y4,
-                              edit: c,
-                              save: d,
+                              edit: d,
+                              save: c,
                               example: () => {},
                           });
             },
         },
-        o = {};
-    function a(e) {
-        var r = o[e];
-        if (void 0 !== r) return r.exports;
-        var l = (o[e] = { exports: {} });
-        return t[e](l, l.exports, a), l.exports;
+        a = {};
+    function l(e) {
+        var o = a[e];
+        if (void 0 !== o) return o.exports;
+        var i = (a[e] = { exports: {} });
+        return t[e](i, i.exports, l), i.exports;
     }
-    (a.m = t),
+    (l.m = t),
         (e = []),
-        (a.O = function (t, o, r, l) {
-            if (!o) {
-                var i = 1 / 0;
-                for (u = 0; u < e.length; u++) {
-                    (o = e[u][0]), (r = e[u][1]), (l = e[u][2]);
-                    for (var n = !0, c = 0; c < o.length; c++)
-                        (!1 & l || i >= l) &&
-                        Object.keys(a.O).every(function (e) {
-                            return a.O[e](o[c]);
+        (l.O = function (t, a, o, i) {
+            if (!a) {
+                var r = 1 / 0;
+                for (s = 0; s < e.length; s++) {
+                    (a = e[s][0]), (o = e[s][1]), (i = e[s][2]);
+                    for (var n = !0, d = 0; d < a.length; d++)
+                        (!1 & i || r >= i) &&
+                        Object.keys(l.O).every(function (e) {
+                            return l.O[e](a[d]);
                         })
-                            ? o.splice(c--, 1)
-                            : ((n = !1), l < i && (i = l));
+                            ? a.splice(d--, 1)
+                            : ((n = !1), i < r && (r = i));
                     if (n) {
-                        e.splice(u--, 1);
-                        var d = r();
-                        void 0 !== d && (t = d);
+                        e.splice(s--, 1);
+                        var c = o();
+                        void 0 !== c && (t = c);
                     }
                 }
                 return t;
             }
-            l = l || 0;
-            for (var u = e.length; u > 0 && e[u - 1][2] > l; u--) e[u] = e[u - 1];
-            e[u] = [o, r, l];
+            i = i || 0;
+            for (var s = e.length; s > 0 && e[s - 1][2] > i; s--) e[s] = e[s - 1];
+            e[s] = [a, o, i];
         }),
-        (a.o = function (e, t) {
+        (l.o = function (e, t) {
             return Object.prototype.hasOwnProperty.call(e, t);
         }),
         (function () {
             var e = { 826: 0, 46: 0 };
-            a.O.j = function (t) {
+            l.O.j = function (t) {
                 return 0 === e[t];
             };
-            var t = function (t, o) {
-                    var r,
-                        l,
-                        i = o[0],
-                        n = o[1],
-                        c = o[2],
-                        d = 0;
+            var t = function (t, a) {
+                    var o,
+                        i,
+                        r = a[0],
+                        n = a[1],
+                        d = a[2],
+                        c = 0;
                     if (
-                        i.some(function (t) {
+                        r.some(function (t) {
                             return 0 !== e[t];
                         })
                     ) {
-                        for (r in n) a.o(n, r) && (a.m[r] = n[r]);
-                        if (c) var u = c(a);
+                        for (o in n) l.o(n, o) && (l.m[o] = n[o]);
+                        if (d) var s = d(l);
                     }
-                    for (t && t(o); d < i.length; d++) (l = i[d]), a.o(e, l) && e[l] && e[l][0](), (e[i[d]] = 0);
-                    return a.O(u);
+                    for (t && t(a); c < r.length; c++) (i = r[c]), l.o(e, i) && e[i] && e[i][0](), (e[r[c]] = 0);
+                    return l.O(s);
                 },
-                o = (self.webpackChunkoese_featured_item_block = self.webpackChunkoese_featured_item_block || []);
-            o.forEach(t.bind(null, 0)), (o.push = t.bind(null, o.push.bind(o)));
+                a = (self.webpackChunkoese_featured_item_block = self.webpackChunkoese_featured_item_block || []);
+            a.forEach(t.bind(null, 0)), (a.push = t.bind(null, a.push.bind(a)));
         })();
-    var r = a.O(void 0, [46], function () {
-        return a(502);
+    var o = l.O(void 0, [46], function () {
+        return l(502);
     });
-    r = a.O(r);
+    o = l.O(o);
 })();
