@@ -890,8 +890,13 @@ body.home .stry-video-avatar-table{ top: 40% !important; }
     font-weight: bold !important;
     line-height: 26px;
     margin-bottom: 0;
-} 
-.oet_featured_item_block_wrapper h4.oet-featured-item-title {
+}
+.oet_featured_item_block_wrapper h1.oet-featured-item-title,
+.oet_featured_item_block_wrapper h2.oet-featured-item-title,
+.oet_featured_item_block_wrapper h3.oet-featured-item-title, 
+.oet_featured_item_block_wrapper h4.oet-featured-item-title,
+.oet_featured_item_block_wrapper h5.oet-featured-item-title,
+.oet_featured_item_block_wrapper h6.oet-featured-item-title {
     font-size: 19px!important;
     font-weight: 700!important;
     margin-bottom: 2px!important;
