@@ -185,7 +185,7 @@
                                         "div",
                                         { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
                                         (0, o.createElement)(
-                                            t.oetblkHeadingTag,
+                                            "h3",
                                             { class: "oet_featured_item_header" },
                                             (0, o.createElement)("input", {
                                                 type: "text",
