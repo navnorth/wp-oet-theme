@@ -69,6 +69,8 @@
 				      { value: 'h5', label: 'H5' },
 				      { value: 'h6', label: 'H6' }
 				    ];
+                    const headingTag = (t.oetblkHeadingTag==""?"h2":t.oetblkHeadingTag);
+                    console.log(t);
                     return (
                         (m = t.oetblkFeaturedItemButtonDisplay
                             ? [
@@ -185,7 +187,7 @@
                                         "div",
                                         { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
                                         (0, o.createElement)(
-                                            "h3",
+                                            headingTag,
                                             { class: "oet_featured_item_header" },
                                             (0, o.createElement)("input", {
                                                 type: "text",
@@ -443,7 +445,7 @@
                                 (0, o.createElement)(
                                     "div",
                                     { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
-                                    (0, o.createElement)(t.oetblkHeadingTag, { class: "oet_featured_item_header" }, t.oetblkFeaturedItemHeading),
+                                    (0, o.createElement)(headingTag, { class: "oet_featured_item_header" }, t.oetblkFeaturedItemHeading),
                                     (0, o.createElement)(
                                         "div",
                                         { class: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
