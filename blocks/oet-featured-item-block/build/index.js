@@ -75,8 +75,6 @@
                     return (
                         (m = t.oetblkFeaturedItemButtonDisplay
                             ? [
-                                  /**--["core/heading", { placeholder: "Featured Item Title", className: "oet-featured-item-title oet-featured-item-title-ytr85g9wer", level: 4, textColor: "oet-color-pallete-orange" }],
-                                  ["core/heading", { placeholder: "Publishing Date", className: "oet-featured-item-date oet-featured-item-date-ytr85g9wer", level: 5, textColor: "oet-color-pallete-black" }],--**/
                                   [
 	                                  "core/paragraph",
 	                                  { placeholder: "Featured Item Description", className: "oet-featured-item-content oet-featured-item-content-ytr85g9wer", align: "left", textColor: "oet-color-pallete-black", fontSize: "normal" },
@@ -84,33 +82,6 @@
                                   ["core/button", { className: "oet-featured-item-button oet-featured-item-button-ytr85g9wer", align: "left", text: "Button Text", backgroundColor: "oet-color-pallete-orange", textColor: "white" }],
                               ]
                             : [
-                                  /**--[
-                                      "core/heading",
-                                      {
-                                          placeholder: "Featured Item Title",
-                                          className: "oet-featured-item-title oet-featured-item-date-ytr85g9wer",
-                                          level: 4,
-                                          textColor: "oet-color-pallete-orange",
-                                          content: "<strong>Featured item Title here</strong>",
-                                      },
-                                  ],
-                                  [
-                                      "core/heading",
-                                      {
-                                          placeholder: "Publishing Date",
-                                          className: "oet-featured-item-date oet-featured-item-date-ytr85g9wer",
-                                          level: 5,
-                                          textColor: "oet-color-pallete-black",
-                                          content:
-                                              "<strong>" +
-                                              ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][u.getMonth()] +
-                                              " " +
-                                              u.getDate() +
-                                              ", " +
-                                              u.getFullYear() +
-                                              "</strong>",
-                                      },
-                                  ],--**/
                                   [
                                       "core/paragraph",
                                       { placeholder: "Featured Item Description", className: "oet-featured-item-content oet-featured-item-content-ytr85g9wer", align: "left", textColor: "oet-color-pallete-black", fontSize: "normal" },
@@ -188,7 +159,7 @@
                                         "div",
                                         { class: "col-md-12 col-sm-12 col-xs-12 rght_sid_mtr lft_sid_mtr" },
                                         (0, o.createElement)(
-                                            headingTag,
+                                            "h2",
                                             { class: "oet_featured_item_header" },
                                             (0, o.createElement)("input", {
                                                 type: "text",
