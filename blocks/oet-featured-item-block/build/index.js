@@ -70,7 +70,8 @@
 				      { value: 'h6', label: 'H6' }
 				    ];
                     const headingTag = (t.oetblkHeadingTag==""?"h2":t.oetblkHeadingTag);
-                    console.log(t);
+                    const titleTag = (t.oetblkTitleTag==""?"h3":t.oetblkTitleTag);
+                    const dateTag = (t.oetblkDateTag==""?"h4":t.oetblkDateTag);
                     return (
                         (m = t.oetblkFeaturedItemButtonDisplay
                             ? [
@@ -451,8 +452,8 @@
                                         { class: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
                                         t.mediaURL && (0, o.createElement)("img", { src: t.mediaURL, class: "featured_item_image oet-featured-item-image", alt: "" })
                                     ),
-                                    (0, o.createElement)(t.oetblkTitleTag, { class: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle),
-                                    (0, o.createElement)(t.oetblkDateTag, { class: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate),
+                                    (0, o.createElement)(titleTag, { class: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle),
+                                    (0, o.createElement)(dateTag, { class: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate),
                                     (0, o.createElement)(r.InnerBlocks.Content, null)
                                 )
                             )
