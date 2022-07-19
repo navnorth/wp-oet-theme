@@ -205,7 +205,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h1" == t.oetblkTitleTag
@@ -220,7 +220,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h2" == t.oetblkTitleTag
@@ -235,7 +235,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h3" == t.oetblkTitleTag
@@ -250,7 +250,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h4" == t.oetblkTitleTag
@@ -265,7 +265,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h5" == t.oetblkTitleTag
@@ -280,7 +280,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h6" == t.oetblkTitleTag
@@ -295,7 +295,7 @@
                                                       value: t.oetblkFeaturedItemTitle,
                                                       class: "oet-color-pallete-orange-color oet-featured-item-title nolink",
                                                       placeholder: "Featured Item Title",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : void 0,
@@ -311,7 +311,7 @@
                                                       value: t.oetblkFeaturedItemDate,
                                                       class: "oet-featured-item-date-input nolink",
                                                       placeholder: "Publishing Date",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h2" == t.oetblkDateTag
@@ -326,7 +326,7 @@
                                                       value: t.oetblkFeaturedItemDate,
                                                       class: "oet-featured-item-date-input nolink",
                                                       placeholder: "Publishing Date",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h3" == t.oetblkDateTag
@@ -341,7 +341,7 @@
                                                       value: t.oetblkFeaturedItemDate,
                                                       class: "oet-featured-item-date-input nolink",
                                                       placeholder: "Publishing Date",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h4" == t.oetblkDateTag
@@ -356,7 +356,7 @@
                                                       value: t.oetblkFeaturedItemDate,
                                                       class: "oet-featured-item-date-input nolink",
                                                       placeholder: "Publishing Date",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h5" == t.oetblkDateTag
@@ -371,7 +371,7 @@
                                                       value: t.oetblkFeaturedItemDate,
                                                       class: "oet-featured-item-date-input nolink",
                                                       placeholder: "Publishing Date",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : "h6" == t.oetblkDateTag
@@ -386,7 +386,7 @@
                                                       value: t.oetblkFeaturedItemDate,
                                                       class: "oet-featured-item-date-input nolink",
                                                       placeholder: "Publishing Date",
-                                                      style: t.titlesize > 10 ? { width: t.titlesize + "%", resize: "none" } : { width: "100%", resize: "none" },
+                                                      style: t.titlesize > 10 ? { width: "auto", resize: "none" } : { width: "100%", resize: "none" },
                                                   })
                                               )
                                             : void 0,
