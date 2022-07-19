@@ -26,7 +26,7 @@
     min-height: auto !important;
     width: 47% !important;
 }
-.block-editor-writing-flow .wp-block-oet-block-oet-featured-item-block .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block  .oet-featured-item-date {
+.block-editor-writing-flow .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block  .oet-featured-item-date {
     margin: 0 !important;
     margin-bottom: 0px !important;
     margin-top: 0 !important;
@@ -36,8 +36,8 @@
     line-height: 23px !important;
     font-size: 14px !important;
 }
-.block-editor-writing-flow .wp-block-oet-block-oet-featured-item-block .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block .oet-featured-item-date .oet-featured-item-date-input,
-.block-editor-writing-flow .wp-block-oet-block-oet-featured-item-block .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block .oet-featured-item-date .oet-featured-item-date-input::placeholder {
+.block-editor-writing-flow .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block .oet-featured-item-date .oet-featured-item-date-input,
+.block-editor-writing-flow .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block .oet-featured-item-date .oet-featured-item-date-input::placeholder {
     font-family: Work Sans, sans-serif !important;
     font-weight: 700 !important;
     line-height: 1.4em !important;
