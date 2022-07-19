@@ -399,6 +399,12 @@
                 }
                 function c(e) {
                     const t = e.attributes;
+                    if (t.oetblkHeadingTag=="")
+                        t.oetblkHeadingTag="h2";
+                    if (t.oetblkTitleTag=="")
+                        t.oetblkTitleTag="h3";
+                    if (t.oetblkDateTag=="")
+                        t.oetblkDateTag="h4";
                     return (0, a.createElement)(
                         "div",
                         null,
