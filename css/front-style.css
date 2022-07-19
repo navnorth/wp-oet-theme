@@ -468,7 +468,7 @@ ul.checkbox_list input {
 	padding: 30px;
 	border-radius:5px;
 }
-.medium-wrapper { position:relative; height:100%; width:100%; }
+.medium-wrapper { position:relative; height:100%; width:100%; overflow-wrap: break-word; }
 .medium a { color:#ffffff !important; }
 .medium p.mfooter { height:32px; bottom:30px; }
 .wpcf7-force-hidden { display:none !important; }
