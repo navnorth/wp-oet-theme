@@ -399,11 +399,11 @@
                 }
                 function c(e) {
                     const t = e.attributes;
-                    if (t.oetblkHeadingTag=="")
+                    if (t.oetblkHeadingTag=="" || typeof t.oetblkHeadingTag === 'undefined')
                         t.oetblkHeadingTag="h2";
-                    if (t.oetblkTitleTag=="")
+                    if (t.oetblkTitleTag=="" || typeof t.oetblkTitleTag === 'undefined')
                         t.oetblkTitleTag="h3";
-                    if (t.oetblkDateTag=="")
+                    if (t.oetblkDateTag=="" || typeof t.oetblkDateTag === 'undefined')
                         t.oetblkDateTag="h4";
                     return (0, a.createElement)(
                         "div",
