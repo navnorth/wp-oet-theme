@@ -193,7 +193,7 @@
                                                       },
                                                   })
                                         ),
-                                        void 0 === t.oeseblkFeaturedItemURL
+                                        void 0 === t.oetblkTitleTag
                                             ? (0, a.createElement)(
                                                   "h3",
                                                   { class: "oet-featured-item-title" },

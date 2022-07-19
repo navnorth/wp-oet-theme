@@ -25,6 +25,7 @@
     border-bottom: none;
     min-height: auto !important;
     width: auto !important;
+    min-width: 47%;
 }
 .block-editor-writing-flow .oet_featured_item_block_wrapper .oet-shortcode.oet_featured_item_block  .oet-featured-item-date {
     margin: 0 !important;
@@ -51,6 +52,8 @@
     outline: none !important;
     min-height: auto !important;
     border-radius: 0 !important;
+    width: auto !important;
+    min-width: 47%;
 }
 .oet_featured_item_block_wrapper input.oet-featured-item-header-input {
     border: 0 !important;
