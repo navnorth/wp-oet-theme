@@ -405,6 +405,7 @@
                         t.oetblkTitleTag="h3";
                     if (t.oetblkDateTag=="" || typeof t.oetblkDateTag === 'undefined')
                         t.oetblkDateTag="h4";
+                    console.log(t);
                     return (0, a.createElement)(
                         "div",
                         null,
