@@ -1156,6 +1156,7 @@ function oet_medium_func($attribute, $content = null){
 	$publication = "";
 	$bg_color = "#000000";
 	$textalignment = "";
+	$heading = (!isset($heading)?"h3":$heading);
 	
 	if (isset($bgcolor) && !empty($bgcolor))
 		$bg_color = "#".$bgcolor;
@@ -1214,9 +1215,30 @@ function oet_medium_func($attribute, $content = null){
 		<div class="single-medium">
 		    <div class="medium" style="'.$background.''.$align.'">
 			<div class="medium-background">
-			    <div class="medium-wrapper"'.$textalignment.'>
-				<h3><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h3>
-				<p>'.$description.'</p>
+			    <div class="medium-wrapper"'.$textalignment.'>';
+		
+		switch($heading){
+			case "h1":
+				$return .=	'<h1><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h1>';
+				break;
+			case "h2":
+				$return .=	'<h2><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h2>';
+				break;
+			case "h3":
+				$return .=	'<h3><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h3>';
+				break;
+			case "h4":
+				$return .=	'<h4><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h4>';
+				break;
+			case "h5":
+				$return .=	'<h5><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h5>';
+				break;
+			case "h6":
+				$return .=	'<h6><a href="'.$url.'" target="_blank" onclick="ga(\'send\', \'event\', \'Medium Blog Click\', \''.$url.'\');">'.$title.'</a></h6>';
+				break;
+		}
+
+		$return .=	'<p>'.$description.'</p>
 				<p class="mfooter">';
 		$return .= $footer;
 		$return .= '    </p>
