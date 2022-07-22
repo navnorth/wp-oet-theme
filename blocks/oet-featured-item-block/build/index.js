@@ -423,8 +423,8 @@
                                         { class: "oet-featured-item-image-wrapper-float-left", style: void 0 !== t.thumbnailsize ? { width: t.thumbnailsize + "%" } : { margin: "0" } },
                                         t.mediaURL && (0, a.createElement)("img", { src: t.mediaURL, class: "featured_item_image oet-featured-item-image", alt: "" })
                                     ),
-                                    void 0 === t.oetblkFeaturedItemTitle ? (0, a.createElement)(t.oetblkTitleTag, { class: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle): void 0,
-                                    void 0 === t.oetblkFeaturedItemDate ? (0, a.createElement)(t.oetblkDateTag, { class: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate): void 0,
+                                    (void 0 === t.oetblkFeaturedItemTitle && "" != t.oetblkFeaturedItemTitle ) ? (0, a.createElement)(t.oetblkTitleTag, { class: "oet-featured-item-title oet-featured-item-title-ytr85g9wer has-oet-color-pallete-orange-color has-text-color" }, t.oetblkFeaturedItemTitle): void 0,
+                                    (void 0 === t.oetblkFeaturedItemDate && "" != t.oetblkFeaturedItemDate ) ? (0, a.createElement)(t.oetblkDateTag, { class: "oet-featured-item-date oet-featured-item-date-ytr85g9wer has-oet-color-pallete-black-color has-text-color" }, t.oetblkFeaturedItemDate): void 0,
                                     (0, a.createElement)(o.InnerBlocks.Content, null)
                                 )
                             )
