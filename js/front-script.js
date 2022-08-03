@@ -61,6 +61,30 @@ jQuery( document ).ready(function() {
 		jQuery('.sub-menu').removeAttr('style');
 	     }
 	});
+
+	/** Add role to menu items on mobile **/
+  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul').attr({
+    'id' : 'responsiv_menu_ul',
+    'role' : 'menu',
+    'aria-labelledby' : 'mobile_nav_icons'
+  });
+  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul li').each(function(){
+    jQuery(this).attr('role','none');
+    jQuery(this).find('a').attr('role','menuitem');
+    if (jQuery(this).hasClass('current_page_item'))
+      jQuery(this).find('a').attr('tabindex','0');
+    else
+      jQuery(this).find('a').attr('tabindex','-1');
+  });
+  /** Keyboard navigation on mobile menu **/
+  jQuery('.responsiv-menu_ul > .menu-item > a').on('keydown',function(e){
+      jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
+      if (e.which==40) { /* Down Arrow Key */
+        jQuery(this).parent().next().find('a').attr('tabindex','0').focus();
+      } else if (e.which==38) { /* Up Arrow Key */
+        jQuery(this).parent().prev().find('a').attr('tabindex','0').focus();
+      }
+  });
 	
 	/* Nav menu focus handler */
 	jQuery('.main-menu ul li a').on('focus', function(){
@@ -123,6 +147,8 @@ jQuery( document ).ready(function() {
 			if(code == 13 || code == 32) { 
    				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
  			}
+ 			jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0');
+      jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul li:first-child a').focus();
 		});
 	}
 
