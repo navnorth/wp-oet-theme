@@ -68,7 +68,7 @@ jQuery( document ).ready(function() {
     'role' : 'menu',
     'aria-labelledby' : 'mobile_nav_icons'
   });
-  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul li').each(function(){
+  jQuery('.responsiv-menu .responsiv-menu_ul li').each(function(){
     jQuery(this).attr('role','none');
     jQuery(this).find('a').attr('role','menuitem');
     if (jQuery(this).hasClass('current_page_item'))
