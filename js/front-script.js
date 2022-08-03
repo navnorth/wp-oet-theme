@@ -147,8 +147,8 @@ jQuery( document ).ready(function() {
 			if(code == 13 || code == 32) { 
    				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
  			}
- 			jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul li:first-child a').attr('tabindex','0');
-      jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul li:first-child a').focus();
+ 			jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
+      jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
 		});
 	}
 
