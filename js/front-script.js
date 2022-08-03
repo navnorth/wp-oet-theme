@@ -77,7 +77,7 @@ jQuery( document ).ready(function() {
       jQuery(this).find('a').attr('tabindex','-1');
   });
   /** Keyboard navigation on mobile menu **/
-  jQuery('.responsiv-menu_ul > .menu-item > a').on('keydown',function(e){
+  jQuery('.responsiv-menu_ul .menu-item > a').on('keydown',function(e){
       jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
       if (e.which==40) { /* Down Arrow Key */
         jQuery(this).parent().next().find('a').attr('tabindex','0').focus();
