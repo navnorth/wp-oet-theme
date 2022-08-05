@@ -81,9 +81,13 @@ jQuery( document ).ready(function() {
       jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
       if (e.which==40) { /* Down Arrow Key */
       	if (jQuery(this).parent().find('.sub-menu').length)
-      		jQuery(this).parent().find('.sub-menu > li > a').attr('tabindex','0').focus();
-      	else
-        	jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
+      		jQuery(this).parent().find('.sub-menu > li:first-child > a').attr('tabindex','0').focus();
+      	else{
+      		if (jQuery(this).parent().is(":last-child"))
+      			jQuery(this).closest('.menu-item-has-children').next().find('> a').attr('tabindex','0').focus();
+      		else
+        		jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
+      	}
       } else if (e.which==38) { /* Up Arrow Key */
         jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
       }
