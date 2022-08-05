@@ -89,7 +89,10 @@ jQuery( document ).ready(function() {
         		jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
       	}
       } else if (e.which==38) { /* Up Arrow Key */
-        jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
+      	if (jQuery(this).parent().is(":first-child"))
+      		jQuery(this).closest('.menu-item-has-children').find('> a').attr('tabindex','0').focus();
+      	else
+        	jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
       }
   });
 	
