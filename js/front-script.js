@@ -91,8 +91,12 @@ jQuery( document ).ready(function() {
       } else if (e.which==38) { /* Up Arrow Key */
       	if (jQuery(this).parent().is(":first-child"))
       		jQuery(this).closest('.menu-item-has-children').find('> a').attr('tabindex','0').focus();
-      	else
-        	jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
+      	else{
+      		if (jQuery(this).parent().prev().find('.sub-menu').length)
+      			jQuery(this).parent().prev().find('.sub-menu > li:last-child > a').attr('tabindex','0').focus();
+      		else
+        		jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
+      	}
       }
   });
 	
