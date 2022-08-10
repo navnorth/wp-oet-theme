@@ -87,7 +87,7 @@ jQuery( document ).ready(function() {
       			if (jQuery(this).closest('.menu-item-has-children').length)
       				jQuery(this).closest('.menu-item-has-children').next().find('> a').attr('tabindex','0').focus();
       			else
-      				jQuery(this).closest('ul.responsiv-menu_ul').find('li:first-child > a').attr('tabindex','0').focus();
+      				jQuery(this).closest('ul.responsiv-menu_ul').find('> li:first-child > a').attr('tabindex','0').focus();
       		} else
         		jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
       	}
