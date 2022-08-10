@@ -169,6 +169,7 @@ jQuery( document ).ready(function() {
 			if(key == "Enter" || key == " " || key == "ArrowDown" || key == "ArrowUp") { 
    				//jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
    				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","block")
+   				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","block")
    				jQuery(this).attr('aria-expanded','true');
    				if (key == "ArrowUp"){
 		 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
@@ -179,6 +180,7 @@ jQuery( document ).ready(function() {
 		      }
  			} else if (key == "Esc" || key == "Escape"){
  				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
  				jQuery(this).removeAttr('aria-expanded');
  			}
 		});
