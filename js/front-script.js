@@ -1,5 +1,5 @@
 /** Detect zoom using resize event **/
-window.addEventListener('resize', () => {
+/**--window.addEventListener('resize', () => {
   const browserZoomLevel = Math.round(window.devicePixelRatio * 100);
   if (browserZoomLevel>100){
   	if (jQuery(window).width() < 769) {
@@ -13,7 +13,7 @@ window.addEventListener('resize', () => {
 			});
 		}
   }
-})
+})--**/
 
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
@@ -83,15 +83,21 @@ jQuery( document ).ready(function() {
       	if (jQuery(this).parent().find('.sub-menu').length)
       		jQuery(this).parent().find('.sub-menu > li:first-child > a').attr('tabindex','0').focus();
       	else{
-      		if (jQuery(this).parent().is(":last-child"))
-      			jQuery(this).closest('.menu-item-has-children').next().find('> a').attr('tabindex','0').focus();
-      		else
+      		if (jQuery(this).parent().is(":last-child")){
+      			if (jQuery(this).closest('.menu-item-has-children').length)
+      				jQuery(this).closest('.menu-item-has-children').next().find('> a').attr('tabindex','0').focus();
+      			else
+      				jQuery(this).closest('ul.sub-menu').find('li:first-child > a').attr('tabindex','0').focus();
+      		} else
         		jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
       	}
       } else if (e.which==38) { /* Up Arrow Key */
-      	if (jQuery(this).parent().is(":first-child"))
-      		jQuery(this).closest('.menu-item-has-children').find('> a').attr('tabindex','0').focus();
-      	else{
+      	if (jQuery(this).parent().is(":first-child")){
+      		if (jQuery(this).closest('.menu-item-has-children').length)
+      			jQuery(this).closest('.menu-item-has-children').find('> a').attr('tabindex','0').focus();
+      		else
+      			jQuery(this).closest('ul.sub-menu').find('li:last-child > a').attr('tabindex','0').focus();
+      	} else {
       		if (jQuery(this).parent().prev().find('.sub-menu').length)
       			jQuery(this).parent().prev().find('.sub-menu > li:last-child > a').attr('tabindex','0').focus();
       		else
@@ -154,15 +160,20 @@ jQuery( document ).ready(function() {
 
 	/** enable keyboard navigation on mobile menu **/
   if (jQuery(window).width() < 769) {
+  	const browserZoomLevel = Math.round(window.devicePixelRatio * 100);
 		jQuery('.navi_bg .navi_icn').attr('tabindex','0');
 		jQuery('.navi_bg .navi_icn').attr('aria-label','menu');
-		jQuery('.navi_bg .navi_icn').on("keypress", function(e) {
-			var code = e.keyCode || e.which;
-			if(code == 13 || code == 32) { 
+		jQuery('.navi_bg .navi_icn').on("keydown", function(e) {
+			var code = e.which;
+			if(code == 13 || code == 32 || code == 40 || code == 38) { 
    				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
  			}
- 			jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
-      jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
+ 			if (code == 38)
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
+      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').focus();
+      else
+      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
+      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
 		});
 	}
 
