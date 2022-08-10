@@ -167,7 +167,8 @@ jQuery( document ).ready(function() {
 			var code = e.which;
 			var key = e.key;
 			if(key == "Enter" || key == " " || key == "ArrowDown" || key == "ArrowUp") { 
-   				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
+   				//jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
+   				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').css("display","block")
    				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').attr('aria-expanded','true');
    				if (key == "ArrowUp"){
 		 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
