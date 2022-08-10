@@ -107,6 +107,7 @@ jQuery( document ).ready(function() {
       	jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
  				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
  				jQuery(this).closest('.navi_bg .navi_icn').removeAttr('aria-expanded');
+ 				jQuery(this).closest('.navi_bg .navi_icn').focus();
       }
   });
 	
@@ -186,6 +187,7 @@ jQuery( document ).ready(function() {
  				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
  				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
  				jQuery(this).removeAttr('aria-expanded');
+ 				jQuery(this).focus();
  			}
 		});
 	}
