@@ -84,21 +84,19 @@ jQuery( document ).ready(function() {
       		jQuery(this).parent().find('.sub-menu > li:first-child > a').attr('tabindex','0').focus();
       	else{
       		if (jQuery(this).parent().is(":last-child")){
-      			console.log(jQuery(this).closest('.menu-item-has-children').length);
       			if (jQuery(this).closest('.menu-item-has-children').length)
       				jQuery(this).closest('.menu-item-has-children').next().find('> a').attr('tabindex','0').focus();
       			else
-      				jQuery(this).closest('ul.sub-menu').find('li:first-child > a').attr('tabindex','0').focus();
+      				jQuery(this).closest('ul.responsiv-menu_ul').find('li:first-child > a').attr('tabindex','0').focus();
       		} else
         		jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
       	}
       } else if (e.which==38) { /* Up Arrow Key */
       	if (jQuery(this).parent().is(":first-child")){
-      		console.log(jQuery(this).closest('.menu-item-has-children').length);
       		if (jQuery(this).closest('.menu-item-has-children').length)
       			jQuery(this).closest('.menu-item-has-children').find('> a').attr('tabindex','0').focus();
       		else
-      			jQuery(this).closest('ul.sub-menu').find('li:last-child > a').attr('tabindex','0').focus();
+      			jQuery(this).closest('ul.responsiv-menu_ul').find('li:last-child > a').attr('tabindex','0').focus();
       	} else {
       		if (jQuery(this).parent().prev().find('.sub-menu').length)
       			jQuery(this).parent().prev().find('.sub-menu > li:last-child > a').attr('tabindex','0').focus();
