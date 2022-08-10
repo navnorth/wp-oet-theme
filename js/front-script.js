@@ -103,6 +103,10 @@ jQuery( document ).ready(function() {
       		else
         		jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
       	}
+      } else if (e.which==27){
+      	jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
+ 				jQuery(this).closest('.navi_bg .navi_icn').removeAttr('aria-expanded');
       }
   });
 	
