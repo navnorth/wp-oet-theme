@@ -165,16 +165,21 @@ jQuery( document ).ready(function() {
 		jQuery('.navi_bg .navi_icn').attr('aria-label','menu');
 		jQuery('.navi_bg .navi_icn').on("keydown", function(e) {
 			var code = e.which;
-			if(code == 13 || code == 32 || code == 40 || code == 38) { 
+			var key = e.key;
+			if(key == "Enter" || key == " " || key == "ArrowDown" || key == "ArrowUp") { 
    				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
+   				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').attr('aria-expanded','true');
+   				if (key == "ArrowUp"){
+		 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
+		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').focus();
+		      } else {
+		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
+		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
+		      }
+ 			} else if (key == "Esc" || key == "Escape"){
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').css("display","none");
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').removeAttr('aria-expanded');
  			}
- 			if (code == 38){
- 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
-      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').focus();
-      } else {
-      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
-      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
-      }
 		});
 	}
 
@@ -296,3 +301,11 @@ window.onYouTubePlayerAPIReady = function() { //simple implementation
 
 
 /* FEATURE VIDEO END */
+
+function openHamburgerMenu(){
+
+}
+
+function closeHamburgerMenu(){
+
+}
