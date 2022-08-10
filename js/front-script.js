@@ -168,8 +168,8 @@ jQuery( document ).ready(function() {
 			var key = e.key;
 			if(key == "Enter" || key == " " || key == "ArrowDown" || key == "ArrowUp") { 
    				//jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
-   				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').css("display","block")
-   				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').attr('aria-expanded','true');
+   				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","block")
+   				jQuery(this).attr('aria-expanded','true');
    				if (key == "ArrowUp"){
 		 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
 		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').focus();
@@ -178,8 +178,8 @@ jQuery( document ).ready(function() {
 		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
 		      }
  			} else if (key == "Esc" || key == "Escape"){
- 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').css("display","none");
- 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul').removeAttr('aria-expanded');
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
+ 				jQuery(this).removeAttr('aria-expanded');
  			}
 		});
 	}
