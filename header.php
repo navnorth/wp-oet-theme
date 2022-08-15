@@ -17,11 +17,6 @@
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri();?>/images/favicon.ico" type="image/x-icon">
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!-- Load Work Sans, Open Sans, and Raleway from Google Fonts  -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
-
 <?php // Loads HTML5 JavaScript file to add support for HTML5 elements in older IE versions. ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
@@ -61,7 +56,7 @@
 
                         <form id="searchform" class="searchform" action="<?php echo site_url();?>" method="get" role="search">
                         	<input type="text" class="form-control" id="inputSuccess2" placeholder="Search" name="s" aria-label="search" />
-                      		<a href="javascript:" onClick="jQuery(this).closest('form').submit()">
+                      		<a href="javascript:" onClick="jQuery(this).closest('form').submit()" tabindex="-1">
                                 <span class="form-control-feedback ">
                               		<img src="<?php echo get_stylesheet_directory_uri();?>/images/search_icn.png" alt="Search"/>
                                 </span>
@@ -72,33 +67,39 @@
                 </div>
 
                 <?php
-					define("twitter_url", get_option("twitter_url"));
-					define("facebook_url", get_option("facebook_url"));
-					define("yotube_url", get_option("yotube_url"));
-					define("linkedin_url", get_option("linkedin_url"));
-					define("linktonwltr", get_option("linktonwltr"));
-				?>
+		define("twitter_url", get_option("twitter_url"));
+		define("facebook_url", get_option("facebook_url"));
+		define("yotube_url", get_option("yotube_url"));
+		define("linkedin_url", get_option("linkedin_url"));
+                define ("medium_url", get_option("medium_url"));
+		define("linktonwltr", get_option("linktonwltr"));
+		?>
 
                 <div class="col-md-11 col-sm-12 col-xs-5 col-xs-offset-2 col-md-offset-1 soclize">
 
         			<?php if ( twitter_url !== "" ) : ?>
                         <a href="<?php echo twitter_url;?>" target="_blank" title="Follow Us on Twitter">
-        				    <span class="socl_icns fa-stack"><i class="fa fa-twitter fa-stack-2x"></i></span>
+        				    <span class="socl_icns fa-stack"><i class="fab fa-twitter fa-stack-2x"></i></span>
                         </a>
         			<?php endif; ?>
         			<?php if ( facebook_url !== "" ) : ?>
             			<a href="<?php echo facebook_url;?>" target="_blank" title="Follow Us on Facebook">
-            			    <span class="socl_icns fa-stack"><i class="fa fa-facebook fa-stack-2x"></i></span>
+            			    <span class="socl_icns fa-stack"><i class="fab fa-facebook-f fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>
+                                <?php if ( medium_url !== "" ) : ?>
+                                <a href="<?php echo medium_url;?>" target="_blank" title="Follw Us on Medium">
+                                    <span class="socl_icns fa-stack"><i class="fab fa-medium-m fa-stack-2x"></i></span>
+                                </a>
+                                <?php endif; ?>
         			<?php if ( yotube_url !== "" ) : ?>
             			<a href="<?php echo yotube_url;?>" target="_blank" title="Subscribe on YouTube">
-            			    <span class="socl_icns fa-stack"><i class="fa fa-youtube-play fa-stack-2x"></i></span>
+            			    <span class="socl_icns fa-stack"><i class="fab fa-youtube fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>
         			<?php if ( linktonwltr !== "" ) : ?>
             			<a href="<?php echo linktonwltr;?>" target="_blank" title="Sign Up for our Newsletter">
-            			    <span class="socl_icns fa-stack"><i class="fa fa-envelope fa-stack-2x"></i></span>
+            			    <span class="socl_icns fa-stack"><i class="far fa-envelope fa-stack-2x"></i></span>
             			</a>
         			<?php endif; ?>
                 </div>
@@ -107,13 +108,11 @@
         </div>
 
         <div class="row navi_bg">
-        	<div class="main-menu">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-            </div>
-
-            <span class="navi_icn fa-stack"><i class="fa fa-bars fa-stack-2x"></i></span>
-            <div class="responsiv-menu">
-            	<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'responsiv-menu_ul' ) ); ?>
-            </div>
-
+                <div class="main-menu">
+		      <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+                </div>
+                <span class="navi_icn fa-stack" aria-label="menu" role="button" id="mobile_nav_icns" aria-haspopup="true" aria-controls="responsiv_menu_ul" ><i class="fa fa-bars fa-stack-2x"></i></span>
+                <div class="responsiv-menu">
+            	   <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'responsiv-menu_ul', 'menu_id' => 'responsiv_menu_ul' ) ); ?>
+                </div>
         </div>

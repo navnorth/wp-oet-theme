@@ -454,8 +454,8 @@ ul.checkbox_list input {
 	max-width:335px;
 	width:100%;
 }
-.medium h1, .medium h2 { font-size:30px; margin-top:0; -webkit-font-smoothing:antialiased; }
-.medium h1 a, .medium h2 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
+.medium h1, .medium h2, .medium h3 { font-size:30px; margin-top:0; -webkit-font-smoothing:antialiased; }
+.medium h1 a, .medium h2 a, .medium h3 a { color:#ffffff !important; text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium a:focus { outline-width:2px; }
 .medium p { text-shadow: 1px 4px 10px rgba(0, 0, 0, 1); }
 .medium-background {
@@ -468,7 +468,7 @@ ul.checkbox_list input {
 	padding: 30px;
 	border-radius:5px;
 }
-.medium-wrapper { position:relative; height:100%; width:100%; }
+.medium-wrapper { position:relative; height:100%; width:100%; overflow-wrap: break-word; }
 .medium a { color:#ffffff !important; }
 .medium p.mfooter { height:32px; bottom:30px; }
 .wpcf7-force-hidden { display:none !important; }
@@ -556,14 +556,15 @@ ul.checkbox_list input {
 
 /*--------TRENDING NOW--------*/
 .oet-trending-image, .oet-trending-title, .oet-trending-description, .oet-trending-button {margin: 10px 0px;}
+.oet-trending-image a {color:#e57200;}
 .adminoverridewidth {width:100%;}
 .oet-trending-section-title {font-size:28px; color:#E57200; text-align:center;padding:10px 0px; margin:30px 0px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; }
 .oet-trending-description {min-height: 105px; overflow: hidden;}
 @media (max-width: 1200px){
 	.oet-trending-description {min-height: 125px !important;}
 }
-.oet-trending-title {font-size: 24px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; color: #E57200 !important; line-height: 24px;}
-.oet-trending-title i {color: #222;}
+.oet-trending-title {font-size: 24px; font-family: 'Work Sans', sans-serif !important; font-weight: 600 !important; color: #E57200 !important; line-height: 34px;}
+.oet-trending-title i {color: #222; margin-right:10px;}
 /*.oet_trendingnow_layout a {display: block; float: left; color:#ffffff; background-color:#E57200; padding:10px 15px;*/
 -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
 /*.oet_trendingnow_layout a:hover {color: #ffffff !important; text-decoration: none; opacity: .9;}
@@ -694,12 +695,13 @@ ul.checkbox_list input {
 .oet-acf-slide-box p.oet-acf-slide-description i, .oet-acf-slide-box p.oet-acf-slide-description em { font-family: 'Open Sans', sans-serif; font-weight: 300;  font-style: italic; }
 .oet-acf-slide-box p.oet-acf-slide-description strong em, .oet-acf-slide-box p.oet-acf-slide-description em strong,
 .oet-acf-slide-box p.oet-acf-slide-description strong i, .oet-acf-slide-box p.oet-acf-slide-description i strong { font-family: 'Open Sans', sans-serif; font-weight: bold; font-style: italic;  }
-h2.oet-acf-header-text {
+h2.oet-acf-header-text,
+h1.oet-acf-header-text {
 	font-family: 'Work Sans', sans-serif;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 24px !important;
 	line-height: 28px;
-	color: #FFFFFF;
+	color: #FFFFFF !important;
 	margin-top:0; 
 }
 .oet-acf-page-header p {
@@ -730,6 +732,12 @@ h2.oet-acf-header-text {
 	font-family: 'Work Sans', sans-serif;
 	font-weight: 600;
 	font-size: 14pt;
+	display: block;
+	line-height: 38px;
+}
+.oet-trending-button a i.fa {
+    font-size: 14px;
+		font-weight: 400;
 }
 /****************************************
  ****** End of Slideshow Styles *********
@@ -847,12 +855,67 @@ iframe.oet_youtube_side_container {margin: 0px !important;}
 .vdo_bg p:nth-of-type(2) { display: block; padding: 15px !important; float: left; width: 100%; box-sizing: border-box; }
 body.home .vdo_bg { min-height: 0px !important; margin-top: 0px !important; }
 .vdo_bg { min-height: 340px !important; margin-top: 10px; width: 100% !important; }
-body.home .lft_sid_mtr h4 { height: auto !important; display: block; width: auto !important; }
-.lft_sid_mtr h4 { height: 52px; display: table-cell; vertical-align: bottom; width: 1000px !important; }
-.rght_sid_mtr.lft_sid_mtr h4 { height: auto; display: block; vertical-align: top; width: auto !important; }
+body.home .lft_sid_mtr h4, body.home .lft_sid_mtr h3 { height: auto !important; display: block; width: auto !important; }
+.lft_sid_mtr h4, .lft_sid_mtr h3 { height: 52px; display: table-cell; vertical-align: bottom; width: 1000px !important; }
+.rght_sid_mtr.lft_sid_mtr h4 , .rght_sid_mtr.lft_sid_mtr h3{ height: auto; display: block; vertical-align: top; width: auto !important; }
 body.home .stry-video-avatar-table{ top: 40% !important; }
 .stry-video-avatar-table { top: 25% !important; }
 
+/** OET Embed styles **/
+.medium-wrapper p.mfooter { overflow:visible; }
+.medium-wrapper p.mfooter a.imglink {
+	border: none;
+    border-radius: 0;
+}
+.medium-wrapper p.mfooter a.imglink img {
+	border-radius: 100%;
+    margin-right: 5px;
+}
+.medium-wrapper p.mfooter a.imglink:hover,
+.medium-wrapper p.mfooter a.imglink:focus{
+    outline: 1px solid #fff;
+}
+.grecaptcha-badge { opacity:0 }
+.oet-featured-area-block .lft_sid_mtr h3,
+.oet_featured_item_block .lft_sid_mtr h3 {
+	display: block;
+    height: auto;
+    width: 100%!important;
+}
+.oet-featured-area-block .lft_sid_mtr h4 {
+	border-bottom: none;
+	font-size: 19px;
+    color: #E57200;
+    font-family: 'Work Sans', sans-serif !important;
+    font-weight: bold !important;
+    line-height: 26px;
+    margin-bottom: 0;
+}
+.oet_featured_item_block_wrapper h1.oet-featured-item-title,
+.oet_featured_item_block_wrapper h2.oet-featured-item-title,
+.oet_featured_item_block_wrapper h3.oet-featured-item-title, 
+.oet_featured_item_block_wrapper h4.oet-featured-item-title,
+.oet_featured_item_block_wrapper h5.oet-featured-item-title,
+.oet_featured_item_block_wrapper h6.oet-featured-item-title {
+    font-size: 19px!important;
+    font-weight: 700!important;
+    margin-bottom: 2px!important;
+    margin-top: 0!important;
+    padding: 0!important;
+    border-bottom: none;
+}
+.pblctn_lft_sid_img_cntnr h2 {
+	color: #294179 !important;
+	font-size: 24px;
+}
+.disruptive_content h3 {
+    font-size: 21px;
+    padding-bottom: 10px;
+}
+.disruptive_content .link_dwnlds a {
+	width: 85%;
+	margin-top: 3px !important;
+}
 @media screen and (max-width: 1200px) {
 	.stry-video-avatar-table { top: 20% !important; } 
 }

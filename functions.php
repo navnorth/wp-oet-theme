@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "2.0.1" );
+define( "OET_THEME_VERSION", "2.1.2" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -69,6 +69,64 @@ require_once( OET_THEME_PATH . '/blocks/oet-shortcodes-block/init.php' );
 * OET Medium Embed Block
 **/
 require_once( OET_THEME_PATH . '/blocks/oet-medium-embed-block/init.php' );
+/**
+* OET Video Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-video/init.php' );
+/**
+* OET Publication Intro Block
+**/
+require_once( OET_THEME_PATH . '/blocks/publication-intro/init.php' );
+
+/**
+* OET Featured Item Block
+**/
+require_once( OET_THEME_PATH . '/blocks/oet-featured-item-block/init.php' );
+
+/**
+* OET Featured Content Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-content/init.php' );
+
+/**
+* OET Pull Quotes Block
+**/
+require_once( OET_THEME_PATH . '/blocks/pull-quotes/init.php' );
+
+/**
+* OET Featured Card Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-card/init.php' );
+
+/**
+* OET Featured Area Block
+**/
+require_once( OET_THEME_PATH . '/blocks/featured-area/init.php' );
+
+/**
+* OET Callout Box Block
+**/
+require_once( OET_THEME_PATH . '/blocks/callout-box/init.php' );
+
+/**
+* OET Disruptive Content Block
+**/
+require_once( OET_THEME_PATH . '/blocks/disruptive-content/init.php' );
+
+/**
+* OET Button Block
+**/
+require_once( OET_THEME_PATH . '/blocks/button/init.php' );
+
+/**
+* OET Story Embed Block
+**/
+require_once( OET_THEME_PATH . '/blocks/story-embed/init.php' );
+
+/**
+* OET Recommended Resources Block
+**/
+require_once( OET_THEME_PATH . '/blocks/recommended-resources/init.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
@@ -76,6 +134,12 @@ include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.p
  * Include Slider
  */
 include( OET_THEME_PATH . "/modules/oet-acf-slider/oet-acf-slider.php");
+
+/**
+* Shortcodes Blocks
+**/
+$_vsn = (int)explode('.',get_bloginfo('version'))[0];
+if($_vsn > 4) require_once( get_stylesheet_directory() . '/blocks/accordion-block/init.php' );
 
 use JonathanTorres\MediumSdk\Medium;
 
@@ -86,15 +150,21 @@ if ( function_exists( 'add_image_size' ) ) {
 
 function theme_back_enqueue_script()
 {
+	$version58 = false;
+	if ( version_compare( $GLOBALS['wp_version'], '5.8-alpha-1', '>=' ) ) {
+        $version58 = true;
+    }
+
     wp_enqueue_script( 'theme-back-script', get_stylesheet_directory_uri() . '/js/back-script.js' );
 	wp_enqueue_style( 'theme-back-style',get_stylesheet_directory_uri() . '/css/back-style.css' );
 	wp_enqueue_style( 'tinymce_button_backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode_button.css' );
-  wp_localize_script( 'theme-back-script', 'oet_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+  	wp_localize_script( 'theme-back-script', 'oet_ajax_object', array(
+  		'ajaxurl' => admin_url( 'admin-ajax.php'), 'version_58' =>  $version58 ) );
 
   if(get_admin_page_title() == 'Edit Page'){
     wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
     wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
-    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.all.min.css' );
   }
 
   wp_enqueue_style( 'shortcode-style-backend',get_stylesheet_directory_uri() . '/tinymce_button/shortcode-style.css' );
@@ -146,7 +216,7 @@ function theme_front_enqueue_script()
     $cspage = get_option("contactsliderpage");
 
 	wp_enqueue_style( 'theme-bootstrap-style',get_stylesheet_directory_uri() . '/css/bootstrap.min.css' );
-	wp_enqueue_style( 'theme-font-style',get_stylesheet_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'fontawesome-all-style',get_stylesheet_directory_uri() . '/css/font-awesome.all.min.css' );
     wp_enqueue_style( 'theme-front-style',get_stylesheet_directory_uri() . '/css/front-style.css' );
 
 	wp_enqueue_style( 'theme-main-style',get_stylesheet_directory_uri() . '/css/mainstyle.css' );
@@ -168,6 +238,26 @@ function theme_front_enqueue_script()
 	}
 }
 add_action( 'wp_enqueue_scripts', 'theme_front_enqueue_script' );
+
+/* Frontend loaded Google fonts*/
+function load_frontend_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'wp_head', 'load_frontend_google_fonts' );
+
+/* Admin loaded Google fonts*/
+function load_admin_google_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <?php
+}
+add_action( 'admin_head', 'load_admin_google_fonts' );
 
 function oer_dynamic_sidebar($index, $page_id)
 {
@@ -604,7 +694,7 @@ function oet_display_static_header($page_id){
     <div class="oet-acf-page-header"<?php echo $bgStyle; ?>>
 	<div class="oet-slide-wrapper">
 	    <div class="oet-acf-slide-box oet-acf-slide-1">
-		<h2 class="oet-acf-header-text"><?php echo $headerText; ?></h2>
+		<h1 class="oet-acf-header-text"><?php echo $headerText; ?></h1>
 		<?php if (!empty($description)){ ?>
 		<p><?php echo $description; ?></p>
 		<?php  } ?>
@@ -656,8 +746,6 @@ function oet_display_slides($page_id){
 			    <?php if (!empty($buttonUrl)) { ?>
 			    <p class="oet-slide-button-row"><a href="<?php echo $buttonUrl; ?>" class="oet-slide-button"><?php echo $buttonText; ?>&nbsp;&nbsp;→</a></p>
 			    <?php } ?>
-			    <!--<div class="slideshow_title"><a href="<?php echo $buttonUrl; ?>" target="_self" ><?php echo $headerText; ?></a></div>
-			    <div class="slideshow_description"><a href="<?php echo $buttonUrl; ?>" target="_self" ><?php echo $description; ?></a></div>-->
 			</div>
 		    </div><div style="clear: both;"></div>
 		</div>
@@ -823,16 +911,28 @@ function oet_display_acf_home_content(){
                         $_img = wp_get_attachment_url( $_img);
                         $_img_alt = $subfieldlayout['oet_acf_homepage_trendingnow_image_alt_text'];
                         $_ico = (isset($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']) && !empty($subfieldlayout['oet_acf_homepage_trendingnow_titleicon']))?$subfieldlayout['oet_acf_homepage_trendingnow_titleicon']:'none';
-                        $_title_icon = ($_ico != 'none')? '<i class="fa '.$_ico.'"></i>&nbsp;': '';
+                        $_title_icon = ($_ico != 'none')? '<i class="fa '.$_ico.'"></i>': '';
                         $_title = $subfieldlayout['oet_acf_homepage_trendingnow_title'];
                         $_tmp = $subfieldlayout['oet_acf_homepage_trendingnow_description'];
                         $_desc = (strlen($_tmp)>210)? substr($_tmp,0,180).' ...': $_tmp;
                         $_url = $subfieldlayout['oet_acf_homepage_trendingnow_link'];
+                        $_target = ($subfieldlayout['oet_acf_trendingnow_link_target'])?'_blank':'_self';
                         ?>
-                          <div class="oet-trending-image pad"><img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" /></div>
-                          <h3 class="oet-trending-title pad"><?php echo $_title_icon; echo $_title; ?></h3>
+                        <?php $oetacf_TrendingnowLink = trim($subfieldlayout['oet_acf_homepage_trendingnow_link']);?>
+
+                          <div class="oet-trending-image pad">
+                            <?php if(empty($oetacf_TrendingnowLink)){ ?>
+                              <img src="<?php echo $_img; ?>" alt="<?php echo $_img_alt ?>" />
+                              <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
+                            <?php }else{ ?>
+                              <a href="<?php echo $oetacf_TrendingnowLink; ?>" target="<?php echo $_target ?>">
+                                <img src="<?php echo $_img; ?>" alt="" />
+                                <h3 class="oet-trending-title pad"><?php echo $_title_icon.$_title; ?></h3>
+                              </a>
+                            <?php } ?>
+                          </div>
+
                           <div class="oet-trending-description pad"><?php echo $_desc; ?></div>
-                          <div class="oet-trending-button pad"><a href="<?php echo $_url; ?>">Read More&nbsp;&nbsp;→</a></div>
                         <?php
                       endif;
                     }
@@ -1051,3 +1151,30 @@ function oet_fix_post_id_on_preview($null, $post_id) {
     }
 }
 add_filter( 'acf/pre_load_post_id', 'oet_fix_post_id_on_preview', 10, 2 );
+
+// Disable access to wp-json from the outside and allow it only for logged in users(WP Admin dashboard)
+function oet_disable_rest_api_from_public($result){
+	// If a previous authentication check was applied, pass that result along without modification.
+    if ( true === $result || is_wp_error( $result ) ) {
+        return $result;
+    }
+
+    if (false !== strpos( esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/contact-form-7' )) {
+    	return $result;
+    }
+
+    // Return an error if user is not logged in.
+    if ( ! is_user_logged_in() ) {
+        return new WP_Error(
+            'rest_not_logged_in',
+            __( 'You are not currently logged in.' ),
+            array( 'status' => 401 )
+        );
+    }
+
+
+    // no effect on logged-in requests
+    return $result;
+}
+add_filter( 'rest_authentication_errors' , 'oet_disable_rest_api_from_public' );
+

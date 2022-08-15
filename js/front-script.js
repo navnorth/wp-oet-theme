@@ -1,3 +1,20 @@
+/** Detect zoom using resize event **/
+/**--window.addEventListener('resize', () => {
+  const browserZoomLevel = Math.round(window.devicePixelRatio * 100);
+  if (browserZoomLevel>100){
+  	if (jQuery(window).width() < 769) {
+			jQuery('.navi_bg .navi_icn').attr('tabindex','0');
+			jQuery('.navi_bg .navi_icn').attr('aria-label','menu');
+			jQuery('.navi_bg .navi_icn').on("keypress", function(e) {
+				var code = e.keyCode || e.which;
+				if(code == 13 || code == 32) { 
+	   				jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
+	 			}
+			});
+		}
+  }
+})--**/
+
 jQuery( document ).ready(function() {
     jQuery('#page_template').on('change', function() {
 	  //alert(this.value);
@@ -44,6 +61,55 @@ jQuery( document ).ready(function() {
 		jQuery('.sub-menu').removeAttr('style');
 	     }
 	});
+
+	/** Add role to menu items on mobile **/
+  jQuery('.mobile-nav-bar .responsiv-menu .responsiv-menu_ul').attr({
+    'id' : 'responsiv_menu_ul',
+    'role' : 'menu',
+    'aria-labelledby' : 'mobile_nav_icons'
+  });
+  jQuery('.responsiv-menu .responsiv-menu_ul li').each(function(){
+    jQuery(this).attr('role','none');
+    jQuery(this).find('a').attr('role','menuitem');
+    if (jQuery(this).hasClass('current_page_item'))
+      jQuery(this).find('a').attr('tabindex','0');
+    else
+      jQuery(this).find('a').attr('tabindex','-1');
+  });
+  /** Keyboard navigation on mobile menu **/
+  jQuery('.responsiv-menu_ul .menu-item > a').on('keydown',function(e){
+      jQuery('.responsiv-menu_ul .menu-item a').attr('tabindex','-1');
+      if (e.which==40) { /* Down Arrow Key */
+      	if (jQuery(this).parent().find('.sub-menu').length)
+      		jQuery(this).parent().find('.sub-menu > li:first-child > a').attr('tabindex','0').focus();
+      	else{
+      		if (jQuery(this).parent().is(":last-child")){
+      			if (jQuery(this).closest('.menu-item-has-children').length)
+      				jQuery(this).closest('.menu-item-has-children').next().find('> a').attr('tabindex','0').focus();
+      			else
+      				jQuery(this).closest('ul.responsiv-menu_ul').find('> li:first-child > a').attr('tabindex','0').focus();
+      		} else
+        		jQuery(this).parent().next().find('> a').attr('tabindex','0').focus();
+      	}
+      } else if (e.which==38) { /* Up Arrow Key */
+      	if (jQuery(this).parent().is(":first-child")){
+      		if (jQuery(this).closest('.menu-item-has-children').length)
+      			jQuery(this).closest('.menu-item-has-children').find('> a').attr('tabindex','0').focus();
+      		else
+      			jQuery(this).closest('ul.responsiv-menu_ul').find('li:last-child > a').attr('tabindex','0').focus();
+      	} else {
+      		if (jQuery(this).parent().prev().find('.sub-menu').length)
+      			jQuery(this).parent().prev().find('.sub-menu > li:last-child > a').attr('tabindex','0').focus();
+      		else
+        		jQuery(this).parent().prev().find('> a').attr('tabindex','0').focus();
+      	}
+      } else if (e.which==27){
+      	jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
+ 				jQuery(this).closest('.navi_bg .navi_icn').removeAttr('aria-expanded');
+ 				jQuery(this).closest('.navi_bg .navi_icn').focus();
+      }
+  });
 	
 	/* Nav menu focus handler */
 	jQuery('.main-menu ul li a').on('focus', function(){
@@ -96,7 +162,44 @@ jQuery( document ).ready(function() {
 		//jQuery('*[class=".slideshow_container_style-light .slideshow_pagination ul li"]').css('background', 'url(../images/slider_pager.png) 0 0 no-repeat !important;');
 		console.log('Replaced SVG images with PNG');
 	}
-  
+
+	/** enable keyboard navigation on mobile menu **/
+  if (jQuery(window).width() < 769) {
+  	const browserZoomLevel = Math.round(window.devicePixelRatio * 100);
+		jQuery('.navi_bg .navi_icn').attr('tabindex','0');
+		jQuery('.navi_bg .navi_icn').attr('aria-label','menu');
+		jQuery('.navi_bg .navi_icn').on("keydown", function(e) {
+			var code = e.which;
+			var key = e.key;
+			if(key == "Enter" || key == " " || key == "ArrowDown" || key == "ArrowUp") { 
+   				//jQuery('.navi_bg .navi_icn .fa-bars').trigger('click');
+   				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","block")
+   				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","block")
+   				jQuery(this).attr('aria-expanded','true');
+   				if (key == "ArrowUp"){
+		 				jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').attr('tabindex','0');
+		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:last-child a').focus();
+		      } else {
+		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').attr('tabindex','0');
+		      	jQuery(this).closest('.navi_bg').find('.responsiv-menu_ul > li:first-child a').focus();
+		      }
+ 			} else if (key == "Esc" || key == "Escape"){
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu').css("display","none");
+ 				jQuery(this).closest('.navi_bg').find('.responsiv-menu .responsiv-menu_ul').css("display","none")
+ 				jQuery(this).removeAttr('aria-expanded');
+ 				jQuery(this).focus();
+ 			}
+		});
+	}
+
+	/** hide recaptcha logo when contact form slider is disabled **/
+	setTimeout(function(){
+		if (jQuery('#contact-slider').length || jQuery('.wpcf7').length){
+			jQuery('.grecaptcha-badge').css({'visibilty':'visible','opacity':'1'})
+		} else {
+			jQuery('.grecaptcha-badge').css({'visibilty':'hidden','opacity':'0'})
+		}
+	},500);
 });
 
 /*
@@ -207,3 +310,11 @@ window.onYouTubePlayerAPIReady = function() { //simple implementation
 
 
 /* FEATURE VIDEO END */
+
+function openHamburgerMenu(){
+
+}
+
+function closeHamburgerMenu(){
+
+}

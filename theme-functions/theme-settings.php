@@ -24,10 +24,16 @@ function socialmedia_settings()
 			update_option("facebook_url", $facebook_url);
 		if (isset($yotube_url))
 			update_option("yotube_url", $yotube_url);
+		if (isset($medium_url))
+			update_option("medium_url", $medium_url);
 		if (isset($linktonwltr))
 			update_option("linktonwltr", $linktonwltr);
 		if (isset($enablecontactslider))
 			update_option("enablecontactslider", $enablecontactslider);
+		else {
+			if (get_option('enablecontactslider'))
+				delete_option('enablecontactslider');
+		}
 		if (isset($contactsliderpage))
 			update_option("contactsliderpage", $contactsliderpage);
 		if (isset($enablecrazyegg))
@@ -49,6 +55,7 @@ function socialmedia_settings()
 	$twitter_url = get_option("twitter_url");
 	$facebook_url = get_option("facebook_url");
 	$yotube_url = get_option("yotube_url");
+	$medium_url = get_option("medium_url");
 	$linktonwltr = get_option("linktonwltr");
 	$enablecontactslider = get_option("enablecontactslider");
 	$contactsliderpage = get_option("contactsliderpage");
@@ -103,12 +110,16 @@ function socialmedia_settings()
 						      <div class="oer_sclmda_fld"><input type="text" name="yotube_url" value="'. $yotube_url.'" /></div>
 					</div>
 					<div class="oer_sclmda_sub_wrapper">
+						      <div class="oer_sclmda_txt"><strong>Medium URL</strong></div>
+						      <div class="oer_sclmda_fld"><input type="text" name="medium_url" value="'. $medium_url.'" /></div>
+					</div>
+					<div class="oer_sclmda_sub_wrapper">
 						      <div class="oer_sclmda_txt"><strong>Link To Newsletter</strong></div>
 						      <div class="oer_sclmda_fld"><input type="text" name="linktonwltr" value="'. $linktonwltr.'" /></div>
 					</div>
 					<div class="oer_sclmda_sub_wrapper">
 						      <div class="oer_sclmda_txt"><strong>Enable Contact Slider?</strong></div>
-						      <div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="'.(($enablecontactslider)?$enablecontactslider:true).'" '.(($enablecontactslider==1)?"checked='checked'":"").' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
+						      <div class="oer_sclmda_fld"><input type="checkbox" id="enablecontactslider" name="enablecontactslider" value="1" '.checked("1", $enablecontactslider, false).' /><select name="contactsliderpage" id="contactsliderpage" disabled="disabled">'.$options.'</select></div>
 					</div>
 					<div class="oer_sclmda_sub_wrapper">
 						      <div class="oer_sclmda_txt"><strong>Enable Crazy Egg tracking script</strong></div>
