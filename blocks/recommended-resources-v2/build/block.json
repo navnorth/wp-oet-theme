@@ -15,8 +15,7 @@
       "type": "string"
     },
     "mediaType1": {
-      "type": "string",
-      "default": "video"
+      "type": "string"
     },
     "mediaSource1": {
       "type": "string"
@@ -25,12 +24,10 @@
       "type": "string"
     },
     "mediaLink1": {
-      "type": "string",
-      "default": ""
+      "type": "string"
     },
     "mediaType2": {
-      "type": "string",
-      "default": "video"
+      "type": "string"
     },
     "mediaSource2": {
       "type": "string"
@@ -42,8 +39,7 @@
       "type": "string"
     },
     "mediaType3": {
-      "type": "string",
-      "default": "video"
+      "type": "string"
     },
     "mediaSource3": {
       "type": "string"
