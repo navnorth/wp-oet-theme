@@ -129,13 +129,13 @@ if (!function_exists('is_version_58')) {
 }
 
 // Checks WP version to register block via block json if version is 5.8 or later
-if ( is_version_58() ) {
+//if ( is_version_58() ) {
     add_action( 'init', 'oet_recommended_resources_block_init' );
     //add_action( 'init', 'oet_recommended_resources_block_json_init' );
-} else {
+//} else {
     //add_action( 'init', 'oet_recommended_resources_block_init' );
-    add_action( 'init', 'oet_recommended_resources_block_json_init' );
-}
+//    add_action( 'init', 'oet_recommended_resources_block_json_init' );
+//}
 
 // Display Recommended Resources Block
 /**
