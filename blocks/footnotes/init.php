@@ -1,4 +1,10 @@
 <?php
+// Enqueue inline footnotes script
+function enqueue_inline_footnotes_script(){
+    wp_enqueue_script('oet-inline-footnotes', get_stylesheet_directory_uri().'/blocks/footnotes/jquery-inline-footnotes-min.js');
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_inline_footnotes_script' );
+// Initialize block
 function oet_footnotes_block_init(){
     $dir = dirname(__FILE__);
     $dir_url = get_stylesheet_directory_uri().'/blocks/footnotes/';

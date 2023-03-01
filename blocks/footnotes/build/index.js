@@ -54,11 +54,14 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 function Edit() {
+  const ALLOWED_BLOCKS = ["core/paragraph", "core/image"];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "oet-footnotes"
   }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", {
     className: "wp-block-separator has-text-color has-background has-dark-gray-background-color has-dark-gray-color is-style-wide"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks, null));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks, {
+    allowedBlocks: ALLOWED_BLOCKS
+  }));
 }
 
 /***/ }),
