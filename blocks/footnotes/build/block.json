@@ -10,6 +10,24 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "footnotes": {
+      "type": "array",
+      "source": "query",
+      "selector": "div"
+    },
+    "isChanged": {
+      "type": "boolean",
+      "default": false
+    },
+    "blockId": {
+      "type": "string"
+    },
+    "firstLoad": {
+      "type": "boolean",
+      "default": true
+    }
+  },
   "textdomain": "oet-footnotes",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
