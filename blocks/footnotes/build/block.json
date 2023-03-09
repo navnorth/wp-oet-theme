@@ -11,6 +11,10 @@
     "html": false
   },
   "attributes": {
+    "footnoteCount": {
+      "type": "integer",
+      "default": 1
+    },
     "footnotes": {
       "type": "array",
       "source": "query",
