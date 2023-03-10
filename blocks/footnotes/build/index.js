@@ -69,6 +69,12 @@ function Edit(props) {
       blockId
     });
   };
+  const changeCount = count => {
+    setAttributes({
+      footnoteCount: count,
+      isChanged: true
+    });
+  };
   if (clientId !== attributes.blockId) setBlockId(clientId);
   if (attributes.firstLoad) {
     display = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", {
@@ -81,7 +87,14 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Settings', 'oet-footnotes-block'),
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Number of footnotes:', 'oet-footnotes-block'),
+    isShiftStepEnabled: true,
+    onChange: changeCount,
+    shiftStep: 1,
+    className: "footnotes-count",
+    value: attributes.footnoteCount
+  })))));
   const ALLOWED_BLOCKS = ["core/paragraph", "core/image"];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "oet-footnotes"
