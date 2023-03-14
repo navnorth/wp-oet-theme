@@ -17,8 +17,14 @@
     },
     "footnotes": {
       "type": "array",
-      "source": "query",
-      "selector": "div"
+      "default": [
+        {
+          "index": 0,
+          "text": "",
+          "url": "",
+          "anchor": ""
+        }
+      ]
     },
     "isChanged": {
       "type": "boolean",

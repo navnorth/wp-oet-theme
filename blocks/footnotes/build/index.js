@@ -75,10 +75,17 @@ function Edit(props) {
       isChanged: true
     });
   };
-  const updateFootnotes = newIndex => {
-    let newFootnotes;
+  const updateFootnotes = (newVal, index, field) => {
+    let oFootnotes = attributes.footnotes;
+    const updatedFootnotes = oFootnotes.map((val, id) => {
+      if (id == index) {
+        return newVal;
+      } else {
+        return val;
+      }
+    });
     setAttributes({
-      footnotes: newFootnotes,
+      footnotes: updatedFootnotes,
       isChanged: true
     });
   };
@@ -96,38 +103,38 @@ function Edit(props) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Footnote #:', 'oet-footnotes-block'),
       isShiftStepEnabled: true,
-      onChange: updateFootnotes,
+      onChange: e => updateFootnotes(e, index, 'index'),
       shiftStep: 1,
       className: "noteIndex",
-      value: attributes.footnotes.index
+      value: attributes.footnotes[index].index
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
       className: "footnote-control-group",
       key: "footnote-text-" + index
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Text:', 'oet-footnotes-block'),
-      value: attributes.footnotes.text,
-      onChange: updateFootnotes
+      value: attributes.footnotes[index].text,
+      onChange: e => updateFootnotes(e, index, 'text')
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
       className: "footnote-control-group",
       key: "footnote-url-" + index
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('URL:', 'oet-footnotes-block'),
-      value: attributes.footnotes.url,
-      onChange: updateFootnotes
+      value: attributes.footnotes[index].url,
+      onChange: e => updateFootnotes(e, index, 'url')
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
       className: "footnote-control-group",
       key: "footnote-anchor-" + index
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Anchor:', 'oet-footnotes-block'),
-      value: attributes.footnotes.anchor,
-      onChange: updateFootnotes
+      value: attributes.footnotes[index].anchor,
+      onChange: e => updateFootnotes(e, index, 'anchor')
     }))));
   };
   const footnoteControls = cnt => {
     let controls = [];
     for (let i = 1; i <= cnt; i++) {
       controls.push((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FootnoteControl, {
-        index: cnt
+        index: i
       }));
     }
     return controls;
@@ -223,7 +230,13 @@ if (oet_footnotes.version_58 == '') {
         default: 1
       },
       footnotes: {
-        type: 'array'
+        type: 'array',
+        default: [{
+          'index': 0,
+          'text': '',
+          'url': '',
+          'anchor': ''
+        }]
       },
       isChanged: {
         type: 'boolean',
@@ -410,7 +423,7 @@ function _extends() {
   \************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"oet-block/oet-footnotes","version":"0.1.0","title":"OET Footnotes","category":"oet-block-category","icon":"editor-insertmore","description":"Displays a footnotes section on a page.","supports":{"html":false},"attributes":{"footnoteCount":{"type":"integer","default":1},"footnotes":{"type":"array","source":"query","selector":"div"},"isChanged":{"type":"boolean","default":false},"blockId":{"type":"string"},"firstLoad":{"type":"boolean","default":true}},"textdomain":"oet-footnotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"oet-block/oet-footnotes","version":"0.1.0","title":"OET Footnotes","category":"oet-block-category","icon":"editor-insertmore","description":"Displays a footnotes section on a page.","supports":{"html":false},"attributes":{"footnoteCount":{"type":"integer","default":1},"footnotes":{"type":"array","default":[{"index":0,"text":"","url":"","anchor":""}]},"isChanged":{"type":"boolean","default":false},"blockId":{"type":"string"},"firstLoad":{"type":"boolean","default":true}},"textdomain":"oet-footnotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
