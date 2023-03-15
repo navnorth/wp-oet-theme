@@ -64,6 +64,14 @@ function Edit(props) {
     setAttributes,
     clientId
   } = props;
+  const noteList = () => {
+    let arr = [];
+    for (let i = 0; i < attributes.footnoteCount; i++) {
+      arr.push(i);
+    }
+    return arr;
+  };
+  const notes = noteList();
   const defaultFootnote = {
     index: 0,
     text: '',
@@ -180,7 +188,8 @@ function Edit(props) {
     let controls = [];
     for (let i = 1; i <= count; i++) {
       controls.push((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FootnoteControl, {
-        index: i
+        index: i,
+        key: i
       }));
     }
     return controls;
@@ -205,8 +214,53 @@ function Edit(props) {
     className: "footnotes-count",
     key: "footnotes-count",
     value: attributes.footnoteCount
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FootnoteControls, {
-    count: attributes.footnoteCount
+  })), notes.map((item, key) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+      key: "footnote-group-" + (item + 1)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Footnote ' + (item + 1), 'oet-footnotes-block'),
+      key: "footnote-panelbody-1"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
+      className: "footnote-control-group",
+      key: "footnote-panelrow-index-" + (item + 1)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalNumberControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Footnote #:', 'oet-footnotes-block'),
+      isShiftStepEnabled: true,
+      onChange: e => updateFootnotes(e, item + 1, 'index'),
+      shiftStep: 1,
+      min: 1,
+      className: "noteIndex",
+      id: "footnote-index-" + (item + 1),
+      key: "footnote-index-" + (item + 1),
+      value: attributes.footnotes[item].index
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
+      className: "footnote-control-group",
+      key: "footnote-panelrow-text-" + (item + 1)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Text:', 'oet-footnotes-block'),
+      value: attributes.footnotes[item].text,
+      id: "footnote-text-" + (item + 1),
+      key: "footnote-text-" + (item + 1),
+      onChange: e => updateFootnotes(e, item + 1, 'text')
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
+      className: "footnote-control-group",
+      key: "footnote-panelrow-url-" + (item + 1)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('URL:', 'oet-footnotes-block'),
+      value: attributes.footnotes[item].url,
+      id: "footnote-url-" + (item + 1),
+      key: "footnote-url-" + (item + 1),
+      onChange: e => updateFootnotes(e, item + 1, 'url')
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, {
+      className: "footnote-control-group",
+      key: "footnote-panelrow-anchor-" + (item + 1)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Anchor:', 'oet-footnotes-block'),
+      value: attributes.footnotes[item].anchor,
+      id: "footnote-anchor-" + (item + 1),
+      key: "footnote-anchor-" + (item + 1),
+      onChange: e => updateFootnotes(e, item + 1, 'anchor')
+    }))));
   }))));
   const ALLOWED_BLOCKS = ["core/paragraph", "core/image"];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
