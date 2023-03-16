@@ -200,6 +200,37 @@ function Edit(props) {
       className: "wp-block-separator has-text-color has-background has-dark-gray-background-color has-dark-gray-color is-style-wide"
     });
   }
+  if (attributes.footnoteCount > 0) {
+    let footnotes = attributes.footnotes;
+    let fControls = [];
+    footnotes.map((item, key) => {
+      if (item.index != 0 && item.text != '') {
+        fControls.push((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+          className: "oet-footnote-block"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+          className: "wp-block-column",
+          id: "footnote-" + item.index
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+          className: "has-small-font-size",
+          id: "fn:" + item.index
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("sup", null, item.index), " ", item.text, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+          href: "{ item.url }",
+          target: "_blank",
+          rel: "noreferrer noopener"
+        }, item.url), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+          href: "#fnref:" + item.index,
+          rev: "footnote"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
+          draggable: "false",
+          role: "img",
+          className: "emoji",
+          alt: "\u21A9",
+          src: oet_footnotes.back_icon
+        }))))));
+      }
+    });
+    display = fControls;
+  }
   let inspector = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
     key: "inspector-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -262,12 +293,9 @@ function Edit(props) {
       onChange: e => updateFootnotes(e, item + 1, 'anchor')
     }))));
   }))));
-  const ALLOWED_BLOCKS = ["core/paragraph", "core/image"];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "oet-footnotes"
-  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), display, inspector, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks, {
-    allowedBlocks: ALLOWED_BLOCKS
-  }));
+  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), display, inspector);
 }
 
 /***/ }),

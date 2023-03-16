@@ -25,7 +25,7 @@ function oet_footnotes_block_init(){
         $script_asset['dependencies'],
         $script_asset['version']
     );
-    wp_localize_script( 'oet-footnotes-block-editor', 'oet_footnotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => false ) );
+    wp_localize_script( 'oet-footnotes-block-editor', 'oet_footnotes', array( 'home_url' => home_url(), 'ajax_url' => admin_url( 'admin-ajax.php' ), 'version_58' => false, 'back_icon' => get_stylesheet_directory_uri().'/images/footnote-back-icon.svg' ) ) );
 
 
     $editor_css = 'build/index.css';
