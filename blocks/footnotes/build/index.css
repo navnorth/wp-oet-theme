@@ -9,9 +9,10 @@
 .wp-block-create-block-oet-footnotes {
   border: 1px dotted #f00;
 }
-
+.wp-block-oet-block-oet-footnotes .wp-block-separator { border-bottom:1px solid #cccccc !important; }
 .components-input-control {
   width: 100%;
 }
+.wp-block-oet-block-oet-footnotes .oet-footnote-block a.ret-anchor { margin-left:2px; }
 
 /*# sourceMappingURL=index.css.map*/

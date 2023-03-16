@@ -12,5 +12,6 @@
   color: #fff;
   padding: 2px;
 }
-
+.wp-block-oet-block-oet-footnotes .wp-block-separator { border-bottom:1px solid #cccccc !important; }
+.wp-block-oet-block-oet-footnotes .oet-footnote-block a.ret-anchor { margin-left:2px; }
 /*# sourceMappingURL=style-index.css.map*/
