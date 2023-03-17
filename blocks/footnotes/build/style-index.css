@@ -12,6 +12,24 @@
   color: #fff;
   padding: 2px;
 }
-.wp-block-oet-block-oet-footnotes .wp-block-separator { border-bottom:1px solid #cccccc !important; }
-.wp-block-oet-block-oet-footnotes .oet-footnote-block a.ret-anchor { margin-left:2px; }
+
+.wp-block-oet-block-oet-footnotes .wp-block-separator {
+  border-bottom: 1px solid #cccccc !important;
+  margin-bottom: 0;
+}
+
+#footnote_box {
+  font-size: 14px;
+  background: #222;
+  color: #fff;
+  padding: 5px 15px;
+  margin: 10px;
+  border: 1px solid #888;
+  box-shadow: 0px 0px 5px #888;
+}
+
+#footnote_box a {
+  color: #FFFFFF;
+}
+
 /*# sourceMappingURL=style-index.css.map*/

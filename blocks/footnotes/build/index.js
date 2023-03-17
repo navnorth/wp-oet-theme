@@ -214,7 +214,7 @@ function Edit(props) {
           className: "has-small-font-size",
           id: "fn:" + item.index
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("sup", null, item.index), " ", item.text, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-          href: "{ item.url }",
+          href: item.url,
           target: "_blank",
           rel: "noreferrer noopener"
         }, item.url), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
