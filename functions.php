@@ -8,7 +8,7 @@
  */
 
 define( 'OET_THEME_SLUG' , 'wp_oet_theme' );
-define( "OET_THEME_VERSION", "2.1.2" );
+define( "OET_THEME_VERSION", "2.2.0" );
 define( 'OET_THEME_PATH' ,  get_stylesheet_directory() );
 
 /**
@@ -114,6 +114,11 @@ require_once( OET_THEME_PATH . '/blocks/callout-box/init.php' );
 require_once( OET_THEME_PATH . '/blocks/disruptive-content/init.php' );
 
 /**
+* OET Recommended Resources Block
+**/
+require_once( OET_THEME_PATH . '/blocks/recommended-resources/init.php' );
+
+/**
 * OET Button Block
 **/
 require_once( OET_THEME_PATH . '/blocks/button/init.php' );
@@ -124,9 +129,9 @@ require_once( OET_THEME_PATH . '/blocks/button/init.php' );
 require_once( OET_THEME_PATH . '/blocks/story-embed/init.php' );
 
 /**
-* OET Recommended Resources Block
+* OET Footnotes Block
 **/
-require_once( OET_THEME_PATH . '/blocks/recommended-resources/init.php' );
+require_once( OET_THEME_PATH . '/blocks/footnotes/init.php' );
 
 include_once wp_normalize_path( get_stylesheet_directory() . '/vendor/autoload.php' );
 
@@ -227,6 +232,7 @@ function theme_front_enqueue_script()
 	}
 
 	wp_enqueue_script('jquery');
+	wp_enqueue_script('auto-track', get_stylesheet_directory_uri() . '/js/auto-track.js' );
 	wp_enqueue_script('theme-front-script', get_stylesheet_directory_uri() . '/js/front-script.js' );
 	wp_enqueue_script( 'ellipsis-script', get_stylesheet_directory_uri() . '/js/jquery.dotdotdot.min.js' );
 	wp_enqueue_script('bootstrap-script', get_stylesheet_directory_uri() . '/js/bootstrap.js' );
